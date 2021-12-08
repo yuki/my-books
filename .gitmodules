@@ -1,0 +1,3 @@
+[submodule "yukibook.cls"]
+	path = yukibook.cls
+	url = git@github.com:yuki/yukibook.cls.git
