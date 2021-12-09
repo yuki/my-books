@@ -23,7 +23,7 @@ Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un
 \subsection{El nacimiento de Unix}
 
 \begin{description}
-\item[1964-1969]Los laboratorios \textbf{Bell} empiezan un proyecto con el \textbf{MIT} (Instituto Tecnológico de Massachusetts) y \textbf{General Electric} para desarrollar un sistema de \textbf{tiempo compartido} (“time-sharing computing”): se llamaría \textbf{Multics} (Multiplexed Information and Computing Service). 
+\item[1964-1969]Los laboratorios \textbf{Bell} empiezan un proyecto con el \textbf{MIT} (Instituto Tecnológico de Massachusetts) y \textbf{General Electric} para desarrollar un sistema de \textbf{tiempo compartido} (“time-sharing computing”): se llamaría \textbf{Multics} (Multiplexed Information and Computing Service).
 
 Hasta este momento, los sistemas utilizados eran de un único proceso, la CPU no era compartida por múltiples procesos sino que se ejecutaba por lotes (se les mandaba los procesos a ejecutar y se ejecutaban en orden).
 
@@ -58,7 +58,7 @@ A finales de año el sistema ya era conocido como \textbf{UNIX}, y se había por
 
 \item[1973]La versión 4 del sistema es reescrita completamente en C. Hasta este momento el sistema había estado escrito en ensamblador, por lo que no era portable entre distintos tipos de máquinas, aunque la primera versión portada a otra plataforma fue en 1978. Se cree que había “más de 20” instalaciones del sistema.
 
-\item[1974]La versión 5 se licencia para ser utilizada en \textbf{instituciones educativas}. 
+\item[1974]La versión 5 se licencia para ser utilizada en \textbf{instituciones educativas}.
 
 \item[1975]La versión 6 se licencia para poder ser utilizadas por empresas por \$20.000 de la época.
 
@@ -89,7 +89,6 @@ Richard Stallman quiere modificar el firmware de unas impresoras y el fabricante
 \item[1985] Se lanza el \href{https://www.gnu.org/gnu/manifesto.es.html}{manifiesto GNU}, y ya cuenta con un editor de texto (Emacs), compilador de C, una shell, varias utilidades … El núcleo inicial todavía no es funcional.
 }
 
- 
 
 \item[1986]
 Richard Stallman escribe y publica la definición de lo que es Free Software (Software Libre) a través de la \href{https://es.wikipedia.org/wiki/Free_Software_Foundation}{Free Software Foundation}.
@@ -104,5 +103,338 @@ La palabra ``free'' no se refiere a gratis, si no que se refiere a libertad.
 Más adelante veremos a qué se refiere sobre libertad en el software.
 
 \end{description}
+
+\subsection{El nacimiento de Minix}
+\begin{description}
+\item[1987]Andrew S. Tanenbaum crea  Minix como propósito educativo y para enseñar cómo funciona un sistema operativo.
+
+\item[1991]Sale la versión 1.5 de Minix y es portada a distintas arquitecturas (IBM, Motorola 68000, Amiga, Apple Macintosh, …).
+
+\item[1992]Debate con Linus Torvalds sobre la arquitectura del kernel Linux (núcleo monolítico) en lugar de usar un micronúcleo.
+
+\end{description}
+
+
+\subsection{El nacimiento de Linux}
+\begin{description}
+
+\item[1991] Un estudiante en la universidad de Helsinki, \href{https://en.wikipedia.org/wiki/Linus_Torvalds}{Linus Torvalds}, comienza un proyecto personal escrito para su nuevo ordenador, un PC con procesador 80386.
+
+El desarrollo comienza bajo \textbf{Minix}, usando el compilador \textbf{GCC} del movimiento GNU (GCC = GNU Compiler Collection).
+
+El proyecto termina convirtiéndose en un kernel de un sistema operativo y escribió al grupo de noticias de Minix diciendo:
+
+\begin{tcolorbox}[title=Email de Linus Torvalds presentando Linux,sidebyside,righthand width=0.30\linewidth]
+  “Hola a todos los que estáis ahí fuera usando minix.\\
+
+
+  Estoy haciendo un sistema operativo (libre), (solamente por aficion, no será grande ni profesional como el GNU) para clones 386(486) AT.
+
+  ...
+
+  PD. Sí – está libre de cualquier código de minix, y tiene un sistema de ficheros multi-hilo. NO es portable (usa el cambio de tareas del 386 etc), y probablemente nunca soporte otra cosa que no sean los discos duros AT, porque es todo lo que tengo :-(. ”
+  \tcblower
+  \includegraphics[width=\linewidth]{img/Linus_Torvalds.jpeg}
+  \vspace{-30pt}\captionof{figure}{\href{https://en.wikipedia.org/wiki/Linus_Torvalds}{Linus torvalds. Origen: Wikipedia}}
+\end{tcolorbox}
+
+
+\item[1992] Originalmente la licencia de Linux era propia e impedía el uso comercial de Linux. En la versión 0.99 esto cambia y se cambia a la licencia GNU Public License (\textbf{GPL}).
+
+\item[1993] El proyecto cuenta con más de 100 desarrolladores. El kernel se adapta al entorno del proyecto GNU. Nace la distribución \textbf{Debian} (una de las más importantes a día de hoy)
+
+\begin{center}
+  \includegraphics[width=0.5\linewidth]{img/debian-logo.jpg}
+  \vspace{-10pt}\captionof{figure}{\href{https://www.debian.org}{Debian}}
+\end{center}
+
+\item[1994] Se libera la versión 1.0. El proyecto XFree86 se une y Linux consigue interfaz gráfico. Nacen las primeras distribuciones comerciales \textbf{Red Hat} y \textbf{Suse}.
+
+\item[1998] Empresas como \textbf{IBM}, \textbf{Compaq} y \textbf{Oracle} anuncian que apoyan a Linux. Nace el interfaz gráfico \textbf{KDE}.
+
+\item[1999] Nace el interfaz gráfico \textbf{GNOME} como reemplazo a KDE, ya que KDE hacía uso de una librería propietaria en aquel momento (QT).
+
+\item[2001] Steve Ballmer (CEO de Microsoft) dice: \textbf{“Linux es un cáncer”}.
+
+\item[2002] Se libera OpenOffice (originalmente suite ofimática de Sun Microsystems). Nace Mozilla (hoy día:  Firefox).
+
+\item[2003] IBM lanza un anuncio para la Linux Foundation: \href{https://www.youtube.com/watch?v=x7ozaFbqg00}{https://www.youtube.com/watch?v=x7ozaFbqg00}
+
+\item[2004] Nace \textbf{Ubuntu} (basándose en Debian) y Steve Ballmer (CEO de Microsoft) dice que Linux infringe muchas de sus patentes.
+
+\item[2008] Nace \textbf{\href{https://es.wikipedia.org/wiki/Android}{Android}}, sistema operativo con kernel Linux. Actualmente es el sistema operativo de móviles que más terminales tiene.
+
+\item[2009] Red Hat iguala a Sun Microsystem en capitalización bursátil (un gran logro simbólico).
+
+\item[2014] Satya Nadella (CEO de Microsoft) muestra en una presentación la siguiente transparencia:
+
+\begin{center}
+  \includegraphics[width=0.5\linewidth]{img/Microsoft_Linux.jpg}
+  \vspace{-10pt}\captionof{figure}{\href{https://commons.wikimedia.org/wiki/File:Microsoft_Linux.jpg}{Origen: Wikipedia}}
+\end{center}
+
+
+\item[2016]
+Microsoft anuncia \href{https://es.wikipedia.org/wiki/Windows_Subsystem_for_Linux}{WSL} (\textit{Windows Subsystem for Linux}) y se puede instalar en Windows 10 y Windows Server 2019. Permite correr ejecutables de Linux nativamente.
+
+\end{description}
+
+\subsection{Cronograma de sistemas Unix}
+En el siguiente cronograma se puede ver la línea temporal de los sistemas Unix:
+
+\begin{center}
+  \includegraphics[width=0.7\linewidth]{img/Evolución_UNIX.png}
+  \vspace{-10pt}\captionof{figure}{\href{https://commons.wikimedia.org/wiki/File:Evolución_UNIX.png}{Origen: Wikipedia}}
+\end{center}
+
+\section{Resumen}
+Linux es conocido como un sistema operativo libre pero el nombre de Linux se  centra única y exclusivamente en el \textbf{kernel} (o \textbf{núcleo}) del sistema operativo.
+
+El sistema operativo completo debería llamarse \textbf{GNU/Linux}, ya que el kernel es una “pequeña” parte (aunque muy importante) dentro de todo el sistema operativo. El resto de herramientas utilizadas en el sistema operativo pertenecen al proyecto GNU.
+
+
+\chapter{Licencias Libres}
+\section{Software Libre}
+
+En 1986 Richard Stallman saca a la luz la definición de lo que es Free Software (Software Libre) a través de la \href{https://es.wikipedia.org/wiki/Free_Software_Foundation}{Free Software Foundation}:
+
+\begin{tcolorbox}[title=Definición de Free Software:]
+    \center
+    \textbf{The word ``free'' in our name does not refer to price; it refers to freedom.}
+
+    La palabra ``free'' no se refiere a gratis, si no que se refiere a libertad.
+\end{tcolorbox}
+
+
+Las libertad en el software se refiere a:
+\begin{tcolorbox}[title=Libertades del Software Libre:]
+    \begin{enumerate}
+        \setcounter{enumi}{-1}
+        \item La libertad de ejecutar el programa, para cualquier propósito .
+
+        \item La libertad de estudiar cómo trabaja el programa, y cambiarlo para que haga lo que usted quiera. El acceso al código fuente es una condición necesaria para ello.
+
+        \item La libertad de redistribuir copias para que pueda ayudar al prójimo.
+
+        \item La libertad de mejorar el programa y publicar sus mejoras, y versiones modificadas en general, para que se beneficie toda la comunidad. El acceso al código fuente es una condición necesaria.
+    \end{enumerate}
+\end{tcolorbox}
+
+El movimiento del Free Software es un movimiento que tiene que ver más con la filosofía y la ética que con la tecnología en sí misma.
+
+
+\subsection{Copyleft y GNU Public License (GPL)}
+Es una práctica legal que consiste en el ejercicio del derecho de autor (copyright en inglés) con el objetivo de propiciar el libre uso y distribución de una obra, exigiendo que los concesionarios preserven las mismas libertades al distribuir sus copias y derivados (\href{https://es.wikipedia.org/wiki/Copyleft}{Wikipedia}).
+
+\begin{center}
+  \includegraphics[width=\linewidth]{img/Mapa_conceptual_del_software_libre.png}
+  \vspace{-30pt}\captionof{figure}{\href{https://commons.wikimedia.org/wiki/File:Mapa_conceptual_del_software_libre.png}{Mapa conceptual del Software Libre: Wikipedia}}\vspace{-20pt}
+\end{center}
+
+Con esto nació la licencia GNU GPL, la cual permite al usuario final la libertad de usar, estudiar, compartir y modificar el software recibido. Tiene que quedar claro que un programa comercial puede ser Software Libre.
+
+\subsection{Diferencias con el Open Source}
+Los programas Open Source son aquellos que podemos ver el código fuente pero esto no quiere decir que podamos modificarlo o adaptarlo a nuestras necesidades.
+
+El Open Source es menos restrictivo que el Software Libre y se puede decir que todo Software Libre es Open Source, pero no todo Open Source tiene por qué ser libre.
+
+
+\section{Licencias libres más conocidas}
+Un listado de las licencias libres más utilizadas:
+
+\begin{itemize}
+    \item \href{https://es.wikipedia.org/wiki/GNU_General_Public_License}{GNU GPL}
+    \item \href{https://es.wikipedia.org/wiki/Licencia_BSD}{BSD}
+    \item \href{https://es.wikipedia.org/wiki/Licencia_MIT}{MIT}
+    \item \href{https://es.wikipedia.org/wiki/Apache_License}{Licencia Apache}
+    \item \href{https://es.wikipedia.org/wiki/Licencia_PHP}{Licencia PHP}
+    \item \href{https://es.wikipedia.org/wiki/Licencias_Creative_Commons}{Creative Commons} (no todas las versiones). Más utilizadas en contenido multimedia.
+\end{itemize}
+
+
+\chapter{Sistema de ficheros en GNU/Linux}
+El sistema de ficheros en GNU/Linux, al igual que en Unix, es jerárquico, comenzando en la raíz denominada “/”. Partiendo de esta raíz, el resto del sistema de ficheros nace en forma de ramificaciones generando lo que se denominan “rutas de ficheros”, que es el camino completo para llegar al mismo.
+
+\section{Filesystem Hierarchy Standard}
+Debido a que en GNU/Linux todo se representa como ficheros (discos, dispositivos, programas, … ) es necesario que exista un orden a la hora de ser almacenados. Con esa intención nace en 1993 el estándar de la jerarquía de ficheros de Linux, enfocado a reestructurar los archivos. Posteriormente se unieron otros derivados de UNIX (la comunidad de desarrollo de BSD) por lo que terminó adoptando el nombre FHS.
+
+Aún siendo un estándar, no todas las distribuciones lo siguen al pie de la letra, y otros Unix, como MacOS, tienen sus propias rutas especiales.
+
+
+\section{Directorios importantes}
+A continuación se exponen los directorios más importantes del sistema junto con la descripción del contenido que deben de tener:
+\begin{itemize}
+
+    \item \textbf{/boot/}: archivos de arranque del kernel, normalmente junto con la configuración utilizada para compilarlos.
+    \item \textbf{/dev/}: contiene archivos especiales de bloque que representan los dispositivos del hardware que está corriendo el sistema operativo
+    \item \textbf{/etc/}: contiene los archivos de configuración del servidor y de los servicios que corren en él. Está subdividido en directorios por servicios o configuraciones.
+    \item \textbf{/home/}: los directorios de trabajo de los usuarios normales del sistema
+    \item \textbf{/lib/}: librerías que hacen funcionar a los programas
+    \item \textbf{/root/}: es la home del usuario root
+    \item \textbf{/var/}: archivos variables del sistema
+    \begin{itemize}
+      \item \textbf{/var/lib/}: aquí se suelen guardar los ficheros de los programas que “crecen”: bases de datos, ficheros caché…
+      \item \textbf{/var/log/}: los logs del sistema
+    \end{itemize}
+\end{itemize}
+
+Junto a todos estos directorios, se ha separado los lugares en los que van los binarios, o ejecutables de los programas. Lo habitual es que se encuentren en estas rutas:
+
+\begin{itemize}
+    \item \textbf{/bin/}: aplicaciones esenciales del sistema
+    \item \textbf{/sbin/}: aplicaciones que en principio sólo debería ejecutar el usuario root o programas de administración del sistema
+    \item \textbf{/usr/bin/}: ejecutables de usuario
+    \item \textbf{/usr/sbin/}: ejecutables de superusuario
+\end{itemize}
+Aunque las rutas de los ejecutables denotan quién debería ejecutar el programa, en la vida real no tiene por qué ser una limitación.
+
+\section{Dispositivos de almacenamiento y discos duros}
+En sistemas operativos Windows es habitual que cada partición cuente con una letra para acceder a ella, al igual que ocurre cuando introducimos un dispositivo de almacenamiento externo (un pendrive).
+
+Tal como se ha comentado, en sistemas Unix el sistema de ficheros es una jerarquía, y por tanto todo dispositivo de almacenamiento nuevo deberá estar montado bajo la raíz “/”. Hoy día, en distribuciones con escritorio, al introducir un pendrive éste es auto-montado (es accesible) desde la ruta \textbf{/media/}, donde aparecerán tantos directorios como discos hayamos conectado.
+
+\subsection{Almacenamiento permanente}
+Si queremos que un disco duro nuevo sea permanente en nuestro sistema, podremos montarlo en cualquier lugar de la estructura jerárquica. Debido a este sistema, el usuario final no se tendrá que preocupar en almacenar los ficheros en una ruta distinta, si no que será el administrador el que haya hecho que esa ruta ahora pertenezca a un disco duro nuevo.
+
+Imaginemos que el sistema operativo se ha instalado en un disco duro pequeño de 32Gb de espacio y se está llenando, y el directorio que más ocupa es el directorio de los usuarios. Podremos añadir al servidor un nuevo disco duro montado en /home y por tanto a partir de ahora los datos guardados en /home estarán en un nuevo disco duro más grande.
+
+\begin{mycode}{Ejemplo de discos en un sistema con ``lsblk''`}{console}{}
+root@vega:~# lsblk
+NAME                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                          8:0    0   1,8T  0 disk
+└─sda1                       8:1    0   1,8T  0 part /home/backup
+
+sdb                          8:16   0   3,6T  0 disk
+└─sdb1                       8:17   0   3,6T  0 part /home/disco4tb
+sdc                          8:32   0 447,1G  0 disk
+├─sdc1                       8:33   0   529M  0 part
+├─sdc2                       8:34   0   100M  0 part
+├─sdc3                       8:35   0    16M  0 part
+└─sdc4                       8:36   0 446,5G  0 part
+nvme0n1                    259:0    0 931,5G  0 disk
+├─nvme0n1p1                259:1    0   512M  0 part
+└─nvme0n1p2                259:2    0   800G  0 part /home
+nvme1n1                    259:3    0 931,5G  0 disk
+├─nvme1n1p1                259:4    0   512M  0 part /boot/efi
+├─nvme1n1p2                259:5    0    90G  0 part /
+├─nvme1n1p3                259:6    0   300G  0 part
+│ ├─VMs-ubuntu--20.04--so1 254:0    0    10G  0 lvm
+│ ├─VMs-manjaro            254:2    0    20G  0 lvm
+│ └─VMs-win10              254:3    0    35G  0 lvm
+└─nvme1n1p4                259:7    0 156,2G  0 part
+\end{mycode}
+
+
+\chapter{Gestión de usuarios locales en GNU/Linux}
+En las distribuciones GNU/Linux lo habitual suele ser que existan al menos dos usuarios tras una instalación:
+
+\begin{itemize}
+    \item \textbf{root}: usuario administrador o súper usuario.
+    \item \textbf{usuario no-privilegiado}: durante la instalación de la distribución nos suele preguntar para crear un usuario del sistema, que no tendrá privilegios.
+\end{itemize}
+
+
+El usuario root, como se ha dicho previamente, es el administrador del sistema, tiene permisos para realizar cualquier tarea dentro de nuestro sistema: instalar paquetes, desinstalarlos, modificar cualquier fichero, realizar formateos... Por lo tanto, el \textbf{realizar tareas como usuario root puede ser peligroso si cometemos algún fallo}.
+
+Las buenas prácticas nos dicen que las tareas cotidianas del sistema deberíamos realizarlas como usuario normal y \textbf{sólo convertirnos en root cuando sea estrictamente necesario}.
+
+\section{Creación de usuarios locales}
+
+Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario \textbf{root} y el usuario \textbf{no-privilegiado}. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero  \mintinline{console}{ /etc/passwd }  o podríamos obtener un listado ejecutando el siguiente comando:
+
+\begin{mycode}{Listar usuarios del sistema}{console}{}
+# cut -d: -f1 /etc/passwd
+\end{mycode}
+
+Para crear un usuario:
+
+\begin{mycode}{Crear usuarios del sistema}{console}{\small}
+# adduser mikeldi
+
+Añadiendo el usuario `mikeldi' ...
+Añadiendo el nuevo grupo `mikeldi' (1001) ...
+Añadiendo el nuevo usuario `mikeldi' (1001) con grupo `mikeldi' ...
+Creando el directorio personal `/home/mikeldi' ...
+Copiando los ficheros desde `/etc/skel' ...
+Nueva contraseña:
+Vuelva a escribir la nueva contraseña:
+passwd: contraseña actualizada correctamente
+Cambiando la información de usuario para mikeldi
+Introduzca el nuevo valor, o pulse INTRO para usar el valor predeterminado
+    Nombre completo []:
+    Número de habitación []:
+    Teléfono del trabajo []:
+    Teléfono de casa []:
+    Otro []:
+¿Es correcta la información? [S/n]
+\end{mycode}
+
+Y la línea que nos creará en el fichero  \mintinline{console}{ /etc/passwd }   es:
+\begin{center}
+ \mintinline{console}{ mikeldi:x:1001:1001:mikeldi,,,:/home/mikeldi:/bin/bash }
+\end{center}
+
+El fichero  \mintinline{console}{ /etc/passwd }  nos muestra los datos de los usuarios, siendo un fichero que tiene distintos datos separados por “:”, siendo cada apartado:
+
+\#\# TODO: TABLA usuario
+
+En las primeras versiones GNU/Linux la contraseña de los usuarios aparecía en el propio fichero /etc/passwd, lo que suponía un problema en la seguridad, ya que no estaban cifradas. Actualmente, las contraseñas de los usuarios se almacenan cifradas en el fichero \mintinline{console}{ /etc/shadow }. El fichero es similar al passwd, estando separados los apartados por “:”
+
+\#\# TODO: tabla SHADOW
+
+
+En el apartado de la contraseña podemos saber cierta información acerca de la misma ya que tiene el siguiente formato: \textbf{“\$id\$salt\$hashed”}
+\begin{itemize}
+    \item \textbf{id}: el algoritmo utilizado para cifrar la contraseña
+    \begin{itemize}
+        \item \$1\$ – MD5
+        \item \$2a\$ – Blowfish
+        \item \$2y\$ – Eksblowfish
+        \item \$5\$ – SHA-256
+        \item \$6\$ – SHA-512
+    \end{itemize}
+\end{itemize}
+
+Aparte, también podemos encontrarnos con:
+\begin{itemize}
+    \item Contraseña vacía:  Si no hay contraseña, al pedirnos la contraseña a la hora de hacer login será suficiente con pulsar “intro”.
+    \item \textbf{!}, \textbf{*}: la cuenta está bloqueada para la contraseña. El usuario no podrá loguearse utilizando la contraseña. Resulta útil si queremos bloquear el acceso con contraseña pero no con otros métodos (clave pública SSH).
+    \item \textbf{*LK*}: cuenta bloqueda. El usuario no podrá loguearse.
+    \item \textbf{*NP*}, \textbf{!!}: Nunca se ha puesto una contraseña
+\end{itemize}
+
+
+\section{Gestión de grupos}
+En algunas distribuciones GNU/Linux, al crear un usuario directamente nos crea un grupo para el nuevo usuario. En otras, el usuario pertenece al grupo “users”.
+
+Para saber los grupos a los que pertenece un usuario podemos ejecutar el comando \mintinline{console}{ groups }. Los grupos del sistema aparecen en el fichero \mintinline{console}{ /etc/group }, y al igual que los ficheros vistos previamente, están separados por “:”.
+
+\#\# TODO: tabla grupos
+
+
+\section{Permisos de ficheros}
+En GNU/Linux los ficheros cuentan con 3 tipos de permisos:
+\begin{itemize}
+    \item lectura (\textbf{r}ead): el usuario puede leer el fichero
+    \item escritura (\textbf{w}rite): el usuario puede escribir en el fichero
+    \item ejecución (e\textbf{x}ecute): el usuario puede el fichero o puede ver el contenido de un directorio
+\end{itemize}
+
+
+Todos ello para los distintos usuarios que pueden existir en el sistema:
+\begin{itemize}
+    \item \textbf{dueño del fichero}: la persona que ha creado el fichero
+    \item \textbf{grupo}: los usuarios pertenecientes al grupo al que pertenece el fichero tendrán ciertos privilegios
+    \item \textbf{el resto de usuarios}: los permisos que tendrán el resto de usuarios que no son ni el dueño ni pertenecen al grupo
+\end{itemize}
+
+Todo ello se puede visualizar en el sistema de ficheros si listamos los permisos del fichero:
+
+\begin{mycode}{Crear usuarios del sistema}{console}{\small}
+$ ls -lh fichero.txt
+-rw-r--r-- 1 mikeldi mikeldi 0 dic  8 19:17 fichero.txt
+\end{mycode}
+
+Los permisos se pueden ver en los primeros 10 caracteres:
 
 \end{document}
