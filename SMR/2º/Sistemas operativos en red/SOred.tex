@@ -1,4 +1,4 @@
-\documentclass{../../../yukibook.cls/yukibook}
+ \documentclass{../../../yukibook.cls/yukibook}
 
 \begin{document}
 
@@ -93,11 +93,14 @@ Richard Stallman quiere modificar el firmware de unas impresoras y el fabricante
 \item[1986]
 Richard Stallman escribe y publica la definición de lo que es Free Software (Software Libre) a través de la \href{https://es.wikipedia.org/wiki/Free_Software_Foundation}{Free Software Foundation}.
 
-\begin{tcolorbox}[title=Aclarando la palabra ``free'':]
-\center
-\textbf{The word ``free'' in our name does not refer to price; it refers to freedom.}
+\begin{tcolorbox}[title=Aclarando la palabra “free”:,sidebyside,righthand width=0.12\linewidth]
 
-La palabra ``free'' no se refiere a gratis, si no que se refiere a libertad.
+\textbf{The word “free” in our name does not refer to price; it refers to freedom.}
+
+La palabra “free” no se refiere a gratis, si no que se refiere a libertad.
+
+\tcblower
+\includegraphics[width=\linewidth]{img/gnu.png}
 \end{tcolorbox}
 
 Más adelante veremos a qué se refiere sobre libertad en el software.
@@ -198,11 +201,14 @@ El sistema operativo completo debería llamarse \textbf{GNU/Linux}, ya que el ke
 
 En 1986 Richard Stallman saca a la luz la definición de lo que es Free Software (Software Libre) a través de la \href{https://es.wikipedia.org/wiki/Free_Software_Foundation}{Free Software Foundation}:
 
-\begin{tcolorbox}[title=Definición de Free Software:]
-    \center
-    \textbf{The word ``free'' in our name does not refer to price; it refers to freedom.}
+\begin{tcolorbox}[title=Aclarando la palabra “free”:,sidebyside,righthand width=0.12\linewidth]
 
-    La palabra ``free'' no se refiere a gratis, si no que se refiere a libertad.
+    \textbf{The word “free” in our name does not refer to price; it refers to freedom.}
+
+    La palabra “free” no se refiere a gratis, si no que se refiere a libertad.
+
+    \tcblower
+    \includegraphics[width=\linewidth]{img/gnu.png}
 \end{tcolorbox}
 
 
@@ -340,16 +346,16 @@ Las buenas prácticas nos dicen que las tareas cotidianas del sistema deberíamo
 
 \section{Creación de usuarios locales}
 
-Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario \textbf{root} y el usuario \textbf{no-privilegiado}. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero  \mintinline{console}{ /etc/passwd }  o podríamos obtener un listado ejecutando el siguiente comando:
+Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario \textbf{root} y el usuario \textbf{no-privilegiado}. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero  \configfile{ /etc/passwd }  o podríamos obtener un listado ejecutando el siguiente comando:
 
 \begin{mycode}{Listar usuarios del sistema}{console}{}
-# cut -d: -f1 /etc/passwd
+root@vega:~# cut -d: -f1 /etc/passwd
 \end{mycode}
 
 Para crear un usuario:
 
 \begin{mycode}{Crear usuarios del sistema}{console}{\small}
-# adduser mikeldi
+root@vega:~# adduser mikeldi
 
 Añadiendo el usuario `mikeldi' ...
 Añadiendo el nuevo grupo `mikeldi' (1001) ...
@@ -369,16 +375,16 @@ Introduzca el nuevo valor, o pulse INTRO para usar el valor predeterminado
 ¿Es correcta la información? [S/n]
 \end{mycode}
 
-Y la línea que nos creará en el fichero  \mintinline{console}{ /etc/passwd }   es:
-\begin{center}
+Y la línea que nos creará en el fichero  \configfile{ /etc/passwd }   es:
+\begin{tcolorbox}[colback=white,title=Ejemplo de usaurio en “/etc/passwd”]
  \mintinline{console}{ mikeldi:x:1001:1001:mikeldi,,,:/home/mikeldi:/bin/bash }
-\end{center}
+\end{tcolorbox}
 
-El fichero  \mintinline{console}{ /etc/passwd }  nos muestra los datos de los usuarios, siendo un fichero que tiene distintos datos separados por “:”, siendo cada apartado:
+El fichero \configfile{ /etc/passwd }  nos muestra los datos de los usuarios, siendo un fichero que tiene distintos datos separados por “:”, siendo cada apartado:
 
 \#\# TODO: TABLA usuario
 
-En las primeras versiones GNU/Linux la contraseña de los usuarios aparecía en el propio fichero /etc/passwd, lo que suponía un problema en la seguridad, ya que no estaban cifradas. Actualmente, las contraseñas de los usuarios se almacenan cifradas en el fichero \mintinline{console}{ /etc/shadow }. El fichero es similar al passwd, estando separados los apartados por “:”
+En las primeras versiones GNU/Linux la contraseña de los usuarios aparecía en el propio fichero /etc/passwd, lo que suponía un problema en la seguridad, ya que no estaban cifradas. Actualmente, las contraseñas de los usuarios se almacenan cifradas en el fichero \configfile{ /etc/shadow }. El fichero es similar al passwd, estando separados los apartados por “:”
 
 \#\# TODO: tabla SHADOW
 
@@ -407,7 +413,7 @@ Aparte, también podemos encontrarnos con:
 \section{Gestión de grupos}
 En algunas distribuciones GNU/Linux, al crear un usuario directamente nos crea un grupo para el nuevo usuario. En otras, el usuario pertenece al grupo “users”.
 
-Para saber los grupos a los que pertenece un usuario podemos ejecutar el comando \mintinline{console}{ groups }. Los grupos del sistema aparecen en el fichero \mintinline{console}{ /etc/group }, y al igual que los ficheros vistos previamente, están separados por “:”.
+Para saber los grupos a los que pertenece un usuario podemos ejecutar el comando \commandbox{ groups }. Los grupos del sistema aparecen en el fichero \configfile{ /etc/group }, y al igual que los ficheros vistos previamente, están separados por “\textbf{:}”.
 
 \#\# TODO: tabla grupos
 
