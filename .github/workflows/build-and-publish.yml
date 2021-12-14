@@ -1,18 +1,7 @@
 name: Build PDF
-on:
-  workflow_dispatch:
-    inputs:
-      libro:
-        description: 'Libro a compilar'
-        required: true
-        default: 'SOred'
-        type: choice
-        options:
-        - SOred
-        - Redes
-        - SGBD
+on: [push]
 jobs:
-  checkout:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Set up Git repository
@@ -21,10 +10,10 @@ jobs:
     - name: build the PDF
       uses: dante-ev/latex-action@latest
       with:
-        entrypoint: ./build.sh ${{ github.event.inputs.libro}}
+        entrypoint: ./build.sh
 
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ github.event.inputs.libro}}.pdf
+        files: SOred.pdf
