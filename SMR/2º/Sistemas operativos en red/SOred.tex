@@ -1,4 +1,4 @@
- \documentclass{../../../yukibook.cls/yukibook}
+\documentclass{../../../yukibook.cls/yukibook}
 
 \begin{document}
 
@@ -382,13 +382,17 @@ Y la línea que nos creará en el fichero  \configfile{ /etc/passwd }   es:
 
 El fichero \configfile{ /etc/passwd }  nos muestra los datos de los usuarios, siendo un fichero que tiene distintos datos separados por “:”, siendo cada apartado:
 
-
-\includegraphics[width=\linewidth]{img/usuario_tabla.png}
+\begin{center}
+  \includegraphics[width=0.7\linewidth]{img/usuario_tabla.png}
+\end{center}
 
 
 En las primeras versiones GNU/Linux la contraseña de los usuarios aparecía en el propio fichero /etc/passwd, lo que suponía un problema en la seguridad, ya que no estaban cifradas. Actualmente, las contraseñas de los usuarios se almacenan cifradas en el fichero \configfile{ /etc/shadow }. El fichero es similar al passwd, estando separados los apartados por “:”
 
-\includegraphics[width=\linewidth]{img/shadow_tabla.png}
+
+\begin{center}
+  \includegraphics[width=0.7\linewidth]{img/shadow_tabla.png}
+\end{center}
 
 
 En el apartado de la contraseña podemos saber cierta información acerca de la misma ya que tiene el siguiente formato: \textbf{“\$id\$salt\$hashed”}
@@ -417,8 +421,9 @@ En algunas distribuciones GNU/Linux, al crear un usuario directamente nos crea u
 
 Para saber los grupos a los que pertenece un usuario podemos ejecutar el comando \commandbox{ groups }. Los grupos del sistema aparecen en el fichero \configfile{ /etc/group }, y al igual que los ficheros vistos previamente, están separados por “\textbf{:}”.
 
-\#\# TODO: tabla grupos
-
+\begin{center}
+  \includegraphics[width=0.6\linewidth]{img/grupo_tabla.png}
+\end{center}
 
 \section{Permisos de ficheros}
 En GNU/Linux los ficheros cuentan con 3 tipos de permisos:
@@ -438,12 +443,204 @@ Todos ello para los distintos usuarios que pueden existir en el sistema:
 
 Todo ello se puede visualizar en el sistema de ficheros si listamos los permisos del fichero:
 
-\begin{mycode}{Crear usuarios del sistema}{console}{\small}
-$ ls -lh fichero.txt
+\begin{mycode}{Ver los permisos de un fichero}{console}{}
+mikeldi@vega:~$ ls -lh fichero.txt
 -rw-r--r-- 1 mikeldi mikeldi 0 dic  8 19:17 fichero.txt
 \end{mycode}
 
 Los permisos se pueden ver en los primeros 10 caracteres:
+
+\begin{center}
+  \includegraphics[width=0.7\linewidth]{img/permisos_fichero.png}
+\end{center}
+
+Existen los distintos tipos de ficheros:
+\begin{itemize}
+    \item \textbf{-} : fichero normal
+    \item \textbf{d} : directorio
+    \item \textbf{b} : dispositivo de bloque (ejemplo: /dev/sda*)
+    \item \textbf{c} : dispositivo de carácter (las consolas. ejemplo: /dev/tty*)
+    \item \textbf{s} : socket local
+    \item \textbf{p} : tubería (pipe)
+    \item \textbf{l} : enlace simbólico (link)
+\end{itemize}
+
+\subsection{Permisos especiales}
+
+Existen otros permisos especiales:
+\begin{itemize}
+    \item \textbf{SUID}: permiso especial que permite que el fichero sea ejecutado con los permisos del dueño del fichero (aunque lo ejecute otro usuario). Se visualiza con una “S” en el permiso de ejecución del dueño  \texttt{-rwSrw-r- -} .
+%% TODO: modificar los fondos de los permisos
+    \item \textbf{SGID}: permiso especial que permite que el fichero sea ejecutado como el grupo. Aparece una “S” en el permiso de ejecución del grupo: \texttt{-rwx- -S- - -} .
+    \item \textbf{STICKY}: si el bit sticky está activado en un directorio sólo el usuario root, el dueño del directorio o el dueño del fichero puede borrar ficheros de dicho directorio. Aparece una “t” en el permiso de ejecución del resto de usuarios:   \texttt{d-rwx-rx-r-t} .
+
+\end{itemize}
+
+\subsection{Cambiando permisos y dueños a los ficheros y a los directorios}
+
+Para cambiar los permisos a los ficheros y a los directorios se hace con el comando \textbf{chmod}.
+
+Para cambiar permisos de dueño a los ficheros y a los directorios se hace con el comando \textbf{chown}.
+
+\section{La importancia de “sudo”}
+En muchas distribuciones GNU/Linux el usuario no-privilegiado que se crea tiene permiso de “sudo” para poder ejecutar comandos como si se tratara del administrador/\textbf{root} (u otro usuario) para poder realizar tareas de administración. Es habitual que en estas distribuciones \textbf{el usuario root no suela tener contraseña}. 
+
+Por lo tanto, cuando un usuario necesita realizar una tarea como administrador, deberá ejecutar el siguiente comando:
+
+\begin{mycode}{Editar un fichero con permisos de root}{console}{}
+mikeldi@vega:~$ sudo nano /etc/passwd
+\end{mycode}
+
+Tras realizar este comando, el sistema nos pedirá la contraseña del usuario con el que lo estemos ejecutando y comprobará que el usuario tiene permisos de “sudo” para poder ejecutar el comando (en este caso: nano). 
+
+El comando “\textbf{sudo}” viene de “\textbf{su}per user \textbf{do}” (que en inglés sería: super usuario haz”), y aunque su uso habitual es el de permitir realizar cualquier comando de administración, la configuración permite mucho más, pudiendo permitir a ciertos usuarios sólo realizar ciertas tareas. Por ejemplo:
+
+\begin{itemize}
+    \item Usuario \textbf{mikeldi}: tendría permisos para poder realizar cualquier comando del sistema.
+    \item Usuario \textbf{dba}: sólo tendría permisos para poder realizar el reinicio del sistema de base de datos.
+    \item Usuario \textbf{adminweb}: sólo tendría permisos para poder realizar el reinicio del servidor web.
+    \item ....
+\end{itemize}
+
+De esta manera, la gestión de nuestro servidor estaría basada en múltiples usuarios y cada usuario sólo sería capaz de realizar pequeñas tareas, por lo que la seguridad del servidor sería mayor y limitaría lo que los usuarios puedan realizar.
+
+\subsection{Configurando “sudoers”}
+Los permisos de sudo se realizan en el fichero  \configfile{/etc/sudoers} , y para su edición se hace uso del comando \textbf{visudo}, el cual abre el fichero y se asegura que a la hora de guardar la sintaxis es correcta.
+
+Si realizamos cualquier modificación sobre el fichero, éste será tenido en cuenta la próxima vez que se realice la ejecución del comando “sudo”, por lo tanto, no hay que realizar ningún reinicio de servicio.
+
+El fichero \configfile{/etc/sudoers}  tiene permisos de sólo lectura para el usuario root y el grupo root:
+
+\begin{mycode}{Permisos del fichero \faFile \hspace{1pt} /etc/sudoers}{console}{}
+root@vega:# ls -lh /etc/sudoers
+-r--r----- 1 root root 669 jun  5  2017 /etc/sudoers
+\end{mycode}
+
+Un fichero sudoers suele tener el siguiente aspecto:
+
+\begin{mycode}{Contenido del fichero \faFile \hspace{1pt} /etc/sudoers}{bash}{\footnotesize}
+Defaults    env_reset
+Defaults    mail_badpass
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+\end{mycode}
+
+La línea que más importa en este fichero es la que indica “\textbf{\%sudo   ALL=(ALL:ALL) ALL}” y es explicada en su comentario anterior. Lo que quiere decir es que cualquier usuario que pertenezca al grupo “sudo” podrá realizar cualquier comando del sistema como superusuario. La sintaxis de la línea es:
+
+\begin{itemize}
+    \item \textbf{\%sudo}:  cualquier usuario que pertenezca al grupo “sudo”
+    \item \textbf{ALL}= : desde cualquier host o IP
+    \item \textbf{(ALL:ALL)}: el usuario que ejecuta puede ejecutar el comando como cualquier usuario y cualquier grupo
+    \item \textbf{ALL}: puede ejecutar cualquier comando
+\end{itemize}
+
+Un ejemplo limitando el uso de sudo a un único comando a un usuario:
+
+\begin{mycode}{Añadimos configuración al fichero \faFile \hspace{1pt} /etc/sudoers}{bash}{}
+ruben    ALL=(ALL:ALL) NOPASSWD:/bin/systemctl suspend
+\end{mycode}
+
+Con esta línea lo que estamos permitiendo es que el usuario “ruben” puede ejecutar el comando “/bin/systemctl suspend” (suspender el equipo) y sin necesidad de meter contraseña al hacer sudo, gracias a la opción “NOPASSWD”).
+
+\section{Diferencias entre “sudo”, “su” y “su -”}
+Como ya se ha comentado en el apartado anterior, “sudo” permite la ejecución de comandos como cualquier usuario, siendo lo habitual ejecutarlo como root. Ahora bien, en entornos donde el usuario root tiene contraseña, nos puede interesar convertirnos en él para realizar tareas sin tener que estar ejecutando “sudo” a cada comando. Al ser root, tendremos que tener especial cuidado.
+
+\section{Variables de entorno}
+En cualquier sistema operativo existen las denominadas “variables de entorno”. Son variables que cada usuario tiene y sirven para indicar ciertos parámetros que se están utilizando (la SHELL que se está usando), o parámetros que se van a usar a la hora de ejecutar comandos o realizar tareas, ya que se consultan a ellas. En GNU/Linux las variables de entorno se pueden consultar ejecutando:
+
+\begin{mycode}{Vemos las variables de entorno del usuario ruben}{console}{}
+ruben@vega:~$ printenv
+LANG=es_ES.utf8
+LOGNAME=ruben
+XDG_VTNR=2
+COLORTERM=truecolor
+PWD=/home/ruben
+DESKTOP_SESSION=gnome
+USERNAME=ruben
+SHELL=/usr/bin/zsh
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+...
+\end{mycode}
+
+Una variable de entorno puede consultarse haciendo:
+
+\begin{mycode}{Consultamos el contenido de la variable \$PATH}{bash}{}
+ruben@vega:~$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+\end{mycode}
+
+Como se puede ver, es con un “\textbf{\$}” y el nombre de la variable en mayúsculas. Existen muchas variables de entorno, y podríamos crear las nuestras propias si así lo necesitáramos.
+
+\section{La importancia de “su -”}
+Con el comando “\textbf{su}” nos podemos convertir en cualquier otro usuario del sistema siempre y cuando \textbf{conozcamos su contraseña}. Hay que notar la diferencia respecto a “\textbf{sudo}” que cuando lo ejecutamos nos pide \textbf{nuestra contraseña}.
+
+\textbf{Al ejecutar “su” nos convertimos en el usuario root} (o ejecutando “su usuario2”, nos convertimos en el usuario2), \textbf{pero no hacemos uso de sus variables de entorno}, si no que seguimos  con las variables de entorno del usuario que éramos previamente.
+Para convertirnos en el usuario y que obtengamos sus variables de entorno es necesario ejecutar “\textbf{su -}”, o lo que es lo mismo: “\textbf{su -l}”, que el manual nos dice: “\textit{Start the shell as a login shell with an environment similar to a real login}”. Por ejemplo: 
+
+\begin{mycode}{Consultamos el contenido de la variable \$PATH en distintas situaciones}{bash}{}
+ruben@vega:~$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+ruben@vega:~$ su
+Contraseña:
+
+root@vega:/home/ruben# echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+root@vega:/home/ruben# exit
+
+ruben@vega:~$ su -
+Contraseña:
+
+root@vega:~# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+\end{mycode}
+
+El usuario “ruben” tiene unos valores en la variable de entorno PATH (es la variable que se encarga de tener las rutas de los ejecutables de los programas). Al convertirse en root haciendo uso de “su”, y mirar la variable PATH, podemos observar que es igual que el usuario prueba.
+
+Ahora bien, si a la hora de convertirse en root hace uso de “su -”, se puede ver cómo la variable PATH obtiene otros valores, siendo lo más significativo que aparecen las rutas “/usr/local/sbin” y “/usr/sbin” que son las rutas donde se almacenan los ejecutables que (en principio) sólo deberían ejecutarse como administrador del sistema.
+
+
+\chapter{SAMBA}
+\section{Introducción}
+Samba es una implementación libre del protocolo de archivos compartidos que es ampliamente utilizado por los sistemas Microsoft Windows para sistemas de tipo UNIX. De esta forma, es posible que computadoras con GNU/Linux, Mac OS X o Unix en general se vean como servidores o actúen como clientes en redes de Windows.
+
+Samba también permite validar usuarios haciendo de Controlador Principal de Dominio (PDC), como miembro de dominio e incluso como un dominio Active Directory para redes basadas en Windows.
+
+Samba fue desarrollado originalmente para Unix por Andrew Tridgell utilizando un sniffer o capturador de tráfico para entender el protocolo usando \textbf{ingeniería inversa}.
+
+\subsection{SMB/CIFS}
+Server Message Block (\textbf{SMB}) y Common Internet File System (\textbf{CIFS}) son protocolos de red desarrollados para compartir archivos e impresoras entre nodos de una red. El protocolo SMB fue desarrollado originalmente por IBM y posteriormente ampliado por Microsoft y renombrado como CIFS.
+
+Los términos SMB y CIFS son a menudo intercambiables pero hay características en la implementación de SMB de Microsoft que no son parte del protocolo SMB original. Sin embargo, desde una perspectiva funcional, ambos son protocolos utilizados por Samba.
+
+La versión 1 del protocolo SMB no debería usarse y en Samba está deshabilitado por defecto debido a los ataques que hubo por el ransomware \href{https://es.wikipedia.org/wiki/Ataques_ransomware_WannaCry}{Wannacry}. Estos ataques utilizaban una vulnerabilidad en servidores que no estaban parcheados.
+
+\section{Instalación}
+Para instalar Samba haremos uso de los repositorios oficiales de nuestra distribución, y por tanto, podremos instalarlo haciendo uso del siguiente comando:
+
+\begin{mycode}{Instalamos SAMBA y parte de las dependencias}{console}{}
+root@vega:~# apt install samba cifs-utils smbclient winbind
+\end{mycode}
+
+Tras la instalación, nos habrá creado un directorio de configuración  \configdir{/etc/samba} , cuyo fichero de configuración principal es \configfile{/etc/samba/smb.conf} . Tras la instalación, tendremos un fichero de configuración estándar que no podrá realizar demasiado, ya que la configuración es escasa.
+
+\section{Comprobar configuración}
+Como ya se ha comentado, la configuración principal está en  \configfile{/etc/samba/smb.conf}  , con una configuración estándar, por lo que tendremos que adecuarla a nuestras necesidades.
+
+Para asegurar que las modificaciones que hemos realizado son correctas, podremos hacer uso del comando:
+
 
 
 \part{Anexos}
