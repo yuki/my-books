@@ -382,11 +382,13 @@ Y la línea que nos creará en el fichero  \configfile{ /etc/passwd }   es:
 
 El fichero \configfile{ /etc/passwd }  nos muestra los datos de los usuarios, siendo un fichero que tiene distintos datos separados por “:”, siendo cada apartado:
 
-\#\# TODO: TABLA usuario
+
+\includegraphics[width=\linewidth]{img/usuario_tabla.png}
+
 
 En las primeras versiones GNU/Linux la contraseña de los usuarios aparecía en el propio fichero /etc/passwd, lo que suponía un problema en la seguridad, ya que no estaban cifradas. Actualmente, las contraseñas de los usuarios se almacenan cifradas en el fichero \configfile{ /etc/shadow }. El fichero es similar al passwd, estando separados los apartados por “:”
 
-\#\# TODO: tabla SHADOW
+\includegraphics[width=\linewidth]{img/shadow_tabla.png}
 
 
 En el apartado de la contraseña podemos saber cierta información acerca de la misma ya que tiene el siguiente formato: \textbf{“\$id\$salt\$hashed”}
