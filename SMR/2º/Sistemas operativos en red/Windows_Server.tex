@@ -662,5 +662,143 @@ Al darle a “Siguiente” nos aparecerá el último paso que será el de confir
 Una cuenta de equipo sirve para autenticar a los diferentes equipos que se conectan al dominio, permitiendo o denegando su acceso a los diferentes recursos del dominio. Del mismo modo que con las cuentas de usuario, las cuentas de equipo deben ser únicas en el dominio. Aunque una cuenta de equipo se puede crear de forma manual, lo habitual es que se crean en el momento en el que el equipo se une al dominio.
 
 
+\chapter{GPO: Directivas de grupos}
+
+Las GPO (\textit{Group Policy Objets}) en castellano conocidas como “Objetos de Políticas de Grupo” (o simplemente directivas de grupo), son los objetos que incluye una serie de directivas (o políticas) que pueden aplicarse de manera centralizada a equipos y usuarios. Cada GPO  establece una configuración del objeto al que afecta. Por ejemplo:
+
+\begin{itemize}
+    \item Montar una unidad de red correspondiente
+    \item Modificar configuración del firewall
+    \item Ocultar el panel de control
+    \item …
+\end{itemize}
+
+\infobox{Las Directivas de Grupos controlan lo que los usuarios
+    y los equipos pueden y no pueden hacer.}
+
+Las GPO se vinculan a nuestra estructura de árbol al nivel al que deseamos configurar. Si vinculamos una GPO en el nombre de nuestro árbol, esta GPO afectará a todo el árbol. Si por el contrario vinculamos nuestra GPO en un nombre de dominio, esa GPO solo afectará a dicho dominio. \textbf{Las GPO se pueden vincular en sitios, dominios y unidades organizativas}. Tal como se puede ver, y pese a su nombre, las GPO \underline{no se pueden asociar a un grupo de usuarios}.
+
+Para crear una GPO, tendremos que ir al “Administrador del Servidor” y en “Herramientas” elegir “Administración de directivas de grupo” (también conocido como \textbf{GPMC.exe}), lo que nos abrirá la siguiente ventana:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=12cm]{gpo_administrar.png}
+    \vspace{-25pt}
+\end{center}
+
+Las GPOs no se aplican de manera inmediata, ya que el equipo debe reiniciarse o el usuario cerrar sesión. Podemos hacer que desde el equipo un usuario ejecute la orden “\textbf{gpupdate.exe}” y esto forzará la actualización de las GPO, pero requiere de la intervención del usuario. Más adelante vamos a ver cómo forzar la actualización de las GPO de manera remota desde el servidor.
 
 
+\section{Nivel de aplicación}
+Dado que en un bosque podemos tener distintas GPOs que puedan afectar a un mismo objeto, debemos conocer que las directivas se aplican en este orden:
+
+\begin{enumerate}
+    \item \textbf{Objeto de directiva de grupo local}: cada equipo tiene exactamente un objeto de directiva de grupo almacenado de forma local. Este objeto controla el procesamiento de las directivas de grupo de equipo y usuario.
+
+    \item \textbf{Sitio}: todos los GPO vinculados al sitio al que pertenece el equipo se procesan a continuación. El procesamiento se efectúa en el orden especificado por el administrador en la ficha \textbf{Objetos de directivas de grupo vinculados} del sitio en la Consola de administración de directivas de grupo (GPMC, Group Policy Management Console). La GPO con el \textbf{orden de vínculos} más bajo es la última en procesarse y, por tanto, tiene la máxima prioridad.
+
+    \item \textbf{Dominio}: el procesamiento de varias GPO vinculadas a un dominio se efectúa en el orden especificado por el administrador, en la ficha \textbf{Objetos de directivas de grupo vinculados} del dominio en GPMC. La GPO con el \textbf{orden de vínculos} más bajo es la última en procesarse y, por tanto, tiene la máxima prioridad.
+
+    \item \textbf{Unidades organizativas}: los GPO vinculados a la unidad organizativa que se encuentra en el nivel más alto de la jerarquía de Active Directory se procesan primero, luego las GPO vinculadas a su unidad organizativa secundaria y así sucesivamente. Por último, se procesan los GPO vinculados a la unidad organizativa que contiene el usuario o el equipo.
+\end{enumerate}
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=10cm]{gpo.jpg}
+    \vspace{-25pt}
+\end{center}
+
+La Directiva de Grupo se aplica de manera jerárquica desde el grupo menos restrictivo (Sitio) al grupo más restrictivo (Unidad Organizativa). La Directiva de Grupo también es acumulativa.
+
+El comportamiento respecto a la herencia y prioridad entre GPO en contenedores anidados puede ser refinado mediante los siguientes dos parámetros de configuración:
+
+\begin{itemize}
+    \item \textbf{Exigido} (enforced). Este parámetro puede activarse independientemente a cada vínculo de un GPO. Si un vínculo de un GPO a un contenedor tiene este parámetro activado, sus políticas no pueden ser sobrescritas por GPO que se apliquen posteriormente.
+
+    \item \textbf{Bloquear herencia} (de directivas) (Block Policy inheritance). Este parámetro pertenece a los contenedores del Directorio Activo. En particular, si un contenedor tiene este parámetro activado, se desactiva la herencia de las políticas establecidas en contenedores superiores, excepto aquellas que corresponden a GPO vinculados con el parámetro Exigido.
+\end{itemize}
+
+Para poder crear o modificar directivas de grupo deberemos ir al asistente de “Administración del Servidor → Herramientas →  Administración de directivas de grupo” o desde el comando \textbf{GPMC.exe}.
+
+
+\section{Ejemplos prácticos}
+A continuación se van a detallar la creación de distintas GPO que podremos utilizar de base para crear otras.
+
+\subsection{Añadir una unidad de red a usuarios}
+Es habitual que en una red los usuarios tengan que conectarse a unidades de red. Los usuarios finales no tienen por qué saber cómo conectarse a una unidad de red, y por tanto si les facilitamos el trabajo será más fácil que puedan acceder. En una red con Active Directory podemos indicar que los usuarios tengan distintas unidades de red conectadas en el equipo y con una letra correspondiente en el momento en el que se loguean.
+
+Para el ejemplo se ha creado una Unidad Organizativa llamada “Usuarios” y dentro otra llamada “Sistemas” y dentro tenemos un usuario llamado “sysadmin1” que hemos añadido al grupo “sistemas”:
+
+\begin{tcolorbox}[title=Creando usuarios en Active Directory]
+    \centering
+    \includegraphics[width=13cm]{gpo_1_1.png}
+\end{tcolorbox}
+
+
+\subsubsection{Crear una carpeta compartida}
+Se ha creado una carpeta que hemos dejado en el escritorio del usuario administrador, aunque lo ideal es ponerlo en una ruta más acorde, pero como prueba nos sirve. Esta carpeta va a ser compartida con el grupo “sistemas” que hemos creado previamente:
+
+\begin{tcolorbox}[title=Compartir una carpeta]
+    \centering
+    \includegraphics[width=13cm]{gpo_1_2.png}
+\end{tcolorbox}
+
+Tras realizar estos pasos, un usuario que pertenezca al grupo “sistemas” podría conectarse a la carpeta compartida, pero debería conocer la ruta. Vamos a automatizar esto a través de la GPO.
+
+\subsubsection{Crear GPO}
+Tal como hemos comentado previamente, la GPO va a permitir que cuando el usuario inicie sesión le aparezca la carpeta compartida como una unidad nueva  con la letra que especifiquemos.
+Los pasos para crear la GPO son:
+
+{
+    \begin{minipage}{0.6\linewidth}
+        \begin{enumerate}
+            \item Ir a “Administración de directivas de grupo”
+            \item Crear GPO en la unidad organizativa en la que queremos que esté asociado.
+            \item Nos aparecerá una nueva ventana en la que podremos introducir un nombre para la GPO que vamos a crear. Este nombre debería darnos información de para qué sirve la GPO, por lo tanto, hay que elegir un nombre representativo, por ejemplo: “montar unidad para sysadmins”
+        \end{enumerate}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.37\linewidth}
+        \includegraphics[trim={0 255 0 0},clip,width=\linewidth]{gpo_1_3.png}
+    \end{minipage}
+}
+
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item Una vez creada, debemos configurar qué acciones queremos que realice. Para ello, haremos click derecho encima de la GPO y le daremos a “Editar”, lo que nos abrirá una nueva ventana con el programa de edición de directivas de grupo, con la directiva que hemos seleccionado.
+
+    \begin{center}
+        \includegraphics[width=13cm]{gpo_1_4.png}
+    \end{center}
+
+    Tal como se puede ver en la imagen, arriba a la izquierda aparece el nombre de la GPO y el servidor en el que está creada. Debajo aparece si va a ser de tipo Configuración del equipo o configuración para usuario.
+
+    \item Vamos a crear una configuración para usuarios, por lo tanto iremos a “\textit{Configuraciones de usuario → Preferencias → Configuración de Windows → Asignaciones de unidades”. Le damos a “Nueva → Unidad asignada}” y deberemos rellenar los datos indicando:
+    \begin{enumerate}
+        \item Ubicación de los datos
+        \item Etiqueta
+        \item Letra de unidad
+    \end{enumerate}
+\end{enumerate}
+
+{
+    \begin{minipage}{0.46\linewidth}
+        \includegraphics[width=\linewidth]{gpo_1_5.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.46\linewidth}
+        \includegraphics[width=\linewidth]{gpo_1_6.png}
+    \end{minipage}
+}
+
+Una vez hecho esto, cuando cualquier usuario que esté creado en la Unidad Organizativa “sistemas” inicie sesión, tendrá una unidad compartida en el apartado “Este equipo”:
+
+\begin{center}
+    \includegraphics[width=6cm]{gpo_1_7.png}
+\end{center}
+
+De esta manera, realizando una única configuración será válida para todos los usuarios que tengamos en esa Unidad Organizativa. El resumen de la GPO es:
+
+\begin{center}
+    \includegraphics[trim={1 0 0 0},clip,width=14cm]{gpo_1_8.png}
+\end{center}
