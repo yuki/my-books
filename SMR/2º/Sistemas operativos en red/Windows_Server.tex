@@ -299,11 +299,9 @@ Antes de promocionar el servidor a controlador de dominio, y por tanto convertir
 \section{Instalar Active Directory}
 Para promocionar el servidor a controlador de dominio de Active Directory debemos de realizar la instalación del rol. Para ello, iremos al “\textbf{Administrador del Servidor}”.
 
-\begin{tcolorbox}[title=Panel del Administrador del servidor]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{administrador_del_servidor.png}
-    \end{center}
-\end{tcolorbox}
+\begin{center}
+    \includegraphics[frame,width=0.8\linewidth]{administrador_del_servidor.png}
+\end{center}
 
 Haremos click en “Administrar”, “Agregar roles y características” y nos saldrá una nueva ventana, con un aviso del asistente y al darle a “Siguiente”, elegiremos la primera opción, “\textbf{Instalación basada en características y roles}” y volveremos a darle a “Siguiente” en el asistente:
 
@@ -320,7 +318,6 @@ Haremos click en “Administrar”, “Agregar roles y características” y nos
     \end{minipage}
     \hfill
     \begin{minipage}{0.36\linewidth}
-        \vspace{-5pt}
         \includegraphics[width=\linewidth]{active_directory_3.png}
     \end{minipage}
 }
@@ -351,10 +348,9 @@ Tras esperar unos segundos, el proceso terminará y el botón de “Instalar” 
 \section{Configurar Active Directory}
 Tras realizar la instalación del rol de \textbf{Active Directory} en nuestro Windows Server, aparecerá un mensaje en la consola de administrador para que realicemos la configuración del mismo.
 
-\begin{tcolorbox}[title=Panel de administración para configurar Active Directory]
-    \centering
-    \includegraphics[width=\linewidth]{configurar_active_directory_1.png}
-\end{tcolorbox}
+\begin{center}
+    \includegraphics[frame,width=\linewidth]{configurar_active_directory_1.png}
+\end{center}
 
 En el desplegable haremos click en “\textbf{Promover este servidor a controlador de dominio}”, y nos abrirá una nueva ventana en la que tendremos que realizar una serie de pasos para realizar la configuración del Active Directory recién instalado.
 
@@ -729,19 +725,17 @@ Es habitual que en una red los usuarios tengan que conectarse a unidades de red.
 
 Para el ejemplo se ha creado una Unidad Organizativa llamada “Usuarios” y dentro otra llamada “Sistemas” y dentro tenemos un usuario llamado “sysadmin1” que hemos añadido al grupo “sistemas”:
 
-\begin{tcolorbox}[title=Creando usuarios en Active Directory]
-    \centering
-    \includegraphics[width=13cm]{gpo_1_1.png}
-\end{tcolorbox}
+\begin{center}
+    \includegraphics[frame,width=\linewidth]{gpo_1_1.png}
+\end{center}
 
 
 \subsubsection{Crear una carpeta compartida}
 Se ha creado una carpeta que hemos dejado en el escritorio del usuario administrador, aunque lo ideal es ponerlo en una ruta más acorde, pero como prueba nos sirve. Esta carpeta va a ser compartida con el grupo “sistemas” que hemos creado previamente:
 
-\begin{tcolorbox}[title=Compartir una carpeta]
-    \centering
-    \includegraphics[width=13cm]{gpo_1_2.png}
-\end{tcolorbox}
+\begin{center}
+    \includegraphics[frame,width=13cm]{gpo_1_2.png}
+\end{center}
 
 Tras realizar estos pasos, un usuario que pertenezca al grupo “sistemas” podría conectarse a la carpeta compartida, pero debería conocer la ruta. Vamos a automatizar esto a través de la GPO.
 
@@ -783,7 +777,7 @@ Los pasos para crear la GPO son:
 
 {
     \begin{minipage}{0.46\linewidth}
-        \includegraphics[width=\linewidth]{gpo_1_5.png}
+        \includegraphics[frame,width=\linewidth]{gpo_1_5.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.46\linewidth}
@@ -794,11 +788,199 @@ Los pasos para crear la GPO son:
 Una vez hecho esto, cuando cualquier usuario que esté creado en la Unidad Organizativa “sistemas” inicie sesión, tendrá una unidad compartida en el apartado “Este equipo”:
 
 \begin{center}
-    \includegraphics[width=6cm]{gpo_1_7.png}
+    \includegraphics[frame,width=6cm]{gpo_1_7.png}
 \end{center}
 
 De esta manera, realizando una única configuración será válida para todos los usuarios que tengamos en esa Unidad Organizativa. El resumen de la GPO es:
 
 \begin{center}
-    \includegraphics[trim={1 0 0 0},clip,width=14cm]{gpo_1_8.png}
+    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_1_8.png}
 \end{center}
+
+
+\subsection{Permitir conexiones ping}
+
+Es habitual que los equipos Windows 10 no permitan realizar conexiones del protocolo ICMP (ping) ya que el firewall las rechaza. Por otro lado, para tener controlado los equipos que están encendidos en la red es interesante que esté habilitado.
+
+Dado que ir configurando equipo a equipo el firewall es una tarea tediosa, el realizar la configuración de manera automática mediante una GPO es sencillo y nos permite ver cómo podemos realizar configuraciones que en este caso afectan al equipo y no al usuario.
+
+
+{
+    \begin{minipage}{0.6\linewidth}
+        \setlength{\parskip}{1.2em}
+        En este caso vamos a crear una GPO que afecte a todos los equipos del dominio, por lo tanto haremos click derecho sobre el dominio y crearemos la GPO en él, poniéndole un nombre como “\textbf{Habilitar ping}”.
+
+        Editamos la GPO y esta vez tenemos que desplegar los menús hasta llegar a: “\textit{Configuración del equipo → Directivas → Configuración de Windows → Configuración de Seguridad → Windows Defender Firewall con seguridad avanzada → Windows Defender Firewall con seguridad avanzada → \textbf{Reglas de entrada}}”.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.36\linewidth}
+        \vspace{-5pt}
+        \hfill
+        \includegraphics[frame,trim={1 0 0 2},frame,clip,width=\linewidth]{gpo_2_1.png}
+    \end{minipage}
+}
+
+\vspace{5pt}
+
+Al llegar a este punto, haremos click derecho y le daremos a “Nueva regla” y vamos a seguir el asistente de creación de una nueva regla personalizada que permita el protocolo ICMPv4 de entrada desde cualquier equipo.
+
+\begin{center}
+    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_2_2.png}
+\end{center}
+
+Una vez creada la GPO se aplicará cuando los equipos reinicien. Para evitar tener que reiniciar al crear nuevas GPO, vamos a crear la siguiente GPO que permitirá la administración del equipo de manera remota.
+
+
+\subsection{Administración remota de equipos}
+Tal como hemos dicho anteriormente, las GPOs no se aplican de manera inmediata, y dependiendo de si son de equipo o de usuario se deberá reiniciar o cerrar sesión.
+
+Para poder actualizar las GPOs de manera remota  vamos a crear una GPO que va a permitir la conexión desde el servidor a los equipos y que permitirá recibir la orden de actualizar las GPOs entre otras cosas. Para tener ordenados los equipos, vamos a crear una “OU” llamada “equipos” y dentro de ella otras “OU” para cada departamento que queramos. Los equipos que tengamos en la red los deberemos ordenar en estas Unidades Organizativas creadas, y de esta manera podremos mandar la actualización a los equipos que nos interese.
+
+Vamos a crear una nueva GPO llamada “Permitir actualizar GPOs desde servidor” y la vamos a crear en la “OU” de “equipos”.
+
+La ruta para crear es: “\textit{Configuración del equipo → Plantillas Administrativas → Red → Conexiones de red → Firewall De Windows Defender → Perfil de dominio → \textbf{Firewall de Windows Defender: permitir excepción de administración remota entrante}}”, la cual habilitaremos pero sólo permitiendo la IP de nuestro servidor. El resumen de la GPO sería el que aparece en la imagen:
+
+\begin{center}
+    \includegraphics[trim={1 0 0 2},clip,frame,width=14cm]{gpo_3_1.png}
+\end{center}
+
+Para aplicar esta GPO el equipo remoto deberá reiniciarse. A partir de este momento, cuando ya se haya aplicado la GPO podremos forzar la actualización de las GPO desde el servidor desde el propio “Administrador de directivas de grupo”, haciendo click derecho sobre la OU donde están los equipos que nos interesa y dando a “Actualización de directiva de grupo”
+
+{
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[frame,width=\linewidth]{gpo_3_2.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{gpo_3_3.png}
+    \end{minipage}
+}
+
+Tras confirmar que queremos actualizar las directivas para el número de equipos que estén en esa Unidad Organizativa, nos aparecerá un mensaje de confirmación de que el proceso se ha realizado de manera correcta:
+
+\begin{center}
+    \includegraphics[width=10cm]{gpo_3_4.png}
+\end{center}
+
+Debemos fijarnos que en la columna central no aparece ningún código de error. Este proceso hará que las GPOs se recarguen en una tarea que se va a ejecutar en el equipo remoto en los \textbf{próximos 10 minutos}. Si queremos que sea inmediato podemos forzar la actualización mediante un comando en powershell.
+
+También podremos administrar los equipos desde el programa de “Usuarios y equipos de Active Directory”, eligiendo el equipo que queramos y darle a “Administrar”:
+
+\begin{center}
+    \includegraphics[frame,width=10cm]{gpo_3_5.png}
+\end{center}
+
+Lo que nos abrirá el asistente de administración remota:
+
+\begin{center}
+    \includegraphics[width=14cm]{gpo_3_6.png}
+\end{center}
+
+Y desde aquí podremos realizar parte de la administración remota del equipo.
+
+
+\subsection{Habilitar acceso al escritorio remoto}
+En una red no siempre tenemos acceso a los equipos de los usuarios, por encontrarse en otras sedes, oficinas o situaciones geográficas. Es por esto por lo que el poder acceder a los equipos de los usuarios puede suponer una ventaja administrativa a nivel global.
+
+Para ello, podemos crear una GPO para que los equipos que están en nuestro Active Directory se les active el acceso remoto para poder así conectarnos a ellos.
+
+Los pasos a dar cuando creamos la GPO son:
+
+\begin{enumerate}
+    \item \textbf{Habilitar escritorio remoto}: “\textit{Configuración del equipo  →  Directivas  →  Plantillas administrativas \hfill →   Componentes de Windows → Servicios de Escritorio remoto → Host de sesión de Escritorio remoto → Conexiones → Permitir que los usuarios se conecten de forma remota mediante Servicios de Escritorio remoto}”
+
+    \begin{center}
+        \includegraphics[trim={2 0 0 0},clip,frame,width=14cm]{gpo_4_1.png}
+    \end{center}
+
+    \item Habilitar el acceso en el firewall al puerto necesario (RDP, que es 3389). Existe una plantilla para ello en: “\textit{Configuración del equipo → Directivas → Plantillas administrativas → Red → Conexiones de Red → Firewall de Windows Defender → Perfil de dominio}” y aceptar conexiones desde la IP del servidor.
+
+    \begin{center}
+        \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_4_2.png}
+    \end{center}
+\end{enumerate}
+
+Si queremos que cualquier otro usuario que no sea el Administrador pueda realizar conexiones mediante escritorio remoto, tendremos que meterlo en el grupo “Usuarios de escritorio remoto” que está dentro de “Builtin”, ya que es un grupo que se ha creado durante la instalación de Active Directory.
+
+\begin{center}
+    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_4_3.png}
+\end{center}
+
+
+
+\chapter{Alta Disponibilidad en Active Directory}
+Cuando hablamos de Alta Disponibilidad hacemos referencia al diseño de una infraestructura de servicios y de servidores en la que no existe un único punto de fallo. Hasta ahora, nuestro dominio está controlado por un único servidor que realiza la función de Controlador de Dominio, por lo que en caso de catástrofe, perderíamos la posibilidad de configurar el dominio, añadir nuevos usuarios…
+
+Para evitar ese único punto de fallo, es conveniente realizar la instalación de un nuevo servidor y configurarlo para que actúe como servidor réplica del controlador de dominio principal.
+
+
+\section{Instalación del  servidor réplica}
+La instalación del servidor réplica será igual que la del primer controlador de dominio, tal como hemos visto anteriormente. Lógicamente nos aseguraremos que el servidor cuente con otro nombre y otra dirección IP que no coincida con el servidor principal.
+
+También realizaremos la instalación del rol de “\textbf{Servicios de dominio de Active Directory}” ya que lo vamos a necesitar más adelante.
+
+\section{Meter servidor en el dominio actual}
+El primer paso es meter el nuevo servidor como un equipo más en el dominio del que queremos ser réplica. Los pasos a dar son los vistos anteriormente para un equipo Windows 10.
+
+Tras realizar el reinicio correspondiente, vamos a promocionar el nuevo servidor para que actúe como servidor réplica.
+
+
+\section{Configurar nuevo Active Directory como servidor réplica}
+Para promocionar el nuevo servidor Active Directory para que actúe como servidor réplica del dominio debemos ir al “Administrador del servidor” y pinchar sobre el aviso para promocionarlo, tal como hicimos en el servidor principal.
+
+Al darle a promocionar, nos aparecerá en la nueva ventana la opción de “\textbf{Agregar un controlador de dominio a un dominio existente}” seleccionada, con el dominio correspondiente al que nos hemos metido previamente. Le daremos a “Cambiar” y meteremos las credenciales de Administrador del dominio. De esta manera, tendremos la ventana tal como aparece en la siguiente imagen y podremos dar a “Siguiente”.
+
+
+{
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{HA_active_directory_1.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{HA_active_directory_2.png}
+    \end{minipage}
+    \vspace{1em}
+}
+
+En este paso podremos elegir si queremos que nuestro servidor sea configurado en modo “sólo lectura” (por lo que realizará la réplica de datos, pero no podremos crear nada en él) y nos preguntará por la contraseña DSRM para este servidor. Una vez introducida, continuamos hasta llegar al siguiente paso.
+
+{
+    \begin{minipage}{0.48\linewidth}
+        \setlength{\parskip}{1.2em}
+        En este paso nos permitirá realizar las opciones del DNS que necesitemos. En nuestro caso, vamos a continuar al siguiente paso sin realizar modificaciones en este apartado, por lo que llegaremos a las “opciones adicionales”:
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{HA_active_directory_3.png}
+    \end{minipage}
+}
+
+\vspace{5pt}
+
+Tal como se puede ver en la captura de pantalla, podremos elegir desde qué servidor queremos realizar la réplica de los datos. En nuestra infraestructura sólo tenemos otro servidor, por lo que no importa si seleccionamos el servidor o la opción “Cualquier controlador de dominio”. Esta opción es útil cuando ya tengamos previamente dos o más servidores, ya que por conectividad nos puede interesar que realice la réplica desde uno en concreto.
+
+Los siguientes pasos los dejaremos tal como están hasta realizar la instalación y que el servidor se reinicie.
+
+\section{Comprobación del funcionamiento de la réplica}
+Una vez reiniciado el servidor réplica, veremos que al iniciar sesión nos aparecerán los grupos, usuarios y GPOs que teníamos en el servidor principal. Si vamos al gestor de “Usuarios y equipos de Active Directory” veremos que el nuevo servidor aparece dentro del apartado “Domain Controller”:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{HA_active_directory_4.png}
+\end{center}
+
+Si creamos un nuevo usuario en cualquiera de los dos servidores, comprobaremos cómo en el otro servidor nos aparece también. De ser así, la réplica está funcionando de manera correcta.
+
+\section{Configuración final}
+Para dejar nuestra configuración final correcta debemos de realizar una pequeña modificación en los DNS de los servidores y también en los clientes.
+
+El cambio de configuración es que los servidores tienen que tener al otro servidor como DNS principal, y a sí mismos como DNS secundarios. Es decir, configuración cruzada:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.5\linewidth]{HA_active_directory_5.png}
+\end{center}
+
+Tal como se puede ver en la imagen, contamos con dos servidores para el dominio “mikeldi.com”, ambos se replican entre sí y cada uno tiene como DNS principal al otro servidor.
+
+Por otro lado, en lo referente a los equipos, la configuración debe ser igual: deben de tener como DNS principal uno de los servidores y como DNS secundario el otro . De esta manera, si el servidor que actúa como DNS principal cae, los equipos realizarán las peticiones al otro servidor. Esta modificación de DNS lo habitual es que se realice mediante el servidor DHCP en lugar de ir equipo por equipo (ya que es una tarea tediosa y fácilmente automatizable).
