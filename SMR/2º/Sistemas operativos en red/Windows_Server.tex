@@ -142,36 +142,32 @@ Dependiendo del tamaño que hayamos elegido, o incluso los discos duros que teng
     \end{minipage}
 }
 
-\subsection{Terminar el proceso de instalación}
-{
-    \begin{minipage}{0.6\linewidth}
-        \setlength{\parskip}{1.2em}
-        Tras haber seleccionado y haber completado todos los pasos que se han descrito hasta ahora, el proceso de instalación comenzará.
 
-        Este paso de la instalación requerirá de cierto tiempo que dependerá del hardware que tengamos disponible, ya que se realizará la copia de los ficheros de sistema, realizará las instalaciones pertinentes y por último instalará las actualizaciones necesarias.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.36\linewidth}
-        \vspace{-11pt}
-        \includegraphics[trim={188 180 195 107},clip,width=\linewidth]{5_instalacion.png}
-    \end{minipage}
-}
+\subsection{Terminar el proceso de instalación}
+
+\begin{wrapfigure}{r}{0.36\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[trim={188 180 195 107},clip,width=\linewidth]{5_instalacion.png}
+\end{wrapfigure}
+Tras haber seleccionado y haber completado todos los pasos que se han descrito hasta ahora, el proceso de instalación comenzará.
+
+Este paso de la instalación requerirá de cierto tiempo que dependerá del hardware que tengamos disponible, ya que se realizará la copia de los ficheros de sistema, realizará las instalaciones pertinentes y por último instalará las actualizaciones necesarias.
+
+\vspace{3em}
 
 \subsection{Personalizar la configuración}
+Al terminar el proceso anterior, el último paso nos permitirá realizar la configuración de la contraseña del usuario \textbf{Administrador}.
 
-{
-    \begin{minipage}{0.6\linewidth}
-        \setlength{\parskip}{1.2em}
-        Al terminar el proceso anterior, el último paso nos permitirá realizar la configuración de la contraseña del usuario \textbf{Administrador}.
 
-        Tal como se puede ver a continuación, el nombre de usuario no podrá ser modificado, y nos pedirá la contraseña y la confirmación de la contraseña.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.36\linewidth}
-        \vspace{-11pt}
-        \includegraphics[trim={56 350 300 135},clip,width=\linewidth]{6_instalacion.png}
-    \end{minipage}
-}
+
+\begin{wrapfigure}{r}{0.36\linewidth}
+    \centering
+    \vspace{-60pt}
+    \includegraphics[trim={56 350 300 135},clip,width=\linewidth]{6_instalacion.png}
+    \vspace{-40pt}
+\end{wrapfigure}Tal como se puede ver a continuación, el nombre de usuario no podrá ser modificado, y nos pedirá la contraseña y la confirmación de la contraseña.
+
 
 Cabe recordar que esta contraseña es muy importante, ya que con ella realizaremos la configuración de todo el sistema, y por tanto debe ser una contraseña segura y debemos guardarla a buen recaudo. Al darle a “Finalizar” el servidor se reiniciará.
 
@@ -311,16 +307,15 @@ Haremos click en “Administrar”, “Agregar roles y características” y nos
     \includegraphics[width=0.46\linewidth]{active_directory_2.png}
 \end{center}
 
-{
-    \begin{minipage}{0.6\linewidth}
-        \setlength{\parskip}{1.2em}
-        El siguiente paso será elegir el servidor dónde queremos realizar la instalación del rol de Active Directory. De primeras, puede parecer raro que nos pregunte en dónde queremos realizar la instalación, pero es fácil de entender cuando desde un servidor podremos llegar a controlar otros. De momento, sólo nos aparecerá el propio servidor donde estamos realizando la instalación, por lo que lo dejamos seleccionado y le damos a “Siguiente”.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.36\linewidth}
-        \includegraphics[width=\linewidth]{active_directory_3.png}
-    \end{minipage}
-}
+
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-10pt}
+    \includegraphics[width=\linewidth]{active_directory_3.png}
+    \vspace{-40pt}
+\end{wrapfigure}
+
+El siguiente paso será elegir el servidor dónde queremos realizar la instalación del rol de Active Directory. De primeras, puede parecer raro que nos pregunte en dónde queremos realizar la instalación, pero es fácil de entender cuando desde un servidor podremos llegar a controlar otros. De momento, sólo nos aparecerá el propio servidor donde estamos realizando la instalación, por lo que lo dejamos seleccionado y le damos a “Siguiente”.
 
 En el siguiente apartado podremos realizar la elección del rol que queremos añadir a nuestro servidor, y en este caso deberemos hacer click y asegurarnos que la opción está seleccionada en la opción “\textbf{Servicios de dominio de Active Directory}”.
 
@@ -417,20 +412,17 @@ Tras seguir los pasos previos, podremos añadir equipos al dominio creado en Act
 \section{Instalación de Windows 10 Pro}
 Para realizar la instalación de un equipo con Windows 10, podremos hacer uso de la ISO que podremos descargar desde la página de Microsoft.
 
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-10pt}
+    \includegraphics[width=\linewidth]{windows_10_1.png}
+    \vspace{-40pt}
+\end{wrapfigure}
 
-{
-    \begin{minipage}{0.68\linewidth}
-        \setlength{\parskip}{1.2em}
-        No se van a explicar todos los pasos, ya que el sistema de instalación es sencillo. El único apartado donde deberemos fijarnos es en la pantalla de la derecha.
 
-        Tal como se ve en la imagen, elegiremos la opción “Windows 10 Pro”, y continuaremos.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\linewidth}
-        \vspace{-15pt}
-        \includegraphics[width=\linewidth]{windows_10_1.png}
-    \end{minipage}
-}
+No se van a explicar todos los pasos, ya que el sistema de instalación es sencillo. El único apartado donde deberemos fijarnos es en la pantalla de la derecha.
+
+Tal como se ve en la imagen, elegiremos la opción “Windows 10 Pro”, y continuaremos.
 
 Al finalizar la instalación, el equipo se reiniciará y podremos introducir el usuario y contraseña que hemos creado durante la instalación.
 
@@ -804,23 +796,17 @@ Es habitual que los equipos Windows 10 no permitan realizar conexiones del proto
 
 Dado que ir configurando equipo a equipo el firewall es una tarea tediosa, el realizar la configuración de manera automática mediante una GPO es sencillo y nos permite ver cómo podemos realizar configuraciones que en este caso afectan al equipo y no al usuario.
 
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-25pt}
+    \includegraphics[trim={1 0 0 2},frame,clip,width=\linewidth]{gpo_2_1.png}
+    \vspace{-40pt}
+\end{wrapfigure}
 
-{
-    \begin{minipage}{0.6\linewidth}
-        \setlength{\parskip}{1.2em}
-        En este caso vamos a crear una GPO que afecte a todos los equipos del dominio, por lo tanto haremos click derecho sobre el dominio y crearemos la GPO en él, poniéndole un nombre como “\textbf{Habilitar ping}”.
+En este caso vamos a crear una GPO que afecte a todos los equipos del dominio, por lo tanto haremos click derecho sobre el dominio y crearemos la GPO en él, poniéndole un nombre como “\textbf{Habilitar ping}”.
 
-        Editamos la GPO y esta vez tenemos que desplegar los menús hasta llegar a: “\textit{Configuración del equipo → Directivas → Configuración de Windows → Configuración de Seguridad → Windows Defender Firewall con seguridad avanzada → Windows Defender Firewall con seguridad avanzada → \textbf{Reglas de entrada}}”.
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.36\linewidth}
-        \vspace{-5pt}
-        \hfill
-        \includegraphics[frame,trim={1 0 0 2},frame,clip,width=\linewidth]{gpo_2_1.png}
-    \end{minipage}
-}
+Editamos la GPO y esta vez tenemos que desplegar los menús hasta llegar a: “\textit{Configuración del equipo → Directivas → Configuración de Windows → Configuración de Seguridad → Windows Defender Firewall con seguridad avanzada → Windows Defender Firewall con seguridad avanzada → \textbf{Reglas de entrada}}”.
 
-\vspace{5pt}
 
 Al llegar a este punto, haremos click derecho y le daremos a “Nueva regla” y vamos a seguir el asistente de creación de una nueva regla personalizada que permita el protocolo ICMPv4 de entrada desde cualquier equipo.
 
@@ -942,20 +928,16 @@ Al darle a promocionar, nos aparecerá en la nueva ventana la opción de “\tex
     \vspace{1em}
 }
 
+
+
 En este paso podremos elegir si queremos que nuestro servidor sea configurado en modo “sólo lectura” (por lo que realizará la réplica de datos, pero no podremos crear nada en él) y nos preguntará por la contraseña DSRM para este servidor. Una vez introducida, continuamos hasta llegar al siguiente paso.
 
-{
-    \begin{minipage}{0.48\linewidth}
-        \setlength{\parskip}{1.2em}
-        En este paso nos permitirá realizar las opciones del DNS que necesitemos. En nuestro caso, vamos a continuar al siguiente paso sin realizar modificaciones en este apartado, por lo que llegaremos a las “opciones adicionales”:
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\linewidth}
-        \includegraphics[width=\linewidth]{HA_active_directory_3.png}
-    \end{minipage}
-}
-
-\vspace{5pt}
+\begin{wrapfigure}{r}{0.48\linewidth}
+    \centering
+        \vspace{-10pt}
+    \includegraphics[width=\linewidth]{HA_active_directory_3.png}
+\end{wrapfigure}
+En este paso nos permitirá realizar las opciones del DNS que necesitemos. En nuestro caso, vamos a continuar al siguiente paso sin realizar modificaciones en este apartado, por lo que llegaremos a las “opciones adicionales”:
 
 Tal como se puede ver en la captura de pantalla, podremos elegir desde qué servidor queremos realizar la réplica de los datos. En nuestra infraestructura sólo tenemos otro servidor, por lo que no importa si seleccionamos el servidor o la opción “Cualquier controlador de dominio”. Esta opción es útil cuando ya tengamos previamente dos o más servidores, ya que por conectividad nos puede interesar que realice la réplica desde uno en concreto.
 
@@ -984,3 +966,18 @@ El cambio de configuración es que los servidores tienen que tener al otro servi
 Tal como se puede ver en la imagen, contamos con dos servidores para el dominio “mikeldi.com”, ambos se replican entre sí y cada uno tiene como DNS principal al otro servidor.
 
 Por otro lado, en lo referente a los equipos, la configuración debe ser igual: deben de tener como DNS principal uno de los servidores y como DNS secundario el otro . De esta manera, si el servidor que actúa como DNS principal cae, los equipos realizarán las peticiones al otro servidor. Esta modificación de DNS lo habitual es que se realice mediante el servidor DHCP en lugar de ir equipo por equipo (ya que es una tarea tediosa y fácilmente automatizable).
+
+
+\chapter{Comandos PowerShell para Windows Server}
+\begin{wrapfigure}{r}{0.15\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{powershell.png}
+\end{wrapfigure}
+En Windows 7 y Windows Server 2008 R2 Microsoft añadió una auténtica  interfaz de consola (en inglés command-line interface o \textbf{CLI}) que permite la ejecución de comandos para poder administrar tanto un equipo de usuario como un servidor. Esta interfaz es conocida como \href{https://en.wikipedia.org/wiki/PowerShell}{PowerShell} y viene instalado en todos los equipos  Windows desde entonces.
+
+Esta interfaz de consola está diseñada para su uso por parte de administradores de sistemas, con el propósito de automatizar tareas o realizar scripts con tareas repetitivas. Como curiosidad, PowerShell es Software Libre y se puede \href{https://github.com/PowerShell/PowerShell}{descargar} y utilizar también en Mac OS y Linux.
+
+En este apartado vamos a hacer uso de  distintos comandos que nos van a ser útiles para tener información acerca del estado del Servidor, del Bosque, del Dominio, de usuarios de nuestro Active Directory y de las GPO que hayamos creado.
+
+Para obtener ayuda y saber cómo se ejecuta, así como los parámetros que tienen los comandos, podremos hacer uso del comando \textbf{get-help}. Por ejemplo, para obtener la ayuda del comando Get-ADForest deberíamos hacer:
