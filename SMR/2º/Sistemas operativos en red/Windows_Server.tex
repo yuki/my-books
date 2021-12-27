@@ -97,7 +97,7 @@ Windows Server 2019 tiene distintos modos a la hora de ser instalado, tal como p
 \begin{center}
     \vspace{-10pt}
     \includegraphics[trim={188 180 195 107},clip,width=10cm]{2_instalacion.png}
-    \vspace{-15pt}
+    \vspace{-20pt}
 \end{center}
 
 Existen dos opciones principales a la hora de elegir, ya que cada una de ellas permitirá instalarlo con o sin experiencia de escritorio. Las opciones principales son:
@@ -164,7 +164,7 @@ Al terminar el proceso anterior, el último paso nos permitirá realizar la conf
 
 \begin{wrapfigure}{r}{0.36\linewidth}
     \centering
-    \vspace{-60pt}
+    \vspace{-40pt}
     \includegraphics[trim={56 350 300 135},clip,width=\linewidth]{6_instalacion.png}
     \vspace{-40pt}
 \end{wrapfigure}Tal como se puede ver a continuación, el nombre de usuario no podrá ser modificado, y nos pedirá la contraseña y la confirmación de la contraseña.
@@ -474,7 +474,9 @@ Una vez que el equipo Windows 10 se ha añadido al Active Directory, nos vamos a
 A partir de ahora, cuando nos vuelva a salir la pantalla para introducir el usuario y contraseña, nos aparecerá a la izquierda el usuario que hayamos creado durante la instalación de Windows 10 y la opción “\textbf{Otro Usuario}”. Al seleccionar esta opción, tendremos que introducir un usuario y la contraseña de un usuario \textbf{que exista en Active Directory}.
 
 \begin{center}
+    \vspace{-20pt}
     \includegraphics[width=0.3\linewidth]{windows_10_meter_dominio_4.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede ver, ya nos viene marcado que al introducir el usuario se va a iniciar la sesión en el dominio creado anteriormente. También podremos indicar lo siguiente como nombre de usuario:
@@ -491,6 +493,7 @@ Para crear usuario y grupos, dentro del “\textbf{Administrador del Servidor}�
 \begin{center}
     \vspace{-15pt}
     \includegraphics[width=0.7\linewidth]{configurar_active_directory_7.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede observar, a la izquierda tenemos un desplegable del dominio que hemos creado durante la instalación de Active Directory, y al seleccionar “Users” nos aparece a la derecha los \textbf{usuarios}  y \textbf{grupos de seguridad} que el sistema ha creado por defecto.
@@ -728,7 +731,9 @@ Para el ejemplo se ha creado una Unidad Organizativa llamada “Usuarios” y de
 Se ha creado una carpeta que hemos dejado en el escritorio del usuario administrador, aunque lo ideal es ponerlo en una ruta más acorde, pero como prueba nos sirve. Esta carpeta va a ser compartida con el grupo “sistemas” que hemos creado previamente:
 
 \begin{center}
+    \vspace{-20pt}
     \includegraphics[frame,width=13cm]{gpo_1_2.png}
+    \vspace{-20pt}
 \end{center}
 
 Tras realizar estos pasos, un usuario que pertenezca al grupo “sistemas” podría conectarse a la carpeta compartida, pero debería conocer la ruta. Vamos a automatizar esto a través de la GPO.
@@ -788,7 +793,7 @@ Una vez hecho esto, cuando cualquier usuario que esté creado en la Unidad Organ
 De esta manera, realizando una única configuración será válida para todos los usuarios que tengamos en esa Unidad Organizativa. El resumen de la GPO es:
 
 \begin{center}
-    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_1_8.png}
+    \includegraphics[trim={1 0 0 0},clip,frame,width=13cm]{gpo_1_8.png}
 \end{center}
 
 
@@ -813,7 +818,7 @@ Editamos la GPO y esta vez tenemos que desplegar los menús hasta llegar a: “\
 Al llegar a este punto, haremos click derecho y le daremos a “Nueva regla” y vamos a seguir el asistente de creación de una nueva regla personalizada que permita el protocolo ICMPv4 de entrada desde cualquier equipo.
 
 \begin{center}
-    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_2_2.png}
+    \includegraphics[trim={1 0 0 0},clip,frame,width=13cm]{gpo_2_2.png}
 \end{center}
 
 Una vez creada la GPO se aplicará cuando los equipos reinicien. Para evitar tener que reiniciar al crear nuevas GPO, vamos a crear la siguiente GPO que permitirá la administración del equipo de manera remota.
@@ -963,11 +968,76 @@ El cambio de configuración es que los servidores tienen que tener al otro servi
 \begin{center}
     \vspace{-10pt}
     \includegraphics[width=0.5\linewidth]{HA_active_directory_5.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede ver en la imagen, contamos con dos servidores para el dominio “mikeldi.com”, ambos se replican entre sí y cada uno tiene como DNS principal al otro servidor.
 
 Por otro lado, en lo referente a los equipos, la configuración debe ser igual: deben de tener como DNS principal uno de los servidores y como DNS secundario el otro . De esta manera, si el servidor que actúa como DNS principal cae, los equipos realizarán las peticiones al otro servidor. Esta modificación de DNS lo habitual es que se realice mediante el servidor DHCP en lugar de ir equipo por equipo (ya que es una tarea tediosa y fácilmente automatizable).
+
+\chapter{Copias de seguridad en Windows Server 2019}
+Windows Server 2019 no tiene instalado por defecto la característica de copias de seguridad, por lo que deberemos instalarla. Para ello abriremos el “Administrador del Servidor”, le daremos a “Agregar Roles y Características”, iremos hasta el apartado de características y seleccionaremos la opción de “Copias de seguridad de Windows Server”:
+
+\begin{center}
+    \vspace{-20pt}
+    \includegraphics[width=0.65\linewidth]{backup_1.png}
+    \vspace{-20pt}
+\end{center}
+
+Una vez instalado podremos comenzar con el proceso de copias de seguridad. Pero antes, deberemos haber realizado una serie de pasos.
+
+\section{Configurar copia de seguridad en Windows Server}
+Una vez hecha la instalación, podemos ejecutar el asistente de copias de seguridad que está situado en la carpeta de “Herramientas Administrativas”.
+
+\begin{center}
+    \vspace{-20pt}
+    \includegraphics[width=0.65\linewidth]{backup_2.png}
+    \vspace{-20pt}
+\end{center}
+
+Ahora ya podremos configurar el tipo de copia de seguridad que necesitemos. Para ello haremos click en la acción de “Programar copia de seguridad” o haciendo click derecho encima de “Copia de seguridad local”, y nos abrirá un asistente con una serie de pasos:
+
+\begin{center}
+    \vspace{-20pt}
+    \includegraphics[width=0.6\linewidth]{backup_3.png}
+    \vspace{-20pt}
+\end{center}
+
+Este asistente nos permitirá hacer dos tipos de copias de seguridad:
+
+\begin{itemize}
+    \item \textbf{Servidor completo}: Esta opción nos permitirá realizar una copia de todo el servidor, de las aplicaciones que están instaladas y del estado del sistema
+    \item \textbf{Personalizada}: En caso de elegir esta opción, podremos elegir volúmenes, directorios o archivos de los que queremos guardar una copia de seguridad.
+\end{itemize}
+
+Una vez elegido el tipo de copia, podremos \textbf{elegir la hora} a la que queremos que se haga el backup, y si queremos que sea una vez al día o varias veces.
+
+Posteriormente podremos elegir el volumen de destino donde guardaremos la copia de seguridad. El asistente de Windows Server nos deja tres opciones:
+
+\begin{itemize}
+    \item \textbf{Disco duro dedicado}: Este es el método más fiable cuando realizamos copias de seguridad locales. Para ello necesitaremos tener un segundo disco duro en el servidor, que sólo será accesible por el programa de copias de seguridad.
+    \item \textbf{En un volumen}: Esta opción no es recomendada, ya que de perderse el volumen, perdemos los datos y la copia de seguridad.
+    \item \textbf{En una carpeta de red compartida}: es el método ideal para realizar copias de seguridad que no sea en local. El problema que trae consigo es que sólo serán accesibles los datos de la última copia de seguridad.
+\end{itemize}
+
+Una vez terminado el asistente el programa configurará la tarea de realizar las copias de seguridad a las horas elegidas. También podremos forzar copias de seguridad “de una vez” en cualquier momento.
+
+\section{Restauración de copia de seguridad}
+Como hemos dicho previamente, tras una copia de seguridad podremos realizar la restauración de los datos cuando así sea necesario. También hemos comentado previamente que es recomendable que cada cierto tiempo deberíamos realizar la restauración de datos en un servidor de pruebas para confirmar que las copias de seguridad se están realizando de manera correcta.
+
+En el caso de las copias de seguridad realizadas en Windows Server podremos realizar dos tipos de restauraciones:
+
+\begin{itemize}
+    \item \textbf{Parcial}: Nos permitirá realizar una restauración de determinadas opciones a elegir, y podremos realizar la restauración en el mismo servidor, u en otra ruta que deseemos. Podremos restaurar:
+    \begin{itemize}
+        \item \textbf{Archivos y carpetas}: podremos recorrer la estructura de ficheros y restaurar los ficheros o carpetas que nos interesen.
+        \item \textbf{Volúmen}: podríamos recuperar un volumen completo como puede ser “C:”.
+        \item \textbf{Aplicaciones}: restaurar aplicaciones que estuviesen instaladas
+        \item \textbf{Estado del sistema}: el estado del sistema completo tal como estaba en el momento de la copia de seguridad.
+    \end{itemize}
+
+    \item \textbf{Completa}: Este es el caso más catastrófico, y sería en caso de rotura del disco duro original de la instalación. En este caso, tendríamos que coger el disco duro del backup, meterlo en otro servidor, introducir la ISO de Windows Server y en lugar de darle a “Instalar Ahora” darle a “Reparar el equipo”.
+\end{itemize}
 
 
 \chapter{Comandos PowerShell para Windows Server}
