@@ -15,7 +15,7 @@ Las versiones más importantes han sido, sin contar las denominadas NT:
 \end{itemize}
 
 \chapter{Proceso de instalación de Windows Server 2019}
-Para realizar la instalación de Windows Server 2019 necesitaremos el medio desde el que realizaremos la instalación. Microsoft permite la descarga desde su página oficial una evaluación de 180 días que podremos descargar en varios formatos:
+Para realizar la instalación de Windows Server 2019 necesitaremos el medio desde el que realizaremos la instalación. Microsoft permite la descarga desde su \href{https://www.microsoft.com/es-es/evalcenter/evaluate-windows-server-2019}{página oficial} una evaluación de 180 días que podremos descargar en varios formatos:
 
 \begin{itemize}
     \item \textbf{Azure}: Es el sistema “en la nube” de Microsoft. Se puede probar Windows Server a través de una cuenta gratuita y posteriormente gestionar los sistemas virtualizados que se creen en la nube.
@@ -26,7 +26,7 @@ Para realizar la instalación de Windows Server 2019 necesitaremos el medio desd
 Para realizar una instalación completa en nuestro sistema de virtualización elegiremos el archivo ISO. Para poder descargarlo tendremos que rellenar un formulario, elegir el idioma y posteriormente comenzará la descarga.
 
 \section{Requisitos previos}
-Antes de realizar la instalación debemos conocer cuáles son los requisitos mínimos de hardware que necesita Windows Server para así asegurar que la máquina virtual (o el hardware donde lo vamos a instalar) es 100\% compatible. En este caso, y tal como nos indica la web de Microsoft, los requisitos son:
+Antes de realizar la instalación debemos conocer cuáles son los requisitos mínimos de hardware que necesita Windows Server para así asegurar que la máquina virtual (o el hardware donde lo vamos a instalar) es 100\% compatible. En este caso, y tal como nos indica la \href{https://docs.microsoft.com/es-es/windows-server/get-started/hardware-requirements}{web de Microsoft}, los requisitos son:
 
 \begin{itemize}
     \item \textbf{Procesador} de 64 bits a 1,4 GHz, compatible con el conjunto de instrucciones x64
@@ -64,6 +64,7 @@ Dado que estos son los requisitos mínimos, nuestra máquina virtual deberá cum
 
 Por tanto, antes de realizar la instalación, deberemos confirmar que conocemos para qué se va a utilizar el servidor, cuántos servicios se van a utilizar y la carga esperada.
 
+\hypertarget{instalar_windows_server}{}
 \section{Instalación de Windows Server 2019}
 El asistente de instalación de Windows Server nos va a llevar por una serie de pasos que detallaremos a continuación.
 \warnbox{Nos aseguramos que la máquina virtual arranque desde la ISO}
@@ -410,7 +411,7 @@ Tras estos pasos revisaremos las opciones y le daremos a “Instalar”.
 Tras seguir los pasos previos, podremos añadir equipos al dominio creado en Active Directory y hacer uso de las configuraciones, usuarios y restricciones que iremos creando en apartados sucesivos. Para que un equipo Windows pueda pertenecer a un Active Directory debe ser de la familia “\textbf{Pro}”, como por ejemplo: Windows 7 Pro, Windows 10 Pro…
 
 \section{Instalación de Windows 10 Pro}
-Para realizar la instalación de un equipo con Windows 10, podremos hacer uso de la ISO que podremos descargar desde la página de Microsoft.
+Para realizar la instalación de un equipo con Windows 10, podremos hacer uso de la ISO que podremos descargar desde la \href{https://www.microsoft.com/es-es/software-download/windows10ISO}{página de Microsoft}.
 
 \begin{wrapfigure}{r}{0.4\linewidth}
     \centering
@@ -428,6 +429,7 @@ Al finalizar la instalación, el equipo se reiniciará y podremos introducir el 
 
 \infobox{\textbf{El usuario creado en la instalación es una cuenta LOCAL del equipo}}
 
+\hypertarget{pasos_previos_windows_cliente}{}
 \section{Pasos previos}
 El equipo Windows 10 Pro deberá estar situado en la misma red del Windows Server, o permitir todas las conexiones que sean necesarias de estar en otra red.
 
@@ -643,7 +645,7 @@ Y aparecen cuatro opciones que podemos marcar dependiendo de lo que necesitemos:
 
 Al darle a “Siguiente” nos aparecerá el último paso que será el de confirmar la creación del usuario.
 
-\infobox{Todas estas opciones pueden ser modificadas una vez creado el usuario.}
+\infobox{\textbf{Todas estas opciones pueden ser modificadas una vez creado el usuario.}}
 
 
 \section{Cuentas de equipo}
@@ -661,8 +663,8 @@ Las GPO (\textit{Group Policy Objets}) en castellano conocidas como “Objetos d
     \item …
 \end{itemize}
 
-\infobox{Las Directivas de Grupos controlan lo que los usuarios
-    y los equipos pueden y no pueden hacer.}
+\infobox{\textbf{Las Directivas de Grupos controlan lo que los usuarios
+    y los equipos pueden y no pueden hacer.}}
 
 Las GPO se vinculan a nuestra estructura de árbol al nivel al que deseamos configurar. Si vinculamos una GPO en el nombre de nuestro árbol, esta GPO afectará a todo el árbol. Si por el contrario vinculamos nuestra GPO en un nombre de dominio, esa GPO solo afectará a dicho dominio. \textbf{Las GPO se pueden vincular en sitios, dominios y unidades organizativas}. Tal como se puede ver, y pese a su nombre, las GPO \underline{no se pueden asociar a un grupo de usuarios}.
 
@@ -745,7 +747,7 @@ Los pasos para crear la GPO son:
     \end{minipage}
     \hfill
     \begin{minipage}{0.37\linewidth}
-        \includegraphics[trim={0 255 0 0},clip,width=\linewidth]{gpo_1_3.png}
+        \includegraphics[frame,trim={1 255 0 1},clip,width=\linewidth]{gpo_1_3.png}
     \end{minipage}
 }
 
@@ -901,12 +903,12 @@ Para evitar ese único punto de fallo, es conveniente realizar la instalación d
 
 
 \section{Instalación del  servidor réplica}
-La instalación del servidor réplica será igual que la del primer controlador de dominio, tal como hemos visto anteriormente. Lógicamente nos aseguraremos que el servidor cuente con otro nombre y otra dirección IP que no coincida con el servidor principal.
+La instalación del servidor réplica será igual que la del primer controlador de dominio, tal como hemos visto \hyperlink{instalar_windows_server}{anteriormente}. Lógicamente nos aseguraremos que el servidor cuente con otro nombre y otra dirección IP que no coincida con el servidor principal.
 
 También realizaremos la instalación del rol de “\textbf{Servicios de dominio de Active Directory}” ya que lo vamos a necesitar más adelante.
 
 \section{Meter servidor en el dominio actual}
-El primer paso es meter el nuevo servidor como un equipo más en el dominio del que queremos ser réplica. Los pasos a dar son los vistos anteriormente para un equipo Windows 10.
+El primer paso es meter el nuevo servidor como un equipo más en el dominio del que queremos ser réplica. Los pasos a dar son los vistos anteriormente \hyperlink{pasos_previos_windows_cliente}{para un equipo Windows 10}.
 
 Tras realizar el reinicio correspondiente, vamos a promocionar el nuevo servidor para que actúe como servidor réplica.
 
@@ -973,6 +975,7 @@ Por otro lado, en lo referente a los equipos, la configuración debe ser igual: 
     \centering
     \vspace{-20pt}
     \includegraphics[width=\linewidth]{powershell.png}
+    \vspace{-40pt}
 \end{wrapfigure}
 En Windows 7 y Windows Server 2008 R2 Microsoft añadió una auténtica  interfaz de consola (en inglés command-line interface o \textbf{CLI}) que permite la ejecución de comandos para poder administrar tanto un equipo de usuario como un servidor. Esta interfaz es conocida como \href{https://en.wikipedia.org/wiki/PowerShell}{PowerShell} y viene instalado en todos los equipos  Windows desde entonces.
 
@@ -981,3 +984,209 @@ Esta interfaz de consola está diseñada para su uso por parte de administradore
 En este apartado vamos a hacer uso de  distintos comandos que nos van a ser útiles para tener información acerca del estado del Servidor, del Bosque, del Dominio, de usuarios de nuestro Active Directory y de las GPO que hayamos creado.
 
 Para obtener ayuda y saber cómo se ejecuta, así como los parámetros que tienen los comandos, podremos hacer uso del comando \textbf{get-help}. Por ejemplo, para obtener la ayuda del comando Get-ADForest deberíamos hacer:
+
+\begin{mycode}{Obtener ayuda del comando Get-ADForest}{powershell}{}
+get-help Get-ADForest
+\end{mycode}
+
+Tras ejecutar este comando es posible que nos pregunte si queremos actualizar los sistemas de ayuda (se descarga los manuales de los comandos).
+
+\section{Sobre Active Directory}
+
+A continuación  vamos a ver comandos que tienen que ver con el Active Directory propiamente dicho:
+
+A continuación  vamos a ver comandos que tienen que ver con el Active Directory propiamente dicho.
+
+Listar todos los comandos posibles a ejecutar que tienen que ver con Active Directory:
+
+
+\begin{mycode}{Listar todos los comandos sobre Active Directory}{powershell}{}
+get-command -Module ActiveDirectory
+\end{mycode}
+
+
+Información del Bosque:
+\begin{mycode}{Información del bosque}{powershell}{}
+Get-ADForest
+\end{mycode}
+
+
+Información del Dominio que tiene el controlador de dominio:
+\begin{mycode}{Información del bosque}{powershell}{}
+Get-ADDomain
+\end{mycode}
+
+
+\section{Sobre usuarios}
+
+Comandos que tienen que ver con los usuarios creados dentro del Active Directory.
+
+Listar todos los usuarios del Active Directory:
+\begin{mycode}{Listar usuario del Active Directory}{powershell}{}
+Get-ADUser -filter *
+\end{mycode}
+
+Listar todos los usuarios del Active Directory, pero sólo obtener los nombres:
+\begin{mycode}{Listar sólo los nombres de usuarios del Active Directory}{powershell}{}
+Get-ADUser -filter * | select name
+\end{mycode}
+
+
+Listar todos los usuarios del dominio \textbf{mikeldi.com} del Active Directory:
+\begin{mycode}{Listar sólo los  usuarios de un dominio Active Directory}{powershell}{}
+Get-ADUser -filter * -SearchBase "dc=mikeldi,dc=com"
+\end{mycode}
+
+
+Listar todos los usuarios de un OU concreto (tiene que existir esa unidad organizativa) dentro del dominio mikeldi.com (en este caso) Active Directory:
+\begin{mycode}{Listar sólo los  usuarios de una OU del Active Directory}{powershell}{}
+Get-ADUser -filter * -SearchBase "OU=usuarios,dc=mikeldi,dc=com"
+\end{mycode}
+
+Crear el usuario “usuario1” (como no tiene contraseña, se creará deshabilitado):
+\begin{mycode}{Crear usuario}{powershell}{}
+New-ADUser usuario1
+\end{mycode}
+
+Crear el usuario “usuario2” con la contraseña “MIk3ld1”:
+\begin{mycode}{Crear usuario con la contraseña}{powershell}{}
+New-ADUser usuario2 -AccountPassword(ConvertTo-SecureString "MIk3ld1"
+-AsPlainText -Force) -Enabled $true
+\end{mycode}
+
+Crear el usuario “usuario3” con la contraseña “MIk3ld1” y que al hacer login le pida cambiar la contraseña:
+\begin{mycode}{Crear usuario con la contraseña y opciones extra}{powershell}{}
+New-ADUser usuario2 -AccountPassword(ConvertTo-SecureString "MIk3ld1"
+-AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true
+\end{mycode}
+
+Listar todos los usuarios cuyo usuario contengan “usu”:
+\begin{mycode}{Listar usuarios}{powershell}{}
+Get-ADUser -filter {name -like "*usu*"}
+\end{mycode}
+
+Listar información interna de un usuario:
+\begin{mycode}{Obtener información de un usuario}{powershell}{}
+Get-ADUser usuario1
+\end{mycode}
+
+Listar los  usuarios deshabilitados:
+\begin{mycode}{Obtener usuarios deshabilitados}{powershell}{}
+Search-ADAccount -AccountDisabled | select name
+\end{mycode}
+
+Deshabilitar al usuario “usuario3”:
+\begin{mycode}{Deshabilitar un usuario}{powershell}{}
+Disable-ADAccount -Identity usuario3
+\end{mycode}
+
+
+Habilitar al usuario “usuario3”:
+\begin{mycode}{Habilitar un usuario}{powershell}{}
+Enable-ADAccount -Identity usuario3
+\end{mycode}
+
+Listar usuarios bloqueados:
+\begin{mycode}{Listar usuarios bloqueados}{powershell}{}
+Search-ADAccount -LockedOut
+\end{mycode}
+
+Forzar el cambio de contraseña al usuario “usuario1” en el siguiente login:
+\begin{mycode}{Forzar cambio de contraseña}{powershell}{}
+Set-ADUser -Identity usuario1 -ChangePasswordAtLogon $true
+\end{mycode}
+
+
+\section{Sobre grupos}
+Comandos que tienen que ver con los grupos creados dentro del Active Directory.
+
+Listar todos los grupos de un Active Directory:
+\begin{mycode}{Listar grupos}{powershell}{}
+Get-ADGroup -Filter *
+\end{mycode}
+
+Listar información de un grupo:
+\begin{mycode}{Listar información de un grupo}{powershell}{}
+Get-ADGroup usuarios_oficina
+\end{mycode}
+
+Listar usuarios de un grupo:
+\begin{mycode}{Listar usuarios de un grupo}{powershell}{}
+Get-ADGroupMember -Identity usuarios_oficina | select name
+\end{mycode}
+
+Añadir usuarios de un grupo (existe la opción de importar usuarios de un fichero CSV):
+\begin{mycode}{Añadir usuarios a un grupo}{powershell}{}
+Add-ADGroupMember -Identity usuarios_oficina -Members user1, user2
+\end{mycode}
+
+
+\section{Sobre ordenadores}
+Comandos que tienen que ver con los ordenadores asociados al Active Directory.
+
+Listar los ordenadores que pertenecen a un Active Directory:
+\begin{mycode}{Listar ordenadores de un Active Directory}{powershell}{}
+Get-AdComputer -filter *
+\end{mycode}
+
+
+Listar ordenadores con Sistema Operativo Windows 10 de un Active Directory:
+\begin{mycode}{Listar ordenadores con Windows 10 en un AD}{powershell}{}
+Get-AdComputer -filter  {OperatingSystem -Like '*Windows 10*'}
+\end{mycode}
+
+
+Apagar ordenador, incluso aunque haya un usuario conectado:
+\begin{mycode}{Apagar un ordenador de manera remota}{powershell}{}
+Stop-Computer -ComputerName WIN10 -Force
+\end{mycode}
+
+Reiniciar ordenador, incluso aunque haya un usuario conectado:
+\begin{mycode}{Reiniciar un ordenador de manera remota}{powershell}{}
+Restart-Computer -ComputerName WIN10 -Force
+\end{mycode}
+
+\section{Sobre GPO}
+Listar todos los comandos posibles a ejecutar que tienen que ver con las GPO (group policy objects):
+\begin{mycode}{Posibles comandos sobre GPOs}{powershell}{}
+get-command -Module grouppolicy
+\end{mycode}
+
+
+Listar todos los GPO (group policy objects):
+\begin{mycode}{Posibles comandos sobre GPOs}{powershell}{}
+get-gpo -All
+\end{mycode}
+
+Crear un fichero HTML en c:\  con las configuraciones de todas las GPO:
+\begin{mycode}{Todas las configuraciones de GPOs en formato HTML}{powershell}{}
+get-GPOreport -Domain mikeldi.com -ALL ReportType Html -path c:\gpo.html
+\end{mycode}
+
+Forzar la actualización inmediata de las GPOs en el equipo remoto “win10”
+\begin{mycode}{Forzar actualización de GPOs de manera remota}{powershell}{}
+Invoke-GPUpdate -Computer win10 -Force -RandomDelayInMinutes 0
+\end{mycode}
+
+
+\section{Otros comandos}
+Información del sistema:
+\begin{mycode}{Información del sistema}{powershell}{}
+systeminfo
+\end{mycode}
+
+Listar todos los procesos que están corriendo:
+\begin{mycode}{Listar todos los procesos}{powershell}{}
+Get-Process
+\end{mycode}
+
+Listar los servicios:
+\begin{mycode}{Listar todos los servicios}{powershell}{}
+Get-Service
+\end{mycode}
+
+
+Comprobar conexión al puerto 3389 del equipo remoto win10:
+\begin{mycode}{Comprobar puerto remoto}{powershell}{}
+Test-NetConnection win10 -CommonTCPPort 3389
+\end{mycode}

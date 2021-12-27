@@ -13,7 +13,7 @@ Multics obtuvo licencia libre en el 2007. En Diciembre del 2016 salió la últim
 
 \itemimage{1969}{r}{0.33}
   {/Ken_Thompson_and_Dennis_Ritchie--1973.jpg}
-  {\href{https://en.wikipedia.org/wiki/Ken_Thompson}{Ken y Dennis . Origen: Wikipedia}}
+  {\href{https://en.wikipedia.org/wiki/Ken_Thompson}{Ken y Dennis. Origen: Wikipedia}}
   {
   Uno de los desarrolladores de Multics, \href{https://en.wikipedia.org/wiki/Ken_Thompson}{Ken Thompson}, decidió escribir su propio sistema operativo. Ken Thompson es conocido también por crear el lenguaje de programación \textbf{B}, el sistema de codificación de caracteres UTF-8 y el lenguaje de programación Go, entre otras cosas.
 
@@ -34,7 +34,7 @@ A finales de año el sistema ya era conocido como \textbf{UNIX}, y se había por
 
 \begin{center}
   \includegraphics[width=0.8\linewidth]{/Ken_Thompson_(sitting)_and_Dennis_Ritchie_at_PDP-11_(2876612463).jpg}
-  \vspace{-10pt}\captionof{figure}{\href{https://en.wikipedia.org/wiki/Ken_Thompson}{Dennis Ritchie y Ken Thompson. Origen: Wikipedia}}\vspace{-13pt}
+  \vspace{-10pt}\captionof{figure}{\href{https://en.wikipedia.org/wiki/Ken_Thompson}{Dennis Ritchie y Ken Thompson trabajando en un PDP-11. Origen: Wikipedia}}\vspace{-13pt}
 \end{center}
 
 
@@ -328,7 +328,8 @@ Las buenas prácticas nos dicen que las tareas cotidianas del sistema deberíamo
 
 \section{Creación de usuarios locales}
 
-Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario \textbf{root} y el usuario \textbf{no-privilegiado}. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero  \configfile{ /etc/passwd }  o podríamos obtener un listado ejecutando el siguiente comando:
+Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario \textbf{root} y el usuario \textbf{no-privilegiado}. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero \configfile{/etc/passwd} o podríamos obtener un listado ejecutando el siguiente comando:
+
 
 \begin{mycode}{Listar usuarios del sistema}{console}{}
 root@vega:~# cut -d: -f1 /etc/passwd
