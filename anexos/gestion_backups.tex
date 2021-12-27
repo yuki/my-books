@@ -101,7 +101,9 @@ Es por eso que tenemos que conocer el tiempo estimado de recuperación de los da
 Este tiempo estimado, al igual que el tamaño de las copias, puede variar en el tiempo, por lo que \textbf{debemos asegurar cada cierto tiempo el realizar simulacros para asegurar qué tiempos se manejan}.
 
 \begin{center}
+    \vspace{-15pt}
     \includegraphics[width=0.6\linewidth]{incidente_seguridad.png}
+    \vspace{-20pt}
 \end{center}
 
 Teniendo en cuenta el gráfico anterior:
@@ -164,7 +166,9 @@ Por lo tanto, a la hora de utilizar esta metodología, como ya se ha comentado, 
 ﻿Supongamos que realizamos una copia completa de los datos el domingo, esta será la base para las siguientes copias incrementales de los datos:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=0.7\linewidth]{incremental.png}
+    \vspace{-20pt}
 \end{center}
 
 El lunes se hará una copia guardando sólo los datos que han cambiado respecto a la copia del domingo. El martes, se hará una copia de los datos que han sido modificados desde la copia del lunes… Y así sucesivamente.
@@ -175,7 +179,9 @@ Este método es rápido, fácil de realizar y sabemos claramente cuándo se han 
 Similar al incremental, pero cada día se guarda todos los datos que han sido modificados desde el último backup completo:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=0.7\linewidth]{diferencial.png}
+    \vspace{-20pt}
 \end{center}
 
 Esto hace que cada backup diferencial pueda ocupar más que un incremental, pero cada día obtendremos todos los cambios desde el último backup completo.

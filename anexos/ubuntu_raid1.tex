@@ -5,7 +5,9 @@ Tal como hemos podido ver anteriormente, durante la \hyperlink{instalar_ubuntu_l
 En este paso podemos realizar distintas configuraciones:
 
 \begin{center}
+    \vspace{-15pt}
     \includegraphics[width=10cm]{01_storage_layout.png}
+    \vspace{-10pt}
 \end{center}
 
 \begin{itemize}
@@ -38,7 +40,9 @@ Como ya se ha comentado, en nuestro servidor vamos a contar con dos discos duros
 En la siguiente imagen vemos que tenemos dos discos duros de 15GB de tamaño cada uno:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{raid1_01.png}
+    \vspace{-20pt}
 \end{center}
 
 
@@ -54,7 +58,9 @@ Como se puede entender, al tener una única partición, todo el sistema raiz “
 Es importante entender que en este paso sólo \textbf{vamos a crear las particiones pero sin darles formato}. Por lo tanto, nuestros discos duros ahora tendrían este aspecto:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{raid1_02.png}
+    \vspace{-20pt}
 \end{center}
 
 
@@ -63,7 +69,9 @@ Es importante entender que en este paso sólo \textbf{vamos a crear las particio
 El siguiente paso es crear las particiones “virtuales” RAID. Vamos a crear una primera partición RAID que va a incluir las particiones de 14GB de ambos discos duros, y la segunda partición virtual incluirá las particiones de 1GB.
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{raid1_03.png}
+    \vspace{-20pt}
 \end{center}
 
 De esta manera, tendremos unas particiones MD0 y MD1 que son particiones virtuales.
@@ -72,7 +80,9 @@ De esta manera, tendremos unas particiones MD0 y MD1 que son particiones virtual
 El último paso de la instalación es hacer uso de las particiones RAID creadas y formatearlas con el sistema de ficheros acorde a las necesidades que tengamos, y elegir el punto de montaje adecuado.
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{raid1_04.png}
+    \vspace{-20pt}
 \end{center}
 
 En nuestro caso va a ser:
@@ -90,7 +100,9 @@ Tras haber entendido las particiones que vamos a realizar, ahora es el momento d
 Tal como hemos comentado previamente, en el paso 7 de la instalación, elegiremos la opción de crear un “diseño de almacenamiento personalizado”. Tras entrar en esta opción, el instalador tendrá el siguiente aspecto:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{ubuntu_raid1_01.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede ver, tenemos dos discos duros en el sistema: \textbf{vda} y \textbf{vdb}. El nombre de los discos viene de \textbf{V}irtual \textbf{D}isk, dado que la instalación la estamos realizando en una máquina virtual.
@@ -102,9 +114,11 @@ En este paso vamos a crear en cada uno de ellos la partición de 14GB y  el rest
 Por cómo funciona el sistema de arranque de Linux, antes de realizar las particiones vamos a marcar que ambos discos duros sean dispositivos de arranque (“Boot Device”). Para ello pulsaremos “Intro” en cada uno de los discos y elegiremos la opción correspondiente (imágenes de cada disco):
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=4cm]{ubuntu_raid1_02-1.png}
     \hspace{3cm}
     \includegraphics[width=4.90cm]{ubuntu_raid1_02-2.png}
+    \vspace{-20pt}
 \end{center}
 
 De esta manera, el instalador de Ubuntu creará una pequeña partición al inicio del disco donde al terminar se realizará la instalación del sistema de arranque GRUB en ambos discos duros.
@@ -151,14 +165,18 @@ Crearemos primero \textbf{md0} seleccionando las particiones de 14GB tal como ap
 Y a continuación crearemos \textbf{md1} con las particiones restantes. Tal como se puede ver a continuación, las particiones de 14GB ya no aparecen, porque están siendo usadas en el otro RAID.
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=9cm]{ubuntu_raid1_07.png}
+    \vspace{-20pt}
 \end{center}
 
 
 Tras la creación de los dispositivos “md”, nos aparecerán como dispositivos disponibles para usarlas en el siguiente paso:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=9cm]{ubuntu_raid1_08.png}
+    \vspace{-20pt}
 \end{center}
 
 \subsection{Formatear particiones RAID con el formato adecuado}
@@ -169,7 +187,9 @@ Tenemos que pensar que las particiones RAID ahora son como particiones normales,
 Vamos a seleccionar la primera, \textbf{md0}, posicionándonos encima de ella y dándole a “Intro” y posteriormente dándole a “\textit{Add GPT partition}”:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{ubuntu_raid1_09.png}
+    \vspace{-20pt}
 \end{center}
 
 Dejaremos el tamaño en blanco, indicando que usaremos todo el espacio libre, lo vamos a formatear con el sistema de ficheros \textbf{ext4} y se va a montar como el sistema de ficheros “/”.
@@ -177,7 +197,9 @@ Dejaremos el tamaño en blanco, indicando que usaremos todo el espacio libre, lo
 En \textbf{md1} también le daremos a crear nueva partición, y haremos lo mismo pero usando el formato \textbf{swap}. Quedando una vez terminado el sistema de particiones de la siguiente manera:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=8cm]{ubuntu_raid1_10.png}
+    \vspace{-20pt}
 \end{center}
 
 Y tras esto podremos continuar la instalación de manera normal.
