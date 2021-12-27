@@ -21,6 +21,11 @@ Munin posee un sistema básico de monitorización centralizada, pero dista mucho
 
 La ventaja que se obtiene al utilizar Munin es que es una instalación muy sencilla, tal como veremos a continuación, y que por tanto, para infraestructuras pequeñas puede ser útil.
 
+\section{Instalación}
+Para que Munin funcione se va a necesitar instalar el propio Munin y \href{https://httpd.apache.org/}{Apache} como servidor web para mostrar la web en la que se visualizan los datos obtenidos de la monitorización.
+
+Para realizar la instalación, ejecutaremos:
+
 \begin{mycode}{Instalar Munin y Apache2}{console}{}
 root@vega:~# apt install munin apache2
 \end{mycode}
@@ -47,18 +52,18 @@ Y tras esto, ya deberíamos poder ir al navegador web y poniendo \textbf{http://
 
 \begin{tcolorbox}[title=Interfaz de Munin]
     \centering
-    \includegraphics[width=\linewidth]{munin-01.png}
+    \includegraphics[frame,width=0.9\linewidth]{munin-01.png}
 \end{tcolorbox}
 
 
 \section{Configuración}
 
-Tras la instalación, Munin por defecto tiene una configuración sencilla que hace una monitorización básica del servidor. La configuración se puede encontrar en  \configdir{ /etc/munin/ }   y podemos diferenciar 3 ficheros/directorios:
+Tras la instalación, Munin por defecto tiene una configuración sencilla que hace una monitorización básica del servidor. La configuración se puede encontrar en  \configdir{/etc/munin/}   y podemos diferenciar 3 ficheros/directorios:
 
 \begin{itemize}
     \item \textbf{munin.conf}: fichero de configuración principal. En él se puede configurar todo lo relacionado con Munin, avisos, procesos...
     \item \textbf{munin-node.conf}: es el fichero de configuración que se utiliza si se utiliza el sistema básico de monitorización centralizada. En este fichero especificaremos desde qué servidores permitiremos que puedan monitorizar el propio servidor.
-    \item \textbf{plugins}: directorio con los plugins activados que se van a utilizar durante la monitorización. En este directorio están los enlaces simbólicos de los plugins que van a ser utilizados durante la monitorización del servidor. Los plugins están en  \configdir{ /usr/share/munin/plugins/ }  . Normalmente suelen ser scripts en los lenguajes Perl, Python o Shell.
+    \item \textbf{plugins}: directorio con los plugins activados que se van a utilizar durante la monitorización. En este directorio están los enlaces simbólicos de los plugins que van a ser utilizados durante la monitorización del servidor. Los plugins están en  \configdir{/usr/share/munin/plugins/}. Normalmente suelen ser scripts en los lenguajes Perl, Python o Shell.
 \end{itemize}
 
 \section{CRON}
