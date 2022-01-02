@@ -57,7 +57,9 @@ Por otro lado, a la máquina virtual se le van a añadir dos interfaces de red:
 Dadas las explicaciones previas, una vez creada la máquina virtual nuestra infraestructura virtual quedaría de la siguiente manera:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[width=0.5\linewidth]{infraestructura_virtualbox.png}
+    \vspace{-20pt}
 \end{center}
 
 Visto este dibujo, la máquina virtual que actuará como PC dentro de la LAN le tendremos que modificar el adaptador virtual para que sea de tipo “Red interna” y escribiremos “\textbf{LAN}”, por lo que ambas máquinas estarán conectadas mediante un “switch virtual”.
@@ -73,7 +75,9 @@ El resto de parámetros de la máquina virtual, como se trata de una para prueba
 Tras poner el CD de instalación en la máquina virtual y arrancar veremos un pequeño menú como muestra la siguiente captura de pantalla:
 
 \begin{center}
-    \includegraphics[width=0.7\linewidth]{install-1.png}
+    \vspace{-10pt}
+    \includegraphics[width=0.6\linewidth]{install-1.png}
+    \vspace{-20pt}
 \end{center}
 
 El menú contará con un sistema de cuenta atrás y si no se selecciona nada entrará en la primera opción por defecto. Se podrá ver cómo el sistema arranca y detecta el  hardware y al finalizar nos mostrará un menú con las opciones:
@@ -108,7 +112,9 @@ El siguiente menú aparecerá por defecto, y en una instalación por hardware se
 De esta captura de pantalla del menú podemos sacar varios detalles:
 
 \begin{center}
-    \includegraphics[width=0.7\linewidth]{boot-1.png}
+    \vspace{-15pt}
+    \includegraphics[width=0.6\linewidth]{boot-1.png}
+    \vspace{-10pt}
 \end{center}
 
 \begin{itemize}
@@ -124,7 +130,9 @@ Junto a esos nombre aparecen “em0” y “em1” que son el nombre de los inte
 Tal como se ha comentado, el menú cuenta con distintas opciones de administración.
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[trim={0 0 50 133},clip,width=0.7\linewidth]{boot-1.png}
+    \vspace{-10pt}
 \end{center}
 
 Como se puede ver en la imagen previa, aparecen 16 posibles opciones a elegir, entre las que destacaremos:
@@ -216,7 +224,7 @@ Tras la instalación de PfSense podemos ir a “Firewall → Rules” y ahí apa
     \item \textbf{LAN}: Existen varias reglas creadas por defecto que permiten tráfico:
 
     \begin{center}
-        \includegraphics[frame,width=\linewidth]{firewall-1.png}
+        \includegraphics[frame,width=0.9\linewidth]{firewall-1.png}
     \end{center}
 
     \begin{enumerate}
@@ -255,7 +263,9 @@ No importa dónde se cree la nueva regla, ya que se podrá modificar después su
 Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.1.1 (servidor DNS de la empresa Cloudflare). La regla quedaría:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[trim={0 0 490 0},clip,frame,width=\linewidth]{firewall-2.png}
+    \vspace{-20pt}
 \end{center}
 
 
@@ -277,13 +287,13 @@ Teniendo en cuenta la regla creada en el apartado anterior, vamos a analizar cu�
 \begin{itemize}
     \item Al \textbf{final} del todo:
     \begin{center}
-        \includegraphics[frame,width=\linewidth]{firewall-3.png}
+        \includegraphics[frame,width=0.9\linewidth]{firewall-3.png}
     \end{center}
     Teniendo en cuenta las reglas creadas sobre el interfaz LAN en este orden, la regla de bloqueo al servidor 1.1.1.1 no entrará nunca en funcionamiento. El tráfico cuyo origen sea la LAN coincidirá siempre con la regla que le permite ir a cualquier parte, por lo que al coincidir con esa regla no se analizará ninguna más.
 
     \item Al \textbf{comienzo} de las reglas:
     \begin{center}
-        \includegraphics[frame,width=\linewidth]{firewall-4.png}
+        \includegraphics[frame,width=0.9\linewidth]{firewall-4.png}
     \end{center}
     En este caso la regla más específica de denegación se ha puesto al principio, por lo que si el tráfico coincide con esta hará lo que indica la regla, bloquear el tráfico al servidor 1.1.1.1. Si no coincide, se seguirán analizando el resto de reglas, y en este caso se permitirá el resto de tráfico.
 \end{itemize}
@@ -292,8 +302,9 @@ Es de vital importancia tener en cuenta el orden de las reglas, analizarlo con c
 
 \errorbox{\textbf{¡El orden de las reglas de filtrado es muy importante en cualquier Firewall!}}
 
-
+\hypertarget{crear_una_nueva_red}{}
 \chapter{Crear una nueva red}
+
 Teniendo en cuenta lo visto hasta ahora, nuestra infraestructura cuenta con una única red LAN detrás del firewall y, aparte, el acceso a WAN. En este apartado se va a explicar cómo crear una nueva red para una sección DMZ (\href{https://es.wikipedia.org/wiki/Zona_desmilitarizada_(inform%C3%A1tica)}{zona desmilitarizada}) en la que se instalarán servidores.
 Normalmente lo habitual suele ser que el acceso desde y hasta la DMZ cumpla con las siguientes restricciones:
 
@@ -305,10 +316,13 @@ Normalmente lo habitual suele ser que el acceso desde y hasta la DMZ cumpla con 
 \end{itemize}
 
 \section{Modificando la infraestructura creada}
+
 Dado que se va a crear una red nueva, deberemos realizar cambios en la máquina virtual de nuestro servidor pfSense. La nueva infraestructura será la siguiente:
 
 \begin{center}
+    \vspace{-20pt}
     \includegraphics[width=0.5\linewidth]{infraestructura_dmz_virtualbox.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede apreciar al compararlo con la \hyperlink{detalles_maquina_virtual}{infraestructura anterior}, se ha creado una nueva red interna, por lo que al pfSense se le tendrá que activar una nueva interfaz de tipo “Red interna” y le daremos el nombre de DMZ.
@@ -330,7 +344,9 @@ Dado que pfSense cuenta con un nuevo interfaz, por defecto aparece deshabilitado
 Todas estas modificaciones se realizan desde el interfaz web, a través de “\textit{\textbf{Interfaces → Assignments}}”:
 
 \begin{center}
+    \vspace{-10pt}
     \includegraphics[frame,width=0.8\linewidth]{interfaces.png}
+    \vspace{-20pt}
 \end{center}
 
 Tal como se puede ver, aparece la nueva interfaz junto a un botón “Add” que indica que lo podemos añadir a la configuración. Una vez pulsado el botón se le asigna el nombre “OPT1” como nombre por defecto, pero la idea es cambiarlo. Para ello se hace click en el interfaz, y se entra en su configuración.
@@ -369,7 +385,300 @@ Suele ser habitual el realizar estos mapeos para tener controlados los equipos y
 Para realizar estos mapeos hay que ir a “Status → DHCP Leases” donde podremos ver todas las IPs que se han otorgado:
 
 \begin{center}
-    \includegraphics[frame,width=0.9\linewidth]{dhcp_lease.png}
+    \vspace{-10pt}
+    \includegraphics[frame,width=\linewidth]{dhcp_lease.png}
+    \vspace{-20pt}
 \end{center}
 
+
 \subsection{Modificación de reglas de filtrado}
+Tras realizar los pasos previos, si se enciende la máquina virtual que actuará de servidor en la DMZ, se podrá comprobar que cogerá IP por DHCP en el direccionamiento que se haya configurado en el paso anterior. El problema es que si se intenta realizar algún intento de comunicación con el exterior de la red veremos que no será posible ya que actualmente no existe ninguna regla que lo permita en pfSense. Lo podemos comprobar yendo a “\textit{\textbf{Firewall → Rules}}” y mirando el apartado “DMZ”
+
+\errorbox{\textbf{¡pfSense deniega cualquier tipo de tráfico por defecto en los interfaces!}}
+
+Teniendo en cuenta las reglas que normalmente suele tener una red DMZ, que se han comentado \href{crear_una_nueva_red}{al principio de este capítulo}, habría que realizar las configuraciones oportunas para permitir el tráfico tal como sea necesario.
+
+Teniendo en cuenta las reglas que se necesitan crear, y dado que pfSense aplica las reglas “al entrar al interfaz”, habrá que entender dónde crear cada regla y tener cuidado con el orden con el que se aplican. Como pruebas, se ha aplicado las siguientes reglas:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[frame,width=0.8\linewidth]{firewall-5.png}
+    \vspace{-20pt}
+\end{center}
+
+¿Es realmente necesaria la primera regla?
+
+
+\chapter{Crear una VPN}
+Una \href{https://es.wikipedia.org/wiki/Red_privada_virtual}{VPN} (\textit{Virtual Private Network}, en castellano \textbf{Red Privada Virtual}) es el modo de extender de manera segura una LAN a través de una red (pública) que no controlamos (a través de Internet suele ser lo más habitual). El concepto es crear un “túnel” entre dos puntos y que el tráfico vaya por él de manera cifrada para que la red sobre la que se ha creado el túnel no sea capaz de ver la información enviada.
+
+Los usos más habituales que se le suele dar a la VPN son:
+
+\begin{itemize}
+    \item Conectarnos a los equipos de nuestra oficina cuando no estamos en ella.
+    \begin{itemize}
+        \item O conectar desde la oficina a equipos remotos que no están en ella (la idea es la misma, tal como veremos más adelante).
+    \end{itemize}
+    \item Conectar dos sedes que están geográficamente separadas.
+\end{itemize}
+
+
+Existen distintas tecnologías que nos permiten crear VPNs, y dependiendo del tipo de VPN que queramos montar, tendremos que seleccionar la más adecuada a nuestra infraestructura y necesidades.
+
+
+\section{Usos habituales de las VPN}
+Aunque el sistema de VPN se puede utilizar de muchas maneras (incluso en una misma sede, para securizar aún más el acceso entre distintas LANs), los usos más habituales de VPN son los siguientes:
+
+\subsection{Conexión entre sedes}
+También conocido como sistema “\textbf{Peer to Peer}”. Vamos a suponer que tenemos una empresa con dos sedes separadas geográficamente, cada una de ellas con un servidor PfSense actuando de firewall y conectado a internet, tal como aparece en la siguiente imagen:
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{vpn-1.png}
+\end{center}
+
+La idea, en esta situación, es que los equipos que están en la LAN de la sede 1 puedan llegar a los equipos de la LAN en la sede 2. Para ello, lo que se va a crear es un túnel VPN entre ambos PfSense. Ese túnel se suele denominar “punto a punto” (“peer to peer”) y la infraestructura quedaría:
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{vpn-2.png}
+\end{center}
+
+Una vez generado el túnel, cada pfSense tendrá un interfaz nuevo privado (10.0.0.1 y 10.0.0.2) que serán las IPs del túnel establecido.
+
+
+\subsection{Conexión de equipo remoto}
+Este sistema suele ser el utilizado en las siguientes circunstancias:
+
+\begin{itemize}
+    \item Empleados fuera de la oficina que necesitan acceso a servidores internos.
+    \begin{itemize}
+        \item Lo habitual suele ser tener configurado un cliente OpenVPN en el portátil y activarlo cuando sea necesario.
+    \end{itemize}
+    \item Equipos que están en remoto con el que queremos comunicarnos de manera segura.
+\end{itemize}
+
+En resumen: cualquier equipo que está fuera de la oficina que quiera llegar a los equipos que están en ella, o al equipo al que queremos llegar desde la oficina de manera segura. De esta manera, el PfSense actuará de Servidor VPN y los clientes serán los equipos remotos, por lo que una vez conectados se formará un túnel con cada uno de ellos, quedando la infraestructura tal que:
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{vpn-3.png}
+\end{center}
+
+
+\section{Características de las VPNs}
+Existen diferencias entre las distintas tecnologías a la hora de crear VPNs, pero todos ellos suelen contar con las siguientes características:
+
+\subsection{Seguridad}
+La principal característica que debe tener una VPN es la seguridad, concretamente el cifrado. Debemos pensar que cualquier tráfico que vaya entre ambos puntos de la VPN atravesará una red no controlada. Si el tráfico no fuese cifrado, cualquier dato que se enviase podría ser capturado y analizado.
+
+Dependiendo del sistema VPN elegido se podrá elegir entre distintos sistemas de cifrado, que hará que la información no pueda ser leída por terceros. Estos sistemas de cifrado cuentan con algoritmos que harán que nuestra información viaje de forma segura.
+
+
+\subsection{Arquitectura del túnel VPN}
+A la hora de crear el túnel entre los dispositivos que participarán en él, se puede realizar como:
+
+\begin{itemize}
+    \item \textbf{Infraestructura Cliente → Servidor}: Un nodo de la conexión actuará como \textbf{Servidor} VPN y el otro como \textbf{Cliente} VPN. El Cliente realizará una conexión a un puerto del interfaz WAN del Servidor. Ese puerto será el que se haya configurado en el servidor VPN, por lo que será un puerto que permita la conexión (sin estar filtrado por firewalls). Tras completar la autenticación, se establecerá la conexión y se creará el túnel. Este método se utiliza con el sistema \textbf{OpenVPN} y es el utilizado para poder conectarnos a la oficina cuando no nos encontramos en ella.
+
+    \item \textbf{Infraestructura negociada}: Ambos nodos tienen configurados la IP WAN del otro nodo. Ambos dispositivos iniciarán la comunicación entre si, y entre ellos decidirán quién es el Servidor y quién el Cliente. Este método suele ser el utilizado en el sistema de creación de VPN  \textbf{IPSec}. También deberán estar abiertos los puertos correspondientes necesarios para establecer la comunicación.
+\end{itemize}
+
+
+\subsection{Autenticación}
+Otra característica es la \textbf{autenticación} en la VPN. Normalmente, para poder realizar la conexión se necesita autenticar al usuario o al dispositivo antes de que se establezca el túnel, por lo que existirán distintas maneras de realizar dicha autenticación:
+
+\begin{itemize}
+    \item \textbf{Certificados de seguridad}: Similar a los certificados utilizados en las páginas web al ir por protocolo HTTPS. Cada nodo contará con su certificado único e intransferible. Al realizar la conexión se comprobará que es correcto y no está caducado.
+
+    \item \textbf{Usuario y contraseña}: Se deberá introducir un usuario y una contraseña que deberá estar permitido en el servidor.
+
+    \item \textbf{Contraseña/Clave compartida}: Este método suele ser el habitual en la infraestructura negociada. Ambos nodos cuentan con una única contraseña (o un certificado clave) configurada que deberá ser la misma en ambos nodos para establecer el túnel.
+\end{itemize}
+
+
+El sistema OpenVPN permite crear sistemas cuya autenticación unifica los certificados con el usuario y contraseña, por lo que mejora la seguridad.
+
+
+\subsection{Tipo de conectividad}
+Una vez establecido el túnel, también existen diferencias a la hora de comunicarse los distintos equipos entre ambas partes de la VPN. Ambas maneras son igual de válidas y dependerá de cómo queramos que nuestra infraestructura funcione, por lo que no debemos descartar de primeras ninguna de ellas y se deberá realizar un análisis del uso que le vamos a dar a la red.
+
+
+\subsubsection{Capa 2 del modelo OSI}
+En estos casos en ambos lados de la VPN el direccionamiento es el mismo. Es la misma LAN, y los equipos se comportan como tal. La creación de esta infraestructura suele ser más compleja.
+
+\subsubsection{Capa 3 del modelo OSI}
+El tráfico entre ambos nodos de la conexión VPN debe ser enrutado, y existen distintas maneras de realizar dicho enrutado. Teniendo en cuenta el dibujo:
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{vpn-2.png}
+\end{center}
+
+
+
+\begin{itemize}
+    \item \textbf{Rutas estáticas}: Cada PfSense tendrá rutas estáticas para poder acceder a los equipos de la red LAN de la otra sede. Esto quiere decir, que cuando una comunicación desde un equipo de la Sede1 llegue a la Sede2 llegará con su propia IP de origen. Las rutas serían:
+
+    \begin{itemize}
+        \item \textbf{En Sede1}: Ruta 172.20.0.0/22 gw 10.0.0.2
+        \item \textbf{En Sede2}: Ruta 192.168.60.0/24 gw 10.0.0.1
+    \end{itemize}
+
+    \item \textbf{NAT}: Cuando se establezca la comunicación entre sedes, se realizará NAT y por tanto si un equipo de Sede1 se comunica con uno de Sede2 la comunicación llegará con la IP 10.0.0.1. (Este método suele ser habitual usarlo en túneles IPSec).
+\end{itemize}
+
+
+El enrutado también se debe realizar cuando la conexión es entre equipos remotos que se conectan a la VPN contra el servidor:
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{vpn-3.png}
+\end{center}
+
+En este caso, sólo los clientes remotos reciben las rutas para acceder a la LAN de la sede.
+
+
+\section{OpenVPN como servidor VPN en PfSense}
+\href{https://openvpn.net/community/}{OpenVPN} es un sistema Servidor-Cliente para realizar infraestructuras VPN. PfSense cuenta con la opción para crear nuestro servidor OpenVPN a través de un asistente (wizard) o a través de todas las opciones que podemos modificar. El interfaz web que tiene PfSense no es más que una manera sencilla de crear el fichero de configuración que después usará por debajo para crear el Servidor.
+
+Entre las opciones que podemos configurar están:
+
+\begin{itemize}
+    \item Server mode: Tipo de Servidor que queremos crear, las opciones son:
+        \begin{itemize}
+            \item \textbf{Peer to Peer}: Para realizar conexiones entre sedes. Existen dos maneras de realizar la autenticación:
+            \begin{itemize}
+                \item Mediante Certificados (SSL/TLS)
+                \item Clave compartida
+            \end{itemize}
+            \item \textbf{Remote Access}: El sistema utilizado para equipos remotos que se quieren conectar a la oficina. En este caso existen tres métodos de autenticación:
+            \begin{itemize}
+                \item Mediante \textbf{certificados} (SSL/TLS)
+                \item \textbf{Usuario y contraseña}: PfSense cuenta con una base de datos interna de usuarios pero también se puede realizar una conexión contra un Active Directory externo y usar la autenticación contra él.
+                \item \textbf{Combinado}: Certificados junto con usuario y contraseña
+            \end{itemize}
+        \end{itemize}
+    \item \textbf{Protocol}: Protocolo por el que irá la información del túnel (UDP o TCP).
+    \item \textbf{Device mode}: Tipo de conectividad. El tipo “\textbf{tun}” (capa 3) es el más compatible y el único que se puede utilizar en teléfonos móviles.
+    \item \textbf{Interface}: Interfaz en el que se pondrá a la escucha el servidor VPN. Normalmente en WAN.
+    \item \textbf{Local port}: Puerto en el que se pondrá a la escucha el servidor VPN.
+    \item \textbf{Description}: Siempre es bueno añadir una descripción al servidor, ya que nuestra infraestructura puede contar con varios.
+\end{itemize}
+
+Teniendo en cuenta estas opciones, habrá que configurar las siguientes opciones:
+
+\begin{itemize}
+    \item \textbf{Cryptographic Settings}: Estas son las opciones que se tendrán en cuenta a la hora de cifrar la información que viajará por el túnel. En caso de hacer uso de certificados, habrá que crear  en el PfSense en “\textbf{\textit{System → Cert Manager}}” el certificado raíz en “\textbf{CAs}” (CA, de Autoridad Certificadora) y el certificado del servidor en “\textbf{\textit{Certificates}}”.
+\end{itemize}
+
+Tras esto, están las opciones que tienen que ver con el direccionamiento del propio túnel y el direccionamiento a la red remota en el apartado \textbf{Tunnel Settings}:
+
+
+\begin{itemize}
+    \item \textbf{IPv4 Tunnel Network}: Cuál será el direccionamiento que se creará en cada nodo cuando el túnel se establezca.
+    \item \textbf{Redirect IPv4 Gateway}: Forzar a que \textbf{todo} el tráfico generado en el cliente (no sólo el que se dirige a los equipos de la oficina)  vaya por el túnel. Suele ser muy utilizado ya que así se simula al 100\% el estar en la  oficina.
+    \item \textbf{IPv4 Local network(s)}: Las redes a las que se podrá conectar el cliente cuando el túnel se establezca.
+    \item \textbf{IPv4 Remote network(s)}: En caso de ser una VPN “Peer to Peer”, las redes remotas a las que se podrá conectar el Servidor (las que están en el cliente).
+\end{itemize}
+
+Tal como se puede ver, son bastantes opciones de configuración las que deberemos tener en cuenta a la hora de crear un Servidor VPN, por lo que tenemos que tener muy clara cuál es la infraestructura que tenemos y cuál es la infraestructura que queremos conseguir creando la VPN. Antes de crear el sistema deberemos realizar la toma de requisitos y analizar las opciones para elegir el mejor sistema que se adecúe a nuestra infraestructura.
+
+
+\subsection{Reglas de filtrado en PfSense con OpenVPN}
+Una vez creado el servidor OpenVPN en PfSense deberemos crear al menos dos reglas de filtrado nuevas en el apartado “\textit{Firewall → Rules}”:
+
+
+\begin{itemize}
+    \item \textbf{WAN}: Permitir conexiones al puerto en el que escucha el servidor en el protocolo previamente indicado.
+
+    \infobox{En un sistema multi-cliente de equipos remotos se aceptarán conexiones desde cualquier IP.}
+
+    \warnbox{Si es un sistema “Peer to Peer” sólo aceptaremos conexiones desde la IP origen.}
+
+    \begin{center}
+        \includegraphics[frame,width=\linewidth]{openvpn-1.png}
+    \end{center}
+
+    \item \textbf{OpenVPN}: Al crear la VPN, se creará un nuevo interfaz en el que podremos añadir reglas de filtrado. Por defecto, al no tener ninguna regla, se denegará el tráfico, por lo que deberemos crear reglas de aceptación. En este caso, se acepta todo el tráfico que viene de la VPN:
+    \begin{center}
+        \includegraphics[frame,width=\linewidth]{openvpn-2.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection{Clientes de conexión OpenVPN}
+Para poder realizar la conexión desde un equipo remoto a un servidor creado con OpenVPN se necesita un programa cliente. Existen clientes OpenVPN para las distintas plataformas:
+
+\begin{itemize}
+    \item \textbf{GNU/Linux}: Paquete openvpn de nuestra distribución.
+    \item \textbf{Windows}: Cliente Openvpn para windows (\href{https://openvpn.net/community-downloads/}{web de descarga}).
+    \item \textbf{MacOS}: Programa \href{https://tunnelblick.net/}{Tunnelblick}.
+    \item \textbf{iOS}: Aplicación oficial para iOS (\href{https://apps.apple.com/es/app/openvpn-connect/id590379981}{AppStore}).
+    \item \textbf{Android}: Aplicación oficial para Android (\href{https://play.google.com/store/apps/details?id=net.openvpn.openvpn}{PlayStore}).
+\end{itemize}
+
+Dado que OpenVPN es Software Libre existen otros clientes para las distintas plataformas, pero todos harán uso del mismo núcleo y variará la manera de mostrar la información.
+
+Para realizar la conexión al servidor, necesitaremos de un fichero de configuración que tendrá las opciones que deberá usar el cliente para realizar la conexión al servidor (IP del Servidor, sistema de cifrado, direccionamiento del túnel…).
+
+Para poder obtener el fichero de configuración de cliente en PfSense es recomendable instalar el paquete “\textbf{openvpn-client-export}” ya que nos permitirá descargar el fichero para poder usarlo en el cliente.
+
+
+\chapter{Alta disponibilidad}
+El modo de funcionamiento de la alta disponibilidad en PfSense es el método “Activo - Pasivo”, esto quiere decir que el servidor pasivo sólo entrará en funcionamiento y se convertirá en activo si el activo original deja de responder. Este tipo de infraestructura también se suele denominar “Master - Failover”, ya que el servidor Pasivo entrará en servicio cuando el Activo falle (\textbf{conmutación por fallo}).
+
+Hay que entender que en este tipo de arquitectura no significa que el Pasivo esté apagado, si no que los servicios estarán corriendo en el Activo y si este cae, los servicios se activarán en el Pasivo convirtiéndose en el servidor principal y por tanto en el Activo.
+
+Para crear el sistema “Activo - Pasivo” en PfSense vamos a necesitar 2 servidores, y entre ellos debe existir una conexión directa (interfaz \textbf{SYNC}) para que entre ellos se puedan comunicar, conocer el estado del otro, intercambiar configuración, datos de estado de los servicios … El esquema quedaría:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.5\linewidth]{pfsense-HA.png}
+    \vspace{-20pt}
+\end{center}
+
+
+Teniendo en cuenta la infraestructura de la imagen, hay que explicar:
+
+\begin{itemize}
+    \item Cada PfSense tendrá un interfaz “SYNC” que será el utilizado para que se comuniquen y se sincronicen entre ellos. Tal como se puede ver, el direccionamiento es “/30” ya que sólo necesitaremos 2 IPs activas.
+    \item Cada PfSense tendrá una IP por cada red a la que pertenezca (WAN, LAN, DMZ, … ).
+    \item Existirán tantas IPs balanceadas (o IPs HA) por cada red en la que el PfSense tenga configuración.
+\end{itemize}
+
+Una vez realizado esto, hay que seguir unos pasos más que están explicados en la documentación oficial (\href{https://docs.netgate.com/pfsense/en/latest/solutions/reference/highavailability/clusterconfiguration.html}{enlace 1}, \href{https://docs.netgate.com/pfsense/en/latest/recipes/high-availability.html}{enlace 2}).
+
+
+\section{IPs balanceadas o “IPs HA”}
+Las IPs balanceadas (también denominadas “IPs HA” o “IPs de alta disponibilidad”) son IPs que pueden estar configuradas en un servidor y en cualquier momento moverse a otro servidor.
+
+En el caso de PfSense, estas IPs se crean en “\textbf{\textit{Firewall → Virtual IPs}}” y deben ser de tipo \textbf{CARP}. Estarán en funcionamiento en el servidor Activo, y serán las IPs en las que los servicios estén escuchando y que actuarán como GW para los equipos en cada LAN. Si el servidor activo cae, el pasivo se dará cuenta a través del interfaz SYNC y en ese momento decidirá ponerse como activo y por tanto levantará las IPs HA.
+
+\errorbox{\centering \textbf{Es importante que todos los equipos apunten a estas IPs,}
+
+    \textbf{ya que son las IPs que se van a mover.}
+}
+
+\section{Servicios en infraestructura Activo - Pasivo}
+Algunos servicios de red no pueden estar en más de un servidor en la misma red, ya que entrarían en conflicto, tal como sucede con DHCP. Por ello, en las infraestructuras “Activo - Pasivo” los servicios sólo están funcionando en el servidor Activo, mientras que en el pasivo están apagados.
+
+
+\section{A tener en cuenta}
+Dado que la infraestructura en HA difiere de la infraestructura con un único servidor, hay ciertos cambios a tener en cuenta en la nueva infraestructura:
+
+\begin{itemize}
+    \item Al dar DHCP en las redes LAN, el “default gateway” que se otorga debe ser la IP HA de cada LAN.
+    \item Al hacer NAT, hay que modificar para que la IP en salida sea la HA.
+\end{itemize}
+
+\chapter{Añadiendo servicios extra}
+Tal como se ha podido ver, pfSense cuenta con una serie de servicios que vienen instalados y algunos pre-configurados para una configuración básica (NAT, DHCP Server, Reglas de filtrado, … ). Una de las ventajas que tiene pfSense, gracias a ser Software Libre, es que la comunidad trabaja en ampliar las funcionalidades añadiendo nuevos servicios que pueden ser instalados mediante paquetes que están específicamente adaptados para poder ser configurados a través del interfaz web de pfSense.
+
+Entre el software que podemos instalar desde el gestor de paquetes, que se encuentra en “\textbf{System → Package Manager}”, está:
+
+\begin{itemize}
+    \item \textbf{acme}: Sistema automático para desplegar \textbf{certificados} \href{https://letsencrypt.org/es/}{Let's Encrypt}
+    \item \textbf{cron}: Utilidad para ejecutar comandos en un horario específico
+    \item \textbf{frr}: Demonio de enrutado dinámico para BGP, OSPF.
+    \item \textbf{haproxy}: Balanceador de carga TCP/HTTP(S).
+    \item \textbf{nrpe}: servidor NRPE para poder monitorizar el estado de PfSense desde Nagios
+    \item \textbf{squid}: Proxy caché para filtrar contenido web.
+    \item \textbf{squidGuard}: filtrado de URLs, para limitar la conexión a páginas no autorizadas (denegar el acceso a páginas porno, anuncios, casinos online, … ).
+\end{itemize}
+
