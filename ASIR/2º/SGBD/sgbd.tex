@@ -302,10 +302,482 @@ De hecho, nada más realizar la instalación de MySQL es la única manera de pod
 Como se puede ver, en la imagen, los pasos para poder realizar la conexión han sido:
 \begin{enumerate}
     \item Convertirnos en root
-    \item Ejecutar el comando    \commandbox{mysql}.
+    \item Ejecutar el comando \commandbox{mysql}.
 \end{enumerate}
 
 Este comando es el \textbf{Cliente} MySQL que realizará la conexión contra el Servidor MySQL. Debido a que no se le ha pasado ningún parámetro al comando, éste realizará un primer intento de conexión a la ruta del socket estándar (indicada anteriormente).
 
 Una vez realizada la conexión veremos que nos aparece un \textit{prompt}  \inlineconsole{mysql>} que indica que la conexión se ha realizado correctamente y estamos en el CLI (\textit{Command Line Interface}, Interfaz de Línea de Comandos) donde podremos ejecutar órdenes de configuración, administración o peticiones a las bases de datos.
 
+\subsection{Conexión por red (local o remota)}
+En la configuración inicial de MySQL también aparece la opción de poder realizar una conexión mediante el protocolo de red \textbf{TCP}.
+
+\begin{mycode}{Ver puertos de MySQL}{console}{\scriptsize}
+root@server1:~# ss -punta | grep -i mysql
+tcp   LISTEN 0      151      127.0.0.1:3306    0.0.0.0:*      users:(("mysqld",pid=765,fd=34))
+tcp   LISTEN 0      70               *:33060         *:*      users:(("mysqld",pid=765,fd=31))
+\end{mycode}
+
+Los puertos de escucha son:
+\begin{itemize}
+    \item \textbf{3306}: Puerto que escucha únicamente en la IP 127.0.0.1
+    \item \textbf{33060}: Nuevo protocolo X (desde la versión 5.7.12) que escucha en todas las IPs del sistema.
+\end{itemize}
+
+Para poder realizar conexiones a través de estos puertos los usuarios con los que intentemos conectarnos deberán poder aceptar dicha conexión. Más adelante veremos cómo realizar estas modificaciones.
+
+Para poder realizar esta conexión también haremos uso del comando  \commandbox{mysql}. pero esta vez sí le tendremos que pasar parámetros de conexión. Un ejemplo de cómo conectarnos a un servidor por conexión de red es:
+
+\begin{mycode}{Conexión por red a MySQL}{console}{}
+ruben@server1:~$ mysql -u usuario -h 192.168.1.100 -p
+\end{mycode}
+
+Podemos ver que se han pasado 3 parámetros y a continuación el valor que se le pasa a cada parámetro en el comando \commandbox{mysql}. Los parámetros son:
+
+\begin{itemize}
+    \item[\textbf{-u}] o “\textbf{\-/\-/ user}”, es el usuario con el que vamos a realizar la conexión. Si no se usa éste parámetro, por defecto se le pasará el usuario con el que estamos logueados en el sistema
+    \item[\textbf{-h}] o “\textbf{\-/\-/ host}”, es el servidor al que queremos conectarnos mediante conexión por red. Si no se pone este parámetro la conexión se intentará a 127.0.0.1
+    \item[\textbf{-p}] o “\textbf{\-/\-/ password}”, para que nos pregunte por la contraseña de conexión del usuario. Si no se pasa este parámetro se entiende que no se va a necesitar contraseña.
+\end{itemize}
+
+\section{Arranque, parada y estado del Servidor}
+Una vez instalado MySQL tenemos que conocer cuál es su estado y conocer los procedimientos de arranque y parada del servicio.
+
+\subsection{Comprobar estado del servidor}
+En la instalación de MySQL se ha instalado automáticamente un servicio en \hyperlink{systemd}{Systemd} que nos permitirá conocer el estado de MySQL, si está arrancado o no.
+
+Para ello deberemos ejecutar el siguiente comando:
+
+\begin{mycode}{Estado del servidor MySQL}{console}{}
+ruben@server1:~$ sudo systemctl status mysql
+\end{mycode}
+
+Y tras realizar la ejecución del comando, en caso de que el servicio esté arrancado veremos:
+
+%TODO: cambiar captura por texto
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{mysql_status.png}
+    \vspace{-10pt}
+\end{center}
+
+\subsection{Arranque y parada del servidor}
+En caso de que queramos parar el servidor, tendremos que hacer uso de Systemd:
+
+\begin{mycode}{Parar el servidor MySQL}{console}{}
+ruben@server1:~$ sudo systemctl stop mysql
+\end{mycode}
+
+Y para arrancarlo de nuevo:
+
+\begin{mycode}{Arrancar el servidor MySQL}{console}{}
+ruben@server1:~$ sudo systemctl start mysql
+\end{mycode}
+
+
+\section{Primeros pasos}
+Como suele ser habitual cuando instalamos un servidor, viene con una configuración genérica que dista mucho de ser la ideal en un entorno productivo, y es por ello que tenemos que conocer cómo realizar modificaciones en la configuración para obtener mejores resultados.
+
+Para poder administrar y configurar de manera correcta MySQL tendremos que conocer, al menos, lo siguiente:
+
+\begin{itemize}
+    \item Especificaciones hardware donde está el servidor:
+    \begin{itemize}
+        \item Cantidad de memoria RAM
+        \item Espacio en disco duro
+        \item Velocidad de escritura/lectura a disco duro
+    \end{itemize}
+    \item Tipo de aplicación que va a utilizar MySQL
+    \item Conexiones esperadas
+    \item Cantidad de usuarios que se van a conectar
+    \item Origen de las conexiones
+    \item …
+\end{itemize}
+
+Con esta información podremos realizar un primer análisis para intentar prever si el servidor donde está el servicio MySQL corriendo es suficiente o no. Si la instalación nos corresponde a nosotros, tendremos que conocer parte de las preguntas planteadas anteriormente para realizar la instalación en un servidor que vaya a poder adecuarse a las exigencias pedidas.
+
+
+\subsection{Securizar configuración inicial}
+Dependiendo del método elegido para instalar MySQL la configuración inicial puede venir con usuarios o bases de datos de prueba que no nos interesan y que se pueden borrar. Para poder securizarlo tenemos el siguiente comando:
+
+\begin{mycode}{Securizar la instalación}{console}{}
+root@server1:~# mysql_secure_installation
+\end{mycode}
+
+Este script nos guiará con una serie de preguntas para securizar el servidor, que es muy utilizado en versiones anteriores, pero que no está de más ver las preguntas que nos realiza:
+
+\begin{itemize}
+    \item “\textbf{Would you like to setup VALIDATE PASSWORD component?}”: Habilita el componente de validación de contraseñas, que sirve para habilitar test de fuerza de las contraseñas, y en caso de no ser lo suficientemente seguras, no se permite crear el usuario con esa contraseña.
+
+    \warnbox{En versiones anteriores era un PLUGIN}
+
+    Si lo habilitamos, no preguntará qué tipo de política queremos activar sobre las contraseñas:
+        \begin{itemize}
+            \item \textbf{LOW}: contraseñas de longitud mínima 8
+            \item \textbf{MEDIUM}: como las LOW pero con números, caracteres especiales y mayúsculas y minúsculas.
+            \item \textbf{STRONG}: como las MEDIUM pero que no se encuentren en un
+        \end{itemize} diccionario
+    \item Nos pedirá la \textbf{contraseña del administrador “root”} de MySQL.  En la instalación de Ubuntu el usuario root se conecta mediante socket, por lo que este paso no cambiará nada.
+    \item “\textbf{Remove anonymous users?}”: En algunas distribuciones  se crean unos usuarios anónimos, que deberían ser borrados.
+    \item “\textbf{Disallow root login remotely?}”: De nuevo, en Ubuntu el usuario root sólo se puede conectar en local mediante el socket, pero en otras distribuciones es posible que root pueda conectarse por TCP desde otros servidores y/o equipos. Lo recomendable suele ser que para root no se permitan conexiones remotas.
+
+    \item “\textbf{Remove test database and access to it?}”: MySQL suele venir con una base de datos de prueba llamada “test”. Se puede borrar.
+
+    \item “\textbf{Reload privilege tables now?}”: Recargar los permisos de los privilegios, ya que hemos realizado cambios en las contraseñas.
+\end{itemize}
+
+
+\section{Ficheros de configuración}
+Como es habitual en GNU/Linux, los ficheros de configuración de los servicios están situados en el path \configdir{\etc} en este caso concreto dentro de la ruta \configdir{/etc/mysql} MySQL puede leer distintos ficheros de configuración, por lo que dependiendo de la distribución puede variar cuál tengamos, pero el orden suele ser:
+
+\begin{itemize}
+    \item \configfile{/etc/my.cnf}: Es el primer fichero de configuración que se busca (en Ubuntu no lo tendremos)
+    \item \configfile{/etc/mysql/my.cnf} : Fichero principal de configuración. En Ubuntu es un enlace simbólico a   \configfile{/etc/alternatives/my.cnf} que a su vez es un enlace simbólico a \configfile{/etc/mysql/mysql.cnf}. Esto es debido a que en versiones antiguas esta última ruta era la oficial.
+\end{itemize}
+
+Si vemos este fichero de configuración veremos que tiene una directiva “\textbf{!includedir}”, esto significa que se van a incluir todos los ficheros con extensión “\textbf{cnf}” de esos directorios.
+
+Estos ficheros de configuración tienen el formato conocido como “INI” y suele ser de este aspecto:
+
+\begin{mycode}{Ejemplo de fichero de configuración por secciones}{ini}{}
+[section]
+option1    = value
+
+[section2]
+option2     = value
+\end{mycode}
+
+Debido a que durante la instalación de MySQL se han instalado otras herramientas, la sección determinará para qué servicio o aplicación será esa parte de la configuración:
+
+\begin{itemize}
+    \item \textbf{mysqld}:  servidor MySQL (\textbf{mysql d}aemon)
+    \item \textbf{mysql}: cliente de consola para realizar la conexión
+    \item \textbf{mysqldump}: programa para realizar backups de las bases de datos.
+\end{itemize}
+
+Cuando realicemos modificaciones en la configuración de la configuración, si es para el servidor de MySQL tendremos que realizar un reinicio del servicio para que estas modificaciones sean tenidas en cuenta.
+
+\subsection{Analizando la configuración inicial}
+Tal como hemos comentado previamente, los ficheros de configuración en \configdir{/etc/mysql} pueden estar en distintos ficheros, por lo que es recomendable echar un ojo a los ficheros que tenemos tras realizar la instalación. Vamos a analizar parte del fichero: \configfile{/etc/mysql/mysql.conf.d/mysqld.cnf}:
+
+
+\begin{mycode}{Ejemplo de fichero de configuración de MySQL}{ini}{}
+#
+# The MySQL database server configuration file.
+# ...
+[mysqld]
+#
+# * Basic Settings
+#
+user            = mysql
+# pid-file      = /var/run/mysqld/mysqld.pid
+# socket        = /var/run/mysqld/mysqld.sock
+# port          = 3306
+# datadir       = /var/lib/mysql
+bind-address      = 127.0.0.1
+
+#
+# * Fine Tuning
+#
+key_buffer_size         = 16M
+# max_connections        = 151
+
+#
+# * Logging and Replication
+#
+# Both location gets rotated by the cronjob.
+#
+# Log all queries
+# Be aware that this log type is a performance killer.
+# general_log_file        = /var/log/mysql/query.log
+# general_log             = 1
+#
+# Error log - should be very few entries.
+#
+log_error = /var/log/mysql/error.log
+#
+# Here you can see queries with especially long duration
+# slow_query_log                = 1
+# slow_query_log_file   = /var/log/mysql/mysql-slow.log
+# long_query_time = 2
+# log-queries-not-using-indexes
+\end{mycode}
+
+Como se puede comprobar, en el fichero se pueden comprobar distintos tipos de filas, y el usar un editor que realice resaltado de sintaxis nos puede ayudar a diferenciar las líneas y lo que son. Vamos a realizar una pequeña explicación de varias líneas:
+
+\begin{itemize}
+    \item Líneas que empiezan por “\textbf{\#}”:  Al igual que sucede con otros ficheros de configuración, en este caso las líneas que empiezan por almohadilla, o “\#”, son comentarios. Estas líneas son ignoradas y nos pueden ayudar a comprender la estructura del fichero o podremos poner comentarios para explicar para qué sirve una directiva de configuración.
+    \item \textbf{[mysqld]}: Es el comienzo de la sección, y como se ha dicho previamente, esta sección será la que se utilice al arrancar MySQL. Por lo tanto, toda directiva de configuración dentro de esta sección servirá para modificar el comportamiento por defecto del servidor.
+    \item \textbf{user}: indica al servidor MySQL con qué usuario arrancará el servidor
+    \item \textbf{bind-address}: dirección en la que escuchará el servidor MySQL al arrancar
+    \item \textbf{log\_error}: fichero donde aparecerá lo acontecido durante el arranque del servicio y en caso de haber errores nos indicará parte de la razón.
+\end{itemize}
+
+Otras variables que aparecen comentadas en la configuración inicial y por tanto el valor que tiene esa opción de configuración no tiene por qué ser la que se esté utilizando actualmente:
+
+\begin{itemize}
+    \item \textbf{pid-file}: fichero donde se escribirá el PID (\textit{Process IDentificator}) durante el arranque.
+    \item \textbf{socket}: fichero donde está el socket.
+    \item \textbf{port}: puerto en el que escucha MySQL.
+    \item \textbf{datadir}: lugar donde se almacena todos los datos de las bases de datos.
+    \item \textbf{max\_connections}: número máximo de conexiones que aceptará MySQL
+    \item \textbf{general\_log\_file}: lugar donde se escribe el log general en caso de estar activo.
+    \item \textbf{general\_log}: activar, o no, el log general. Como se puede comprobar en un comentario previo, puede suponer un problema en el rendimiento del servidor.
+    \item \textbf{slow\_query\_log}: log de queries lentas.
+    \item \textbf{long\_query\_time}: el tiempo mínimo para que una slow query se loguee.
+    \item \textbf{log-queries-not-using-indexes}: loguear las queries que no usan índices.
+\end{itemize}
+
+Como se puede ver en estas variables de configuración, y en las anteriores, el nombre de las mismas suele ser bastante auto-explicativo, por lo que nos podemos hacer una pequeña idea de lo que pueden hacer leyendo el nombre. Eso no quita para que en caso de duda, debemos consultar el \href{https://dev.mysql.com/doc/refman/8.0/en/server-option-variable-reference.html}{listado completo de variables} que puede llegar a tener MySQL.
+
+Como se ha comentado previamente, en caso de realizar una modificación en el fichero de configuración, tendremos que realizar un reinicio del servicio como veremos posteriormente.
+
+\subsection{Validando la configuración}
+Las variables de configuración que hemos visto hasta ahora cuentan con dos apartados:
+
+\begin{itemize}
+    \item \textbf{Nombre de la variable}: puede ser una única palabra (\textbf{port}, \textbf{socket}) o varias seguidas de guión bajo (\textbf{bind\_address}, \textbf{slow\_query\_log}).
+    \item \textbf{Valor de la variable}: Es el valor que aparece a la derecha del igual (“=”) y vemos que pueden tener distintos valores: mysql, 127.0.0.1, 16M , …
+\end{itemize}
+
+Los nombres de las variables es algo que no nos podemos inventar, y es por ello por lo que deben estar bien escritas en el fichero de configuración. En caso de escribir una variable que no exista, el servidor no arrancará si hacemos un reinicio del mismo. Ejemplo:
+
+\begin{mycode}{Ejemplo de log de error}{ini}{\footnotesize}
+2020-08-01T11:35:50.488392Z 0 [ERROR] [MY-000067] [Server] unknown variable 'mal=32M'
+\end{mycode}
+
+Como se puede ver en esta línea de log, hay un error al haber escrito una variable desconocida (en este caso el nombre de la variable es “mal”). Esto hace que el servidor no arranque y por tanto no se pueda acceder a él y haya una pérdida de servicio. Esto no debe suceder en un servidor en producción.
+
+Para evitar este problema, antes de realizar cualquier reinicio del servidor, debemos asegurarnos que el fichero de configuración no contiene variables desconocidas:
+
+\begin{mycode}{Confirmar estado de la configuración}{console}{\footnotesize}
+root@ubuntu:/etc/mysql/mysql.conf.d# mysqld --validate-config
+
+2020-08-01T12:02:41.763658Z 0 [ERROR] [MY-000067] [Server] unknown variable 'mal=32M'
+2020-08-01T12:02:41.763689Z 0 [ERROR] [MY-010119] [Server] Aborting
+\end{mycode}
+
+
+Esta opción nos puede ser útil si realizamos una actualización de MySQL y en la nueva versión ya no existen variables de versiones anteriores (es raro, pero puede haber opciones obsoletas).
+
+\errorbox{\textbf{Esta validación de configuración no hace una comprobación exhaustiva del valor adjudicado a la variable}}
+
+Esta validación de configuración no hace una comprobación exhaustiva del valor adjudicado a la variable, por lo que en caso de que la variable sea correcta pero el valor adjudicado sea erróneo, al reiniciar el servidor tendremos que comprobar el log de errores para ver qué sucede. Por ejemplo, de tener lo siguiente en la configuración:
+
+\begin{mycode}{Error puesto en la configuración}{ini}{}
+bind-address            = 127.0.0.1z
+\end{mycode}
+
+Al intentar reiniciar, veremos el siguiente error en \configfile{/var/log/mysql/error.log}:
+
+\begin{mycode}{Error en el log}{ini}{}
+[ERROR] [MY-010255] [Server] Can't create IP socket: Invalid argument
+\end{mycode}
+
+En cambio, si otras variables tienen un valor incorrecto, el servidor arrancará, y el valor que cogerá la variable dependerá de cómo se parsea el fichero de configuración. Por ejemplo:
+
+\begin{mycode}{Error en la configuración}{ini}{}
+key_buffer_size            = 16Mz
+max_connections            = -1
+\end{mycode}
+
+Para conocer qué valor pueden tener estas variables, lo mejor es ir a la documentación y mirar la variable que queremos modificar o agregar.  Por ejemplo, para \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log}{slow\_query\_log} veremos que en la documentación tiene la siguiente tabla:
+
+% TODO: cambiar imagen por tabla
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{tabla_slow_query_log.png}
+    \vspace{-20pt}
+\end{center}
+
+Esta tabla nos da mucha información acerca de la variable, ya sea para poder ver qué tipo de valor es (Boolean en este caso), su valor por defecto (OFF) y si podremos o no modificarla dinámicamente (Dynamic = Yes). El valor por defecto será el valor que obtendrá la variable si no aparece en el fichero de configuración con un valor puesto por nosotros.
+
+Otro ejemplo, \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_bind_address}{bind\_address}:
+
+% TODO: cambiar imagen por tabla
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{tabla_bind_addr.png}
+    \vspace{-20pt}
+\end{center}
+
+\section{Variables de configuración en MySQL}
+Tal como hemos visto, el listado completo de variables tiene cientos de posibles variables que podemos ver o modificar para ajustar el servidor a nuestros intereses. Las variables se deben separar en dos partes:
+
+\begin{itemize}
+    \item \textbf{System Var}: Variables que sirven para el arranque del servidor o para ajustar el comportamiento del mismo. Se pueden modificar.
+    \item \textbf{Status Var}: Variables para comprobar el estado del servidor. Sólo las podremos leer.
+\end{itemize}
+
+Las variables que podremos modificar se pueden pasar por:
+
+\begin{itemize}
+    \item \textbf{Fichero de configuración}: la versión más cómoda, tal como hemos visto previamente. Hará que nuestro servidor siempre arranque con la misma configuración ya que los ficheros estarán escritos en el servidor.
+    \item \textbf{Línea de comandos}: al arrancar mysqld, se le pueden pasar como parámetros estas variables con los valores que queramos. Se nos puede olvidar pasar algún parámetro.
+\end{itemize}
+
+Hay variables del sistema que si nos fijamos en la tabla no se puede pasar por fichero o por línea de comandos. Esto es debido a que son variables internas de cómo ha sido compilado MySQL o que tienen en cuenta las librerías del sistemas. Por ejemplo: \textbf{version}, \textbf{have\_ssl}.
+
+Si nos fijamos en la columna “\textbf{Var Scope}” vemos que puede tener los valores:
+
+\begin{itemize}
+    \item \textbf{Global} : son variables que afectan a las nuevas conexiones que se realizan.
+    \item \textbf{Session} : son variables que afectan a la sesión actual. Si intentamos leer una variable de sesión que no existe, nos mostrará el valor global.
+    \item \textbf{Both} : son variables que existen en ambos estados, global y en sesión, y pueden diferir.
+    \item \textbf{Varies} : Hay unas pocas variables que tienen esta opción (y también en la columna Dynamic) y nos indica que varía dependiendo de la versión de MySQL que estemos usando.
+\end{itemize}
+
+\subsection{Comprobando las variables de estado (STATUS)}
+El \href{https://dev.mysql.com/doc/refman/8.0/en/server-status-variable-reference.html}{listado de variables} de estado nos muestra el nombre de las variables por las que podemos preguntar, el tipo de valor que pueden tener y si son globales o de sesión.
+
+Para comprobar el estado de las variables globales del servidor:
+
+\begin{mycode}{Ver variables de estado}{mysql}{}
+mysql> SHOW GLOBAL STATUS;
+\end{mycode}
+
+Si nos interesa buscar por el nombre de alguna variable de la sesión y obtener su estado:
+
+\begin{mycode}{Ver variables de sesión}{mysql}{}
+mysql> SHOW SESSION STATUS LIKE '%slow%';
++-----------------------------+-------+
+| Variable_name               | Value |
++-----------------------------+-------+
+| Slow_launch_threads         | 0     |
+| Slow_queries                | 0     |
++-----------------------------+-------+
+2 rows in set (0.01 sec)
+\end{mycode}
+
+\subsection{Comprobando las variables del sistema (System)}
+Hemos visto que en los ficheros de configuración no están todas las variables que hemos visto en la \href{https://dev.mysql.com/doc/refman/8.0/en/server-option-variable-reference.html}{documentación}, y no tendría mucho sentido tener que estar yendo a ella para mirar qué variables tenemos y sus posibles valores por defecto. Para ver las variables globales del sistema, \textbf{es obligatorio poner GLOBAL}:
+
+\begin{mycode}{Ver variables globales}{mysql}{}
+mysql> SHOW GLOBAL VARIABLES;
+\end{mycode}
+
+Si queremos buscar por una variable en concreto en la sesión, poner SESSION es opcional (en lugar de GLOBAL).
+
+De no poner en qué ámbito queremos mirar las variables, se presupone que queremos ver el estado de la variable en la sesión actual.
+
+Si queremos buscar una variable que contenga algo en el nombre podremos hacer uso de:
+
+\begin{mycode}{Ver variables globales}{mysql}{}
+mysql> SHOW VARIABLES like '%slow%';
++----------------------------+---------------------------------+
+| Variable_name              | Value                           |
++----------------------------+---------------------------------+
+| log_slow_admin_statements  | OFF                             |
+| log_slow_extra             | OFF                             |
+| log_slow_slave_statements  | OFF                             |
+| slow_launch_time           | 2                               |
+| slow_query_log             | OFF                             |
+| slow_query_log_file        | /var/lib/mysql/ubuntu-slow.log  |
++----------------------------+---------------------------------+
+6 rows in set (0.01 sec)
+\end{mycode}
+
+De esta manera buscamos las variables que nos puedan interesar y vemos el valor que tienen actualmente en la sesión, para así poder ver si nos interesa cambiarlo.
+
+También podemos hacer uso desde la línea de comandos con el comando \commandbox{mysqladmin}, pero no tenemos tanta libertad como desde el CLI de MySQL :
+
+\begin{mycode}{Ver variables desde la consola}{console}{}
+root@server1:~# mysqladmin  variables
+\end{mycode}
+
+\subsection{Modificar configuración “en caliente”}
+Debido a que un SGBD es un servicio crítico, no siempre podremos realizar una parada de servicio debido a un cambio de configuración. Esto afectaría a todas las conexiones que tiene establecido el servidor, y cualquier intento de consulta sería rechazado durante la parada y el arranque del mismo.
+
+No sólo eso, ya que cuando un SGBD está en funcionamiento, guarda información en memoria RAM (a modo de caché para las peticiones más realizadas, traspasa parte de las tablas a memoria, … ) y en caso de realizar un reinicio, esa memoria se liberaría y por tanto al arrancar se debería volver a pedir los datos a disco duro, haciendo que los primeros instantes de servicio sea lento.
+
+Por ello, \textbf{se pueden realizar modificaciones de la configuración sin parar el servicio}, lo que se suele denominar “hacer modificaciones en caliente”.
+
+Bien es cierto que no todas las variables se pueden modificar de esta manera, ya que algunas son necesarias durante el arranque del servicio. Por ejemplo:
+
+\begin{itemize}
+    \item \textbf{port}: no podrá ser modificada “en caliente”, ya que el puerto debe de ser algo que se necesita durante el arranque.
+    \item \textbf{bind\_address}: lo mismo que la anterior.
+    \item \textbf{slow\_query\_log}:  si se puede modificar en caliente.
+\end{itemize}
+
+Para conocer si una directiva puede ser modificada en tiempo de ejecución podremos ir al \href{https://dev.mysql.com/doc/refman/8.0/en/server-option-variable-reference.html}{listado completo de variables} y comprobar la columna “Dynamic”, si aparece “Yes” es que se podrá modificar. Anteriormente hemos visto cómo la variable \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log}{slow\_query\_log} tiene la opción “Dynamic” a “Yes”, por lo que se puede modificar el valor dinámicamente, y para cambiarlo haremos:
+
+\begin{mycode}{Cambiar variable}{mysql}{}
+mysql> SET slow_query_log = On;
+ERROR 1229 (HY000): Variable 'slow_query_log' is a GLOBAL variable
+and should be set with SET GLOBAL
+
+
+mysql> SET GLOBAL slow_query_log = On;
+Query OK, 0 rows affected (0.01 sec)
+
+-- alternativa
+mysql> SET @@GLOBAL.slow_query_log = On;
+Query OK, 0 rows affected (0.01 sec)
+\end{mycode}
+
+Como se puede comprobar, se ha intentado modificar la variable sin poner “GLOBAL”, y debido a que “slow\_query\_log” es una variable global, nos ha dado un error. Por eso \textbf{es muy importante tener en cuenta qué tipo de variable y para qué ámbito queremos realizar la modificación.} También se puede ver que la modificación se puede realizar de dos maneras.
+
+\warnbox{\textbf{Hay que tener en cuenta que la variable modificada en caliente no se guarda en la configuración y por tanto se perderá en el siguiente reinicio.}}
+
+\subsubsection{Persistencia de las modificaciones}
+MySQL permite que estas variables que podamos hacer que estas variables persistan tras el arranque haciendo:
+
+\begin{mycode}{Cambiar variable de manera persistente}{mysql}{}
+mysql> SET PERSIST slow_query_log  = ON;
+\end{mycode}
+
+Esto lo que hace es crear un fichero en \configfile{/var/lib/mysql/mysqld-auto.cnf} con formato \hyperlink{json}{JSON} con las variables que se ha dado la orden de persistir.
+
+\errorbox{\textbf{No se aconseja utilizar este método. Mejor modificar la configuración.}}
+
+Aunque resulte cómodo, se aconseja realizar la modificación de la variable en el fichero de configuración correspondiente para tener todo de manera más centralizada. Para deshacer esta persistencia:
+
+\begin{mycode}{Eliminar las variables persistentes}{mysql}{}
+mysql> RESET PERSIST;
+Query OK, 0 rows affected (0.00 sec)
+\end{mycode}
+
+Y eliminará todas las entradas del fichero antes descrito: \configfile{/var/lib/mysql/mysqld-auto.cnf}.
+
+\chapter{SQL básico}
+\section{Introducción}
+SQL (por sus siglas en inglés \textit{\textbf{S}tructured \textbf{Q}uery \textbf{L}anguage}) surgió como una evolución de un lenguaje previo llamado SEQUEL. SQL nació en IBM en 1977. Unos años más tarde fue considerado un estándar ANSI y al año siguiente (1987) un estándar ISO.
+
+SQL tiene las siguientes características:
+
+\begin{itemize}
+    \item \textbf{Lenguaje de definición de datos (DDL)}: nos permite crear y/o manipular la estructura de la base de datos y las relaciones que en ellas deben existir.
+    \item \textbf{Lenguaje de manipulación de datos (DML)}: este apartado se puede subdividir en las siguientes tareas:
+    \begin{itemize}
+        \item Consultar determinada información.
+        \item Insertar nuevos datos.
+        \item Modificar los datos existentes.
+        \item Eliminar datos que ya no sean necesarios.
+    \end{itemize}
+    \item \textbf{Control de transacciones}: para definir cuándo se inicia, cuándo finaliza o si es necesario deshacer una transacción.
+    \item \textbf{Control de datos}: permite asignar y revocar permisos a los usuarios, tanto de acceso a la información como de operaciones que pueden realizar sobre los mismos.
+\end{itemize}
+
+El lenguaje SQL puede ser utilizado:
+
+\begin{itemize}
+    \item De forma \textbf{interactiva}: en una consola o desde un CLI instalado en la propia máquina donde se encuentra el servidor u otra máquina remota.
+    \item \textbf{Inmerso} dentro de un lenguaje de programación anfitrión, ejecutando consultas desde Java o PHP, por ejemplo.
+\end{itemize}
+
+Es un \textbf{lenguaje declarativo} ya que permite especificar la operación que se debe llevar a cabo (en forma de sentencias), pero no la forma en la que se llevará a cabo. Esa será la tarea del SGBD, ejecutar la tarea de la manera más adecuada para obtener los datos.
+
+Los SGBD implementan (de manera parcial o total) el estándar SQL y sobre él añaden funcionalidades propias e incluso lenguajes de programación propios derivados de SQL (PL/SQL en Oracle, PL/pgSQL en PostgreSQL. Por lo tanto, \textbf{SQL no es un lenguaje de programación, pero hay SGBDs que han creado dicha funcionalidad}.
+
+Debido a que SQL es un estándar, las funciones principales deberían funcionar en cualquier SGBD que haga uso del estándar, aunque es cierto que algunos SGBD amplían SQL con funciones o procedimientos propios que otros SGBD no tienen porqué tener. Esas funciones o procedimientos extra a veces se incorporan al estándar un tiempo después.
+
+Dentro del lenguaje SQL podemos separar las consultas o acciones teniendo en cuenta qué realizamos con ellos.
+
+
+\section{Lenguaje de definición de datos: DDL}
+El DDL (Data Definition Language) de SQL proporciona comandos para la definición de esquemas de relación, borrado de relaciones y modificaciones de los esquemas de relación. Existen tres operaciones básicas: \textbf{CREATE}, \textbf{ALTER} y \textbf{DROP}.
+
+\subsection{Gestión de bases de datos}
+La función de un SGBD es la de proporcionar la capacidad de tener distintas bases de datos en el sistema, es por ello que tenemos que aprender a gestionar las bases de datos que tenemos, o en un momento dado crear bases de datos.
