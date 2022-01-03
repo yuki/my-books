@@ -1,0 +1,47 @@
+\documentclass{../../../yukibook.cls/yukibook}
+
+\makeatletter
+\@addtoreset{chapter}{part}
+
+\begin{document}
+
+    \yukibook{Administración de Sistemas Gestores de Bases de Datos} 	% Title
+    {Rubén Gómez}  % Author
+    {2021-2022}    % Year
+    {Técnico superior en Administración de \linebreak Sistemas informáticos en red} % Name of degree
+    {}	% catch phrase
+    {}	% the phrase's author
+    {img/portada.png} %cover
+    {sored} %mini-title
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \part{Administración de Sistemas Gestores de Bases de Datos}
+    \graphicspath{{img/sgbd/}}
+    \input{sgbd.tex}
+
+    \part{Anexos}
+
+    \graphicspath{{../../../anexos/instalar_ubuntu_lts/}}
+    \input{../../../anexos/instalar_ubuntu_lts.tex}
+
+%    \graphicspath{{../../../anexos/ubuntu_raid1/}}
+%    \input{../../../anexos/ubuntu_raid1.tex}
+%
+%    \graphicspath{{../../../anexos/gestion_backups/}}
+%    \input{../../../anexos/gestion_backups.tex}
+%
+%    \graphicspath{{../../../anexos/sistemas_monitorizacion/}}
+%    \input{../../../anexos/sistemas_monitorizacion.tex}
+%
+%    \graphicspath{{../../../anexos/monitorizacion_munin/}}
+%    \input{../../../anexos/monitorizacion_munin.tex}
+%
+%    \graphicspath{{../../../anexos/virtualbox_networking/}}
+%    \input{../../../anexos/virtualbox_networking.tex}
+%
+    \graphicspath{{../../../anexos/}}
+    \input{../../../anexos/glosario.tex}
+
+\end{document}
