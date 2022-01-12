@@ -1,3 +1,4 @@
+\hypertarget{gestion_copias_de_seguridad}{}
 \chapter{Gestión de copias de seguridad (backups)}
 
 \section{Introducción}
@@ -9,6 +10,7 @@ El proceso de copia de seguridad también tiene que tener en cuenta el método d
 A la hora de pensar un sistema de copias de seguridad, tendremos que tener en cuenta los siguientes puntos:
 
 \begin{itemize}
+    \item Importancia de los datos
     \item Espacio ocupado por la copia de seguridad
     \item Ubicación de la copia de seguridad
     \item Plan de recuperación ante desastre
@@ -30,25 +32,51 @@ Y por último, la estrategia a utilizar:
 
 Antes de realizar la copia de seguridad de los datos tendremos que tener muy en cuenta distintos apartados, que deberán ser analizados en detalle y puede que modificados en el futuro.
 
+\section{A tener en cuenta}
+Durante la \textbf{planificación} de la creación de las copias de seguridad hay ciertos aspectos que tenemos que tener en cuenta para que la gestión de copias de seguridad se realice de manera satisfactoria.
+
+Esta planificación debe realizarse conociendo los datos que maneja la empresa, la importancia de los mismos, el volumen que ocupan, la cantidad de cambios que reciben, ...
+
+\infobox{Una buena planificación para la gestión de copias de seguridad de una empresa puede involucrar a varias personas de distintos ámbitos internos.}
+
+\subsection{Conocer los datos y la importancia de los mismos}
+Para saber sobre qué datos tenemos que realizar las copias de seguridad, debemos conocer los datos que manejamos en la empresa, la importancia que tienen y su ubicación. \textbf{Ejemplo}: no es lo mismo la importancia de los datos gestionados en la base de datos de clientes, o el directorio “Descargas” el PC de un usuario.
+
+También tendremos que conocer el tamaño actual de esos datos, y saber cuánto volumen total alcanzan. Cuanto mayor tamaño tengan, también mayor será el espacio ocupado por las copias de seguridad.
 
 
-\section{Punto máximo en el tiempo que podemos recuperar}
-Antes de realizar un sistema de copia de seguridad \textbf{deberemos pensar cuánto tiempo para atrás queremos poder llegar para poder realizar la restauración de los datos}. No será lo mismo querer realizar una restauración de los datos de hace una hora, un día, de hace una semana o de hace un año, ya que esta decisión influirá en toda estrategia de copia de seguridad.
+Otro aspecto a tener en cuenta es saber las modificaciones que sufren esos datos, y estimar el volumen de esos cambios. \textbf{Ejemplo}: no es lo mismo que una base de datos reciba 10 clientes nuevos al día o que reciba 15.000 ventas a la hora en nuestra tienda online.
 
-Es por eso, que a los datos hay que darle la importancia que se merece, y es bastante probable que distintos datos tengan distintos puntos de restauración máximo.
 
-Por ejemplo: no es lo mismos los datos de facturación de una empresa, que la ley nos marca que debemos guardar dichos datos (4 años), los datos de una página web que apenas cambia (igual nos sirve una copia al  mes) o la carpeta personal de un usuario en su equipo (dado que en su equipo no debería guardar nada importante de la empresa, se podría asumir una pérdida de datos).
+\infobox{\textbf{Debemos conocer los datos que existen en nuestra empresa, la ubicación, la importancia y el volumen que ocupan para así poder realizar un buen plan de gestión de copias de seguridad.}}
 
-\infobox{\textbf{Debemos conocer los datos que existen en nuestra empresa, la ubicación y la importancia  de los mismos para así poder realizar un plan de copias de seguridad.}}
-
-\section{Espacio ocupado por la copia de seguridad}
-Estimar el espacio que nos va a ocupar una copia de seguridad puede parecer sencillo, pero no siempre es así.
+\subsection{Espacio ocupado por la copia de seguridad}
+Estimar el espacio que nos va a ocupar una copia de seguridad puede parecer sencillo, pero no siempre es así, y es por eso que conocer los datos, tal como hemos dicho antes, es de vital importancia.
 
 Tendremos que tener en cuenta cuánto ocupan nuestros datos originales, cuál va a ser la estrategia de backup a utilizar, estimar el incremento de espacio que puede haber en los datos originales…
 
-Por lo tanto, siempre deberíamos estimar por alto el espacio ocupado, y siempre pudiendo realizar la expansión de ese espacio “en caliente”, para que las copias de seguridad funcionen cada día. No realizar copias de seguridad debido a falta de espacio debería ser considerado un fallo de primer orden y que debe ser subsanado lo antes posible.
+Por lo tanto, siempre deberíamos estimar por alto el espacio ocupado, y siempre pudiendo realizar la expansión de ese espacio “en caliente”, para que las copias de seguridad funcionen cada día.
 
-\section{Ubicación de la copia de seguridad}
+\errorbox{\textbf{No realizar copias de seguridad debido a falta de espacio debería ser considerado un fallo de primer orden y que debe ser subsanado lo antes posible.}}
+
+
+\subsection{Punto mínimo en el tiempo que queremos recuperar}
+Es posible tener copias de seguridad que estén completamente actualizadas en cuanto se realizan cambios en los datos originales, pero la puesta a punto de estos sistemas puede no estar a nuestro alcance (por no conocer cómo se realizan o por un coste elevado).
+
+En ciertos casos, algunas empresas pueden aceptar la pérdida de ciertos datos, ya que el gestionar que las copias se realicen “en tiempo real” es más caro que el repetir el proceso de crear esos datos de nuevo.
+
+\textbf{Ejemplo}: Una empresa puede no necesitar hacer backup de la base de datos de cuándo fichan los empleados en tiempo real, porque si se pierden los datos de un día es asumible (el backup se hace cada noche). En cambio, la base de datos de marketing tiene que realizarse en tiempo real.
+
+
+\subsection{Punto máximo en el tiempo que queremos recuperar}
+Otro aspecto importante a tener en cuenta es \textbf{pensar cuánto tiempo para atrás queremos poder llegar para poder realizar la restauración de los datos}. No será lo mismo querer realizar una restauración de los datos de hace una hora, un día, de hace una semana o de hace un año, ya que esta decisión influirá en toda estrategia de copia de seguridad.
+
+Es por eso, que a los datos hay que darle la importancia que se merece, y es bastante probable que distintos datos tengan distintos puntos de restauración máximo.
+
+\textbf{Ejemplo}: No es lo mismo los datos de facturación de una empresa, que la ley nos marca que debemos guardar dichos datos (4 años), los datos de una página web que apenas cambia (igual nos sirve una copia a la semana) o la carpeta personal de un usuario en su equipo (dado que en su equipo no debería guardar nada importante de la empresa, se podría asumir una pérdida de datos).
+
+
+\subsection{Ubicación de la copia de seguridad}
 Es muy importante también tener en cuenta cuál va a ser la ubicación de la copia de seguridad y las consecuencias que eso puede conllevar.
  Vamos a poner varios ejemplos:
 
@@ -64,13 +92,13 @@ Como se puede ver, cada ejemplo puede tener unos pros y unos contras.
 
 \errorbox{\textbf{La copia de seguridad nunca debería estar en el mismo equipo informático, y mucho menos en el mismo disco duro físico, que los datos originales.}}
 
-\section{Tiempo estimado de la copia}
+\subsection{Tiempo estimado de la copia}
 Teniendo en cuenta lo comentado previamente, el tiempo estimado de la copia de seguridad es muy importante, y es posible que varíe en el tiempo. No es lo mismo realizar la copia de seguridad de unos pocos megabytes o de varios gigabytes.
 
 Es por eso por lo que tendremos que tener en cuenta el tiempo que tarda en realizarse nuestras copias de seguridad para así asegurar que se realizan de manera correcta y no se solapan en el tiempo.
 
 
-\section{Plan de recuperación ante desastre}
+\subsection{Plan de recuperación ante desastre}
 Tan importante es tener una copia de seguridad como un plan ante un posible desastre. De nada sirve tener una copia de seguridad si restaurarla nos va a llevar semanas por no saber el estado de las mismas, o si su restauración es compleja.
 
 Por lo tanto, \textbf{es muy importante disponer de un plan de recuperación ante desastres que esté actualizado}, que contemple si ha habido modificaciones en la gestión de copias de seguridad, que tenga en cuenta los pasos a realizar…
@@ -91,7 +119,7 @@ El plan de recuperación ante desastre debería contener:
 
 \infobox{El plan de recuperación es algo que toda compañía debe tener a la hora de crear sus sistema de copias de seguridad, ya que deben de ir de la mano.}
 
-\section{Tiempo estimado de recuperación de los datos}
+\subsection{Tiempo estimado de recuperación de los datos}
 El último punto, pero no por ello menos importante, es el tiempo estimado de recuperación de los datos.
 
 \errorbox{\textbf{De poco sirve tener copias de seguridad y un plan de recuperación, si luego es posible que estemos dos semanas para recuperar los datos.}}
@@ -111,6 +139,7 @@ Teniendo en cuenta el gráfico anterior:
     \item[RTO:] es el objetivo de tiempo de recuperación (\textit{Recovery Time Objective}), y es el tiempo que se tarda en restablecer el servicio, o al menos los mínimos acordados. Cuanto menor sea el tiempo de recuperación, mejor.
     \item[RPO:] es el objetivo de punto de recuperación (\textit{Recovery Point Objective}), y es el último instante de tiempo previo al incidente al que los sistemas son capaces de regresar. Habitualmente suele ser marcado por la frecuencia con que se realicen las copias de seguridad. De nuevo, cuanto más cercano a T=0 mejor.
 \end{description}
+
 
 \section{Métodos de Backup}
 Existen distintas estrategias a la hora de crear un backup, por lo que tendremos que analizar los datos que queremos salvaguardar y decidir la mejor estrategia.
@@ -203,6 +232,24 @@ Este método puede ser el más complejo, ya que quizá tengamos que realizarlo a
 Si hacemos uso de un programa de gestión de backups, al final estaremos limitados a lo que el programa nos permita. Como se ha comentado, la estrategia incremental/diferencial suele ser la más ampliamente utilizada, por lo que casi todos los programas deberían tener esta opción.
 
 Dependiendo del programa, nos permitirá hacer mezclas de estrategias, realizar copias a sistemas remotos (la nube, por FTP, SSH…), varios cada día… Por lo que quedaría en nuestra mano analizar distintos programas y ver cuál es el que mejor se adecúa a nuestras necesidades.
+
+
+\section{Regla 3-2-1}
+Con todo lo dicho anteriormente, una de las estrategias más habituales, de manera generalizada y simplificada, es la conocida como la “\textbf{Regla 3-2-1}”.
+
+Esta regla se resume en:
+\begin{itemize}
+    \item \textbf{3 copias completas} de los datos.
+    \item En \textbf{2 tipos de almacenamiento distintos}
+    \item \textbf{1 de las copias debe estar fuera}
+\end{itemize}
+
+Imaginemos una base de datos de una tienda online que está situada en un servidor en un RACK junto con otros servidores nuestros en un proveedor contratado. En esta base de datos tenemos \textbf{los datos originales}.
+
+Haremos uso de otro de los servidores del RACK en el que realizaremos una copia de seguridad completa. Esta será la \textbf{segunda copia completa}, que está en otro servidor y que podremos acceder de manera rápida a ella.
+
+La \textbf{tercera copia} de los datos la tendremos en nuestra oficina, ya que realizaremos una copia remota de los datos. Esta tercera copia está situada fuera del proveedor contratado, por lo que si en ese CPD hubiese un incendio, tendríamos una copia en local.
+
 
 \section{Realización de simulacros de recuperación de los datos}
 \textbf{De nada sirve lo comentado hasta ahora, si no se realizan simulacros de desastre} y de recuperación de los datos para asegurar que todo funciona de manera correcta. Desgraciadamente, \textbf{también puede haber fallos en los sistemas de backups}, por lo que aunque creamos que se están realizando correctamente, quizá el día que vayamos a necesitarlos nos damos cuenta que no es así, por lo que no podríamos realizar la recuperación de datos.
