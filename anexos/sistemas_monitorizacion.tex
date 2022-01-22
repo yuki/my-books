@@ -1,3 +1,5 @@
+\hypertarget{sistemas_de_monitorizacion}{}
+
 \chapter{Sistemas de Monitorización}
 
 El sistema de monitorización se encarga de recopilar información acerca del estado de los servidores de una infraestructura. Entre las métricas y datos que debe recopilar se encuentran:
@@ -104,27 +106,7 @@ Tal como se ha comentado, en los servidores se suele realizar una monitorizació
 
 Es cierto que no será lo mismo monitorizar un sistema GNU/Linux o un sistema Windows (ya que puede variar alguno de las comprobaciones a realizar), pero el estado general que queremos conocer es el mismo. Por lo tanto, lo habitual es tener dos plantillas, una específica para servidores Windows y otra para GNU/Linux.
 
-\def\test{sgbd}
-\ifx\test\@minititle
-  %% THIS PART ONLY IN SGBD BOOK
-\subsection{Monitorización de SGBDs}
-En el caso que nos ocupa, el de los Sistemas Gestores de Bases de Datos, aparte de la monitorización básica comentada previamente, necesitaremos monitorizar el estado del SGBD propiamente dicho. Para ello, de nuevo, se crearía una plantilla específica para cada SGBD que podamos tener en nuestra infraestructura. No será lo mismo monitorizar un servidor basado en MySQL o un Oracle, aunque muchos checks a comprobar deban ser lo mismo, pero la manera en la que se realizará la comprobación en el servidor será distinta.
 
-Entre las comprobaciones que podemos realizar en un SGBD nos podemos encontrar con:
-\begin{itemize}
-    \item Servicio SGBD arrancado
-    \item Cantidad de RAM utilizada por el SGBD
-    \item Número de conexiones a las bases de datos
-    \item Número de hilos en ejecución del SGBD
-    \item Número de queries en ejecución
-    \item Número de tablas en memoria
-    \item Número de tablas bloqueadas
-    \item …
-
-\end{itemize}
-
-\else
-  %% THIS PART IN OTHER BOOKS
 \subsection{Monitorización de Servicios}
 Aparte de la monitorización básica comentada previamente, necesitaremos monitorizar el estado de los servicios que pueda tener el servidor propiamente dicho. Para ello, de nuevo, se crearía una plantilla específica para cada tipo de Servicio que podamos tener en nuestro servidor.
 
@@ -133,7 +115,7 @@ No será lo mismo monitorizar un servidor que tenga un servidor web, un servidor
 Es por eso que a la hora de realizar la monitorización de un servidor \textbf{es muy importante conocer qué funciones desempeña cada servidor en la infraestructura a la que pertenece} y analizar los servicios que tiene arrancados para posteriormente ser monitorizados.
 
 \infobox{\textbf{Es muy importante conocer qué funciones desempeña cada servidor en la infraestructura a la que pertenece.}}
-\fi
+
 
 \section{Tipos de monitorización}
 Existen varias maneras de realizar la monitorización de un servidor, y dependerá del gestor de monitorización que usemos (en caso de usar uno).
@@ -225,65 +207,8 @@ Existen otros sistemas de monitorización basados “en la nube”, cuya funcion
 \def\test{sgbd}
 \ifx\test\@minititle
 %% THIS PART ONLY IN SGBD BOOK
-
-\section{Monitorizar MySQL}
-Todo lo expuesto hasta ahora es referente a los sistemas de monitorización en general, y es similar en todos ellos. Tal como se ha comentado previamente, cuando un servidor cuenta con un servicio éste debe ser monitorizado, y dependiendo del servicio a monitorizar se realizará una serie de comprobaciones u otras.
-
-A la hora de monitorizar un sistema gestor de bases de datos deberíamos tener en cuenta al menos las siguientes comprobaciones, y en el caso de MySQL:
-\begin{itemize}
-    \item Número de conexiones actuales (usuarios/conexiones tiene el servicio)
-    \item Tiempo del servicio activo (uptime)
-    \item Número de hilos en ejecución
-    \item Tamaño de memoria utilizado
-    \item Tamaño de memoria caché utilizado
-    \item Número de tablas en memoria
-    \item Número de slow queries
-    \item Número de conexiones abortadas
-    \item Número de queries totales
-\end{itemize}
-
-En servidores en alta disponibilidad, deberíamos comprobar, en caso de un clúster:
-\begin{itemize}
-    \item Número de nodos en el clúster
-    \item Estado general del clúster
-    \item Latencia entre los nodos del clúster
-    \item Si el nodo está conectado al clúster
-    \begin{itemize}
-        \item  Puede pasar que un nodo “se salga” del clúster (o lo saquemos) para realizar mantenimiento
-    \end{itemize}
-\end{itemize}
-
-Si el servidor está dentro de una infraestructura de \textbf{Primario → Réplica}:
-\begin{itemize}
-    \item Estado de la replicación
-    \item Retraso de la replicación
-    \item Tamaño del binlog
-\end{itemize}
-
-Las comprobaciones expuestas son un mero ejemplo, y existen muchas más que podemos realizar a nuestros sistemas. Para poder realizar este tipo de monitorización podemos hacer uso de scripts propios (ya que muchas de las comprobaciones son consultas a variables de estado de MySQL), scripts creados por otras personas o scripts de monitorización hechos de manera exclusiva para MySQL.
-
-\subsection{Scripts propios}
-Para realizar gran parte de los checks expuestos previamente se puede hacer uso de scripts propios, ya que pueden realizar consultas de las variables de estado para comprobar y determinar si el estado es correcto.
-
-Un ejemplo de script creado \textit{ad hoc} para nuestro sistema podría ser:
-
-\begin{mycode}{Script propio para monitorizar}{bash}{}
-#!/bin/bash
-mysql -e "SHOW STATUS LIKE 'Slow_queries';" -N | awk '{print $2}'
-\end{mycode}
-
-\subsection{Percona monitoring tools}
-La alternativa a hacer uso de scripts propios es usar programas o scripts realizados por terceros, que estén ampliamente probados y que tienen detrás un equipo que quizá sea más amplio que el nuestro, y por tanto esté mejor probado.
-
-La empresa Percona tiene un par de soluciones sobre monitorización de SGBDs (no sólo para MySQL, también para \href{https://www.postgresql.org/}{PostgreSQL} y \href{https://www.mongodb.com/}{MongoDB}), que son:
-\begin{itemize}
-    \item \href{https://www.percona.com/software/database-tools/percona-monitoring-and-management}{\textbf{Percona Monitoring and Management}}: Un sistema completo de monitorización, interfaz web incluída, que podremos \href{https://www.percona.com/software/pmm/quickstart}{instalar} en nuestros propios servidores. Podemos ver aquí una \href{https://pmmdemo.percona.com/graph/}{demo}.
-
-    \includegraphics[width=\linewidth]{percona_tools.png}
-
-    \item \href{https://www.percona.com/software/database-tools/percona-monitoring-plugins}{\textbf{Percona Monitoring Plugins}}: En este caso son un conjunto de plugins (o scripts) que podremos utilizar en nuestro sistema de monitorización propio (Nagios, Centreon o Cacti). En la \href{https://www.percona.com/doc/percona-monitoring-plugins/LATEST/index.html}{documentación} explican cómo hacer uso de ellos.
-\end{itemize}
-
+\else
+%% THIS PART IN OTHER BOOKS
 \fi
 
 \clearpage
