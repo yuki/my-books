@@ -398,6 +398,7 @@ Para poder administrar y configurar de manera correcta MySQL tendremos que conoc
 Con esta información podremos realizar un primer análisis para intentar prever si el servidor donde está el servicio MySQL corriendo es suficiente o no. Si la instalación nos corresponde a nosotros, tendremos que conocer parte de las preguntas planteadas anteriormente para realizar la instalación en un servidor que vaya a poder adecuarse a las exigencias pedidas.
 
 
+\hypertarget{securizar_configuracion_inicial}{}
 \subsection{Securizar configuración inicial}
 Dependiendo del método elegido para instalar MySQL la configuración inicial puede venir con usuarios o bases de datos de prueba que no nos interesan y que se pueden borrar. Para poder securizarlo tenemos el siguiente comando:
 
@@ -960,3 +961,816 @@ mysql> DELETE FROM alumnos where dni = '87654321A';
 Como ya se ha visto previamente, los SGBDs deben de seguir el modelo ACID de transacciones para asegurar que los datos mantienen la integridad de los datos y el aislamiento a la hora de realizar transacciones sobre los mismos datos.
 
 Por ello, SQL permite realizar inicios de transacciones (\textit{\textbf{BEGIN}}) para posteriormente aplicar todos los cambios que se han realizado (\textit{\textbf{COMMIT}}) o cancelarlos (\textit{\textbf{ROLLBACK}}).
+
+
+\warnbox{MySQL utiliza el método \textbf{autocommit} por defecto}
+
+
+\subsubsection*{Empezar una transacción}
+Nos sirve a la hora de realizar grandes modificaciones en la base de datos. Se puede realizar de las dos maneras siguientes:
+
+\begin{mycode}{Hacer una transacción (se puede hacer de 2 maneras)}{mysql}{}
+mysql> BEGIN;
+-- alternativa:
+mysql> START TRANSACTION;
+\end{mycode}
+
+A partir de aquí cualquier acción que se realice no será aplicada (aunque sí lo podremos ver en la sesión actual) hasta que no se termine la transacción.
+
+\subsubsection*{Aplicar y terminar la transacción}
+Para aplicar los cambios realizados a lo largo de la transacción, y para que los cambios sean persistentes, se deberá ejecutar:
+
+\begin{mycode}{Aplicar y terminar la transacción}{mysql}{}
+mysql> COMMIT;
+\end{mycode}
+
+
+Tras esto, los cambios serán realizados y el resto de conexiones verán las modificaciones realizadas.
+
+
+\subsubsection*{Cancelar transacción}
+
+En caso de que queramos cancelar las ejecuciones realizadas desde el inicio de la transacción, deberemos ejecutar:
+
+\begin{mycode}{Cancelar la transacción y todo lo realizado en ella}{mysql}{}
+mysql> ROLLBACK;
+\end{mycode}
+
+
+\subsubsection*{Modificar comportamiento autocommit}
+El comportamiento por defecto de MySQL es que cualquier ejecución es una transacción, por lo que realizará el bloqueo de datos necesario o realizará la modificación de los datos. Si queremos cambiar este comportamiento para la sesión actual deberemos hacer:
+
+\begin{mycode}{Modifiar el comportamiento del autocommit}{mysql}{}
+mysql> SET autocommit = OFF;
+\end{mycode}
+
+
+
+\chapter{Gestión de usuarios}
+
+MySQL permite la creación de cuentas que habilitan la conexión de clientes de usuario al servidor y el acceso a los datos que gestiona el servidor (ya sea conexiones mediante CLI o aplicación).
+
+La función principal del sistema de privilegios de MySQL es la de permitir la conexión que se conecta desde un equipo remoto y asociarla a un usuario con permisos sobre una base de datos para que pueda ejecutar funciones tal que  SELECT, INSERT, UPDATE y DELETE. Un usuario también puede recibir permisos para realizar funciones privilegiadas.
+
+Para controlar qué usuarios pueden conectarse, cada cuenta tendrá asignada un credencial de autenticación, como puede ser la contraseña. Las funciones sobre usuarios más habituales son: CREATE USER, GRANT y REVOKE.
+
+El sistema de privilegios de MySQL asegura que \textbf{los usuarios sólo pueden realizar las funciones que le son permitidas}. Cuando un usuario se conecta al servidor MySQL \textbf{su identidad es determinada por}:
+
+\begin{itemize}
+    \item El equipo remoto desde el que se realiza la conexión: no es lo mismo que la conexión se realice desde la IP local, desde una IP 192.168.1.100 o desde 172.26.20.2
+    \item El nombre de usuario que se haya especificado.
+\end{itemize}
+
+Cuando se realice la conexión, el sistema otorga privilegios de acuerdo con la  identidad del usuario y desde donde se recibe la conexión, permitiendo, o no, ciertas acciones sobre los datos.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.6\linewidth]{cliente_servidor.png}
+\end{center}
+
+
+\section{Cuentas de usuarios y contraseñas}
+MySQL guarda las cuentas de usuario y sus contraseñas en la tabla \textbf{user} de la base de datos del sistema \textbf{mysql}. Como ya se ha indicado, una cuenta se define con el nombre de usuario y el host desde el que se establece la conexión. MySQL soporta distintos tipos de autenticación, no sólo contraseñas. La autenticación está gestionado por el \href{https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html}{plugin de autenticación de cuentas}. Algunos tipos de autenticación que soporta MySQL 8:
+
+\begin{itemize}
+    \item Contraseña
+    \item Autenticación PAM (para Linux y Mac)
+    \item LDAP
+    \item Autenticación mediante socket (conexiones locales)
+\end{itemize}
+
+
+\subsection{Creación de usuarios}
+Como ya se ha explicado, es importante entender que para que la conexión sea correcta no sólo importa el usuario de conexión, sino desde donde se realiza la misma. Es por ello que a la hora de crear un usuario tendremos que conocer este dato ya que es importante. Aparte, tendremos que poner una contraseña, si es necesario, que sea lo suficientemente segura como para que pase el paso realizado en la \hyperlink{securizar_configuracion_inicial}{securización inicial}. A la hora de crear usuarios \href{https://dev.mysql.com/doc/refman/8.0/en/create-user.html}{hay muchas opciones}.
+
+
+\subsubsection*{Crear usuario local (SOCKET)}
+
+El usuario solo se va a conectar desde la propia máquina, conexión mediante socket:
+
+\begin{mycode}{Crear usuario que sólo se conecte por socket}{mysql}{}
+mysql> CREATE USER 'mikeldi'@'localhost' IDENTIFIED WITH auth_socket;
+\end{mycode}
+
+
+\subsubsection*{Crear usuario local (conexión TCP)}
+La conexión va a ser local, pero se va a hacer uso del protocolo TCP, y en este caso es necesario introducir contraseña.
+
+\begin{mycode}{Crear usuario que sólo se conecte por TCP}{mysql}{}
+mysql> CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'password';
+\end{mycode}
+
+
+\subsubsection*{Crear usuario para conexión remota (TCP)}
+Si queremos que la conexión se pueda realizar desde una IP concreta:
+
+\begin{mycode}{Crear usuario que sólo pueda conectarse desde una IP}{mysql}{}
+mysql> CREATE USER 'usuario2'@'192.168.122.1' IDENTIFIED BY 'password';
+\end{mycode}
+
+Si queremos que un usuario se pueda conectar desde cualquier IP:
+
+\begin{mycode}{Crear usuario que pueda conectarse desde cualquier IP}{mysql}{}
+mysql> CREATE USER 'usuario3'@'%' IDENTIFIED BY 'password';
+\end{mycode}
+
+
+\subsubsection*{Crear usuario y que tenga que se le expire la contraseña}
+El usuario se crea con la contraseña del comando, pero cuando se loguee no podrá realizar nada hasta que cambie la contraseña (ver más adelante):
+
+\begin{mycode}{Crear usuario y que la contraseña expire}{mysql}{{\small }}
+mysql> CREATE USER 'usuario4'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE;
+\end{mycode}
+
+Si queremos que la contraseña le expire en 10 días:
+
+\begin{mycode}{Crear usuario y que la contraseña expire}{mysql}{{\scriptsize}}
+mysql> CREATE USER 'usuario5'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE INTERVAL 10 DAY;
+\end{mycode}
+
+
+
+\subsection{Conexión de usuarios}
+Dependiendo de cómo se realice la conexión (por socket o TCP) el método de conexión será de una manera u otra.
+
+
+\subsubsection*{Conexión por socket}
+Para poder conectarnos por socket, tenemos que tener acceso a él, siendo lo habitual conexión local. El usuario utilizado será el usuario del sistema:
+
+\begin{mycode}{Conexión por socket desde el usuario root}{console}{}
+root@server1:~# mysql
+\end{mycode}
+
+
+\subsubsection*{Conexión remota}
+Suponiendo que el servidor MySQL está en la IP 192.168.122.145, la conexión deberá realizarse de la siguiente manera (hay que tener en cuenta el origen de la conexión también).
+
+\begin{mycode}{Conexión al servidor 192.168.122.145}{console}{}
+ruben@server1:~$ mysql -u usuario2 -h 192.168.122.145 -p
+\end{mycode}
+
+
+\subsubsection*{Conocer el usuario de conexión:}
+Para asegurarnos con qué usuario nos hemos conectado:
+
+\begin{mycode}{Ver el usuario con el que nos hemos conectado}{mysql}{}
+mysql> select user();
++------------------------+
+| user()                 |
++------------------------+
+| usuario2@192.168.122.1 |
++------------------------+
+1 row in set (0.00 sec)
+\end{mycode}
+
+
+\subsubsection*{Cambiar la contraseña del propio usuario:}
+Si nos conectamos con un usuario que tiene la opción “PASSWORD EXPIRE” activada, para cambiar la contraseña deberemos loguearnos con ese usuario y realizar:
+
+\begin{mycode}{Cambiar la contraseña}{mysql}{}
+mysql> set password='password';
+\end{mycode}
+
+
+\subsection{Ver los usuarios que existen}
+Los usuarios se guardan dentro de la tabla user en la base de datos mysql. Para poder ver los usuarios creados:
+
+\begin{mycode}{Mirar tabla de usuarios}{mysql}{}
+mysql> use mysql;
+mysql> select * from user;
+\end{mycode}
+
+
+Para poder ver de otra manera los datos de los usuarios:
+
+
+\begin{mycode}{Mirar la tabla en modo vertical}{mysql}{}
+mysql> select * from user\G
+*************************** 1. row ***************************
+                 Host: %
+                 User: usuario2
+          Select_priv: N
+          Insert_priv: N
+          Update_priv: N
+          Delete_priv: N
+          Create_priv: N
+...
+          max_updates: 0
+      max_connections: 0
+ max_user_connections: 0
+               plugin: caching_sha2_password
+authentication_string: $A$005$lq-g:Ps27zVBGU8SnP7eg7WK3qnQ6R
+     password_expired: N
+password_last_changed: 2020-09-05 18:22:11
+...
+\end{mycode}
+
+
+\subsection{Limitando los recursos de las cuentas}
+Las cuentas de usuarios pueden tener recursos limitados. Estos límites se pueden poner al crear un usuario:
+
+\begin{mycode}{Limitar el número de queries por hora.}{mysql}{\scriptsize}
+mysql> CREATE USER 'lim1'@'localhost' IDENTIFIED BY 'frank' WITH MAX_QUERIES_PER_HOUR 20;
+\end{mycode}
+
+
+O se pueden añadir los límites sobre cuentas ya creadas:
+
+
+\begin{mycode}{Limitar el número de conexiones a 2 para el usuario}{mysql}{}
+mysql> ALTER USER 'usuario'@'localhost' WITH MAX_USER_CONNECTIONS 2;
+\end{mycode}
+
+\begin{mycode}{Limitar el número de conexiones a 20 por hora}{mysql}{{\small }}
+mysql> ALTER USER 'usuario'@'localhost' WITH MAX_CONNECTIONS_PER_HOUR 20;
+\end{mycode}
+
+\begin{mycode}{Limitar el número de queries a 500 por hora}{mysql}{}
+mysql> ALTER USER 'usuario'@'localhost' WITH MAX_QUERIES_PER_HOUR 500;
+\end{mycode}
+
+
+\begin{mycode}{Limitar el número de updates a 500 por hora}{mysql}{}
+mysql> ALTER USER 'usuario'@'localhost' WITH MAX_UPDATES_PER_HOUR 500;
+\end{mycode}
+
+
+\subsection{Borrado de usuarios}
+Al borrar usuarios la sentencia “DROP USER” borra una o más cuentas y sus privilegios.
+
+Al hacer un “DROP USER”, si el usuario tiene establecida una conexión no se borrará el usuario podrá seguir haciendo peticiones. Cuando la conexión se cierre será cuando se borre el usuario, y su siguiente conexión no se podrá establecer.
+
+Al borrar un usuario no se pierden los objetos que el usuario haya creado.
+
+\begin{mycode}{Borrar usuario}{mysql}{}
+mysql> DROP USER 'usuario'@'localhost';
+\end{mycode}
+
+
+\subsection{Bloqueo de usuarios}
+Como borrar un usuario no se puede deshacer, podría ser recomendable bloquear antes la cuenta hasta asegurar al 100\% que el usuario que vamos a borrar no se va a volver a necesitar:
+
+\begin{mycode}{Bloquear un usuario}{mysql}{}
+mysql> ALTER USER 'usuario'@'localhost' ACCOUNT LOCK;
+\end{mycode}
+
+
+\subsection{Renombrar un usuario}
+Podemos renombrar un usuario, cambiando el usuario y el origen de la conexión. Si la cuenta ya existe obtendremos un error.
+
+\begin{mycode}{Renombrar un usuario}{mysql}{}
+mysql> RENAME USER 'usuario'@'localhost' TO 'ruben'@'192.168.122.1';
+\end{mycode}
+
+
+\subsection{Cambiar contraseña al usuario}
+Es interesante realizar modificaciones en las contraseñas de usuarios cada cierto tiempo.
+
+\begin{mycode}{Cambiar contraseña de un usuario}{mysql}{}
+mysql> SET PASSWORD FOR 'ruben'@'192.168.122.1' = 'password2';
+\end{mycode}
+
+\section{Privilegios de usuarios}
+Hasta ahora lo que hemos permitido es que un usuario pueda realizar una conexión, pero un usuario conectado no puede realizar ninguna acción sobre tablas ya que no tiene permisos sobre nada. La sentencia \textbf{GRANT} da permisos a las cuentas de usuarios y establece qué operaciones puede realizar.
+
+En la documentación oficial podemos ver los \href{https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html}{privilegios que pueden tener los usuarios}:
+
+% TODO: hacer la tabla
+\begin{table}[H]
+    \tablestyle[sansboldbw]
+    \centering
+    %\begin{tabular}{*{4}{p{0.24\textwidth}}} % nope, this doesn't adapt to the columns' content
+    %\begin{tabular*}{\columnwidth}{@{\extracolsep{\stretch{1}}}*{4}{l}@{}} % buggy
+    % You can replace \begin{tabular} by \begin{longtable}
+    \begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+
+        \theadstart
+        \thead Column\_category &
+        \thead Type &
+        \thead Information2 \\
+        \tbody
+
+        Quisque laoreet ultricies fringilla. & Lorem ipsum dolor sit amet & Pellentesque accumsan  \\
+        Quisque laoreet ultricies fringilla. & Lorem ipsum dolor sit amet & Pellentesque accumsan  \\
+
+        \tend
+        % You can replace \end{tabular} by \end{longtable}
+    \end{tabular}
+\end{table}
+
+
+
+Tal como se puede ver, existen multitud de privilegios que se les puede otorgar a los usuarios. Vamos a ver cómo añadir y modificar los permisos de los usuarios.
+
+
+\subsection{Añadir permisos a usuarios}
+Existen muchos tipos de privilegios que podemos otorgar a los usuarios, y veremos una pequeña muestra de ellos.
+
+
+\subsubsection*{Dar todos los permisos a todo MySQL}
+
+\begin{mycode}{Se le otorgan todos los permisos sobre todo}{mysql}{}
+mysql> GRANT ALL ON *.* TO 'nuevo_admin'@'192.168.1.10';
+\end{mycode}
+
+
+\subsubsection*{Dar todos los permisos sobre tablas}
+
+\begin{mycode}{Se le otorgan todos los permisos sobre todas las tablas de la base de datos db1:}{mysql}{}
+mysql> GRANT ALL ON db1.* TO 'usuario'@'localhost';
+\end{mycode}
+
+
+\subsubsection*{Dar permisos de SELECT}
+
+Es decir, el usuario podrá realizar consultas SELECT sobre la tabla alumnos de la base de datos db1.
+
+\begin{mycode}{Sólo realizar consultas SELECT sobre la tabla alumnos de la base de datos db1.
+    }{mysql}{}
+mysql> GRANT SELECT ON db1.alumnos TO 'usuario2'@'%';
+\end{mycode}
+
+
+\subsubsection*{Dar permisos de INSERT}
+
+\begin{mycode}{El usuario podrá realizar inserciones en la tabla asignaturas.}{mysql}{}
+mysql> GRANT INSERT ON db1.asignaturas TO 'usuario2'@'%';
+\end{mycode}
+
+
+\subsubsection*{Delegar permisos (GRANT)}
+
+Se puede dar permisos a un usuario para que pueda delegar permisos a otro usuario, pero sólo podrá dar los permisos que él mismo tenga.
+
+\begin{mycode}{Para que el usuario pueda delegar permisos}{mysql}{}
+mysql> GRANT ALL ON prueba.* TO 'usuario3'@'%' WITH GRANT OPTION;
+\end{mycode}
+
+
+
+\subsection{Activar nuevos permisos}
+Los nuevos permisos no son aplicados hasta que no se ejecuta la siguiente sentencia:
+
+\begin{mycode}{Para aplicar las modificaciones de permisos}{mysql}{}
+mysql> FLUSH PRIVILEGES;
+\end{mycode}
+
+
+\subsection{Eliminar permisos a usuarios}
+Se pueden eliminar, o revocar, permisos a usuarios:
+
+\begin{mycode}{Revocar permisos de INSERT al usuario:}{mysql}{}
+mysql> REVOKE INSERT ON prueba.asignaturas FROM 'usuario2'@'%';
+\end{mycode}
+
+
+\subsection{Visualizar permisos usuarios}
+Ver los permisos de nuestro usuario
+
+\begin{mycode}{Ver los permisos del usuario actual}{mysql}{}
+mysql> SHOW GRANTS;
+\end{mycode}
+
+
+\begin{mycode}{Ver los permisos de usuario2}{mysql}{}
+mysql> SHOW GRANTS FOR 'usuario2'@'%';
+\end{mycode}
+
+
+\chapter{Gestión de backups en MySQL}
+
+Con la instalación del servidor de MySQL se realiza la instalación de ciertas aplicaciones de administración del servidor, entre las que se encuentran el programa para la realización de backups: \textbf{mysqldump}.
+
+Existen distintas maneras de realizar un backup en MySQL, entre las que se pueden destacar:
+
+\begin{itemize}
+    \item \textbf{Backup completo}: Backup de todas las bases de datos que se encuentran instaladas en el servidor, incluyendo las del sistema.
+    \item \textbf{Backup de base de datos}: Se realizaría el backup de la base de datos en concreto elegida.
+    \item \textbf{Backup de tabla}: En este caso realizaríamos el backup de las tablas de una base de datos que nos interese.
+\end{itemize}
+
+Una vez elegido el tipo de backup que vamos a realizar deberemos elegir la herramienta que usaremos para llevar a cabo la estrategia planteada:
+
+\begin{itemize}
+    \item \textbf{mysqldump}: Script incluido en las herramientas instaladas junto con MySQL. Por defecto realiza backups en formato de texto plano que podemos guardar en un fichero. Nos permite realizar backup completos, de ciertas bases de datos o de tablas concretas.
+    \item \textbf{Percona XtraBackup}: Herramienta creada por la empresa \href{https://www.percona.com/software/mysql-database/percona-xtrabackup}{Percona} que nos permite realizar copias de seguridad sin realizar bloqueos en la base de datos.
+    \item \textbf{Otras herramientas}: Existen multitud de herramientas para realizar backups para MySQL. Antes de hacer uso de ellas, deberemos asegurarnos que cumplen con nuestras necesidades.
+\end{itemize}
+
+Hay que tener en cuenta que los backups de los datos de las bases de datos no realiza un backup de los ficheros de configuración que se sitúan en \configdir{/etc/mysql} por lo que el backup de esta configuración debe realizarse por algún otro método, ya que la configuración del servidor también es muy importante.
+
+
+\section{Herramienta propia: mysqldump}
+Vamos a hacer uso de la herramienta propia que se instala junto a MySQL, que es mysqldump. Este programa es muy sencillo de utilizar ya que los parámetros que reciben son similares al propio CLI.
+
+Por otro lado, el fichero generado con este programa es un fichero de texto que puede ser visualizado con cualquier editor en caso de necesidad, y fácilmente importado en cualquier otro servidor.
+
+\begin{mycode}{Ayuda del comando mysqldump}{console}{}
+root@ubuntu:~# mysqldump
+Usage: mysqldump [OPTIONS] database [tables]
+OR     mysqldump [OPTIONS] --databases [OPTIONS] DB1 [DB2 DB3...]
+OR     mysqldump [OPTIONS] --all-databases [OPTIONS]
+For more options, use mysqldump --help
+\end{mycode}
+
+Tal como podemos ver, si ejecutamos el script, nos da una ligera idea de cómo podemos realizar un backup con con el mismo. En caso de que el backup sea de una máquina remota para traerlo a local, podremos hacer uso de varios parámetros, por ejemplo \commandbox{mysqldump -u USER -h IP_REMOTA -p}, como cuando usamos el CLI.
+
+
+\subsection{Backup completo}
+Un backup completo de MySQL hará que se guarde toda la información de las bases de datos internas del sistema, en las que se incluyen los usuarios y sus privilegios.
+
+Este sistema es el método más sencillo si queremos realizar después una restauración completa en un nuevo servidor.
+
+\begin{mycode}{Hacer backup completo}{console}{}
+root@ubuntu:~# mysqldump --all-databases > backup-completo.sql
+\end{mycode}
+
+De esta manera, le hemos indicado al script mysqldump que realice un backup de todas las bases de datos y el contenido obtenido lo vuelque al fichero backup-completo.sql. Este fichero generado es un fichero de texto que contendrá las bases de datos del sistema, usuarios, privilegios…
+
+\subsection{Backup de base de datos}
+Podemos realizar el backup únicamente de una, o varias, bases de datos que nos pueda interesar. Para poder realizar el backup de la base de datos que nos interese se hace uso del parámetro “\textbf{--databases}” seguido del nombre de las bases de datos, o en su forma abreviada “\textbf{-B}”. Los dos siguientes comandos son iguales:
+
+
+\begin{mycode}{Hacer backup de sólo las bases de datos DB1 y DB2}{console}{}
+root@ubuntu:~# mysqldump --databases DB1 DB2 > backup-db1-db2.sql
+root@ubuntu:~# mysqldump -B DB1 DB2 > backup2-db1-db2.sql
+\end{mycode}
+
+
+Al crear el backup de una, o varias, base de datos de la anterior manera, en el fichero de backup nos aparecerá algo tal que:
+
+\begin{mycode}{Información interna del backup}{mysql}{}
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `DB1`;
+USE `DB1`;
+\end{mycode}
+
+De esta manera, lo que nos está indicando el backup es que a la hora de restaurar, en caso de que no exista DB1 se creará previamente. Posteriormente realizará el borrado de las tablas y las volverá a crear para realizar el insert de datos.
+
+También podremos obviar el argumento, por lo que en caso de introducir un único parámetro, lo tomará com la base de datos de la que realizar copia de seguridad.
+
+\begin{mycode}{Hacer backup de una única base de datos}{console}{}
+root@ubuntu:~# mysqldump DB1 > backup-DB1.sql
+\end{mycode}
+
+Al hacer el backup de esta manera, en el fichero no aparecerá la creación de la base de datos, por lo que a la hora de realizar la importación tendremos que hacerlo sobre una base de datos ya creada.
+
+\subsection{Backup de una tabla}
+Puede darse casos que nos interese realizar backups de una única tabla, o poder hacer backups de una tabla de manera más seguida, y para ello podremos ejecutar:
+
+\begin{mycode}{Hacer backup de la tabla “asignaturas” de “DB1”}{console}{}
+root@ubuntu:~# mysqldump DB1 asignaturas > backup-db1-asignaturas.sql
+\end{mycode}
+
+De esta manera hacemos backup de la tabla “asignaturas” de la base de datos DB1.
+
+
+\section{Importar un backup}
+Tal como hemos visto existen distintas maneras de realizar un backup, por lo que dependiendo de cómo es el backup que queremos importar, se hará de una manera u otra.
+
+Hay que entender que la importación de un backup puede suponer la pérdida de datos de las bases de datos del servidor donde importamos el backup, por lo que hay que asegurarse muy bien qué queremos restaurar y dónde lo vamos a restaurar para no haya pérdida de datos donde no queremos.
+
+\warnbox{\textbf{Importar datos de un backup puede suponer la pérdida de datos en el servidor donde se realiza la importación.}}
+
+También es lógico pensar que dependiendo de la herramienta utilizada para realizar el backup la importación del mismo no tiene por qué ser igual, ya que distintas herramientas pueden dar lugar a distintos tipos de ficheros.
+
+\warnbox{\textbf{Antes de restaurar un backup confirma cómo se hizo y cómo haces la importación.}}
+
+\subsection{Importar backups de mysqldump}
+Como se ha comentado previamente, mysqldump se instala junto con el servidor, y debido a que es una herramienta sencilla de usar, su importación también es sencilla. Para realizar la importación de este tipo de backups haremos uso del propio CLI  \commandbox{mysql}.
+
+
+\subsubsection{Importar un backup completo}
+\textbf{Al importar un backup completo haremos la sustitución de todas las tablas internas de MySQL} por los datos que haya en el backup. Por lo tanto, nos tendremos que asegurar muy bien de que el servidor donde realizaremos la importación de datos es un servidor sin datos importantes.
+
+Para importar un backup completo haremos:
+
+\begin{mycode}{Importar un backup completo}{console}{}
+root@ubuntu:~# mysql < backup-completo.sql
+\end{mycode}
+
+Con esto estaremos indicando que el contenido del fichero de backup se importe sobre la conexión que hemos realizado, en este caso en local.
+
+
+\subsubsection{Importar un backup de una base de datos}
+Tal como hemos visto antes, a la hora de crear el backup de una, o varias, base de datos se puede realizar añadiendo el parámetro “--databases”,  “-B” o sin especificar nada, sólo la base de datos. Dependiendo de cómo se haya creado el backup, la importación variará:
+
+\begin{itemize}
+    \item Si el backup se ha realizado con “\textbf{--databases}” o “\textbf{-B}” en el propio backup aparece:
+\begin{mycode}{”Create database” en el propio fichero de backup}{mysql}{}
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `DB1`;
+\end{mycode}
+    y para realizar la importación:
+\begin{mycode}{Importar un backup completo}{console}{}
+root@ubuntu:~# mysql < backup-DB1.sql
+\end{mycode}
+
+    \item Si no hemos especificado más que el nombre de la base de datos, en el backup no aparece la creación o uso de la base de datos, por lo que tendremos que indicarlo en la importación, y \textbf{la base de datos “restaurado” debe existir previamente}.
+\begin{mycode}{Importar un backup completo en una base de datos llamada “restaurado”}{console}{}
+root@ubuntu:~# mysql restaurado < backup-DB1.sql
+\end{mycode}
+
+\end{itemize}
+
+
+\subsubsection{Importar un backup de una tabla}
+Por último, si queremos importar un backup donde sólo existen tablas, a la hora de importar deberemos indicar en qué base datos queremos realizar la importación, ya que en el backup no aparece dicha información. Por ejemplo:
+
+\begin{mycode}{Importar un backup de una tabla en la base de datos “restauracion”}{console}{}
+root@ubuntu:~# mysql restauracion < backup-db1-asignaturas.sql
+\end{mycode}
+
+De esta manera estamos indicando al CLI que el contenido del fichero de backup se importe sobre la base de datos \textit{restauración}. Lógicamente esta base de datos debe estar creada previamente.
+
+\hypertarget{monitorizacion_de_sgbds}{anchor text}
+\chapter{Monitorización de SGBDs}
+En el caso que nos ocupa, el de los Sistemas Gestores de Bases de Datos, aparte de la \hyperlink{sistemas_de_monitorizacion}{monitorización básica comentada en el anexo}, necesitaremos monitorizar el estado del SGBD propiamente dicho. Para ello, de nuevo, se crearía una plantilla específica para cada SGBD que podamos tener en nuestra infraestructura. No será lo mismo monitorizar un servidor basado en MySQL o un Oracle, aunque muchos checks a comprobar deban ser lo mismo, pero la manera en la que se realizará la comprobación en el servidor será distinta.
+
+Entre las comprobaciones que podemos realizar en un SGBD nos podemos encontrar con:
+\begin{itemize}
+    \item Servicio SGBD arrancado
+    \item Cantidad de RAM utilizada por el SGBD
+    \item Número de conexiones a las bases de datos
+    \item Número de hilos en ejecución del SGBD
+    \item Número de queries en ejecución
+    \item Número de tablas en memoria
+    \item Número de tablas bloqueadas
+    \item …
+
+\end{itemize}
+
+
+\section{Monitorizar MySQL}
+Todo lo expuesto \hyperlink{sistemas_de_monitorizacion}{en el anexo} es referente a los sistemas de monitorización en general, y es similar en todos ellos. Tal como se ha comentado previamente, cuando un servidor cuenta con un servicio éste debe ser monitorizado, y dependiendo del servicio a monitorizar se realizará una serie de comprobaciones u otras.
+
+A la hora de monitorizar un sistema gestor de bases de datos deberíamos tener en cuenta al menos las siguientes comprobaciones, y en el caso de MySQL:
+\begin{itemize}
+    \item Número de conexiones actuales (usuarios/conexiones tiene el servicio)
+    \item Tiempo del servicio activo (uptime)
+    \item Número de hilos en ejecución
+    \item Tamaño de memoria utilizado
+    \item Tamaño de memoria caché utilizado
+    \item Número de tablas en memoria
+    \item Número de slow queries
+    \item Número de conexiones abortadas
+    \item Número de queries totales
+\end{itemize}
+
+En servidores en alta disponibilidad, deberíamos comprobar, en caso de un clúster:
+\begin{itemize}
+    \item Número de nodos en el clúster
+    \item Estado general del clúster
+    \item Latencia entre los nodos del clúster
+    \item Si el nodo está conectado al clúster
+    \begin{itemize}
+        \item  Puede pasar que un nodo “se salga” del clúster (o lo saquemos) para realizar mantenimiento
+    \end{itemize}
+\end{itemize}
+
+Si el servidor está dentro de una infraestructura de \textbf{Primario → Réplica}:
+\begin{itemize}
+    \item Estado de la replicación
+    \item Retraso de la replicación
+    \item Tamaño del binlog
+\end{itemize}
+
+Las comprobaciones expuestas son un mero ejemplo, y existen muchas más que podemos realizar a nuestros sistemas. Para poder realizar este tipo de monitorización podemos hacer uso de scripts propios (ya que muchas de las comprobaciones son consultas a variables de estado de MySQL), scripts creados por otras personas o scripts de monitorización hechos de manera exclusiva para MySQL.
+
+\subsection{Scripts propios}
+Para realizar gran parte de los checks expuestos previamente se puede hacer uso de scripts propios, ya que pueden realizar consultas de las variables de estado para comprobar y determinar si el estado es correcto.
+
+Un ejemplo de script creado \textit{ad hoc} para nuestro sistema podría ser:
+
+\begin{mycode}{Script propio para monitorizar}{bash}{}
+#!/bin/bash
+mysql -e "SHOW STATUS LIKE 'Slow_queries';" -N | awk '{print $2}'
+\end{mycode}
+
+
+\subsection{Percona monitoring tools}
+La alternativa a hacer uso de scripts propios es usar programas o scripts realizados por terceros, que estén ampliamente probados y que tienen detrás un equipo que quizá sea más amplio que el nuestro, y por tanto esté mejor probado.
+
+La empresa Percona tiene un par de soluciones sobre monitorización de SGBDs (no sólo para MySQL, también para \href{https://www.postgresql.org/}{PostgreSQL} y \href{https://www.mongodb.com/}{MongoDB}), que son:
+
+\begin{itemize}
+    \item \href{https://www.percona.com/software/database-tools/percona-monitoring-and-management}{\textbf{Percona Monitoring and Management}}: Un sistema completo de monitorización, interfaz web incluída, que podremos \href{https://www.percona.com/software/pmm/quickstart}{instalar} en nuestros propios servidores. Podemos ver aquí una \href{https://pmmdemo.percona.com/graph/}{demo}.
+
+    \includegraphics[width=\linewidth]{percona_tools.png}
+
+    \item \href{https://www.percona.com/software/database-tools/percona-monitoring-plugins}{\textbf{Percona Monitoring Plugins}}: En este caso son un conjunto de plugins (o scripts) que podremos utilizar en nuestro sistema de monitorización propio (Nagios, Centreon o Cacti). En la \href{https://www.percona.com/doc/percona-monitoring-plugins/LATEST/index.html}{documentación} explican cómo hacer uso de ellos.
+\end{itemize}
+
+
+
+\chapter{Alta Disponibilidad en un SGBD}
+
+La alta disponibilidad en servidores se puede definir como el diseño de infraestructura (y su implantación) que asegura la continuidad del servicio y que no tiene un único punto de fallo.
+
+Es lógico entender que un servicio debe de ser contínuo en el tiempo, ya que debe de dar servicio de manera continuada para que los usuarios puedan acceder a él. Pero para que esta premisa sea efectiva, y para asegurarnos que así sea, \textbf{la infraestructura debe de estar redundada y carecer de puntos de fallos en su diseño}.  Esto quiere decir, que de cada servicio y cada posible punto de fallo, deberá haber al menos dos de ellos (dos tomas eléctricas separadas, dos servidores que otorguen el servicio, dos conexiones a internet, … ).
+
+Es habitual que un sistema en Alta Disponibilidad deba de estar pensado desde el diseño. Algunos tipos  de servicios pueden empezar como un único servidor y posteriormente realizar un \hyperlink{escalado_horizontal}{escalado horizontal}, formando la alta disponibilidad, mientras que para otros \textbf{el diseño en alta disponibilidad debe de estar pensado desde el comienzo} (habitualmente en algunos tipos de \hyperlink{cluster}{clusters}).
+
+
+\section{Importancia de un sistema en Alta Disponibilidad}
+
+Como se ha citado previamente, la alta disponibilidad nos va a asegurar al menos dos grandes ventajas:
+
+\begin{itemize}
+    \item Una continuidad en el servicio
+    \item Un diseño libre de puntos de fallos únicos, gracias a la redundancia.
+\end{itemize}
+
+La redundancia permitirá que en caso de fallo de algún equipamiento/servicio, al estar redundando, no afecte al servicio. Gracias al \hyperlink{monitorizacion_de_sgbds}{sistema de monitorización} seremos capaces de ver el problema y solventarlo lo antes posible. De estar el diseño correcto, el servicio mantendrá su actividad, mientras que por el contrario, si ha habido algún fallo en el diseño de infraestructura (o el problema es más grave de lo esperado) el servicio se verá afectado.
+
+
+\section{Tipos de Alta Disponibilidad}
+Existen muchos tipos de alta disponibilidad dependiendo de en qué capa de infraestructura estemos hablando. Por poner unos ejemplos:
+
+\begin{itemize}
+    \item \textbf{Redundancia eléctrica}: Los servidores normalmente cuentan con doble fuente de alimentación, por lo que cada fuente de alimentación debe de estar conectada a una toma eléctrica completamente separada de la otra.
+    \item \textbf{Redundancia de conectividad física}: El acceso a internet debe de ser redundado.
+    \item \textbf{Redundancia de conectividad LAN}: El acceso a la LAN/DMZ/red de servicio debe de estar redundado (stacks de switches, LACPs configurados en switches y servidores, … ).
+    \item \textbf{Redundancia de servidores}: Debe de existir una redundancia de servidores para asegurar que el servicio funcione en más de un servidor físico.
+    \item \textbf{Redundancia de servicio}: El servicio que se ofrece debe de estar redundado entre los distintos servidores.
+\end{itemize}
+
+
+La alta disponibilidad también se puede diferenciar como:
+
+
+\begin{itemize}
+    \item \textbf{Alta disponibilidad real}: En caso de que haya algún problema el servicio continúa como si no hubiese pasado nada, gracias a la redundancia completa de servicios/dispositivos.
+    \item \textbf{Alta disponibilidad pasiva}: En caso de error, los servidores activos serían los que reciben el impacto del problema y hay que escalar los servidores pasivos a modo activo para que comiencen a funcionar otorgando el servicio. Como se puede presuponer, esta modificación puede ser realizada de manera automática o de manera manual (lo que llevaría algo de tiempo, y por tanto el servicio se vería afectado).
+\end{itemize}
+
+
+En lo que se refiere a los SGBDs, y en concreto a MySQL, podemos diferenciar entre los siguientes tipos de alta disponibilidad que veremos a continuación.
+
+
+\subsection{Primario - Replica}
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-50pt}
+    \includegraphics[width=\linewidth]{primario_replica.png}
+    \vspace{-30pt}
+\end{wrapfigure}
+También denominado “Primario → Réplica” (antiguamente denominado “Maestro → Esclavo”). Es un tipo de alta disponibilidad pasiva en el que contamos con dos servidores.
+
+El principal/primario/master es el que recibe todas las modificaciones que se realizan en la base de datos, y por tanto debe de estar en funcionamiento para poder recibir las modificaciones de datos.
+
+El secundario/réplica/esclavo, como su nombre indica, recibe los datos replicados del principal. Es posible recibir en este servidor peticiones de “SELECTS” para que así quite carga al principal, pero hay que asegurarse de no recibir ni INSERTS ni UPDATES.
+
+En caso de que exista algún problema con el servidor primario, el servidor de réplica deberá pasar a ser el primario, por lo que habrá que hacer que también reciba los inserts. En caso de que el servidor haya sido configurado en modo “sólo lectura”, habrá que quitarlo.
+
+Podemos destacar de este tipo de replicación las siguientes características:
+
+
+\begin{itemize}
+    \item Sistema sencillo de replicación.
+    \item La sincronización es asíncrona por defecto. El servidor secundario no tiene por qué estar todo el rato conectado. Cuando se conecte, pedirá y recibirá todas las modificaciones desde la última realizada.
+    \item Dependiendo de la configuración realizada en el servidor secundario, se replicará todo, sólo alguna base de datos o sólo alguna tabla.
+    \item Para no cargar al servidor primario, los backups se pueden realizar sobre el servidor de réplica.
+    \item Se pueden realizar réplicas a larga distancia, estando el servidor de réplica en otro datacenter.
+
+\end{itemize}
+
+
+Hay que tener en cuenta que si el servidor réplica se detiene, \textbf{las modificaciones del primario se guardan en unos ficheros llamados \underline{binlogs}}. Estos ficheros se suelen configurar para almacenar una cantidad de datos precisa, por lo que si el tiempo de caída del servidor réplica supera el tiempo que los binlogs almacenan información, al retomar la actividad no obtendrá todos los datos del servidor primario.
+
+
+
+\subsection{Primario - Primario}
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-50pt}
+    \includegraphics[width=\linewidth]{primario_primario.png}
+    \vspace{-30pt}
+\end{wrapfigure}
+Una replicación “Primario ←→ Primario” en MySQL no es más que una replicación “Primario → Réplica” de doble sentido.
+
+Esto quiere decir que ambos servidores pueden recibir todo tipo de consultas y modificaciones. El problema es que podría darse el caso de que dos INSERT simultáneos en ambos servidores obtengan identificadores auto-incrementales idénticos, lo que daría error a la hora de realizar los INSERT.
+
+Por lo tanto, para evitar eso, lo que se hace es modificar las variables auto-increment para que en uno de los servidores se den números pares y en el otro impares.  Estas variables son:
+
+
+\begin{itemize}
+    \item \textbf{auto\_increment\_increment}: es el incremento que se realiza entre valor y valor de “auto\_increment”. En este caso, debe de ser “2” en ambos servidores porque es el número de servidores que tenemos.
+    \item \textbf{auto\_increment\_offset}: determina el comienzo del sistema “auto\_increment” en nuestro servidor. En este caso, la variable obtendrá valores distintos en los servidores:
+    \begin{itemize}
+        \item “1”: en un servidor, por lo tanto, en este siempre habrá valores impares.
+        \item “2”: en el otro servidor, por lo que los valores serán pares.
+    \end{itemize}
+\end{itemize}
+
+
+Para que ambos servidores reciban peticiones, la aplicación que las pida podrá preguntar a ambos servidores o podremos tener un servidor proxy por delante que realice un balanceo de peticiones a ambos servidores.
+
+
+
+\subsection{MySQL Cluster}
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \vspace{-50pt}
+    \includegraphics[width=\linewidth]{mysql_cluster.png}
+    \vspace{-50pt}
+\end{wrapfigure}
+Como ya se ha comentado previamente, MySQL Cluster es un SGBD distinto a MySQL Community, y el tipo de Alta Disponibilidad que podemos obtener con él es distinto a los citados previamente. En este caso, el número de servidores mínimos con los que deberemos contar será de 3, y a partir de ahí deberá ser siempre número impar.
+
+No entraremos en detalle en este sistema, pero a grandes rasgos podemos pensar de él como un sistema “Primario ←→ Primario” multi servidor. \textbf{En este caso la sincronización es síncrona}, es decir, \textbf{antes de dar por terminada una sentencia se asegura que está replicada en todos los servidores}.
+
+
+\section{Sistema “Primario → Réplica” con MySQL}
+Como se ha visto, MySQL permite distintos tipos de replicación y creación de infraestructura en Alta Disponibilidad. En nuestro caso, vamos a optar por la más sencilla de todas ellas, que es la replicación “Primario → Réplica”.
+
+Para ello, contaremos con dos servidores Ubuntu 20.04 recién instalados con MySQL Community también recién instalados, y a partir de aquí comenzaremos a realizar la configuración oportuna que necesitaremos para conseguir nuestro objetivo.
+
+
+\subsection{A tener en cuenta}
+Antes de comenzar con la configuración tiene que quedar clara una serie de conceptos:
+
+\begin{itemize}
+    \item Los datos deben de ser insertados/actualizados en el principal.
+    \item Una vez realizadas las modificaciones son escritas en los \textbf{binary-log} del principal.
+    \item El servidor réplica, para evitar problemas, debería estar en modo “sólo lectura”.
+    \item El servidor réplica se conecta al primario en busca de las modificaciones (en los binary-log) y ejecutará las órdenes en el propio servidor réplica.
+    \begin{itemize}
+        \item El servidor réplica mantiene la posición del binary-log en la que se encuentra.
+        \item MySQL acepta replicación de una serie a una versión superior, pero nunca haciendo saltos de dos versiones.
+    \end{itemize}
+    \item Cada servidor contará con \textbf{server-id} distinto.
+\end{itemize}
+
+\subsection{Creación del sistema principal/origen}
+Con todo lo citado previamente, los pasos para crear el sistema primario son los siguientes:
+
+\begin{enumerate}
+    \item Configurar servidor con IP estática
+    \item Modificar configuración de MySQL
+    \item Crear usuario de replicación
+    \item Hacemos backup inicial de los datos.
+\end{enumerate}
+
+Se obvia el primer paso ya que es configuración del sistema operativo y \hyperlink{configurar_ip_estatica_ubuntu}{aparece en el anexo}.
+
+
+\subsubsection{Configuración del servidor principal}
+En el fichero de configuración del servidor principal tendremos que modificarlo para que aparezca la siguiente configuración
+
+\begin{mycode}{Configuración MySQL del primario}{ini}{}
+[mysqld]
+...
+server-id = 1
+log_bin = /var/log/mysql/binlog
+binlog_expire_logs_seconds     = 2592000
+max_binlog_size = 100M
+\end{mycode}
+
+Una vez modificado el fichero de configuración, el servidor debe ser reiniciado. Para comprobar si el servidor está en modo “primario” podemos consultarlo de la siguiente manera:
+
+
+\begin{mycode}{Comprobar estado del primario}{mysql}{}
+mysql> SHOW MASTER STATUS \G
+*************************** 1. row ***************************
+File: mysql-bin.000001
+Position: 1397
+Binlog_Do_DB:
+Binlog_Ignore_DB:
+Executed_Gtid_Set:
+1 row in set (0.00 sec)
+\end{mycode}
+
+Podemos observar el fichero “mysql-bin” y la posición del mismo del servidor principal.
+
+
+\subsubsection{Crear usuario de replicación}
+Como se ha comentado previamente, el servidor réplica se conectará al principal, por lo que tiene que existir un usuario con el que poder conectarse y comprobar el estado de los binlogs.
+
+\begin{mycode}{Crear usuario para la replicación}{mysql}{{\footnotesize }}
+CREATE USER 'repl'@'192.168.1.21' IDENTIFIED WITH mysql_native_password BY 'password';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.1.21';
+FLUSH PRIVILEGES;
+\end{mycode}
+
+
+Hay que tener en cuenta que la IP tendrá que ser la IP del servidor réplica y será con este usuario con el que realizará la conexión. Es obligatorio poner “mysql\_native\_password” ya que el nuevo sistema de autenticación “caching\_sha2\_password” necesita de certificados para realizar la conexión.
+
+
+\subsubsection{Backup inicial del servidor primario/origen}
+Una vez configurado el servidor en modo primario, realizaremos el backup inicial que posteriormente será cargado en el servidor réplica. Debido a la configuración que hemos realizado, el servidor réplica deberá conocer a partir de qué posición del binlog obtener las modificaciones después de haberse realizado el backup. Por tanto, el backup debe realizarse de la siguiente manera:
+
+\begin{mycode}{Hacer backup inicial para la replicación}{console}{}
+root@server1:~# mysqldump --all-databases --source-data > dbdump.sql
+\end{mycode}
+
+Y como se puede comprobar, el parámetro nuevo es “--source-data”, que hará que dentro del fichero de backup aparezca (es posible que en el futuro aparezca como “PRIMARY” o “PRIMARY\_LOG\_”:
+
+
+\begin{mycode}{Hacer backup inicial para la replicación}{mysql}{}
+...
+--
+-- Position to start replication or point-in-time recovery from
+--
+CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=1397;
+...
+\end{mycode}
+
+Esta información es el punto exacto en el que se ha quedado el binlog (tanto en qué fichero como en qué posición) cuando se ha realizado el backup. Esta información la necesitaremos para posteriormente en el servidor réplica indicarle que es a partir de este punto el que deberá pedir la información a replicar.
