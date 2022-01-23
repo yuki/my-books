@@ -1764,7 +1764,7 @@ root@server1:~# mysqldump --all-databases --source-data > dbdump.sql
 Y como se puede comprobar, el parámetro nuevo es “--source-data”, que hará que dentro del fichero de backup aparezca (es posible que en el futuro aparezca como “PRIMARY” o “PRIMARY\_LOG\_”:
 
 
-\begin{mycode}{Hacer backup inicial para la replicación}{mysql}{}
+\begin{mycode}{Hacer backup inicial para la replicación}{mysql}{{\small }}
 ...
 --
 -- Position to start replication or point-in-time recovery from
@@ -1774,3 +1774,147 @@ CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=1397;
 \end{mycode}
 
 Esta información es el punto exacto en el que se ha quedado el binlog (tanto en qué fichero como en qué posición) cuando se ha realizado el backup. Esta información la necesitaremos para posteriormente en el servidor réplica indicarle que es a partir de este punto el que deberá pedir la información a replicar.
+
+
+\subsection{Creación del sistema secundario/réplica}
+En el caso del servidor secundario los pasos a realizar son:
+
+\begin{enumerate}
+    \item Configurar IP estática.
+    \item Modificar la configuración de MySQL.
+    \item Importar backup.
+    \item Configuración de conexión  al servidor primario.
+    \item Comenzar la replicación.
+    \item Comprobar estado de la replicación.
+\end{enumerate}
+
+
+\subsubsection{Modificar configuración en el servidor RÉPLICA}
+En este caso, la modificación que debemos de realizar es cambiar el \textbf{server-id}, que tendrá que ser distinto al del primario, y podremos poner de manera opcional el nombre del servidor réplica en la variable \textbf{report\_host}.
+
+
+\begin{mycode}{Configuración MySQL del servidor réplica}{ini}{}
+[mysqld]
+...
+server-id = 2
+# la opción report_host es opcional
+report_host = server2
+\end{mycode}
+
+
+\subsubsection{Importar el backup}
+Tal como se realiza de cualquier backup, teniendo el backup en el propio servidor réplica:
+
+\begin{mycode}{Restaurar backup inicial}{console}{}
+root@server1:~# mysql < dbdump.sql
+\end{mycode}
+
+
+\subsubsection{Configuración de conexión al primario}
+Desde el CLI de MySQL debemos realizar la siguiente sentencia, teniendo en cuenta:
+\begin{itemize}
+    \item La IP de nuestro servidor primario.
+    \item Los datos del usuario de replicación creado previamente.
+    \item Los datos de binlog que hemos podido obtener del fichero de replicación.
+\end{itemize}
+
+\begin{mycode}{Configuración de conexión al servidor primario}{mysql}{}
+mysql> CHANGE REPLICATION SOURCE TO
+          SOURCE_HOST='192.168.1.129',
+          SOURCE_USER='repl',
+          SOURCE_PASSWORD='password',
+          SOURCE_LOG_FILE='mysql-bin.000001',
+          SOURCE_LOG_POS=1397;
+\end{mycode}
+
+\subsubsection{Comenzar la replicación}
+Ahora el servidor réplica tiene que comenzar la replicación a partir de la posición y del fichero del bin-log que se ha configurado. Es de suponer que el servidor primario ha recibido modificaciones, y por tanto, deben ser replicadas.
+
+\begin{mycode}{Comenzar la replicación}{mysql}{}
+mysql> START REPLICA;
+\end{mycode}
+
+
+\subsubsection{Comprobar estado de la replicación}
+La replicación es un proceso que debe de ser monitorizado y nos debemos asegurar que funciona de manera correcta. Para conocer cuál es el estado de la replicación podremos obtenerlo ejecutando:
+
+\begin{mycode}{Comprobar estado de la replicación}{mysql}{}
+mysql> SHOW REPLICA STATUS \G
+*************************** 1. row ***************************
+         Replica_IO_State: Waiting for source to send event
+              Source_Host: 192.168.200.10
+              Source_User: repl
+              Source_Port: 3306
+            Connect_Retry: 60
+          Source_Log_File: mysql-bin.000001
+      Read_Source_Log_Pos: 3256
+           Relay_Log_File: ubuntu-relay-bin.000003
+            Relay_Log_Pos: 324
+    Relay_Source_Log_File: mysql-bin.000001
+       Replica_IO_Running: Yes
+      Replica_SQL_Running: Yes
+...
+    Seconds_Behind_Source: 0
+...
+Replica_SQL_Running_State: Replica has read all relay log;
+waiting for more updates
+\end{mycode}
+
+
+Como alternativa, también podremos ver desde el servidor primario cuántos servidores réplica tiene, pero la información proporcionada es escasa, pero nos puede servir para obtener información de un servidor no instalado por nosotros.
+
+\begin{mycode}{Estado de servidores réplica desde el primario}{mysql}{}
+mysql> SHOW REPLICAS;
++-----------+---------+------+-----------+---------------------------+
+| Server_Id | Host    | Port | Source_Id | Replica_UUID              |
++-----------+---------+------+-----------+---------------------------+
+|         2 | server2 | 3306 |         1 | 9fb33895-4c78-11ec-b23... |
++-----------+---------+------+-----------+---------------------------+
+1 row in set (0,00 sec)
+\end{mycode}
+
+
+\section{Ficheros binary logs}
+Durante la replicación se han usado los binary logs, y para activarlos se ha tenido que configurar en el servidor primario/origen las siguientes variables de configuración:
+\begin{itemize}
+    \item log\_bin = /var/log/mysql/binlog
+    \item binlog\_expire\_logs\_seconds = 2592000
+    \item max\_binlog\_size = 100M
+\end{itemize}
+
+El significado de las variables es el siguiente:
+
+\begin{itemize}
+    \item \textbf{log\_bin}: path donde se van a guardar los binlogs. Siendo el ejemplo de arriba, obtendremos unos ficheros tal que:
+    \begin{itemize}
+        \item /var/log/mysql/mysql-bin.000001
+        \item /var/log/mysql/mysql-bin.000002
+        \item /var/log/mysql/mysql-bin.000003
+        \item …
+    \end{itemize}
+    \item \textbf{binlog\_expire\_logs\_seconds}: el número de segundos que pasarán antes de que los binlogs se borren de manera automática. Significa que tendremos tantos ficheros binlog como para poder guardar los cambios acontecidos en la base de datos durante la cantidad de segundos puesta.
+
+    Eso significa, que si nuestra réplica está menos de 30 días sin conectarse al primario (por un fallo de conectividad), podríamos llegar a recuperar la replicación sin necesidad de rehacer nada, sólo consiguiendo que la conectividad vuelva a funcionar. Por otro lado, la cantidad de datos almacenados en esa cantidad de días en los ficheros binlog puede hacer que nuestro servidor ocupe mucho espacio, por lo que se debería pensar en guardar esos binlogs en otra partición o modificar la variable.
+
+    \item \textbf{max\_binlog\_size}: tamaño máximo que alcanzará cada fichero binlog. En caso de llegar al tamaño especificado, se creará un nuevo fichero binlog, modificando el índice y el nombre del nuevo fichero. El tamaño máximo que puede tener cada binlog es 1GB.
+\end{itemize}
+
+
+\subsection{Borrado de binlogs}
+En caso de necesidad (por falta de espacio en el servidor), podemos realizar el borrado de ficheros binlogs siempre y cuando nos hayamos asegurado que la réplica ya los ha recibido (es decir, la replicación esté correcta, o el binlog por el que vaya la réplica sea mayor al que queremos borrar).
+
+\warnbox{\textbf{Antes de borrar binlogs, debemos asegurar que los servidores réplica están sincronizados}}
+
+Podemos realizar el borrado de binlogs indicando el fichero:
+
+\begin{mycode}{Borrado de binlogs indicando el fichero}{mysql}{}
+mysql> PURGE BINARY LOGS TO 'mysql-bin.000010';
+\end{mycode}
+
+
+Como alternativa, también podemos especificar que borre todos los logs anteriores a la fecha y hora indicada, borrando así los ficheros necesarios para ello. De nuevo, nos tendremos que asegurar de que la replicación esté correcta antes de hacerlo.
+
+
+\begin{mycode}{Borrado de binlogs indicando la fecha}{mysql}{}
+mysql> PURGE BINARY LOGS BEFORE '2020-11-11 00:00:00';
+\end{mycode}
