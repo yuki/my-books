@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "SMR/2º/Sistemas operativos en red/"
+cd "SMR/2/SOred/"
 
 pdflatex -shell-escape SOred.tex
 makeindex SOred.tex
@@ -9,7 +9,7 @@ pdflatex -shell-escape SOred.tex
 
 cd ../../../
 
-cd "ASIR/2º/SGBD/"
+cd "ASIR/2/SGBD/"
 pdflatex -shell-escape sgbd_book.tex
 makeindex sgbd_book.tex
 pdflatex -shell-escape sgbd_book.tex

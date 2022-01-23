@@ -18,7 +18,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: latest
-        files:
-          SMR/2º/Sistemas operativos en red/SOred.pdf
-          ASIR/2º/SGBD/sgbd_book.pdf
-          otros/PFsense/pfsense_book.pdf
+        files: |
+          "SMR/2/SOred/SOred.pdf"
+          "ASIR/2/SGBD/sgbd_book.pdf"
+          "otros/PFsense/pfsense_book.pdf"
