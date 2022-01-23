@@ -585,23 +585,47 @@ max_connections            = -1
 
 Para conocer qué valor pueden tener estas variables, lo mejor es ir a la documentación y mirar la variable que queremos modificar o agregar.  Por ejemplo, para \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log}{slow\_query\_log} veremos que en la documentación tiene la siguiente tabla:
 
-% TODO: cambiar imagen por tabla
-\begin{center}
-    \vspace{-10pt}
-    \includegraphics[width=0.8\linewidth]{tabla_slow_query_log.png}
-    \vspace{-20pt}
-\end{center}
+
+\begin{table}[H]
+    \tablestyle
+    \begin{tabular}{|p{0.3\linewidth}|p{0.4\linewidth}|}
+        \theadstart
+            \thead \centering \textbf{Referencia} &
+            \thead \centering \textbf{Valor} \tabularnewline
+        \tbody
+            Command-Line Format & \texttt{\-/-slow-query-log[=\{OFF|ON\}]} \\
+            System Variable & slow\_query\_log \\
+            Scope & Global \\
+            Dynamic & Yes \\
+            SET\_VAR Hint Applies & No \\
+            Type & Boolean \\
+            Default Value & OFF \\
+        \tend
+    \end{tabular}
+\end{table}
 
 Esta tabla nos da mucha información acerca de la variable, ya sea para poder ver qué tipo de valor es (Boolean en este caso), su valor por defecto (OFF) y si podremos o no modificarla dinámicamente (Dynamic = Yes). El valor por defecto será el valor que obtendrá la variable si no aparece en el fichero de configuración con un valor puesto por nosotros.
 
 Otro ejemplo, \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_bind_address}{bind\_address}:
 
-% TODO: cambiar imagen por tabla
-\begin{center}
-    \vspace{-10pt}
-    \includegraphics[width=0.8\linewidth]{tabla_bind_addr.png}
-    \vspace{-20pt}
-\end{center}
+\begin{table}[H]
+    \tablestyle
+    \begin{tabular}{|p{0.3\linewidth}|p{0.4\linewidth}|}
+        \theadstart
+            \thead \centering \textbf{Referencia} &
+            \thead \centering \textbf{Valor} \tabularnewline
+        \tbody
+            Command-Line Format & \texttt{\-/-sbind-addr=addr} \\
+            System Variable & sbind\_address \\
+            Scope & Global \\
+            Dynamic & No \\
+            SET\_VAR Hint Applies & No \\
+            Type & String \\
+            Default Value & * \\
+        \tend
+    \end{tabular}
+\end{table}
+
 
 \section{Variables de configuración en MySQL}
 Tal como hemos visto, el listado completo de variables tiene cientos de posibles variables que podemos ver o modificar para ajustar el servidor a nuestros intereses. Las variables se deben separar en dos partes:
@@ -1233,29 +1257,35 @@ mysql> SET PASSWORD FOR 'ruben'@'192.168.122.1' = 'password2';
 \section{Privilegios de usuarios}
 Hasta ahora lo que hemos permitido es que un usuario pueda realizar una conexión, pero un usuario conectado no puede realizar ninguna acción sobre tablas ya que no tiene permisos sobre nada. La sentencia \textbf{GRANT} da permisos a las cuentas de usuarios y establece qué operaciones puede realizar.
 
-En la documentación oficial podemos ver los \href{https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html}{privilegios que pueden tener los usuarios}:
+En la documentación oficial podemos ver todo los \href{https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html}{privilegios que pueden tener los usuarios}.
 
-% TODO: hacer la tabla
+En la siguiente tabla se muestran sólo unos pocos de los privilegios, y siempre conviene ir a la documentación oficial teniendo en cuenta la versión de MySQL que estamos utilizando, para confirmar los privilegios que existen:
+
+
 \begin{table}[H]
-    \tablestyle[sansboldbw]
-    \centering
-    %\begin{tabular}{*{4}{p{0.24\textwidth}}} % nope, this doesn't adapt to the columns' content
-    %\begin{tabular*}{\columnwidth}{@{\extracolsep{\stretch{1}}}*{4}{l}@{}} % buggy
-    % You can replace \begin{tabular} by \begin{longtable}
-    \begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
-
+    \tablestyle
+    \begin{tabular}{|p{0.21\linewidth}|p{0.31\linewidth}|p{0.4\linewidth}|}
         \theadstart
-        \thead Column\_category &
-        \thead Type &
-        \thead Information2 \\
+        \thead \centering \textbf{Privilege} &
+        \thead \centering \textbf{Grant Table Column} &
+        \thead \centering \textbf{Context} \tabularnewline
         \tbody
-
-        Quisque laoreet ultricies fringilla. & Lorem ipsum dolor sit amet & Pellentesque accumsan  \\
-        Quisque laoreet ultricies fringilla. & Lorem ipsum dolor sit amet & Pellentesque accumsan  \\
-
+            ALL [PRIVILEGES] & Synonym for “all privileges” & Server administration \\
+            ALTER & Alter\_priv & Tables \\
+            CREATE & Create\_priv & Databases, tables, or indexes \\
+            CREATE USER & Create\_user\_priv & Server administration \\
+            CREATE VIEW & Create\_view\_priv & Views \\
+            DELETE & Delete\_priv & Tables \\
+            DROP & Drop\_priv & Databases, tables, or views \\
+            DROP ROLE & Drop\_role\_priv & Server administration \\
+            GRANT OPTION & Grant\_priv & Databases, tables, or stored routines \\
+            INDEX & Index\_priv & Tables \\
+            INSERT & Insert\_priv & Tables or columns \\
+            SELECT & Select\_priv & Tables or columns \\
+            ... & ... & ... \\
         \tend
-        % You can replace \end{tabular} by \end{longtable}
     \end{tabular}
+    \vspace{-40pt}
 \end{table}
 
 
