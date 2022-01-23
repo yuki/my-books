@@ -16,9 +16,9 @@ jobs:
 
     - name: Release
       uses: softprops/action-gh-release@v1
-      if: startsWith(latest, 'refs/tags/')
       with:
-        files: |
+        tag_name: latest
+        files:
           SMR/2º/Sistemas operativos en red/SOred.pdf
           ASIR/2º/SGBD/sgbd_book.pdf
           otros/PFsense/pfsense_book.pdf
