@@ -21,9 +21,14 @@ El esquema de infraestructura real  quedaría de la siguiente manera, dependiend
 \end{itemize}
 
 \section{Requisitos}
-Esta simulación se puede realizar de dos maneras: haciendo uso de hardware o haciendo uso de máquinas virtuales. La manera más sencilla es realizarlo haciendo uso de máquinas virtuales con un virtualizador como es Virtualbox, por lo que se explicará esta modalidad.
+Esta simulación se puede realizar de dos maneras:
 
-En caso de querer realizar la instalación sobre hardware, sería necesario contar con un equipo que haga la función de servidor pfSense y que cuente con al menos 2 interfaces de red (uno para WAN y otro para LAN), así como otro PC que será el equipo de la LAN.
+\begin{itemize}
+    \item haciendo uso de hardware dedicado.
+    \item usando máquinas virtuales.
+\end{itemize}
+
+La manera más sencilla es realizarlo haciendo uso de máquinas virtuales con un virtualizador como es \href{https://www.virtualbox.org/}{Virtualbox}, por lo que se explicará esta modalidad.
 
 
 \chapter{PfSense}
@@ -59,7 +64,7 @@ Dadas las explicaciones previas, una vez creada la máquina virtual nuestra infr
 \begin{center}
     \vspace{-10pt}
     \includegraphics[width=0.5\linewidth]{infraestructura_virtualbox.png}
-    \vspace{-20pt}
+    \vspace{-10pt}
 \end{center}
 
 Visto este dibujo, la máquina virtual que actuará como PC dentro de la LAN le tendremos que modificar el adaptador virtual para que sea de tipo “Red interna” y escribiremos “\textbf{LAN}”, por lo que ambas máquinas estarán conectadas mediante un “switch virtual”.
@@ -71,12 +76,19 @@ El resto de parámetros de la máquina virtual, como se trata de una para prueba
     \item 1GB de memoria RAM
 \end{itemize}
 
+\subsection{Máquina virtual en la LAN}
+Tal como se ha visto en el dibujo anterior, vamos a usar una máquina virtual dentro de la \textit{LAN virtual} de pfSense.
+
+Para ello necesitamos configurar el interfaz de la máquina virtual en modo “Red interna” y seleccionaremos la “\textbf{LAN}” creada previamente.
+
+Queda por parte del lector el crear esta máquina virtual, pero se recomienda realizar la instalación de una distribución GNU/Linux en ella.
+
 \section{Instalación}
 Tras poner el CD de instalación en la máquina virtual y arrancar veremos un pequeño menú como muestra la siguiente captura de pantalla:
 
 \begin{center}
     \vspace{-10pt}
-    \includegraphics[width=0.6\linewidth]{install-1.png}
+    \includegraphics[width=0.8\linewidth]{install-1.png}
     \vspace{-20pt}
 \end{center}
 
@@ -87,17 +99,34 @@ El menú contará con un sistema de cuenta atrás y si no se selecciona nada ent
     \item \textbf{Rescue Shell}: Lanza una terminal para poder recuperar una instalación que esté dando problemas
     \item \textbf{Recover config.xml}: recupera el fichero de configuración config.xml de una instalación previa.
 \end{itemize}
-Tras seleccionar la opción de instalar, nos aparecerá un menú para seleccionar la distribución del teclado y a continuación el tipo de partición que queremos utilizar:
+
+Tras seleccionar la opción de \textbf{instalar}, nos aparecerá un menú para seleccionar la distribución del teclado y a continuación el tipo de partición que queremos utilizar:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{install-2.png}
+\end{center}
 
 \begin{itemize}
-    \item \textbf{Auto (UFS) BIOS}: si nuestro sistema usa BIOS
-    \item \textbf{Auto (UFS) UEFI}: si nuestro sistema usa UEFI
-    \item \textbf{Manual}: Nos permite particionar de manera manual, para expertos
-    \item \textbf{Shell}: Abre una consola y podremos realizar el particionado a mano
-    \item \textbf{Auto (ZFS)}: Sistema de particionado con el sistema de ficheros ZFS
+    \item \textbf{Auto (ZFS)}: Sistema de particionado con el sistema de ficheros ZFS. Es el sistema por defecto, aunque ZFS puede consumir más RAM.
+    \item \textbf{Auto (UFS) BIOS}: si nuestro sistema usa BIOS.
+    \item \textbf{Auto (UFS) UEFI}: si nuestro sistema usa UEFI.
+    \item \textbf{Manual}: Nos permite particionar de manera manual, para expertos.
+    \item \textbf{Shell}: Abre una consola y podremos realizar el particionado a mano.
+
 \end{itemize}
 
-Dado que nuestra máquina virtual tiene BIOS, haremos uso de la primera opción y comenzará automáticamente el particionado del disco duro. Tras terminar, nos preguntará si queremos abrir una terminal en el sistema recién instalado. Le diremos que no y que reinicie el sistema. Nos tendremos que asegurar de quitar la ISO de la máquina virtual para que arranque desde el disco duro en lugar del CD.
+Al seleccionar la opción “Auto (ZFS)”, el sistema nos permitirá crear un particionado en modo:
+\begin{itemize}
+    \item \textbf{stripe}: sin redundancia, usando el disco duro instalado.
+    \item \textbf{mirror}: haciendo uso del sistema RAID1
+    \item \textbf{raid10}: hacer uso de un sistema RAID1+0
+    \item \textbf{raidz1}: redundancia con un disco de paridad
+    \item \textbf{raidz2}: redundancia con dos disco de paridad
+    \item \textbf{raidz3}: redundancia con tres disco de paridad
+\end{itemize}
+
+Tras terminar, nos preguntará si queremos abrir una terminal en el sistema recién instalado. Le diremos que no y que reinicie el sistema. Nos tendremos que asegurar de quitar la ISO de la máquina virtual para que arranque desde el disco duro en lugar del CD.
 
 
 \chapter{Configuración básica}
@@ -105,25 +134,53 @@ En este apartado se va a detallar cómo realizar una configuración básica de p
 
 
 \section{Primer arranque}
-Tras realizar la instalación y reiniciar, al arrancar  desde el disco duro aparecerá un menú similar al que hemos visto al arrancar desde el CD, que si no se selecciona nada, usará la primera opción y terminará arrancando hasta llegar a otro menú.
+Tras realizar la instalación y reiniciar, en el primer arranque desde el disco duro aparecerá un pequeño asistente que comprobará el hardware, detectará los interfaces de red que tenemos y nos realizará una serie de preguntas:
 
-El siguiente menú aparecerá por defecto, y en una instalación por hardware sería lo que veríamos en la pantalla tras el reinicio. Debido a que es un menú desde el que podemos realizar configuraciones es un posible fallo de seguridad el tenerlo activado, ya que un atacante con acceso al hardware (o al sistema de virtualización) podría realizar modificaciones sobre el mismo. Lo habitual suele ser deshabilitar este menú y que para poder acceder a él haya que introducir la contraseña de root.
+\begin{itemize}
+    \item Si es necesario configurar VLANs.
+    \item De los interfaces existentes, cuál es el WAN.
+    \item De los interfaces existentes, cuál es el LAN.
+\end{itemize}
 
-De esta captura de pantalla del menú podemos sacar varios detalles:
+Dependiendo del direccionamiento de red en el que nos encontremos, es posible que haya que configurar la LAN virtual de nuestra infraestructura de red virtualizada.
+
+\subsection{A tener en cuenta en redes 192.168.1.0 /24}
+Dado que pfSense por defecto hace uso de una red LAN 192.168.1.0/24, en caso de que nuestra LAN física contenga ese direccionamiento, el interfaz LAN de pfSense no será configurado. Tendremos un menú como el siguiente:
 
 \begin{center}
-    \vspace{-15pt}
-    \includegraphics[width=0.6\linewidth]{boot-1.png}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{install-3.png}
     \vspace{-10pt}
 \end{center}
 
+Tal como se puede ver en la imagen, el asistente ha cogido IP por DHCP para el interfaz WAN, pero el interfaz LAN no se ha configurado ya que la WAN ya tiene el direccionamiento 192.168.1.0/24.
+
+
+\subsection{Configurar LAN virtual}
+En las situaciones mencionadas en el paso anterior, o en casos de que queramos modificar la red LAN, podremos cambiarla desde el menú que hemos visto yendo a la opción 2.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.8\linewidth]{install-4.png}
+    \vspace{-10pt}
+\end{center}
+
+Tal como se puede ver en la imagen anterior, al elegir la opción 2 el asistente nos pregunta por el interfaz que queremos configurar. Durante el proceso nos realiza las siguientes preguntas:
+
 \begin{itemize}
-    \item \textbf{WAN}: Ha cogido IP por DHCP y en este caso ha obtenido la IP 172.26.1.40/16. Este será el interfaz que en una infraestructura real obtendría la IP de Internet, una IP pública.
-    \item \textbf{LAN}: Automáticamente ha configurado el interfaz de la red local con la IP 192.168.1.1/24
+    \item \textbf{Interfaces disponibles}: En nuestro caso, la LAN.
+    \item \textbf{Dirección IPv4}: La dirección IPv4 para el interfaz seleccionado.
+    \item \textbf{Máscara de red}: Máscara del direccionamiento para la IP anterior.
+    \item \textbf{Dirección IPv6}: En caso de querer configurar el interfaz en IPv6
+    \item \textbf{Activar servidor DHCP}: En el caso configurar la LAN, es interesante configurar el servidor DHCP.
+    \begin{itemize}
+        \item \textbf{IP inicial del rango}: Dentro de la LAN, la primera IP que se asignará por DHCP.
+        \item \textbf{IP final del rango}: Dentro de la LAN, la última IP que se asignará por DHCP.
+    \end{itemize}
 \end{itemize}
 
 
-Junto a esos nombre aparecen “em0” y “em1” que son el nombre de los interfaces “físicos” (en este caso, son interfaces de la máquina virtual). Tal como se puede ver, el primer interfaz de la máquina virtual lo ha cogido para que sea la WAN y el segundo para la LAN. Por ello, hemos tenido que realizar la configuración de los interfaces de la máquina virtual de manera correcta.
+Al terminar el asistente, nos aparecerá de nuevo el menú que pasaremos a explicar a continuación.
 
 
 \section{Menú de configuración desde consola}
