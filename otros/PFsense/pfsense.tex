@@ -155,9 +155,9 @@ Dado que pfSense por defecto hace uso de una red LAN 192.168.1.0/24, en caso de 
 
 Tal como se puede ver en la imagen, el asistente ha cogido IP por DHCP para el interfaz WAN, pero el interfaz LAN no se ha configurado ya que la WAN ya tiene el direccionamiento 192.168.1.0/24.
 
-
+\hypertarget{configurar_lan_virtual}{}
 \subsection{Configurar LAN virtual}
-En las situaciones mencionadas en el paso anterior, o en casos de que queramos modificar la red LAN, podremos cambiarla desde el menú que hemos visto yendo a la opción 2.
+En las situaciones mencionadas en el paso anterior, o en casos de que queramos modificar la red LAN, podremos cambiarla desde el menú seleccionando la opción 2.
 
 \begin{center}
     \vspace{-10pt}
@@ -209,7 +209,7 @@ Como se puede ver en la imagen previa, aparecen 16 posibles opciones a elegir, e
 \end{enumerate}
 
 \section{Interfaz web de configuración}
-El acceso a la interfaz web de configuración sólo está disponible desde la red LAN, por lo que accederemos desde la máquina virtual dentro de la LAN abriendo un navegador y apuntando a la IP por defecto de la LAN “https://192.168.1.1”. Tendremos que aceptar el certificado de seguridad (ya que es auto-firmado) y nos aparecerá la web de login.
+El acceso a la interfaz web de configuración \textbf{por defecto sólo está disponible desde la red LAN}, por lo que accederemos desde la máquina virtual dentro de la LAN abriendo un navegador y apuntando a la IP por defecto de la LAN “https://192.168.1.1” (o la que hayamos puesto si hemos \hyperlink{configurar_lan_virtual}{configurado la LAN}). Tendremos que aceptar el certificado de seguridad (ya que es auto-firmado) y nos aparecerá la web de login.
 
 \begin{center}
     \includegraphics[frame,width=0.7\linewidth]{login.png}
@@ -221,46 +221,54 @@ Los credenciales por defecto son:
     \item \textbf{password}: pfsense
 \end{itemize}
 
-El usuario admin de la web tendrá la misma contraseña que el usuario root por consola, por lo que tendrá que ser una contraseña segura y que sólo los administradores del servidor conozcan.
+El usuario “admin” de la web tendrá la misma contraseña que el usuario root por consola.
+
+\errorbox{\textbf{Dada la importancia de los cortafuegos, la contraseña que usemos debe ser segura y  sólo los administradores del servidor la deben conocer.}}
 
 Cuando nos logueamos por primera vez nos aparecerá la primera página del asistente de configuración de pfsense, que nos guiará a través de nueve pasos donde podremos hacer una configuración básica de pfSense. Los pasos serán los siguientes:
 
 \begin{enumerate}
-    \setcounter{enumi}{0}
-    \item \textbf{Bienvenida al asistente}: página de inicio
-    \item \textbf{Soporte de Netgate}: detrás de pfSense hay una empresa, Netgate, que ofrece sus servicios de soporte para pfSense
+    \setcounter{enumi}{-1}
+    \item \textbf{Bienvenida al asistente}: página de inicio.
+    \item \textbf{Soporte de Netgate}: detrás de pfSense hay una empresa, Netgate, que ofrece sus servicios de soporte de pago para pfSense.
     \item \textbf{Información general}: configuración básica del servidor:
     \begin{itemize}
-        \item \textbf{hostname}: nombre del servidor
-        \item \textbf{domain}: nombre del dominio al que pertenece el servidor
+        \item \textbf{hostname}: nombre del servidor.
+        \item \textbf{domain}: nombre del dominio al que pertenece el servidor.
         \item \textbf{DNS Server}: servidores DNS externos al que mandar las peticiones.
     \end{itemize}
-    \item \textbf{Servidor de tiempo}: configurar la zona horaria y el servidor NTP
-    \item \textbf{Configurar interfaz WAN}: Dependiendo de cómo sea la infraestructura real, podremos configurar el interfaz WAN con IP pública estática, por DHCP, por PPPoE, … Por defecto está en DHCP. Si estamos tras doble NAT, habría que desactivar la opción “RFC1918 Networks”
+    \item \textbf{Servidor de tiempo}: configurar la zona horaria y el servidor NTP.
+    \item \textbf{Configurar interfaz WAN}: Dependiendo de cómo sea la infraestructura real, podremos configurar el interfaz WAN con IP pública estática, por DHCP, por PPPoE, … Por defecto está en DHCP. Si estamos tras doble NAT, habría que desactivar la opción “RFC1918 Networks”.
     \item \textbf{Configurar interfaz LAN}: La IP de pfSense en el direccionamiento LAN. Por defecto es 192.168.1.1 con una máscara “/24”.
     \item \textbf{Cambio de contraseña del admin}: Para poner una contraseña más segura.
-    \item \textbf{Recargar la configuración}: Si se ha realizado algún cambio, recargará la configuración
+    \item \textbf{Recargar la configuración}: Si se ha realizado algún cambio, recargará la configuración.
 \end{enumerate}
 
-\section{Reglas de filtrado}
-PfSense es un servidor que actúa como firewall y por tanto permite la creación de reglas de filtrado de tráfico para todos los interfaces que tiene configurados. Las reglas se ejecutan cuando el tráfico \textbf{entra al interfaz} y son evaluadas en base a “primer acierto”.
+\chapter{Reglas de filtrado}
+PfSense es un servidor que actúa como firewall y por tanto permite la creación de reglas de filtrado de tráfico para todos los interfaces que tiene configurados.
 
-Si el tráfico no coincide con alguna regla que sea explícitamente \textbf{pass} el tráfico será denegado. Por defecto pfsense deniega todo el tráfico entrante a sus interfaces. Las acciones principales de las reglas pueden ser:
-Pass: Permite el tráfico al destino.
+\infobox{Las reglas se ejecutan \textbf{cuando el tráfico entra al interfaz} y son evaluadas en base a “primer acierto”.}
+
+Si el tráfico no coincide con alguna regla que sea explícitamente \textbf{pass} el tráfico será denegado.
+
+\warnbox{\textbf{Por defecto pfsense deniega todo el tráfico entrante a sus interfaces}.}
+
+Las acciones principales de las reglas pueden ser:
 
 \begin{itemize}
+    \item \textbf{Pass}: Permite el tráfico al destino.
     \item \textbf{Reject}: Rechaza el paquete y avisa al emisor.
     \item \textbf{Block}: Rechaza el paquete de manera silenciosa.
 \end{itemize}
 
-Aunque las opciones “\textit{block}” y “\textit{reject}” rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que “reject” responde con \textbf{TCP RST }(o "\textit{port unreacheable}"), y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio.
+Aunque las opciones “\textit{block}” y “\textit{reject}” rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que “reject” responde con \textbf{TCP RST }(o "\textit{port unreacheable}"), y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (\textbf{\textit{\href{https://es.wikipedia.org/wiki/Ataque_de_denegaci\%C3\%B3n_de_servicio}{DoS}}}).
 
 \errorbox{\textbf{¡Nunca se debería usar “\textit{reject}” en el interfaz  WAN!}}
 
 En redes privadas es útil hacer uso de “\textit{reject}”, porque avisa a los programas que intentan realizar conexiones que la conexión está bloqueada, y por tanto la respuesta es más rápida ya que no se esperan timeouts.
 
 \hypertarget{ciclo_vida_conexiones}{}
-\subsection{Ciclo de vida de una conexión}
+\section{Ciclo de vida de una conexión}
 A continuación se explica cómo actúa pfSense al recibir un paquete de una nueva conexión:
 
 \begin{itemize}
@@ -268,15 +276,15 @@ A continuación se explica cómo actúa pfSense al recibir un paquete de una nue
     \item Se comprueban las reglas de filtrado \textbf{en orden descendiente} contra el paquete.
     \item Cuando existe coincidencia, se ejecuta la acción de la regla de filtrado.
     \item Se para las comprobaciones de las reglas.
-    \item Si no ha existido una coincidencia tras comprobar todas las reglas, el paquete es bloqueado por defecto.
+    \item Si no ha existido una coincidencia tras comprobar todas las reglas, \textbf{el paquete es bloqueado por defecto}.
 \end{itemize}
 
 
-\subsection{Reglas creadas por defecto}
+\section{Reglas creadas por defecto}
 Tras la instalación de PfSense podemos ir a “Firewall → Rules” y ahí aparecen los interfaces que están configurados actualmente y en los que se pueden crear reglas de filtrado. Los interfaces que existirán en nuestra infraestructura serán:
 
 \begin{itemize}
-    \item \textbf{Floating}: No es una interfaz al uso. Es para crear reglas de filtrado especiales que se pueden saltar el orden y/o aplicar a todos los interfaces. \textbf{Es mejor no utilizarlo salvo que sepamos qué estamos haciedno y hayamos leído detenidamente} la \href{https://docs.netgate.com/pfsense/en/latest/firewall/floating-rules.html}{documentación} sobre ello.
+    \item \textbf{Floating}: No es una interfaz al uso. Es para crear reglas de filtrado especiales que se pueden saltar el orden y/o aplicar a todos los interfaces. \textbf{Es mejor no utilizarlo salvo que sepamos qué estamos haciendo y hayamos leído detenidamente} la \href{https://docs.netgate.com/pfsense/en/latest/firewall/floating-rules.html}{documentación} sobre ello.
     \item \textbf{WAN}: Bloquea todos los paquetes.
     \item \textbf{LAN}: Existen varias reglas creadas por defecto que permiten tráfico:
 
@@ -293,7 +301,7 @@ Tras la instalación de PfSense podemos ir a “Firewall → Rules” y ahí apa
 
 Las últimas dos reglas explicadas previamente permiten que el tráfico pueda salir de la LAN hacia internet y así se permita navegar por internet. Si se crease una nueva red LAN (para una red wifi, DMZ, …) estas reglas no estarían creadas, por lo que desde esa nueva LAN no se podría acceder a ninguna otra red, por lo que habría que crear reglas que permitieran el tráfico.
 
-\subsection{Crear regla de denegación}
+\section{Crear regla de denegación}
 Tal como se ha comentado, actualmente desde la LAN se permite acceder a cualquier red, por lo que podemos hacer ping a cualquier equipo de internet. Como ejemplo se va a crear una regla que impedirá el acceso a un servidor de internet. Esta regla servirá de ejemplo para poder realizar cualquier otra regla que sea necesaria.
 
 La regla se va a crear en el interfaz LAN, ya que queremos limitar el tráfico al entrar desde esta red. Para crear la regla existen dos botones de creación:
@@ -334,7 +342,7 @@ Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.
 Una vez creada la regla aparecerá un botón para aplicar los cambios, por lo que hasta que no sea pulsado ese botón, las nuevas reglas que se hayan creado no tendrán efecto y por tanto no entrarán en funcionamiento.
 
 
-\subsection{Orden de las reglas}
+\section{Orden de las reglas}
 Tal como se ha identificado en el ciclo de \hyperlink{ciclo_vida_conexiones}{vida de las conexiones}, el orden de las reglas es muy importante, ya que en el momento en el que el tráfico entra sobre el interfaz se comprobará si coincide con las reglas en orden descendente.
 
 Por lo tanto, si existe una regla muy general que permite el tráfico y después una muy específica de bloqueo, es bastante probable que la regla específica de bloqueo no llegue a entrar en funcionamiento, ya que el tráfico coincidirá con la regla general que permite dicho tráfico.
@@ -413,7 +421,7 @@ Entre las modificaciones que vamos a realizar están:
 \begin{itemize}
     \item \textbf{Enable}: hay que habilitar el interfaz, ya que aunque esté configurado, si no está habilitado no entrará en funcionamiento.
     \item \textbf{Description}: El nombre que le daremos al interfaz, en este caso “DMZ”.
-    \item \textbf{IPv4 Configuration Type}: Tipo de IPv4 que se le va a asignar. Crearemos un direcconamiento estático, por ejemplo: 172.16.0.1 /25 . La configuración de la red se hace en la misma página, un poco más abajo.
+    \item \textbf{IPv4 Configuration Type}: Tipo de IPv4 que se le va a asignar. Crearemos un direccionamiento estático, por ejemplo: 172.16.0.1 /25 . La configuración de la red se hace en la misma página, un poco más abajo.
 \end{itemize}
 
 Una vez realizados los cambios, habrá que aplicar los cambios.
