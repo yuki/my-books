@@ -245,13 +245,9 @@ Cuando nos logueamos por primera vez nos aparecerá la primera página del asist
 \end{enumerate}
 
 \chapter{Reglas de filtrado}
-PfSense es un servidor que actúa como firewall y por tanto permite la creación de reglas de filtrado de tráfico para todos los interfaces que tiene configurados.
+PfSense es un servidor que actúa como \textbf{firewall} (entre otras de sus posibles funciones) y por tanto permite la creación de reglas de filtrado de tráfico para todos los interfaces que tiene configurados.
 
 \infobox{Las reglas se ejecutan \textbf{cuando el tráfico entra al interfaz} y son evaluadas en base a “primer acierto”.}
-
-Si el tráfico no coincide con alguna regla que sea explícitamente \textbf{pass} el tráfico será denegado.
-
-\warnbox{\textbf{Por defecto pfsense deniega todo el tráfico entrante a sus interfaces}.}
 
 Las acciones principales de las reglas pueden ser:
 
@@ -261,7 +257,11 @@ Las acciones principales de las reglas pueden ser:
     \item \textbf{Block}: Rechaza el paquete de manera silenciosa.
 \end{itemize}
 
-Aunque las opciones “\textit{block}” y “\textit{reject}” rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que “reject” responde con \textbf{TCP RST }(o "\textit{port unreacheable}"), y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (\textbf{\textit{\href{https://es.wikipedia.org/wiki/Ataque_de_denegaci\%C3\%B3n_de_servicio}{DoS}}}).
+Si el tráfico no coincide con alguna regla que sea explícitamente \textbf{pass} el tráfico será denegado.
+
+\warnbox{\textbf{Por defecto pfSense deniega todo el tráfico entrante a sus interfaces}.}
+
+Aunque las opciones “\textit{block}” y “\textit{reject}” rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que “reject” responde con \textbf{TCP RST }(o "\textit{port unreacheable}") y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (\textbf{\textit{\href{https://es.wikipedia.org/wiki/Ataque_de_denegaci\%C3\%B3n_de_servicio}{DoS}}}).
 
 \errorbox{\textbf{¡Nunca se debería usar “\textit{reject}” en el interfaz  WAN!}}
 
@@ -302,9 +302,9 @@ Tras la instalación de PfSense podemos ir a “Firewall → Rules” y ahí apa
 Las últimas dos reglas explicadas previamente permiten que el tráfico pueda salir de la LAN hacia internet y así se permita navegar por internet. Si se crease una nueva red LAN (para una red wifi, DMZ, …) estas reglas no estarían creadas, por lo que desde esa nueva LAN no se podría acceder a ninguna otra red, por lo que habría que crear reglas que permitieran el tráfico.
 
 \section{Crear regla de denegación}
-Tal como se ha comentado, actualmente desde la LAN se permite acceder a cualquier red, por lo que podemos hacer ping a cualquier equipo de internet. Como ejemplo se va a crear una regla que impedirá el acceso a un servidor de internet. Esta regla servirá de ejemplo para poder realizar cualquier otra regla que sea necesaria.
+Tal como se ha comentado, por defecto desde la LAN se permite acceder a cualquier red, por lo que podemos hacer ping a cualquier equipo de Internet. Como ejemplo se va a crear una regla que impedirá el acceso a un servidor de Internet. Esta regla servirá de ejemplo para poder realizar cualquier otra regla que sea necesaria.
 
-La regla se va a crear en el interfaz LAN, ya que queremos limitar el tráfico al entrar desde esta red. Para crear la regla existen dos botones de creación:
+La regla se va a crear en el interfaz LAN, ya que queremos limitar el tráfico cuyo origen es esa red. Para crear la regla existen dos botones de creación:
 
 \begin{itemize}
     \item \textbf{Añadir la regla al principio de la lista}: como su propio nombre indica, creará la regla al principio de la lista en la que aparecen todas las reglas que ya están creadas.
@@ -394,7 +394,7 @@ Tal como se puede apreciar al compararlo con la \hyperlink{detalles_maquina_virt
 
 Virtualbox no nos permite realizar esta modificación “en caliente”, por lo que habrá que apagar la máquina virtual de pfSense. Algunos sistemas profesionales de virtualización sí que permiten hacer algunas modificaciones hardware en las máquinas virtuales sin tener que apagarlas, y dependiendo del sistema operativo, se dará cuenta de dichos cambios y por lo tanto no será necesario realizar un apagado.
 
-Crearemos otra máquina virtual que actuará a modo de servidor en la red DMZ, por lo que en su configuración la configuraremos también como “Red interna” en DMZ.
+Tenemos que crear otra máquina virtual que actuará a modo de servidor en la red DMZ, por lo que en su configuración la configuraremos también como “Red interna” en DMZ.
 
 
 \section{Modificación de la configuración en pfSense}
