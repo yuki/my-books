@@ -20,5 +20,6 @@ jobs:
         tag_name: latest
         files: |
           SMR/2/SOred/SOred.pdf
+          ASIR/1/planificacion_administracion_redes/redes_book.pdf
           ASIR/2/SGBD/sgbd_book.pdf
           otros/PFsense/pfsense_book.pdf

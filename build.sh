@@ -9,6 +9,14 @@ pdflatex -shell-escape SOred.tex
 
 cd ../../../
 
+cd "ASIR/1/planificacion_administracion_redes/"
+pdflatex -shell-escape redes_book.tex
+makeindex redes_book.tex
+pdflatex -shell-escape redes_book.tex
+pdflatex -shell-escape redes_book.tex
+
+cd ../../../
+
 cd "ASIR/2/SGBD/"
 pdflatex -shell-escape sgbd_book.tex
 makeindex sgbd_book.tex
