@@ -2,7 +2,7 @@
 
 \section{Introducción}
 
-Desde el principio de los tiempos, el ser humano se ha comunicado con sus congéneres de distintas maneras:  comenzó a través de la voz (se cree que hace unos 100.000 años), con algún tipo de protolenguaje, para posteriormente comenzar a utilizar sistemas de comunicaciones permanentes.
+Desde el principio de los tiempos, el ser humano se ha comunicado con sus congéneres de distintas maneras: comenzó a través de la voz (se cree que hace unos 100.000 años), con algún tipo de protolenguaje, para posteriormente comenzar a utilizar sistemas de comunicaciones permanentes.
 
 Por todos es conocido la evolución histórica de distintos sistemas escritos, entre los que podemos destacar (\href{https://es.wikipedia.org/wiki/Anexo:Cronolog%C3%ADa_de_las_tecnolog%C3%ADas_de_la_comunicaci%C3%B3n}{referencia}):
 \begin{itemize}
@@ -30,7 +30,7 @@ Tal como hemos visto, los sistemas de comunicación de la información no es alg
     \item \textbf{Receptor}: Es el destinatario, el que va a recibir la información.
     \item \textbf{Mensaje}: Es la información que queremos transmitir entre el emisor y el recepetor.
     \item \textbf{Código}: Es el conjunto de reglas utilizadas a la hora de representar el mensaje. El emisor y receptor deben utilizar el mismo código para que la comnunicación sea correcta.
-    \item \textbf{Canal}: Es el medio físico por  el que se va a enviar el mensaje.
+    \item \textbf{Canal}: Es el medio físico por el que se va a enviar el mensaje.
     \item \textbf{Señal}: Es el componente físico por el que se envía la información.
 \end{itemize}
 
@@ -82,7 +82,7 @@ El ser humano, desde hace tiempo ha utilizado como sistema para contar el sistem
 El sistema numérico decimal está basado en diez símbolos ordenados (0, 1, 2, 3, 4, 5, 6, 7, 8, 9), situados de manera ponderada (cada posición tiene un peso específico), que permiten representar las cantidades deseadas. Debido a que hacemos uso de diez símbolos se dice que utiliza la \textbf{base 10}.
 
 \subsubsection*{Representación}
-Cuando combinamos con otros sistemas de numeración, debemos indicar la base en la forma $ 9_{(10} $ , es decir, poniendo un pequeño “\textbf{(10}” a la derecha del número representado la base 10.
+Cuando combinamos con otros sistemas de numeración, debemos indicar la base en la forma $ \mathbf{19_{(10}} $ , es decir, poniendo un pequeño “\textbf{(10}” a la derecha del número representado la base 10.
 
 La representación de cualquier combinación del sistema decimal se puede representar en forma de potencia, donde la base es 10 (como ya hemos visto antes) y el exponente es la posición en la que se sitúa el símbolo.
 
@@ -105,7 +105,7 @@ En informática el sistema binario es el más importante ya que es el sistema qu
 
 \subsubsection*{Representación}
 
-Para representar que estamos haciendo uso del sistema binario debemos indicar la base al lado del número, por ejemplo: $ 101001_{(2} $. Como se puede ver es añadir “(2” en pequeño al final del último símbolo.
+Para representar que estamos haciendo uso del sistema binario debemos indicar la base al lado del número, por ejemplo: $\mathbf{ 101001_{(2}} $. Como se puede ver es añadir “\textbf{(2}” en pequeño al final del último símbolo.
 
 
 \subsection{Sistema hexadecimal}
@@ -117,7 +117,7 @@ También se usa durante la edición de código en formato de datos, o durante la
 Esta vez nos basamos en dieciséis símbolos ordenados, así que se dice que se hace uso de la \textbf{base 16}. Para la representación se hace uso de los símbolos digitales que conocemos (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) y a continuación de las letras “A”, “B”, “C”, “D”, “E” y “F, de esta manera formamos los 16 símbolos que necesitamos.
 
 \subsubsection*{Representación}
-Al igual que con los sistemas anteriores, debemos añadir la base cuando estemos utilizando el sistema hexadecimal: $ F17A_{(16} $ , $ FBE1D_{(16} $ , $ 1FAB27_{(16} $
+Al igual que con los sistemas anteriores, debemos añadir la base cuando estemos utilizando el sistema hexadecimal: $\mathbf{ F17A_{(16}} $ , $\mathbf{ FBE1D_{(16}} $ , $\mathbf{ 1FAB27_{(16}} $
 
 
 \subsection{Sistema octal}
@@ -126,7 +126,7 @@ En ordenadores antiguos era habitual hacer uso del sistema octal. Hoy día se us
 Esta vez nos basamos en ocho símbolos ordenados (0, 1, 2, 3, 4, 5, 6, 7), que, al combinarlos, permiten representar las cantidades deseadas. Debido a que hacemos uso de ocho símbolos se dice que utiliza la \textbf{base 8}.
 
 \subsubsection*{Representación}
-Para representar la base, debemos añadir “(8” a la derecha del número que hayamos indicado, como por ejemplo: $ 770_{(8} $ , $ 175_{(8} $
+Para representar la base, debemos añadir “(8” a la derecha del número que hayamos indicado, como por ejemplo: $\mathbf{ 770_{(8} }$ , $\mathbf{ 175_{(8}} $
 
 
 \subsection{Conversiones entre los distintos sistemas de numeración}
@@ -137,17 +137,152 @@ Dependiendo del sistema de numeración de origen y cuál es el sistema de numera
 
 Una vez entendidos los distintos sistemas de numeración nos tiene que quedar claro que aunque la representación de los símbolos sea la misma, el número o cantidad representada no es la misma. Por ejemplo:
 
-\begin{center}
-    \vspace{-10pt}
-    $ 1010_{(10}  \neq  1010_{(2}  \neq  1010_{(16}  \neq 1010_{(8} $
-\end{center}
+\errorbox{
+    \begin{center}
+        $\mathbf{ 1010_{(10}  \neq  1010_{(2}  \neq  1010_{(16}  \neq 1010_{(8}} $
+    \end{center}
+}
 
 A continuación se va a explicar cómo realizar conversiones entre los distintos sistemas de numeración que hemos visto, y a modo de resumen está la \hyperlink{tabla_conversiones_directas}{tabla de conversiones directa}.
 
+\subsubsection{Conversión de decimal a...}
+La manera más sencilla para realizar las distintas conversiones partiendo de un número decimal es hacer divisiones sucesivas usando la base a la que queremos realizar la conversión.
+
+\subsubsection*{... binario}
+Se trata de dividir sucesivamente el número decimal y los sucesivos cocientes entre dos (la base binaria).
+
+Vamos a utilizar como ejemplo el número decimal $\mathbf{27_{(10}}$ :
+
+\begin{center}
+    \vspace{-20pt}
+    \includegraphics[width=0.29\linewidth]{decimal_binario.png}
+    \vspace{-20pt}
+\end{center}
+
+De esta manera, podemos obtener la siguiente equivalencia: $\mathbf{27_{(10} = 11011_{(2}}$
+
+\subsubsection*{... hexadecimal}
+Se trata de dividir sucesivamente el número decimal y los sucesivos cocientes entre 16 (la base hexadecimal). Cuando el resultado sea entre 10 y 15, habrá que cambiarlo por la letra correspondiente.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.2\linewidth]{decimal_hexadecimal.png}
+    \vspace{-15pt}
+\end{center}
+
+De esta manera, podemos obtener la siguiente equivalencia: $\mathbf{195_{(10} = C3_{(16}}$
+
+\subsubsection*{... octal}
+Al igual que los anteriores, hacemos divisiones sucesivas:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.25\linewidth]{decimal_octal.png}
+    \vspace{-15pt}
+\end{center}
+
+De esta manera, podemos obtener la siguiente equivalencia: $\mathbf{98_{(10} = 142_{(8}}$
+
+
+\subsubsection{Conversión de binario a...}
+
+\subsubsection*{... decimal}
+El sistema de numeración binario es un sistema posicional donde cada dígito binario (bit) tiene un valor basado en su posición relativa al \textbf{LSB} (\textit{Least Significant Bit} = bit menos significativo, que es el que está más a la derecha y que tiene el menor valor).
+
+Cualquier número binario puede convertirse a su equivalente decimal, simplemente sumando en el número binario los valores de las diversas posiciones que contenga un 1. Para ilustrar lo anterior cojamos como ejemplo el número binario $\mathbf{11011_{(2}}$:
+
+\begin{center}
+    \vspace{-20pt}
+
+    $ \mathbf{11011_{(2}} $
+
+    $ \mathbf{1\times2^4 + 1\times2^3 + 0\times2^2 + 1\times2^1 + 1\times2^0} $
+
+    $ \mathbf{16 + 8 + 0 + 2 + 1 = 27_{(10}} $
+    \vspace{-15pt}
+\end{center}
+
+Nótese que el procedimiento consiste en determinar los valores (es decir, las potencias de 2) de cada posición de bit que contenga un 1 y luego sumarlos.
+
+Nótese también que el \textbf{MSB} (\textit{Most Significant Bit} = bit más significativo, el que está más a la izquierda, el que tiene mayor valor) tiene un valor de $\mathbf{2^4}$ a pesar de que es el quinto bit. Esto se debe a que el \textbf{LSB} (\textit{Least Significant Bit}, el bit menos significativo, el que está a la derecha) es el primer bit y tiene un valor de $\mathbf{2^0}$.
+
+\subsubsection*{... octal}
+Para convertir un número binario a octal \textbf{se agrupan los dígitos de 3 en 3 desde el lado derecho hacia la izquierda}, sustituyendo cada trío de dígitos binarios por su equivalente en octal.
+
+Si en el lado izquierdo quedase algún bit “suelto” (sin formar un grupo de 3), se pueden poner “0” a la izquierda.
+
+Cogemos como ejemplo el número binario $\mathbf{1100101001001_{(2}}$ para pasarlo a octal, haremos:
+
+\begin{center}
+    \vspace{-15pt}
+    $\mathbf{001\ \ 100\ \ 101\ \ 001\ \ 001_{(2} = 14511_{(10}}$
+    \vspace{-15pt}
+\end{center}
+
+\subsubsection*{... hexadecimal}
+Similar al caso anterior, pero en este caso \textbf{la agrupación que se realiza debe de ser de 4 en 4 bits}. Si usamos el mismo ejemplo anterior $\mathbf{1100101001001_{(2}}$ :
+
+\begin{center}
+    \vspace{-15pt}
+    $\mathbf{0001\ \ 1001\ \ 0100\ \ 1001_{(2} = 1949_{(16}}$
+    \vspace{-15pt}
+\end{center}
+
+\subsubsection{Conversión de hexadecimal a...}
+\subsubsection*{... binario}
+Para pasar de hexadecimal a binario convertiremos cada símbolo hexadecimal a 4 dígitos binarios.
+
+\begin{center}
+    \vspace{-15pt}
+    $\mathbf{F17A_{(16} = 1111\ \ 0001\ \ 0111\ \ 1010_{(2}}$
+
+    $\mathbf{1A4F_{(16} = 0001\ \ 1010\ \ 0100\ \ 111_{(2}}$
+    \vspace{-15pt}
+\end{center}
+
+
+\subsubsection*{... decimal}
+Al igual que hemos hecho con las conversiones previas a decimal, se podría realizar haciendo potencias de 16, pero se entiende que es más complicado de realizar.
+
+Por lo tanto, \textbf{la manera más sencilla es pasar primero a binario} como acabamos de ver \textbf{y posteriormente convertir ese binario a decimal} como hemos visto previamente.
+
+\subsubsection*{... octal}
+Pasar primero a binario y después a octal.
 
 
 
+\subsubsection{Conversión de octal a...}
+\subsubsection*{... binario}
+Cada dígito en octal se convierte en su representación en 3 bits:
 
+\begin{center}
+    \vspace{-15pt}
+    $\mathbf{167_{(8} = 001\ \ 110\ \ 111_{(2}}$
+
+    $\mathbf{253_{(8} = 010\ \ 101\ \ 011_{(2}}$
+    \vspace{-15pt}
+\end{center}
+Los ceros de la izquierda se podrían quitar, ya que no alteran el valor.
+
+\subsubsection*{... decimal}
+Se puede realizar de dos maneras. La primera es hacer uso de potencias de 8 (similar al paso de pasar de binario a decimal, pero cambiando la base):
+
+\begin{center}
+    \vspace{-15pt}
+    $\mathbf{157_{(8} = 1\times8^2 + 5\times8^1 + 7\times8^0 = }$
+
+    $\mathbf{1\times64 + 5\times8 + 7\times1 = }$
+
+    $\mathbf{64 + 40 + 7 = 111_{(10}}$
+
+    Resultado: $\mathbf{157_{(8} = 111_{(10}}$
+    \vspace{-15pt}
+\end{center}
+
+Con números grandes puede ser un poco complicado calcular las potencias de 8, por lo que \textbf{la alternativa es pasarlo primero a binario} como hemos visto, \textbf{y después pasarlo de binario a decimal}.
+
+\subsubsection*{... hexadecimal}
+La manera más sencilla es realizar la conversión primero a binario tal como hemos visto, y posteriormente pasar el número binario a hexadecimal como se ha visto previamente.
 
 
 \chapter{Redes de comunicación}
