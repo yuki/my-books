@@ -378,7 +378,7 @@ En el ámbito informático una red de comunicaciones es representada como una re
     \item[\char`\~ 2010]
     Ethernet permite conexiones a 400Gbit/s (2018).
 
-    Starlink comienza a desplegar su constelación de satélites para dar cobertura en todo el planeta.
+    \href{https://en.wikipedia.org/wiki/Starlink}{Starlink} comienza a desplegar su constelación de satélites para dar cobertura en todo el planeta.
 
 
 \end{description}
@@ -390,7 +390,7 @@ A la hora de diferenciar las redes de ordenadores podemos diferenciarlas por dis
     \item Por el medio de transmisión utilizado.
     \item Por la dirección de los datos.
     \item Por el alcance.
-    \item Por la titularidad.
+    \item Por el grado de acceso.
     \item Por la topología.
     \item ...
 \end{itemize}
@@ -453,38 +453,86 @@ Algunos de estos servicios que están en una MAN pueden ser públicos (como el W
 Del inglés \textit{Wide Area Network}, es una red que abarca grandes extensiones geográficas y normalmente construidas por grandes empresas o proveedores de internet (ISP, \textit{Internet Service Provider}).
 
 
-\subsubsection{Por la titularidad}
+\subsection{Por el grado de acceso}
+Teniendo en cuenta quién puede acceder a la red, podríamos definir dos tipos de redes:
+
+\begin{itemize}
+    \item \textbf{Red privada}: es una red que sólo ciertas personas pueden acceder y que no normalmente no es accesible desde otras redes. El ejemplo más sencillo es la red que tenemos en casa.
+    \item \textbf{Red pública}: es una red a la que puede acceder cualquier persona y que interconecta otras redes sin importar su situación geográfica. Internet es una red pública.
+\end{itemize}
+
+\subsection{Por la topología}
+La topología de una red indica cómo están interconectados los nodos de la misma y el camino que pueden realizar los datos cuando viajan por esa red. En resumen: \textbf{es el diseño de la red}.
+
+%TODO: completar información
 
 
 
 
 
-\section{Conceptos básicos}
-Al comienzo de las redes de ordenadores cada empresa creaba su propio sistema de comunicación creando su propio hardware y software, lo que hacía imposible la interconexión entre equipamiento de distintas empresas. Eso hoy en día no sucede ya que las redes están definidas en varios estándares, como veremos más adelante.
+
+\chapter{Arquitectura en capas}
+Un sistema de comunicación se pueden diferenciar en distintos niveles en los que cada uno realiza una función independiente, pero que a su vez interactúan con los niveles limítrofes.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.4\linewidth]{comunicacion-esquema.png}
+    \vspace{-10pt}
+\end{center}
+
+Este ejemplo es un modelo simplificado de comunicación, y dentro de una arquitectura de red de ordenadores pueden existir más capas en las que pueden existir distintas funciones extra que no aparecen en este esquema.
+
+\section{Origen}
+
+Al comienzo de las redes de ordenadores cada empresa creaba su propio sistema de comunicación creando su propio hardware y software, lo que hacía imposible la interconexión entre equipamiento de distintas empresas.
+
+Estos sistemas de comunicación constan de unas reglas que los nodos deben conocer para poder comunicarse entre sí, y a ese conjunto de reglas se les denomina \textbf{protocolo de comunicación}.
 
 
-\hypertarget{sistemas_transmision}{}
-\section{Sistemas de transmisión}
+Para que eso hoy en día no suceda ya que las redes están definidas en varios estándares, como veremos más adelante.
 
-guiados:
- - cable par trenzado
- - coaxial
- - optica
-   FTTH
-
-no guiados
- - radiofrecuencia
+\infobox{Un \textbf{estándar} es un conjunto de normas que pueden abarcar distintos niveles (tanto software como hardware) que ha sido aceptado, o creado, por la gran mayoría de las empresas del sector para poder realizar la interconexión e intercomunicación entre sí.}
 
 
+\section{Ventajas de la división en capas}
 
-\section{Arquitectura en capas}
+La división en capas nos permite:
+\begin{itemize}
+    \item Dividir el proceso de comunicación en procesos más pequeños.
+
+    \item Aislar las funciones de cada capa. De esta manera, en caso de realizar modificaciones en la misma, no afecta al resto de capas.
+
+    \item Ocultar la implementación al resto de capas. Siguiendo con el punto anterior, una capa utilizará los servicios de su capa inferior sin saber cómo realiza sus funciones.
+
+    \item Cada capa puede constar de distintos estándares, facilitando la interconexión de distintas tecnologías
+\end{itemize}
+
+Una arquitectura de red en capas se implementa por medio de distintos protocolos, formando una familia de protocolos para facilitar la comunicación de distintos sistemas y equipos en la red.
+
+\infobox{Una arquitectura en capas nos permite que cada capa actúe de manera independiente y que incluya sus propios protocolos. Cada capa dispone de una serie de servicios que ofrece a su capa limítrofe superior.}
+
+Desde el comienzo de las redes de ordenadores han existido distintas familias de protocolos, y se puede considerar que hubo una \href{https://en.wikipedia.org/wiki/Protocol_Wars}{guerra de protocolos durante las décadas de 1970 a 1990}. Empresas, organizaciones y países se posicionaban sobre cuál sería el mejor protocolo de comunicaciones y el que saldría ganador para el uso a nivel internacional.
+
+Por destacar algunos protocolos que ya no se usan:
+
+\begin{itemize}
+    \item \textbf{\href{https://en.wikipedia.org/wiki/Systems_Network_Architecture}{SNA}} creado en 1974 por IBM.
+    \item \textbf{\href{https://en.wikipedia.org/wiki/NetBIOS_Frames}{NetBEUI}} de Microsoft. Que evolucionó a NetBIOS sobre TCP/IP que hoy día se usa en Windows Server.
+    \item \textbf{\href{https://en.wikipedia.org/wiki/IPX/SPX}{IPX/SPX}} de Novell.
+\end{itemize}
+
+\section{Modelo de referencia OSI}
+El modelo de interconexión de sistemas abiertos, conocido como “modelo \textbf{OSI}” (\textit{\textbf{O}pen \textbf{S}ystems \textbf{I}nterconnection} en inglés) es un \textbf{modelo de referencia (teórico)} que busca estandarizar las funciones de comunicación para un sistema informático siendo agnóstico a la tecnología utilizada para realizar la implementación y a los protocolos utilizados en cada capa.
+
+El diseño comenzó en 1977 tratando de terminar con la \href{https://en.wikipedia.org/wiki/Protocol_Wars}{guerra de protocolos} comentada previamente, y la Organización Internacional de Estandarización (\textit{International Organization for Standardization}, o \textbf{ISO} en inglés)  terminó por definir el estándar ISO-7498 en 1984.
+
+
+\subsection{Capas en el modelo OSI}
+El modelo OSI está compuesto por siete capas numeradas del 1 al 7 siendo la 1 la más baja y haciendo referencia a la parte física de la red.
 
 
 
-\subsection{Modelo de referencia OSI}
-
-
-\subsection{Arquitectura TCP/IP}
+\section{Arquitectura TCP/IP}
 
 
 
@@ -494,6 +542,17 @@ no guiados
 
 
 
+\hypertarget{sistemas_transmision}{}
+\section{Sistemas de transmisión}
+
+guiados:
+- cable par trenzado
+- coaxial
+- optica
+FTTH
+
+no guiados
+- radiofrecuencia
 
 
 
