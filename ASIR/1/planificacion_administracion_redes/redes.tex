@@ -531,6 +531,51 @@ El diseño comenzó en 1977 tratando de terminar con la \href{https://en.wikiped
 El modelo OSI está compuesto por siete capas numeradas del 1 al 7 siendo la 1 la más baja y haciendo referencia a la parte física de la red.
 
 
+\begin{table}[H]
+    \centering
+    \tablestyle
+    \begin{tabular}{|L{0.15\linewidth}|L{0.3\linewidth}|L{0.46\linewidth}|}
+        \theadstart
+        \thead \textbf{Capa} &
+        \thead \textbf{Nombre de la unidad de datos} &
+        \thead \textbf{Función} \tabularnewline
+        \tbody
+        7ª - Aplicación & Datos
+            & APIs de alto nivel, como compartir recursos y acceso remoto a archivos.
+            \\ \hline
+        6ª - Presentación & Datos
+            & Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.
+            \\ \hline
+
+        5ª - Sesión & Datos
+            & Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos.
+            \\ \hline
+
+        4ª - Transporte & Segmento, Datagrama
+            & Transmisión de segmentos de datos confiable entre puntos de red, incluyendo la segmentación, el acknowledgement y la multiplexación.
+            \\ \hline
+
+        3ª - Red & Paquete
+            & Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico traffic control.
+            \\ \hline
+
+        2ª - Enlace & Trama
+            & Transmisión de datos confiable entre dos nodos conectados mediante una capa física.
+            \\ \hline
+
+        1ª - Física & Bit, Baudios
+            & Transmisión y recepción de flujos de bits sin procesar por un medio físico.
+            \\ \hline
+
+        \tend
+    \end{tabular}
+    \vspace{-10pt}
+\end{table}
+
+
+
+
+
 
 \section{Arquitectura TCP/IP}
 
@@ -592,15 +637,206 @@ no guiados
 
 
 \chapter{Redes virtuales}
+Es habitual querer diferenciar distintas redes dentro de una arquitectura de red (para diferenciar departamentos en una empresa, separar servidores de equipos de trabajo, limitar el acceso entre redes, ...) pero eso supone la compra de distintos equipamientos físicos (distintos switches, puntos de acceso ...) que incrementa el coste de nuestra infraestructura.
 
-\section{VLANs}
+Para evitar este incremento de precio, podemos hacer uso de las \textbf{VLAN} en nuestros dispositivos de red, ya sea en switches o en routers, que los soporten.
+
+\section{VLAN}
+Una VLAN, acrónimo de \textit{virtual LAN} (red de área local virtual), \textbf{es un método para crear redes lógicas independientes dentro de una misma red física}. Varias VLAN pueden coexistir en un único switch físico o en una única red física, y el tráfico estará separado entre distintas VLANs a nivel lógico.
+
+Un equipo de una VLAN no se podrá comunicar con otro equipo de otra VLAN distinta salvo que haya un router que esté conectado en ambas VLANs y que encamine el tráfico de una a la otra. Lo mismo que si fuesen dos redes físicas, como hemos visto hasta ahora.
+
+Las VLANs se diferencian a través de una cabecera extra la cual se añade dentro del encabezado original de la trama (\textbf{capa 2}). Esa cabecera consta de dos partes de 16 bits, siendo los últimos 12 los que correspondan al valor que identificará a la VLAN, y estará comprendido entre 1 y 4095, ya que el 0 está reservado. Esa cabecera indicará que el tráfico está etiquetado o “\textit{\textbf{tagged}}”.
+
+\infobox{Las VLANs se diferencian a través de una cabecera extra la cual se añade dentro del encabezado original de la trama (\textbf{capa 2}).}
+
+A continuación se puede ver cómo se muestra tráfico etiquetado mediante las cabeceras del \textbf{protocolo 802.1Q}:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[frame,width=0.9\linewidth]{vlan-tag.png}
+    \vspace{-10pt}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{TPID}: 16 bits en el que el valor  “\textbf{0x8100}” indica que es una trama etiquetada del protocolo \textbf{802.1Q}.
+    \item \textbf{TCI}: 16 bits (formando 4 caracteres en hexadecimal):
+    \begin{itemize}
+        \item \textbf{PCP}: 3 bits que permiten priorizar el tráfico.
+        \item \textbf{DEI}: 1 bit, en conjunto con PCP, que permite saber si esta trama se puede descartar en caso de congestión.
+        \item \textbf{VID}: \textit{VLAN IDentificator}, 12 bits ($2^{12} = 4096$). En este caso los últimos 3 caracteres hexadecimales “00A” que indica que es la VLAN 10.
+    \end{itemize}
+\end{itemize}
+
+Hay que tener en cuenta que aunque existe el límite de 4096 VLANs, algunos switches tienen una limitación de un número menor de VLANs activas. Es decir, puedes crear VLANs con el dígito que quieras (hasta 4095), pero quizá sólo te dejan crear 16 VLANs. Ejemplo de la limitación del número de VLANs que puede haber activas en switches “\href{https://www.cisco.com/c/dam/en/us/products/collateral/switches/small-business-100-series-unmanaged-switches/data_sheet_c78-634369_Spanish.pdf}{Cisco de la serie 200 Cisco Small Business}”:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|L{0.1\linewidth}|L{0.84\linewidth}|}
+        \tbody
+        VLAN & Compatibilidad con hasta \textbf{256 VLAN simultáneas} (de 4096 ID de VLAN). \textbf{16 VLAN compatibles en SG200-08 y SG200-08P}. VLAN basadas en puertos y en etiquetas 802.1Q
+        \\ \hline
+        VLAN de voz & El tráfico de voz se asigna automáticamente a una VLAN específica de voz y se trata con los niveles apropiados de QoS
+        \\ \hline
+    \end{tabular}
+    \vspace{-15pt}
+\end{table}
+
+Como se puede apreciar, en este modelo de Switch, el límite es de 256 VLAN activas (aunque se puede elegir el ID de la VLAN de las 4096 posibles), y de “sólo” 16 VLANs en el modelo de 8 bocas ethernet de esa serie.
+
+
+\subsection{Diferencia de arquitecturas con y sin VLANs}
+Para que quede más claro lo explicado hasta ahora, vamos a analizar una misma infraestructura de red separada a nivel físico y separada a nivel lógico mediante VLANs.
+
+\subsubsection{Arquitectura sin VLAN}
+En una arquitectura de red sin VLANs tendríamos que tener tantos switches como sean necesarios para realizar una separación física de las redes. Estos switches estarán conectados a un router que será el encargado de encaminar el tráfico entre las redes. La separación física de redes es más cara ya que se necesita más hardware y es posible que los switches estén infrautilizados.
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{red-sin-vlan.png}
+    \vspace{-15pt}
+\end{center}
+
+Se puede observar una arquitectura en la que un router actúa de intermediación en una red en la que existen 4 redes separadas físicamente mediante distintos switches. Si en una red existen pocos dispositivos, el switch de esa red estará infrautilizado. Si por el contrario necesitamos ampliar alguna de las redes, deberemos añadirle un switch en cascada en la red correspondiente, pero aún así ese nuevo switch podría estar infrautilizado.
+
+
+\subsubsection{Arquitectura con VLANs}
+
+En una arquitectura con \textbf{VLAN}s, tendremos un router que estará conectado a un switch mediante un enlace \hyperlink{puerto_trunk}{trunk}, y en este switch se configurará cada interfaz en modo \hyperlink{puerto_access}{access} teniendo en cuenta el dispositivo que se vaya a conectar a dicha interfaz. En caso de necesitar ampliar las redes, se hará uso de las interfaces no utilizadas, y en caso de no haber más, el switch se podría expandir añadiendo uno nuevo y \hyperlink{stack_switches}{creando un stack} entre ellos.
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{red-con-vlan.png}
+    \vspace{-15pt}
+\end{center}
+
+\subsection{VLANs en Switches}
+
+En los switches se pueden realizar distintas configuraciones teniendo en cuenta las VLANs que vayamos a utilizar y la arquitectura de red que tengamos:
+
+\begin{itemize}
+    \item \textbf{VLAN por defecto en el switch}: Es la VLAN en la que trabajará el switch. Por defecto suele ser la \textbf{VLAN 1}. El tráfico por defecto va en esa VLAN y para ir por cualquier otra VLAN el tráfico deberá estar “\textit{tagged}” (etiquetado).
+
+    \hypertarget{puerto_trunk}{}
+    \item \textbf{Puerto en modo “\textit{trunk}”}: Normalmente utilizado para comunicación entre distintos switches y/o routers. A este enlace “\textbf{\textit{trunk}}” (o troncal, o tronco) se le asigna una VLAN por defecto y las VLANs “\textbf{tagged}” permitidas que pasarán por él. Los switches sabrán a qué VLAN pertenece cada trama observando la etiqueta VLAN de la capa 2.
+
+    El tráfico que \textbf{entra} en esta boca, si no está etiquetado estará en la VLAN por defecto. Si está etiquetado en una VLAN permitida se permitirá el tráfico.
+
+    El tráfico que \textbf{sale} de esta boca saldrá de la misma manera con la que llegó a él (sin etiquetar o etiquetado con la VLAN que sea). El equipo que reciba esta trama tendrá que lidiar con el tráfico recibido (ya sea etiquetado o no).
+
+    \hypertarget{puerto_access}{}
+    \item \textbf{Puerto en modo “\textit{access}”}: La boca del switch se define en modo “access” (o “acceso”) y se le asigna una \textbf{única VLAN} a la misma.
+
+    Este tipo de configuraciones suele ser utilizada para conectar equipos en los que no podemos etiquetar VLANs en origen (impresoras por ejemplo), o nos resulte tedioso la configuración de la misma, pero queremos asegurar que su tráfico viaje por una VLAN.
+
+    El \textbf{tráfico que entra} en esta boca, a partir de ese momento \textbf{se le añadirá la cabecera de la VLAN a la trama} convirtiéndose en tráfico “tagged”.
+
+    Si el \textbf{tráfico sale} de una boca en modo “access” se quitará la cabecera VLAN, por lo que \textbf{al equipo remoto le llegará el tráfico sin estar “tagged”}.
+
+\end{itemize}
+
+Teniendo en cuenta lo explicado previamente, se puede observar en el siguiente dibujo en el que aparecen varios switches, configurados con distintas bocas en modo \textbf{access} y otras en modo \textbf{trunk}. Como se puede ver, las bocas que comunican los distintos dispositivos (switches con switches y switch con router) están configuradas en modo TRUNK, y en ellas se permiten varias VLANs.
+
+Las interfaces que sólo tienen un color, están configuradas en modo \textbf{access} con una VLAN. Los interfaces en blanco no están configurados (ya que usan la VLAN por defecto, en este caso la VLAN 1). Para que el router pueda enrutar las distintas redes, le tendrán que llegar a través de un enlace configurado en modo \textbf{trunk}.
+\textbf{}
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.9\linewidth]{switch_configuracion_access_trunk.png}
+    \vspace{-10pt}
+\end{center}
+
+
+
+\subsection{VLANs en servidores/ordenadores}
+El tráfico que “sale” de un servidor/ordenador, por defecto, no está etiquetado con ninguna VLAN. En caso de que queramos que el tráfico saliente ya salga con una VLAN etiquetada, tendremos que configurar el interfaz de red para que funcione con dicha VLAN.
+
+
 
 \section{Protocolo VTP}
-
+Es un protocolo de mensajes de nivel 2 usado para configurar y administrar VLANs en equipos Cisco. Permite centralizar y simplificar la administración en un dominio de VLANs, pudiendo crear, borrar y renombrar las mismas, reduciendo así la necesidad de configurar la misma VLAN en todos los switches.
 
 
 \chapter{Alta Disponibilidad en sistemas de red}
+La \hyperlink{altadisponibilidad}{Alta Disponibilidad} en una arquitectura de red es vital si queremos asegurar el acceso a otras redes o servicios. Para ello podemos hacer uso de distintas tecnologías que nos ayudarán a conseguirlo.
 
-\section{Stack de switches}
+
 
 \section{Agregación de enlaces: Etherchannel / LACP}
+La agregación de enlaces consiste en combinar (agregar) varias conexiones en paralelo para aumentar el \textit{\textbf{throughput}} (la tasa de transferencia) que conseguiría una única conexión. Un grupo de agregación de enlaces (\textbf{LAG}, de \textit{Link Aggregation Group}) combina una serie de puertos físicos de manera que se consigue una única ruta con más ancho de banda que un único enlace.
+
+A lo largo de los años ha habido distintos estándares para la creación de agregación de enlaces. El último es el conocido como \textbf{LACP} (\textit{Link Aggregation Control Protocol}), que provee un método para controlar la unión de varios puertos físicos formando un único canal lógico. LACP permite negociar automáticamente la unión entre dispositivos mediante el envío de paquetes LACP al otro dispositivo.
+LACP permite el modo:
+
+\begin{itemize}
+    \item \textbf{activo}: Habilita LACP de manera incondicional. Esto puede hacer que si en las bocas que están habilitadas en modo LACP se conecta algo que no está configurado para ello, no funcione de manera correcta
+    \item \textbf{pasivo}: Habilita LACP sólamente cuando se detecta un dispositivo configurado con LACP
+\end{itemize}
+
+Como ya se ha comentado, la finalidad es la de unir distintas conexiones para aumentar la tasa de transferencia, y esto no sólo se puede realizar entre switches, si no que también se puede realizar entre un switch y un servidor.
+
+A continuación podemos ver cómo sería un sistema LACP entre dos switches.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.7\linewidth]{LACP-switches.png}
+    \vspace{-10pt}
+\end{center}
+
+Y aquí podemos ver cómo sería una agregación de enlaces entre un switch y un servidor (ya que en un servidor también podemos realizar la agregación de enlaces).
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.6\linewidth]{LACP-switch-server.png}
+    \vspace{-10pt}
+\end{center}
+
+
+\hypertarget{stack_switches}{}
+\section{Stack de switches}
+
+\begin{wrapfigure}{r}{0.36\linewidth}
+    \centering
+    \vspace{-40pt}
+    \includegraphics[width=\linewidth]{stack_fisico.png}
+    \vspace{-32pt}
+    \captionof{figure}{Stack mediante cables especiales}
+    \vspace{-30pt}
+\end{wrapfigure}
+De manera resumida, es la configuración aplicada a varios switches para que actúen como uno sólo. Esto se realiza mediante la interconexión de los switches (formando un anillo) a través de unos puertos especiales o unas conexiones habilitadas para ello.
+
+Tras la realización del “stackado” de switches las ventajas que obtendremos son muy significativas:
+
+\begin{itemize}
+    \item Podremos configurar todas las bocas del conjunto de todos los switches que lo forman desde un único punto central (ya sea mediante el CLI o mediante la web de gestión).
+    \item Tendremos redundancia en las comunicaciones.
+    \item Permite escalar el tamaño de las comunicaciones y podríamos añadir más switches en un momento dado (algunas marcas permiten 12 switches en un mismo stack).
+\end{itemize}
+
+Hay que tener en cuenta que no todos los switches permiten realizar un stack de switches, por lo que tendríamos que asegurarnos que si vamos a necesitar esta funcionalidad, a la hora de comprar los switches lo soporten.
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[frame,trim={5 255 572 75},clip,width=0.6\linewidth]{stack_cisco.jpg}
+    \vspace{-10pt}
+\end{center}
+
+
+\subsection{Integración de Stack y LACP}
+Si realizamos la combinación de configuraciones de Stack de switches junto con LACP con servidores, nos aseguraremos de tener una Alta Disponibilidad real en lo que se refiere a comunicaciones.
+
+Veamos el siguiente dibujo:
+
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=0.6\linewidth]{LACP_stack_servidor.png}
+    \vspace{-10pt}
+\end{center}
+
+Podemos observar cómo tenemos un stack de 3 switches, que como ya hemos visto previamente actúan como si se tratara de uno sólo. Por otro lado tenemos el servidor, que cuenta con 3 tarjetas ethernet que han sido configuradas a nivel de sistema operativo en modo LACP, y cada una de ellas se ha conectado a un switch distinto del stack.
+
+\infobox{Con esta configuración, nos estamos asegurando que si un switch se estropea, la conectividad seguirá existiendo entre el servidor y el stack a través de los dos enlaces restantes.}
+
+Es muy importante que nuestra infraestructura de red sea pensada para tener el menor número puntos de fallos posibles, y haciendo uso de stacks de switches y conexiones LACP podremos reducir esos puntos de fallo.
+
