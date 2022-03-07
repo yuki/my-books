@@ -710,7 +710,7 @@ En una arquitectura con \textbf{VLAN}s, tendremos un router que estará conectad
     \vspace{-15pt}
 \end{center}
 
-\subsection{VLANs en Switches}
+\section{VLANs en Switches}
 
 En los switches se pueden realizar distintas configuraciones teniendo en cuenta las VLANs que vayamos a utilizar y la arquitectura de red que tengamos:
 
@@ -747,14 +747,137 @@ Las interfaces que sólo tienen un color, están configuradas en modo \textbf{ac
 \end{center}
 
 
+\subsection{Crear VLAN}
+Para crear una VLAN primero deberemos identificar el identificador, y luego suele ser recomendable darle un nombre identificativo.
+
+\begin{mycode}{Crear VLAN}{powershell}{}
+Switch(config)# vlan 10
+Switch(config-vlan)# name Profesores
+\end{mycode}
+
+\subsection{Añadir IP en una VLAN}
+En caso de necesitarlo, se podrá añadir una IP a cada nueva vlan que se haya creado, tal como se hace con la VLAN 1, pero eligiendo la VLAN correspondiente.
+
+\begin{mycode}{Añadir IP a la VLAN}{powershell}{}
+switch(config)# interface vlan10
+switch(config-if)# ip address 10.10.0.254 255.255.255.0
+switch(config-if)# no shutdown
+\end{mycode}
+
+\subsection{Listar tabla de VLAN}
+El siguiente comando nos muestra la base de datos interna de VLANs que tiene el switch, indicando el estado y un pequeño resumen de en qué bocas está activa. Hay que tener en cuenta que no nos indica en qué modo está configurada dicha VLAN en cada interfaz, por lo que deberemos comprobarlo mirando detalladamente la configuración completa.
+
+\begin{mycode}{Listar la tabla de VLAN}{powershell}{}
+Switch# show vlan
+
+VLAN    Name            Status    Ports
+---- ------------------ --------- --------
+1    default            active    Gig1/1
+10   profesores         active    Gig0/1
+20   alumnos            active
+...
+\end{mycode}
+
+También hay que tener en cuenta que aunque un interfaz esté configurado con una VLAN, si no aparece en la base de datos, es como si no existiese.
+
+\subsection{Configurar interfaz con VLAN en acceso}
+Para configurar un interfaz en modo \textbf{\textit{access}} tendremos que elegir primero el interfaz y después elegir el modo a configurar y para qué VLAN. Es importante haber creado primero la VLAN.
+\begin{mycode}{Configurar interfaz en modo trunk}{powershell}{}
+Switch(config)# interface GigabitEthernet 0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+\end{mycode}
+
+
+\subsection{Configurar interfaz con VLAN en trunk}
+Para configurar un interfaz en modo \textbf{\textit{trunk}} tendremos que elegir primero el interfaz y después elegir el método de configuración:
+
+\begin{mycode}{Configurar interfaz en modo trunk}{powershell}{}
+Switch (config)# interface GigabitEthernet 1/1
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk allowed vlan  ???
+\end{mycode}
+
+Donde “???” pueden ser varias opciones:
+\begin{itemize}
+    \item \textbf{add}: add VLANs to the current list
+    \item \textbf{all}: all VLANs
+    \item \textbf{except}: all VLANs except the following
+    \item \textbf{none}: no VLANs
+    \item \textbf{remove}: remove VLANs from the current list
+\end{itemize}
+Podemos poner la VLAN por defecto en una boca en modo trunk con:
+
+\begin{mycode}{Poner vlan por defecto en un trunk}{powershell}{}
+Switch(config-if)# switchport trunk native vlan 10
+\end{mycode}
+
+
+\subsection{VLANs en Routers}
+En los routers, las VLANs van asociadas a una interfaz física. Al añadir una VLAN, se crea una interfaz “virtual”, y dentro se le indica que va a ser de tipo “\textbf{encapsulation dot1Q}” y la VLAN que va a usar. Después, se le configura la IP como si fuera una interfaz normal. Como ejemplo para la VLAN 20:
+
+\begin{mycode}{Crear VLAN 20 en Router y configurar una IP}{powershell}{}
+Router(config)# interface GigabitEthernet0/0.20
+Router(config-if)# encapsulation dot1Q 20
+Router(config-if)# ip address 192.168.20.1 255.255.255.0
+\end{mycode}
+
+
+
 
 \subsection{VLANs en servidores/ordenadores}
-El tráfico que “sale” de un servidor/ordenador, por defecto, no está etiquetado con ninguna VLAN. En caso de que queramos que el tráfico saliente ya salga con una VLAN etiquetada, tendremos que configurar el interfaz de red para que funcione con dicha VLAN.
+El tráfico que “sale” de un servidor/ordenador, por defecto, no está etiquetado con ninguna VLAN. En caso de que queramos que el tráfico saliente salga con una VLAN etiquetada, tendremos que configurar el interfaz de red para que funcione con dicha VLAN.
 
 
 
 \section{Protocolo VTP}
-Es un protocolo de mensajes de nivel 2 usado para configurar y administrar VLANs en equipos Cisco. Permite centralizar y simplificar la administración en un dominio de VLANs, pudiendo crear, borrar y renombrar las mismas, reduciendo así la necesidad de configurar la misma VLAN en todos los switches.
+VTP, o \textbf{VLAN Trunk Protocol}, es un protocolo que nos permite configurar y administrar VLANs en equipos Cisco de manera centralizada. De esta manera conseguimos simplificar la tarea cuando tenemos una red en la que disponemos de muchas VLANs
+
+El protocolo funciona en modo  servidor-cliente, por lo tanto debemos configurar un switch en modo servidor, que será en el que realizaremos la administración de las VLANs, que posteriormente serán propagadas por los switches que son clientes VTP y que pertenecen al mismo dominio.
+
+
+\warnbox{La conexión entre switches debe estar en modo \textbf{trunk} para que el protocolo funcione de manera correcta.}
+
+\subsection{Configurar switch como VTP Server}
+Es tan fácil como elegir el modo servidor del protocolo VTP, indicar un dominio de propagación y una contraseña para el mismo.
+
+\begin{mycode}{Crear configuración como VTP Server}{powershell}{}
+Switch(config)# vtp mode server
+Switch(config)# vtp domain instituto
+Switch(config)# vtp password 1234
+\end{mycode}
+
+\subsection{Configurar switch como VTP Client}
+Similar al caso anterior, pero esta vez eligiendo que queremos que el switch sea cliente:
+
+\begin{mycode}{Crear configuración como VTP Client}{powershell}{}
+    Switch(config)# vtp mode client
+    Switch(config)# vtp domain instituto
+    Switch(config)# vtp password 1234
+\end{mycode}
+
+\subsection{Ver estado de VTP}
+Para comprobar el estado del servicio VTP, tanto en un switch que sea \textit{server} o \textit{client}:
+
+\begin{mycode}{Ver configuración de estado de VTP}{powershell}{}
+Switch# show vtp status
+
+VTP Version                     : 2
+Configuration Revision          : 2
+Maximum VLANs supported locally : 255
+Number of existing VLANs        : 7
+VTP Operating Mode              : Server
+VTP Domain Name                 : instituto
+VTP Pruning Mode                : Disabled
+VTP V2 Mode                     : Disabled
+VTP Traps Generation            : Disabled
+MD5 digest                      : 0x68 0x70 0x3B 0xF0 0x14 0xC8 0xF7 0xE9
+Configuration last modified by 0.0.0.0 at 3-1-93 00:11:38
+Local updater ID is 0.0.0.0 (no valid interface found)
+\end{mycode}
+
+Y nos ofrece un resumen del estado del mismo.
+
 
 
 \chapter{Alta Disponibilidad en sistemas de red}
@@ -790,6 +913,59 @@ Y aquí podemos ver cómo sería una agregación de enlaces entre un switch y un
     \includegraphics[width=0.6\linewidth]{LACP-switch-server.png}
     \vspace{-10pt}
 \end{center}
+
+
+\subsection{Configurar Etherchannel en Switches}
+Antes de realizar ninguna configuración, debemos pensar qué interfaces queremos combinar en una agregación formada por el protocolo LACP.
+
+Para realizar la configuración, deberemos entrar en cada interfaz y añadirlo a un channel-group (siendo el identificador entre el número 1 y el 6) y activar el protocolo a usar:
+
+
+\begin{mycode}{Añadir interfaces a un \textbf{LAG}}{powershell}{}
+Switch(config-if)# channel-group 1 mode active
+Switch(config-if)# channel-protocol lacp
+\end{mycode}
+
+Cuando se crea un grupo de agregación de enlaces se crea un nuevo interfaz llamado “\textbf{Port-Channel}” (abreviado como “\textbf{Po}”). Es decir, si hacemos la agregación de enlaces con las bocas “0/1” y “1/1” del switch para generar un “channel-group 1”, el switch generará una boca nueva llamada “Port-Channel 1”, la cual podrá ser configurada para hacer lo que necesitemos. En Packet Tracer se pueden tener hasta 6 port-channels:
+
+\begin{mycode}{Configurar Port-Channel 1 en modo \textbf{trunk}}{powershell}{}
+switch(config)# interface Port-Channel 1
+switch(config-if)# switchport mode trunk
+\end{mycode}
+
+
+Para poder ver el estado del etherchannel/agregación de enlaces:
+
+\begin{mycode}{Ver el estado de los etherchannels}{powershell}{}
+Switch# show etherchannel summary
+
+Flags:  D - down        P - in port-channel
+I - stand-alone s - suspended
+H - Hot-standby (LACP only)
+R - Layer3      S - Layer2
+U - in use      f - failed to allocate aggregator
+u - unsuitable for bundling
+w - waiting to be aggregated
+d - default port
+
+Number of channel-groups in use: 2
+Number of aggregators:           2
+
+Group  Port-channel   Protocol   Ports
+------+-------------+-----------+--------------------
+1      Po1(SU)           LACP     Gig0/1(P) Gig1/1(P)
+2      Po2(SU)           LACP     Gig2/1(P) Gig3/1(P)
+\end{mycode}
+
+En este ejemplo, el switch tiene dos agregaciones de enlaces creadas, dos port-channels:
+\begin{itemize}
+    \item \textbf{Po1}: Tiene configurados los interfaces: Gig 0/1 y Gig 1/1.
+    \item \textbf{Po2}: Tiene configurados los interfaces: Gig 2/1 y Gig 3/1.
+\end{itemize}
+
+\warnbox{Cada interfaz de cada agregación de enlaces tiene que aparecer con un “\textbf{(P)}”.
+    Eso significa que pertenece al port-channel y está correcto.
+}
 
 
 \hypertarget{stack_switches}{}
