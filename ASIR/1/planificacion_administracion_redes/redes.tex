@@ -304,6 +304,8 @@ En el ámbito informático una red de comunicaciones es representada como una re
 
 
 \section{Breve historia de las redes}
+A continuación una breve cronología mostrando los hitos más importantes dentro de las redes de comunicaciones, en lo que a ordenadores se refiere (\href{https://en.wikipedia.org/wiki/Computer_network}{Referencia}).
+
 \begin{description}
     \item[\textasciitilde 1950]
     En la década de los 50 se desarrollan los circuitos integrados. Esto hará que en el futuro los ordenadores cada vez se vayan haciendo más pequeños.
@@ -612,11 +614,93 @@ no guiados
 
 \section{Encaminamiento de tráfico}
 
-\subsection{Puerta de enlace (gateway)}
+\subsection{Puerta de enlace predeterminada}
+La puerta de enlace predeterminada (en inglés \textit{\textbf{default gateway}}) es el dispositivo por defecto por el que irá la comunicación de un equipo cuando trate de comunicarse con una red que no es la suya.
 
+Sin una puerta de enlace, nuestro equipo sólo podrá comunicarse con otros equipos de la misma red, ya que el switch se encargará de ello, pero no podremos realizar ninguna comunicación con ningún equipo que esté fuera de la misma.
+
+Los gateway también tienen otras funciones a la hora de intercomunicar redes, como por ejemplo:
+\begin{itemize}
+    \item Traducir la información que se envía utilizando el protocolo de la red de origen al protocolo utilizado en la red de destino.
+    \item Realizar enmascaramiento de la IP de la red origen cambiándola por la IP del dispositivo en la red de destino (también conocido como \hyperlink{nat}{NAT}).
+\end{itemize}
+
+Un equipo sólo podrá contar con una puerta de enlace predeterminada configurada, pero mediante \hyperlink{rutas_estaticas}{rutas estáticas} podremos elegir cómo encaminar tráfico a otras redes destino.
+
+\infobox{\textbf{Un equipo sólo podrá contar con una puerta de enlace predeterminada configurada.}}
+
+Para saber cuál es la puerta de enlace de un equipo informático, dependeremos del sistema operativo en el que nos encontremos. En un entorno GNU/Linux actual podremos obtenerlo por consola de la siguiente manera:
+
+\begin{mycode}{Obtener puerta de enlace en GNU/Linux}{console}{}
+ruben@ubuntu:~$ ip route
+default via 192.168.1.1 dev enp1s0 proto dhcp metric 100
+\end{mycode}
+
+En distribuciones antiguas se hacía
+\begin{mycode}{Obtener puerta de enlace en GNU/Linux}{console}{}
+ruben@ubuntu:~$ route -n
+
+Kernel IP routing table
+Destination     Gateway      Genmask      Flags Metric Ref  Use Iface
+0.0.0.0      192.168.1.1     0.0.0.0      UG    100    0    0   enp1s0
+\end{mycode}
+
+
+En un entorno Windows, podremos verlo a través del interfaz gráfico yendo a “\textbf{Configuración → Estado de red → Cambiar opciones del adaptador}”, donde veremos los adaptadores que tiene nuestro equipo. Seleccionaremos uno, y haciendo click derecho le daremos a “\textbf{Estado → Detalles}”
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[frame,width=0.4\linewidth]{windows_network_status.png}
+    \vspace{-15pt}
+\end{center}
+
+Para no dar tantos pasos, si ejecutamos en la terminal \textbf{CMD} el siguiente comando también lo veremos:
+
+\begin{mycode}{Obtener puerta de enlace en Windows}{powershell}{}
+C:\Users\ruben> ipconfig
+
+Configuración IP de Windows
+Adaptador de Ethernet Instancia de Ethernet 0 2:
+
+Sufijo DNS específico para la conexión. . : Home
+Vínculo: dirección IPv6 local. . . : fe80::90f1:e72f:5a42:b50d%7
+Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.135
+Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+Puerta de enlace predeterminada . . . . . : 192.168.1.1
+\end{mycode}
+
+Pueden existir equipos sin puerta de enlace, pero no suele ser lo habitual. Esto sucede cuando queremos que equipos puedan ver a otros equipos de la red, pero no puedan comunicarse con el exterior. Suele ser más habitual realizar bloqueos a nivel de firewall.
+
+
+\hypertarget{nat}{}
 \subsection{NAT}
+La traducción de direcciones de red, también llamado enmascaramiento de IP o NAT (del inglés \textit{\textbf{Network Address Translation}}), es un mecanismo utilizado por routers que conectan dos (o más) redes para que el paquete que llega a un equipo destino no parezca que llega desde la red de origen.
+
+Vamos a tomar como ejemplo el siguiente esquema que es un ejemplo que podemos entender teniendo en cuenta la conexión de nuestra casa:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{NAT.png}
+    \vspace{-25pt}
+\end{center}
+
+En este ejemplo tenemos conectado un equipo con IP 192.168.1.15 al router que tenemos en casa (cuya IP en la LAN es 192.168.1.1). Este router cuenta con una IP pública proporcionada por el ISP para el acceso a internet (83.84.1.7). Cuando nuestro equipo quiere comunicarse con algún equipo que no está en su red, al salir a internet, el router cambia la cabecera del paquete sustituyendo 192.168.1.15 por 83.84.1.7, y de esta manera al servidor remoto (212.142.27.34) el paquete le llega desde una IP pública.
+
+Este es el ejemplo más sencillo y que hacemos uso cada día en casa, pero esto no significa que NAT sólo se realice entre redes públicas y privadas. Lo podemos utilizar entre dos redes públicas o dos redes privadas también.
+
+Las traducciones de dirección se almacenan en una tabla, para recordar qué dirección y puerto le corresponde a cada dispositivo cliente y así saber donde deben regresar los paquetes de respuesta.
+
+Existen distintos tipos de NAT:
+\begin{itemize}
+    \item \textbf{NAT de sobrecarga}: Varios equipos de la red de origen se traducen por una única dirección de la red de salida. Es el método más habitual (el que realizan nuestros routers en casa).
+
+    \item \textbf{NAT estática}: También conocida como “NAT 1:1”, ya que una dirección IP privada se traduce siempre por una única dirección IP pública, y siempre será la misma. Este método es el habitual cuando queremos tener un servidor en la red interna y queremos que su comunicación con el exterior siempre sea con la misma IP pública
+
+    \item \textbf{NAT dinámica}: Similar al caso anterior, pero en este caso el router contará con una tabla de IPs públicas y se asignará una que esté libre de esta tabla a un equipo interno cuando necesite comunicarse de manera pública. Cuando deje de necesitarlo, la IP se marcará como “libre” y se podrá asignar a otro equipo interno posteriormente.
+\end{itemize}
 
 
+\hypertarget{rutas_estaticas}{}
 \subsection{Rutas estáticas}
 
 
