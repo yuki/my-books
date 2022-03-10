@@ -611,13 +611,43 @@ no guiados
 
 
 \chapter{Interconexión de redes}
+Hoy en día no suele ser habitual tener redes completamente aisladas, ya que la comunicación sólo se podría realizar entre los nodos y los dispositivos de la misma.
 
-\section{Encaminamiento de tráfico}
+En el momento en el que una red quiera comunicarse con otra vamos a necesitar de un dispositivo que realice de intermediación para el intercambio de paquetes, y ese dispositivo es el \textbf{router}.
+
+\section{Router}
+
+\begin{wrapfigure}{r}{0.36\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{OSI_model_router.png}
+    \vspace{-32pt}
+    \captionof{figure}{Router en el modelo OSI (\href{https://es.wikipedia.org/wiki/Router\#/media/Archivo:OSI_model_router.png}{wikipedia})}
+    \vspace{-10pt}
+\end{wrapfigure}
+
+Un router (o encaminador) es el encargado de enrutar (o encaminar) los paquetes que recibe de una red a otra red buscando la ruta más adecuada para ello.
+
+Un router puede “unir” redes, por lo que para ello es necesario que tenga interfaces configuradas (IPs) en las redes que quiere comunicar. Tendrá tantas interfaces configuradas como redes a las que esté unido.
+
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.6\linewidth]{router_redes.png}
+    \vspace{-5pt}
+    \captionof{figure}{Router conectado a 3 redes}
+    \vspace{-15pt}
+\end{center}
+
+El ejemplo más sencillo de router lo tenemos en casa, que es proporcionado por nuestro ISP. Este router une la red privada donde conectamos nuestros equipos (PCs, tablets, móviles) y la red del proveedor que a su vez nos dará acceso a Internet.
+
 
 \subsection{Puerta de enlace predeterminada}
 La puerta de enlace predeterminada (en inglés \textit{\textbf{default gateway}}) es el dispositivo por defecto por el que irá la comunicación de un equipo cuando trate de comunicarse con una red que no es la suya.
 
-Sin una puerta de enlace, nuestro equipo sólo podrá comunicarse con otros equipos de la misma red, ya que el switch se encargará de ello, pero no podremos realizar ninguna comunicación con ningún equipo que esté fuera de la misma.
+Sin una puerta de enlace, nuestro PC sólo podría comunicarse con otros equipos de la misma red, ya que el switch se encarga de ello, pero no podríamos realizar ninguna comunicación con ningún equipo que estuviese fuera de la red.
+
+\warnbox{\textbf{Los routers también pueden tener puertas de enlace predeterminadas.}}
 
 Los gateway también tienen otras funciones a la hora de intercomunicar redes, como por ejemplo:
 \begin{itemize}
@@ -673,7 +703,7 @@ Pueden existir equipos sin puerta de enlace, pero no suele ser lo habitual. Esto
 
 
 \hypertarget{nat}{}
-\subsection{NAT}
+\section{NAT}
 La traducción de direcciones de red, también llamado enmascaramiento de IP o NAT (del inglés \textit{\textbf{Network Address Translation}}), es un mecanismo utilizado por routers que conectan dos (o más) redes para que el paquete que llega a un equipo destino no parezca que llega desde la red de origen.
 
 Vamos a tomar como ejemplo el siguiente esquema que es un ejemplo que podemos entender teniendo en cuenta la conexión de nuestra casa:
@@ -700,23 +730,200 @@ Existen distintos tipos de NAT:
 \end{itemize}
 
 
+\section{Encaminamiento de tráfico a otras redes}
+
+Tal como hemos dicho, un router se encarga de encaminar el tráfico entre redes, ya sean redes a las que esté directamente conectado o no. En caso de que sea un paquete a una red ajena, existen distintas maneras de tratarlo:
+
+\begin{itemize}
+    \item Reenviar el tráfico a la puerta de enlace predeterminada.
+    \item Consultar la tabla de enrutamiento (o tabla de rutas).
+\end{itemize}
+
+La tabla de enrutamiento se almacena en los routers y nos indicará cómo llegar a nodos u otras redes a las que no tenemos acceso de manera directa. La tabla de enrutamiento se puede genera haciendo uso de:
+
+\begin{itemize}
+    \item \textbf{Rutas estáticas}: deben ser introducidas a mano.
+    \item \textbf{Rutas dinámicas}: mediante un protocolo de enrutamiento dinámico.
+\end{itemize}
+
+
 \hypertarget{rutas_estaticas}{}
 \subsection{Rutas estáticas}
+Las rutas estáticas sirven para obligar a los paquetes, cuyo destino coincide con la ruta, a ir a través de la puerta de enlace especificada, en lugar de ir por la puerta de enlace predeterminada. Lógicamente, para que esto suceda, la puerta de enlace tiene que ser alcanzable por el router, por lo que tenemos que tener acceso a través de la misma red.
+
+
+La ruta estática se configura para conseguir conectividad con un dispositivo que no esté directamente conectado al equipo que tenga las rutas. Las rutas estáticas permiten la construcción manual de la tabla de enrutamiento.
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{rutas_estaticas.png}
+    \vspace{-25pt}
+\end{center}
+
+Teniendo en cuenta el dibujo, para que un equipo de la red 1 pueda comunicarse con un equipo de la red 2 el tráfico debe ser enrutado por el router R1. En este caso, el router R1 no tiene conexión directa con la red 2, pero tiene una ruta estática que para poder llegar a la red 2 le puede redirigir el tráfico al router R2 a través de la IP2 (que está en la misma red que la IP1).
+
+Para que la conectividad funcione, es necesario configurar la ruta en ambas direcciones. Es decir, para que la comunicación vuelva, el router R2 también tendrá que tener a su vez una ruta estática para llegar a la Red1 yendo a través del router R1.
+
+
+
+\subsubsection{Rutas estáticas con distancia administrativa}
+En algunas arquitecturas de red, puede existir la posibilidad de llegar a una misma red a través de dos rutas. En estos casos, debemos priorizar una de las rutas, quedando la otra como secundaria y que sólo será utilizada en caso de que la primera ruta falle.
+
+Tomemos como ejemplo la siguiente arquitectura:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{rutas_estaticas_distancia.png}
+    \vspace{-25pt}
+\end{center}
+
+Para que la red 1 se pueda comunicar con la red 2 el router R1 puede ir por dos caminos distintos. En este caso, las rutas estáticas a crear serían:
+\begin{itemize}
+    \item \textbf{Ruta principal}: priorizamos el tráfico por R2, a través de la IP3.
+    \item \textbf{Ruta menos prioritaria}: en caso de falla la anterior ruta, el router R1 enviará el tráfico por router R3 llegando a él por la IP4.
+\end{itemize}
+
+En este caso, a las rutas menos prioritarias se les añade una “distancia administrativa” (a veces también llamado “peso”). Esta distancia es un número entero que indicará la prioridad (cuanto mayor el número, menor la prioridad).
+
+\subsubsection{Ejemplos}
+
+La creación de rutas estáticas se realiza con \commandbox{ip route RED  MÁSCARA  SALTO} siendo:
+\begin{itemize}
+    \item \textbf{ip config}: el comando que indica que vamos a crear una ruta.
+    \item \textbf{RED}: la  red a la que queremos llegar.
+    \item \textbf{MÁSCARA}: Máscara de la red a la que queremos llegar
+    \item \textbf{SALTO}: IP del dispositivo a través del cual queremos llegar a la red indicada anteriormente.  Este dispositivo tiene que estar en nuestra misma red y tenemos que poder llegar a él.
+\end{itemize}
+
+Por lo tanto, un ejemplo real podría ser:
+
+
+\begin{mycode}{Crear ruta estática para una red}{powershell}{}
+Router(config)# ip route 172.20.10.0  255.255.252.0  10.0.0.2
+\end{mycode}
+
+También podemos realizar rutas estáticas sólo para una IP, siendo la máscara /32 en decimal:
+
+\begin{mycode}{Crear ruta estática para un equipo}{powershell}{}
+Router(config)# ip route 172.20.10.25  255.255.255.255  10.0.0.3
+\end{mycode}
+
+Cuando hay rutas distintas para una IP y una red, se prioriza de lo más específico a lo más genérico. Por lo tanto, se prioriza la ruta de una IP, aunque se indique que para toda la red haya que ir por otro salto.
+
+
+\subparagraph{Crear ruta estática con “distancia administrativa”}
+A la hora de crear una ruta estática con “distancia administrativa”, se realiza de la misma forma que acabamos de ver, pero añadiendo al final la distancia administrativa de la ruta, siendo un número entero. Este “peso” es utilizado cuando en la tabla de rutas existen dos rutas para llegar al mismo destino por caminos diferentes, por lo que se priorizará la ruta con el número más pequeño (o que no tenga número).
+
+\begin{mycode}{Crear ruta estática y ruta con distancia administrativa}{powershell}{}
+Router(config)# ip route 172.20.10.0  255.255.252.0  10.0.0.2
+
+Router(config)# ip route 172.20.10.0  255.255.252.0  192.168.1.1  10
+\end{mycode}
+
+Como se puede ver, para llegar al mismo destino (172.20.10.0 /22) podemos elegir dos saltos por los que llegar: 10.0.0.2 y 192.168.1.1. La ruta que tenga menor distancia administrativa será la predeterminada, y por tanto los paquetes se irán por ella.
 
 
 \subsection{Enrutamiento dinámico}
 
+El enrutamiento dinámico permite a los encaminadores ajustar, en tiempo real, los caminos utilizados para transmitir paquetes IP. Cada protocolo posee sus propios métodos para definir rutas (camino más corto, utilizar rutas publicadas por pares, etc.).
+
+
 \subsubsection{BGP (Border Gateway Protocol)}
+El protocolo BGP (en castellano protocolo de “Puerta de Enlace de Frontera”) es un protocolo mediante el cual \textbf{se intercambia información de encaminamiento entre sistemas autónomos}.
+
+%TODO: poner un dibujo de cómo es una red con BGP
+
+Un \textbf{Sistema Autónomo} (o \textbf{AS}, de \textit{Autonomous System}) es un grupo de redes IP controladas por una misma compañía (normalmente un proveedor de internet ISP, o una gran compañía) que son gestionadas de manera independiente y realiza su propia gestión del tráfico. Los sistemas autónomos cuentan con un número (\textbf{ASN}) de 16 o 32 bits que debe ser respetado, ya que al igual que las IPs, existen ASN públicos y privados. En la wikipedia aparece una \href{https://es.wikipedia.org/wiki/Sistema_aut%C3%B3nomo#Tabla_con_ASN_de_16-bit_y_32-bit}{lista de estos rangos}.
+
+El intercambio de esos rangos de IPs se realiza en los denominados “router frontera” o “router externos”, que son los que están comunicados con otros routers de otros AS. Estos routers son los encargados de \textbf{anunciar} las propias redes del AS a sus “vecinos” (neighbors en inglés), que a su vez propagarán esa información a sus propios vecinos ...
+
+Si un AS decide anunciar una nueva red, automáticamente sus vecinos son actualizados, que a su vez propagan la actualización. Si un router recibe su propia actualización, la rechaza.
+
+\errorbox{\textbf{Es importante que un router no anuncie redes IP que no le pertenecen.}}
+
+En la \href{https://en.wikipedia.org/wiki/BGP_hijacking}{wikipedia} aparecen distintos incidentes por errores en la propagación de rutas.
+Cuando un router propaga una red (ya sea suya o de otro AS) añade su ASN, y de esta manera se conoce para llegar a una ruta por cuántos AS se pasan (pero no por cuántos routers internos).
+
+Hoy en día Internet funciona con el protocolo BGP y actualmente el protocolo anuncia más de 900.000 rutas (\href{https://blog.apnic.net/2022/01/06/bgp-in-2021-the-bgp-table/}{fuente}):
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{bgpfig4-1024x608.png}
+    \vspace{-25pt}
+\end{center}
 
 
+\subsubsection{Ejemplos}
+En los routers debemos crear la configuración para que se convierta en un “\textit{Autonomous System}” (AS, Sistema Autónomo).
 
-\section{Administración de routers}
+\begin{mycode}{Crear sistema autónomo}{powershell}{}
+Router(config)# router bgp 100
+\end{mycode}
 
+Una vez dentro del sistema autónomo, habrá que indicar qué red se quiere propagar a los “vecinos”:
 
+\begin{mycode}{Anunciar red a propagar}{powershell}{}
+Router(config-router)# network 192.168.1.0 mask 255.255.255.0
+\end{mycode}
 
+Para poder propagar la red, debemos indicar a qué vecinos se los vamos a propagar:
 
+\begin{mycode}{Vecinos a los que propagar la red}{powershell}{}
+Router(config-router)# neighbor 10.10.2.1 remote-as 200
+\end{mycode}
 
+Para conocer el estado de las rutas BGP podemos realizar:
 
+\begin{mycode}{Comprobar estado de BGP}{powershell}{}
+Router#show ip bgp
+BGP table version is 6, local router ID is 192.168.1.1
+Status codes: s suppressed, d damped, h history, * valid, > best,
+              i - internal, r RIB-failure, S Stale
+
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network               Next Hop           Metric LocPrf  Weight  Path
+*> 192.168.1.0/24      0.0.0.0                0     0    32768       i
+*> 192.168.2.0/24    10.10.2.1                0     0        0   200 i
+\end{mycode}
+
+\subsection{Tabla de rutas completa}
+Los routers Cisco tienen una opción que nos muestra todas las rutas a las que el router puede acceder:
+
+\begin{mycode}{Comprobar estado de BGP}{powershell}{{\small}}
+Router# show ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+    D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+    N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+    E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+    i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+    * - candidate default, U - per-user static route, o - ODR
+    P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+        8.0.0.0/25 is subnetted, 1 subnets
+C       8.8.8.0 is directly connected, GigabitEthernet1/0
+
+        10.0.0.0/30 is subnetted, 1 subnets
+C       10.10.0.0 is directly connected, GigabitEthernet2/0
+
+        83.0.0.0/27 is subnetted, 1 subnets
+C       83.85.67.0 is directly connected, GigabitEthernet0/0
+
+        95.0.0.0/26 is subnetted, 1 subnets
+B       95.94.32.0 [20/0] via 10.10.0.2, 00:00:00
+
+        212.140.23.0/28 is subnetted, 1 subnets
+S       212.140.23.16 [1/0] via 83.85.67.4
+\end{mycode}
+
+Tal como aparece justo después del comando, hay unos códigos que nos indican si los rangos son:
+\begin{itemize}
+    \item[\textbf{B:}] Red que podemos llegar mediante el protocolo BGP.
+    \item[\textbf{C:}] Red a la que estamos directamente conectados a través de un interfaz físico.
+    \item[\textbf{S:}] Red a la que podemos llegar siendo una ruta estática.
+\end{itemize}
 
 
 
