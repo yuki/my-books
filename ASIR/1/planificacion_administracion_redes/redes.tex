@@ -701,6 +701,109 @@ Puerta de enlace predeterminada . . . . . : 192.168.1.1
 
 Pueden existir equipos sin puerta de enlace, pero no suele ser lo habitual. Esto sucede cuando queremos que equipos puedan ver a otros equipos de la red, pero no puedan comunicarse con el exterior. Suele ser más habitual realizar bloqueos a nivel de firewall.
 
+\subsection{Router casero}
+\begin{wrapfigure}{l}{0.2\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{home_router.png}
+    \vspace{-32pt}
+\end{wrapfigure}
+Los routers caseros son dispositivos que nos permiten conectarnos a internet. El problema es que normalmente suelen ser muy básicos y su funcionalidad es limitada.
+
+Eso no quita que realmente cumpla la función para la que han sido creados, que es la de permitir la interacción de una red como la de un hogar hacia internet.
+
+Los routers caseros suelen tener diferenciada en la parte de atrás el interfaz donde se debe conectar el cable que va hacia Internet (en este caso de color azul) y las bocas que van a formar la red LAN interna de casa (color amarillo), que realmente son un pequeño switch de 4 bocas.
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.7\linewidth]{home_router_back.png}
+    \vspace{-4pt}
+    \captionof{figure}{Home-Router en Packet Tracer}
+    \vspace{-15pt}
+\end{center}
+
+
+Dependiendo del tipo de conexión que tangamos en casa, el interfaz que nos conecta a internet será distinto, pudiendo ser hoy día los más habituales:
+
+\begin{itemize}
+    \item \textbf{Cable coaxial}: En conexiones con Euskaltel en el que no nos llega la fibra hasta casa.
+    \item \textbf{Conector de fibra}: Cuando la fibra nos llega hasta nuestra casa.
+\end{itemize}
+
+Los routers que tenemos en casa también tiene otras funcionalidades básicas que vienen pre-configuradas como veremos a continuación, entre las que podemos destacar:
+
+\begin{itemize}
+    \item \textbf{Direccionamiento LAN}: Normalmente viene configurado con la red 192.168.1.0/24 o 192.168.1.0/24
+
+    \item \textbf{DHCP Server}: Servicio que otorga IPs en nuestra red LAN, teniendo en cuenta el direccionamiento que tengamos.
+
+    \item \textbf{Configuración Wifi}: Dependiendo del modelo tendremos distintas redes inalámbricas (en distintos rangos). Podremos configurar el nombre de la red, el canal y el tipo de seguridad de acceso a la misma.
+
+    \item \textbf{Restricción hacia internet}: Algunos routers permiten limitar el acceso a Internet en ciertos horarios (ideal para restringir el acceso a menores de edad).
+
+    \item \textbf{Redirección de puertos}: Para redirigir conexiones desde Internet a un equipo concreto dentro de la red.
+
+    \item \textbf{Filtrado MAC}: Normalmente para el apartado Wifi, y así limitar quién se puede o no se puede conectar.
+\end{itemize}
+
+
+\subsection{Router profesional}
+\begin{wrapfigure}{l}{0.2\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{router.png}
+    \vspace{-32pt}
+\end{wrapfigure}
+
+Los routers profesionales difieren de los routers caseros en que cada interfaz que tienen van a formar parte de una red distinta, y que deberemos de configurar nosotros los servicios que nos interesen ya que no suelen venir pre-configurados.
+
+En Packet Tracer podemos encontrar distintos modelos de routers, pero los que más vamos a utilizar son unos que no existen en la vida real, los denominados “\textbf{PT-Empty}”. Al igual que con los switches, estos routers no cuentan con ninguna interfaz asociada en el momento en el que lo situamos en nuestra simulación, y nos permite añadir hasta diez interfaces que queramos.
+
+Los routers son los dispositivos en capa 3 que se encargan de enrutar tráfico entre distintas redes. Hay que tener claro que puede encaminar tráfico a redes a las que pertenece, o a redes a las que sabría llegar (a través de rutas).
+
+\subsubsection{Configuración}
+A continuación se va  diferenciar distintos apartados básicos en la configuración de los routers.
+
+\paragraph{Setup}
+Al igual que sucede con los switches, los routers cuentan con un comando setup con el que poder realizar una primera configuración. Las preguntas que nos realizará son las mismas que las de los switches.
+En este caso, las IPs se configuran en los interfaces físicos que tiene el router.
+
+
+\paragraph{Comandos básicos}
+En los routers Cisco que vamos a utilizar, los comandos de consola son similares a los que hemos visto con los switches.
+
+\begin{mycode}{Ver la configuración}{powershell}{}
+Router# show running-config
+\end{mycode}
+
+Siempre que realicemos cualquier tipo de modificación, debemos guardar la configuración para que esta se mantenga en el próximo arranque.
+
+\begin{mycode}{Guardar la configuración}{powershell}{}
+Router# copy running-config startup-config
+\end{mycode}
+
+La configuración de la IP que queremos que tenga nuestro router irá asociado a un interfaz que esté en contacto con la red. Es importante que no confundamos con lo que sucede en los switches, que en ellos la IP va asociada a la VLAN.
+
+\begin{mycode}{Configurar un interfaz con una IP}{powershell}{}
+Router# configure terminal
+
+Router(config)# interface GigabitEthernet0/0
+
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+\end{mycode}
+
+Los interfaces físicos, en los routers por defecto están deshabilitados, por lo que da igual que haya un cable conectado a él. Para que exista enlace se tiene que habilitar:
+
+\begin{mycode}{Habilitar interfaz}{powershell}{}
+Router# configure terminal
+
+Router(config)# interface GigabitEthernet0/0
+
+Router(config-if)# no shutdown
+
+\end{mycode}
+
+
 
 \hypertarget{nat}{}
 \section{NAT}
@@ -1150,7 +1253,7 @@ Similar al caso anterior, pero esta vez eligiendo que queremos que el switch sea
 \subsection{Ver estado de VTP}
 Para comprobar el estado del servicio VTP, tanto en un switch que sea \textit{server} o \textit{client}:
 
-\begin{mycode}{Ver configuración de estado de VTP}{powershell}{}
+\begin{mycode}{Ver configuración de estado de VTP}{powershell}{{\small}}
 Switch# show vtp status
 
 VTP Version                     : 2

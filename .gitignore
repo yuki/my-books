@@ -6,3 +6,6 @@
 *.synctex.gz
 *.toc
 *_minted*
+*.pdf
+*.fdb_latexmk
+*.fls
