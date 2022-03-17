@@ -642,6 +642,7 @@ Un router puede “unir” redes, por lo que para ello es necesario que tenga in
 El ejemplo más sencillo de router lo tenemos en casa, que es proporcionado por nuestro ISP. Este router une la red privada donde conectamos nuestros equipos (PCs, tablets, móviles) y la red del proveedor que a su vez nos dará acceso a Internet.
 
 
+\hypertarget{default_gateway}{}
 \subsection{Puerta de enlace predeterminada}
 La puerta de enlace predeterminada (en inglés \textit{\textbf{default gateway}}) es el dispositivo por defecto por el que irá la comunicación de un equipo cuando trate de comunicarse con una red que no es la suya.
 
@@ -735,7 +736,7 @@ Los routers que tenemos en casa también tiene otras funcionalidades básicas qu
 \begin{itemize}
     \item \textbf{Direccionamiento LAN}: Normalmente viene configurado con la red 192.168.1.0/24 o 192.168.1.0/24
 
-    \item \textbf{DHCP Server}: Servicio que otorga IPs en nuestra red LAN, teniendo en cuenta el direccionamiento que tengamos.
+    \item \textbf{\hyperlink{dhcp}{DHCP Server}}: Servicio que otorga IPs en nuestra red LAN, teniendo en cuenta el direccionamiento que tengamos.
 
     \item \textbf{Configuración Wifi}: Dependiendo del modelo tendremos distintas redes inalámbricas (en distintos rangos). Podremos configurar el nombre de la red, el canal y el tipo de seguridad de acceso a la misma.
 
@@ -761,15 +762,14 @@ En Packet Tracer podemos encontrar distintos modelos de routers, pero los que m�
 
 Los routers son los dispositivos en capa 3 que se encargan de enrutar tráfico entre distintas redes. Hay que tener claro que puede encaminar tráfico a redes a las que pertenece, o a redes a las que sabría llegar (a través de rutas).
 
-\subsubsection{Configuración}
-A continuación se va  diferenciar distintos apartados básicos en la configuración de los routers.
+A continuación se van diferenciar distintos apartados básicos en la configuración de los routers.
 
-\paragraph{Setup}
+\subsubsection{Setup}
 Al igual que sucede con los switches, los routers cuentan con un comando setup con el que poder realizar una primera configuración. Las preguntas que nos realizará son las mismas que las de los switches.
 En este caso, las IPs se configuran en los interfaces físicos que tiene el router.
 
 
-\paragraph{Comandos básicos}
+\subsubsection{Comandos básicos}
 En los routers Cisco que vamos a utilizar, los comandos de consola son similares a los que hemos visto con los switches.
 
 \begin{mycode}{Ver la configuración}{powershell}{}
@@ -832,9 +832,80 @@ Existen distintos tipos de NAT:
     \item \textbf{NAT dinámica}: Similar al caso anterior, pero en este caso el router contará con una tabla de IPs públicas y se asignará una que esté libre de esta tabla a un equipo interno cuando necesite comunicarse de manera pública. Cuando deje de necesitarlo, la IP se marcará como “libre” y se podrá asignar a otro equipo interno posteriormente.
 \end{itemize}
 
+\hypertarget{dhcp}{}
+\section{DHCP}
+El protocolo de configuración dinámica de host (\textit{Dynamic Host Configuration Protocol}, también conocido por sus siglas de \textbf{DHCP}) es un protocolo de red que nos permite configurar la IP de un dispositivo dentro de una red.
+
+Normalmente el protocolo DHCP enviará la configuración de los siguientes parámetros para que el equipo los use:
+
+\begin{itemize}
+    \item \textbf{IP}: IP asignada al equipo.
+    \item \textbf{Máscara de red}: para identificar el tamaño de la red.
+    \item \textbf{\hyperlink{default_gateway}{Default gateway}}: para que el equipo se pueda comunicar con otra red.
+    \item \textbf{DNS}: el servidor DNS que utilizará el equipo para la resolución de nombres.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.2\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{sesion_DHCP.png}
+    \vspace{-32pt}
+    \captionof{figure}{\href{https://es.wikipedia.org/wiki/Protocolo\_de\_configuraci\%C3\%B3n\_din\%C3\%A1mica\_de\_host\#DHCP\_Discovery}{Referencia}}
+    \vspace{-30pt}
+\end{wrapfigure}
+Existen muchas más \href{https://es.wikipedia.org/wiki/Par\%C3\%A1metros_DHCP}{configuraciones} que se pueden enviar a un equipo que realiza una petición de configuración por DHCP, pero las arriba expuestas son las más habituales.
+
+El protocolo funciona en forma “Cliente/Servidor”, siendo el equipo el que realiza la búsqueda de un servidor DHCP para el inicio de la configuración. DHCP hace uso de los puertos 67/UDP para el servidor y 68/UDP para los clientes.
+
+Lo más habitual es que el servidor DHCP esté configurado en los routers (tal como sucede en los que nos proporcionan los ISP), pero no tiene por qué ser así, pudiendose instalar en un equipo con Windows Server, GNU/Linux, ...
+
+\subsection{Configuración}
+Dependiendo del equipo en el que estemos realizando la configuración del servidor DHCP, el interfaz a configurar podrá ser distinto.
+
+
+\subsubsection{Router Casero}
+En la simulación de los \textit{Home-Router} que tiene Packet Tracer, el interfaz es el real que tenían los míticos \href{https://es.wikipedia.org/wiki/WRT54G}{Linksys WRT54G}, siendo la configuración del DHCP la siguiente:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[frame,width=0.8\linewidth]{dhcp_home_router.png}
+    \vspace{-15pt}
+\end{center}
+
+\subsubsection{Servidores}
+En los servidores de Packet Tracer podemos realizar la configuración de un servidor DHCP en el siguiente interfaz:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{dhcp_servidor.png}
+    \vspace{-15pt}
+\end{center}
+
+
+\subsubsection{Router profesional}
+Aunque algunos routers Cisco profesionales cuentan con un interfaz web de configuración, es recomendable conocer los comandos para realizar la configuración a través del \textit{\textbf{CLI}}.
+
+Vamos a suponer que el router que tenemos que configurar cuenta con dos interfaces cuyas IPs son \textbf{192.168.1.1 /24} y \textbf{172.16.0.1 /22}.
+
+\begin{mycode}{Configurar DHCP para la primera red}{powershell}{}
+Router(config)# ip dhcp excluded-address 192.168.1.1
+Router(config)# ip dhcp pool lan
+Router(dhcp-config)# network 192.168.1.0 255.255.255.0
+Router(dhcp-config)# default-router 192.168.1.1
+Router(dhcp-config)# dns-server 8.8.8.8
+\end{mycode}
+
+\begin{mycode}{Configurar DHCP para la segunda red}{powershell}{}
+Router(config)# ip dhcp excluded-address 172.16.0.1
+Router(config)# ip dhcp pool alumnos
+Router(dhcp-config)# network 172.16.0.0 255.255.252.0
+Router(dhcp-config)# default-router 172.16.0.1
+Router(dhcp-config)# dns-server 8.8.8.8
+\end{mycode}
+
+
 
 \section{Encaminamiento de tráfico a otras redes}
-
 Tal como hemos dicho, un router se encarga de encaminar el tráfico entre redes, ya sean redes a las que esté directamente conectado o no. En caso de que sea un paquete a una red ajena, existen distintas maneras de tratarlo:
 
 \begin{itemize}
@@ -914,7 +985,7 @@ Router(config)# ip route 172.20.10.25  255.255.255.255  10.0.0.3
 Cuando hay rutas distintas para una IP y una red, se prioriza de lo más específico a lo más genérico. Por lo tanto, se prioriza la ruta de una IP, aunque se indique que para toda la red haya que ir por otro salto.
 
 
-\subparagraph{Crear ruta estática con “distancia administrativa”}
+\paragraph{Crear ruta estática con “distancia administrativa”}
 A la hora de crear una ruta estática con “distancia administrativa”, se realiza de la misma forma que acabamos de ver, pero añadiendo al final la distancia administrativa de la ruta, siendo un número entero. Este “peso” es utilizado cuando en la tabla de rutas existen dos rutas para llegar al mismo destino por caminos diferentes, por lo que se priorizará la ruta con el número más pequeño (o que no tenga número).
 
 \begin{mycode}{Crear ruta estática y ruta con distancia administrativa}{powershell}{}
@@ -1410,3 +1481,163 @@ Podemos observar cómo tenemos un stack de 3 switches, que como ya hemos visto p
 
 Es muy importante que nuestra infraestructura de red sea pensada para tener el menor número puntos de fallos posibles, y haciendo uso de stacks de switches y conexiones LACP podremos reducir esos puntos de fallo.
 
+
+\chapter{Seguridad en red}
+Tal como hemos visto hasta ahora, una red es una infraestructura compleja utilizada por dispositivos que nos permiten intercambiar información entre equipos y/o usuarios. Para asegurar que el acceso a esa información sólo se realiza desde los dispositivos autorizados, debemos realizar configuraciones de seguridad.
+
+Normalmente, para limitar el acceso a los equipos se hace uso de \textbf{cortafuegos} (también conocidos como \textbf{\textit{Firewalls}}). Estos sistemas cortafuego se pueden implementar de las siguientes maneras:
+
+\begin{itemize}
+    \item \textbf{Cortafuegos de red}: Normalmente es un dispositivo \textit{hardware} (que puede ser el mismo router) que actúa como filtrador de paquetes entre las distintas redes que tiene configurado.
+
+    De esta manera, podemos limitar el acceso teniendo en cuenta el origen, destino, puerto y/o protocolo de comunicación utilizado en la comunicación.
+
+    Algunos ejemplos:
+    \begin{itemize}
+        \item Routers caseros: tienen un sistema de cortafuegos básico.
+        \item Routers hardware Cisco.
+        \item \hyperlink{pfsense}{pfSense}: una distribución basada en FreeBSD que actúa como firewall.
+    \end{itemize}
+
+    \item \textbf{Cortafuegos en el equipo}: Para evitar las conexiones de equipos de la misma red, es habitual que los servidores/equipos cuenten con un firewall configurado mediante \textit{software} (ya sea a través de “Windows Firewall” o reglas nftables/iptables en GNU/Linux).
+
+    \item \textbf{Cortafuego de aplicación}: Este tipo de cortafuegos es capaz de entender el protocolo de aplicación y de esta manera filtrar teniendo en cuenta el contenido del paquete.
+\end{itemize}
+
+A la hora de limitar el tráfico, un firewall puede actuar de dos maneras:
+\begin{itemize}
+    \item \textbf{Denegar por defecto}: Es la manera más habitual de trabajar de los Firewall. Por defecto, todo el tráfico es denegado, y hay que permitir el tráfico que nos interese.
+
+    \item \textbf{Aceptar por defecto}: No tan habitual, ya que todo el tráfico es aceptado por defecto y debemos denegar el tráfico que no nos interese que exista.
+\end{itemize}
+
+
+\section{ACL}
+Las ACL (\textit{Access Control Lists} en inglés, o Listas de Control de Acceso) sirven para permitir o denegar el tráfico al pasar por el router y son configuradas teniendo en cuenta las redes a las que pertenece.
+
+Existen dos tipos de ACL:
+\begin{itemize}
+    \item \textbf{Estándar}: son ACLs limitadas. Sólo se permite aceptar o denegar de origen. El ID debe ser de 1 a 99.
+    \item \textbf{Extendidas}: son ACLs con más opciones. Deben tener el ID de 100 a 199 y permiten aceptar/denegar:
+    \begin{itemize}
+        \item protocolo
+        \item origen
+        \item destino
+        \item puerto
+        \item ...
+    \end{itemize}
+\end{itemize}
+
+Al crear una ACL en los routers de Packet Tracer, y crear una regla en ella, automáticamente entrará en funcionamiento el método “denegar por defecto” al final de las reglas.
+
+\errorbox{Al crear una ACL extendida por defecto se crea una regla implícita
+    \textbf{que deniega todo el tráfico. Se añade al final de nuestras reglas}.}
+
+Es muy importante entender esto, ya que todo el tráfico que no esté aceptado, será denegado por defecto, aunque nosotros no hayamos creado una regla para ello, ya que se crea por defecto y no aparece reflejado en la ACL.
+
+\infobox{\textbf{Al usar ACLs debemos usar la SIMULACIÓN si vemos que el tráfico no se acepta/deniega tal como esperamos.}}
+
+
+\subsection{ACLs en entrada o salida}
+Las ACLs se crean en los interfaces en los que queremos realizar reglas para permitir y/o denegar tráfico. Antes de permitir o denegar tráfico entre redes, hay que entender que las ACLs se pueden crear teniendo en cuenta el sentido del tráfico en relación con el router. Por lo tanto, las ACLs se pueden crear del tipo:
+
+\begin{itemize}
+    \item \textbf{IN}: el tráfico se analiza con la ACL \textbf{al intentar entrar en el router} por el interfaz indicado.
+    \item \textbf{OUT}: el tráfico se analiza con la ACL \textbf{al intentar salir del router} por el interfaz indicado.
+\end{itemize}
+
+Podemos imaginar que la ACL es un policía y dependiendo de cómo se haya creado la ACL el policía se situará cortando el tráfico en un sentido o en otro.
+
+Teniendo esto en cuenta, para realizar el mismo propósito se pueden utilizar distintas reglas IN o reglas OUT dependiendo de cómo se haga la configuración.
+
+\textbf{Por ejemplo}: Tenemos 2 LANs y queremos que desde la LAN 1 se pueda hacer ping a la LAN 2, pero que desde la LAN 2 no se pueda hacer ping a la LAN 1. Para realizar este filtrado de tráfico, se puede realizar de dos formas distintas.
+
+\paragraph{Forma 1: Regla OUT}
+
+La regla OUT se creará en el interfaz Gig0/0 y analizará el tráfico cuando vuelva de la LAN 2 e \textbf{intente salir del router hacia la LAN 1}.
+
+Se permitirá el tráfico que vuelve, pero sólo el tráfico de tipo “\textit{echo-reply}”. Cualquier otro tráfico es denegado por defecto
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.5\linewidth]{acl_ejemplo.png}
+    \vspace{-15pt}
+\end{center}
+
+\paragraph{Forma 2: Regla IN}
+La regla IN se creará en el interfaz Gig 1/0 y \textbf{analizará el tráfico cuando entre al router desde la LAN 2}.
+
+Se permitirá el tráfico entrante “echo-reply” y cualquier otro tipo de tráfico será bloqueado por defecto.
+
+
+\subsection{Configurar y administrar ACLs}
+
+A la hora de crear una ACL tenemos que tener en cuenta dos cosas:
+
+\begin{itemize}
+    \item El interfaz en el que queremos crear la ACL.
+    \item El sentido en el que se realizará el filtrado.
+\end{itemize}
+
+\begin{mycode}{Crear una ACL en modo IN}{powershell}{}
+Router(config)# interface GigabitEthernet0/0
+Router(config-if)# ip access-group 100 in
+\end{mycode}
+
+Hemos indicado que se en el interfaz 0/0 existe una ACL con identificador 100 que filtrará el tráfico. A continuación debemos crear las reglas de las que constará ese grupo. Al crear una regla, se indican distintas opciones.
+
+\begin{mycode}{Crear una regla en la ACL 100}{powershell}{{\footnotesize }}
+Router(config)# access-list ID TIPO_FILTRADO TIPO_TRÁFICO ORIGEN  DESTINO  MISC
+\end{mycode}
+
+Donde las opciones son:
+\begin{itemize}
+    \item \textbf{ID}: sería el identificador de la regla, que tiene que coincidir con lo puesto en el interfaz correspondiente
+    \item \textbf{TIPO\_FILTRADO}: Suele ser:
+    \begin{itemize}
+    \item \textbf{permit}: permitimos el tráfico
+    \item \textbf{deny}: se bloqueará el tráfico
+    \end{itemize}
+    \item \textbf{TIPO\_TRÁFICO}: Existen varias opciones del tipo de tráfico que podemos filtrar:
+    \begin{itemize}
+        \item \textbf{icmp}: Internet Control Message Protocol
+        \item \textbf{ip}: cualquier tipo de tráfico
+        \item \textbf{tcp}: Transmission Control Protocol
+        \item \textbf{udp}: User Datagram Protocol
+    \end{itemize}
+    \item \textbf{ORIGEN}: cuál es el origen del tráfico que se quiere coincidir con la ACL. Aquí puede haber varias opciones:
+    \begin{itemize}
+        \item \textbf{IP + WILDCARD}: habrá que indicar el rango de IP y el wildcard que se necesite. Esto servirá para indicar un rango de red.
+        \item \textbf{any}: sirve para indicar cualquier IP.
+        \item \textbf{host + IP}: sirve para habilitar un único host con su IP.
+    \end{itemize}
+    \item \textbf{DESTINO}: cuál es el origen del tráfico que se quiere coincidir con la ACL. Al igual que con el ORIGEN, existen varias opciones
+    \item \textbf{MISC}: dependiendo del tipo de tráfico seleccionado, es posible añadir más opciones al final de la ACL.
+\end{itemize}
+
+
+Teniendo todo esto en cuenta, un ejemplo de regla para una ACL sería:
+
+\begin{mycode}{Crear una regla en la ACL 100}{powershell}{{\scriptsize }}
+Router(config)# access-list 100 permit icmp 192.168.2.0 0.0.0.255 192.168.1.0 0.0.0.255 echo-reply
+\end{mycode}
+
+\subsubsection{Orden de las reglas en las ACL}
+Cada ACL puede tener varias reglas y \textbf{es muy importante el orden}. Es decir, si la ACL con ID 100 tiene varias reglas, se aplicarán en el orden de creación. Por lo tanto, primero se deben de aplicar las reglas más concretas, las que son más específicas, y después las más generales.
+
+\textbf{Por ejemplo}: Queremos permitir todo el tráfico entre 192.168.1.0 → 192.168.20.0 pero queremos evitar el tráfico de 192.168.1.5 → 192.168.20.0. Entonces, el orden tendrá que ser:
+
+\begin{itemize}
+    \item \textbf{denegar} tráfico 192.168.1.5 → 192.168.20.0 /24 (porque es muy específico)
+    \item \textbf{aceptar} tráfico 192.168.1.0 /24 → 192.168.20.0 /24
+    \item denegar el resto de tráfico \textbf{¡¡REGLA POR DEFECTO, SE CREA SOLA!!}
+\end{itemize}
+
+
+\subsubsection{Otros ejemplos}
+Si queremos hacer uso de DHCP en nuestra red, veremos que en el momento en el que aplicamos ACLs entre redes dejará de funcionar. Por lo tanto tendremos que aceptar el tráfico UDP de los puertos que usa \hyperlink{dhcp}{DHCP}.
+
+Si queremos ver las ACL que están creadas, debemos hacer:
+\begin{mycode}{Ver las ACLs y sus reglas}{powershell}{}
+Router# show access-lists
+\end{mycode}
