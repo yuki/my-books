@@ -7,6 +7,21 @@ Más adelante verás que la licencia utilizada para estos libros es una licencia
 ![Cultura libre](https://raw.githubusercontent.com/yuki/yukibook.cls/main/img/seal.png)
 
 
+## Tabla de contenidos
+* [¿Por qué?](#por-qué)
+* [¿Están terminados?](#están-terminados)
+* [Libros realizados](#libros-realizados)
+  + [Otros libros](#otros-libros)
+  + [Anexos](#anexos)
+* [¿Puedo utilizarlos?](#puedo-utilizarlos)
+  + [¿Puedo modificarlos/venderlos?](#puedo-modificarlosvenderlos)
+* [¿Cómo están hechos?](#cómo-están-hechos)
+  + [Auto-generación](#auto-generación)
+
+
+
+
+
 ## ¿Por qué?
 Realizar mis propios apuntes tiene ciertas ventajas:
 * Te ayuda a profundizar y recapacitar acerca de los temas que vas a enseñar
@@ -72,6 +87,7 @@ Esta clase tiene su propia documentación en el enlace, pero se ha creado por la
 * Crear cajas para código o mensajes, buscando la visualización acorde al libro.
 * Para aprender **LaTeX** y no depender de un programa _WYSIWYG_
 
+Muchas de las imágenes utilizadas en los documentos están realizadas mediante [draw.io](https://www.diagrams.net/)
 
 ### Auto-generación
 Si no sabes nada de **LaTeX**, es posible que no sepas cómo utilizar el código fuente de los libros para generar los PDF. 
