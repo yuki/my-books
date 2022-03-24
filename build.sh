@@ -2,35 +2,35 @@
 
 cd "SMR/2/SOred/"
 
-pdflatex -shell-escape SOred.tex
+lualatex -shell-escape SOred.tex
 makeindex SOred.tex
-pdflatex -shell-escape SOred.tex
-pdflatex -shell-escape SOred.tex
+lualatex -shell-escape SOred.tex
+lualatex -shell-escape SOred.tex
 
 cd ../../../
 
 cd "ASIR/1/planificacion_administracion_redes/"
-pdflatex -shell-escape redes_book.tex
+lualatex -shell-escape redes_book.tex
 makeindex redes_book.tex
-pdflatex -shell-escape redes_book.tex
-pdflatex -shell-escape redes_book.tex
+lualatex -shell-escape redes_book.tex
+lualatex -shell-escape redes_book.tex
 
 cd ../../../
 
 cd "ASIR/2/SGBD/"
-pdflatex -shell-escape sgbd_book.tex
+lualatex -shell-escape sgbd_book.tex
 makeindex sgbd_book.tex
-pdflatex -shell-escape sgbd_book.tex
-pdflatex -shell-escape sgbd_book.tex
+lualatex -shell-escape sgbd_book.tex
+lualatex -shell-escape sgbd_book.tex
 
 cd ../../../
 
 cd "otros/PFsense/"
 
-pdflatex -shell-escape pfsense_book.tex
+lualatex -shell-escape pfsense_book.tex
 makeindex pfsense_book.tex
-pdflatex -shell-escape pfsense_book.tex
-pdflatex -shell-escape pfsense_book.tex
+lualatex -shell-escape pfsense_book.tex
+lualatex -shell-escape pfsense_book.tex
 
 #LIBRO=$1
 #ACTION=0
@@ -42,12 +42,12 @@ pdflatex -shell-escape pfsense_book.tex
 #    esac 
 #    
 #    if [ $ACTION -eq 1 ]; then
-#        pdflatex -shell-escape $LIBRO.tex
+#        lualatex -shell-escape $LIBRO.tex
 #        #biber $LIBRO.tex
 #        makeindex $LIBRO.tex
 #        
-#        pdflatex -shell-escape $LIBRO.tex
-#        pdflatex -shell-escape $LIBRO.tex
+#        lualatex -shell-escape $LIBRO.tex
+#        lualatex -shell-escape $LIBRO.tex
 #    else
 #        echo "ERROR! Introduced book does not exists"
 #        exit 2
