@@ -533,46 +533,38 @@ El diseño comenzó en 1977 tratando de terminar con la \href{https://en.wikiped
 El modelo OSI está compuesto por siete capas numeradas del 1 al 7 siendo la 1 la más baja y haciendo referencia a la parte física de la red.
 
 
-\begin{table}[H]
-    \centering
-    \tablestyle
-    \begin{tabular}{|L{0.15\linewidth}|L{0.3\linewidth}|L{0.46\linewidth}|}
-        \theadstart
-        \thead \textbf{Capa} &
-        \thead \textbf{Nombre de la unidad de datos} &
-        \thead \textbf{Función} \tabularnewline
-        \tbody
-        7ª - Aplicación & Datos
-            & APIs de alto nivel, como compartir recursos y acceso remoto a archivos.
-            \\ \hline
-        6ª - Presentación & Datos
-            & Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.
-            \\ \hline
+%TODO: modificar tabla?
+\begin{yukitblr}{X X X[3,l]}
+    Capa & Nombre de la unidad de datos & Función \\
 
-        5ª - Sesión & Datos
-            & Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos.
-            \\ \hline
+    7ª - Aplicación & Datos
+    & APIs de alto nivel, como compartir recursos y acceso remoto a archivos. \\
 
-        4ª - Transporte & Segmento, Datagrama
-            & Transmisión de segmentos de datos confiable entre puntos de red, incluyendo la segmentación, el acknowledgement y la multiplexación.
-            \\ \hline
+    6ª - Presentación & Datos
+    & Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.
+    \\
 
-        3ª - Red & Paquete
-            & Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico traffic control.
-            \\ \hline
+    5ª - Sesión & Datos
+    & Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos.
+    \\
 
-        2ª - Enlace & Trama
-            & Transmisión de datos confiable entre dos nodos conectados mediante una capa física.
-            \\ \hline
+    4ª - Transporte & Segmento, Datagrama
+    & Transmisión de segmentos de datos confiable entre puntos de red, incluyendo la segmentación, el acknowledgement y la multiplexación.
+    \\
 
-        1ª - Física & Bit, Baudios
-            & Transmisión y recepción de flujos de bits sin procesar por un medio físico.
-            \\ \hline
+    3ª - Red & Paquete
+    & Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico traffic control.
+    \\
 
-        \tend
-    \end{tabular}
-    \vspace{-10pt}
-\end{table}
+    2ª - Enlace & Trama
+    & Transmisión de datos confiable entre dos nodos conectados mediante una capa física.
+    \\
+
+    1ª - Física & Bit, Baudios
+    & Transmisión y recepción de flujos de bits sin procesar por un medio físico.
+    \\
+\end{yukitblr}
+
 
 
 
@@ -1135,17 +1127,13 @@ A continuación se puede ver cómo se muestra tráfico etiquetado mediante las c
 
 Hay que tener en cuenta que aunque existe el límite de 4096 VLANs, algunos switches tienen una limitación de un número menor de VLANs activas. Es decir, puedes crear VLANs con el dígito que quieras (hasta 4095), pero quizá sólo te dejan crear 16 VLANs. Ejemplo de la limitación del número de VLANs que puede haber activas en switches “\href{https://www.cisco.com/c/dam/en/us/products/collateral/switches/small-business-100-series-unmanaged-switches/data_sheet_c78-634369_Spanish.pdf}{Cisco de la serie 200 Cisco Small Business}”:
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|L{0.1\linewidth}|L{0.84\linewidth}|}
-        \tbody
-        VLAN & Compatibilidad con hasta \textbf{256 VLAN simultáneas} (de 4096 ID de VLAN). \textbf{16 VLAN compatibles en SG200-08 y SG200-08P}. VLAN basadas en puertos y en etiquetas 802.1Q
-        \\ \hline
-        VLAN de voz & El tráfico de voz se asigna automáticamente a una VLAN específica de voz y se trata con los niveles apropiados de QoS
-        \\ \hline
-    \end{tabular}
-    \vspace{-15pt}
-\end{table}
+\begin{tblr}{X[2cm] X}
+    VLAN & Compatibilidad con hasta \textbf{256 VLAN simultáneas} (de 4096 ID de VLAN). \textbf{16 VLAN compatibles en SG200-08 y SG200-08P}.
+
+    VLAN basadas en puertos y en etiquetas 802.1Q \\
+
+    VLAN de voz & El tráfico de voz se asigna automáticamente a una VLAN específica de voz y se trata con los niveles apropiados de QoS \\
+\end{tblr}
 
 Como se puede apreciar, en este modelo de Switch, el límite es de 256 VLAN activas (aunque se puede elegir el ID de la VLAN de las 4096 posibles), y de “sólo” 16 VLANs en el modelo de 8 bocas ethernet de esa serie.
 
