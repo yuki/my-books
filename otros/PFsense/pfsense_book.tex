@@ -1,19 +1,23 @@
-\documentclass{../../yukibook.cls/yukibook}
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
 
-\makeatletter
-\@addtoreset{chapter}{part}
 
 \begin{document}
 
-    \yukibook{Configuración básica de pfSense como firewall de red} 	% Title
+    \yukibook{Configuración básica de pfSense como firewall de red} % Title
     {Rubén Gómez}  % Author
     {2021-2022}    % Year
     {} % Name of degree
-    {}	% catch phrase
-    {}	% the phrase's author
+    {} % catch phrase
+    {} % the phrase's author
     {img/pfsense.png} %cover
     {2a40b5}
     {pfsense} %mini-title
+
+    \coverpage
+    \licensepage
+
+    \tableofcontents
 
     %--------------------------------------------------------------------------
     % Start your parts, chapters and sections here

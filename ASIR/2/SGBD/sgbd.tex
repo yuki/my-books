@@ -585,47 +585,37 @@ max_connections            = -1
 
 Para conocer qué valor pueden tener estas variables, lo mejor es ir a la documentación y mirar la variable que queremos modificar o agregar.  Por ejemplo, para \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log}{slow\_query\_log} veremos que en la documentación tiene la siguiente tabla:
 
+\vspace{-30pt}
+\begin{yukitblr}{XX}
+    \textbf{Referencia} & \textbf{Valor}\\
 
-\begin{table}[H]
-    \tablestyle
-    \begin{tabular}{|p{0.3\linewidth}|p{0.4\linewidth}|}
-        \theadstart
-            \thead \centering \textbf{Referencia} &
-            \thead \centering \textbf{Valor} \tabularnewline
-        \tbody
-            Command-Line Format & \texttt{\-/-slow-query-log[=\{OFF|ON\}]} \\
-            System Variable & slow\_query\_log \\
-            Scope & Global \\
-            Dynamic & Yes \\
-            SET\_VAR Hint Applies & No \\
-            Type & Boolean \\
-            Default Value & OFF \\
-        \tend
-    \end{tabular}
-\end{table}
+    Command-Line Format & \texttt{\-/-slow-query-log[=\{OFF|ON\}]} \\
+    System Variable & slow\_query\_log \\
+    Scope & Global \\
+    Dynamic & Yes \\
+    SET\_VAR Hint Applies & No \\
+    Type & Boolean \\
+    Default Value & OFF \\
+\end{yukitblr}
+\vspace{-20pt}
 
 Esta tabla nos da mucha información acerca de la variable, ya sea para poder ver qué tipo de valor es (Boolean en este caso), su valor por defecto (OFF) y si podremos o no modificarla dinámicamente (Dynamic = Yes). El valor por defecto será el valor que obtendrá la variable si no aparece en el fichero de configuración con un valor puesto por nosotros.
 
 Otro ejemplo, \href{https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_bind_address}{bind\_address}:
 
-\begin{table}[H]
-    \tablestyle
-    \begin{tabular}{|p{0.3\linewidth}|p{0.4\linewidth}|}
-        \theadstart
-            \thead \centering \textbf{Referencia} &
-            \thead \centering \textbf{Valor} \tabularnewline
-        \tbody
-            Command-Line Format & \texttt{\-/-sbind-addr=addr} \\
-            System Variable & sbind\_address \\
-            Scope & Global \\
-            Dynamic & No \\
-            SET\_VAR Hint Applies & No \\
-            Type & String \\
-            Default Value & * \\
-        \tend
-    \end{tabular}
-\end{table}
+\vspace{-30pt}
+\begin{yukitblr}{XX}
+    \textbf{Referencia} & \textbf{Valor}\\
 
+    Command-Line Format & \texttt{\-/-sbind-addr=addr} \\
+    System Variable & sbind\_address \\
+    Scope & Global \\
+    Dynamic & No \\
+    SET\_VAR Hint Applies & No \\
+    Type & String \\
+    Default Value & * \\
+\end{yukitblr}
+\vspace{-20pt}
 
 \section{Variables de configuración en MySQL}
 Tal como hemos visto, el listado completo de variables tiene cientos de posibles variables que podemos ver o modificar para ajustar el servidor a nuestros intereses. Las variables se deben separar en dos partes:
@@ -1261,33 +1251,25 @@ En la documentación oficial podemos ver todo los \href{https://dev.mysql.com/do
 
 En la siguiente tabla se muestran sólo unos pocos de los privilegios, y siempre conviene ir a la documentación oficial teniendo en cuenta la versión de MySQL que estamos utilizando, para confirmar los privilegios que existen:
 
+\vspace{-30pt}
+\begin{yukitblr}{X[2,l]X[3,l]X[3,l]}
+    Privilege & Grant Table Column & Context\\
 
-\begin{table}[H]
-    \tablestyle
-    \begin{tabular}{|p{0.21\linewidth}|p{0.31\linewidth}|p{0.4\linewidth}|}
-        \theadstart
-        \thead \centering \textbf{Privilege} &
-        \thead \centering \textbf{Grant Table Column} &
-        \thead \centering \textbf{Context} \tabularnewline
-        \tbody
-            ALL [PRIVILEGES] & Synonym for “all privileges” & Server administration \\
-            ALTER & Alter\_priv & Tables \\
-            CREATE & Create\_priv & Databases, tables, or indexes \\
-            CREATE USER & Create\_user\_priv & Server administration \\
-            CREATE VIEW & Create\_view\_priv & Views \\
-            DELETE & Delete\_priv & Tables \\
-            DROP & Drop\_priv & Databases, tables, or views \\
-            DROP ROLE & Drop\_role\_priv & Server administration \\
-            GRANT OPTION & Grant\_priv & Databases, tables, or stored routines \\
-            INDEX & Index\_priv & Tables \\
-            INSERT & Insert\_priv & Tables or columns \\
-            SELECT & Select\_priv & Tables or columns \\
-            ... & ... & ... \\
-        \tend
-    \end{tabular}
-    \vspace{-40pt}
-\end{table}
-
+    ALL [PRIVILEGES] & Synonym for “all privileges” & Server administration \\
+    ALTER & Alter\_priv & Tables \\
+    CREATE & Create\_priv & Databases, tables, or indexes \\
+    CREATE USER & Create\_user\_priv & Server administration \\
+    CREATE VIEW & Create\_view\_priv & Views \\
+    DELETE & Delete\_priv & Tables \\
+    DROP & Drop\_priv & Databases, tables, or views \\
+    DROP ROLE & Drop\_role\_priv & Server administration \\
+    GRANT OPTION & Grant\_priv & Databases, tables, or stored routines \\
+    INDEX & Index\_priv & Tables \\
+    INSERT & Insert\_priv & Tables or columns \\
+    SELECT & Select\_priv & Tables or columns \\
+    ... & ... & ... \\
+\end{yukitblr}
+\vspace{-20pt}
 
 
 Tal como se puede ver, existen multitud de privilegios que se les puede otorgar a los usuarios. Vamos a ver cómo añadir y modificar los permisos de los usuarios.

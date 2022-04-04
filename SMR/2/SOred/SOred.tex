@@ -1,19 +1,23 @@
-\documentclass{../../../yukibook.cls/yukibook}
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
 
-\makeatletter
-\@addtoreset{chapter}{part}
 
 \begin{document}
 
-\yukibook{Sistemas Operativos \linebreak en red} 	% Title
+\yukibook{Sistemas Operativos \linebreak en red} % Title
   {Rubén Gómez}  % Author
   {2021-2022}    % Year
   {Técnico en Sistemas microinformáticos y redes} % Name of degree
-  {}	% catch phrase
-  {}	% the phrase's author
+  {} % catch phrase
+  {} % the phrase's author
   {img/portada.png} %cover
   {28436c}
   {sored} %mini-title
+
+\coverpage
+\licensepage
+
+\tableofcontents
 
 %--------------------------------------------------------------------------
 % Start your parts, chapters and sections here

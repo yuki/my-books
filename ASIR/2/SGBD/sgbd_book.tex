@@ -1,7 +1,6 @@
-\documentclass{../../../yukibook.cls/yukibook}
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
 
-\makeatletter
-\@addtoreset{chapter}{part}
 
 \begin{document}
 
@@ -14,6 +13,11 @@
     {img/portada.png} %cover
     {28436c}
     {sgbd} %mini-title
+
+    \coverpage
+    \licensepage
+
+    \tableofcontents
 
     %--------------------------------------------------------------------------
     % Start your parts, chapters and sections here
