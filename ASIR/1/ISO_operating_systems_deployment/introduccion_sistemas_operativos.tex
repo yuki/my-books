@@ -44,6 +44,7 @@ This period started with the digital computers until the late 1950s.
 \end{center}
 
 
+\hypertarget{1st_generation}{}
 \subsection{Batch processing (1st generation)}
 The computers became faster, and in order to no waste time, the \textit{\textbf{monitors}} were developed (the forerunners of operating systems). Those \textit{monitors} could process a series, or “batch”, of programs, often from magnetic tape.
 
@@ -211,7 +212,7 @@ drwxr-xr-x 2 root root 4,0K abr 13 09:36 vcs.d
 The main function of the operating system is to manage the hardware resources of the computer and allow the execution of user programs. To do this, it must perform various functions.
 
 \begin{itemize}
-    \item Process management
+    \item \hyperlink{process_management}{Process management}
     \item RAM memory management
     \item Input/Output management
     \item File management
@@ -220,10 +221,6 @@ The main function of the operating system is to manage the hardware resources of
 \end{itemize}
 
 We will see each of these functionalities in the following chapters.
-
-
-
-
 
 
 \section{How operating systems works}
@@ -236,10 +233,245 @@ In a simplified way, an operating system works as follows:
 
 
 
+\section{Types}
+Operating systems, in general, can be differentiated taking into account different points of view. We are
+
+\subsection{Based on the number of concurrent users}
+\begin{itemize}
+    \item \textbf{Single user}: Only one user can execute processes in the computer each time. All hardware resources will be available to the user. For example: MS-DOS, Classic Mac OS (2001 and before), Windows 95, Windows 98.
+
+    \item \textbf{Multi user}: Different users can execute different processes on the same microprocessor, and compete for hardware resources. For example: Linux, Mac OS X (now MacOS)
+\end{itemize}
+
+\subsection{Depending on the number of simultaneous processes}
+
+\begin{itemize}
+    \item \textbf{Monoprogramming}: Only one process can run at a time, and to run the next one, the previous one has to be finished. \hyperlink{1st_generation operating systems}{}
+
+    \item \textbf{Multiprogramming}: Pueden ejecutar varios procesos de manera simultánea, compitiendo por el tiempo de CPU y los recursos existentes. Most current operating systems.
+\end{itemize}
 
 
+\subsection{Depending on system functionality}
+
+\begin{itemize}
+    \item \textbf{Workstation}: Manages a computer intended for one or more users. Connected to a network to perform tasks of a personal or professional nature. For example: Windows 7/8/10/11, Linux, MacOS.
+
+    \item \textbf{Server}: A server is a computer that offers one or more services to other applications or users. For example: GNU/Linux, Windows Server 2012/2016/2019/2022, FreeBSD.
+
+    \item \textbf{Distributed}: A distributed operating system manages a group of different computers and makes them appear as a single computer. Tasks are distributed among all of them to use all available resources. It is used for example in mathematical calculations, in medicine to find proteins, simulations, ...
+
+    \item \textbf{Embedded}: They are systems that use very specific hardware. They may be limited in their functionalities, or they only allow certain tasks to be carried out or the use of certain programs (restricting the installation of some). For example: Router's operating system, \href{https://en.wikipedia.org/wiki/OpenWrt}{OpenWRT}, \href{https://en.wikipedia.org/wiki/Symbian}{Symbian}, Android*, iOS*.
+\end{itemize}
+
+
+
+\subsection{Depending on the license}
+\begin{itemize}
+    \item \textbf{Free Software / Software Libre}: Distributed under terms that allow users to run the software for any purpose as well as to study, change, and distribute it and any adapted versions. For example: GNU/Linux, FreeBSD, OpenBSD, GNU/Hurd, Android (some parts are free software).
+
+    \begin{center}
+        \includegraphics[width=0.65\linewidth]{free_and_nonfree_software.png}\vspace{-10pt}
+        \captionof{figure}{\href{https://en.wikipedia.org/wiki/Free_software\#Definition_and_the_Four_Essential_Freedoms_of_Free_Software}{Diagram of free and nonfree software. Source: Wikipedia}}
+    \end{center}
+
+    \item \textbf{Proprietary Software}: It's the opposite of Free Software. The software creator allows you to use it under some licensing rights. For example: Windows, MacOS (the kernel is free software), iOS.
+\end{itemize}
+
+
+
+\subsection{Depending on the type of use}
+\begin{itemize}
+    \item \textbf{General purpose}: They can be used to perform generalized tasks. Commonly used operating systems fall into this category.
+
+    \item \textbf{Specific purpose}: Built specifically to perform a specific task. They are usually developed as one more component within a project. For example: satellites, cars...
+\end{itemize}
+
+
+\hypertarget{process_management}{}
 \chapter{Process management}
-A process is a program in execution. The OS must allocate resources to processes, enable processes to share and exchange information, protect the resources of each process from other processes and enable synchronization among processes.
+\textbf{A process is a program in execution}. The OS must allocate resources to processes, enable processes to share and exchange information, protect the resources of each process from other processes and enable synchronization among processes.
+
+Processes are managed by the operating system and are made up of by:
+
+\begin{itemize}
+    \item The \textbf{instructions} of a program intended to be executed by the microprocessor. The instructions are generated with a \textbf{programming language} that will later be translated (by a compiler or an interpreter) into \textbf{machine language} (binary code that can be executed by the processor).
+
+    \item Its \textbf{execution status} at a given moment, that is, the values of the registers of the central processing unit (CPU) for each program.
+
+    \item The \textbf{working memory}, that is, the memory the program needs  and its contents.
+
+    \item Other information that allows the operating system to plan.
+\end{itemize}
+
+\section{Process and threads}
+In most cases \textbf{a thread is a component of a process}. The multiple threads of a given process may be executed concurrently (via multithreading capabilities), sharing resources such as memory, while different processes do not share these resources.
+
+\infobox{\textbf{In most cases a thread is a component of a process}}
+
+\section{Process life}
+
+The life of a process can be summarized in the following graph:
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{process_life.png}
+\end{center}
+
+\subsection{Process status}
+The processes have several states during their life, but we can separate them into two large groups:
+
+\begin{itemize}
+    \item \textbf{Active}: Competes for the processor or is in a position to do so.
+
+    \item \textbf{Inactive}: State in which the processes that cannot compete for the processor.
+\end{itemize}
+
+
+\subsection{Process' states}
+A process goes through different states throughout its life:
+
+\begin{itemize}
+    \item \textbf{New}: Processes in this state are loaded into memory, but are not using CPU resources. Once the process is admitted, it goes to the \textbf{waiting} state.
+
+    \item \textbf{Waiting}: These are processes that are loaded and ready to go into the \textbf{running} state. Processes in this state are waiting for their processor turn, which is determined by the \textbf{process scheduler}.
+
+    \item \textbf{Running}: When the process uses the resources of the processor.
+
+    \item \textbf{Blocked}: If a process in the "running" state needs to wait for a resource (wait for \textbf{user input} or \textbf{file to open}, for example), it is assigned the "\textbf{blocked}" state. The process state is changed back to "waiting" when the process no longer needs to wait (in a blocked state).
+
+    \item \textbf{Terminated}: Once the process finishes execution, or is terminated by the operating system, it is no longer needed. The process is removed instantly or is moved to the “terminated” state. When removed, it just waits to be removed from main memory.
+\end{itemize}
+
+
+There are two “special” states, which make processes considered “inactive”:
+
+\begin{itemize}
+    \item \textbf{Swapped out and waiting}.
+    \item \textbf{Swapped out and blocked}.
+\end{itemize}
+
+To “swap out” means that regions of a process's memory may be really on disk and not in main memory. This is a transparent move from memory into a virtual memory system allocated on disk.
+
+
+\subsection{State transitions}
+
+A process can go from one state to another, as we have seen in the previous image. It is important to know what kind of transitions exist and the cause of those transitions.
+
+\begin{itemize}
+
+    %TODO: meter  “En espera: se inserta en la cola de preparados.” ??
+
+    \item To \textbf{waiting} state:
+    \begin{itemize}
+        \item An application/program is \textbf{executed}.
+
+        \item \textbf{Interruption}: If an interrupt occurs that forces the process to wait. It can happen because of the \textbf{Quantum completion}. The “quantum” of a process is equivalent to a fixed number of clock pulses or cycles. When a clock interrupt occurs that coincides with the completion of the quantum, control of the CPU is handed over to the process selected by the scheduler.
+
+        \item \textbf{End of an I/O operation}.
+
+        \item \textbf{Activation}. A suspended process is activated and it's queued into “waiting” queue.
+    \end{itemize}
+
+    \item To \textbf{running} state: the first process in the queue passes
+    to be in “running” state when the clock has interrupted the one that was running.
+
+    \item To \textbf{blocked} state: a process that is running and passes to
+    perform an I/O operation goes to the “blocked” queue.
+\end{itemize}
+
+As with states, there are transitions to “inactive”, which occur when main memory is needed.
+
+\section{Process control block}
+
+A process control block (PCB) is a data structure used by computer operating systems to store all the information about a process. It is also known as a process descriptor. When a process is created, the operating system creates a corresponding process control block.
+
+This specifies the process state i.e. new, ready, running, waiting or terminated, through the life of the process.
+
+\errorbox{PCB must be kept in an area of memory protected from normal process access. }
+
+
+\section{Process scheduling}
+
+The OS software in charge of allocating the resources of a system among the processes that request them is called a \textbf{scheduler}.
+
+\infobox{\textbf{The scheduler must decide which of the processes competing for possession of a given resource will receive it}}
+
+\subsection{Strategies}
+The operating system may have different strategies in terms of process scheduling:
+
+\begin{itemize}
+    \item \textbf{Appropriative strategy}: The operating system can interrupt the “running” process at any time, passing it to “waiting”, in order to give the turn to another process according to the scheduling algorithm.
+
+    \item \textbf{Non-Appropriative strategy}: The operating system \textbf{cannot give the turn to another process unless} the one that is running terminates or is blocked by an input/output operation or by request of some other service or if it is the process itself that gives up the processor to another.
+\end{itemize}
+
+\subsection{Objectives}
+
+Process scheduler has the following main objectives when it comes to assigning priorities:
+
+\begin{itemize}
+    \item \textbf{Equity}: All processes must be attended.
+
+    \item \textbf{Efficiency}: The processor must be busy 100\% of the time.
+
+    \item \textbf{Minimize wait time}: time from work becoming ready until the first point it begins execution.
+
+    \item \textbf{minimizing latency or response time}: time from work becoming ready until it is finished in case of batch activity, or until the system responds to the user in case of interactive activity.
+
+    \item \textbf{Maximizing fairness}: Equal CPU time to each process, or more generally appropriate times according to the priority and workload of each process.
+\end{itemize}
+
+
+\subsection{Scheduling algorithm}
+
+There are different scheduling algorithms used for distributing resources among parties which simultaneously and asynchronously request them.
+
+Those algorithms are used in routers (to handle packet traffic) as well as in operating systems (to share CPU time among both threads and processes), disk drives (I/O scheduling), printers (print spooler), most embedded systems, etc.
+
+There are some previous concepts that we must understand before starting to see the different algorithms:
+\begin{itemize}
+    \item \textbf{Loading time}: Moment at which a process is loaded by the O.S. (list of waiting processes) (\textbf{L}).
+
+    \item \textbf{CPU Utilization}: Time that keeps the CPU busy. The longer the occupation time, the better (\textbf{p}).
+
+    \item \textbf{Exit time}: moment in which a process finishes all its execution and is removed from the system (\textbf{E}).
+
+    \item \textbf{Waiting time} (\textbf{W}).
+\end{itemize}
+
+With all this, we can calculate the following:
+
+\begin{itemize}
+    \item \textbf{Execution time}: It is the amount of time that any process needs to execute (\textbf{t})
+    \begin{center}
+        $t = L + p + I/O$
+    \end{center}
+
+    \item \textbf{Service time}: The amount of time that takes a
+    process to run and exit the system. The less time better.(\textbf{T})
+
+    \begin{center}
+        $T = t + W$
+
+        $T = t_{f} - t_{i}$
+    \end{center}
+
+    \item \textbf{Service Index}: Value that represents the percentage of
+    time the process is running, relative to the time it remains in the system (\textbf{I})
+
+    \begin{center}
+        $ I = t / T$
+    \end{center}
+\end{itemize}
+
+
+\subsubsection{First Came First Served (FCFS) or FIFO (First In First Out)}
+
+As the name suggests, the first process to arrive is the first to be processed. The simplest example is the queue at a supermarket.
+
+It is the simplest algorithm, the first process that requests the CPU is the first to receive it. The problem with this algorithm is that \textbf{the waiting time is quite long}.
+
+
 
 
 
