@@ -365,7 +365,10 @@ A process can go from one state to another, as we have seen in the previous imag
     \begin{itemize}
         \item An application/program is \textbf{executed}.
 
-        \item \textbf{Interruption}: If an interrupt occurs that forces the process to wait. It can happen because of the \textbf{Quantum completion}. The “quantum” of a process is equivalent to a fixed number of clock pulses or cycles. When a clock interrupt occurs that coincides with the completion of the quantum, control of the CPU is handed over to the process selected by the scheduler.
+        \hypertarget{quantum}{}
+        \item \textbf{Interruption}: If an interrupt occurs that forces the process to wait. It can happen because of the \textbf{Quantum completion}. The “quantum” of a process is equivalent to a fixed number of clock pulses or cycles. This quantum can be the same for each process or variable.
+
+        When a clock interrupt occurs that coincides with the completion of the quantum, control of the CPU is handed over to the process selected by the scheduler.
 
         \item \textbf{End of an I/O operation}.
 
@@ -400,9 +403,9 @@ The OS software in charge of allocating the resources of a system among the proc
 The operating system may have different strategies in terms of process scheduling:
 
 \begin{itemize}
-    \item \textbf{Appropriative strategy}: The operating system can interrupt the “running” process at any time, passing it to “waiting”, in order to give the turn to another process according to the scheduling algorithm.
+    \item \textbf{Preemptive strategy}: The operating system can interrupt the “running” process at any time, passing it to “waiting”, in order to give the turn to another process according to the scheduling algorithm.
 
-    \item \textbf{Non-Appropriative strategy}: The operating system \textbf{cannot give the turn to another process unless} the one that is running terminates or is blocked by an input/output operation or by request of some other service or if it is the process itself that gives up the processor to another.
+    \item \textbf{Non-Preemptive strategy}: The operating system \textbf{cannot give the turn to another process unless} the one that is running terminates or is blocked by an input/output operation or by request of some other service or if it is the process itself that gives up the processor to another.
 \end{itemize}
 
 \subsection{Objectives}
@@ -471,10 +474,79 @@ As the name suggests, the first process to arrive is the first to be processed. 
 
 It is the simplest algorithm, the first process that requests the CPU is the first to receive it. The problem with this algorithm is that \textbf{the waiting time is quite long}.
 
+Let's see how FCFS/FIFO works with the next process table.
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{fcfs-1.png}
+\end{center}
+
+We know when the process will be ready, it's the column “\textbf{ti}”, which means that if the processor is free, the process will be executed. If not, it must wait.
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{fcfs-2.png}
+\end{center}
 
 
+\subsubsection{Round Robin}
+
+This algorithm is used to implement timesharing. Similar to the case of FCFS, but each process has a maximum \hyperlink{quantum}{quantum}. Remember that when a clock interrupt occurs that coincides with the completion of the quantum, control of the CPU is handed over to the process selected by the scheduler.
+
+The queue of the processes that are in the “\textbf{READY queue}” are managed as FIFO.
+
+Depending on the quantum of time, \textbf{Q}:
+
+\begin{itemize}
+    \item \textbf{If Q is very large}, processes end their CPU bursts before the quantum ends: \textbf{it behaves like an FCFS}.
+
+    \item \textbf{If Q=>0}, there tends to be a system in which each process has a processor at 1/N of the speed of the real processor (shared processor).
+
+    \item \textbf{If Q is very small}, context switches are constantly happening and \textbf{performance decreases a lot}.
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{rr-1.png}
+\end{center}
+
+For \textbf{Quantum = 2}, the scheduling will be:
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{rr-2.png}
+\end{center}
 
 
+\subsubsection{Shortest Job First (SJF)}
+
+As its name suggests, the process that has the next shortest CPU cycle will be the first to execute, and for that we are supposed to know the execution time of each process. It is a \textbf{non-preemptive} algorithm.
+
+When there are several jobs of equal importance to be started in the READY queue, the scheduler selects the shortest job first (SJF) and in case of a tie, prioritizes with the algorithm FIFO (First In First Out).
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{sjf-1.png}
+\end{center}
+
+And the scheduling will be:
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{sjf-2.png}
+\end{center}
+
+
+\subsubsection{Shortest Remaining First (SRF)}
+
+The scheduler always chooses the process with the shortest expected remaining processing time. When a new process joins the ready queue, it may have a shorter remaining time than the currently running process.  It is a \textbf{preemptive} algorithm.
+
+It is similar to SJF, with the difference that if a new process becomes READY, the dispatcher is activated to see if it is shorter than what remains to be executed in the running process. If so, the running process becomes ready and its estimate time is
+decrements with the time it has been running
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{srt-1.png}
+\end{center}
+
+And the scheduling will be:
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{srt-2.png}
+\end{center}
 
 
 
