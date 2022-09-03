@@ -32,7 +32,7 @@ makeindex pfsense_book.tex
 lualatex -shell-escape pfsense_book.tex
 lualatex -shell-escape pfsense_book.tex
 
-cd ../../../
+cd ../../
 
 cd "otros/hacer_documentacion/"
 
