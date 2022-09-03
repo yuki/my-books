@@ -32,6 +32,17 @@ makeindex pfsense_book.tex
 lualatex -shell-escape pfsense_book.tex
 lualatex -shell-escape pfsense_book.tex
 
+cd ../../../
+
+cd "otros/hacer_documentacion/"
+
+lualatex -shell-escape como_hacer_documentacion.tex
+makeindex como_hacer_documentacion.tex
+lualatex -shell-escape como_hacer_documentacion.tex
+lualatex -shell-escape como_hacer_documentacion.tex
+
+
+
 #LIBRO=$1
 #ACTION=0
 #

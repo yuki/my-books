@@ -1,0 +1,28 @@
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Cómo hacer una buena documentación} % Title
+    {Rubén Gómez}  % Author
+    {2022-09-02}    % Year
+    {} % Name of degree
+    {O al menos intentarlo} % catch phrase
+    {} % the phrase's author
+    {img/portada.png} %cover
+    {006c8c}
+    {pfsense} %mini-title
+
+    \coverpage
+    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{img/doc/}}
+    \input{documentacion.tex}
+
+\end{document}
