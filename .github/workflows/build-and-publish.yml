@@ -24,3 +24,11 @@ jobs:
           ASIR/2/SGBD/sgbd_book.pdf
           otros/PFsense/pfsense_book.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
+          anexos/gestion_backups/gestion_backups_anexo.pdf
+          anexos/glosario/glosario_anexo.pdf
+          anexos/instalar_ubuntu_lts/instalar_ubuntu_lts_anexo.pdf
+          anexos/monitorizacion_munin/monitorizacion_munin_anexo.pdf
+          anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.pdf
+          anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion_anexo.pdf
+          anexos/ubuntu_raid1/ubuntu_raid1_anexo.pdf
+          anexos/virtualbox_networking/virtualbox_networking_anexo.pdf

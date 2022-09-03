@@ -8,17 +8,17 @@ Más adelante verás que la licencia utilizada para estos libros es una licencia
 
 
 ## Tabla de contenidos
-* [¿Por qué?](#por-qué)
-* [¿Están terminados?](#están-terminados)
-* [Libros realizados](#libros-realizados)
-  + [Otros libros](#otros-libros)
-  + [Anexos](#anexos)
-* [¿Puedo utilizarlos?](#puedo-utilizarlos)
-  + [¿Puedo modificarlos/venderlos?](#puedo-modificarlosvenderlos)
-* [¿Cómo están hechos?](#cómo-están-hechos)
-  + [Auto-generación](#auto-generación)
-
-
+- [Libros de texto](#libros-de-texto)
+  - [Tabla de contenidos](#tabla-de-contenidos)
+  - [¿Por qué?](#por-qué)
+  - [¿Están terminados?](#están-terminados)
+  - [Libros realizados](#libros-realizados)
+    - [Otros libros](#otros-libros)
+    - [Anexos](#anexos)
+  - [¿Puedo utilizarlos?](#puedo-utilizarlos)
+    - [¿Puedo modificarlos/venderlos?](#puedo-modificarlosvenderlos)
+  - [¿Cómo están hechos?](#cómo-están-hechos)
+    - [Auto-generación](#auto-generación)
 
 
 
@@ -45,7 +45,7 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
 * Grado Medio para Técnico en Sistemas microinformáticos y redes
   * [Sistemas Operativos en red](https://github.com/yuki/my-books/releases/download/latest/SOred.pdf)
 * Grado Superior para Técnico superior en Administración de Sistemas informáticos en red
-  * [Planificación y administración de redes](https://github.com/yuki/my-books/releases/download/latest/redes_book.pdf)
+  * [Planificación y administración de redes](https://github.com/yuki/my-books/releases/download/latest/redes_book.pdf) **NOTA: No está acabado**
   * [Administración de sistemas gestores de bases de datos](https://github.com/yuki/my-books/releases/download/latest/sgbd_book.pdf)
 
 
@@ -56,13 +56,17 @@ Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas 
 
 
 ### Anexos
-Y por último, hay ciertos Anexos creados, que están incluídos en varios de los libros, pero no los he puesto (todavía) como PDFs aislados:
-* Gestión de copias de seguridad
-* Glosario sobre términos informáticos
-* Instalar Ubuntu LTS
-  * Crear sistema RAID 1 en Ubuntu
-* Monitorización básica con Munin
-* Sistemas de monitorización
+Y por último, hay ciertos Anexos creados, que están incluídos en varios de los libros. Algunos de estos anexos son apuntes mínimos y en otros se profundiza más.
+
+Como también puede ser interesante tenerlos por separado, se pueden descargar desde aquí:
+* [Gestión de copias de seguridad](https://github.com/yuki/my-books/releases/download/latest/gestion_backups_anexo.pdf)
+* [Glosario de varios términos informáticos](https://github.com/yuki/my-books/releases/download/latest/glosario_anexo.pdf)
+* [Instalar Ubuntu LTS](https://github.com/yuki/my-books/releases/download/latest/instalar_ubuntu_lts_anexo.pdf)
+  * [Crear sistema RAID 1 en Ubuntu](https://github.com/yuki/my-books/releases/download/latest/ubuntu_raid1_anexo.pdf)
+* [Sistemas de monitorización](https://github.com/yuki/my-books/releases/download/latest/sistemas_monitorizacion_anexo.pdf)
+  * [Monitorización básica con Munin](https://github.com/yuki/my-books/releases/download/latest/monitorizacion_munin_anexo.pdf)
+* [Virtualbox y networking](https://github.com/yuki/my-books/releases/download/latest/virtualbox_networking_anexo.pdf)
+
 
 
 

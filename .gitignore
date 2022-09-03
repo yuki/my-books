@@ -9,4 +9,6 @@
 *.pdf
 *.fdb_latexmk
 *.fls
+*.ilg
+*.ind
 svg-inkscape

@@ -1,0 +1,32 @@
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Tabla de Sistemas de numeración} % Title
+    {Rubén Gómez}  % Author
+    {2021-2022}    % Year
+    {} % Name of degree
+    {} % catch phrase
+    {} % the phrase's author
+    {img/raid1_01.png} %cover
+    {2a40b5}
+    {} %mini-title
+
+%    \coverpage
+%    \graphicspath{{../}}
+%    \licensepage
+%
+%    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{img/}}
+    \input{tabla_sistemas_numeracion.tex}
+
+    \graphicspath{{../}}
+    \licensepage
+
+\end{document}

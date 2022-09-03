@@ -1,46 +1,47 @@
-#!/bin/sh
+#!/bin/bash
 
-cd "SMR/2/SOred/"
+LIBROS=(
+    "SMR/2/SOred/ SOred.tex"
+    "ASIR/1/planificacion_administracion_redes/ redes_book.tex"
+    "ASIR/2/SGBD/ sgbd_book.tex"
+)
 
-lualatex -shell-escape SOred.tex
-makeindex SOred.tex
-lualatex -shell-escape SOred.tex
-lualatex -shell-escape SOred.tex
+for LIBRO in "${LIBROS[@]}"; do
+    RUTA=`echo $LIBRO | cut -d" " -f1`
+    NAME=`echo $LIBRO | cut -d" " -f2`
 
-cd ../../../
+    cd $RUTA
+    lualatex -shell-escape $NAME
+    makeindex $NAME
+    lualatex -shell-escape $NAME
 
-cd "ASIR/1/planificacion_administracion_redes/"
-lualatex -shell-escape redes_book.tex
-makeindex redes_book.tex
-lualatex -shell-escape redes_book.tex
-lualatex -shell-escape redes_book.tex
+    cd ../../../
+done
 
-cd ../../../
+OTROS=(
+    "otros/PFsense/ pfsense_book.tex"
+    "otros/hacer_documentacion/ como_hacer_documentacion.tex"
+    "anexos/gestion_backups gestion_backups_anexo.tex"
+    "anexos/glosario glosario_anexo.tex"
+    "anexos/instalar_ubuntu_lts instalar_ubuntu_lts_anexo.tex"
+    "anexos/monitorizacion_munin monitorizacion_munin_anexo.tex"
+    "anexos/sistemas_monitorizacion sistemas_monitorizacion_anexo.tex"
+    "anexos/tabla_sistemas_numeracion tabla_sistemas_numeracion_anexo.tex"
+    "anexos/ubuntu_raid1 ubuntu_raid1_anexo.tex"
+    "anexos/virtualbox_networking virtualbox_networking_anexo.tex"
+)
 
-cd "ASIR/2/SGBD/"
-lualatex -shell-escape sgbd_book.tex
-makeindex sgbd_book.tex
-lualatex -shell-escape sgbd_book.tex
-lualatex -shell-escape sgbd_book.tex
+for LIBRO in "${OTROS[@]}"; do
+    RUTA=`echo $LIBRO | cut -d" " -f1`
+    NAME=`echo $LIBRO | cut -d" " -f2`
 
-cd ../../../
+    cd $RUTA
+    lualatex -shell-escape $NAME
+    makeindex $NAME
+    lualatex -shell-escape $NAME
 
-cd "otros/PFsense/"
-
-lualatex -shell-escape pfsense_book.tex
-makeindex pfsense_book.tex
-lualatex -shell-escape pfsense_book.tex
-lualatex -shell-escape pfsense_book.tex
-
-cd ../../
-
-cd "otros/hacer_documentacion/"
-
-lualatex -shell-escape como_hacer_documentacion.tex
-makeindex como_hacer_documentacion.tex
-lualatex -shell-escape como_hacer_documentacion.tex
-lualatex -shell-escape como_hacer_documentacion.tex
-
+    cd ../../
+done
 
 
 #LIBRO=$1

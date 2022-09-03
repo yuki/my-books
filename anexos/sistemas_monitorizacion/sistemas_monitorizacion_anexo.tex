@@ -1,0 +1,33 @@
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Sistemas de monitorización} % Title
+    {Rubén Gómez}  % Author
+    {2021-2022}    % Year
+    {} % Name of degree
+    {} % catch phrase
+    {} % the phrase's author
+    {img/monitorizacion_activa.png} %cover
+    {2a40b5}
+    {} %mini-title
+
+%    \coverpage
+%
+%    \graphicspath{{../}}
+%    \licensepage
+%
+%    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{img/}}
+    \input{sistemas_monitorizacion.tex}
+
+    \graphicspath{{../}}
+    \licensepage
+
+\end{document}

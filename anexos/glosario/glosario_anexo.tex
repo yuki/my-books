@@ -1,0 +1,31 @@
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Glosario} % Title
+    {Rubén Gómez}  % Author
+    {2021-2022}    % Year
+    {} % Name of degree
+    {} % catch phrase
+    {} % the phrase's author
+    {../img/Gnulinux.svg.png} %cover
+    {2a40b5}
+    {} %mini-title
+
+%    \coverpage
+%    \graphicspath{{../}}
+%    \licensepage
+%
+%    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{../}}
+    \input{glosario.tex}
+
+    \licensepage
+
+\end{document}
