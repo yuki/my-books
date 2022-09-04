@@ -1,0 +1,42 @@
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Administración de Sistemas Operativos} % Title
+    {Rubén Gómez}  % Author
+    {2022-2023}    % Year
+    {Técnico superior en Administración de \linebreak Sistemas informáticos en red} % Name of degree
+    {}% catch phrase
+    {}% the phrase's author
+    {img/portada.png} %cover
+    {28436c}
+    {aso} %mini-title
+
+    \coverpage
+    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+
+    \part{Windows Server 2019}
+    \graphicspath{{../../../temas_comunes/windows_server/img/windows_server/}}
+    \input{../../../temas_comunes/windows_server/Windows_Server.tex}
+
+    \part{Anexos}
+    \graphicspath{{../../../anexos/virtualbox_networking/img}}
+    \input{../../../anexos/virtualbox_networking/virtualbox_networking.tex}
+
+
+    \graphicspath{{../../../anexos/gestion_backups/img/}}
+    \input{../../../anexos/gestion_backups/gestion_backups.tex}
+
+    \graphicspath{{../../../anexos/sistemas_monitorizacion/img/}}
+    \input{../../../anexos/sistemas_monitorizacion/sistemas_monitorizacion.tex}
+
+
+\end{document}
