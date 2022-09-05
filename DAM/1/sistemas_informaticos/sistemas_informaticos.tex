@@ -1,0 +1,69 @@
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Sistemas Informáticos} % Title
+    {Rubén Gómez}  % Author
+    {2022-2023}    % Year
+    {Técnico superior en \linebreak Desarrollo de  Aplicaciones Multiplataforma} % Name of degree
+    {}% catch phrase
+    {}% the phrase's author
+    {img/portada.png} %cover
+    {28436c}
+    {si} %mini-title
+
+    \coverpage
+%    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+
+    \graphicspath{{img/si/}}
+    \input{1_introduccion.tex}
+
+    \input{2_hardware.tex}
+
+    \chapter{Software}
+
+    \section{Tipos de Software}
+    \subsection{firmware,sistema y aplicaciones}
+
+    \subsection{Licencias de Software}
+
+    \section{Sistemas Operativos}
+
+
+
+    \graphicspath{{../../../temas_comunes/sistemas_de_numeracion/img}}
+    \input{../../../temas_comunes/sistemas_de_numeracion/sistemas_de_numeracion.tex}
+
+
+    \chapter{Redes de ordenadores}
+
+    \section{Clasificación de redes}
+
+
+    \chapter{Virtualización}
+    \section{Conceptos básicos}
+
+    \part{Windows}
+
+    \part{GNU/Linux}
+
+
+    \part{Anexos}
+    \graphicspath{{../../../anexos/virtualbox_networking/img}}
+    \input{../../../anexos/virtualbox_networking/virtualbox_networking.tex}
+
+    \part{Ejercicios}
+    \input{../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.tex}
+
+    \input{../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.tex}
+
+
+\end{document}
