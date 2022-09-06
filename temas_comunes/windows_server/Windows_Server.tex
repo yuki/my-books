@@ -1,21 +1,21 @@
 \chapter{Un poco de historia}
 
-Windows Server es la línea de productos de Microsoft \textbf{enfocada a servidores} que se inició con la primera versión: Windows 2000.
+Windows Server es la línea de productos de Microsoft \textbf{enfocada a servidores} que se inició con la primera versión: Windows Server 2003.
 
 Anteriormente, Microsoft contaba con una línea también dedicada a estaciones de trabajo y servidores en red cuyo nombre era Windows NT, por lo que se puede considerar que \textbf{Windows Server es la continuación de NT} con el cambio de nombre.
 
-Las versiones más importantes han sido, sin contar las denominadas NT:
-\begin{itemize}
-    \item Windows 2000.
-    \item Windows Server 2003.
-    \item Windows Server 2008.
-    \item Windows Server 2012.
-    \item Windows Server 2016.
-    \item Windows Server 2019.
-\end{itemize}
+%Las versiones más importantes han sido, sin contar las denominadas NT:
+%\begin{itemize}
+%    \item Windows 2000.
+%    \item Windows Server 2003.
+%    \item Windows Server 2008.
+%    \item Windows Server 2012.
+%    \item Windows Server 2016.
+%    \item Windows Server 2019.
+%\end{itemize}
 
-\chapter{Proceso de instalación de Windows Server 2019}
-Para realizar la instalación de Windows Server 2019 necesitaremos el medio desde el que realizaremos la instalación. Microsoft permite la descarga desde su \href{https://www.microsoft.com/es-es/evalcenter/evaluate-windows-server-2019}{página oficial} una evaluación de 180 días que podremos descargar en varios formatos:
+\chapter{Proceso de instalación de Windows Server 2022}
+Para realizar la instalación de Windows Server 2022 necesitaremos el medio desde el que realizaremos la instalación. Microsoft permite la descarga desde su \href{https://www.microsoft.com/es-es/evalcenter/evaluate-windows-server-2022}{página oficial} una evaluación de 180 días que podremos descargar en varios formatos:
 
 \begin{itemize}
     \item \textbf{Azure}: Es el sistema “en la nube” de Microsoft. Se puede probar Windows Server a través de una cuenta gratuita y posteriormente gestionar los sistemas virtualizados que se creen en la nube.
@@ -65,7 +65,7 @@ Dado que estos son los requisitos mínimos, nuestra máquina virtual deberá cum
 Por tanto, antes de realizar la instalación, deberemos confirmar que conocemos para qué se va a utilizar el servidor, cuántos servicios se van a utilizar y la carga esperada.
 
 \hypertarget{instalar_windows_server}{}
-\section{Instalación de Windows Server 2019}
+\section{Instalación de Windows Server 2022}
 El asistente de instalación de Windows Server nos va a llevar por una serie de pasos que detallaremos a continuación.
 \warnbox{Nos aseguramos que la máquina virtual arranque desde la ISO}
 
@@ -88,15 +88,15 @@ Antes de realizar la descarga de la ISO hemos elegido el idioma español, por lo
     \hfill
     \begin{minipage}{0.36\linewidth}
             \vspace{-11pt}
-            \includegraphics[trim={202 155 203 155},clip,width=\linewidth]{1_instalacion.png}
+            \includegraphics[width=\linewidth]{1_instalacion.png}
     \end{minipage}
 }
 
 \subsection{Elección del sistema operativo}
-Windows Server 2019 tiene distintos modos a la hora de ser instalado, tal como podemos ver en la siguiente captura de pantalla del proceso de instalación:
+Windows Server 2022 tiene distintos modos a la hora de ser instalado, tal como podemos ver en la siguiente captura de pantalla del proceso de instalación:
 \begin{center}
     \vspace{-10pt}
-    \includegraphics[trim={188 180 195 107},clip,width=10cm]{2_instalacion.png}
+    \includegraphics[width=10cm]{2_instalacion.png}
     \vspace{-20pt}
 \end{center}
 
@@ -107,7 +107,7 @@ Existen dos opciones principales a la hora de elegir, ya que cada una de ellas p
     \item \textbf{Datacenter Evaluation}: No habrá límite a la hora de crear máquinas virtuales con un host Hyper-V por cada licencia.
 \end{itemize}
 
-Existen más diferencias, y es por eso que Microsoft tiene una página dedicada con la \href{https://docs.microsoft.com/es-es/windows-server/get-started/editions-comparison-windows-server-2019}{comparación de ambas versiones}. Por lo tanto, antes de realizar la instalación para nuestro sistema, debemos realizar una estimación de los requisitos para así poder elegir de manera adecuada.
+Existen más diferencias, y es por eso que Microsoft tiene una página dedicada con la \href{https://docs.microsoft.com/es-es/windows-server/get-started/editions-comparison-windows-server-2022}{comparación de ambas versiones}. Por lo tanto, antes de realizar la instalación para nuestro sistema, debemos realizar una estimación de los requisitos para así poder elegir de manera adecuada.
 
 Nosotros vamos a elegir la versión “Standard Evaluation” con experiencia de escritorio ya que podremos realizar la configuración desde el propio servidor. Dependiendo del caso, habrá que analizar cuál es la mejor opción antes de realizar la instalación.
 
@@ -117,7 +117,7 @@ Al darle a “Siguiente” nos aparecerán los términos de la licencia.
 Tras aceptar la licencia nos aparecerá el tipo de instalación que deseamos realizar:
 \begin{center}
     \vspace{-10pt}
-    \includegraphics[trim={188 180 195 107},clip,width=10cm]{3_instalacion.png}
+    \includegraphics[width=10cm]{3_instalacion.png}
     \vspace{-10pt}
 \end{center}
 
@@ -125,6 +125,10 @@ Tras aceptar la licencia nos aparecerá el tipo de instalación que deseamos rea
     \item \textbf{Actualización}: Para realizar actualizaciones sobre sistemas compatibles ya instalados.
     \item \textbf{Personalizada}: Tal como indica la imagen anterior, los archivos, las configuraciones y las aplicaciones no se migran. En caso de realizar una instalación nueva (como en nuestro caso), \textbf{utilizaremos esta opción}.
 \end{itemize}
+
+Debemos tener en cuenta cuál es la situación en la que nos encontramos y decidir cuál es la mejor opción de las que se nos ofrece. Por eso es importante realizar la lectura de cada opción que nos aparece en todos los pasos de la instalación. Y más cuando se trata de la instalación de un sistema operativo de servidor
+
+\warnbox{\textbf{Es importante leer qué nos indica cada paso durante la instalación}}
 
 \subsection{Particionado de discos duros}
 Dado que nuestra máquina virtual es nueva, y no tiene ningún sistema operativo previo, vamos a tener que realizar la instalación en el disco duro que se ha añadido a la máquina virtual.
@@ -139,17 +143,16 @@ Dependiendo del tamaño que hayamos elegido, o incluso los discos duros que teng
     \hfill
     \begin{minipage}{0.36\linewidth}
         \vspace{-11pt}
-        \includegraphics[trim={188 180 195 107},clip,width=\linewidth]{4_instalacion.png}
+        \includegraphics[width=\linewidth]{4_instalacion.png}
     \end{minipage}
 }
 
 
 \subsection{Terminar el proceso de instalación}
-
 \begin{wrapfigure}{r}{0.36\linewidth}
     \centering
     \vspace{-20pt}
-    \includegraphics[trim={188 180 195 107},clip,width=\linewidth]{5_instalacion.png}
+    \includegraphics[width=\linewidth]{5_instalacion.png}
 \end{wrapfigure}
 Tras haber seleccionado y haber completado todos los pasos que se han descrito hasta ahora, el proceso de instalación comenzará.
 
@@ -178,15 +181,15 @@ Una vez realizada la instalación conviene retirar la imagen ISO del sistema de 
 
 Tras el primer arranque nos aparecerá la siguiente pantalla para realizar el login con el usuario Administrador, en donde introduciremos la contraseña que hemos puesto en el paso anterior. Una vez introducida, la siguiente pantalla será la pantalla de inicio donde podremos ver el panel de administrador del servidor.
 
-\begin{tcolorbox}[title=Windows Server 2019 recién instalado,colback=white]
+\begin{tcolorbox}[title=Windows Server 2022 recién instalado,colback=white]
     \includegraphics[width=0.48\linewidth]{7_instalacion.png}
     \hfill
     \includegraphics[width=0.48\linewidth]{8_instalacion.png}
 \end{tcolorbox}
 
 
-\chapter{Windows Server 2019 como servidor de red}
-Windows Server 2019 tras la instalación no es más que un sistema operativo “normal”, que potencialmente se puede convertir en un Sistema Operativo de red, con funcionalidad para administrar usuarios, creación de grupos, permisos, … Para realizar estas funciones debemos de configurar el Sistema Operativo.
+\chapter{Windows Server 2022 como servidor de red}
+Windows Server 2022 tras la instalación no es más que un sistema operativo “normal”, que potencialmente se puede convertir en un Sistema Operativo de red, con funcionalidad para administrar usuarios, creación de grupos, permisos, … Para realizar estas funciones debemos de configurar el Sistema Operativo.
 
 Como se ha observado, durante la instalación del Sistema Operativo apenas se realizan preguntas, por lo que es el propio instalador el que ha tomado ciertas decisiones por nosotros, como son:
 
@@ -435,7 +438,7 @@ El equipo Windows 10 Pro deberá estar situado en la misma red del Windows Serve
 
 Es recomendable modificar el nombre del equipo para que posteriormente sea más fácil de encontrarlo dentro del Active Directory, ya que el nombre por defecto de instalación es aleatorio. Para realizar el cambio, podremos seguir los \hyperlink{cambiar_nombre_equipo}{pasos indicados previamente para Windows Server}, y en este caso elegiremos el nombre “win10”.
 
-Y por último, en la configuración de red del equipo Windows 10 configuraremos el servidor DNS preferido para que sea la IP del Windows Server 2019. Este cambio se podría realizar de manera automática si modificamos la configuración del DHCP de la red.
+Y por último, en la configuración de red del equipo Windows 10 configuraremos el servidor DNS preferido para que sea la IP del Windows Server 2022. Este cambio se podría realizar de manera automática si modificamos la configuración del DHCP de la red.
 
 \begin{center}
     \includegraphics[trim={20 90 21 287},clip,width=0.5\linewidth]{windows_10_2.png}
@@ -444,7 +447,7 @@ Y por último, en la configuración de red del equipo Windows 10 configuraremos 
 \section{Añadir el equipo al dominio}
 Tras realizar los pasos previos, para añadir un equipo a un dominio de Active Directory tendremos que ir a la \textbf{Propiedades del Sistema} de Windows (dependiendo de la versión de Windows se puede llegar a esta pantalla de varias maneras).
 
-Le daremos a “Cambiar”. Si no hemos cambiado el nombre al equipo, podremos hacerlo en la nueva ventana, y a la par seleccionaremos el “Dominio” que hemos creado previamente, le daremos a “Aceptar” y nos aparecerá una nueva ventana donde \textbf{introduciremos el usuario “Administrador” y contraseña del Windows Server 2019}.
+Le daremos a “Cambiar”. Si no hemos cambiado el nombre al equipo, podremos hacerlo en la nueva ventana, y a la par seleccionaremos el “Dominio” que hemos creado previamente, le daremos a “Aceptar” y nos aparecerá una nueva ventana donde \textbf{introduciremos el usuario “Administrador” y contraseña del Windows Server 2022}.
 
 {
     \begin{minipage}{0.3\linewidth}
@@ -460,7 +463,7 @@ Le daremos a “Cambiar”. Si no hemos cambiado el nombre al equipo, podremos h
     \end{minipage}
 }
 
-El equipo se conectará al servidor Windows Server 2019, comprobará que los datos son correctos, añadirá el equipo al Active Directory y nos pedirá reiniciar.
+El equipo se conectará al servidor Windows Server 2022, comprobará que los datos son correctos, añadirá el equipo al Active Directory y nos pedirá reiniciar.
 
 
 \section{Diferenciar usuario local y usuario de Active Directory}
@@ -975,8 +978,8 @@ Tal como se puede ver en la imagen, contamos con dos servidores para el dominio 
 
 Por otro lado, en lo referente a los equipos, la configuración debe ser igual: deben de tener como DNS principal uno de los servidores y como DNS secundario el otro . De esta manera, si el servidor que actúa como DNS principal cae, los equipos realizarán las peticiones al otro servidor. Esta modificación de DNS lo habitual es que se realice mediante el servidor DHCP en lugar de ir equipo por equipo (ya que es una tarea tediosa y fácilmente automatizable).
 
-\chapter{Copias de seguridad en Windows Server 2019}
-Windows Server 2019 no tiene instalado por defecto la característica de copias de seguridad, por lo que deberemos instalarla. Para ello abriremos el “Administrador del Servidor”, le daremos a “Agregar Roles y Características”, iremos hasta el apartado de características y seleccionaremos la opción de “Copias de seguridad de Windows Server”:
+\chapter{Copias de seguridad en Windows Server 2022}
+Windows Server 2022 no tiene instalado por defecto la característica de copias de seguridad, por lo que deberemos instalarla. Para ello abriremos el “Administrador del Servidor”, le daremos a “Agregar Roles y Características”, iremos hasta el apartado de características y seleccionaremos la opción de “Copias de seguridad de Windows Server”:
 
 \begin{center}
     \vspace{-20pt}
