@@ -244,7 +244,7 @@ En un dominio dado, puede haber varios controladores de dominio asociados, de mo
 \subsection{Árbol}
 Un Árbol es simplemente una colección de dominios que dependen de una raíz común y se encuentran organizados como una determinada jerarquía. Dicha jerarquía también quedará representada por un espacio de nombres DNS común.
 
-De esta forma, sabremos que los dominios \textbf{mikeldi.com} e \textbf{informatica.mikeldi.com} forman parte del mismo árbol, mientras que \textbf{mikeldi.com} y \textbf{linux.org} no.
+De esta forma, sabremos que los dominios \textbf{empresa.com} e \textbf{informatica.empresa.com} forman parte del mismo árbol, mientras que \textbf{empresa.com} y \textbf{linux.com} no.
 
 Si un determinado usuario es creado dentro de un dominio, éste será reconocido automáticamente en todos los dominios que dependan jerárquicamente del dominio al que pertenece.
 
@@ -373,9 +373,9 @@ En el primer paso a la hora de configurar Active Directory aparecen tres opcione
 A la hora de elegir un dominio para nuestro Active Directory existen varias opciones:
 
 \begin{itemize}
-    \item Elegir un \textbf{TLD} (Top Level Domain) válido, registrado a tu empresa. Ejemplo: \textbf{mikeldi.com}
-    \item Usar un \textbf{subdominio de un TLD} válido. Ejemplo: corp.mikeldi.com
-    Usar un \textbf{TLD no válido}. Ejemplo: mikeldi.local, mikeldi.corp, …
+    \item Elegir un \textbf{TLD} (Top Level Domain) válido, registrado a tu empresa. Ejemplo: \textbf{miempresa.com}
+    \item Usar un \textbf{subdominio de un TLD} válido. Ejemplo: corp.miempresa.com
+    Usar un \textbf{TLD no válido}. Ejemplo: miempresa.local, miempresa.corp, …
     \item En principio, y salvo que tengamos una razón para ello, elegiremos la primera opción y le daremos al botón de “Siguiente”.
 \end{itemize}
 
@@ -485,9 +485,9 @@ A partir de ahora, cuando nos vuelva a salir la pantalla para introducir el usua
 Tal como se puede ver, ya nos viene marcado que al introducir el usuario se va a iniciar la sesión en el dominio creado anteriormente. También podremos indicar lo siguiente como nombre de usuario:
 
 \begin{itemize}
-    \item \textbf{usuario@mikeldi.com}: cuando necesitemos iniciar sesión con “usuario” del dominio “mikeldi.com”.
+    \item \textbf{usuario@example.com}: cuando necesitemos iniciar sesión con “usuario” del dominio “example.com”.
     \item \textbf{ruben@dominio.com}: cuando queramos usar como inicio de sesión el usuario “ruben” del dominio “dominio.com”.
-    \item \textbf{.\textbackslash{mikeldi}}: donde el punto hace referencia a iniciar sesión local y “mikeldi” es el usuario administrador local que hemos creado durante la instalación.
+    \item \textbf{.\textbackslash{usuario}}: donde el punto hace referencia a iniciar sesión local y “usuario” es el usuario administrador local que hemos creado durante la instalación.
 \end{itemize}
 
 \chapter{Gestión de grupos y usuarios}
@@ -726,7 +726,7 @@ Es habitual que en una red los usuarios tengan que conectarse a unidades de red.
 Para el ejemplo se ha creado una Unidad Organizativa llamada “Usuarios” y dentro otra llamada “Sistemas” y dentro tenemos un usuario llamado “sysadmin1” que hemos añadido al grupo “sistemas”:
 
 \begin{center}
-    \includegraphics[frame,width=\linewidth]{gpo_1_1.png}
+    \includegraphics[width=\linewidth]{gpo_1_1.png}
 \end{center}
 
 
@@ -755,7 +755,7 @@ Los pasos para crear la GPO son:
     \end{minipage}
     \hfill
     \begin{minipage}{0.37\linewidth}
-        \includegraphics[frame,trim={1 255 0 1},clip,width=\linewidth]{gpo_1_3.png}
+        \includegraphics[frame,width=\linewidth]{gpo_1_3.png}
     \end{minipage}
 }
 
@@ -834,7 +834,7 @@ Para poder actualizar las GPOs de manera remota  vamos a crear una GPO que va a 
 
 Vamos a crear una nueva GPO llamada “Permitir actualizar GPOs desde servidor” y la vamos a crear en la “OU” de “equipos”.
 
-La ruta para crear es: “\textit{Configuración del equipo → Plantillas Administrativas → Red → Conexiones de red → Firewall De Windows Defender → Perfil de dominio → \textbf{Firewall de Windows Defender: permitir excepción de administración remota entrante}}”, la cual habilitaremos pero sólo permitiendo la IP de nuestro servidor. El resumen de la GPO sería el que aparece en la imagen:
+La ruta para crear es: “\textit{Configuración del equipo → Directivas → Plantillas Administrativas → Red → Conexiones de red → Firewall De Windows Defender → Perfil de dominio → \textbf{Firewall de Windows Defender: permitir excepción de administración remota entrante}}”, la cual habilitaremos pero sólo permitiendo la IP de nuestro servidor. El resumen de la GPO sería el que aparece en la imagen:
 
 \begin{center}
     \includegraphics[trim={1 0 0 2},clip,frame,width=14cm]{gpo_3_1.png}
@@ -974,7 +974,7 @@ El cambio de configuración es que los servidores tienen que tener al otro servi
     \vspace{-20pt}
 \end{center}
 
-Tal como se puede ver en la imagen, contamos con dos servidores para el dominio “mikeldi.com”, ambos se replican entre sí y cada uno tiene como DNS principal al otro servidor.
+Tal como se puede ver en la imagen, contamos con dos servidores para el dominio “example.com”, ambos se replican entre sí y cada uno tiene como DNS principal al otro servidor.
 
 Por otro lado, en lo referente a los equipos, la configuración debe ser igual: deben de tener como DNS principal uno de los servidores y como DNS secundario el otro . De esta manera, si el servidor que actúa como DNS principal cae, los equipos realizarán las peticiones al otro servidor. Esta modificación de DNS lo habitual es que se realice mediante el servidor DHCP en lugar de ir equipo por equipo (ya que es una tarea tediosa y fácilmente automatizable).
 
@@ -1105,15 +1105,15 @@ Get-ADUser -filter * | select name
 \end{mycode}
 
 
-Listar todos los usuarios del dominio \textbf{mikeldi.com} del Active Directory:
+Listar todos los usuarios del dominio \textbf{example.com} del Active Directory:
 \begin{mycode}{Listar sólo los  usuarios de un dominio Active Directory}{powershell}{}
-Get-ADUser -filter * -SearchBase "dc=mikeldi,dc=com"
+Get-ADUser -filter * -SearchBase "dc=example,dc=com"
 \end{mycode}
 
 
-Listar todos los usuarios de un OU concreto (tiene que existir esa unidad organizativa) dentro del dominio mikeldi.com (en este caso) Active Directory:
+Listar todos los usuarios de un OU concreto (tiene que existir esa unidad organizativa) dentro del dominio example.com (en este caso) Active Directory:
 \begin{mycode}{Listar sólo los  usuarios de una OU del Active Directory}{powershell}{}
-Get-ADUser -filter * -SearchBase "OU=usuarios,dc=mikeldi,dc=com"
+Get-ADUser -filter * -SearchBase "OU=usuarios,dc=example,dc=com"
 \end{mycode}
 
 Crear el usuario “usuario1” (como no tiene contraseña, se creará deshabilitado):
@@ -1233,7 +1233,7 @@ get-gpo -All
 
 Crear un fichero HTML en c:\  con las configuraciones de todas las GPO:
 \begin{mycode}{Todas las configuraciones de GPOs en formato HTML}{powershell}{}
-get-GPOreport -Domain mikeldi.com -ALL ReportType Html -path c:\gpo.html
+get-GPOreport -Domain example.com -ALL ReportType Html -path c:\gpo.html
 \end{mycode}
 
 Forzar la actualización inmediata de las GPOs en el equipo remoto “win10”
