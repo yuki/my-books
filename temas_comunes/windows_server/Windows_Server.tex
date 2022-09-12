@@ -410,6 +410,7 @@ Una vez realizado el paso anterior, y tras darle a “Siguiente”, nos aparecer
 
 Tras estos pasos revisaremos las opciones y le daremos a “Instalar”.
 
+\hypertarget{windows_client_dominio}{}
 \chapter{Añadir un equipo Windows 10 al dominio}
 Tras seguir los pasos previos, podremos añadir equipos al dominio creado en Active Directory y hacer uso de las configuraciones, usuarios y restricciones que iremos creando en apartados sucesivos. Para que un equipo Windows pueda pertenecer a un Active Directory debe ser de la familia “\textbf{Pro}”, como por ejemplo: Windows 7 Pro, Windows 10 Pro…
 
@@ -1263,3 +1264,53 @@ Comprobar conexión al puerto 3389 del equipo remoto win10:
 \begin{mycode}{Comprobar puerto remoto}{powershell}{}
 Test-NetConnection win10 -CommonTCPPort 3389
 \end{mycode}
+
+
+\chapter{Sysprep - Preparando nuestro sistema}
+
+Durante la instalación de Windows (tanto la versión Server como de escritorio), se genera un identificador de seguridad (\textbf{SID}, de \textit{Security IDentifier }), y otra información específica del PC que debe ser única dentro de nuestra infraestructura.
+
+Como esa información debe ser única por equipo, \textbf{afecta a la hora de querer crear una imagen de sistema que nos sirva como base para realizar una instalación masiva en toda nuestra red}.
+
+Por ejemplo, si intentamos meter un equipo clonado a un Active Directory nos dará el siguiente error:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=10cm]{sysprep_1.png}
+    \vspace{-20pt}
+\end{center}
+
+Es por eso que Microsoft incorpora la aplicación \textbf{Sysprep}, que \textbf{se encarga } de eliminar esa información específica. Se encuentra en la ruta \commandbox{%WINDIR%\system32\sysprep\sysprep.exe} y puede ser ejecutado tanto en consola como en entorno gráfico.
+
+Las funciones principales que nos permite Sysprep son:
+
+\begin{itemize}
+    \item Borra la información específica del PC de la imagen de Windows, incluyendo el SID. Esto permite crear imágenes que pueden ser aplicadas a otros equipos.
+    \item Desinstala (pero sin borrar) drivers específicos del equipo.
+    \item Prepara el PC para ser arrancado en modo \textbf{OOBE} (\textit{Out-of-Box Experience}). Este sistema deja el equipo con la instalación preparada como si un usuario arrancase por primera vez.
+    \item Permite configuración “desatendida”, añadiendo un fichero con las respuestas de configuración.
+\end{itemize}
+
+
+La manera más sencilla de ejecutarlo es yendo a la ruta mediante el explorador de Windows y haciendo doble click:
+
+\begin{center}
+    \vspace{-10pt}
+    \includegraphics[width=6cm]{sysprep_2.png}
+    \vspace{-20pt}
+\end{center}
+
+Tal como se puede ver, \textbf{Sysprep} nos ofrece una serie de opciones que podemos elegir en su ejecución:
+
+\begin{itemize}
+    \item \textbf{Acción de limpieza del sistema}:
+    \begin{itemize}
+        \item \textbf{Iniciar la configuración OOBE}. Comentada previamente.
+        \item \textbf{Iniciar modo auditoria del sistema}. El sistema auditoría permite saltarse el OOBE para entrar con permisos de Administrador para realizar configuraciones e instalaciones en la imagen. \href{https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/audit-mode-overview?view=windows-10}{Más información}
+        \item \textbf{Generalizar}: Esta es la opción que elimina la información específica del equipo.
+    \end{itemize}
+
+    \infobox{Si queremos crear una imagen o usar una máquina clonada tenemos que usar la opción \textbf{generalizar}}
+
+    \item \textbf{Opciones de apagado}: Qué hacer una vez ejecutado Sysprep.
+\end{itemize}
