@@ -213,7 +213,7 @@ The main function of the operating system is to manage the hardware resources of
 
 \begin{itemize}
     \item \hyperlink{process_management}{Process management}
-    \item RAM memory management
+    \item \hyperlink{memory_management}{Memory management}
     \item Input/Output management
     \item File management
     \item Networking
@@ -550,18 +550,60 @@ And the scheduling will be:
 
 
 
+\hypertarget{memory_management}{}
+\chapter{Memory management}
 
-\chapter{RAM memory management}
+When we use a computer, different types of memory are used. Some types of memory can be expanded while others are limited as they are located inside the processor.
+
+\begin{itemize}
+    \item \textbf{Registers}: Registers usually consist of a small amount of fast storage.
+    \item \textbf{Cache Memory}: Highly requested data is cached in high-speed access memory stores, allowing swifter access by central processing unit (CPU) cores.
+
+    \item \textbf{RAM Memory}: Can be read and changed in any order, typically used to store working data the programs that are being used. RAM is normally associated with volatile types of memory where stored information is lost if power is removed.
+
+    \item \textbf{Secondary Storage}: Normally they are the hard drives where data and programs are stored persistently. When a program is executed, or data is used (photos, music, ...) it is loaded into RAM.
+
+    \item \textbf{Auxiliary Storage}: It is usually used at a professional level in high-performance CPDs. You can store large data, backups, virtual machines, ...
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{memory.png}
+    \vspace{-8pt}
+    \captionof{figure}{Memory hierarchy}
+    \vspace{-13pt}
+\end{center}
 
 
+\section{Virtual memory}
+\begin{minipage}{0.7\linewidth}
+    Is a memory management technique that allows the use of the hard disk as part of the main memory of the system.
 
-\chapter{Input/Output management}
+    The combination of real physical memory with the hard disk creates a “virtual memory” that can be used by the operating system.
 
+    The negative part is that the hard disk is slower in reading and writing, and therefore the performance when using that part of the virtual memory is slower.
 
-\chapter{File management}
+    In Linux this is call “swapping”, and it needs an special partition what it's called \textbf{swap}.
 
+    In windows the virtual memory is stored in the hard disk and it can be changed.
+\end{minipage}
+\hfill
+\begin{minipage}{0.25\linewidth}
+    \includegraphics[width=0.9\linewidth]{virtual_memory.png}
+    \vspace{-10pt}
+    \captionof{figure}{\href{https://en.wikipedia.org/wiki/Virtual_memory}{Virtual Memory. Source: Wikipedia}}
+\end{minipage}
 
-\chapter{Networking}
+\begin{center}
+    \includegraphics[frame,width=0.5\linewidth]{windows_virtual_memory.png}
+\end{center}
 
-
-\chapter{Security}
+%\chapter{Input/Output management}
+%
+%
+%\chapter{File management}
+%
+%
+%\chapter{Networking}
+%
+%
+%\chapter{Security}
