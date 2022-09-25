@@ -45,26 +45,129 @@ Hoy en día, los ordenadores han evolucionado, pero la arquitectura sigue siendo
 
 \section{Componentes básicos}
 
+Un ordenador moderno se puede distinguir de distintos componentes, los cuales cumplen una función específica. Así mismo, también pueden contar con subcomponentes integrados que son necesarios para cumplir su cometido final.
 
-De manera general, podemos distinguir:
+A continuación se van a detallar los componentes necesarios de un ordenador moderno.
+
+%\begin{itemize}
+%    \item CPU / procesador
+%    \item Placa base
+%    \item Memoria
+%    \item Tarjetas gráficas
+%    \item Unidades de almacenamiento
+%    \item Fuente de alimentación
+%    \item Unidades de entrada
+%    \item Unidades de salida
+%    \item Unidades de entrada/salida
+%    \item Caja del ordenador
+%\end{itemize}
+
+\subsection{Placa base}
+
+La placa base (conocida en inglés como \textit{motherboard}) es una tarjeta de circuito impreso a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
+
+
+\subsubsection{Formatos de placa base}
+Las placas base deben tener un tamaño compatible con las cajas en las que van a ir montadas, y es por eso que hay distintos tamaños estandarizados. Cada uno de estos tamaños determinan dónde van a ir montados algunos de los componentes y conectores, así como los agujeros donde irán los tornillos de sujeción a la caja.
+
+Si queremos profundizar más en los distintos formatos, la \href{https://es.wikipedia.org/wiki/Placa_base#Formatos_de_placa_base}{Wikipedia} cuenta con una sección en la que se comparan los distintos tamaños.
+
+
+\subsubsection{Conectores de la placa base}
+
+Como ya hemos indicado, a la placa base se conectan el resto de componentes que forman el ordenador, y es por eso que va a tener distintos conectores:
 
 \begin{itemize}
-    \item CPU / procesador
-    \item Placa base
-    \item Memoria
-    \item Tarjetas gráficas
-    \item Unidades de almacenamiento
-    \item Fuente de alimentación
-    \item Unidades de entrada
-    \item Unidades de salida
-    \item Unidades de entrada/salida
-    \item Caja del ordenador
+    \item \textbf{Zócalo del microprocesador}: También llamado \textit{\textbf{socket}}. Es donde se conecta el microprocesador sin tener que soldarlo a la placa, y de esta manera puede ser sustituido. El número de conexiones que conectan la placa base al microprocesador ha ido aumentando a medida que ha ido evolucionando la tecnología, siendo hoy día de hasta 1700 conectores.
+
+    Dependiendo del tipo de procesador, y el modelo, el socket variará en número de contactos y el tipo de los mismos.
+
+    \item \textbf{Conectores de alimentación}: La placa base tendrá distintos conectores provenientes de la fuente de alimentación con diferentes voltajes, para así proveer de alimentación a los componentes conectados a ella.
+
+    \item \textbf{Ranuras de memoria RAM}: Hoy en día es habitual contar con varias ranuras donde conectar las memoria RAM.
+
+    \item \textbf{Chipset}: Es un conjunto de chips, o circuitos electrónicos, que gestionan la comunicación entre los distintos componentes que forman el ordenador, y que están conectados en la placa base. Hoy en día se suelen dividir en dos partes:
+    \begin{itemize}
+        \item \textbf{Northbridge}: O puente norte, comunica el microprocesador, la memoria RAM y la GPU (la ranura PCI express).
+        \item \textbf{Southbridge}: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, ...
+    \end{itemize}
+
+    \item \textbf{Ranuras de expansión}: Vamos a identificar estas ranuras como las más modernas  PCIexpress. Son un bus de comunicación de datos de alta velocidad que es usado principalmente para conectar tarjetas gráficas. Es cierto que se pueden conectar otro tipo de tarjetas de expansión, y hoy en día existen conectores (\textbf{M.2}) donde poder conectar discos duros.
+
+    \item \textbf{Otros conectores de entrada/salida}: En la placa base existen otros muchos conectores de entrada y salida, que cumplirán distintas funciones dependiendo del tipo de conector, función y/o protocolo de comunicación que utilicen.
+
+    Algunos de estos conectores tendrán conector exterior (al que se podrá conectar directamente el dispositivo), mientras que otros necesitarán de un adaptador (como sucede hoy día con conectores extra USB o el conector “serie”). Algunos ejemplos son:
+    \begin{itemize}
+        \item \textbf{USB}: Donde poder conectar distintos dispositivos como teclados, ratón, pendrives, mandos de juegos, impresoras, ... El USB (\textbf{Universal Serial Bus}) es un estándar de comunicación de periféricos hoy día. En las placas actuales también hay conectores de tipo \textbf{USB-C}.
+
+        \item Conectores de \textbf{pantalla} como \textbf{VGA}, \textbf{HDMI} o \textbf{DisplayPort}. Dependiendo de lo moderna que sea la placa base, contará con uno o varios de estos conectores.
+
+        \item \textbf{Red}: Hoy día el conector RJ45 es el estándar, que dependiendo de la versión ethernet, nos dará al menos 1Gbit de transmisión. Dependiendo del modelo de placa base también puede tener conectores para realizar conexiones a redes inalámbricas.
+
+        \item \textbf{Audio}: Tanto de entrada como de salida. Normalmente se hace uso de conectores de tipo \textbf{jack}, pero también puede haber conectores de salida digital.
+    \end{itemize}
+
+\end{itemize}
+
+A continuación un diagrama simplificado de una placa base. Fuente: \href{https://es.wikipedia.org/wiki/Placa_base}{Wikipedia}.
+\vspace{-10pt}
+\begin{center}
+    \includegraphics[width=0.56\linewidth]{placa_base_chipset.png}
+\end{center}
+
+
+\subsubsection{Ejemplo de placa base}
+
+A continuación se van a diferenciar los componentes vistos anteriormente en una placa base real, utilizada para crear un equipo de escritorio moderno:
+
+\begin{center}
+    \includegraphics[width=\linewidth]{placa_base.jpg}
+    \captionof{figure}{Placa Base MSI PRO Z690-A.  \href{https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf}{Manual}}
+\end{center}
+
+\begin{enumerate}
+    \item Zócalo (socket) del procesador.
+    \item Ranuras para la memoria RAM.
+    \item ATX de alimentación.
+    \item Conectores de alimentación extra necesarios por la CPU.
+    \item M.2 para discos duros.
+    \item SATA para discos duros.
+    \item Conectores exteriores (se verán a continuación)
+    \item Pila.
+    \item Ranuras PCIexpress de distintas velocidades.
+    \item[A.] Audio
+    \item[B.] Conectores frontales.
+    \item[C.] USB 3.0
+\end{enumerate}
+
+Los conectores exteriores de esta placa tienen el siguiente aspecto:
+\begin{center}
+    \includegraphics[width=\linewidth]{placa_base_frontal.png}
+    \captionof{figure}{Placa Base MSI PRO Z690-A.  \href{https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf}{Manual}}
+\end{center}
+
+De izquierda a derecha, y de arriba abajo:
+\begin{itemize}
+    \item Pulsador para actualizar la BIOS.
+    \item Conector PS2 y USB para actualizar la BIOS.
+    \item DisplayPort y HDMI
+    \item Usb 2.0 y 3.2
+    \item Conector LAN, USB y USB-C
+    \item Conectores de audio
 \end{itemize}
 
 
+%\subsection{BIOS/UEFI}
 
-%
 %\subsection{Procesador}
+
+%    Existen distintas maneras de interconexión:
+%\begin{itemize}
+%    \item \textbf{PGA}: De \textit{ping grid array}, o matriz de rejilla de pines. El procesador cuenta unos pines en formato perpendicular que se conectan al socket donde estarán unos agujeros. Los procesadores AMD Ryzen actuales usan esta tecnología.
+%
+%    \item \textbf{LGA}: De \textit{land grid array}, o matriz de contactos en rejilla. En este caso el procesador \textbf{no cuenta} con pines, sino que es una matriz de contactos chapados en oro. Esta rejilla de contactos hacen contacto con el zócalo de la placa base que es la que cuenta con unos pequeños pines flexibles.
+%\end{itemize}
+
 %
 %\subsection{Placa base}
 %
