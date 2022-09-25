@@ -4,15 +4,15 @@ En informática no siempre tenemos los equipos que administramos en nuestra ofic
 
 Podemos definir la administración remota como el sistema que nos permite realizar ciertas acciones “lanzadas” desde nuestro equipo local pero que serán ejecutadas en un equipo remoto.
 
-Se pueden diferenciar dos tipos de sistemas dentro de la administración remota:
+Se pueden diferenciar varios tipos de sistemas dentro de la administración remota, pero nos vamos a centrar en los siguientes:
 
 \begin{itemize}
-    \item \textbf{Ejecución remota}: Lanzamos la acción a ejecutar desde un equipo remoto a través de algún tipo de interfaz o comando (que viajará a través de un protocolo securizado) y esperaremos a la respuesta.
+    \item \textbf{Cliente remoto}: Lanzamos una acción a ejecutar desde un equipo remoto a través de algún tipo de interfaz o comando (que viajará a través de un protocolo securizado) y esperaremos a la respuesta.
 
     \item \textbf{Acceso remoto}: En este caso lo que hacemos es conectarnos al equipo a través de un protocolo que nos va a permitir administrarlo como si estuviésemos delante de él.
 \end{itemize}
 
-Ambos sistemas pueden ser complementarios, y puede que podamos administrar un mismo sevicio de ambas maneras, por lo que queda a nuestra disposición elegir el mejor método en cada momento.
+Todos estos sistemas pueden ser complementarios, y puede que podamos administrar un mismo servicio de todas estas maneras, por lo que queda a nuestra disposición elegir el mejor método en cada momento.
 
 Por otro lado, dependiendo de qué tipo de administración vayamos a llevar a cabo, o el protocolo que utilice, tendremos que tener acceso al servidor de alguna manera (ya sea conexión directa o mediante VPN).
 
@@ -25,7 +25,7 @@ Por último, también debemos de conocer el tipo de protocolo que vamos a utiliz
 Más adelante veremos cómo securizar una comunicación no segura realizando un túnel mediante el protocolo SSH en entornos GNU/Linux.
 
 
-\section{Ejecución remota}
+\section{Cliente remoto}
 
 Este sistema de administración permite enviar acciones al equipo remoto a través de un protocolo establecido, y  dependiendo de la acción ejecutada se esperará una respuesta o no.
 
@@ -36,6 +36,10 @@ Este sistema de administración permite enviar acciones al equipo remoto a trav�
 Hoy en día es muy habitual este tipo de sistemas a través de disintos \textbf{CLI} (\textit{client line interface})  o \textbf{GUI} (\textit{graphic user interface}) que nos permiten administrar servicios remotos. Por ejemplo:
 
 \begin{itemize}
+    \item \textbf{{https://www.mysql.com/}{MySQL}}: El sistema gestor de base de datos \href{https://www.mysql.com/}{MySQL} cuenta con un cliente para realizar la  conexión, ya sea desde el propio equipo o desde un equipo remoto.
+
+    Este cliente se puede ejecutar desde línea de comandos, aunque también viene integrado en distintos interfaces gráficos como \href{https://dev.mysql.com/downloads/benchmarks.html}{MySQL Benchmark}, \href{https://dbeaver.io/}{Dbeaver}, ...
+
     \item \textbf{\href{https://aws.amazon.com/es/cli/}{AWS CLI}}: Es el interfaz de línea de comandos para poder administrar de manera remota los servicios contratados en la nube AWS de Amazon.
 
     \item \textbf{\href{https://cloud.google.com/cli}{Gcloud CLI}}: Similar al caso anterior pero esta vez para Google Cloud.
@@ -43,11 +47,10 @@ Hoy en día es muy habitual este tipo de sistemas a través de disintos \textbf{
     \item \textbf{\href{https://www.microsoft.com/en-us/download/details.aspx?id=45520}{Remote Server Administration Tools for Windows 10}}: En este caso se trata de un interfaz gráfico (\textbf{GUI}) que nos permite administrar un Windows Server desde un equipo Windows 10.
 \end{itemize}
 
-En los dos primeros ejemplos, al tratarse de servicios ofrecidos por un proveedor, hacen uso de un sistema de protocolo basado en conexión HTTPS.
 
-Antes de poder realizar las ejecuciones deberemos configurar un sistema de autenticación para que el servicio remoto acepte las peticiones enviadas. En algunos casos será usando unos sistemas de certificados y en otros introduciendo un usuario y contraseña que establecerá una sesión temporal.
+Antes de poder realizar la conexión remota con el cliente \textbf{debemos configurar un sistema de autenticación} para que el servicio remoto acepte las peticiones enviadas. En algunos casos será usando unos sistemas de certificados y en otros introduciendo un usuario y contraseña que establecerá una sesión temporal.
 
-En los dos primeros ejemplos no nos estamos conectando directamente a nuestros servidores alojados en esas nubes, si no que lanzamos la orden a un “proxy” que verificará nuestros credenciales, verá los permisos que tenemos y después realizará la acción solicitada.
+En el caso de AWScli y GCloud no nos estamos conectando directamente a nuestros servidores alojados en esas nubes, si no que lanzamos la orden a un “proxy” que verificará nuestros credenciales, verá los permisos que tenemos y después realizará la acción solicitada.
 
 
 %TODO: mirar algo de esto
@@ -80,6 +83,79 @@ Este sistema permite acceder al sistema y podremos administrarlo como si nos enc
         Es muy habitual que los equipos de usuarios ya tengan la instalación del servidor hecha, para que de esta manera, en caso de incidencia, poder realizar la conexión remota sin que el usuario tenga que realizar ninguna acción.
     \end{itemize}
 \end{itemize}
+
+A continuación se va a detallar algunos de los métodos mencionados.
+
+
+\subsection{SSH}
+SSH es un protocolo de comunicación segura mediante cifrado cuya función principal es el acceso remoto a un servidor. La arquitectura que utiliza es la de cliente-servidor.
+
+\subsubsection{Servidor SSH}
+En el servidor al que nos queramos conectar deberá estar instalado el demonio/servicio SSH, conocido como \textbf{sshd}. Es habitual que ya esté instalado, pero de no ser así deberemos usar el sistema de paquetes de nuestra distribución para hacer la instalación. El nombre suele ser \textbf{openssh-server}.
+
+Este servicio por defecto se pondrá a la escucha en el puerto 22/TCP:
+
+\begin{mycode}{SSHd escuchando en puerto 22}{console}{{\scriptsize }}
+ruben@vega:~$ sudo ss -pntaln
+State   Recv-Q   Send-Q   Local Address:Port   Peer Address:Port   Process
+LISTEN  0        128      0.0.0.0:22           0.0.0.0:*           users:(("sshd",pid=1122,fd=3))
+LISTEN  0        128      [::]:22              [::]:*              users:(("sshd",pid=1122,fd=4))
+\end{mycode}
+
+La configuración del servicio se realiza a través de un fichero de configuración que está situado en la ruta \configfile{/etc/ssh/sshd_config}. Las distribuciones de GNU/Linux ya traen una configuración predeterminada que suele constar de las siguientes directivas:
+
+\begin{itemize}
+    \item \textbf{Port}: Normalmente una viene comentada, ya que el puerto por defecto es el 22. En caso de querer cambiar el puerto, podremos modificar esta línea, asegurando que no esté comentada.
+
+    \item \textbf{ListenAddress}: Por defecto SSH se pondrá a la escucha en todos los interfaces que tengamos configurados. Si sólo nos interesa escuchar en alguna de las IPs que tengamos configuradas, deberemos modificar esta configuración.
+
+    \item \textbf{PermitRootLogin}: Para evitar problemas de seguridad, esta directiva suele estar configurada a “\textbf{No}”, para evitar que se puedan usar los credenciales de root para hacer el login.
+
+    \item \textbf{PubkeyAuthentication}: Esta directiva permite realizar la conexión a través de unas claves públicas/privadas que podemos crear. Se explicará más adelante.
+\end{itemize}
+
+Hoy día también se puede instalar en Windows 10 y posteriores a través de un comando, siendo administrador de PowerShell:
+
+\begin{mycode}{Instalando OpenSSH Server en Windows 10}{powershell}{{\footnotesize }}
+PS C:\Windows\System32> Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+PS C:\Windows\System32> Start-Service sshd
+
+PS C:\Windows\System32> Set-Service -Name sshd -StartupType 'Automatic'
+\end{mycode}
+
+O desde el interfaz gráfico a través de las “\textbf{Características opcionales}”, buscando por ssh
+\begin{center}
+    \includegraphics[frame,width=0.6\linewidth]{ssh_server_windows.png}
+\end{center}
+
+
+\subsubsection{Cliente SSH}
+El cliente SSH es aquel programa que a través del protocolo SSH se puede conectar a un servidor SSH. Existen distintos tipos de clientes que podemos utilizar:
+
+\begin{itemize}
+    \item \textbf{CLI}: El cliente de consola es el más habitual. Está instalado de forma habitual en todas las distribuciones de GNU/Linux (normalmente el paquete se llama \textbf{openssh-client}). También lo encontramos instalado por defecto en MacOS.
+
+    Hoy día también está instalado en Windows 10, y de no estar, se puede instalar a través de las “\textbf{Características Opcionales}”.
+
+    \item \textbf{GUI}: Existen distintos interfaces gráficos que nos puede interesar utilizar:
+    \begin{itemize}
+        \item \textbf{\href{https://putty.org/}{Putty}}: Un cliente muy habitual en entornos Windows.
+        \item \textbf{\href{https://github.com/cyd01/KiTTY/}{Kitty}}: Una versión mejorada del anterior.
+        \item \textbf{\href{https://www.termius.com/}{Termius}}: Cuenta con versión de escritorio y móvil.
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsubsection{Securizando protocolos con túneles SSH}
+
+
+
+
+\subsection{VNC}
+
+
 
 
 
