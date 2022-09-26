@@ -64,7 +64,7 @@ A continuación se van a detallar los componentes necesarios de un ordenador mod
 
 \subsection{Placa base}
 
-La placa base (conocida en inglés como \textit{motherboard}) es una tarjeta de circuito impreso a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
+La placa base (conocida en inglés como \textit{motherboard}) es una tarjeta de circuito impreso que tiene elementos electrónicos (resistencias, condensadores, reguladoresm ...)  a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
 
 
 \subsubsection{Formatos de placa base}
@@ -80,19 +80,50 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 \begin{itemize}
     \item \textbf{Zócalo del microprocesador}: También llamado \textit{\textbf{socket}}. Es donde se conecta el microprocesador sin tener que soldarlo a la placa, y de esta manera puede ser sustituido. El número de conexiones que conectan la placa base al microprocesador ha ido aumentando a medida que ha ido evolucionando la tecnología, siendo hoy día de hasta 1700 conectores.
 
-    Dependiendo del tipo de procesador, y el modelo, el socket variará en número de contactos y el tipo de los mismos.
+    Dependiendo del tipo de procesador, y el modelo, el socket variará en número de contactos y el tipo de los mismos. Existen distintas maneras de interconexión:
+    \begin{itemize}
+%        TODO: mejorar esto
+        \begin{minipage}{0.6\linewidth}
+            \setlength{\parskip}{1.2em}
+            \item \textbf{PGA}: De \textit{ping grid array}, o matriz de rejilla de pines. El procesador cuenta con unos pines en formato perpendicular que se conectan al socket donde estarán unos agujeros.
+
+            En la imagen se puede ver un Socket AM4 con tecnología PGA que tiene 1331 contactos.
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.3\linewidth}
+            \vspace{15pt}
+            \hfill\includegraphics[width=\linewidth]{socket_pga.jpg}
+        \end{minipage}
+        \vspace{10pt}
+
+        \begin{minipage}{0.6\linewidth}
+            \setlength{\parskip}{1.2em}
+            \item \textbf{LGA}: De \textit{land grid array}, o matriz de contactos en rejilla. En este caso el procesador \textbf{no cuenta} con pines, sino que es una matriz de contactos chapados en oro. Esta rejilla de contactos hacen contacto con el zócalo de la placa base que es la que cuenta con unos pequeños pines flexibles.
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.3\linewidth}
+            \hfill\includegraphics[width=\linewidth]{socket_lga.jpg}
+        \end{minipage}
+        \vspace{15pt}
+
+        \item \textbf{BGA}: De \textit{ball grid array}, o matriz de rejilla de bolas. El procesador cuenta con unas bolas de estaño que al calentarse se sueldan a la placa base. Hoy en día se utiliza en componentes de tamaño reducido, como en móviles, los chips de memoria en los módulos de RAM, ...
+    \end{itemize}
 
     \item \textbf{Conectores de alimentación}: La placa base tendrá distintos conectores provenientes de la fuente de alimentación con diferentes voltajes, para así proveer de alimentación a los componentes conectados a ella.
 
-    \item \textbf{Ranuras de memoria RAM}: Hoy en día es habitual contar con varias ranuras donde conectar las memoria RAM.
+    \item \textbf{Ranuras de memoria RAM}: Hoy en día es habitual contar con varias ranuras donde conectar las memoria RAM. Más adelante hablaremos en profundidad sobre la memoria RAM.
 
     \item \textbf{Chipset}: Es un conjunto de chips, o circuitos electrónicos, que gestionan la comunicación entre los distintos componentes que forman el ordenador, y que están conectados en la placa base. Hoy en día se suelen dividir en dos partes:
     \begin{itemize}
-        \item \textbf{Northbridge}: O puente norte, comunica el microprocesador, la memoria RAM y la GPU (la ranura PCI express).
+        \item \textbf{Northbridge}: O puente norte. Controla el tráfico de los componentes que trabajan a más alta frecuencia. Comunica el microprocesador, la memoria RAM y la GPU (la ranura PCI express).
         \item \textbf{Southbridge}: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, ...
     \end{itemize}
 
-    \item \textbf{Ranuras de expansión}: Vamos a identificar estas ranuras como las más modernas  PCIexpress. Son un bus de comunicación de datos de alta velocidad que es usado principalmente para conectar tarjetas gráficas. Es cierto que se pueden conectar otro tipo de tarjetas de expansión, y hoy en día existen conectores (\textbf{M.2}) donde poder conectar discos duros.
+    \item \textbf{Ranuras de expansión}: Vamos a identificar estas ranuras como las más modernas  \textbf{PCIexpress}. Son un bus de comunicación de datos de alta velocidad que es usado principalmente para conectar tarjetas gráficas.
+
+    Es cierto que se pueden conectar otro tipo de tarjetas de expansión, como capturadoras de vídeo, tarjetas de red, controladoras RAID, ...
+
+    Hoy en día existen conectores (\textbf{M.2}) donde poder conectar discos duros que tienen un tipo de conector especial.
 
     \item \textbf{Otros conectores de entrada/salida}: En la placa base existen otros muchos conectores de entrada y salida, que cumplirán distintas funciones dependiendo del tipo de conector, función y/o protocolo de comunicación que utilicen.
 
@@ -105,6 +136,12 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
         \item \textbf{Red}: Hoy día el conector RJ45 es el estándar, que dependiendo de la versión ethernet, nos dará al menos 1Gbit de transmisión. Dependiendo del modelo de placa base también puede tener conectores para realizar conexiones a redes inalámbricas.
 
         \item \textbf{Audio}: Tanto de entrada como de salida. Normalmente se hace uso de conectores de tipo \textbf{jack}, pero también puede haber conectores de salida digital.
+
+        \item \textbf{Pila}: Las placa base cuentan con una pila para mantener la alimentación para guardar la información de la RAM-CMOS, que es una pequeña memoria que usa la BIOS durante el arranque del sistema.
+
+        \item \textbf{Conectores para ventiladores}: Para regular la temperatura del microprocesador y del interior de la caja, la placa tiene varios conectores que se conectarán a distintos ventiladores que se regularán en intensidad.
+
+        \item \textbf{Otros conectores}: Existen otros conectores para otros puertos que hoy en día no se usan tanto (serie, paralelo, ...) y también los conectores para encender el ordenador, realizar el reset, comprobar el funcionamiento del disco...
     \end{itemize}
 
 \end{itemize}
@@ -157,16 +194,47 @@ De izquierda a derecha, y de arriba abajo:
 \end{itemize}
 
 
-%\subsection{BIOS/UEFI}
+\subsection{BIOS/UEFI}
+La BIOS/UEFI es un interfaz de firmware que está incorporado en un chip en la placa base.
+
+La función principal es la de iniciar el ordenador, realizar una comprobación del hardware del sistema  y se encarga de arrancar el gestor de arranque.
+
+Se ha unificado en esta sección BIOS y UEFI ya que cumplen de manera similar la misma función, pero la segunda es una evolución de la primera.
+
+\subsubsection{BIOS}
+
+El sistema básico de entrada-salida (del inglés \textit{Basic Input/Output System}, o BIOS) lo creó IBM para sus ordenadores “\textbf{Personal Computer}”. Posteriormente se obtuvo por ingeniería inversa las funciones que realizaba tratando de buscar equipos  que fueran compatibles (denominados “PC-compatible”) y de esta manera convirtiéndose en un estándar de facto.
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{bios.png}
+    \captionof{figure}{Interfaz BIOS. Fuente \href{https://en.wikipedia.org/wiki/BIOS\#/media/File:Award_BIOS_setup_utility.png}{Wikipedia}}
+\end{center}
+
+A través de este interfaz se podían configurar algunos aspectos del hardware como las interrupciones de teclado que utilizaban los sistemas operativos antiguos (como MS-DOS), direcciones, el orden del sistema de arranque, ...
+
+
+\subsubsection{UEFI}
+La \textit{\textbf{Unified Extensible Firmware Interface}} (UEFI o «interfaz unificada de firmware extensible») es una especificación pública que define un interfaz entre el sistema operativo y el firmware de la plataforma.
+
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{uefi.jpg}
+\end{center}
+
+Se puede considerar una evolución de la BIOS  que tiene las siguientes características:
+
+\begin{itemize}
+    \item Permite arrancar desde particiones de más de 2TB.
+    \item Diseño modular y extensible.
+    \item Retrocompatible con BIOS.
+    \item Interfaz gráfica más amigable con el usuario.
+\end{itemize}
+
+
 
 %\subsection{Procesador}
 
-%    Existen distintas maneras de interconexión:
-%\begin{itemize}
-%    \item \textbf{PGA}: De \textit{ping grid array}, o matriz de rejilla de pines. El procesador cuenta unos pines en formato perpendicular que se conectan al socket donde estarán unos agujeros. Los procesadores AMD Ryzen actuales usan esta tecnología.
-%
-%    \item \textbf{LGA}: De \textit{land grid array}, o matriz de contactos en rejilla. En este caso el procesador \textbf{no cuenta} con pines, sino que es una matriz de contactos chapados en oro. Esta rejilla de contactos hacen contacto con el zócalo de la placa base que es la que cuenta con unos pequeños pines flexibles.
-%\end{itemize}
+
 
 %
 %\subsection{Placa base}
