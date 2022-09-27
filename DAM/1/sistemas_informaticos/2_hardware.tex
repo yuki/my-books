@@ -258,9 +258,11 @@ A la hora de determinar las características principales que cuenta un procesado
 
     \item \textbf{Voltaje}: Para que el procesador funcione necesita ser alimentado con frecuencia eléctrica. Normalmente a mayor voltaje se consigue mayor frecuencia de reloj.
 
-    \item \textbf{Número de cores}: Los microprocesadores actuales no cuentan con una única CPU interna (como era habitual hasta los años 2005 más o menos), ya que pueden contar con varias, denominadas “\textit{\textbf{cores}}”.
+    \item \textbf{Número de cores}: Los microprocesadores actuales no cuentan con una única CPU interna (como era habitual hasta el año 2006 más o menos), ya que pueden contar con varias, denominadas “\textit{\textbf{cores}}”.
 
     Actualmente también se pueden diferenciar en el tipo de \textit{core} que tiene, ya que algunos están diseñados para más eficiencia mientras que otros para mayor carga de trabajo.
+
+    \item \textbf{Multihilo/Hyperthreading}: Consiste en simular dos procesadores lógicos dentro de un único procesador físico. Permite ejecutar programas que están preparados, y eso permite una mejora en el rendimiento.
 \end{itemize}
 
 
@@ -302,7 +304,7 @@ De esta manera, si utilizamos el mismo programa de benchmark en dos procesadores
 \end{center}
 
 
-\subsubsection{Sistema de refrigeración}
+\subsection{Sistema de refrigeración}
 Debido a que el procesador genera calor durante su funcionamiento, y que esto repercute en su funcionamiento, se debe de mantener a una temperatura acorde. Es por ello que debemos hacer uso de un sistema de refrigeración.
 
 El sistema de refrigeración cuenta con dos partes:
@@ -317,17 +319,68 @@ El sistema de refrigeración cuenta con dos partes:
 \end{itemize}
 
 {
+\hfill
 \begin{minipage}{0.3\linewidth}
     \includegraphics[width=\linewidth]{cooler_1.png}
 \end{minipage}
 \hfill
-\begin{minipage}{0.65\linewidth}
+\begin{minipage}{0.5\linewidth}
     \includegraphics[width=\linewidth]{cooler_2.jpg}
 \end{minipage}
+\hfill
+\vspace{30pt}
 }
 
-%\subsection{Memoria}
-%
+
+
+\begin{minipage}{0.6\linewidth}
+
+\subsection{Memoria RAM}
+\setlength{\parskip}{1.2em}
+La memoria de acceso aleatorio (en inglés \textit{Random Access Memory}) es una memoria a corto plazo para almacenar los programas que están siendo ejecutados.
+
+Cuando un programa se ejecuta se cargan todas sus instrucciones en RAM, así como todos los datos que va a manipular.
+
+Se denominan “de acceso aleatorio” porque se puede leer o escribir en cualquier posición tardando lo mismo, no siendo necesario seguir un orden para acceder.
+
+A lo largo de la \href{https://es.wikipedia.org/wiki/Memoria_de_acceso_aleatorio\#M%C3%B3dulos_de_RAM}{historia} la memoria RAM ha tomado distintas formas:
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\linewidth}
+    \includegraphics[width=\linewidth]{ram_evolution.jpg}
+    \vspace{-30pt}
+    \captionof{figure}{Fuente: \href{https://commons.wikimedia.org/wiki/File:RAM_n.jpg}{Wikipedia}}
+\end{minipage}
+
+\begin{itemize}
+    \item Antes de los circuitos integrados era una matriz metálica que funcionaba por electromagnetismo. \href{https://es.wikipedia.org/wiki/Memoria_de_acceso_aleatorio#/media/Archivo:Electronic_Memory.jpg}{Foto}.
+    \item Con la llegada de los circuitos integrados se instalaban en la placa soldandolos o sobre pequeños zócalos.
+    \item Para hacer el sistema modular, se pasó al formato SIPP (\textit{Single In-line Pin Package}). En una sola tarjeta se integraban varios módulos de memoria, pero los pines eran frágiles.
+    \item Como evolución llegó el formato SIMM (\textit{single In-line Memory Module}), que en lugar de pines tenía contactos en ambas caras del módulo.
+    \item Hoy en día hacemos uso del formato DIMM (\textit{Dual In-line Memory Module}) y su versión reducida SO-DIMM utilizada en portátiles.
+\end{itemize}
+
+Hoy en día hacemos uso de memoria dinámica de acceso aleatorio que tiene un interfaz síncrona (SDRAM) y que tienen la capacidad de transferir simultáneamente datos por dos canales distintos en un mismo ciclo de reloj (DDR, de \textit{double data rate}).
+
+A continuación se pueden diferenciar cómo ha variado el formato físico.
+
+{
+    \hfill
+\begin{minipage}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{ddr.png}
+    \vspace{-30pt}
+    \captionof{figure}{Fuente: \href{https://commons.wikimedia.org/wiki/File:RAM_n.jpg}{Wikipedia}}
+\end{minipage}
+\hfill\hfill
+\begin{minipage}{0.3\linewidth}
+    \includegraphics[width=\linewidth]{ddr_sodimm.png}
+    \vspace{-30pt}
+    \captionof{figure}{Fuente: \href{https://es.wikipedia.org/wiki/DDR_SDRAM}{Wikipedia}}
+\end{minipage}
+\hfill
+}
+
+En la \href{https://en.wikipedia.org/wiki/DDR_SDRAM#Generations}{Wikipedia} podemos ver una tabla con la evolución desde DDR hasta DDR5, con todos los datos técnicos como: voltaje utilizado, número de pines, ancho de banda en MB/s...
 
 
 %\subsection{Discos duros}
