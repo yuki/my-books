@@ -4,7 +4,7 @@ Como ya se ha comentado previamente, el \textbf{hardware} es todo lo que forma p
 
 Es posible que ya conozcamos alguno de estos componentes, pero debemos conocer el origen y cómo surge la arquitectura de los ordenadores modernos.
 
-
+\hypertarget{von_neumann}{}
 \section{Arquitectura Von Neumann}
 
 Las primeras computadoras electromecánicas eran diseñadas para un único propósito, estaban “diseñadas” para realizar una tarea. Un caso conocido puede ser \href{https://es.wikipedia.org/wiki/Bombe}{\textbf{Bombe}}, una máquina electromecánica capaz de descifrar los sistemas criptográficos nazis de Enigma. \movie{https://www.imdb.com/title/tt2084970/}{The Imitation Game}
@@ -77,6 +77,7 @@ Si queremos profundizar más en los distintos formatos, la \href{https://es.wiki
 
 Como ya hemos indicado, a la placa base se conectan el resto de componentes que forman el ordenador, y es por eso que va a tener distintos conectores:
 
+\hypertarget{socket}{}
 \begin{itemize}
     \item \textbf{Zócalo del microprocesador}: También llamado \textit{\textbf{socket}}. Es donde se conecta el microprocesador sin tener que soldarlo a la placa, y de esta manera puede ser sustituido. El número de conexiones que conectan la placa base al microprocesador ha ido aumentando a medida que ha ido evolucionando la tecnología, siendo hoy día de hasta 1700 conectores.
 
@@ -224,23 +225,112 @@ La \textit{\textbf{Unified Extensible Firmware Interface}} (UEFI o «interfaz un
 Se puede considerar una evolución de la BIOS  que tiene las siguientes características:
 
 \begin{itemize}
-    \item Permite arrancar desde particiones de más de 2TB.
+    \item Permite arrancar desde particiones de más de 2TB gracias a eliminar las limitaciones del MBR (\textit{master boot record}).
     \item Diseño modular y extensible.
     \item Retrocompatible con BIOS.
     \item Interfaz gráfica más amigable con el usuario.
 \end{itemize}
 
 
+\subsection{Procesador}
+El procesador (o microprocesador) es la unidad central de proceso (CPU) de la \hyperlink{von_neumann}{arquitectura Von Neumann}, y es el  circuito integrado más complejo que tiene el ordenador. Se puede considerar el “cerebro”.
 
-%\subsection{Procesador}
+Es el encargado de ejecutar todos los programas y operaciones que realizamos, pero sólo sabe ejecutar instrucciones en lenguaje máquina (código binario).
+
+El microprocesador se conecta a la placa base a través del \hyperlink{socket}{socket}, y encima de él se añade un sistema de refrigeración para disipar el calor que genera durante su funcionamiento.
+
+
+\subsubsection{Características}
+A la hora de determinar las características principales que cuenta un procesador podemos destacar las siguientes:
+
+\begin{itemize}
+    \item \textbf{Frecuencia del reloj}: Es la cantidad de veces que los transistores internos del procesador pueden conmutar eléctricamente (abrir y cerrar el flujo de corriente eléctrica). Hoy en día se mide en GHz (gigaherzios), donde 1GHz es mil millones de ciclos por segundo.
+
+    Normalmente se confunde con el número de operaciones o instrucciones que puede ejecutar en un segundo, pero eso no es del todo correcto.
+
+    Tampoco determina que cuanta mayor frecuencia el procesador vaya a ser mejor que otro con menor frecuencia (ya existían procesadores a 4GHz hace años).
+
+    \item \textbf{Bus de direcciones}: Este tamaño determinará la cantidad máxima de memoria que podemos direccionar. Con 32 bits se pueden direccionar 2³², es decir, 4GB. Mientras que con 64 bits en los procesadores modernos llegamos hasta los 16 exabytes de memoria RAM (2⁶⁴).
+
+    \item \textbf{Bus de datos}: Es el dato más grande que es capaz de manejar en una única instrucción.
+
+    \item \textbf{Memoria caché}: Es una memoria que se encuentra internamente dentro del procesador, que es mucho más rápida, pero también de mucho menor tamaño, si la comparamos con la memoria RAM. Los procesadores actuales cuentan con unos pocos MB de tamaño dependiendo del nivel de caché. Ejemplo el \href{https://ark.intel.com/content/www/us/en/ark/products/134586/intel-core-i512400-processor-18m-cache-up-to-4-40-ghz.html}{Intel Core i5-12400} con 7.5MB de L2 caché.
+
+    \item \textbf{Voltaje}: Para que el procesador funcione necesita ser alimentado con frecuencia eléctrica. Normalmente a mayor voltaje se consigue mayor frecuencia de reloj.
+
+    \item \textbf{Número de cores}: Los microprocesadores actuales no cuentan con una única CPU interna (como era habitual hasta los años 2005 más o menos), ya que pueden contar con varias, denominadas “\textit{\textbf{cores}}”.
+
+    Actualmente también se pueden diferenciar en el tipo de \textit{core} que tiene, ya que algunos están diseñados para más eficiencia mientras que otros para mayor carga de trabajo.
+\end{itemize}
+
+
+Existen otro tipo de características más técnicas, pero que también son importantes de conocer. A nivel de cómo está diseñado el procesador, lo que se denomina la \textbf{arquitectura interna} también contamos con difernecias. Hoy día podemos encontrar dos arquitecturas diferenciadas:
+\begin{itemize}
+    \item \textbf{CISC}: Del inglés \textit{Complex Instruction Set Computer} (conjunto de instrucciones complejas), es un conjunto de instrucciones  que se caracteriza por ser muy amplio y permitir operaciones complejas entre operandos situados en la memoria o en los registros internos.
+
+    Los CISC pertenecen a la primera corriente de construcción de procesadores. Pertenecen a esta arquitectura la mayoría de los procesadores actuales de ordenadores personales: AMD, X86\_64.
+
+    \item \textbf{RISC}: Del inglés \textit{Reduced Instruction Set Computer} (computador con conjunto de instrucciones reducido) es una filosofía de diseño de CPU para computadora que está a favor de conjuntos de instrucciones pequeñas y simples que toman menor tiempo para ejecutarse.
+
+    Hoy en día podemos encontrar esta arquitectura sobre todo en \href{https://es.wikipedia.org/wiki/Arquitectura_ARM}{ARM} que se utiliza en procesadores de móviles como los A15 de Apple (pero también en los procesadores de escritorio M1 y M2), Qualcomm Snapdragon, ...
+
+\end{itemize}
 
 
 
-%
-%\subsection{Placa base}
-%
+\subsubsection{Rendimiento}
+Dadas todas las características que hemos visto previamente, no podemos determinar si un procesador es mejor a otro sólo mirando sus características y determinando que “cuanto más mejor”. Por ejemplo:
+
+\begin{itemize}
+    \item \textbf{Intel Pentium 4}: 2.80GHz de frecuencia de reloj
+    \item \textbf{Intel Core 2 Duo E8200}: 2.66GHz de frecuencia de reloj
+    \item \textbf{Intel i5-11400}: Frecuencia de reloj base 2.60GHz.
+    \item \href{https://cpu.userbenchmark.com/Compare/Intel-Pentium-4-280GHz-vs-Intel-Core2-Duo-E8200/m3163vsm3200}{Comparativa entre los dos primeros}
+    \item \href{https://cpu.userbenchmark.com/Compare/Intel-Core-i5-11400-vs-Intel-Core2-Duo-E8200/4112vsm3200}{Comparativa entre los dos últimos}
+\end{itemize}
+
+\errorbox{\textbf{No nos podemos quedar con la idea de que “cuanto más mejor” cuando nos referimos a cantidades en as características del procesador}}
+
+Es por eso que existen las \textbf{pruebas de rendimiento}, también conocido en inglés como \textbf{benchmark}.
+
+Estas pruebas de rendimiento se ejecutan a través de un programa que va a ejecutar un conjunto de operaciones (que siempre serán las mismas) y determinará el tiempo llevado a cabo, y junto con otras especificaciones terminará dando una puntuación al resultado obtenido.
+
+De esta manera, si utilizamos el mismo programa de benchmark en dos procesadores distintos, obtendremos puntuaciones distintas. Por ejemplo, \href{https://www.geekbench.com/}{Geekbench} es un programa multiplataforma muy popular hoy día:
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{geekbench.png}
+\end{center}
+
+
+\subsubsection{Sistema de refrigeración}
+Debido a que el procesador genera calor durante su funcionamiento, y que esto repercute en su funcionamiento, se debe de mantener a una temperatura acorde. Es por ello que debemos hacer uso de un sistema de refrigeración.
+
+El sistema de refrigeración cuenta con dos partes:
+\begin{itemize}
+    \item \textbf{Disipador}: Está en contacto con el procesador y por el \href{https://es.wikipedia.org/wiki/Principio_cero_de_la_termodin%C3%A1mica}{principio cero de la termodinámica} le traspasa el calor.
+    \item \textbf{Sistema de reducción de temperatura}: Trata de reducir el calor que recibe el disipador para que el procesador se enfríe. Podemos diferenciar los siguientes sistemas:
+    \begin{itemize}
+        \item \textbf{Por aire}: Usando ventiladores.
+        \item \textbf{De agua autocontenida y aire}: Es un circuito cerrado de agua que pasa a través de un radiador refrigerado por ventiladores. Venden el sistema cerrado, por lo que no hay que hacer nada con el líquido.
+        \item \textbf{Refrigeración líquida}: Se utilizan componentes especiales para realizar el contacto con la CPU (y la GPU), y se debe hacer un circuito cerrado por el que pasará el líquido refrigerante, y una bomba que moverá el líquido.
+    \end{itemize}
+\end{itemize}
+
+{
+\begin{minipage}{0.3\linewidth}
+    \includegraphics[width=\linewidth]{cooler_1.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\linewidth}
+    \includegraphics[width=\linewidth]{cooler_2.jpg}
+\end{minipage}
+}
+
 %\subsection{Memoria}
 %
+
+
+%\subsection{Discos duros}
 %
 %
 %
