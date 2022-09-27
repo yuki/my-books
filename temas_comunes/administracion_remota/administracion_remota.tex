@@ -87,10 +87,10 @@ Este sistema permite acceder al sistema y podremos administrarlo como si nos enc
 A continuación se va a detallar algunos de los métodos mencionados.
 
 
-\subsection{SSH}
+\section{SSH}
 SSH es un protocolo de comunicación segura mediante cifrado cuya función principal es el acceso remoto a un servidor. La arquitectura que utiliza es la de cliente-servidor.
 
-\subsubsection{Servidor SSH}
+\subsection{Servidor SSH}
 En el servidor al que nos queramos conectar deberá estar instalado el demonio/servicio SSH, conocido como \textbf{sshd}. Es habitual que ya esté instalado, pero de no ser así deberemos usar el sistema de paquetes de nuestra distribución para hacer la instalación. El nombre suele ser \textbf{openssh-server}.
 
 Este servicio por defecto se pondrá a la escucha en el puerto 22/TCP:
@@ -130,7 +130,7 @@ O desde el interfaz gráfico a través de las “\textbf{Características opcion
 \end{center}
 
 
-\subsubsection{Cliente SSH}
+\subsection{Cliente SSH}
 El cliente SSH es aquel programa que a través del protocolo SSH se puede conectar a un servidor SSH. Existen distintos tipos de clientes que podemos utilizar:
 
 \begin{itemize}
@@ -147,13 +147,68 @@ El cliente SSH es aquel programa que a través del protocolo SSH se puede conect
 \end{itemize}
 
 
+Para realizar la conexión al servidor SSH debemos conocer:
 
-\subsubsection{Securizando protocolos con túneles SSH}
+\begin{itemize}
+    \item \textbf{Dirección del servidor}: Ya sea mediante IP o nombre FQDN (\textit{fully qualified domain name}) que se resuelva.
+    \item \textbf{Puerto}: Ya hemos comentado que por defecto el puerto es 22.
+    \item \textbf{Usuario}: Para realizar el sistema de autenticación, necesitamos un usuario que exista en el sistema.
+    \item \textbf{Contraseña}: Los credenciales de acceso del usuario.
+\end{itemize}
+
+Para realizar la conexión desde un cliente de consola ejecutaremos:
+
+\begin{mycode}{Conexión SSH }{console}{ }
+ruben@vega:~$  ssh usuario@192.168.1.200 -p 22
+\end{mycode}
+
+En el comando anterior podemos identificar:
+\begin{itemize}
+    \item \textbf{ssh}: el cliente de consola
+    \item \textbf{usuario}: el nombre del usuario con el que nos queremos conectar al servidor remoto.
+    \item \textbf{@}: la arroba en inglés significa “at”, que indica “usuario en el servidor X”.
+    \item \textbf{192.168.1.200}: La IP del servidor al que nos queremos conectar.
+    \item \textbf{-p 22}: Estos dos parámetros van juntos,  “-p” indica que vamos a indicar el puerto de conexión y “22” que nos queremos conectar a ese puerto. Debido a que 22 es el puerto por defecto, podríamos no poner estas opciones si sabemos que el servidor escucha en el puerto 22.
+\end{itemize}
+
+Si realizamos la conexión a través de un cliente de interfaz, como es putty, el aspecto será el siguiente, donde sólo podremos introducir la IP del servidor. Cuando se comience con la conexión nos pedirá los credenciales de acceso.
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{putty.png}
+\end{center}
+
+
+Si es la primera vez que nos conectamos a un servidor mediante SSH nos saldrá un mensaje como el siguiente:
+
+\begin{mycode}{Conexión SSH }{console}{{\small }}
+ruben@vega:~$  ssh usuario@192.168.1.200 -p 22
+
+The authenticity of host '192.168.1.200 (192.168.1.200)' can't be established.
+ECDSA key fingerprint is SHA256:uK9MOl0gLDhTtCrlcafc1zVObVA/vnOMn6TWFsQb23o.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+\end{mycode}
+
+Este “key fingerprint” es un identificador que está relacionado con el fichero de “clave pública” del servidor. Es como el DNI del servidor. La primera vez se nos guarda ese \textit{fingerprint}, y en caso de que en una próxima conexión varía, nos avisará. No suele ser habitual que este identificador cambie.
+
+
+
+\subsection{Conexión mediante certificados de clave pública/clave privada}
+
+Existe una alternativa de conexión para que no nos pida la contraseña del usuario, y es hacer uso de los certificados de clave pública y clave privada.
 
 
 
 
-\subsection{VNC}
+
+\subsection{Securizando protocolos con túneles SSH}
+
+
+
+
+
+
+
+\section{VNC}
 
 
 
