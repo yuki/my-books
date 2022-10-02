@@ -300,7 +300,9 @@ Estas pruebas de rendimiento se ejecutan a través de un programa que va a ejecu
 De esta manera, si utilizamos el mismo programa de benchmark en dos procesadores distintos, obtendremos puntuaciones distintas. Por ejemplo, \href{https://www.geekbench.com/}{Geekbench} es un programa multiplataforma muy popular hoy día:
 
 \begin{center}
-    \includegraphics[width=0.7\linewidth]{geekbench.png}
+    \vspace{-20pt}
+    \includegraphics[width=0.8\linewidth]{geekbench.png}
+    \vspace{-20pt}
 \end{center}
 
 
@@ -332,14 +334,15 @@ El sistema de refrigeración cuenta con dos partes:
 }
 
 
+\subsection{Memoria RAM}
 
 \begin{minipage}{0.6\linewidth}
-
-\subsection{Memoria RAM}
 \setlength{\parskip}{1.2em}
 La memoria de acceso aleatorio (en inglés \textit{Random Access Memory}) es una memoria a corto plazo para almacenar los programas que están siendo ejecutados.
 
 Cuando un programa se ejecuta se cargan todas sus instrucciones en RAM, así como todos los datos que va a manipular.
+
+Es una memoria \textbf{volatil}, esto quiere decir que cuando deja de recibir electricidad, se pierde la información, por ejemplo al apagarse el ordenador o al reiniciarlo.
 
 Se denominan “de acceso aleatorio” porque se puede leer o escribir en cualquier posición tardando lo mismo, no siendo necesario seguir un orden para acceder.
 
@@ -383,10 +386,163 @@ A continuación se pueden diferenciar cómo ha variado el formato físico.
 En la \href{https://en.wikipedia.org/wiki/DDR_SDRAM#Generations}{Wikipedia} podemos ver una tabla con la evolución desde DDR hasta DDR5, con todos los datos técnicos como: voltaje utilizado, número de pines, ancho de banda en MB/s...
 
 
-%\subsection{Discos duros}
-%
-%
-%
+\subsection{Dispositivos de almacenamiento de datos}
+
+Los dispositivo de almacenamiento de datos nos permiten leer o grabar datos de forma temporal o permanente. Existen distintos tipos de dispositivos que se pueden diferenciar por formato, tamaño, tecnología, tipo de acceso, ...
+
+Si diferenciamos por el tipo de tecnología utilizada para realizar el almacenamiento podemos distinguir:
+
+\begin{itemize}
+    \item \textbf{Dispositivos magnéticos}: Se utilizan las propiedades magnéticas de materiales para realizar el almacenamiento de datos digitales sobre el soporte de datos. En este apartado podemos poner como ejemplo:
+    \begin{itemize}
+        \item \href{https://es.wikipedia.org/wiki/Cinta_magn%C3%A9tica_de_almacenamiento_de_datos}{Unidades de cinta magnética}: No sólo utilizadas para almacenar datos en informática, también se ha utilizado en formato casete para la música.
+        \item \href{https://es.wikipedia.org/wiki/Disquete}{Disquete}: O floppy disk, es un formato formado por una fina lamina circular dentro de una caja de plástico. Los tamaños más utilizados fueron de 8", 5 ¼" y 3½".
+        \item \href{https://es.wikipedia.org/wiki/Unidad_de_disco_duro}{Discos duros}: Luego profundizaremos sobre ellos.
+    \end{itemize}
+
+    \item \textbf{Dispositivos ópticos}: Es un tipo de unidad de disco que utiliza un láser para realizar la lectura y escritura de datos. Los formatos más habituales en informática han sido los CDs, DVDs y Blu-Ray.
+
+    \item \textbf{Unidad de estado sólido}: Conocidos como SSD (\textit{solid state drive}), hacen uso de memoria flash para almacenar datos de manera persistente.
+\end{itemize}
+
+
+Si diferenciamos por el acceso a los datos podemos diferenciar por:
+
+\begin{itemize}
+    \item \textbf{Acceso secuencial}: Para realizar la lectura del dato que nos interesa debemos leer registro a registro desde el inicio hasta llegar al dato que deseamos encontrar.
+
+    \item \textbf{Acceso aleatorio}: Para realizar la lectura de un dato concreto, podemos acceder de manera directa, sin tener que pasar por el resto de datos.
+\end{itemize}
+
+Vamos a centrarnos en los denominados “discos duros” y que son  más utilizados a día de hoy:
+
+\subsubsection{Discos duros HDD}
+
+Las \href{https://es.wikipedia.org/wiki/Unidad_de_disco_duro}{unidades de discos duros} (también conocidos como HDD, de \textit{hard disk drive}) emplean un sistema de grabación magnética para almacenar y recuperar archivos digitales.
+
+Están compuestos por varios \textbf{platos} de aluminio que giran todos a la vez sobre el mismo eje y que son recorridos por unos \textbf{cabezales} que están montados sobre unos brazos que recorrern la superficie.
+
+Estos cabezales son los encargados de magnetizar la superficie del plato al realizar las escrituras o leyendo la superficie para determinar cuál es el estado magnético y de esta manera conocer los datos guardados.
+
+{
+\begin{minipage}{0.57\linewidth}
+        \includegraphics[width=\linewidth]{hdd.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}{0.42\linewidth}
+    \includegraphics[width=\linewidth]{hdd_data.png}
+\end{minipage}
+\vspace{-35pt}
+\begin{center}
+  Fuente: \href{https://es.wikipedia.org/wiki/Unidad_de_disco_duro}{Wikipedia}
+\end{center}
+}
+
+A la hora de guardar la información en los platos se sigue la estructura de la imagen superior, donde:
+
+\begin{enumerate}
+    \item[A.] Es una pista del disco.
+    \item[B.] Es un sector geométrico.
+    \item[C.] Es un sector de una pista.
+    \item[D.] Es un grupo de sectores.
+\end{enumerate}
+
+%TODO: explicar cómo funciona
+
+Si tenemos en cuenta las características que debemos tener en cuenta en un HDD, podemos destacar:
+
+\begin{itemize}
+    \item \textbf{Tiempo medio de acceso}: tiempo medio que tarda el cabezal en situarse en la pista y el sector deseado.
+    \item \textbf{Tiempo de lectura/escritura}: tiempo medio que tarda el disco en leer o escribir nueva información: Depende de la cantidad de información que se quiere leer o escribir, el tamaño de bloque, el número de cabezales, el tiempo por vuelta y la cantidad de sectores por pista.
+    \item \textbf{Velocidad de rotación}: Es la velocidad de giro de los platos. Por norma general a mayor velocidad de rotación, más alta será la transferencia de datos, pero también el ruido generado y el calor producido. Se mide en RPM (revoluciones por minuto). Dependiendo del tipo de disco puede variar entre 5.400RPM en equipos portátiles a 15.000RPM para servidores.
+\end{itemize}
+
+Debido a que los discos duros utilizarn partes mecánicas hay que tener cuidado al transportarlos (aunque estén parados) y con el movimiento, ya que un golpe puede romper algún componente interno.
+
+\errorbox{\textbf{Los discos duros HDD son propensos a golpes, debido a los componentes móviles internos}}
+
+\subsubsection{SSD}
+
+Conocidos como \textit{solid state drive}, hace uso de memorias \href{https://es.wikipedia.org/wiki/Memoria_flash}{flash} para el almacenamiento de datos en lugar de platos, y debido a que no tiene componentes móviles, son menos propensos a daños por golpes.
+
+Debido a la mejora en la tecnología de guardado de datos, y por no poseer partes móviles, no generan ruido, son más ligeros, el tiempo de acceso a los datos es menor, y todo ello hace que la transferencia de datos aumente en comparación con los HDD.
+
+{
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{ssd.jpg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \includegraphics[width=\linewidth]{ssd2.jpg}
+    \end{minipage}
+    \vspace{-10pt}
+    \begin{center}
+       \footnotesize{Izquierda: Interior de SSD de 2,5”. Derecha: SSD conector m.2}
+    \end{center}
+}
+
+Hoy en día la manera más habitual de usar este tipo de unidades es con el factor de forma de 2,5” o en conocido como mSATA o m.2.
+
+
+\subsubsection{NVMe}
+La especificación de interfaz de controlador de host de memoria no volátil (NVMHCIS, en inglés \textit{non-volatile memory host controller interface specification}) que está conectado a través del bus PCI Express (PCIe). Normalmente se llama NVMe para abreviar.
+
+Este tipo de dispositivos, al igual que el anterior, hacen uso de tecnología FLASH para el almacenamiento de datos. Debido a que están conectados al bus PCI Express, y que la especificación de acceso se creó desde cero (para aprovechar la tecnología moderna de memorias FLASH, el paralelismo de las CPUs...), consiguen un rendimiento muy superior a las generaciones anteriores.
+
+{
+    \hfill
+    \begin{minipage}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{nvme1.jpg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+        \includegraphics[width=\linewidth]{nvme2.jpg}
+    \end{minipage}
+    \hfill
+    \vspace{-10pt}
+    \begin{center}
+        \footnotesize{Izquierda: NVMe en formato tarjeta PCIe. Derecha: NVMe con conector m.2}
+    \end{center}
+}
+
+Las primeras unidades tenían un formato de tarjeta de expansión que se conectaba directamente a la ranura PCIexpress, mientras que hoy día existen los conectores M.2 para instalarlos.
+
+\subsubsection{Comparativa HDD, SSD y NVMe}
+En la siguiente tabla se puede comparar algunas características básicas de los distintos tipos de unidades de almacenamiento vistas.
+
+\begin{yukitblrcol}{XXXXXX}
+    & HDD & SSD & SSD (M.2)  & NVMe \linebreak (PCIe 3.0) & NVMe \linebreak (PCIe 4.0)\\
+    Conector & SATA & SATA & M.2 & M.2  & M.2\\
+    Velocidad Lectura & 150MB/s & 560 MB/s & 560 MB/s & 3500 MB/s & 7000 MB/s\\
+    Velocidad Escritura & 120MB/s & 510 MB/s  & 520 MB/s &  3000 MB/s & 5300 MB/s\\
+    Precio por TB & Bajo & Medio & Medio &  Alto & Alto\
+\end{yukitblrcol}
+
+Hay que tener en cuenta que las velocidades dependen de la tecnología de la unidad y también de la conexión utilizada. Son velocidades aproximadas, y por tanto habría que ver las especificaciones técnicas de cada dispositivo antes de comprarlo.
+
+\infobox{Con las velocidades de lectura y escritura suelen indicar si es \textbf{secuencial} o \textbf{aleatoria}. \textbf{En lecturas y escrituras aleatorias la velocidad es más baja.}}
+
+También existen pruebas de rendimiento para sistemas de almacenamiento, por lo que es importante informarse bien antes de elegir uno.
+
+
+\subsection{Fuente de alimentación}
+
+La fuente de alimentación en un ordenador es el componente que convierte la corriente alterna a varias corrientes contínua ya que el ordenador hace uso de diferentes voltajes.
+
+A la hora de elegir una fuente de alimentación debemos tener en cuenta:
+
+\begin{itemize}
+    \item \textbf{Potencia}: Se mide en vatios (W, de \textit{watts}), y tendremos que tener en cuenta el consumo de los distintos componentes que tienen nuestro ordenador.
+    \item \textbf{Factor de forma}: En los ordenadores de sobremesa hoy en día el formato es ATX, pero podemos elegir dependiendo del tipo de conexiones:
+    \begin{itemize}
+        \item \textbf{Cableado completo}: La fuente de alimentación cuenta con todo el cableado completo.
+        \item \textbf{Semi-modular}: Algunos de los cables que son necesarios se pueden poner y quitar, dependiendo de las necesidades que tengamos.
+
+        \item \textbf{Full-modular}: Todos los cables se pueden poner y quitar, lo que facilita la instalación de la fuente de alimentación y el orden dentro de la caja durante el montaje
+    \end{itemize}
+\end{itemize}
+
+
 %\section{Arranque de un ordenador}
 %
 %\section{Periféricos}

@@ -20,7 +20,6 @@ jobs:
         tag_name: latest
         files: |
           ASIR/1/planificacion_administracion_redes/redes_book.pdf
-          ASIR/1/ISO_operating_systems_deployment/iso_en_book.tex
           ASIR/2/SGBD/sgbd_book.pdf
           DAM/1/sistemas_informaticos/sistemas_informaticos.pdf
           SMR/2/SOred/SOred.pdf

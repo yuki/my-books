@@ -45,7 +45,6 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
 * Grado Medio para Técnico en Sistemas microinformáticos y redes
   * [Sistemas Operativos en red](https://github.com/yuki/my-books/releases/download/latest/SOred.pdf)
 * Grado Superior para Técnico superior en Administración de Sistemas informáticos en red
-  * [Implantación de sistemas operativos](https://github.com/yuki/my-books/releases/download/latest/iso_en_book.pdf) **In english. Not finished**
   * [Planificación y administración de redes](https://github.com/yuki/my-books/releases/download/latest/redes_book.pdf) **NOTA: No está acabado**
   * [Administración de sistemas gestores de bases de datos](https://github.com/yuki/my-books/releases/download/latest/sgbd_book.pdf)
 
