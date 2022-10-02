@@ -1,0 +1,34 @@
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Tecnologías de la \linebreak Información y la \linebreak Comunicación} % Title
+    {Rubén Gómez}  % Author
+    {2021-2022}    % Year
+    {4º E.S.O.} % Name of degree
+    {} % catch phrase
+    {} % the phrase's author
+    {img/cover.png} %cover
+    {28436c}
+    {sgbd} %mini-title
+
+    \coverpage
+    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{img/tic/}}
+
+    \part{Creación multimedia I: \linebreak documentos y presentaciones}
+
+    \input{1_creacion_multimedia.tex}
+
+    \part{Componentes de un ordenador: el \textit{hardware}}
+
+
+\end{document}
