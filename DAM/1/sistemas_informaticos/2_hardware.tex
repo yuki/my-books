@@ -49,19 +49,7 @@ Un ordenador moderno se puede distinguir de distintos componentes, los cuales cu
 
 A continuación se van a detallar los componentes necesarios de un ordenador moderno.
 
-%\begin{itemize}
-%    \item CPU / procesador
-%    \item Placa base
-%    \item Memoria
-%    \item Tarjetas gráficas
-%    \item Unidades de almacenamiento
-%    \item Fuente de alimentación
-%    \item Unidades de entrada
-%    \item Unidades de salida
-%    \item Unidades de entrada/salida
-%    \item Caja del ordenador
-%\end{itemize}
-
+\hypertarget{placa_base}{}
 \subsection{Placa base}
 
 La placa base (conocida en inglés como \textit{motherboard}) es una tarjeta de circuito impreso que tiene elementos electrónicos (resistencias, condensadores, reguladoresm ...)  a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
@@ -214,6 +202,7 @@ El sistema básico de entrada-salida (del inglés \textit{Basic Input/Output Sys
 A través de este interfaz se podían configurar algunos aspectos del hardware como las interrupciones de teclado que utilizaban los sistemas operativos antiguos (como MS-DOS), direcciones, el orden del sistema de arranque, ...
 
 
+\hypertarget{UFI}{}
 \subsubsection{UEFI}
 La \textit{\textbf{Unified Extensible Firmware Interface}} (UEFI o «interfaz unificada de firmware extensible») es una especificación pública que define un interfaz entre el sistema operativo y el firmware de la plataforma.
 
@@ -484,6 +473,7 @@ Debido a la mejora en la tecnología de guardado de datos, y por no poseer parte
 Hoy en día la manera más habitual de usar este tipo de unidades es con el factor de forma de 2,5” o en conocido como mSATA o m.2.
 
 
+\hypertarget{nvme}{}
 \subsubsection{NVMe}
 La especificación de interfaz de controlador de host de memoria no volátil (NVMHCIS, en inglés \textit{non-volatile memory host controller interface specification}) que está conectado a través del bus PCI Express (PCIe). Normalmente se llama NVMe para abreviar.
 
@@ -561,6 +551,42 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 \end{center}
 }
 
+\subsection{GPU/Tarjeta gráfica}
+Hoy en día es habitual contar con una tarjeta gráfica en los ordenadores personales, cuando el desempeño de su función va a requerir realizar grandes procesamientos de gráficos como: juegos, edición de vídeo, edifición fotográfica, uso de dibujo asistido por ordenador, ...
+
+
+Podemos diferenciar:
+
+\begin{itemize}
+    \item \textbf{Gráficos integrados}: Hoy en día los procesadores pueden contar con una unidad de procesamiento gráfico interna, que para el desempeño del uso del ordenador y tareas livianas (ver vídeos, juegos antiguos o con pocas necesidades) puede ser suficiente.
+
+    Para confirmar si nuestro procesador tiene o no, deberíamos mirar las especificaciones técnicas del mismo (por ejemplo: \href{https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/specifications.html}{Intel i7-12700KF} no cuenta con procesador gráfico mientras que el \href{https://www.intel.com/content/www/us/en/products/sku/134591/intel-core-i712700-processor-25m-cache-up-to-4-90-ghz/specifications.html}{i7-12700} sí).
+
+    \item \textbf{Gráficos dedicados}: Este es el caso de las denominadas tarjetas gráficas, que van conectadas a una ranura PCI-express. \textbf{Nos vamos a centrar en este tipo de tarjetas}.
+\end{itemize}
+
+Las tarjetas gráficas actualmente se instalan en la ranura PCI-Express de mayor velocidad de la placa base y suele contar con los siguientes componentes:
+
+\begin{itemize}
+    \item \textbf{Unidad de procesamiento gráfico}: O \textbf{GPU}, es un procesador como la CPU pero diseñado para el procesamiento gráfico. Su finalidad es la de realizar operaciones con vectores, triángulos, texturas, ... lo más rápido posible.
+
+    Las tarjetas gráficas también sirven para realizar codificación/decodificación de vídeo por hardware, lo que disminuye el tiempo en comparación a realizar esa compresión a través de la CPU.
+
+    Actualmente la tecnología puntera trata de simular la luz de la manera más real posible haciendo uso del denominado \href{https://es.wikipedia.org/wiki/Trazado_de_rayos}{raytracing}.
+
+    \item \textbf{VRAM}: O memoria gráfica, son los chips que almacena y transporta información hacia la tarjeta gráfica. En el caso de las tarjetas gráficas dedicadas, cuentan con sus propios chips en la tarjeta, mientras que cuando hablamos de gráficos integrados suele ser RAM que se reserva para el uso de gráficos.
+
+    \item \textbf{Conectores de salida}: Para poder realizar la conexión entre la tarjeta y los monitores que tengamos conectados. Hoy en día lo más habitual es tener conectores HDMI y DisplayPort.
+\end{itemize}
+
+Si nuestro procesador cuenta con una gráfica integrada y aparte tenemos una gráfica dedicada, dependiendo del uso que queramos darle al ordenador, quizá sea conveniente desactivar la integrada a través de la \hyperlink{UEFI}{UEFI}.
+
+\infobox{Si tenemos gráfica integrada y dedicada, quizá nos interese desactivar la integrada a través de UEFI}
+
+Las compañías que crean las tarjetas gráficas también han creado \textbf{SDK} (\textit{Software Development Kits}, o kits de desarrollo de software), como \href{https://en.wikipedia.org/wiki/CUDA}{Nvidia CUDA}, para poder realizar computación paralela y así aprovechar la potencia de cálculo para proyectos de \textit{machine learning},  simulaciones científicas, cálculo de proteínas, secuencias de ADN, ...
+
+\infobox{\textbf{Podemos usar el procesamiento de la tarjeta gráfica para ayudar a la ciencia usando proyectos como \href{https://es.wikipedia.org/wiki/Folding@home}{Folding@Home} gracias a la \href{https://es.wikipedia.org/wiki/Computaci\%C3\%B3n_distribuida}{computación distribuida}}}
+
 
 \subsection{Conectores más importantes}
 
@@ -597,7 +623,7 @@ Al igual que el resto de componentes, los conectores para dispositivos gráficos
     El conector \textbf{HDMI} hoy en día es un estándar muy utilizado, sobre todo en televisiones, ya que permite enviar la señal gráfica y audio. Aunque el conector se mantiene igual, existen distintas revisiones que permiten mayor transmisión de datos (para tecnologías nuevas como HDR, audio con más canales, ...)
 \end{minipage}
 
-
+\vspace{12pt}
 \begin{minipage}{0.15\linewidth}
     \includegraphics[width=\linewidth]{displayport.png}
 \end{minipage}
@@ -639,11 +665,145 @@ Para dispositivos de almacenamiento, como discos duros, CD-ROMs... ha habido var
 \end{minipage}
 \hfill
 \begin{minipage}{0.8\linewidth}
-    \textbf{M.2}, es el nuevo conector que incluyen los nuevos discos duros SSD
+    \textbf{M.2}, es el nuevo conector que incluyen los nuevos discos duros de estado sólido \textbf{\hyperlink{nvme}{NVMe}}.
 \end{minipage}
 
-%\section{Arranque de un ordenador}
-%
-%\section{Periféricos}
-%
-%\section{Puertos de conexión}
+
+\subsubsection{USB}
+
+El USB (\textit{Universal Serial Bus}) es un estándar que define los cables, conectores y protocolos que más se utiliza hoy en día para conectar ordenadores y una infinidad de tipos de dispositivos.
+
+Aunque se creó a mediados de los 90, su conector más utilizado (el tipo-A) apenas ha variado (buscando ser retrocompatible), pero sí su velocidad.
+
+\begin{center}
+    \includegraphics[width=0.4\linewidth]{usb.png}
+    \vspace{-5pt}
+    \captionof{figure}{Distintos conectores USB. Fuente: \href{https://es.wikipedia.org/wiki/Universal_Serial_Bus}{wikipedia}}
+\end{center}
+
+\vspace{-10pt}
+Para la nueva especificación USB-C trajo consigo un nuevo conector que es reversible (se puede conectar en ambas direcciones), con idea de reemplazar todos los conectores anteriores. La idea es que ambos dispositivos (anfitrión y huésped) se hace uso del mismo conector y el cable que los una llegue a ser universal, teniendo en cuenta la especificación que utilice.
+
+\vspace{-15pt}
+\begin{center}
+    \includegraphics[width=0.25\linewidth]{usb-c.png}
+    \vspace{-10pt}
+    \captionof{figure}{USB-C. Fuente: \href{https://es.wikipedia.org/wiki/USB-C}{wikipedia}}
+\end{center}
+
+Las \hyperlink{placa_base}{placas bases} tienen varios conectores USB typo-A soldados para poder realizar conexiones, pero también tiene conexiones en la placa para poder tener más USB (por ejemplo, gracias a los que vienen en la caja).
+
+Estos conectores externos tienen un cable que se conectan a unos pines en la placa base, que dependiendo del protocolo, tendrán una forma u otra (por eso es importante ver el manual de la placa base).
+
+\vspace{-10pt}
+\begin{center}
+    \includegraphics[width=0.35\linewidth]{usb_placa_base.png}
+    \vspace{-10pt}
+    \captionof{figure}{Conector USB-2 y USB-3 en placa base (pines)}
+\end{center}
+
+
+\subsubsection{Conexiones de red}
+
+Para que nuestro ordenador se pueda conectar a una red, las placas base ya tienen incorporado al menos un conector para ello.
+
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[width=\linewidth]{rj45.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\linewidth}
+    El conector \textbf{RJ-45} es el utilizado en redes de ordenadores que contiene cuatro pares de cables de cobre para realizar la transmisión de datos a través del protocolo \textbf{ethernet}, que veremos más adelante.
+\end{minipage}
+
+
+\vspace{12pt}
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[width=\linewidth]{sma.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\linewidth}
+    El conector \textbf{SMA} se utiliza en algunos tipos de antenas WiFi desmontables que nos podemos encontrar en algunos routers, placas base, tarjetas PCI... Es un conector enroscable y fácilmente desmontable.
+\end{minipage}
+
+
+\vspace{12pt}
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[width=\linewidth]{ps2.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\linewidth}
+    \textbf{PS\/2} era el conector utilizado para realizar la conexión de teclados y ratones antes de la llegada del USB. Normalmente venía con dos colores, violeta para el teclado y verde para el ratón, ya que aunque el conector era el mismo, el teclado requiere en ambos lados un colector abierto para permitir la comunicación bidireccional.
+\end{minipage}
+
+\vspace{12pt}
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[width=\linewidth]{jack.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\linewidth}
+    El \textbf{jack} de 3,5mm es el conector más utilizado para audio analógico desde hace muchos años en el ordenador, a pesar de que su aparición (en distinto tamaño) es del año 1878. Hoy en día las placas base tienen distintos conectores para introducir estos jacks dependiendo de si es para altavoces, micrófono, sonido envolvente...
+\end{minipage}
+
+
+\vspace{12pt}
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[width=\linewidth]{serie.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\linewidth}
+    El conector \textbf{RS232} (también conocido como “puerto serie”), es un interfaz que permite el intercambio de datos binarios entre dos equipos. Originalmente para mandar información a un terminal de datos, y posteriormente muy utilizado en switches. Aunque hoy en día las placas base no tienen el conector externo, suelen tener los pines de conexión para añadir un adaptador.
+\end{minipage}
+
+
+Desde que los ordenadores se hicieron populares en la década de los 80 hasta ahora ha habido muchos otros tipos de conectores que han llegado a los ordenadores de consumo personal.
+
+También ha habido otros muchos tipos de conectores que se han quedado en el ámbito más profesional (\href{https://es.wikipedia.org/wiki/Transceptor_SFP}{transceiver SFP}, conectores \href{https://es.wikipedia.org/wiki/Serial_Attached_SCSI}{SAS} para discos duros, ...) por lo que es imposible abarcarlos a todos.
+
+
+\subsubsection{Conector, protocolo y cables: errores frecuentes}
+
+Hemos visto distintos conectores que durante años su forma física no ha variado, buscando ser retrocompatible con versiones anteriores, pero que la transmisión de velocidad sí se ha ido incrementando a lo largo de los años.
+
+Algunos ejemplos:
+
+\begin{itemize}
+    \item PCI
+    \item USB
+    \item SATA
+    \item HDMI
+    \item DisplayPort
+\end{itemize}
+
+Es por eso que es importante entender y comprender que la forma del conector hoy en día no nos tiene por qué indicar la velocidad de transmisión máxima que acepta el dispositivo conectado, y por eso deberemos ir a las especificaciones técnicas de la placa base o el dispositivo concreto.
+
+Por otro lado, \textbf{con los cables sucede lo mismo}. Debemos confirmar y asegurar que los cables que utilizamos van a ser capaz de transmitir la velocidad máxima que tanto dispositivo como placa base aceptan.
+
+
+\errorbox{\textbf{Es importante conocer las especificaciones técnicas de cada componente y cable que usemos, para no realizar ningún cuello de botella.}}
+\vspace{10pt}
+
+\subsection{Caja del ordenador}
+La caja del ordenador, o chasis, es la estructura metálica donde se introducen (de manera ordenada, y anclando mediante tornillos) los distintos componentes que hemos visto hasta ahora.
+
+Existen distintos tipos de caja, normalmente variando el tamaño, por lo que es importante adecuar la caja a los componentes que queramos albergar dentro.
+
+\warnbox{\textbf{Cuidado con coger una caja demasiado pequeña y que luego la placa base, o la anchura de la tarjeta gráfica no entre}}
+\vspace{10pt}
+
+\begin{center}
+    \includegraphics[width=0.75\linewidth]{caja.jpg}
+    \vspace{-10pt}
+    \captionof{figure}{Caja con ordenador instalado. Fuente: \href{https://en.wikipedia.org/wiki/Computer_case}{wikipedia}}
+\end{center}
+
+
+Los servidores cuentan con unas cajas de tamaño estandarizados en altura, denominado “\href{https://es.wikipedia.org/wiki/Unidad_rack}{Unidad de Rack}” (\textit{rack unit} en inglés, o simplemente “U”), cuya unidad equivale a 44.45 milímetros. De esta manera los servidores contarán con una altura fijada para poder ser instalados en un \href{https://es.wikipedia.org/wiki/Bastidor_de_19_pulgadas}{bastidor \textit{rack}}.
+
+\begin{center}
+    \includegraphics[width=0.75\linewidth]{servidor.jpg}
+    \vspace{-10pt}
+    \captionof{figure}{Servidor Dell 1U de altura}
+\end{center}
+
+
+\section{Arranque de un ordenador}
