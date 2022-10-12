@@ -87,11 +87,21 @@ Este sistema permite acceder al sistema y podremos administrarlo como si nos enc
 A continuación se va a detallar algunos de los métodos mencionados.
 
 
+
 \section{SSH}
 SSH es un protocolo de comunicación segura mediante cifrado cuya función principal es el acceso remoto a un servidor. La arquitectura que utiliza es la de cliente-servidor.
 
+Aunque el uso más habitual de SSH es el acceso remoto, también se puede utilizar para:
+\begin{itemize}
+    \item Securizar protocolos no seguros mediante la realización de túneles.
+    \item Acceder a un equipo saltando a través de otro.
+\end{itemize}
+
+Estas funcionalidades las veremos más adelante.
+
+
 \subsection{Servidor SSH}
-En el servidor al que nos queramos conectar deberá estar instalado el demonio/servicio SSH, conocido como \textbf{sshd}. Es habitual que ya esté instalado, pero de no ser así deberemos usar el sistema de paquetes de nuestra distribución para hacer la instalación. El nombre suele ser \textbf{openssh-server}.
+En el servidor al que nos queramos conectar deberá estar instalado el demonio/servicio SSH, conocido como \textbf{sshd}. Es habitual que ya esté instalado en sistemas GNU/Linux, pero de no ser así deberemos usar el sistema de paquetes de nuestra distribución para hacer la instalación. El nombre suele ser \textbf{openssh-server}.
 
 Este servicio por defecto se pondrá a la escucha en el puerto 22/TCP:
 
@@ -102,10 +112,10 @@ LISTEN  0        128      0.0.0.0:22           0.0.0.0:*           users:(("sshd
 LISTEN  0        128      [::]:22              [::]:*              users:(("sshd",pid=1122,fd=4))
 \end{mycode}
 
-La configuración del servicio se realiza a través de un fichero de configuración que está situado en la ruta \configfile{/etc/ssh/sshd_config}. Las distribuciones de GNU/Linux ya traen una configuración predeterminada que suele constar de las siguientes directivas:
+La configuración del servicio se realiza a través de un fichero de configuración que está situado en la ruta \configfile{/etc/ssh/sshd_config}. Las distribuciones de GNU/Linux ya traen una configuración predeterminada que suele constar de las siguientes directivas (aunque hay muchas más):
 
 \begin{itemize}
-    \item \textbf{Port}: Normalmente una viene comentada, ya que el puerto por defecto es el 22. En caso de querer cambiar el puerto, podremos modificar esta línea, asegurando que no esté comentada.
+    \item \textbf{Port}: Normalmente viene comentada, ya que el puerto por defecto es el 22. En caso de querer cambiar el puerto, podremos modificar esta línea, asegurando que no esté comentada.
 
     \item \textbf{ListenAddress}: Por defecto SSH se pondrá a la escucha en todos los interfaces que tengamos configurados. Si sólo nos interesa escuchar en alguna de las IPs que tengamos configuradas, deberemos modificar esta configuración.
 
@@ -188,29 +198,147 @@ ECDSA key fingerprint is SHA256:uK9MOl0gLDhTtCrlcafc1zVObVA/vnOMn6TWFsQb23o.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 \end{mycode}
 
-Este “key fingerprint” es un identificador que está relacionado con el fichero de “clave pública” del servidor. Es como el DNI del servidor. La primera vez se nos guarda ese \textit{fingerprint}, y en caso de que en una próxima conexión varía, nos avisará. No suele ser habitual que este identificador cambie.
+Este “key fingerprint” es un identificador que está relacionado con el fichero de “\textbf{clave pública}” del servidor. Es como el DNI del servidor. La primera vez se nos guarda ese \textit{fingerprint}, y en caso de que en una próxima conexión varíe, nos avisará. No suele ser habitual que este identificador cambie.
 
 
 
 \subsection{Conexión mediante certificados de clave pública/clave privada}
 
-Existe una alternativa de conexión para que no nos pida la contraseña del usuario, y es hacer uso de los certificados de clave pública y clave privada.
+Existe una alternativa a la hora de realizar una conexión SSH para que no nos pida la contraseña del usuario, y es \textbf{hacer uso de los certificados de clave pública y clave privada}. Este concepto de “clave pública y clave privada” viene de la \href{https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica}{\textbf{criptografía asimétrica}}.
+
+Este sistema de criptografía asimétrica hace uso de dos claves que están asociadas entre sí:
+\begin{itemize}
+    \item \textbf{Clave privada}: Es la base del sistema criptográfico, y como su nombre indica, se debe de mantener en privado. \textbf{Nunca se debe de compartir}, ya que entonces se podrían hacer pasar por nosotros.
+    \item \textbf{Clave pública}: Asociada a la clave privada, la clave pública puede ser compartida y enviada a otros ordenadores para poder realizar la conexión.
+\end{itemize}
+
+Para generar el par de claves se realiza con el siguiente comando:
+
+\begin{mycode}{Crear par de claves pública/privada}{console}{}
+ruben@vega:~$  ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ruben/.ssh/id_rsa):
+
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+
+Your identification has been saved in /home/ruben/.ssh/id_rsa
+Your public key has been saved in /home/ruben/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:SPqPOYBmPb8PCFhcZgqcWZPZzaL5RNfMeKmHqebvC7E ruben@vega
+The key's randomart image is:
++---[RSA 3072]----+
+|o +oB o = .      |
+| * B.+ = *       |
+|  + + + =        |
+| o o + = .       |
+|. .o+.o S        |
+|  +.+*o          |
+| o  +Eo          |
+|     .+=         |
+|      *B+        |
++----[SHA256]-----+
+\end{mycode}
+
+El comando muestra los siguientes pasos:
+\begin{enumerate}
+    \item Creación de la pareja de claves pública/privada haciendo uso del sistema criptográfico \href{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}{\textbf{RSA}}.
+    \item Lugar donde se va a guardar la clave privada. Por defecto en \configdir{~/.ssh/id_rsa)}.
+    \item Contraseña para securizar la clave privada. De esta manera, para poder usarla habrá que introducir dicha contraseña. Dado que nosotros queremos evitar introducir contraseñas, lo dejaremos en blanco.
+    \item Lugar donde se va a guardar la clave pública. Por defecto en \configdir{~/.ssh/id_rsa.pub)}
+\end{enumerate}
+
+Una vez tenemos nuestro par de claves, podemos copiar la clave pública al usuario del servidor que nos interese mediante el siguiente comando:
+
+\begin{mycode}{Crear par de claves pública/privada}{console}{}
+ruben@vega:~$  ssh-copy-id user@server
+\end{mycode}
+
+Para ello es imprescindible conocer previamente la contraseña del usuario en el servidor. Este comando realizará una conexión SSH y copiará la \textbf{clave pública} en el fichero \configfile{~/.ssh/authorized_keys} del usuario en el servidor remoto. Este paso se puede realizar a mano (con un editor de texto).
+
+Al realizar la siguiente conexión, ya no necesitaremos introducir la contraseña del usuario, ya que el sistema remoto podrá autenticarnos a través del sistema clave pública/privada.
 
 
+\subsection{Crear túneles SSH}
+Una de las funcionalidades extra de SSH es la posibilidad de crear “túneles” para securizar protocolos no seguros, o poder acceder a servicios que sólo escuchan en \textit{localhost}.
+
+Pongamos como ejemplo el siguiente escenario:
+
+\vspace{-15pt}
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{tunel1.png}
+\end{center}
+\vspace{-15pt}
+
+Tenemos un servidor web con Apache y MySQL al que queremos acceder. Por seguridad MySQL \textbf{sólo está escuchando en localhost (127.0.0.1)}, por lo que el acceso al servicio MySQL no es posible. Para administrarlo nos tenemos que conectar al servidor, y realizarlo de manera local.
+
+En este punto es donde entra en juego la creación de un túnel seguro al servidor, para poder acceder al servicio remoto. \textbf{Para ello es imprescindible poder realizar una conexión SSH} (ya sea mediante usuario o clave pública/privada).
+
+Para crear un túnel, desde el equipo de escritorio, lanzaremos el siguiente comando:
+
+\begin{mycode}{Crear par de claves pública/privada}{console}{}
+ruben@vega:~$  ssh usuario@192.168.1.200 -L 6306:127.0.0.1:3306 -N
+\end{mycode}
+
+Al ejecutar este comando, habremos creado un túnel que enlaza el puerto remoto 3306 (que sólo se escucha en el “127.0.0.1” del servidor), con el puerto local 6306 del equipo de escritorio. A continuación la explicación del comando y sus parámetros:
 
 
+\begin{itemize}
+    \item “\textbf{ssh usuario@192.168.1.200}”: es como una conexión SSH normal. Lo que estamos indicando es que queremos conectarnos con  “usuario” al servidor remoto 192.168.1.200 a través de SSH.
+    \item \textbf{-L 6306:127.0.0.1:3306}: Especifica que el puerto local especificado se va redirigir al puerto e IP remota. Para entender esto hay que separar dos partes de los parámetros:
+    \begin{itemize}
+        \item \textbf{6306}: Especifica la IP y el puerto local. En este caso, antes del puerto no hemos especificado IP, por lo que se creará un puerto 6306 que sólo se pone a la escucha en \textbf{\textit{localhost}} en el equipo de escritorio
+        \item \textbf{127.0.0.1:3306}: Esta es la dirección y puerto remoto al que nos queremos conectar. En este caso, es el puerto 3306 que está escuchando en la IP 127.0.0.1 del servidor.
+    \end{itemize}
+    \item \textbf{-N}: Sirve para que no ejecute ningún comando en el servidor remoto, y por tanto no nos abrirá conexión de terminal.
+\end{itemize}
 
-\subsection{Securizando protocolos con túneles SSH}
+A nivel visual, y para entender de mejor manera lo realizado, sirva la siguiente imagen y los pasos que se pueden dar en un escenario real:
+
+\vspace{-10pt}
+\begin{center}
+    \includegraphics[width=\linewidth]{tunel2.png}
+\end{center}
+\vspace{-10pt}
+
+Con una aplicación en el equipo de escritorio queremos conectarnos al servidor MySQL que sólo escucha en el servidor remoto. Ejecutamos el túnel visto anteriormente, y los pasos que podremos realizar son los siguientes:
+
+\begin{enumerate}
+    \item[0.] Mediante una aplicación nos podemos conectar al puerto local 6306, que ha sido creado mediante el comando anterior. Este puerto local está redirigido al puerto del servidor remoto. Por lo tanto la conexión  se securiza a través del túnel
+    \item Como el túnel está establecido, la conexión viaja de manera segura a través de él.
+    \item Al llegar al servidor remoto, sabe que la conexión debe ir al puerto 3306 de la IP 127.0.0.1, que es lo establecido en el comando.
+    \item La conexión vuelve al túnel.
+    \item Viaja por el túnel hasta llegar a la comunicación que se había establecido previamente.
+\end{enumerate}
+
+De esta manera, hemos podido realizar una conexión a un servicio remoto a través de SSH y completamente seguro.
 
 
+\subsubsection{Acceder a un equipo saltando a través de otro.}
+Este es un caso especial de túnel, similar a lo explicado previamente. En lugar de querer realizar una conexión a un servicio del equipo al que nos conectamos, en este caso lo usaremos de salto para acceder a otro servidor.
+
+\vspace{-10pt}
+\begin{center}
+    \includegraphics[width=\linewidth]{tunel3.png}
+\end{center}
+\vspace{-10pt}
+
+En este caso estando en casa nos queremos conectar a un equipo de la oficina. No tenemos VPN, y no hay redirección de puertos directa, pero podemos acceder al firewall perimetral. Por lo tanto, lo podemos utilizar para saltar al servidor que nos interesa.
+
+En este caso, el comando a ejecutar sería:
+
+\begin{mycode}{Crear par de claves pública/privada}{console}{{\small}}
+ruben@vega:~$  ssh usuario_firewall@84.85.86.87 -L 2222:172.17.1.200:22 -N
+\end{mycode}
+
+De esta manera, ahora desde nuestro equipo podremos realizar una conexión SSH al puerto 2222 que realmente será una redirección que viaja a través del túnel hasta el firewall, y que a su vez redirige al puerto 22 del servidor 172.17.1.200.
+
+\warnbox{\textbf{El servicio remoto al que nos queremos conectar debe escuchar en la IP del equipo al que nos queremos conectar. El equipo que usamos para saltar debe poder conectarse a él.}}
 
 
+%\section{VNC}
 
-
-
-\section{VNC}
-
-
+% TODO: comentar VNC
 
 
 
