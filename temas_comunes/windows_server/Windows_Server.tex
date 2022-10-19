@@ -877,7 +877,7 @@ Y desde aquí podremos realizar parte de la administración remota del equipo.
 
 
 \subsection{Habilitar acceso al escritorio remoto}
-En una red no siempre tenemos acceso a los equipos de los usuarios, por encontrarse en otras sedes, oficinas o situaciones geográficas. Es por esto por lo que el poder acceder a los equipos de los usuarios puede suponer una ventaja administrativa a nivel global.
+En una red no siempre tenemos acceso a los equipos de los usuarios, por encontrarse en otras sedes, oficinas o situaciones geográficas. Es por esto por lo que el poder acceder a los equipos de los usuarios  \textbf{supone una ventaja administrativa a nivel global}.
 
 Para ello, podemos crear una GPO para que los equipos que están en nuestro Active Directory se les active el acceso remoto para poder así conectarnos a ellos.
 
@@ -895,14 +895,19 @@ Los pasos a dar cuando creamos la GPO son:
     \begin{center}
         \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_4_2.png}
     \end{center}
+
+    \infobox{\textbf{Por defecto sólo los usuarios administradores pueden realizar conexiones de acceso remoto.}}
+
+    \item Si queremos que cualquier otro usuario que no sea el Administrador pueda realizar conexiones mediante escritorio remoto, crearemos un grupo nuevo, por ejemplo “\textbf{escritorio remoto}”.
+
+    Este grupo debe ser admitido en los equipos remotos dentro del grupo local “\textbf{Usuarios de escritorio remoto}”. Esto lo haremos a través de la GPO utilizando la directiva: “\textit{Configuración del equipo → Preferencias → Configuración del Panel de control → Usuarios y grupos locales}”. Hacemos click derecho, para crear nuevo grupo local, y seleccionaremos:
+    \begin{itemize}
+        \item \textbf{Nombre de grupo}: Usuarios de escritorio remoto (integrado).
+        \item \textbf{Miembros}: El nuevo grupo que hemos creado
+    \end{itemize}
 \end{enumerate}
 
-Si queremos que cualquier otro usuario que no sea el Administrador pueda realizar conexiones mediante escritorio remoto, tendremos que meterlo en el grupo “Usuarios de escritorio remoto” que está dentro de “Builtin”, ya que es un grupo que se ha creado durante la instalación de Active Directory.
-
-\begin{center}
-    \includegraphics[trim={1 0 0 0},clip,frame,width=14cm]{gpo_4_3.png}
-\end{center}
-
+\warnbox{\textbf{Recuerda que para que funcione tienes que forzar que se actualice la GPO de manera remota o con “gpupdate.exe”.}}
 
 
 \chapter{Alta Disponibilidad en Active Directory}
@@ -1237,6 +1242,7 @@ Crear un fichero HTML en c:\  con las configuraciones de todas las GPO:
 get-GPOreport -Domain example.com -ALL ReportType Html -path c:\gpo.html
 \end{mycode}
 
+\hypertarget{forzar_gpo}{}
 Forzar la actualización inmediata de las GPOs en el equipo remoto “win10”
 \begin{mycode}{Forzar actualización de GPOs de manera remota}{powershell}{}
 Invoke-GPUpdate -Computer win10 -Force -RandomDelayInMinutes 0
