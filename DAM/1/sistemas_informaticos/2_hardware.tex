@@ -374,7 +374,7 @@ A continuación se pueden diferenciar cómo ha variado el formato físico.
 
 En la \href{https://en.wikipedia.org/wiki/DDR_SDRAM#Generations}{Wikipedia} podemos ver una tabla con la evolución desde DDR hasta DDR5, con todos los datos técnicos como: voltaje utilizado, número de pines, ancho de banda en MB/s...
 
-
+\hypertarget{dispositivos_almacenamiento}{}
 \subsection{Dispositivos de almacenamiento de datos}
 
 Los dispositivo de almacenamiento de datos nos permiten leer o grabar datos de forma temporal o permanente. Existen distintos tipos de dispositivos que se pueden diferenciar por formato, tamaño, tecnología, tipo de acceso, ...
@@ -807,3 +807,111 @@ Los servidores cuentan con unas cajas de tamaño estandarizados en altura, denom
 
 
 \section{Arranque de un ordenador}
+
+Una vez el hardware está instalado, es momento de entender cómo funciona el sistema de arranque de nuestro ordenador hasta llegar al Sistema Operativo.
+
+Toda la secuencia de arranque se puede dividir en distintas etapas que vamos a ver a continuación:
+
+\begin{enumerate}
+    \item Se acciona el botón de encendido del equipo (o arranca el equipo tras un reinicio).
+    \item Se carga la BIOS/UEFI y se comienza a ejecutar.
+    \item Se realiza el \textit{Power-On Self-Test} (POST), que es una secuencia que comprueba el estado de los componentes hardware. En caso de que algún componente no parezca estar correcto, la placa base emitirá sonidos. \textbf{Si este paso falla, no continuará el proceso}.
+
+    \infobox{Es habitual que si algún componente falla, la placa base emita uno o varios tonos (si tiene un speaker/altavoz) de distinta duración}
+
+    \begin{itemize}
+        \item Comprobación del procesador
+        \item Se comprueba el estado de la RAM y la cantidad instalada
+        \item Comprueba el estado de la memoria de vídeo.
+        \item Inicializa los sistemas de acceso a dispositivos de almacenamiento (IDE, Serial-ATA, NVMe...).
+    \end{itemize}
+
+    \item La BIOS/UEFI comprueba el número de discos duros existentes. Se comprueba la tabla de particiones del disco duro indicado como primario para el arranque.
+    \item Se ejecuta el gestor de arranque de la tabla de particiones marcada como arrancable.
+    \item El gestor de arranque prepara todo lo que necesita el Sistema Operativo para funcionar, lo carga y le transfiere la ejecución a él.
+\end{enumerate}
+
+\chapter{Discos duros: particionado y sistemas de ficheros}
+Anteriormente hemos visto que los \hyperlink{dispositivos_almacenamiento}{sistemas de almacenamiento} (más conocidos como discos duros) son dispositivos que pueden ser de distintos tipos, capacidades, tamaños...
+
+A la hora de usar un disco duro en nuestro Sistema Operativo, tenemos que tener en cuenta al menos dos cosas:
+
+\begin{itemize}
+    \item \textbf{Tipo de particionado}.
+    \item \textbf{Sistema de ficheros}.
+\end{itemize}
+
+Dependiendo del Sistema Operativo, y el modo que elijamos durante la instalación, nos dará más opciones o menos a la hora de elegir, modificar o personalizar algunas de estas opciones.
+
+Para tomar las decisiones correctas, deberíamos conocer, al menos, los siguientes detalles:
+
+\begin{itemize}
+    \item Número de discos duros instalados en el equipo.
+    \item El tipo de cada uno (mecánico, SSD, NVMe...).
+    \item Tamaño de los mismos.
+    \item Función que va a realizar el equipo.
+\end{itemize}
+
+De esta manera, podremos realizar un análisis previo de cómo queremos realizar la instalación.
+
+
+\section{Particionado MBR y GPT }
+Los discos duros se dividen en lo que se llaman particiones. Es una manera de realizar divisiones lógicas del espacio, que actúan de forma independiente entre sí.
+
+\textbf{El símil del particionado de disco duro es un armario}: tenemos una cantidad de hueco posible, que decidimos “particionar” añadiendo estanterías tanto horizontales como verticales, donde almacenar distintos tipos de ropa, de manera independiente, en cada uno de esos compartimentos.
+
+A la hora de crear la tabla de particiones de un disco duro podemos elegir entre los siguientes tipos:
+
+\begin{itemize}
+    \item \textbf{MBR}: De \textit{Master Boot Record}, o también conocido como \textbf{tabla de particiones DOS}.
+    \item \textbf{GPT}: De \textit{GUID Partition Table}, propuesta por la especificación EFI, más moderna que la anterior.
+\end{itemize}
+
+En la siguiente tabla se pueden identificar algunas de las diferencias más destacadas entre ambos sistemas:
+
+\begin{yukitblrcol}{XXX}
+    & MBR & GPT\\
+    Tamaño máximo de partición & 2 TB & 18 Exabytes \\
+    Nº de particiones primarias & 4 & Ilimitado
+
+     (Windows reconoce 128)\\
+    Tabla de particiones& Al inicio & Al inicio y al final (backup) \\
+    ID de la partición & Se almacena en la partición & Identificador único de GUID\\
+    Soporte de arranque múltiple & Débil & Las entradas del gestor de arranque están en una partición separada  \\
+\end{yukitblrcol}
+
+Para comprobar cuál es el sistema de particiones de nuestro disco duro lo podemos hacer desde:
+\begin{itemize}
+    \item En \textbf{Windows}: Desde el administrador de discos duros.
+    \item En \textbf{GNU/Linux}: Con GParted, fdisk, ...
+\end{itemize}
+
+A continuación se pueden ver capturas de pantalla de distintos discos en un equipo Windows.
+
+
+    \begin{minipage}{0.45\linewidth}
+        \includegraphics[frame,width=\linewidth]{hdd_mbr.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \includegraphics[frame,width=\linewidth]{hdd_gpt.png}
+    \end{minipage}
+
+
+\section{Sistemas de ficheros}
+Los sistemas de ficheros controlan cómo se almacenan y recuperan los datos. Sin un sistema de archivos, los datos colocados en un medio de almacenamiento serían un gran cuerpo de datos sin manera de saber dónde termina un dato y comienza el siguiente.
+
+Un fichero (o archivo) es una secuencia de bytes almacenado en un dispositivo que es identificado por un nombre. Los ficheros pueden ser almacenados en directorios, y estos a su vez en otros directorios.
+
+Por lo tanto, un sistema de ficheros nos proporciona una “\textit{vista lógica}” de cómo se almacenan los datos.
+
+Las funciones principales de los sistemas de ficheros son:
+
+\begin{itemize}
+    \item Asignar espacio a los archivos.
+    \item Administrar el espacio libre.
+    \item Provee una API a los programas para crear, borrar, modificar y cerrar los ficheros.
+    \item Permite gestionar el acceso a los ficheros (permisos de ficheros).
+    \item Optimizar el rendimiento de acceso.
+\end{itemize}
+
