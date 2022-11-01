@@ -27,6 +27,8 @@ Podemos representar los tipos de licencias a través de la siguiente imagen (Ori
 
 % INCLUDE de sección de licencias libres
 % modifico automáticamente secciones en subsecciones, y subsecciones en subsubsecciones
+
+\let\foo\section %creo comando intermedio para luego recuperar cómo era la sección
 \let\section\subsection
 \let\subsection\subsubsection
 % cambio el path de las imágenes
@@ -35,8 +37,12 @@ Podemos representar los tipos de licencias a través de la siguiente imagen (Ori
 \ExecuteMetaData[../../../temas_comunes/gnu_linux/gnu_linux]{softwarelibre}
 
 %deshago todo lo hecho para la sección
-\let\subsection\section
 \let\subsubsection\subsection
+\let\subsection\section
+\let\section\foo
+
+
+
 \graphicspath{{img/si}}
 
 % /INCLUDE
@@ -59,9 +65,26 @@ Es aquel que el autor decide publicarlo bajo el denominado \href{https://es.wiki
 Este tipo de licencia suele ser aplicada a libros y música, por ejemplo, tras 70 años después de la muerte del autor.
 
 
+
+%\section{Sistemas Operativos}
+%
+%El Sistema Operativo (\textbf{SO}) es el software que controla el hardware del ordenador, creando recursos lógicos y servicios que otro software y los usuarios pueden utilizar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %    \section{Tipos de Software}
 %    \subsection{firmware,sistema y aplicaciones}
 %
 %
 %
-%    \section{Sistemas Operativos}
