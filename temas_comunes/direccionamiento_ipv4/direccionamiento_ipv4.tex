@@ -189,3 +189,35 @@ Durante el inicio de la expansión de internet y la creación de redes se crearo
 
     \item \textbf{Clase C}: se asignan los tres primeros octetos para identificar la red, reservando el octeto final (8 bits) para que sea asignado a los hosts, de modo que la cantidad máxima de hosts por cada red es $2^{8} - 2$ . Los primeros bits más significativos son 110
 \end{itemize}
+
+\section{Configurar IPv4}
+
+Una vez sabemos cómo funciona IPv4, es el momento de aplicarlo en el sistema operativo en el que nos encontremos.
+
+\subsection{IPv4 en Windows}
+
+Por defecto, la configuración de red en Windows solicita una dirección IP de manera automática cuando el cable está conectado en el interfaz de red.
+
+Para conocer la configuración actual de la red podemos utilizar el comando \commandbox{ipconfig} desde el terminal de windows. Si le pasamos el parámetro “/all” ( \commandbox{ipconfig /all} ), el resultado del comando nos dará más información, como es la configuración del DNS, la dirección física (MAC), ...
+
+\begin{center}
+    \includegraphics[width=0.8\linewidth]{ipconfig.png}
+\end{center}
+
+
+Si queremos realizar la modificación de la red, podremos hacer uso del icono de red que está al lado de la hora. Para ver toda la configuración, podemos ir al “Panel de Control → Redes e Internet → \textbf{Configuración de Red e Internet}”. Elegimos “Protocolo de Internet versión 4”, le damos a “Propiedades” y podremos realizar la configuración siguiente:
+
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{cambiar_ip_windows.png}
+\end{center}
+
+
+En la imagen se puede ver la configuración realizadA:
+\begin{itemize}
+    \item \textbf{Dirección IP}: La dirección IP que queremos que tenga el equipo.
+    \item \textbf{Máscara de subred}: La máscara de red a la que pertenece la IP que hemos configurado.
+    \item \textbf{Puerta de enlace predeterminada}: Para que el equipo tenga conexión con otras redes, debemos indicar qué IP tiene el \textbf{\textit{gatway}}.
+\end{itemize}
+
+Aparte, podemos realizar la configuración del servidor DNS primario y secundario.
