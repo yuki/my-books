@@ -1,0 +1,98 @@
+\chapter{Comandos de administración básica en GNU/Linux}
+A lo largo de este documento hemos visto distintos comandos para realizar la administración de usuarios y grupos locales o para crear un directorio activo en Samba. En este documento vamos a añadir otros comandos que nos pueden ser útiles a la hora de usar un sistema GNU/Linux y realizar su administración.
+
+\section{Comandos de red}
+Para ver los interfaces de red y las direcciones IP que tienen
+
+\begin{mycode}{Obtener los interfaces y las IPs}{console}{}
+ruben@vega:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+inet 127.0.0.1/8 scope host lo
+
+2: enp4s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
+link/ether 1a:8a:1c:ff:25:15 brd ff:ff:ff:ff:ff:ff
+inet 192.168.1.99/24 brd 192.168.1.255 scope global enp4s0
+\end{mycode}
+
+Para ver la ruta por defecto (el gateway o puerta de enlace).
+
+\begin{mycode}{Obtener la puerta de enlace}{console}{}
+ruben@vega:~$ ip route show default
+default via 192.168.1.1 dev enp4s0 onlink
+\end{mycode}
+
+Ver los puertos TCP y servicios que están a la escucha en nuestro servidor
+\begin{mycode}{Listar los puertos TCP a la escucha}{console}{}
+root@vega:~# ss -pntal
+\end{mycode}
+
+\section{Comandos sobre procesos}
+Listar todos los procesos
+\begin{mycode}{Listar todos los procesos}{console}{}
+root@vega:~# ps aux
+\end{mycode}
+
+Listar todos los procesos en forma de árbol (para saber de quién son hijos)
+\begin{mycode}{Listar todos los procesos en forma de árbol}{console}{}
+root@vega:~# pstree -p
+\end{mycode}
+
+Matar un proceso (donde PID es el identificador del proceso).
+\begin{mycode}{Matar un proceso}{console}{}
+root@vega:~# kill -9 PID
+\end{mycode}
+
+\section{Estado de la carga y memoria del servidor}
+Para ver los procesos y su estado por consumo de CPU, RAM…
+\begin{mycode}{Ver el estado del servidor}{console}{}
+root@vega:~# top
+\end{mycode}
+
+Para ver los procesos y su estado por consumo de CPU, RAM… es necesario instalar este paquete
+\begin{mycode}{Ver el estado del servidor}{console}{}
+root@vega:~# htop
+\end{mycode}
+
+\section{Comandos sobre servicios (systemd/systemctl)}
+GNU/Linux cuenta con un sistema unificado (\textbf{systemd}) para administrar el sistema y los servicios que tenemos en nuestro servidor. Dado que es una pieza fundamental en el sistema operativo, debemos de conocer ciertos comandos para poder desempeñar tareas con él.
+
+Listar todos los servicios/unidades
+\begin{mycode}{Listar todos los servicios}{console}{}
+root@vega:~# systemctl
+\end{mycode}
+
+Comprobar si algún servicio ha fallado
+\begin{mycode}{Comprobar servicios que han fallado}{console}{}
+root@vega:~# systemctl --failed
+\end{mycode}
+
+Comprobar el estado de un servicio concreto (en este caso, ssh)
+\begin{mycode}{Comprobar servicios que han fallado}{console}{}
+root@vega:~# systemctl status ssh
+\end{mycode}
+
+Parar un servicio concreto
+\begin{mycode}{Parar un servicio concreto}{console}{}
+root@vega:~# systemctl stop ssh
+\end{mycode}
+
+Arrancar un servicio concreto
+\begin{mycode}{Arrancar un servicio concreto}{console}{}
+root@vega:~# systemctl start ssh
+\end{mycode}
+
+Ver los logs de todo el sistema
+\begin{mycode}{Ver los logs del sistema}{console}{}
+root@vega:~# journalctl
+\end{mycode}
+
+Ver los logs de un servicio concreto (en este caso, ssh)
+\begin{mycode}{Ver los logs del sistema}{console}{}
+root@vega:~# journalctl -u ssh
+\end{mycode}
+
+Ver los logs del kernel
+\begin{mycode}{Ver los logs del kernel}{console}{}
+root@vega:~# journalctl -k
+\end{mycode}
