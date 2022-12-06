@@ -1,4 +1,4 @@
-\chapter{Dispositivos básicos en una red}
+\chapter{Componentes básicos en una red}
 
 \section{Router}
 
@@ -132,3 +132,60 @@ Los routers que tenemos en casa también tiene otras funcionalidades básicas qu
     \item \textbf{Filtrado MAC}: Normalmente para el apartado Wifi, y así limitar quién se puede o no se puede conectar.
 \end{itemize}
 
+
+\hypertarget{nat}{}
+\section{NAT}
+La traducción de direcciones de red, también llamado enmascaramiento de IP o NAT (del inglés \textit{\textbf{Network Address Translation}}), es un mecanismo utilizado por routers que conectan dos (o más) redes para que el paquete que llega a un equipo destino no parezca que llega desde la red de origen.
+
+Vamos a tomar como ejemplo el siguiente esquema que es un ejemplo que podemos entender teniendo en cuenta la conexión de nuestra casa:
+
+\begin{center}
+    \vspace{-15pt}
+    \includegraphics[width=0.8\linewidth]{NAT.png}
+    \vspace{-25pt}
+\end{center}
+
+En este ejemplo tenemos conectado un equipo con IP 192.168.1.15 al router que tenemos en casa (cuya IP en la LAN es 192.168.1.1). Este router cuenta con una IP pública proporcionada por el ISP para el acceso a internet (83.84.1.7). Cuando nuestro equipo quiere comunicarse con algún equipo que no está en su red, al salir a internet, el router cambia la cabecera del paquete sustituyendo 192.168.1.15 por 83.84.1.7, y de esta manera al servidor remoto (212.142.27.34) el paquete le llega desde una IP pública.
+
+Este es el ejemplo más sencillo y que hacemos uso cada día en casa, pero esto no significa que NAT sólo se realice entre redes públicas y privadas. Lo podemos utilizar entre dos redes públicas o dos redes privadas también.
+
+Las traducciones de dirección se almacenan en una tabla, para recordar qué dirección y puerto le corresponde a cada dispositivo cliente y así saber donde deben regresar los paquetes de respuesta.
+
+Existen distintos tipos de NAT:
+\begin{itemize}
+    \item \textbf{NAT de sobrecarga}: Varios equipos de la red de origen se traducen por una única dirección de la red de salida. Es el método más habitual (el que realizan nuestros routers en casa).
+
+    \item \textbf{NAT estática}: También conocida como “NAT 1:1”, ya que una dirección IP privada se traduce siempre por una única dirección IP pública, y siempre será la misma. Este método es el habitual cuando queremos tener un servidor en la red interna y queremos que su comunicación con el exterior siempre sea con la misma IP pública
+
+    \item \textbf{NAT dinámica}: Similar al caso anterior, pero en este caso el router contará con una tabla de IPs públicas y se asignará una que esté libre de esta tabla a un equipo interno cuando necesite comunicarse de manera pública. Cuando deje de necesitarlo, la IP se marcará como “libre” y se podrá asignar a otro equipo interno posteriormente.
+\end{itemize}
+
+\hypertarget{dhcp}{}
+\section{DHCP}
+El protocolo de configuración dinámica de host (\textit{Dynamic Host Configuration Protocol}, también conocido por sus siglas de \textbf{DHCP}) es un protocolo de red que nos permite configurar la IP de un dispositivo dentro de una red.
+
+Normalmente el protocolo DHCP enviará la configuración de los siguientes parámetros para que el equipo los use:
+
+\begin{itemize}
+    \item \textbf{IP}: IP asignada al equipo.
+    \item \textbf{Máscara de red}: para identificar el tamaño de la red.
+    \item \textbf{\hyperlink{default_gateway}{Default gateway}}: para que el equipo se pueda comunicar con otra red.
+    \item \textbf{DNS}: el servidor DNS que utilizará el equipo para la resolución de nombres.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.2\linewidth}
+    \centering
+    \vspace{-20pt}
+    \includegraphics[width=\linewidth]{sesion_DHCP.png}
+    \vspace{-32pt}
+    \captionof{figure}{\href{https://es.wikipedia.org/wiki/Protocolo\_de\_configuraci\%C3\%B3n\_din\%C3\%A1mica\_de\_host\#DHCP\_Discovery}{Referencia}}
+    \vspace{-30pt}
+\end{wrapfigure}
+Existen muchas más \href{https://es.wikipedia.org/wiki/Par\%C3\%A1metros_DHCP}{configuraciones} que se pueden enviar a un equipo que realiza una petición de configuración por DHCP, pero las arriba expuestas son las más habituales.
+
+El protocolo funciona en forma “Cliente/Servidor”, siendo el equipo el que realiza la búsqueda de un servidor DHCP para el inicio de la configuración. DHCP hace uso de los puertos 67/UDP para el servidor y 68/UDP para los clientes.
+
+Lo más habitual es que el servidor DHCP esté configurado en los routers (tal como sucede en los que nos proporcionan los ISP), pero no tiene por qué ser así, pudiendose instalar en un equipo con Windows Server, GNU/Linux, ...
+
+\subsection{Configuración}
+Dependiendo del equipo en el que estemos realizando la configuración del servidor DHCP, el interfaz a configurar podrá ser distinto.

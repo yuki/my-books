@@ -1,5 +1,46 @@
 \chapter{Comandos de administración básica en GNU/Linux}
-A lo largo de este documento hemos visto distintos comandos para realizar la administración de usuarios y grupos locales o para crear un directorio activo en Samba. En este documento vamos a añadir otros comandos que nos pueden ser útiles a la hora de usar un sistema GNU/Linux y realizar su administración.
+En este documento vamos a recopilar comandos que nos pueden ser útiles a la hora de usar un sistema GNU/Linux y realizar su administración.
+
+\section{Comandos sobre el sistema de ficheros}
+A continuación unos comandos básicos para utilizar sobre el sistema de ficheros.
+
+\begin{mycode}{Listar ficheros y directorios}{console}{}
+ruben@vega:~$ ls
+Descargas   Escritorio  Música      Público
+Documentos  Imágenes    Plantillas  Vídeos
+\end{mycode}
+
+
+\begin{mycode}{Crear un nuevo directorio}{console}{}
+ruben@vega:~$ mkdir directorio1
+ruben@vega:~$ ls
+Descargas    Documentos  Imágenes  Plantillas  Vídeos
+directorio1  Escritorio  Música    Público
+\end{mycode}
+
+\begin{mycode}{Borrar un directorio que está vacío}{console}{}
+ruben@vega:~$ rmdir directorio1
+\end{mycode}
+
+\begin{mycode}{Obtener el contenido de un fichero de texto}{console}{}
+ruben@vega:~$ cat fichero.txt
+hola, qué tal
+\end{mycode}
+
+\begin{mycode}{Borrar un fichero}{console}{}
+ruben@vega:~$ rm fichero.txt
+\end{mycode}
+
+\begin{mycode}{Borrar un directorio y todo el contenido que tiene dentro}{console}{}
+ruben@vega:~$ rm -r directorio2
+
+ruben@vega:~$ rm -fr directorio2
+\end{mycode}
+
+\begin{mycode}{Buscar por un contenido dentro de un fichero}{console}{}
+ruben@vega:~$ grep hola fichero.txt
+\end{mycode}
+
 
 \section{Comandos de red}
 Para ver los interfaces de red y las direcciones IP que tienen
