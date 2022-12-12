@@ -4,10 +4,24 @@ En este documento vamos a recopilar comandos que nos pueden ser útiles a la hor
 \section{Comandos sobre el sistema de ficheros}
 A continuación unos comandos básicos para utilizar sobre el sistema de ficheros.
 
-\begin{mycode}{Listar ficheros y directorios}{console}{}
+\begin{mycode}{Listar el contenido del directorio donde nos encontramos}{console}{}
 ruben@vega:~$ ls
 Descargas   Escritorio  Música      Público
 Documentos  Imágenes    Plantillas  Vídeos
+\end{mycode}
+
+\begin{mycode}{Listar el directorio actual, versión “long”}{console}{}
+ruben@vega:~$ ls -l
+total 36K
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Descargas
+drwxr-xr-x 2 ruben ruben 4,0K dic  6 09:50 directorio1
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Documentos
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Escritorio
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Imágenes
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Música
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Plantillas
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Público
+drwxr-xr-x 2 ruben ruben 4,0K nov 12  2022 Vídeos
 \end{mycode}
 
 
@@ -22,18 +36,28 @@ directorio1  Escritorio  Música    Público
 ruben@vega:~$ rmdir directorio1
 \end{mycode}
 
+
+\begin{mycode}{Editar un fichero}{console}{}
+ruben@vega:~$ nano fichero.txt
+\end{mycode}
+
 \begin{mycode}{Obtener el contenido de un fichero de texto}{console}{}
 ruben@vega:~$ cat fichero.txt
 hola, qué tal
+\end{mycode}
+
+\begin{mycode}{Paginar el contenido de un fichero de texto}{console}{}
+ruben@vega:~$ more fichero.txt
+hola, qué tal
+...
 \end{mycode}
 
 \begin{mycode}{Borrar un fichero}{console}{}
 ruben@vega:~$ rm fichero.txt
 \end{mycode}
 
-\begin{mycode}{Borrar un directorio y todo el contenido que tiene dentro}{console}{}
+\begin{mycode}{Borrar un directorio y todo el contenido que tiene dentro. ¿Diferencias?}{console}{}
 ruben@vega:~$ rm -r directorio2
-
 ruben@vega:~$ rm -fr directorio2
 \end{mycode}
 
@@ -136,4 +160,44 @@ root@vega:~# journalctl -u ssh
 Ver los logs del kernel
 \begin{mycode}{Ver los logs del kernel}{console}{}
 root@vega:~# journalctl -k
+\end{mycode}
+
+
+\section{Comandos para instalar/desinstalar paquetes}
+
+Los comandos que se van a exponer aquí sirven para las distribuciones que utilizan el sistema de paquetes \href{https://es.wikipedia.org/wiki/Advanced_Packaging_Tool}{APT (Advanced Packaging Tool)} que está presente en las distribuciones derivadas de \href{https://www.debian.org/}{Debian}, como por ejemplo Ubuntu.
+
+
+\begin{mycode}{Sincroniza el índice de paquetes local con lo que está en los repositorios remotos configurados en \textbf{/etc/apt/sources.list}}{console}{}
+root@vega:~# apt update
+\end{mycode}
+
+\begin{mycode}{Instala las versiones más nuevas de los paquetes que ya tenemos instalados}{console}{}
+root@vega:~# apt upgrade
+\end{mycode}
+
+
+\begin{mycode}{Instala las versiones más nuevas de los paquetes  teniendo en cuenta las dependencias de los mismos y solucionando posibles conflictos.}{console}{}
+root@vega:~# apt full-upgrade
+\end{mycode}
+
+
+\section{Comandos para apagar/reiniciar}
+
+Para realizar el apagado o reinicio de un equipo se pueden utilizar varios comandos distintos.
+
+\begin{mycode}{Reiniciar el equipo}{console}{}
+root@vega:~# reboot
+\end{mycode}
+
+\begin{mycode}{Apagar el equipo en un minuto}{console}{}
+root@vega:~# shutdown
+\end{mycode}
+
+\begin{mycode}{Apagar el equipo ahora}{console}{}
+root@vega:~# shutdown now
+\end{mycode}
+
+\begin{mycode}{Suspender el equipo}{console}{}
+root@vega:~# systemctl suspend
 \end{mycode}
