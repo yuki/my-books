@@ -1,0 +1,52 @@
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Implantación de Sistemas Operativos} % Title
+    {Rubén Gómez}  % Author
+    {2022-2023}    % Year
+    {Técnico superior en Administración de \linebreak Sistemas Informáticos en Red} % Name of degree
+    {}% catch phrase
+    {}% the phrase's author
+    {img/portada.png} %cover
+    {28436c}
+    {iso} %mini-title
+
+    \coverpage
+    %    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \part{Sistemas de numeración y unidades}
+    \graphicspath{{../../../temas_comunes/sistemas_de_numeracion/img/}}
+    \input{../../../temas_comunes/sistemas_de_numeracion/sistemas_de_numeracion.tex}
+
+    \graphicspath{{../../../temas_comunes/unidades_informacion/img/}}
+    \input{../../../temas_comunes/unidades_informacion/unidades_informacion.tex}
+
+    \vfill
+    \pagebreak
+    \part{GNU/Linux}
+    \graphicspath{{../../../temas_comunes/gnu_linux/img}}
+    \input{../../../temas_comunes/gnu_linux/gnu_linux.tex}
+    \input{../../../temas_comunes/gnu_linux/comandos.tex}
+
+    \part{Anexos}
+
+    \graphicspath{{../../../anexos/virtualbox_networking/img}}
+    \input{../../../anexos/virtualbox_networking/virtualbox_networking.tex}
+
+    \input{../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.tex}
+
+    \graphicspath{{../../../anexos/}}
+    \input{../../../anexos/glosario/glosario.tex}
+
+    \part{Ejercicios}
+    \input{../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.tex}
+
+\end{document}
