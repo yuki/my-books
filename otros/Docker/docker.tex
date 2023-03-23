@@ -1,0 +1,85 @@
+\chapter{Introducción}
+
+Hoy en día es muy habitual hacer uso de un sistema de contenedores, como es \href{https://docs.docker.com/}{Docker}, en el mundo del desarrollo de \textit{software}. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción es la misma que durante las etapas de desarrollo.
+
+En este documento se va a explicar cómo realizar la instalación y configuración de un sistema basado en contenedores Docker para poder arrancar servicios, y ciertas configuraciones que son necesarias conocer.
+
+\chapter{Sistemas de contenedores}
+
+\section{Un poco de historia}
+
+\section{Contenedores vs. Máquinas virtuales}
+
+El uso de máquinas virtuales está muy extendido gracias a que cada vez es más sencillo crearlas. Esto no quiere decir que siempre sea la mejor opción, por lo que  se va a realizar una comparativa teniendo en cuenta distintos aspectos a la hora de realizar un desarrollo con máquinas virtuales y con sistemas de contenedores.
+
+
+\subsection{Infraestructura}
+
+La creación de máquinas virtuales (a través de sistemas como VirtualBox) nos permite crear entornos aislados en los que poder instalar el Sistema Operativo que más nos interese y con ello poder instalar el software y los servicios que necesitemos.
+
+Esto supone una gran ventaja, pero a la vez un gasto de recursos que podríamos utilizar para hacer uso en los servicios que queremos correr.
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{img/docker/docker\_vs\_vm.png}
+    \captionof{figure}{Infraestructura Máquinas Virtuales vs Docker}
+\end{center}
+
+
+En la imagen se puede apreciar una comparativa diferenciando cómo quedaría una infraestructura de 3 aplicaciones levantadas en distintas máquinas virtuales o en distintos contenedores.
+
+Tal como se puede ver en la imagen, \textbf{al tener cada servicio en una máquina virtual separada}, se va a tener que virtualizar todo el Sistema Operativo en el que se encuentre, con el consiguiente \textbf{coste de recursos (memoria RAM y disco duro) y con el coste en tiempo de tener que realizar la configuración y securización del mismo}.
+
+\infobox{\textbf{Usando contenedores la infraestructura se simplifica notáblemente}}
+
+Por otro lado, en un sistema de contenedores, cada contenedor es un servicio aislado, en el que sólo tendremos que preocuparnos (en principio) de configurar sus parámetros.
+
+
+\subsection{Ventajas durante el desarrollo}
+
+A la hora de desarrollar una aplicación es habitual hacer pruebas utilizando distintas versiones de librerías, \textit{frameworks} o lenguajes de programación. De esta manera, podremos ver si nuestra aplicación es compatible.
+
+Cuando se hace uso de una máquina virtual dependemos de las versiones que tiene nuestra distribución y es posible que no podamos instalar nuevas versiones u otras versiones en paralelo.
+
+Por ejemplo, la última versión de PHP actualmente es la 8.2.4 y de Apache la 2.4.56:
+
+\begin{itemize}
+    \item En\textbf{ Debian 11} sólo se puede instalar PHP 7.4 y Apache 2.4.54.
+    \item En \textbf{Ubuntu 22.04} la versión de PHP es la 8.1 y la de Apache la 2.4.52.
+\end{itemize}
+
+Con Docker, podremos levantar contenedores con distintas versiones del servicio que nos interese en paralelo para comprobar si nuestra aplicación/servicio es compatible.
+
+\infobox{\textbf{Con Docker es posible levantar entornos/servicios con distintas versiones en paralelo}}
+
+Por otro lado, si un desarrollador quiere utilizar un sistema operativo distinto, no se tendrá que preocupar de si su distribución tiene las mismas versiones. O en el caso de usar Windows/Mac, no tener que estar realizando instalaciones de las versiones concretas.
+
+
+\subsection{Ventajas durante la puesta en producción}
+Ligado al apartado anterior, durante la puesta en producción es obligatorio hacer uso de las mismas versiones utilizadas durante el desarrollo para asegurar la compatibilidad.
+
+\errorbox{\textbf{Para asegurar la compatibilidad en producción, siempre se debe usar la misma versión de los servicios que en desarrollo}}
+
+Si tenemos un servidor que no está actualizado, o en el mismo servidor tenemos distintas aplicaciones que requieren utilizar distintas versiones de software, en un entorno de máquinas virtuales se hace muy complejo, ya que lo habitual será tener que instalar nuevas máquinas virtuales.
+
+\warnbox{\textbf{No siempre es posible tener distintas versiones del mismo software en un mismo servidor}}
+
+En un entorno con contenedores, al igual que se ha comentado antes, esto no es problema.
+
+\subsection{Rapidez en el despliegue}
+
+Ligado a todo lo anterior, realizar el despliegue de un entorno de desarrollo/producción es más rápido utilizando contenedores, dando igual el sistema operativo en el que nos encontremos.
+
+\infobox{El despliegue con contenedores es más rápido.}
+
+Más adelante se verá cómo realizar el despliegue de distintos servicios haciendo uso de un único comando.
+
+
+\chapter{Docker}
+
+
+
+
+\chapter{Configuración básica}
+
+
+\section{Primer arranque}
