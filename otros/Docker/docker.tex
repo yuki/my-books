@@ -6,7 +6,24 @@ En este documento se va a explicar cómo realizar la instalación y configuraci�
 
 \chapter{Sistemas de contenedores}
 
+Los sistemas de contenedores son un método de virtualización (conocido como “virtualización a nivel de sistema operativo”), en el que se permite ejecutar sobre una capa virtualizadora del núcleo del sistema operativo, distintas instancias de “espacio de usuario”.
+
+Este “espacio de usuario” (donde se ejecutarán aplicaciones, servicios...) se les denomina \textbf{contenedores}, y aunque pueden ser como un servidor real, están bajo un mecanismo de aislamiento proporcionado por el \textit{kernel} del sistema operativo, y sobre el que se pueden aplicar límites de espacio, recursos de memoria, de acceso a disco...
+
+\infobox{Un contenedor es un espacio de ejecución de servicios al que se les puede aplicar límites de recursos (como la memoria, el acceso a disco...)}
+
+Desde el punto de vista del usuario, que un servicio se ejecute en una máquina virtual o en un contenedor es indistinguible. En cambio, desde el punto de vista de un administrador de sistemas o de un desarrollador, el uso de contenedores trae consigo una serie de ventajas que veremos en apartados posteriores.
+
+
 \section{Un poco de historia}
+Aunque está muy en boga el despliegue de aplicaciones haciendo uso de contenedores, no es un concepto nuevo, ya que lleva existiendo desde la década de los 80 en sistemas UNIX con el concepto de \href{https://es.wikipedia.org/wiki/Chroot}{chroot}.
+
+\textbf{Chroot}, también conocido como “jaulas chroot”, permitían ejecutar comandos dentro de un directorio sin que, en principio, se pudiese salir de dicha ruta. Tenía muy pocas restricciones de seguridad, pero era un primer paso al sistema de contenedores.
+
+\href{https://es.wikipedia.org/wiki/LXC}{LXC} nace en 2008 utilizando distintas funcionalidades del kernel Linux para proveer un entorno virtual donde poder ejecutar distintos procesos y tener su propio espacio de red. Con LXC nacen distintas herramientas para controlar estos contenedores, así como para crear plantillas y una \textbf{API que permite interaccionar con LXC} desde distintos lenguajes de programación.
+
+Ha habido otras tecnologías en Linux, como \href{https://es.wikipedia.org/wiki/OpenVZ}{OpenVz}, pero luego nos centraremos en Docker, ya que es lo más conocido actualmente.
+
 
 \section{Contenedores vs. Máquinas virtuales}
 
@@ -76,10 +93,21 @@ Más adelante se verá cómo realizar el despliegue de distintos servicios hacie
 
 \chapter{Docker}
 
+\href{https://www.docker.com/}{Docker} es un proyecto de Software Libre nacido en 2013
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{img/docker/docker_interfaces.png}
+    \captionof{figure}{Tecnologías usadas por Docker. Fuente: \href{https://en.wikipedia.org/wiki/File:Docker-linux-interfaces.svg}{Wikipedia}}
+\end{center}
 
 
-
-\chapter{Configuración básica}
-
+\section{Instalación}
 
 \section{Primer arranque}
+
+
+
+\section{Configuración básica}
+
+
+
