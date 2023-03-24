@@ -93,21 +93,164 @@ Más adelante se verá cómo realizar el despliegue de distintos servicios hacie
 
 \chapter{Docker}
 
-\href{https://www.docker.com/}{Docker} es un proyecto de Software Libre nacido en 2013
+\href{https://www.docker.com/}{Docker} es un proyecto de Software Libre nacido en 2013 que permite realizar el despliegue de aplicaciones y servicios a través de contenedores de manera rápida y sencilla, tal como veremos más adelante.
+
+Estos contenedores proporcionan una capa de abstracción y permiten aislar las aplicaciones del resto del sistema operativo a través del uso de ciertas características del kernel Linux.
+
+Dentro del contenedor, se puede destacar el aislamiento a nivel:
+
+\begin{itemize}
+    \item Árbol de procesos
+    \item Sistemas de ficheros montados
+    \item ID de usuario
+    \item Aislamiento de recursos (CPU, memoria, bloques de E/S...)
+    \item Red aislada
+\end{itemize}
+
+Al igual que sucede con otro tipo de \textit{software},  para que Docker haga uso de todas estas características, está construido haciendo uso de otras aplicaciones y servicios.
+
 
 \begin{center}
     \includegraphics[width=0.6\linewidth]{img/docker/docker_interfaces.png}
     \captionof{figure}{Tecnologías usadas por Docker. Fuente: \href{https://en.wikipedia.org/wiki/File:Docker-linux-interfaces.svg}{Wikipedia}}
 \end{center}
 
+En el 2015 la empresa Docker creó la \textbf{\textit{\href{https://en.wikipedia.org/wiki/Open_Container_Initiative}{Open Container Initiative}}}, proyecto actualemente bajo la Linux Foundation, con la intención de diseñar un estándar abierto para la virtualización a nivel de sistema operativo.
 
 \section{Instalación}
 
-\section{Primer arranque}
+Dependiendo del sistema operativo en el que nos encontremos, Docker tiene la opción de instalarse de distintas maneras. En sistemas operativos GNU/Linux cada distribución tiene un paquete para poder realizar la instalación del mismo.
+
+\begin{mycode}{Instalación de Docker en Ubuntu}{console}{}
+root@vega:~# apt install docker.io
+\end{mycode}
+
+\errorbox{el nombre del paquete es \textbf{docker.io}}
+
+En sistemas Windows y MacOS existe la opción de instalar \href{https://docs.docker.com/get-docker/}{Docker Desktop}, una versión que utiliza una máquina virtual para simplificar la instalación en estos sistemas.
+
+\section{Configuración y primeros pasos}
+
+Tras realizar la instalación veremos cómo el servicio Docker ha levantado un interfaz nuevo en nuestra máquina, cuya IP es \textbf{172.17.0.1/16}, siendo el direccionamiento por defecto.
+
+\begin{mycode}{Nueva IP en el equipo}{console}{}
+root@vega:~# ip a
+...
+3: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue
+    link/ether 02:42:9c:1f:e2:90 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+      valid_lft forever preferred_lft forever
+\end{mycode}
+
+Esta IP hará de \textbf{puente} (similar a lo que sucede con las máquinas virtuales) cuando levantemos contenedores nuevos. Los contenedores estarán dentro de ese direccionamiento 172.17.0.0/16, por lo tanto, aislados de la red principal del equipo.
+
+\infobox{Los contenedores que levantemos estarán en la red 172.17.0.0/16}
+
+El comando \commandbox{docker} tiene muchas opciones, por lo que es recomendable ejecutarlo sin parámetros y de esta manera ver todas las opciones.
+
+\begin{mycode}{Algunas de las opciones del comando docker}{console}{}
+root@vega:~# docker
+Usage:  docker [OPTIONS] COMMAND
+
+Management Commands:
+builder     Manage builds
+completion  Generate the autocompletion script for the specified shell
+config      Manage Docker configs
+container   Manage containers
+context     Manage contexts
+image       Manage images
+manifest    Manage Docker image manifests and manifest lists
+network     Manage networks
+node        Manage Swarm nodes
+plugin      Manage plugins
+secret      Manage Docker secrets
+service     Manage services
+stack       Manage Docker stacks
+swarm       Manage Swarm
+system      Manage Docker
+trust       Manage trust on Docker images
+volume      Manage volumes
+
+Commands:
+...
+\end{mycode}
+
+Para cada una de estas opciones, se le puede añadir el parámetro \inlineconsole{--help} para mostrar la ayuda. En el segundo apartado, son comandos que son “aliases” de versiones más largas, por ejemplo
+
+Para asegurar que el servicio Docker está funcionando, podemos hacer uso de \commandbox{docker info}, que nos mostrará mucha información acerca del servicio. Pero si lo que queremos es comprobar si tenemos algún contenedor corriendo, es más sencillo hacer \commandbox{docker ps} (que es la versión simplificada de \commandbox{docker container ls} ):
+
+\begin{mycode}{Comprobar estado de Docker y contenedores levantados}{console}{}
+root@vega:~# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+root@vega:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+\end{mycode}
+
+En este caso, como no hay ningún contenedor levantado, sólo muestra las cabeceras de las columnas del listado.
+
+\section{Levantando nuestro primer contenedor}
+Es momento de crear nuestro primer contenedor. Para ello, dado que se está usando la consola, hay que hacer uso del comando \commandbox{docker} con una serie de parámetros. En este caso se ha optado por levantar el servicio \textbf{Apache HTTPD}:
+
+\begin{mycode}{Levantando el primer contenedor}{console}{}
+root@vega:~# docker run -p 80:80 httpd
+AH00558: httpd: Could not reliably determine the server's ...
+AH00558: httpd: Could not reliably determine the server's ...
+[Fri Mar 24 18:25:14.194246 2023] [mpm_event:notice] ...
+[Fri Mar 24 18:25:14.194347 2023] [core:notice] [pid  ...
+172.17.0.1 - - [24/Mar/2023:18:25:41 +0000] "GET / HTTP/1.1" 304 -
+\end{mycode}
+
+Vemos los logs del servicio Apache al arrancar y si vamos al navegador a la dirección \href{http://localhost}{http://localhost} muestra lo siguiente:
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{img/docker/apache.png}
+\end{center}
+
+Y para entender lo que hace el comando, los parámetros son:
+\begin{itemize}
+    \item \textbf{docker}: cliente de consola para hacer uso de Docker
+    \item \textbf{run}: Ejecuta un comando en un nuevo contenedor
+    \item \textbf{-p 80:80}: Publica en el puerto 80 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
+    \begin{itemize}
+        \item Si fuese \textbf{-p 8080:80}, publicaría en el puerto 8080 del equipo el puerto 80 del contenedor.
+    \end{itemize}
+    \item \textbf{httpd}: es la imagen del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
+\end{itemize}
+
+Y si vemos qué muestra el estado de docker, vemos cómo aparece el contenedor levantado.
+
+\begin{mycode}{Comprobar estado de Docker y contenedores levantados}{console}{{\scriptsize }}
+root@vega:~# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS               NAMES
+a1c3362b0d6c   httpd     "httpd-..."   3 seconds ago   Up 2 seconds   0.0.0.0:80->80/tcp  great
+\end{mycode}
 
 
+\section{Contenedores en \textit{background} y con más opciones}
+Tal como se puede ver en el ejemplo anterior, el contenedor se queda en primer plano, viendo los logs del Apache. Esto para ver qué es lo que está sucendiendo durante el desarrollo puede ser útil, pero lo ideal es que el contenedor arranque en modo \textbf{\textit{background}}, y cuando necesitemos vayamos a ver los logs.
 
-\section{Configuración básica}
 
+A continuación se va a arrancar un nuevo contenedor de Apache con nuevos parámetros:
+\begin{mycode}{Nueva IP en el equipo}{console}{}
+root@vega:~# docker run --name mi-apache -d -p 8080:80 httpd
+\end{mycode}
+
+\begin{itemize}
+    \item \textbf{\texttt{docker}}: cliente de consola para hacer uso de Docker
+    \item \textbf{\texttt{run}}: Ejecuta un comando en un nuevo contenedor
+    \item \textbf{\texttt{--name mi-apache}}: De esta manera se le da un nombre al contenedor, para poder identificarlo de manera rápida entre todos los contenedores creados.
+    \item \textbf{\texttt{-d}}: Este parámetro es para hacer el \textbf{\textit{detach}} del comando, y de esta manera mandar a \textbf{\textit{background}} la ejecución del contenedor.
+    \item \textbf{\texttt{-p 8080:80}}: Publica en el puerto 8080 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
+    \item \textbf{\texttt{httpd}}: es la imagen del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
+\end{itemize}
+
+
+\section{Ciclo de vida de un contenedor}
+
+\section{Volumen persistente de datos}
+
+
+\section{Dónde obtener servicios Docker}
 
 
