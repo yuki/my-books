@@ -1,16 +1,16 @@
 \chapter{Introducción}
 
-Hoy en día es muy habitual hacer uso de un sistema de contenedores, como es \href{https://docs.docker.com/}{Docker}, en el mundo del desarrollo de \textit{software}. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción es la misma que durante las etapas de desarrollo.
+Hoy en día es muy habitual hacer uso de los sistemas de contenedores, el más conocido es \href{https://docs.docker.com/}{Docker}, en el mundo del desarrollo de \textit{software}. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción son las mismas que durante las etapas de desarrollo.
 
 En este documento se va a explicar cómo realizar la instalación y configuración de un sistema basado en contenedores Docker para poder arrancar servicios, y ciertas configuraciones que son necesarias conocer.
 
 \chapter{Sistemas de contenedores}
 
-Los sistemas de contenedores son un método de virtualización (conocido como “virtualización a nivel de sistema operativo”), en el que se permite ejecutar sobre una capa virtualizadora del núcleo del sistema operativo, distintas instancias de “espacio de usuario”.
+Los sistemas de contenedores son un método de virtualización (conocido como “virtualización a nivel de sistema operativo”), en el que se permite ejecutar sobre una capa virtualizadora del núcleo del sistema operativo distintas instancias de “espacio de usuario”.
 
 Este “espacio de usuario” (donde se ejecutarán aplicaciones, servicios...) se les denomina \textbf{contenedores}, y aunque pueden ser como un servidor real, están bajo un mecanismo de aislamiento proporcionado por el \textit{kernel} del sistema operativo, y sobre el que se pueden aplicar límites de espacio, recursos de memoria, de acceso a disco...
 
-\infobox{Un contenedor es un espacio de ejecución de servicios al que se les puede aplicar límites de recursos (como la memoria, el acceso a disco...)}
+\infobox{\textbf{Un contenedor es un espacio de ejecución de servicios al que se les puede aplicar límites de recursos (como la memoria, el acceso a disco...)}}
 
 Desde el punto de vista del usuario, que un servicio se ejecute en una máquina virtual o en un contenedor es indistinguible. En cambio, desde el punto de vista de un administrador de sistemas o de un desarrollador, el uso de contenedores trae consigo una serie de ventajas que veremos en apartados posteriores.
 
@@ -25,6 +25,56 @@ Aunque está muy en boga el despliegue de aplicaciones haciendo uso de contenedo
 Ha habido otras tecnologías en Linux, como \href{https://es.wikipedia.org/wiki/OpenVZ}{OpenVz}, pero luego nos centraremos en Docker, ya que es lo más conocido actualmente.
 
 
+\section{Qué es un contenedor y cómo se crea}
+
+Para entender qué es un contenedor y cómo se crea, tenemos que diferenciar distintos conceptos:
+\begin{itemize}
+    \item \textbf{Imagen Docker}
+    \item \textbf{Contenedor Docker}
+\end{itemize}
+
+A continuación se van a detallar en profundidad.
+
+\subsection{Imágenes Docker}
+
+Para crear un contenedor necesitamos hacer uso de una \textbf{“imagen”, que es un archivo inmutable (no modificable) que contiene el código de la aplicación que queremos ejecutar y todas sus dependencias necesarias}, para que pueda ser ejecutada de manera rápida y confiable independientemente del entorno en el que se encuentre.
+
+Las imágenes, debido a su origen \textbf{sólo-lectura}, se pueden considerar como \textbf{“plantillas”}, que son la representación de una aplicación y el entorno necesario para ser ejecutada en un momento específico en el tiempo. \textbf{Esta consistencia es una de las grandes características de Docker}.
+
+\infobox{\textbf{Una imagen contiene el código y las dependencias que se necesita al crear un contenedor para ser ejecutado, independientemente del entorno en el que es ejecutado.}}
+
+Una imagen puede ser creada utilizando otras imágenes como base. Por ejemplo, la imagen de \href{https://hub.docker.com/_/phpmyadmin}{PHPMyAdmin} empaqueta la aplicación PHPMyAdmin sobre la imagen \textbf{PHP} (versión 8.1-apache), que a su vez hace uso de la imagen \textbf{Debian} (versión 11-slim).
+
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{img/docker/imagen1.png}
+    \captionof{figure}{Jerarquía de imágenes usadas por PHPMyAdmin. \href{https://hub.docker.com/layers/library/phpmyadmin/latest/images/sha256-79e38dd8b2ab0e92505aa92040fa49dce4fa921a977b6ce4d030a63b4f120009?context=explore}{Fuente}}
+\end{center}
+
+Podemos utilizar imágenes públicas descargadas a través de un \textbf{\textit{registry}} público, que no es otra cosa que un repositorio de imágenes subidas por la comunidad. El \textit{registry} principal más utilizado es \href{https://hub.docker.com/}{Docker Hub}.
+
+\infobox{\textbf{Las imágenes Docker  pueden ser públicas o privadas y se almacenan en un repositorio llamado \underline{registry}, siendo el más conocido Docker Hub}}
+
+\textbf{Se pueden crear nuestras propias imágenes privadas}, que pueden ser almacenadas en nuestros equipos o a través de un \textbf{registry privado} que podemos crear (también existen servicios de pago que nos dan esta posibilidad).
+
+
+\subsection{Contenedores Docker}
+Un contenedor Docker es un \textbf{entorno de tiempo de ejecución virtualizado donde los usuarios pueden aislar aplicaciones}. Estos contenedores son unidades compactas y portátiles a las que se les puede aplicar un sistema de limitación de recursos.
+
+\infobox{\textbf{Un contenedor se crea a través de una imagen, es la versión ejecutable de la misma que se crea en un entorno virtualizado}}
+
+Un contenedor se crea a través de una imagen y es la versión ejecutable de la misma. Lo que se hace es crear una capa de escritura sobre la imagen inmutable, donde se podrá escribir datos. Se pueden crear un número ilimitados de contenedores haciendo uso de la misma imagen base.
+
+\vspace{-15pt}
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{img/docker/contenedor.png}
+    \captionof{figure}{Imagen “interna” de un contenedor}
+\end{center}
+\vspace{-15pt}
+
+Más adelante se detallará el \hyperlink{ciclo_de_vida_contenedor}{ciclo de vida de un contenedor} y cómo esa capa de escritura se pierde al eliminar el contenedor. Se puede hacer que esos datos no se pierdan utilizando \hyperlink{volumen_persistente_datos}{un volumen persistente de datos}.
+
+
 \section{Contenedores vs. Máquinas virtuales}
 
 El uso de máquinas virtuales está muy extendido gracias a que cada vez es más sencillo crearlas. Esto no quiere decir que siempre sea la mejor opción, por lo que  se va a realizar una comparativa teniendo en cuenta distintos aspectos a la hora de realizar un desarrollo con máquinas virtuales y con sistemas de contenedores.
@@ -34,12 +84,14 @@ El uso de máquinas virtuales está muy extendido gracias a que cada vez es más
 
 La creación de máquinas virtuales (a través de sistemas como VirtualBox) nos permite crear entornos aislados en los que poder instalar el Sistema Operativo que más nos interese y con ello poder instalar el software y los servicios que necesitemos.
 
-Esto supone una gran ventaja, pero a la vez un gasto de recursos que podríamos utilizar para hacer uso en los servicios que queremos correr.
+Las máquinas virtuales se virtualizan a nivel de hardware, donde debe existir un Sistema Operativo con Hypervisor que permita dicha virtualización. Por otro lado, los contenedores se virtualizan en la capa de aplicación, haciendo que este sistema sea mucho más ligero, permitiendo utilizar esos recursos en los servicios que necesitamos hacer funcionar dentro de los contenedores.
 
+\vspace{-15pt}
 \begin{center}
-    \includegraphics[width=0.9\linewidth]{img/docker/docker\_vs\_vm.png}
+    \includegraphics[width=0.85\linewidth]{img/docker/docker\_vs\_vm.png}
     \captionof{figure}{Infraestructura Máquinas Virtuales vs Docker}
 \end{center}
+\vspace{-15pt}
 
 
 En la imagen se puede apreciar una comparativa diferenciando cómo quedaría una infraestructura de 3 aplicaciones levantadas en distintas máquinas virtuales o en distintos contenedores.
@@ -86,7 +138,7 @@ En un entorno con contenedores, al igual que se ha comentado antes, esto no es p
 
 Ligado a todo lo anterior, realizar el despliegue de un entorno de desarrollo/producción es más rápido utilizando contenedores, dando igual el sistema operativo en el que nos encontremos.
 
-\infobox{El despliegue con contenedores es más rápido.}
+\infobox{\textbf{El despliegue con contenedores es más rápido.}}
 
 Más adelante se verá cómo realizar el despliegue de distintos servicios haciendo uso de un único comando.
 
@@ -111,7 +163,7 @@ Al igual que sucede con otro tipo de \textit{software},  para que Docker haga us
 
 
 \begin{center}
-    \includegraphics[width=0.6\linewidth]{img/docker/docker_interfaces.png}
+    \includegraphics[width=0.75\linewidth]{img/docker/docker_interfaces.png}
     \captionof{figure}{Tecnologías usadas por Docker. Fuente: \href{https://en.wikipedia.org/wiki/File:Docker-linux-interfaces.svg}{Wikipedia}}
 \end{center}
 
@@ -212,9 +264,6 @@ Y para entender lo que hace el comando, los parámetros son:
     \item \textbf{docker}: cliente de consola para hacer uso de Docker
     \item \textbf{run}: Ejecuta un comando en un nuevo contenedor
     \item \textbf{-p 80:80}: Publica en el puerto 80 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
-    \begin{itemize}
-        \item Si fuese \textbf{-p 8080:80}, publicaría en el puerto 8080 del equipo el puerto 80 del contenedor.
-    \end{itemize}
     \item \textbf{httpd}: es la imagen del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
 \end{itemize}
 
@@ -226,8 +275,10 @@ CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     
 a1c3362b0d6c   httpd     "httpd-..."   3 seconds ago   Up 2 seconds   0.0.0.0:80->80/tcp  great
 \end{mycode}
 
+En la columna PORTS se puede apreciar cómo aparece que se ha levantado el puerto  \textbf{ \texttt{0.0.0.0:80} } (escucha en el puerto 80 para cualquier IP del sistema operativo) que es una redirección al puerto \textbf{\texttt{80/TCP}} interno del contenedor.
 
-\section{Contenedores en \textit{background} y con más opciones}
+
+\section{Contenedores en \textit{background} y más opciones}
 Tal como se puede ver en el ejemplo anterior, el contenedor se queda en primer plano, viendo los logs del Apache. Esto para ver qué es lo que está sucendiendo durante el desarrollo puede ser útil, pero lo ideal es que el contenedor arranque en modo \textbf{\textit{background}}, y cuando necesitemos vayamos a ver los logs.
 
 
@@ -246,11 +297,38 @@ root@vega:~# docker run --name mi-apache -d -p 8080:80 httpd
 \end{itemize}
 
 
-\section{Ciclo de vida de un contenedor}
-
+\hypertarget{volumen_persistente_datos}{}
 \section{Volumen persistente de datos}
+Hasta ahora hemos levantado un contenedor a través de una imagen que levanta el servicio Apache, mostrando su página por defecto. Podríamos escribir en el contenedor la página HTML que nos interesase, pero hay que entender que \textbf{los datos de un contenedor desaparecen cuando el contenedor se elimina}.
+
+Para que los cambios realizados dentro de un contenedor se mantengan, tenemos que hacer uso de los denominados \textbf{volúmenes de datos}. Esto no es más que hacer un montaje de una ruta del disco duro del sistema operativo dentro de una ruta del contenedor.
 
 
-\section{Dónde obtener servicios Docker}
+Estos volúmenes que le asignamos al contenedor pueden ser de dos tipos:
+\begin{itemize}
+    \item \textbf{Sólo lectura}: Nos puede interesar asignar un volumen de sólo lectura cuando le pasamos ficheros de configuración o la propia web que queremos visualizar.
+    \item \textbf{Lectura-Escritura}: En este caso se podrá escribir en el volumen. Por ejemplo, directorio donde una base de datos guarda la información o una web donde deja imágenes subidas por usuarios.
+\end{itemize}
+
+De esta manera, tendremos que asignar el número de volúmenes necesarios a cada contenedor dependiendo de la imagen utilizada, el servicio que se levanta y lo que queremos hacer con los datos que le asignemos o generemos en el contenedor.
+
+En la siguiente imagen se puede ver una infraestructura con dos contenedores y dos volúmenes:
+\begin{itemize}
+    \item \textbf{Contenedor Web}: Se le asigna un volumen en modo \textbf{sólo lectura} cuya ruta original está en \configdir{/opt/www-data}, que dentro del contenedor está en \configdir{/var/www/html}.
+    \item \textbf{Contenedor MySQL}: Dado que los datos de la base de datos deben ser guardados, en este caso se le asigna un volumen que permite escritura. Por lo tanto, lo que se crea dentro del contenedor en \configdir{/var/lib/mysql} realmente se estará guardando en el sistema operativo anfitrión en \configdir{/opt/mysql-data}
+\end{itemize}
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{img/docker/volumes.png}
+    \captionof{figure}{Ejemplo de dos volúmenes asignados a distintos volúmenes}
+\end{center}
+
+\subsection{Crear volumen en modo lectura}
+Siguiendo con el ejemplo anterior,
+
+
+\hypertarget{ciclo_de_vida_contenedor}{}
+\section{Ciclo de vida de un contenedor en Docker}
+Un contenedor
+
 
 
