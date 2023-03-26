@@ -41,7 +41,7 @@ Para crear un contenedor necesitamos hacer uso de una \textbf{“imagen”, que 
 
 Las imágenes, debido a su origen \textbf{sólo-lectura}, se pueden considerar como \textbf{“plantillas”}, que son la representación de una aplicación y el entorno necesario para ser ejecutada en un momento específico en el tiempo. \textbf{Esta consistencia es una de las grandes características de Docker}.
 
-\infobox{\textbf{Una imagen contiene el código y las dependencias que se necesita al crear un contenedor para ser ejecutado, independientemente del entorno en el que es ejecutado.}}
+\infobox{\textbf{Una imagen contiene el código y las dependencias que se necesita al crear un contenedor para ser ejecutado, independiente del entorno donde se ejecuta.}}
 
 Una imagen puede ser creada utilizando otras imágenes como base. Por ejemplo, la imagen de \href{https://hub.docker.com/_/phpmyadmin}{PHPMyAdmin} empaqueta la aplicación PHPMyAdmin sobre la imagen \textbf{PHP} (versión 8.1-apache), que a su vez hace uso de la imagen \textbf{Debian} (versión 11-slim).
 
@@ -50,6 +50,12 @@ Una imagen puede ser creada utilizando otras imágenes como base. Por ejemplo, l
     \includegraphics[width=0.9\linewidth]{img/docker/imagen1.png}
     \captionof{figure}{Jerarquía de imágenes usadas por PHPMyAdmin. \href{https://hub.docker.com/layers/library/phpmyadmin/latest/images/sha256-79e38dd8b2ab0e92505aa92040fa49dce4fa921a977b6ce4d030a63b4f120009?context=explore}{Fuente}}
 \end{center}
+
+A las imágenes creadas se les suele añadir etiquetas (\textbf{tags}) para diferenciar versiones o características internas. Cada creador determina las etiquetas que le interesa crear. Por ejemplo:
+\begin{itemize}
+    \item \textbf{latest}: Se le denomina a la última imagen creada.
+    \item php:\textbf{8.1-apache}: Indica que en esta imagen PHP la versión es la 8.1 y además cuenta con el servidor web Apache.
+\end{itemize}
 
 Podemos utilizar imágenes públicas descargadas a través de un \textbf{\textit{registry}} público, que no es otra cosa que un repositorio de imágenes subidas por la comunidad. El \textit{registry} principal más utilizado es \href{https://hub.docker.com/}{Docker Hub}.
 
@@ -72,7 +78,9 @@ Un contenedor se crea a través de una imagen y es la versión ejecutable de la 
 \end{center}
 \vspace{-15pt}
 
-Más adelante se detallará el \hyperlink{ciclo_de_vida_contenedor}{ciclo de vida de un contenedor} y cómo esa capa de escritura se pierde al eliminar el contenedor. Se puede hacer que esos datos no se pierdan utilizando \hyperlink{volumen_persistente_datos}{un volumen persistente de datos}.
+\textbf{La capa de escritura no es persistente} y se pierde al eliminar el contenedor, es decir, \textbf{los datos de un contenedor se eliminan al borrar el contendor}. Para evitar este comportamiento se puede hacer uso de un \hyperlink{volumen_persistente_datos}{volumen persistente de datos}, de esta manera esos datos no se pierden.
+
+\errorbox{\textbf{Los datos creados dentro de un contenedor se borran al eliminar el contenedor}}
 
 
 \section{Contenedores vs. Máquinas virtuales}
@@ -118,7 +126,7 @@ Por ejemplo, la última versión de PHP actualmente es la 8.2.4 y de Apache la 2
 
 Con Docker, podremos levantar contenedores con distintas versiones del servicio que nos interese en paralelo para comprobar si nuestra aplicación/servicio es compatible.
 
-\infobox{\textbf{Con Docker es posible levantar entornos/servicios con distintas versiones en paralelo}}
+\infobox{\textbf{Con Docker es posible levantar servicios con distintas versiones en paralelo}}
 
 Por otro lado, si un desarrollador quiere utilizar un sistema operativo distinto, no se tendrá que preocupar de si su distribución tiene las mismas versiones. O en el caso de usar Windows/Mac, no tener que estar realizando instalaciones de las versiones concretas.
 
@@ -261,10 +269,10 @@ Vemos los logs del servicio Apache al arrancar y si vamos al navegador a la dire
 
 Y para entender lo que hace el comando, los parámetros son:
 \begin{itemize}
-    \item \textbf{docker}: cliente de consola para hacer uso de Docker
+    \item \textbf{docker}: Cliente de consola para hacer uso de Docker
     \item \textbf{run}: Ejecuta un comando en un nuevo contenedor
     \item \textbf{-p 80:80}: Publica en el puerto 80 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
-    \item \textbf{httpd}: es la imagen del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
+    \item \textbf{httpd}: Es la \textbf{imagen} del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
 \end{itemize}
 
 Y si vemos qué muestra el estado de docker, vemos cómo aparece el contenedor levantado.
@@ -283,17 +291,15 @@ Tal como se puede ver en el ejemplo anterior, el contenedor se queda en primer p
 
 
 A continuación se va a arrancar un nuevo contenedor de Apache con nuevos parámetros:
-\begin{mycode}{Nueva IP en el equipo}{console}{}
+\begin{mycode}{Crear un contenedor Web en el puerto 8080}{console}{}
 root@vega:~# docker run --name mi-apache -d -p 8080:80 httpd
 \end{mycode}
 
+Los nuevos parámetros son:
 \begin{itemize}
-    \item \textbf{\texttt{docker}}: cliente de consola para hacer uso de Docker
-    \item \textbf{\texttt{run}}: Ejecuta un comando en un nuevo contenedor
     \item \textbf{\texttt{--name mi-apache}}: De esta manera se le da un nombre al contenedor, para poder identificarlo de manera rápida entre todos los contenedores creados.
     \item \textbf{\texttt{-d}}: Este parámetro es para hacer el \textbf{\textit{detach}} del comando, y de esta manera mandar a \textbf{\textit{background}} la ejecución del contenedor.
     \item \textbf{\texttt{-p 8080:80}}: Publica en el puerto 8080 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
-    \item \textbf{\texttt{httpd}}: es la imagen del contenedor que se va a arrancar. En este caso, la imagen del servidor \href{https://hub.docker.com/_/httpd}{Apache HTTPD}.
 \end{itemize}
 
 
@@ -322,13 +328,163 @@ En la siguiente imagen se puede ver una infraestructura con dos contenedores y d
     \captionof{figure}{Ejemplo de dos volúmenes asignados a distintos volúmenes}
 \end{center}
 
-\subsection{Crear volumen en modo lectura}
-Siguiendo con el ejemplo anterior,
+
+\subsection{Añadir volumen de escritura al crear un contenedor}
+
+Al añadir un volumen cuando creamos un contenedor hace que por defecto sea en modo lectura-escritura, por lo que cualquier escritura realizada dentro del contenedor en la ruta especificada va a resultar en que el fichero se creara en la ruta indicada del sistema operativo anfitrión.
+
+\begin{mycode}{Añadir volumen sólo lectura al crear un contenedor}{console}{{\small }}
+root@vega:~# ls /opt/mysql-data
+root@vega:~# docker run -d -p 3306:3306 --name mi-db \
+    -v /opt/mysql-data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+    mysql:latest
+root@vega:~# ls /opt/mysql-data
+auto.cnf      client-key.pem      '#innodb_temp'      server-cert.pem   ...
+\end{mycode}
+
+Para este ejemplo se ha creado un contenedor usando la imagen de \href{https://hub.docker.com/_/mysql}{MySQL}, al que se le ha asignador un volumen (\textbf{por defecto se asigna permitiendo la escritura}) y un parámetro necesario para realizar la posterior conexión (la contraseña).
+
+\begin{itemize}
+    \item \textbf{-v /opt/mysql-data:/var/lib/mysql}: A través del parámetro \textbf{-v} se le indica que al contenedor se le va a pasar un volumen. Posteriormente se le indica la ruta del sistema operativo anfitrión \configdir{/opt/mysql-data} que se montará dentro del contenedor en \configdir{/var/lib/mysql}.
+    \item \textbf{-e MYSQL\_ROOT\_PASSWORD=my-secret-pw}: El parámetro “\textbf{-e}” sirve para pasarle al contenedor \textbf{variables de entorno}. En este caso, y tal como dice la \href{https://hub.docker.com/_/mysql}{web de la imagen MySQL}, esta es la manera de asignar la contraseña del usuario \textbf{root} durante la inicialización de la base de datos.
+\end{itemize}
+
+Tras crear el contenedor, y asegurarnos que está levantado haciendo uso del comando \commandbox{docker ps}, podemos realizar la conexión desde el sistema operativo anfitrión o desde cualquier otro lugar usando la contraseña indicada previamente.
+
+\begin{mycode}{Añadir volumen sólo lectura al crear un contenedor}{console}{{\small }}
+root@vega:~# mysql -h127.0.0.1 -uroot -P3306 -p
+    Enter password:
+    ...
+    MySQL [(none)]> show databases;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | information_schema |
+    | mysql              |
+    | performance_schema |
+    | sys                |
+    +--------------------+
+    4 rows in set (0,007 sec)
+\end{mycode}
+
+\subsection{Añadir volumen en modo sólo-lectura}
+Siguiendo con el ejemplo de la imagen anterior, se van a explicar los pasos para levantar un contenedor que contiene una web simple creada en PHP, que está alojada en la ruta \configdir{/opt/www-data} del sistema operativo anfitrión.
 
 
-\hypertarget{ciclo_de_vida_contenedor}{}
-\section{Ciclo de vida de un contenedor en Docker}
-Un contenedor
+\begin{mycode}{Añadir volumen sólo lectura al crear un contenedor}{console}{}
+root@vega:~# ls /opt/www-data
+index.php
+root@vega:~# docker run -d -p 80:80 --name mi-web \
+    -v /opt/www-data:/var/www/html:ro \
+    php:8.2.4-apache
+\end{mycode}
 
+El parámetro nuevo asignado en la creación de este contenedor es:
+\begin{itemize}
+    \item \textbf{-v /opt/www-data:/var/www/html:ro}: Para indicarle que le vamos a asignar un volumen siendo la ruta real en el sistema de ficheros del sistema operativo anfitrión \configdir{/opt/www-data} y la ruta destino \textbf{dentro del contenedor} y que va a ser en modo \textbf{read-only} \configdir{/var/www/html}.
+\end{itemize}
+
+Más adelante, cuando veamos \hyperlink{entrar_en_contenedor}{cómo entrar dentro de un contenedor Docker},
+
+\hypertarget{entrar_en_contenedor}{}
+\section{Entrar dentro de un contenedor Docker}
+Normalmente no suele ser necesario entrar dentro de un contenedor, ya que, tal como se ha dicho antes, cualquier modificación realizada dentro de él se perderá (salvo que sea dentro de un volumen).
+
+Aún así, para realizar pruebas o comprobaciones del correcto funcionamiento de una imagen puede ser interesante entrar dentro de un contenedor. Para ello, deberemos realizar:
+
+\begin{mycode}{Añadir volumen sólo lectura al crear un contenedor}{console}{}
+root@vega:~# docker exec -it mi-db /bin/bash
+\end{mycode}
+
+Los parámetros utilizados son:
+\begin{itemize}
+    \item \textbf{exec}: Indicamos que queremos ejecutar un comando dentro de un contenedor que está corriendo.
+    \item \textbf{-it}: Son dos parámetros unidos, que sirven para mantener la entrada abierta (modo interactivo) y crear una TTY (consola)
+    \item \textbf{mi-db}: Es el nombre del contenedor al que quiero entrar. También se puede indicar el \textbf{ID} del contenedor.
+    \item \textbf{/bin/bash}: el comando que queremos ejecutar. En este caso, una shell \textbf{bash}. En algunos casos esta shell no está instalada y debemos usar \textbf{/bin/sh}
+\end{itemize}
+
+Hay que tener en cuenta que dentro de un contenedor está el mínimo software posible para que la aplicación/servicio funcione, por lo que habrá muchos comandos que no existan.
+
+
+\section{Ciclo de vida de un contenedor Docker}
+Un contenedor tiene un ciclo de vida que puede pasar por distintos estados. Para pasar entre estados se debe realizar a través de distintos comandos de Docker.
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{img/docker/lifecycle.png}
+    \captionof{figure}{Estados de un contenedor}
+\end{center}
+
+En la imagen se representa los estados más básicos junto con los comandos para pasar entre ellos.
+
+
+\section{Otros comandos útiles}
+
+Para obtener toda la información de un contenedor, incluido su estado, volúmenes utilizados, puertos, ...
+
+\begin{mycode}{Obtener toda la información de un contenedor}{console}{}
+root@vega:~# docker inspect mi-db
+\end{mycode}
+
+Listar las imágenes descargadas en local. Al tener las imágenes en local, no hará falta volver a descargarlas, por lo que crear un nuevo contenedor que haga uso de una de ellas será mucho más rápido.
+
+\begin{mycode}{Listado de imágenes en local}{console}{}
+root@vega:~# docker image ls
+REPOSITORY       TAG            IMAGE ID       CREATED        SIZE
+php              8.2.4-apache   de23bf333100   3 days ago     460MB
+httpd            latest         192d41583429   3 days ago     145MB
+mysql            latest         483a8bc460a9   3 days ago     530MB
+\end{mycode}
+
+Borrar una de las imágenes que no se esté utilizando en ningún contenedor (ya sea que esté parado o corriendo).we
+
+\begin{mycode}{Borrar una imagen concreta}{console}{}
+root@vega:~# docker image rm httpd
+\end{mycode}
+
+
+Cuando un contenedor está en modo \textit{\textbf{detached}} no aparecen los logs, por lo que para poder visualizarlos tenemos un comando especial para ello.
+\begin{mycode}{Ver los logs de un contenedor}{console}{}
+root@vega:~# docker logs mi-web -f
+172.17.0.1 - - [26/Mar/2023:18:05:29 +0000] "GET / HTTP/1.1" 200 248
+172.17.0.1 - - [26/Mar/2023:18:05:29 +0000] "GET / HTTP/1.1" 200 248
+172.17.0.1 - - [26/Mar/2023:18:05:29 +0000] "GET / HTTP/1.1" 200 248
+\end{mycode}
+
+
+Listar los volúmenes existentes en el sistema. El listado muestra los que se están utilizando en contenedores (activos o parados) o los que se han utilizado en contenedores que ya no existen.
+
+\begin{mycode}{Listar volúmenes}{console}{{\small}}
+root@vega:~# docker volume ls
+DRIVER    VOLUME NAME
+local     0d6c400a6407f5cdea81a2f0158222fdd87d7f3b3e2b5969ca466d743fc71f5c
+local     1d2f52018e17af0689e070a55337154c1dd68517c54435ecc24d597f7509d43c
+local     6b72797227ef4708ca23ee1dfcb4b651b42eeacefd4166b898407ad4aadda10c
+\end{mycode}
+
+
+Si queremos realizar una limpieza de todos los recursos (contenedores, imágenes,  volúmenes) que no se estén utilizando, se puede utilizar el siguiente comando.
+\begin{mycode}{Borrar recursos que no estén activos}{console}{}
+root@vega:~# docker system prune -a
+WARNING! This will remove:
+- all stopped containers
+- all networks not used by at least one container
+- all images without at least one container associated to them
+- all build cache
+
+Are you sure you want to continue? [y/N] y
+\end{mycode}
+
+\errorbox{\textbf{El comando anterior hace que se borren contenedores parados}}
+
+
+Para conocer las estadísticas de uso de cada contenedor.
+\begin{mycode}{Ver las estadísticas de los contenedores}{console}{{\scriptsize }}
+root@vega:~# docker stats
+CONTAINER ID  NAME    CPU %   MEM USAGE / LIMIT     MEM %   NET I/O          BLOCK I/O   PIDS
+2fcf97530766  mi-web  0.00%   54.62MiB / 15.47GiB   0.34%   9.44MB / 172kB   0B / 0B     6
+413d6e9f590f  mi-db   0.55%   357.9MiB / 15.47GiB   2.26%   319kB / 280B     0B / 0B     38
+\end{mycode}
 
 
