@@ -24,6 +24,7 @@ jobs:
           DAM/1/sistemas_informaticos/sistemas_informaticos.pdf
           SMR/2/SOred/SOred.pdf
           otros/PFsense/pfsense_book.pdf
+          otros/Docker/docker_book.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
           anexos/gestion_backups/gestion_backups_anexo.pdf
           anexos/glosario/glosario_anexo.pdf

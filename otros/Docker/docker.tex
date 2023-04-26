@@ -302,6 +302,83 @@ Los nuevos parámetros son:
     \item \textbf{\texttt{-p 8080:80}}: Publica en el puerto 8080 del servidor el puerto 80 utilizado en el contenedor. Se puede pensar que es como hacer un \textbf{port-forward} en un firewall.
 \end{itemize}
 
+\section{Parar, arrancar y borrar contenedores}
+
+Hasta ahora hemos aprendido a crear contenedores, pero en ciertos momentos nos puede interesar parar un contenedor que no estemos utilizando, o una vez haya cumplido su función, borrarlo.
+
+\subsection{Parar contenedores}
+
+Para parar un contenedor, debemos conocer el nombre del mismo o su ID (que es único). Estos datos los podemos conocer a través del comando  \commandbox{docker ps}.
+
+Con esto, podemos ejecutar:
+
+\begin{mycode}{Parar un contenedor}{console}{{\small }}
+root@vega:~# docker stop mi-apache
+\end{mycode}
+
+\subsection{Arrancar un contenedor parado}
+
+Una vez parado un contenedor, o al reiniciar el servidor, si queremos arrancar un contenedor parado, debemos conocer también su ID o nombre.
+
+Para visualizar todos los contenedors (tanto los arrancados como los parados), lo podemos hacer a través del comando \commandbox{docker ps -a}.
+
+Gracias a ese listado, podemos volver a arrancar un contenedor que esté parado con \commandbox{docker start mi-apache}, siendo “mi-apache” el contenedor que queremos arrancar.
+
+\subsection{Borrar un contenedor}
+Si queremos borrar un contenedor, éste debe estar parado, ya que Docker no nos va a dejar borrar un contenedor que está en ejecución.
+
+Es interesante borrar contenedores que hayamos creado de pruebas o contenedores que ya no se vayan a utilizar más, para de esta manera liberar recursos.
+
+Para borrarlo, similar a los casos anteriores, se hará con \commandbox{docker rm mi-apache}.
+
+\section{Variables de entorno}
+Algunos contenedores tienen la opción de recibir variables de entorno al ser creados. Estas variables pueden afectar al comportamiento del contenedor, o para ser inicializado de alguna manera distinta a las opciones por defecto.
+
+El creador de la imagen Docker puede crear las variables de entorno que necesite para después utilizarlas en su aplicación. A modo de ejemplo, se va a utilizar la imagen de la aplicación \href{https://hub.docker.com/_/phpmyadmin}{PHPMyAdmin}.
+
+A continuación se van a crear 2 contenedores de PHPMyAdmin, diferenciados por el puerto, el nombre, y la variable de entorno \textbf{PMA\_ARBITRARY}:
+\begin{itemize}
+    \item El primer contenedor va a estar en el puerto 8081, se le va a dar el nombre “myadmin-1” y no va a tener la variable de entorno incializada.
+    \item El segundo contenedor va a estar en el puerto 8082, se va a llamar “myadmin-2” y va a tener la variable \textbf{PMA\_ARBITRARY} inicializada a “1”, tal como aparece en la \href{https://hub.docker.com/_/phpmyadmin}{documentación de la imagen de PHPMyAdmin}.
+\end{itemize}
+
+Para ello, se han ejecutado los siguientes comandos:
+
+\begin{mycode}{Creación de dos contenedores PHPMyAdmin}{console}{{\footnotesize }}
+root@vega:~# docker run --name myadmin-1 -d -p 8081:80 phpmyadmin
+
+root@vega:~# docker run --name myadmin-2 -e PMA_ARBITRARY=1 -d -p 8082:80 phpmyadmin
+\end{mycode}
+
+Tal como se puede ver, al segundo contenedor se le ha pasado un nuevo parámetro \textbf{\texttt{-e}}, que significa que lo que viene a continuación es una variable de entorno (en inglés \textbf{environment}). En este caso, la variable de entorno es \textbf{PMA\_ARBITRARY} que se ha inicializado a \textbf{1}.
+
+Si ahora en nuestro navegador web apuntamos al puerto 8081 y al puerto 8082 de la IP de nuestro servidor, veremos cómo existe una ligera diferencia en el formulario que nos muestra la web.
+
+En el formulario del puerto 8081 (donde no hemos inicializado la variable) sólo podemos indicar el usuario y la contraseña. Por el contrario, en el formulario del puerto 8082, al inicializar la variable \textbf{PMA\_ARBITRARY}, y tal como nos dice la documentación de la imagen, nos permite indicar la IP del servidor MySQL al que nos queremos conectar.
+
+{
+    \begin{minipage}{0.43\linewidth}
+        \vspace{-11pt}
+        \includegraphics[width=\linewidth]{img/docker/phpmyadmin1.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.43\linewidth}
+        \vspace{-11pt}
+        \includegraphics[width=\linewidth]{img/docker/phpmyadmin2.png}
+    \end{minipage}
+
+    \begin{center}
+        \vspace{-18pt}
+        {\footnotesize A la izquierda formulario del puerto 8081, sin variable inicializada. A la derecha, puerto 8082 con variable inicializada.}
+    \end{center}
+}
+
+Dado que una variable puede afectar al comportamiento (o la creación) del servicio que levantemos a través de un contenedor, es importante leer la documentación e identificar las variables que tiene por si nos son de utilidad.
+
+\infobox{\textbf{Es recomendable leer la documentación de las imágenes Docker para identificar las posibles variables de entorno que existen y ver si nos son útiles.}}
+
+
+
 
 \hypertarget{volumen_persistente_datos}{}
 \section{Volumen persistente de datos}

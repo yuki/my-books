@@ -22,6 +22,7 @@ done
 
 OTROS=(
     "otros/PFsense/ pfsense_book.tex"
+    "otros/Docker/ docker_book.tex"
     "otros/hacer_documentacion/ como_hacer_documentacion.tex"
     "anexos/gestion_backups gestion_backups_anexo.tex"
     "anexos/glosario glosario_anexo.tex"
