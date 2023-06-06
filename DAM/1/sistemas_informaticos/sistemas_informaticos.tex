@@ -5,7 +5,7 @@
 \begin{document}
 
     \yukibook{Sistemas Informáticos} % Title
-    {Rubén Gómez}  % Author
+    {Rubén Gómez Olivencia}  % Author
     {2022-2023}    % Year
     {Técnico superior en \linebreak Desarrollo de  Aplicaciones Multiplataforma} % Name of degree
     {}% catch phrase
@@ -15,7 +15,8 @@
     {si} %mini-title
 
     \coverpage
-%    \licensepage
+    \graphicspath{{../../../yukibook.cls/}}
+    \licensepage
 
     \tableofcontents
 
@@ -82,6 +83,14 @@
     \input{../../../temas_comunes/gnu_linux/comandos.tex}
      \input{../../../anexos/gestion_backups/rsync.tex}
 
+
+    \part{PfSense}
+    \graphicspath{{../../../otros/PFsense/img/pfsense}}
+    \input{../../../otros/PFsense/pfsense.tex}
+
+    \part{Docker}
+    \graphicspath{{../../../otros/Docker/}}
+    \input{../../../otros/Docker/docker.tex}
 
     \part{Anexos}
     \graphicspath{{../../../anexos/virtualbox_networking/img}}
