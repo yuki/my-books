@@ -1,0 +1,34 @@
+\newcommand{\ClassPath}{../../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Desarrollo de Interfaces} % Title
+    {Rubén Gómez Olivencia}  % Author
+    {2023-2024}    % Year
+    {Técnico superior en \linebreak Desarrollo de  Aplicaciones Multiplataforma} % Name of degree
+    {}% catch phrase
+    {}% the phrase's author
+    {img/portada.png} %cover
+    {28436c}
+    {si} %mini-title
+
+    \coverpage
+    \graphicspath{{../../../yukibook.cls/}}
+    \licensepage
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+
+    \part{Historia de las interfaces}
+    \graphicspath{{./img/di}}
+    \input{1_introduccion.tex}
+
+
+
+
+\end{document}
