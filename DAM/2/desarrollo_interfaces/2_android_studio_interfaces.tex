@@ -187,3 +187,114 @@ Esto nos creará en el árbol de nuestro proyecto una carpeta con el nombre de l
 }
 
 Gracias a esto nos va a crear una vista nueva, con todos los elementos de la vista original, manteniendo los \textit{constraints}. El nuevo fichero \textbf{xml} lo podremos encontrar en una nueva ruta que ha creado un directorio para las vistas apaisadas: \configdir{app/src/main/res/layout-land}.
+
+
+\chapter{Dando funcionalidad al interfaz}
+
+Aunque no se va a ahondar en cómo programar para Android, se va a añadir un pequeño ejemplo para entender cómo funciona un botón y un texto y cómo interactuar entre sí.
+
+La idea es:
+\begin{itemize}
+    \item Crear un interfaz con un botón y un TextView.
+    \item Al pulsar el botón, el texto original del TextView desaparece y se incrementa en 1 para saber el número de pulsaciones que se han realizado.
+\end{itemize}
+
+Teniendo esto en cuenta, el código del fichero \textbf{MainActivity.kt} debería quedar de la siguiente manera:
+
+\begin{mycode}{Código Kotlin para hacer funcionar un botón}{kotlin}{}
+package com.example.prueba
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+
+    var contador:Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val button:Button = findViewById(R.id.button)
+        val text:TextView = findViewById(R.id.textView)
+
+        button.setOnClickListener {
+            contador = contador+1
+            text.text= (contador).toString()
+        }
+    }
+}
+\end{mycode}
+
+\warnbox{\centering\textbf{¿QUÉ SUCEDE SI ROTAMOS LA PANTALLA?}}
+
+El contenido del texto de la vista se resetea al rotar el dispositivo. Es decir, \textbf{cualquier posible contenido que hubiese en ellos se pierde}. Esto es debido a que el \textbf{\textit{Activity}} de la vista se destruye y se vuelve a crear en el nuevo estado de la pantalla.
+
+\errorbox{\centering\textbf{Al rotar el dispositivo el \textit{Activity} entra en un ciclo de destrucción-creación}}
+
+\chapter{Ciclo de vida del \textit{Activity} en Android}
+
+Es importante conocer qué sucede al rotar el dispositivo, y qué sucede con la vista y con los componentes que tenemos en primer plano.
+
+Existen distintas funciones dentro del ciclo de vida de un \textit{\textbf{Activity}}, que serán llamadas por el sistema cada vez que se entre en cada uno de estos estados:
+
+\begin{itemize}
+    \item onCreate()
+    \item onStart()
+    \item onResume()
+    \item onPause()
+    \item onStop()
+    \item onDestroy()
+\end{itemize}
+
+En el siguiente esquema (y en la web oficial de la \href{https://developer.android.com/guide/components/activities/activity-lifecycle#alc}{documentación}) se puede apreciar los estados y sus transiciones:
+
+\begin{center}
+    \includegraphics[width=0.8\linewidth]{activity\_lifecycle.png}
+    \captionof{figure}{Esquema del “\textit{Activity-lifecycle}”. Fuente: \href{https://developer.android.com/guide/components/activities/activity-lifecycle\#alc}{Documentación oficial}}
+\end{center}
+
+\exercisebox{Añade al \textbf{MainActivity.kt} las funciones necesarias para ver todas las transiciones al rotar la pantalla. Que las funciones muestren en el \textbf{Logcat} un texto que indique qué se ha ejecutado.}
+
+
+\section{Mantener los estados}
+
+Una vez sabemos cómo actúa las distintas transiciones de estados de las vistas, es momento de poder guardar el estado para poder recuperar la información al crear el Activity de nuevo. Para ello se van a usar dos funciones:
+
+\begin{itemize}
+    \item \textbf{onSaveInstanceState} : Se llamará cuando vaya a destruirse el Activity.
+    \item \textbf{onRestoreInstanceState}: Se llamará justo después de llamar al método \textbf{onCreate}.
+\end{itemize}
+
+Siguiendo con el ejemplo previo, donde queremos guardar el número de veces que se ha pulsado el botón, deberíamos añadir algo como lo siguiente:
+
+\begin{mycode}{Código Kotlin para mantener estados}{kotlin}{}
+override fun onResume(){
+    super.onResume()
+    Log.d("Debug","onResume")
+    val text:TextView = findViewById(R.id.textView)
+    text.text = contador.toString()
+}
+
+override fun onSaveInstanceState(outState: Bundle) {
+    // Save the user's current game state.
+    outState?.run {
+        putInt("contador", contador)
+    }
+
+    // Always call the superclass so it can save the view hierarchy.
+    super.onSaveInstanceState(outState)
+}
+
+override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    // Always call the superclass so it can restore the view hierarchy.
+    super.onRestoreInstanceState(savedInstanceState)
+
+    // Restore state members from saved instance.
+    savedInstanceState?.run {
+        contador = savedInstanceState.getInt("contador")
+    }
+}
+\end{mycode}
