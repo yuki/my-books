@@ -22,6 +22,7 @@ jobs:
           ASIR/1/planificacion_administracion_redes/redes_book.pdf
           ASIR/2/SGBD/sgbd_book.pdf
           DAM/1/sistemas_informaticos/sistemas_informaticos.pdf
+          DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           SMR/2/SOred/SOred.pdf
           otros/PFsense/pfsense_book.pdf
           otros/Docker/docker_book.pdf

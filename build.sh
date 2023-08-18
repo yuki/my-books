@@ -5,6 +5,7 @@ LIBROS=(
 #    "ASIR/1/ISO_operating_systems_deployment/ iso_en_book.tex"
     "ASIR/2/SGBD/ sgbd_book.tex"
     "DAM/1/sistemas_informaticos/ sistemas_informaticos.tex"
+    "DAM/2/desarrollo_interfaces/ desarrollo_interfaces.tex"
     "SMR/2/SOred/ SOred.tex"
 )
 

@@ -283,7 +283,6 @@ override fun onSaveInstanceState(outState: Bundle) {
     outState?.run {
         putInt("contador", contador)
     }
-
     // Always call the superclass so it can save the view hierarchy.
     super.onSaveInstanceState(outState)
 }
@@ -291,7 +290,6 @@ override fun onSaveInstanceState(outState: Bundle) {
 override fun onRestoreInstanceState(savedInstanceState: Bundle) {
     // Always call the superclass so it can restore the view hierarchy.
     super.onRestoreInstanceState(savedInstanceState)
-
     // Restore state members from saved instance.
     savedInstanceState?.run {
         contador = savedInstanceState.getInt("contador")

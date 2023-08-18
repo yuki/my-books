@@ -4,7 +4,7 @@ En este repositorio vas a encontrar distintos libros de texto para distintos cur
 Más adelante verás que la licencia utilizada para estos libros es una licencia libre de Creative Commons.
 
 
-![Cultura libre](https://raw.githubusercontent.com/yuki/yukibook.cls/main/img/seal.png)
+![Cultura libre](https://raw.githubusercontent.com/yuki/yukibook.cls/main/img/seal.svg)
 
 
 ## Tabla de contenidos
@@ -33,7 +33,7 @@ Realizar mis propios apuntes tiene ciertas ventajas:
 
 
 ## ¿Están terminados?
-Los libros son un trabajo contínuo. En principio, los que se pueden descargar en formato PDF están listos para ser utilizados.
+Los libros son un trabajo contínuo. En principio, los que se pueden descargar en formato PDF están listos para ser utilizados, pero es posible que no estén terminados para todo el currículo de la asignatura.
 
 En caso de ser modificados, los PDF se autogeneran y podrás descargar las últimas versiones en los enlaces que aparecen a continuación.
 
@@ -47,6 +47,9 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
 * Grado Superior para Técnico superior en Administración de Sistemas informáticos en red
   * [Planificación y administración de redes](https://github.com/yuki/my-books/releases/download/latest/redes_book.pdf) **NOTA: No está acabado**
   * [Administración de sistemas gestores de bases de datos](https://github.com/yuki/my-books/releases/download/latest/sgbd_book.pdf)
+* Grado Superior para Técnico superior en Desarrollo de Aplicaciones Multiplataforma
+  * [Sistemas Informáticos](https://github.com/yuki/my-books/releases/download/latest/sistemas_informaticos.pdf)
+  * [Desarrollo de Interfaces](https://github.com/yuki/my-books/releases/download/latest/desarrollo_interfaces.pdf)
 
 
 ### Otros libros
