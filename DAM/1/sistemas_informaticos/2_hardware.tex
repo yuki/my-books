@@ -41,7 +41,7 @@ El matemático y físico \href{https://es.wikipedia.org/wiki/John_von_Neumann}{J
 
 Hoy en día, los ordenadores han evolucionado, pero la arquitectura sigue siendo la misma, aunque más compleja.
 
-\infobox{\textbf{Podemos ver una simulación de la Arquitectura Von Neumann \href{https://lab.xitrus.es/VonNeumann/}{aquí}}}
+\exercisebox{\textbf{Podemos ver una simulación de la Arquitectura Von Neumann \href{https://lab.xitrus.es/VonNeumann/}{aquí}}}
 
 
 \section{Componentes básicos}
@@ -108,6 +108,8 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
         \item \textbf{Northbridge}: O puente norte. Controla el tráfico de los componentes que trabajan a más alta frecuencia. Comunica el microprocesador, la memoria RAM y la GPU (la ranura PCI express).
         \item \textbf{Southbridge}: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, ...
     \end{itemize}
+
+    \infobox{\textbf{Hoy día el northbridge está integrado en el propio procesador y en algunos casos partes del Southbridge también.}}
 
     \item \textbf{Ranuras de expansión}: Vamos a identificar estas ranuras como las más modernas  \textbf{PCIexpress}. Son un bus de comunicación de datos de alta velocidad que es usado principalmente para conectar tarjetas gráficas.
 
@@ -195,6 +197,7 @@ Se ha unificado en esta sección BIOS y UEFI ya que cumplen de manera similar la
 
 El sistema básico de entrada-salida (del inglés \textit{Basic Input/Output System}, o BIOS) lo creó IBM para sus ordenadores “\textbf{Personal Computer}”. Posteriormente se obtuvo por ingeniería inversa las funciones que realizaba tratando de buscar equipos  que fueran compatibles (denominados “PC-compatible”) y de esta manera convirtiéndose en un estándar de facto.
 
+%\vspace{-20pt}
 \begin{center}
     \includegraphics[width=0.7\linewidth]{bios.png}
     \captionof{figure}{Interfaz BIOS. Fuente \href{https://en.wikipedia.org/wiki/BIOS\#/media/File:Award_BIOS_setup_utility.png}{Wikipedia}}
@@ -207,11 +210,6 @@ A través de este interfaz se podían configurar algunos aspectos del hardware c
 \subsubsection{UEFI}
 La \textit{\textbf{Unified Extensible Firmware Interface}} (UEFI o «interfaz unificada de firmware extensible») es una especificación pública que define un interfaz entre el sistema operativo y el firmware de la plataforma.
 
-
-\begin{center}
-    \includegraphics[width=0.7\linewidth]{uefi.jpg}
-\end{center}
-
 Se puede considerar una evolución de la BIOS  que tiene las siguientes características:
 
 \begin{itemize}
@@ -220,6 +218,12 @@ Se puede considerar una evolución de la BIOS  que tiene las siguientes caracter
     \item Retro-compatible con BIOS.
     \item Interfaz gráfica más amigable con el usuario.
 \end{itemize}
+
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{uefi.jpg}
+    \captionof{figure}{Interfaz UEFI placa Asus.}
+\end{center}
 
 
 \subsection{Procesador}
@@ -281,7 +285,7 @@ Dadas todas las características que hemos visto previamente, no podemos determi
     \item \href{https://cpu.userbenchmark.com/Compare/Intel-Core-i5-11400-vs-Intel-Core2-Duo-E8200/4112vsm3200}{Comparativa entre los dos últimos}
 \end{itemize}
 
-\errorbox{\textbf{No nos podemos quedar con la idea de que “cuanto más mejor” cuando nos referimos a cantidades en as características del procesador}}
+\errorbox{\textbf{No nos podemos quedar con la idea de que “cuanto más mejor” cuando nos referimos a cantidades en las características del procesador}}
 
 Es por eso que existen las \textbf{pruebas de rendimiento}, también conocido en inglés como \textbf{benchmark}.
 
@@ -290,9 +294,9 @@ Estas pruebas de rendimiento se ejecutan a través de un programa que va a ejecu
 De esta manera, si utilizamos el mismo programa de benchmark en dos procesadores distintos, obtendremos puntuaciones distintas. Por ejemplo, \href{https://www.geekbench.com/}{Geekbench} es un programa multiplataforma muy popular hoy día:
 
 \begin{center}
-    \vspace{-20pt}
-    \includegraphics[width=0.8\linewidth]{geekbench.png}
-    \vspace{-20pt}
+    \vspace{-25pt}
+    \includegraphics[width=0.7\linewidth]{geekbench.png}
+    \vspace{-25pt}
 \end{center}
 
 
@@ -320,7 +324,11 @@ El sistema de refrigeración cuenta con dos partes:
     \includegraphics[width=\linewidth]{cooler_2.jpg}
 \end{minipage}
 \hfill
-\vspace{30pt}
+
+\vspace{-20pt}
+\begin{center}
+    {\footnotesize Disipador con ventilador y refrigeración líquida autocontenida.}
+\end{center}
 }
 
 
@@ -425,7 +433,7 @@ Estos cabezales son los encargados de magnetizar la superficie del plato al real
 \end{minipage}
 \vspace{-35pt}
 \begin{center}
-  Fuente: \href{https://es.wikipedia.org/wiki/Unidad_de_disco_duro}{Wikipedia}
+  {\footnotesize Fuente:  \href{https://es.wikipedia.org/wiki/Unidad_de_disco_duro}{Wikipedia}}
 \end{center}
 }
 
@@ -700,7 +708,7 @@ Estos conectores externos tienen un cable que se conectan a unos pines en la pla
 \vspace{-10pt}
 \begin{center}
     \includegraphics[width=0.35\linewidth]{usb_placa_base.png}
-    \vspace{-10pt}
+%    \vspace{-10pt}
     \captionof{figure}{Conector USB-2 y USB-3 en placa base (pines)}
 \end{center}
 
@@ -727,6 +735,8 @@ Para que nuestro ordenador se pueda conectar a una red, las placas base ya tiene
     El conector \textbf{SMA} se utiliza en algunos tipos de antenas WiFi desmontables que nos podemos encontrar en algunos routers, placas base, tarjetas PCI... Es un conector enroscable y fácilmente desmontable.
 \end{minipage}
 
+
+\subsubsection{Otros conectores}
 
 \vspace{12pt}
 \begin{minipage}{0.15\linewidth}
@@ -789,7 +799,7 @@ La caja del ordenador, o chasis, es la estructura metálica donde se introducen 
 
 Existen distintos tipos de caja, normalmente variando el tamaño, por lo que es importante adecuar la caja a los componentes que queramos albergar dentro.
 
-\warnbox{\textbf{Cuidado con coger una caja demasiado pequeña y que luego la placa base, o la anchura de la tarjeta gráfica no entre}}
+\warnbox{\textbf{Cuidado con comprar una caja demasiado pequeña y que luego la placa base, o la anchura de la tarjeta gráfica no entre}}
 \vspace{10pt}
 
 \begin{center}

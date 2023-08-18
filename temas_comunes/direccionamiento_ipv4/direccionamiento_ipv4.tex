@@ -60,7 +60,13 @@ La máscara de red es un número binario de 32 bits que nos permitirá conocer q
 
 Al igual que la IP, \textbf{una máscara de red son 32 bits} que contendrán a la izquierda “n” unos y a la derecha “m” ceros.
 
-\warnbox{\textbf{En la máscara de red a la izquierda irán los \texttt{1} y a la derecha los \texttt{0}. ¡Nunca se mezclan!}}
+\errorbox{
+    \begin{center}
+        \textbf{En la máscara de red a la izquierda irán los \texttt{1} y a la derecha los \texttt{0}.}
+
+{\large \textbf{¡NUNCA SE MEZCLAN!}}
+    \end{center}
+}
 
 Por ejemplo:
 \begin{itemize}
@@ -105,7 +111,7 @@ En nuestro ejemplo es $2^{16} = 65536$ posibles IPs. \textbf{De estas IPs existe
 
     \textbf{Al nombre de la red siempre se le debe añadir la máscara}, por lo que quedaría:  \texttt{\textbf{192.168.0.0 /16}}
 
-    \errorbox{\textbf{Si no se pone la máscara de red, podría ser una IP suelta de cualquier red}}
+    \errorbox{\textbf{Si no se pone la máscara de red, podría ser una IP suelta de cualquier red.}}
 
     \item \textbf{Broadcast}: Sirve para poder mandar un mensaje a todos los dispositivos de la red. Para formar esta dirección usamos el prefijo de la red y el resto de bits ponerlos a 1, por lo que en nuestro ejemplo quedaría:
 

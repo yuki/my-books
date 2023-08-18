@@ -8,20 +8,20 @@ El ser humano, desde hace tiempo ha utilizado como sistema para contar el sistem
 
 El sistema numérico decimal está basado en diez símbolos ordenados (0, 1, 2, 3, 4, 5, 6, 7, 8, 9), situados de manera ponderada (cada posición tiene un peso específico), que permiten representar las cantidades deseadas. Debido a que hacemos uso de diez símbolos se dice que utiliza la \textbf{base 10}.
 
-\subsection*{Representación}
+%\subsection*{Representación}
 Cuando se combina con otros sistemas de numeración, debemos indicar la base en la forma $ \mathbf{19_{(10}} $ , es decir, poniendo un pequeño “\textbf{(10}” a la derecha del número representado la base 10.
 
-La representación de cualquier combinación del sistema decimal se puede representar en forma de potencia, donde la base es 10 (como ya hemos visto antes) y el exponente es la posición en la que se sitúa el símbolo.
+La representación de cualquier combinación del sistema decimal se puede representar en forma de potencia, donde la base es 10 y el exponente es la posición en la que se sitúa el símbolo.
 
 Vamos a tomar como ejemplo el siguiente número: \textbf{146}. La representación en forma de potencias:
 
 \begin{center}
     \vspace{-10pt}
-    $ 146 =1\times10^2 + 4\times10^1 + 6\times10^0 $
+    $ 146 = 100+40+6 $
 
     $ 146 = 1\times100 + 4\times10 + 6\times1 $
 
-    $ 146 = 100+40+6 $
+    $ 146 =1\times10^2 + 4\times10^1 + 6\times10^0 $
 \end{center}
 
 Como se puede comprobar, lo que hemos hecho ha sido coger cada símbolo representado y lo hemos multiplicado por la base (en este caso base 10) y a la base le hemos puesto el exponente de la posición en la que se encuentra. \textbf{El símbolo de más a la derecha tiene como exponente el cero}, y hacia la izquierda el exponente se incrementa en uno para cada posición.
@@ -32,7 +32,7 @@ Como se puede comprobar, lo que hemos hecho ha sido coger cada símbolo represen
 
 En informática el sistema binario es el más importante ya que es el sistema que internamente utilizan los circuitos digitales. En este sistema sólo se hace uso de dos símbolos, el “0” y el “1”, y por tanto \textbf{su base es 2}. Los dos dígitos se denominan \textbf{bits} (contracción de \textbf{binary digit}).
 
-\subsection*{Representación}
+%\subsection*{Representación}
 
 Para representar que estamos haciendo uso del sistema binario debemos indicar la base al lado del número, por ejemplo: $\mathbf{ 101001_{(2}} $. Como se puede ver es añadir “\textbf{(2}” en pequeño al final del último símbolo.
 
@@ -47,7 +47,7 @@ En informática es muy habitual hacer uso del sistema hexadecimal a la hora de t
 
 También se usa durante la edición de código en formato de datos, o durante la programación en ensamblador.
 
-\subsection*{Representación}
+%\subsection*{Representación}
 Al igual que con los sistemas anteriores, debemos añadir la base cuando estemos utilizando el sistema hexadecimal: $\mathbf{ F17A_{(16}} $ , $\mathbf{ FBE1D_{(16}} $ , $\mathbf{ 1FAB27_{(16}} $
 
 
@@ -56,7 +56,7 @@ En ordenadores antiguos era habitual hacer uso del sistema octal. Hoy día se us
 
 Esta vez nos basamos en ocho símbolos ordenados (0, 1, 2, 3, 4, 5, 6, 7), que, al combinarlos, permiten representar las cantidades deseadas. Debido a que hacemos uso de ocho símbolos se dice que utiliza la \textbf{base 8}.
 
-\subsection*{Representación}
+%\subsection*{Representación}
 Para representar la base, debemos añadir “(8” a la derecha del número que hayamos indicado, como por ejemplo: $\mathbf{ 770_{(8} }$ , $\mathbf{ 175_{(8}} $
 
 
@@ -134,7 +134,7 @@ Cualquier número binario puede convertirse a su equivalente decimal multiplican
 
 Nótese que el procedimiento consiste en determinar los valores (es decir, las potencias de 2) de cada posición de bit que contenga un 1 y luego sumarlos.
 
-Nótese también que el \textbf{MSB} (\textit{Most Significant Bit} = bit más significativo, el que está más a la izquierda, el que tiene mayor valor) tiene un valor de $\mathbf{2^4}$ a pesar de que es el quinto bit. Esto se debe a que el \textbf{LSB} (\textit{Least Significant Bit}, el bit menos significativo, el que está a la derecha) es el primer bit y tiene un valor de $\mathbf{2^0}$.
+Nótese también que el \textbf{MSB} (\textit{Most Significant Bit} = bit más significativo,\textbf{ el que está más a la izquierda}, el que tiene mayor valor) tiene un valor de $\mathbf{2^4}$ a pesar de que es el quinto bit. Esto se debe a que el \textbf{LSB} (\textit{Least Significant Bit}, el bit menos significativo, el que está a la derecha) es el primer bit y tiene un valor de $\mathbf{2^0}$.
 
 \subsection*{... octal}
 Para convertir un número binario a octal \textbf{se agrupan los dígitos de 3 en 3 empezando desde el lado derecho} hacia la izquierda, sustituyendo cada trío de dígitos binarios por su equivalente en octal.
