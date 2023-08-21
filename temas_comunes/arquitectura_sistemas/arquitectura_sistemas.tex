@@ -45,7 +45,7 @@ Entre las tareas que hay que tener en cuenta, se podrían destacar las siguiente
 
 \section{Arquitectura multicapa}
 
-Un sistema informático multicapa es aquel que hace uso de una arquitectura \textbf{cliente-servidor} en las que existe una separación física entre las distintas funciones que tiene una aplicación o servicio.
+Un sistema \href{https://es.wikipedia.org/wiki/Arquitectura_multicapa}{informático multicapa} es aquel que hace uso de una arquitectura \textbf{cliente-servidor} en las que existe una separación lógica y/o física entre las distintas funciones que tiene una aplicación o servicio.
 
 Normalmente se suele representar como una arquitectura en tres niveles, siendo estos:
 
@@ -69,8 +69,29 @@ Normalmente se suele representar como una arquitectura en tres niveles, siendo e
     \item \textbf{Capa de datos}: es donde residen los datos y es la encargada de acceder a los mismos. Está formada por uno o más gestores de bases de datos que realizan todo el almacenamiento de datos, reciben solicitudes de almacenamiento o recuperación de información desde la capa de negocio.
 \end{itemize}
 
+\infobox{\textbf{Las aplicaciones web se pueden separar en dos capas: aplicación y base de datos.}}
 
-\chapter{Escalado vertical vs horizontal}
+En aplicaciones web es posible crear una arquitectura en capas aunque la aplicación no esté 100\% pensado para ello: la propia aplicación y la base de datos.
+
+
+\section{Arquitectura de microservicios}
+
+Para poder crear una \href{https://es.wikipedia.org/wiki/Arquitectura_de_microservicios}{arquitectura de microservicios} el enfoque debe darse desde el primer momento del desarrollo de software. Es decir, antes de realizar ningún tipo de programación la aplicación se planteará como pequeños servicios que podrán interactuar entre sí.
+
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{microservicios.png}
+\end{center}
+
+Cada servicio se encargará de implementar una única funcionalidad. En caso de necesitar alguna característica que se repita en varios, se debería crear un microservicio que proporcione dicha característica o funcionalidad.
+
+\infobox{\textbf{Podríamos comparar una arquitectura de microservicios como una librería de programación, en la que existen funciones que realizan una única función.}}
+
+Cada microservicio se desplegará de manera independiente, e incluso cada uno podrá estar programado en distintos lenguajes de programación. De esta manera \textbf{se puede hacer uso del lenguaje y la tecnología más adecuada para cada funcionalidad}.
+
+
+
+\chapter{Escalabilidad}
 
 Teniendo en cuenta todo lo dicho hasta ahora, cuando un sistema empieza a tener problemas de rendimiento deberemos abordar el problema y plantearnos cómo solucionarlo. De no hacerlo, se corre el peligro de que el servicio se vea interrumpido y por tanto perder tiempo de trabajo.
 
@@ -78,11 +99,37 @@ Antes de realizar ninguna modificación habría que analizar qué es lo que est�
 
 Dependiendo de las decisiones tomadas durante la instalación, y tras lo visto previamente, podremos abordarlo de dos maneras diferentes.
 
+\infobox{“Escalabilidad” no existe en el diccionario de la \href{https://dle.rae.es/escalabilidad}{RAE}, pero se usa como anglicismo de la palabra \textbf{\textit{scalability}}.}
+
 \section{Escalado vertical}
 
-Cuando se escala verticalmente un sistema lo que se va a realizar es el \textbf{añadir más recursos al nodo que está teniendo problemas}. Tras el análisis previo realizado se añadirán los recursos necesarios (más RAM, discos duros más rápidos, aumentar el número de procesadores/cores).
+Cuando se escala verticalmente un sistema lo que se va a realizar es \textbf{añadir más recursos al nodo que está teniendo problemas}. Tras el análisis previo realizado se añadirán los recursos necesarios (más RAM, discos duros más rápidos, aumentar el número de procesadores/cores).
 
-Comúnmente también se dice “meter más hierro”, porque antiguamente lo que se hacía era incrementar los recursos hardware del sistema. Hoy en día en sistemas virtualizados, estos recursos se pueden modificar, dependiendo del virtualizador, en caliente, por lo que no sería necesario reiniciar el servicio.
+Comúnmente también se dice “meter más hierro”, porque antiguamente lo que se hacía era incrementar los recursos hardware del sistema. Hoy en día en sistemas virtualizados, estos recursos se pueden modificar, dependiendo del virtualizador, en “caliente”, por lo que no sería necesario reiniciar el servicio.
 
 Es el sistema más simple, ya que incrementando los recursos se espera que el problema se apacigüe o desaparezca, aunque esto no tiene por qué ser siempre así.
 
+\section{Escalado horizontal}
+
+El escalado horizontal trata de solventar el problema repartiendo la carga entre más nodos. Este proceso de escalado es más complejo y dependerá de la modularidad del servicio ofrecido. Es decir, la lógica de la aplicación debería haberse pensado desde el inicio para un sistema que escalará de manera horizontal en el futuro.
+
+En principio, al realizar un escalado horizontal no existe una limitación de crecimiento, ya que siempre que se pueda repartir la carga entre servidores, no importará el número de ellos.
+
+
+Dentro del escalado horizontal podríamos diferenciar dos tipos:
+\begin{itemize}
+    \item \textbf{Escalado horizontal por capas}: Teniendo en cuenta lo visto previamente acerca de la arquitectura multicapa, en este modelo lo que se conseguirá es escalar cada capa de manera independiente. Podría realizarse de la siguiente manera:
+    \begin{center}
+        \includegraphics[width=0.4\linewidth]{capas-ha.png}
+    \end{center}
+    \begin{itemize}
+        \item \textbf{Servidores frontales} (proxys) reciben las peticiones de la aplicación o del navegador y que balancean la carga y la mandan a servidores con la capa de presentación.
+        \item Servidores con la \textbf{capa de presentación} que realizan las peticiones de negocio a los servidores correspondientes.
+        \item Servidores de \textbf{lógica de negocio} que procesan las peticiones y piden los datos a un clúster de bases de datos.
+        \item \textbf{Clúster de base de datos}.
+    \end{itemize}
+
+    \item \textbf{Escalado horizontal de microservicios}: En el caso del escalado de microservicios, será similar al escalado horizontal, pero en este caso sólo se escalarán los microservicios necesarios.
+
+    Debido a que todo es mucho más modular, es posible que quizá sólo sea necesario realizar el escalado de algunos microservicios, que quizá sean los más utilizados o los que requieren más tiempo de ejecución.
+\end{itemize}
