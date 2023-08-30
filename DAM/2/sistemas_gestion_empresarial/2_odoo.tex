@@ -1,0 +1,88 @@
+\chapter{Introducción}
+\href{https://es.wikipedia.org/wiki/Odoo}{Odoo}, antes conocido como \textit{OpenERP} es un software de planificación de recursos empresariales con licencia dual. Existe una versión de código abierto y una versión con licencia comercial con características y servicios exclusivos.
+
+Odoo también cuenta con un apartado de CRM (en inglés \textit{customer relationship management}, o gestión de relaciones con el cliente), pudiendo también crear una web de comercio electrónico, facturación, ...
+
+
+\chapter{Instalación}
+
+Tal como hemos visto en el tema anterior, la instalación de un sistema se puede realizar de distintas maneras, por lo que deberemos atender a las necesidades del proyecto para realizar una instalación adecuada.
+
+En nuestro caso, se va a optar por realizar una instalación a través de servicios Docker, de esta manera podemos realizar pruebas con distintas versiones (tanto de Odoo como de la base de datos).
+
+\infobox{La alternativa sería realizar la instalación en una máquina virtual o haciendo uso de los distintos instaladores que existen en la \href{https://www.odoo.com/es_ES/page/download}{web oficial}}
+
+Para realizar la instalación seguiremos las indicaciones que aparecen en la web de \href{https://hub.docker.com/_/odoo}{Docker Hub} haciendo pequeñas modificaciones.
+
+\section{Servicios independientes}
+
+Es el sistema más básico, que requiere de levantar dos contenedores Docker:
+\begin{itemize}
+    \item Contenedor de base de datos \textbf{PostgreSQL}. Podremos elegir entre las distintas versiones del gestor de base de datos, pero haremos caso a las recomendaciones de la web. Habría que tener especial cuidado con el usuario y la contraseña que utilizamos.
+
+    En este caso también se ha expuesto el puerto 5432 que es el puerto por defecto de PostgreSQL:
+
+\begin{mycode}{Crear y arrancar el contenedor de la base de datos}{console}{}
+ruben@vega:~$ docker run -d -e POSTGRES_USER=odoo \
+-e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres \
+-p 5432:5432 --name odoo_db postgres:15
+\end{mycode}
+
+    \item Contenedor con el propio \textbf{Odoo}. Este contenedor tendrá los servicios y librerías necesarias para poder hacer funcionar la aplicación web.
+
+\begin{mycode}{Crear y arrancar el contenedor de la base de datos}{console}{}
+ruben@vega:~$ docker run -p 8069:8069 --name odoo \
+--link odoo_db:db -t odoo
+\end{mycode}
+\end{itemize}
+
+
+\section{Docker Compose}
+
+Docker Compose es una herramienta para correr servicios multi-contenedor y se crea a través de un fichero en formato YAML. Es una manera de crear,parar,reconstruir una arquitectura de servicios de manera rápida y sencilla.
+
+Se debe crear un fichero \configfile{compose.yaml} y lo ideal es que esté dentro de un directorio con el nombre del “stack de servicios”, ya que coge el directorio como parte del nombre a la hora de crear los contenedores.
+
+\begin{mycode}{Contenido de fichero compose.yaml}{yaml}{}
+version: '3.1'
+services:
+  web:
+    image: odoo:16.0
+    depends_on:
+      - db
+    ports:
+      - "8070:8069"
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    ports:
+      - "5433:5432"
+\end{mycode}
+
+Para arrancar los servicios se realiza, desde el mismo directorio donde se encuentra el fichero, con el siguiente comando
+
+\begin{mycode}{Levantar docker compose}{console}{}
+ruben@vega:~$ docker compose up
+\end{mycode}
+
+\errorbox{En Julio del 2023 se migró a Compose v2, tal como se indica en la \href{https://docs.docker.com/compose/}{web oficial}. Dependiendo de la versión que tengamos instalada será “docker compose up” o “docker-compose up”}
+
+
+\section{Herramientas extra}
+Para poder acceder a la base de datos podemos hacer uso de un cliente externo. De esta manera no tendremos que entrar al contenedor y tendremos un interfaz gráfico con el que poder administrarla.
+
+Podemos utilizar:
+\begin{itemize}
+    \item \textbf{DBeaver}: Es una aplicación de escritorio que permite conectarnos a distintos SGBDs. Existe versión \href{https://dbeaver.io/}{community} y otra con \href{https://dbeaver.com/buy/}{licencia} que permite también conectarse a bases de datos NO-SQL.
+
+    \item \textbf{\href{https://www.pgadmin.org/}{pgAdmin}}: Es una aplicación que permite administrar PostgreSQL a través del servidor web.
+\begin{mycode}{Crear y arrancar el contenedor pgAdmin}{console}{}
+ruben@vega:~$ docker run -p 8090:80 \
+-e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' \
+-e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' \
+--name pgadmin4 -d dpage/pgadmin4
+\end{mycode}
+\end{itemize}
