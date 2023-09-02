@@ -1,27 +1,29 @@
 \chapter{Introducción}
 
-En nuestra vida laboral nos va a tocar realizar proyectos que consistirán en buscar soluciones a problemas y que conllevará una serie de tareas técnicas que tendremos que realizar: configurar una red de ordenadores, modificar una aplicación web, crear una aplicación móvil, ...
+En nuestra vida laboral vamos a realizar proyectos que consistirán en buscar soluciones a problemas y que conllevará una serie de tareas técnicas que tendremos que realizar: configurar una red de ordenadores, modificar una aplicación web, crear una aplicación móvil, analizar una infraestructura y proponer mejoras...
 
-Junto a ese proyecto lo más habitual es que se acompañe de una documentación del proyecto realizado, en el que se deberá explicar cuáles han sido las decisiones tomadas y cómo se ha realizado el proyecto.
+Junto a ese proyecto lo más habitual es que se acompañe de una documentación del proyecto realizado, en el que se deberá explicar la toma de requisitos por parte del cliente, el análisis realizado de los mismos, cuáles han sido las decisiones tomadas al realizar el proyecto y por qué y cómo se ha realizado el propio proyecto en sí mismo.
 
-Aunque hayamos leído cierta documentación en internet, como no estamos acostumbrados a realizar nuestra propia documentación, cuando comenzamos a crear documentación propia el resultado final que obtenemos no suele ser el adecuado.
+Aunque hayamos leído documentación en internet, como no estamos acostumbrados a realizar nuestra propia documentación, cuando comenzamos a crear documentación propia el resultado final que obtenemos no suele ser el adecuado.
 
 Es por eso que en este documento se van a dar una serie de consejos y pautas para realizar una buena documentación.
 
 
 \chapter{Lenguaje formal/técnico}
 
-\begin{minipage}{0.7\linewidth}
+\begin{minipage}{0.68\linewidth}
 %    TODO: crear environment para minipage
     \setlength{\parskip}{1.2em}
     \renewcommand{\baselinestretch}{1.4}
-    Aunque pueda parecer obvio, en las documentaciones no se puede utilizar un lenguaje coloquial, por lo que debemos escribir siempre desde un punto de vista técnico.
+    Aunque pueda parecer obvio, en las documentaciones no se puede utilizar un lenguaje coloquial, por lo que debemos \textbf{escribir siempre desde un punto de vista técnico}.
 
-    Se debe utilizar lenguaje formal y cuando hagamos referencia a opiniones, pensamientos o decisiones \textbf{se hará uso del plural mayestático}:
+    \textbf{Se debe utilizar lenguaje formal} y cuando hagamos referencia a opiniones, pensamientos o decisiones \textbf{se hará uso del plural mayestático}.
 \end{minipage}
 \hfill
-\begin{minipage}{0.2\linewidth}
-    \includegraphics[width=0.7\linewidth]{debian.png}
+\begin{minipage}{0.3\linewidth}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{debian.png}
+    \end{center}
 \end{minipage}
 
 
@@ -29,7 +31,7 @@ Es por eso que en este documento se van a dar una serie de consejos y pautas par
 \infobox{\textbf{Creemos que la solución realizada en este proyeto es la adecuada porque ...}}
 
 
-De esta manera se evita que la persona que escribe sea la que dé su opinión, y de esta manera el documento da la sensación que se ha realizado por un grupo de personas, que se ha tenido en cuenta la opinión de otros, o que ha sido supervisado.
+De esta manera se evita que la persona que escribe sea la que dé su opinión, ya que lo habitual es que detrás del proyecto hay un grupo de profesionales que respaldan las decisiones tomadas, que se ha tenido en cuenta la opinión de otros profesionales, o que ha sido supervisado.
 
 Cuando se haga uso de opiniones o se indique unos ajustes “\textbf{mejores que otros}” siempre deben llevar su justificación asociada para que se entienda el por qué de la elección realizada.
 
@@ -37,56 +39,62 @@ Cuando se haga uso de opiniones o se indique unos ajustes “\textbf{mejores que
 
 
 \chapter{Formato del documento}
-Aunque parece sencillo, el estilo puede resultar lo más difícil de realizar, por lo que tenemos que seguir una serie de consejos, que se expondrán a continuación, pero que no tienen por qué ser los únicos.
+Aunque inicialmente pueda parecer sencillo, el estilo del documento puede resultar lo más difícil de realizar, por lo que tenemos que seguir una serie de consejos, que se expondrán a continuación, pero que no tienen por qué ser los únicos.
 
 
 \section{Letra, sangrías y ajustes del documento}
 Hoy en día, la mayoría de editores de texto \textbf{WYSIWYG} (del inglés “\textit{What You See Is What You Get}”, lo que ves es lo que obtienes), como pueden ser Microsoft Word, LibreOffice o Google Docs, tienen unas opciones por defecto que hace que los documentos queden visualmente atractivos y que en principio no tengamos que modificar muchas cosas.
 
-Aún así, modificar estas preferencias es sencillo y puede hacer que el documento quede mejor, personalizado a nuestro gusto y se diferencie de los demás.
+Aún así, modificar estas preferencias es sencillo y puede hacer que el documento quede visualmente más atractivo, más personalizado, diferenciándose del resto de documentos, y que mejoren la primera impresión del lector.
 
 \infobox{\textbf{En las empresas se suelen crear plantillas personalizadas, con el logotipo de la empresa, colores corporativos, tipos de letra utilizados en el logo, ...}}
 
 
-Tal como se puede ver en este documento, el interlineado y la separación entre párrafos facilita la lectura del mismo, por lo que debería ser una configuración a ajustar.
+Tal como se puede ver en este mismo documento, el interlineado y la separación entre párrafos facilita la lectura del mismo, por lo que debería ser una configuración a ajustar.
 
 \begin{center}
     \includegraphics[width=0.7\linewidth]{libreoffice.png}
 \end{center}
 
-Cada editor de texto tiene unos ajustes que se pueden modificar, por lo que es recomendable dedicar un tiempo para entender las distintas configuraciones que ofrece. En la imagen superior se puede ver la configuración que ofrece \href{https://es.libreoffice.org/}{Libreoffice}
+Cada editor de texto tiene unos ajustes que se pueden modificar, por lo que es recomendable dedicar un tiempo para entender las distintas configuraciones que ofrece. En la imagen superior se puede ver la configuración que ofrece \href{https://es.libreoffice.org/}{Libreoffice}.
 
 
-Es importante modificar los ajustes de cada estilo y no ir título a título o párrafo a párrafo. Si queremos que todos los “Título 1” sean de color verde y tamaño 15 debemos editar ese estilo. Si luego decidimos que pasen a ser de color azul, con cambiar el estilo nos modificará todos los títulos y así no tendremos que ir uno a uno.
+\textbf{Es importante modificar los ajustes en el propio estilo} y no ir título a título o párrafo a párrafo. Si queremos que todos los “Título 1” sean de color verde y tamaño 15 debemos editar ese estilo. Si luego decidimos que pasen a ser de color azul y tener otra fuente, con cambiar el estilo nos modificará todos los títulos de manera automática, sin tener que perder el tiempo en ir modificando todos a mano.
 
-\infobox{\textbf{Si modificamos las configuraciones de un estilo, se aplicará a todo texto que sea de ese estilo en el documento.}}
+\errorbox{\textbf{Debemos modificar las configuraciones de los estilos, para así aplicar a todo texto que sea de ese estilo en el documento. No ir párrafo a párrafo o título a título}}
 \vspace{10pt}
 
 \subsection{Aspecto visual general}
 Tal como se puede apreciar en este documento, no hacen falta grandes florituras para que un documento quede atractivo a la vista y sea sencillo de leer.
+\vspace{10pt}
 
-
-\begin{minipage}{0.19\linewidth}
-    \includegraphics[width=0.65\linewidth]{debian.png}
+\begin{minipage}{0.25\linewidth}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{debian.png}
+    \end{center}
 \end{minipage}
 \hfill
-\begin{minipage}{0.8\linewidth}
+\begin{minipage}{0.7\linewidth}
     \setlength{\parskip}{1.2em}
     \renewcommand{\baselinestretch}{1.4}
-\textbf{Hay que tener ojo crítico con nuestros propios documentos} y realizar una comparación con el trabajo realizado y con otros documentos que hayamos visto.
+\textbf{Hay que tener ojo crítico con nuestros propios documentos} y realizar una comparación entre el trabajo realizado y otros documentos que hayamos visto.
 
 
-Si nuestro documento no tiene las características exigidas, o a nosotros mismos nos parece que no resulta atractivo, no es raro pensar que al profesor que lea el documento tampoco le guste.
+Si nuestro documento no tiene las características exigidas, o a nosotros mismos nos parece que no resulta atractivo, \textbf{no es raro pensar que al profesor que lea el documento tampoco le guste}.
 \end{minipage}
 
 El aspecto visual puede cambiar la predisposición del lector, ayudando a que la lectura sea más agradable y sencilla. Y al contrario, puede predisponer a no querer seguir leyendo y terminar cuanto antes el documento.
 
+\errorbox{\textbf{La primera impresión del documento puede hacer que al docente que lo corrija le predisponga para bien o para mal.}}
+\vspace{10pt}
+
+
 \section{Cabecera, pie de página y números de página}
-Es recomendable añadir el número de página en el documento, ya que facilita saber en qué parte del documento nos encontramos y para de esta manera poder hacer referencia a una página concreta.
+Es recomendable añadir el número de página en el documento, ya que facilita saber en qué parte del documento nos encontramos, para de esta manera poder hacer referencia a una página concreta. Normalmente el número de página suele aparecer en el pie de página, como se ha hecho en este documento.
 
-Normalmente el número de página suele aparecer en el pie de página, como se ha hecho en este documento.
+Aparte, se debe añadir el título del documento, el nombre de la empresa o alguna referencia general en el pie de página o en la cabecera. Es importante es que en estos apartados el tamaño de letra utilizado sea menor al del texto general y que haya la suficiente separación como para que no se mezcle con el texto.
 
-Aparte, se puede añadir el título del documento, el nombre de la empresa o algún tipo general en el pie de página o en la cabecera. Lo que es importante es que en estos apartados el tamaño de letra utilizado sea menor al del texto general y que haya la suficiente separación como para que no se mezcle con el texto.
+\warnbox{\textbf{En la cabecera y en el pie de página el tamaño de letra debe ser menor, para que no se confunda con el propio texto.}}
 
 Una vez más, se recomienda ser crítico con lo realizado, comprobar que el aspecto visual general de lo realizado es acorde y facilita la lectura.
 
@@ -102,28 +110,42 @@ Dependiendo de la imagen que queramos utilizar, podríamos ajustarla al centro, 
     \includesvg[width=0.7\linewidth]{debian.svg}
 \end{center}
 
-En este caso es el nombre de la distribución \href{https://www.debian.org/}{Debian}, pero anteriormente hemos visto una captura de pantalla de un programa.
+En este caso es el nombre de la distribución \href{https://www.debian.org/}{Debian}, pero anteriormente hemos visto una captura de pantalla de un programa. Las imágenes deben tener el tamaño adecuado para ver el contenido de las mismas.
 
 \subsection{Explicación sobre las imágenes}
 A lo largo de este documento se han añadido ciertas imágenes que se han puesto de distintos tamaños tanto a la izquierda como a la derecha de párrafos.
 
-Estas imágenes han sido un mero ejemplo de cómo se pueden poner imágenes que acompañan al párrafo, siempre dentro de los márgenes del documento y dejando espacio al texto.
+Estas imágenes han sido un mero ejemplo de cómo se pueden poner imágenes que acompañan al párrafo, \textbf{siempre dentro de los márgenes del documento y dejando espacio al texto}. Las imágenes no deben de estar pegadas al texto por ningún margen.
 
-Toda imagen que sea añadida al documento debe llevar consigo una explicación de a qué se refiere con ella. En el caso de las imágenes al lado de los párrafos, los párrafos harán referencia a las imágenes. En el caso de imágenes centradas, antes o después de la misma se deberá explicar a qué hace referencia
+\errorbox{\textbf{Toda imagen que sea añadida al documento debe llevar consigo una explicación.}}
+
+En el caso de las imágenes que están situadas al lado de los párrafos, los párrafos harán referencia a las imágenes. En el caso de imágenes centradas, lo ideal es que antes antes de la misma se detalle a qué hace referencia.
 
 
 Por ejemplo:
 
 \begin{quote}
-“Una vez realizado el paso anterior llegaremos a la siguiente ventana que nos indicará los parámetros que una vez rellenados podremos hacer click en el botón \textbf{siguiente}.”
+En LibreOffice podemos modificar todos los estilos yendo al menú del párrafo yendo al menú “Estilos --> Gestionar estilos”, y desde ahí seleccionar el que nos interese modificar. Por ejemplo, el “\textbf{Cuerpo de texto}”:
+
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{libreoffice.png}
+\end{center}
 \end{quote}
 
+Tal como se puede ver, se ha realizado una pequeña introducción a lo que se quiere explicar para posteriormente añadir una imagen explicativa del resultado obtenido.
+
 \subsection{Recorte de imágenes}
-Cuando en una imagen queremos hacer referencia a algo en concreto, lo ideal es no poner la captura de pantalla del escritorio completo, sino sólo hacer referencia a la ventana de la que estamos hablando.
+Cuando en una imagen queremos hacer referencia a algo en concreto, lo ideal es no poner la captura de pantalla del escritorio completo, sino sólo realizar la captura a la ventana de la que estamos hablando.
 
-Con esto conseguimos hacer que la atención se centre sobre lo que es realmente importante, y que no aparezca información visual que no es necesaria. Si queremos concretar algo dentro de una imagen, es recomendable bordear esa sección de un color (rojo, por ejemplo) para que sea más apreciable.
+\begin{center}
+    \includegraphics[width=0.4\linewidth]{recortes.png}
+\end{center}
 
-También es conveniente añadir un pequeño borde a ciertas imágenes, ya que en los escritorios actuales las ventanas hacen uso de fondo blanco y no se vería de manera correcta con el fondo blanco del documento.
+Para ello la aplicación “Herramienta de Recortes” de Windows permiten hacer un recorte perfecto de la ventana que seleccionemos, tal como se puede ver en la imagen anterior, seleccionando el modo. De esta manera obtendremos sólo la ventana que nos interesa, evitando hacer un mal recorte,  y conseguiremos que \textbf{la atención se centre sobre lo que es realmente importante}.
+
+Si queremos concretar algo dentro de una imagen, es recomendable bordear esa sección de un color (rojo, por ejemplo) para que sea más apreciable. En algunos casos también podría añadirse una pequeña flecha para mostrar la opción.
+
+A la hora de tener capturas de pantalla de ciertas ventanas, o recortadas, puede ser conveniente añadir un pequeño borde, ya que en los escritorios actuales las ventanas hacen uso de fondo blanco y no se vería de manera correcta con el fondo blanco del documento.
 
 A continuación se visualiza la misma imagen con y sin borde:
 
@@ -133,13 +155,13 @@ A continuación se visualiza la misma imagen con y sin borde:
     \includegraphics[frame,width=0.45\linewidth]{captura.png}
 \end{center}
 
-Como se puede apreciar, la imagen que no tiene borde hace un efecto de “continuidad” que puede dar a equivocación de cuándo empieza la imágen y cuándo termina.
+Como se puede apreciar, la imagen que no tiene borde hace un efecto de “recorte brusco”, mientras que con el borde se ve claramente que es una sección recortada.
 
-\infobox{\textbf{Es recomendable poner un borde a las imágenes (como capturas de pantalla con fondo blanco).}}
+\infobox{\textbf{Es recomendable poner un borde a las capturas de ventanas}}
 
 
 \chapter{Referencias}
-En todo documento puede existir referencias a otro texto, o texto copiado y/o adquirido de varias fuentes, y en caso de ser así debe de ser referenciado.
+En todo documento pueden (y deben) existir referencias a otra documentación, o texto copiado y/o adquirido de varias fuentes, y en caso de ser así debe de ser referenciado.
 
 \vspace{-10pt}
 \begin{quote}
@@ -147,29 +169,50 @@ En todo documento puede existir referencias a otro texto, o texto copiado y/o ad
 \end{quote}
 
 
-Tal como se puede ver en el párrafo anterior, el texto está entrecomillado, con una sangría superior y al final del mismo aparece la fuente donde se ha cogido la información y un enlace a la web de referencia. Existen distintas maneras de referenciar textos o citas de otros documentos, pero no entraremos en detalle sobre ello.
+Tal como se puede ver en el párrafo anterior, el texto está entrecomillado, con una sangría superior y al final del mismo aparece la fuente de la información original y un enlace a la web de referencia. Existen distintas maneras de referenciar textos o citas de otros documentos, pero no entraremos en detalle sobre ello.
 
 
-Por tanto, si a la hora de crear un documento hacemos referencia a otros textos, deberíamos indicarlo, y más cuando hacemos corta-pega del mismo. Hay que ser objetivos y dar a conocer al lector que lo que acaba de leer no es de elaboración propia y que por tanto se ha utilizado el texto de otro autor. De ahí que haya que referenciar al autor original o la página web de donde se ha sacado la información.
+Por tanto, si a la hora de crear un documento hacemos referencia a otros textos, deberíamos indicarlo, y más cuando hacemos copia-pega del mismo. Hay que ser objetivos y dar a conocer al lector que lo que acaba de leer no es de elaboración propia y que por tanto se ha utilizado el texto de otro autor. De ahí que \textbf{hay que referenciar al autor original o la página web de donde se ha sacado la información}.
 
 Otro ejemplo podría ser: tal como escribió \href{https://es.wikipedia.org/wiki/Isaac_Newton}{Isaac Newton} a Hooke: “\textit{Si he visto más lejos es porque estoy sentado sobre los hombros de gigantes.}”, lo que viene a decir que hasta él mismo había basado sus estudios y había conseguido sus logros haciendo uso de las aportaciones de otros grandes científicos anteriores. Como se puede ver, la referencia está entre comillas también y en tipo de letra itálica.
 
 
+\chapter{Releer el documento antes de entregar}
+Un documento técnico no es algo que se realice en un día, por lo que pasa por varias etapas durante su escritura, y es por eso que antes de realizar la entrega se debe de repasar lo escrito.
+
+Aunque pueda parecer obvio, este paso no se suele realizar porque quien realiza el documento suele pensar que cuando realizó la escritura ya lo hizo bien. Aún pudiendo ser cierto, una lectura posterior siempre va a sacar a relucir fallos e incongruencias de lo escrito.
+
+En algunos casos puede que durante la escritura inicial se nos olvidase corregir faltas de ortografía, o la estructura del documento no se realizase de la mejor manera correcta, o incluso que se explique lo mismo en dos párrafos contiguos.
+
+Es por eso que \textbf{todos los componentes que han realizado el proyecto deben de leer y aportar correcciones al mismo antes de realizar la entrega final} al cliente.
+
+
+\chapter{Actualización del documento}
+
+Un documento técnico suele ser un “ente vivo”, que debe ser actualizado cuando los distintos servicios/componentes del proyecto sufran actualizaciones, modificaciones o simplemente se dejen de utilizar.
+
+La documentación técnica debe reflejar fielmente el estado actual de la infraestructura/programa/web, ya que de nada sirve tener información anticuada que ya no refleja la realidad, y que puede ser incluso contraproducente.
+
+Esta documentación servirá a nuevos integrantes de la compañía a conocer cuál es el estado de la infraestructura/programa/web, o también a una empresa externa nueva que vaya a realizar modificaciones sobre la misma.
+
+
 \chapter{Elementos de un documento}
 
-Un documento técnico debe contar con los siguientes elementos.
+Un documento técnico debe contar con al menos los siguientes elementos.
 
 \section{Portada}
 Un documento técnico debe contar con una portada en la que se puede añadir una imagen sobre lo realizado, el nombre/logo de la empresa junto con el nombre/logo del cliente... Aquí dependerá de la plantilla corporativa.
 
-En la portada también se deben añadir los nombres de las personas que han realizado el documento y la fecha de realización.
+\errorbox{\textbf{Da muy mala presentación poner una imagen de baja resolución en la portada.}}
+
+En la portada también se deben añadir los nombres de las personas que han realizado el documento, la fecha de realización, en algunos casos el nombre de la asignatura...
 
 
 \section{Índice}
 
-Se ha añadido un índice al inicio del documento en el que aparecen reflejados los títulos y las páginas en las que aparece.
+Se debe añadir un índice al inicio del documento en el que aparezcan reflejados los títulos y las páginas en las que aparece.
 
-\textbf{Este índice se realiza de manera automática por el editor de texto}, por lo que mostrará las páginas donde aparece cada título. En caso de haber cambios en el documento, el índice se debe de actualizar para que refleje los nuevos capítulos, páginas, ...
+\textbf{El índice se realiza de manera automática por el editor de textos}, pero para ello cada apartado debe de crearse con su correspondiente “Título/Encabezado”.  En caso de realizar cambios en el documento, el índice se debe de actualizar para que refleje los nuevos encabezados, páginas, ...
 
 
 \section{Introducción}
@@ -177,15 +220,99 @@ Al igual que se ha realizado en este documento, debe haber una introducción que
 
 En un documento técnico también se suele añadir cuáles han sido las funciones de los componentes del grupo que ha llevado a cabo el proyecto.
 
-\section{Parte central}
-Es la parte del documento donde se detalla lo realizado en el proyecto. Se debe separar en capítulos, secciones, subsecciones... es decir, crear una jerarquía en el documento.
+\section{Análisis y explicaciones de lo realizado}
+Es la parte del documento donde se detalla lo realizado en el proyecto. Se debe separar en distintos encabezados de distinto nivel. Es decir, se debe crear una jerarquía en el documento separando los apartados más importantes y dentro de ellos distintas tareas o explicaciones realizadas.
 
-Esta jerarquía de secciones se realiza a través de los distintos tipos de “títulos” que nos proveen los editores de texto, y que se ve muy bien reflejado en el índice.
+Esta jerarquía de secciones se realiza a través de los distintos tipos de “encabezados/títulos” que nos proveen los editores de texto, y que se ve muy bien reflejado en el índice.
+
+\infobox{\textbf{Sólo mirando el índice se puede analizar si un documento está bien estructurado.}}
 
 
 \section{Resumen/Conclusiones}
 En las documentaciones se añade un resumen final en donde se reflejan los aspectos más importantes que se han detallado en ella.
 
-Este apartado suele estar al final, en una hoja separada, y como su propio nombre indica, trata de resumir los aspectos más importantes del mismo.
+Este apartado suele estar al final, pudiendo estar en una hoja separada, y como su propio nombre indica, trata de resumir los aspectos más importantes del mismo.
 
 También es una oportunidad de \textbf{dar valor a lo realizado, mostrando al clientes los puntos fuertes}, para dejar una imagen positiva de lo realizado. \textbf{Esto puede ayudar a futuras contrataciones}.
+
+
+
+
+
+\chapter{Resumen}
+
+Tal como se ha podido ver a lo largo de este documento, para realizar un documento técnico se debe tener en cuenta distintos aspectos que aunque \textit{a priori} puedan parecer sencillos, es un proceso que se debe aprender a realizar y que conlleva tiempo.
+
+Es importante ser críticos con el trabajo realizado, ya que la persona que lo va a leer (y corregir) puede obtener mucha información acerca de quienes lo han escrito: dedicación empleada, supervisión realizada, competencia técnica, competencia transversal escrita, ...
+
+\vfill
+\pagebreak
+
+
+\begin{landscape}
+
+    \chapter{Rúbrica de evaluación}
+    La siguiente rúbrica será la utilizada para realizar la corrección de los documentos entregados en las tareas y en los retos donde se pida la realización de una documentación técnica.
+
+    \infobox{\textbf{Se aconseja leer la rúbrica para tener en cuenta cómo se realizará la corrección de todo el documento técnico.}}
+
+\begin{rubrica}{X[-1]X[2]X[2]X[2]X[2]}
+    & Excelente(86\%-100\%) & Notable (60\%-85\%) & Mejorable (41-59\%) & Muy mejorable (0-40\%) \\
+
+    Aspecto \linebreak visual 10\% &
+        El documento visualmente está muy bien. La portada,  márgenes, títulos, imágenes, colores… hace que el documento sea fácil de leer. Está ordenado y parece un libro/documento profesional. &
+
+        El documento está visualmente bien, pero hay partes que no se han cuidado del todo. Se nota que la intención es buena, pero no está pulido del todo. &
+
+        El documento tiene una estética mejorable. Hay partes que se salvan, pero el cuidado general es pobre. &
+
+        El documento está desordenado. Visualmente no tiene una estética acorde a lo esperado. Las imágenes, títulos y colores elegidos hacen que la lectura sea compleja. \\
+
+
+    Redacción y faltas de ortografía 20\% &
+        El documento está bien escrito, existe coherencia y claridad en la expresión de ideas. No existen faltas ortográficas y el lenguaje utilizado es preciso. &
+
+        El documento está bien escrito. No existen apenas faltas ortográficas  (menos de 3)  y el lenguaje utilizado es correcto. &
+
+        Medianamente coherente y legible. Lenguaje simple e impreciso. Varios errores ortográficos, de puntuación o sintaxis (4-8). &
+
+        El documento es incoherente. Muchas faltas ortográficas y de sintaxis. Resulta complicado de leer debido al lenguaje utilizado y/o las faltas. \\
+
+    Calidad de la tarea, investigación, veracidad, lenguaje técnico, orden de los apartados, … 50\% &
+        Los contenidos investigados son correctos y de buena calidad.
+        Es fácil entender lo realizado y se puede utilizar como guía para repetir la tarea realizada.
+        Parece un documento técnico real entregado a un cliente tras la realización de un proyecto real. &
+
+        Casi todos los contenidos investigados son correctos y de buena calidad.
+        Datos parcialmente contrastados y veraces.
+        En general es un buen documento, aunque hay partes que se deberían mejorar para poder repetir los pasos. &
+
+        Algunos contenidos investigados no son correctos y de calidad mejorable.
+        Los pasos dados están desordenados, no se ajustan del todo a la realidad o son difícil de seguir. &
+
+        Los contenidos investigados son de mala calidad.
+        Uso de datos falsos por no contrastarlos.
+        El documento no sirve para hacerse una idea de la tarea realizada ni de repetirla en caso de ser necesaria.
+        Faltan pasos, explicaciones o apartados del proyecto a realizar. \\
+
+    Introducción 10\% &
+        La introducción está bien redactada. Dan ganas de realizar la lectura del documento. Es escueta a la par que indica todo lo realizado. &
+
+        La introducción está bien, y la redacción es buena, pero podría haber sido mejor. &
+
+        La introducción es correcta, pero mejorable. &
+
+        La introducción está mal redactada. No hace que den ganas de leer el documento y faltan cosas de lo que se va a realizar. \\
+
+    Resumen y conclusiones 10\% &
+        Se resume lo realizado de manera excelente y añade conclusiones de la importancia de la tarea realizada.
+        Lo expuesto no es una repetición de la introducción ni de todos los pasos realizados. &
+
+        El resumen y las conclusiones son correctas. Su redacción es buena, pero podría haberse cuidado más. &
+
+        El resumen es mejorable. No añade conclusiones o las que indica son pobres. &
+
+        El resumen es pobre y no añade conclusiones correctas. Imita la introducción o vuelve a describir todos los pasos realizados una vez más. \\
+\end{rubrica}
+
+\end{landscape}
