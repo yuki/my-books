@@ -2,10 +2,65 @@
 
 A la hora de crear un proyecto en Laravel lo primero que deberíamos hacer es visitar la \href{https://laravel.com/docs/10.x/installation}{documentación}, ya que nos dará distintas opciones dependiendo del sistema operativo en el que nos encontremos. Aparte, podremos ver si ha habido cambios desde la última vez que hayamos creado un proyecto.
 
-Antes de crear el proyecto, debemos tomar una serie de decisiones para nuestro \textit{stack} de aplicación. Las decisiones son:
+\section{Servicios a utilizar}
+
+Antes de crear el proyecto, debemos tomar una serie de decisiones para nuestro \textit{stack} de aplicación. Laravel cuenta con distintos servicios, algunos de ellos necesarios y otros optativos, por lo que deberemos tenerlos en cuenta.
+
+Los servicios entre los que deberemos decidir son:
 
 \begin{itemize}
-    \item \textbf{Sistema Gestor de Base de Datos a utilizar}: Laravel permite el uso de distintos sistemas de bases de datos relacionales como son MySQL, PostgreSQL y MariaDB. Por defecto hace uso de MySQL.
-    \item \textbf{Sistema de caché}: Podemos hacer uso de sistemas \textbf{clave-valor} para el almacenamiento de información para acelerar el rendimiento de la aplicación web. Dependiendo de la aplicación se suele cachear información obtenida de la base de datos y también HTML generado de ciertas partes de la web.
-
+    \item \textbf{Sistema Gestor de Base de Datos a utilizar}: Laravel permite el uso de distintos sistemas de bases de datos relacionales como son \href{https://dev.mysql.com/downloads/mysql/}{MySQL}, \href{https://www.postgresql.org/}{PostgreSQL} y \href{https://mariadb.org/}{MariaDB}. Por defecto hace uso de \textbf{MySQL}.
+    \item \textbf{Sistema de caché}: Podemos hacer uso de distintos sistemas para cachear desde la sesión a información obtenida de la base de datos y también HTML. Por defecto, \textbf{Laravel cachea la sesión en el sistema de ficheros}, pero eso puede ser lento, por lo que se permite hacer uso de sistemas \textbf{clave-valor} para el almacenamiento de información para acelerar el rendimiento de la aplicación web. Se puede elegir \href{https://www.memcached.org/}{Memcached} o \href{https://redis.io/}{Redis} entre otros.
 \end{itemize}
+
+Otros servicios que podemos instalar y que nos darán ciertas funcionalidades son:
+
+\begin{itemize}
+    \item \textbf{\href{https://github.com/axllent/mailpit}{Mailpit}}: Es un sistema para controlar los emails que envía nuestra aplicación durante el desarrollo. En lugar de enviarlos a las cuentas finales, se quedan almacenados y se pueden visualizar a través de una web que a modo de buzón de correo. También ofrece una API.
+
+    \item Uso de  \href{https://min.io/}{MinIO} para simular el \textbf{almacenamiento en la nube S3}. De esta manera no tendremos que crear un Bucket de pruebas.
+
+    \item Sistema de \textbf{búsqueda \textit{full-text}} en la base de datos gracias a \href{https://laravel.com/docs/10.x/scout#introduction}{Scout} y haciendo uso del backend \href{https://www.meilisearch.com/}{MeiliSearch}.
+
+    \item Creación y automatización de \textbf{tests} utilizando \href{https://www.selenium.dev/}{Selenium}.
+\end{itemize}
+
+Estas son algunas de los servicios que podríamos configurar antes de comenzar a crear nuestra aplicación. Para comenzar de manera sencilla nos centraremos únicamente en la elección de la base de datos, dejando el resto de servicios para más adelante.
+
+
+\section{Instalación mediante Sail y Docker}
+
+En la \href{https://laravel.com/docs/10.x/installation}{documentación} de Laravel nos explica cómo realizar la instalación de distintos modos teniendo en cuenta el sistema operativo, los servicios iniciales que nos interesan y el sistema de instalación que mejor se adapte a nuestro entorno.
+
+%En este apartado se van a explicar dos modos:
+%\begin{itemize}
+%    \item Haciendo uso del método oficial y \textbf{Laravel Sail}, que nos permitirá elegir los servicios que necesitamos y que creará el proyecto haciendo uso de contenedores Docker.
+%
+%    \item Instalando Laravel utilizando \href{https://getcomposer.org/}{Composer}, que también es un método oficial, pero en este caso vamos a crear nosotros el contenedor Docker del servicio web y de base de datos. En caso de tener un entorno de PHP con Composer local, quizá no interesa realizar la creación del contenedor Docker.
+%\end{itemize}
+%
+%Ambos métodos son igual de válidos y al final obtendremos un sistema similar.
+
+%\subsection{}
+
+El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y \textit{Windows Subsystem for Linux} (WSL).
+
+Para realizar la instalación sólo vamos a elegir tener el servicio de MySQL, para simplificarlo, tal como se ha comentado previamente. Para ello, deberemos ejecutar lo siguiente en el directorio donde nos interese crear el directorio del proyecto.
+
+\begin{mycode}{Titulo}{console}{{\small }}
+ruben@vega:~$ curl -s "https://laravel.build/example-app?with=mysql" | bash
+\end{mycode}
+
+Este comando lo que va a hacer es descargarse un script que va a ejecutar lo siguiente:
+\begin{enumerate}
+    \item Se va a asegurar que Docker está corriendo
+    \item Va a levantar un contenedor con la imagen “laravelsail/php82-composer” que nos va a crear un directorio llamado \configdir{example-app} con un proyecto limpio de Laravel usando MySQL como SGBD.
+    \item Si no tenemos la imagen de MySQL la descarga.
+\end{enumerate}
+
+
+
+
+
+\section{Configuración inicial}
+
