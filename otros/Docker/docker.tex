@@ -1,6 +1,6 @@
 \chapter{Introducción}
 
-Hoy en día es muy habitual hacer uso de los sistemas de contenedores, el más conocido es \href{https://docs.docker.com/}{Docker}, en el mundo del desarrollo de \textit{software}. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción son las mismas que durante las etapas de desarrollo.
+Hoy en día es muy habitual hacer uso de los sistemas de contenedores, siendo el más conocido  \href{https://docs.docker.com/}{Docker} en el mundo del desarrollo de \textit{software}. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción son las mismas que durante las etapas de desarrollo.
 
 En este documento se va a explicar cómo realizar la instalación y configuración de un sistema basado en contenedores Docker para poder arrancar servicios, y ciertas configuraciones que son necesarias conocer.
 
@@ -22,7 +22,7 @@ Aunque está muy en boga el despliegue de aplicaciones haciendo uso de contenedo
 
 \href{https://es.wikipedia.org/wiki/LXC}{LXC} nace en 2008 utilizando distintas funcionalidades del kernel Linux para proveer un entorno virtual donde poder ejecutar distintos procesos y tener su propio espacio de red. Con LXC nacen distintas herramientas para controlar estos contenedores, así como para crear plantillas y una \textbf{API que permite interaccionar con LXC} desde distintos lenguajes de programación.
 
-Ha habido otras tecnologías en Linux, como \href{https://es.wikipedia.org/wiki/OpenVZ}{OpenVz}, pero luego nos centraremos en Docker, ya que es lo más conocido actualmente.
+Ha habido otras tecnologías en Linux, como \href{https://es.wikipedia.org/wiki/OpenVZ}{OpenVz}, pero nos centraremos en Docker, ya que es lo más conocido actualmente.
 
 
 \section{Qué es un contenedor y cómo se crea}
@@ -41,7 +41,7 @@ Para crear un contenedor necesitamos hacer uso de una \textbf{“imagen”, que 
 
 Las imágenes, debido a su origen \textbf{sólo-lectura}, se pueden considerar como \textbf{“plantillas”}, que son la representación de una aplicación y el entorno necesario para ser ejecutada en un momento específico en el tiempo. \textbf{Esta consistencia es una de las grandes características de Docker}.
 
-\infobox{\textbf{Una imagen contiene el código y las dependencias que se necesita al crear un contenedor para ser ejecutado, independiente del entorno donde se ejecuta.}}
+\infobox{\textbf{Una imagen contiene el servicio que nos interesa ejecutar junto con sus dependencias, y son independientes del servidor donde se ejecuta.}}
 
 Una imagen puede ser creada utilizando otras imágenes como base. Por ejemplo, la imagen de \href{https://hub.docker.com/_/phpmyadmin}{PHPMyAdmin} empaqueta la aplicación PHPMyAdmin sobre la imagen \textbf{PHP} (versión 8.1-apache), que a su vez hace uso de la imagen \textbf{Debian} (versión 11-slim).
 
