@@ -17,6 +17,7 @@ for LIBRO in "${LIBROS[@]}"; do
     lualatex -shell-escape $NAME
     makeindex $NAME
     lualatex -shell-escape $NAME
+    lualatex -shell-escape $NAME
 
     cd ../../../
 done
