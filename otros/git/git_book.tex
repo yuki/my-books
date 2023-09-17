@@ -1,0 +1,38 @@
+\newcommand{\ClassPath}{../../yukibook.cls}
+\documentclass{\ClassPath/yukibook}
+
+
+\begin{document}
+
+    \yukibook{Sistemas de control de versiones} % Title
+    {Rubén Gómez Olivencia}  % Author
+    {2023}    % Year
+    {} % Name of degree
+    {Si no usas uno, no eres programador} % catch phrase
+    {} % the phrase's author
+    {img/git.png} %cover
+    {3d2d00}
+    {} %mini-title
+
+        \coverpage
+        \graphicspath{{../../yukibook.cls/}}
+        \licensepage
+    %
+        \tableofcontents
+
+    %--------------------------------------------------------------------------
+    % Start your parts, chapters and sections here
+    %--------------------------------------------------------------------------
+    \graphicspath{{img/}}
+    \part{Sistema de control de versiones}
+    \input{1_vcs.tex}
+    \part{Introducción a Git}
+    \input{2_git.tex}
+
+    \part{GitHub como servidor remoto}
+    \input{3_github.tex}
+
+%    \graphicspath{{../../yukibook.cls/}}
+%    \licensepage
+
+\end{document}

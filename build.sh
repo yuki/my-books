@@ -26,6 +26,7 @@ OTROS=(
     "otros/PFsense/ pfsense_book.tex"
     "otros/Docker/ docker_book.tex"
     "otros/hacer_documentacion/ como_hacer_documentacion.tex"
+    "otros/git/ git_book.tex"
     "anexos/gestion_backups gestion_backups_anexo.tex"
     "anexos/glosario glosario_anexo.tex"
     "anexos/instalar_ubuntu_lts instalar_ubuntu_lts_anexo.tex"
