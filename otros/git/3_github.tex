@@ -172,7 +172,7 @@ Si alguien ha realizado commits en nuestro repositorio (o los hemos realizado no
 \begin{itemize}
     \item \commandbox{git fetch}
 
-    Obtiene los commits del repositorio remoto, pero no los aplica sobre nuestra copia de trabajo actual. De esta manera, no se aplican los cambios y mientras tanto podemos seguir trabajando.
+    Obtiene los commits del repositorio remoto, \textbf{pero no los aplica sobre nuestra copia de trabajo actual}. De esta manera, no se aplican los cambios y mientras tanto podemos seguir trabajando.
 
 \begin{mycode}{Titulo}{console}{}
 ruben@vega:~/pruebas$ git fetch
@@ -190,7 +190,7 @@ Tu rama está detrás de 'origin/main' por 1 commit, y puede ser
 avanzada rápido. (usa "git pull" para actualizar tu rama local)
 \end{mycode}
 
-    Tal como se puede ver el primer comando nos descarga objetos nuevos, y al ver el estado nos avisa que nuestra rama está por detrás de “origin/main” (la rama remota). También podemos ver todos los commits de la siguiente manera:
+    Tal como se puede ver el primer comando nos descarga objetos nuevos, y al ver el estado nos avisa que \textbf{nuestra rama está por detrás de “origin/main”} (la rama remota). También podemos ver todos los commits de la siguiente manera:
 
 \begin{mycode}{Titulo}{console}{}
 ruben@vega:~/pruebas$ git log --all
@@ -213,5 +213,23 @@ Date:   Sun Sep 17 18:40:02 2023 +0200
 Corregido error en hola.java
 \end{mycode}
 
-    El primer commit nos indica que está en \textbf{origin/main}, la rama del repositorio remoto, mientras que el segundo  nos aparece “\textbf{\texttt{HEAD -> \ main}}”, que es la copia de trabajo actual.
+    El primer commit nos indica que está en \textbf{origin/main}, la rama del repositorio remoto, mientras que el segundo  nos aparece “\textbf{\texttt{HEAD -> \ main}}”, que es la copia de trabajo local. El resumen sería:
+
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{fetch.png}
+        \captionof{figure}{Estado de los commits tras el “fetch”}
+    \end{center}
+
+
+    \item \commandbox{git pull}
+
+    En este caso se obtienen los commits del repositorio \textbf{y se aplican sobre la rama de trabajo actual}. Si tenemos cambios realizados en local, los cambios que obtenemos del repositorio \textbf{pueden entrar en conflicto con lo que tenemos}. Más adelante hablaremos de ello.
+
+    De no existir conflictos, los cambios se aplican y el estado quedaría en ambos repositorios en el mismo punto exacto:
+
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{pull.png}
+        \captionof{figure}{Estado de los commits tras el “pull”}
+    \end{center}
 \end{itemize}
+
