@@ -73,8 +73,8 @@ Cambiado a rama 'featureA'
 
 Para comprobar cuál es el estado de las ramas, vamos a realizar dos \textit{commits} distintos en la rama “main” y otro en la rama “featureA”. Para ver cómo se encuentra ahora el estado de nuestro repositorio, podemos hacer uso del siguiente comando:
 
-\begin{mycode}{Volver a la rama “featureA”}{console}{{\footnotesize }}
-$ git log --graph --all --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s  %Creset'
+\begin{mycode}{Volver a la rama “featureA”}{console}{}
+ruben@vega:~/pruebas$ git log --oneline --decorate --graph --all
 \end{mycode}
 
 Obtendríamos el siguiente resultado:
@@ -99,6 +99,8 @@ Tras realizar estas modificaciones, a continuación vamos a ver cómo podemos fu
 
 La fusión de ramas (en inglés \textit{\textbf{merge}}) sucede cuando queremos obtener los cambios realizados en una rama y fusionar dichos cambios con la rama en la que nos encontramos actualmente.  Ahora que tenemos distintas ramas creadas, con sus correspondientes commits, es buen momento para realizar la fusión de las ramas.
 
+\infobox{\textbf{Merge es coger los cambios de una rama y fusionarlos con la actual.}}
+
 Dependiendo de cómo haya sido el desarrollo de las ramas, la fusión podrá terminar en un “dibujo” distinto. Por ejemplo, el caso más sencillo es que en la bifurcación sólo la rama nueva tiene nuevos commits, por lo que al realizar la fusión quedaría:
 
 
@@ -112,7 +114,7 @@ Tras realizar el merge, en este caso es como si la rama “FeatureA”no hubiese
 En cambio, si en la rama main, tal como se ha sugerido en el punto anterior, también se realizan modificaciones, el dibujo quedará tal que así:
 
 \begin{center}
-    \includegraphics[width=0.6\linewidth]{merge_serio.png}
+    \includegraphics[width=0.7\linewidth]{merge_serio.png}
     \captionof{figure}{Merge donde hay commits en ambas ramas}
 \end{center}
 
@@ -142,4 +144,67 @@ Una vez realizado el \textit{merge}, podemos subir los cambios al repositorio ce
 \begin{center}
     \includegraphics[frame,width=0.9\linewidth]{merge_github.png}
     \captionof{figure}{Gráfico en el interfaz de GitHub}
+\end{center}
+
+
+\chapter{Resolver conflictos en un \textit{merge}}
+
+Cuando se realiza un \textit{merge} puede existir la posibilidad de crear un conflicto. Un conflicto sucede cuando al fusionar dos ramas en ambas se ha tocado las mismas líneas, y git no sabe qué hacer con los cambios. Para evitar problemas, se genera un conflicto que debe ser resuelto por el desarrollador.
+
+\infobox{\textbf{Un conflicto surge al fusionar dos ramas que tiene cambios en la misma porción de código. El desarrollador es el encargado de arreglar el conflicto.}}
+
+Pongamos como ejemplo un caso similar al apartado anterior. Se ha creado la rama “featureC” y se ha modificado un par de líneas de una función y se ha hecho commit. En la rama “main” se ha hecho lo mismo.
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{merge_conflict.png}
+    \captionof{figure}{Merge con conflicto}
+\end{center}
+
+A la hora de ir a realizar el \textit{merge}, git nos avisa que existe un conflicto en el fichero \configfile{hola.java} y que debemos resolverlo:
+
+\begin{mycode}{Volver a la rama “main”}{console}{}
+ruben@vega:~/pruebas$ git merge FeatureC
+Auto-fusionando hola.java
+CONFLICTO (contenido): Conflicto de fusión en hola.java
+Fusión automática falló; arregle los conflictos y luego realice
+ un commit con el resultado.
+\end{mycode}
+
+
+Para resolver el conflicto deberemos editar el fichero que nos indica. En este caso, si lo editamos, veremos lo siguiente:
+
+
+\begin{mycode}{Editando el fichero con conflicto}{java}{}
+class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("¡Hola, Mundo!");
+
+        <<<<<<< HEAD
+        // esto es cambiado en la rama main
+        System.out.println("Sacando información desde la rama main");
+        =======
+        // estamos en la rama FeatureC
+        System.out.println("Esto sale en la rama C");
+        >>>>>>> FeatureC
+    }
+}
+\end{mycode}
+
+Tal como se puede ver, es una clase con una función en Java simulando el típico programa “Hola Mundo”, pero \textbf{aparecen una serie de líneas que nos están indicando dónde está el conflicto}:
+
+\begin{itemize}
+    \item \textbf{$<$ $<$ $<$ $<$ $<$ $<$ HEAD}: Comienzan la parte en la que hay conflicto de la rama en la que nos encontramos. En este caso, la rama “main”.
+
+    \item \textbf{=======}: Es la separación de los apartados que entran en conflicto.
+
+    \item \textbf{$>$ $>$ $>$ $>$ $>$ $>$ FeatureC}: Es el final de la parte que entra en conflicto. Desde el punto anterior hasta este, en este caso, es de la rama “FeatureC”.
+\end{itemize}
+
+\textbf{Para resolver el conflicto deberemos borrar esas líneas especiales, quedarnos con las partes del código que nos interesen y realizar un nuevo commit}. Es por eso que para la resolución de los conflictos quizá tengan que participar los desarrolladores que han realizado los cambios que han creado el conflicto.
+
+\infobox{\textbf{Para resolver el conflicto deberemos borrar esas líneas especiales, quedarnos con las partes del código que nos interesen y realizar un nuevo commit}.}
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{merge_conflict_solved.png}
+    \captionof{figure}{Merge con conflicto resuelto}
 \end{center}

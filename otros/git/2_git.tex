@@ -140,7 +140,7 @@ Cambios a ser confirmados:
 nuevos archivos: README.md
 \end{mycode}
 
-El fichero \configfile{README.md} está en el área “stage”, por lo que ahora es el momento en el que podemos hacer nuestro primer commit con las modificaciones realizadas:
+El fichero \configfile{README.md} está en el “stage area”, por lo que ahora es el momento en el que podemos hacer nuestro primer commit con las modificaciones realizadas:
 
 
 \begin{mycode}{Hacemos el commit}{console}{}
@@ -187,6 +187,29 @@ Primer commit
 De manera gráfica, el histórico de los \textit{commits} podríamos representarlo de la siguiente manera:
 
 \begin{center}
-    \includegraphics[width=0.6\linewidth]{log.png}
+    \includegraphics[width=0.7\linewidth]{log.png}
     \captionof{figure}{Estado tras varios commits}
+\end{center}
+
+
+\section{Ver diferencias}
+
+Si estamos realizando modificaciones y queremos saber qué modificaciones hemos realizado en los ficheros, podemos realizar lo siguiente:
+
+\begin{mycode}{Ver cambios locales}{console}{}
+ruben@vega:~/pruebas$ git diff
+\end{mycode}
+
+Y obtendríamos algo como esto, donde las líneas que empiezan con “-” han sido borradas y las que empiezan con “+” son añadidos.
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{diff.png}
+    \captionof{figure}{Cambios respecto al commit anterior}
+\end{center}
+
+Esta diferencia es más fácil verla en entornos de desarrollo como en \href{https://code.visualstudio.com/}{Visual Studio Code}.
+
+\begin{center}
+    \includegraphics[width=\linewidth]{diff_code.png}
+    \captionof{figure}{Diff en Visual Studio Code}
 \end{center}

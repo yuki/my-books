@@ -114,9 +114,14 @@ Como son palabras utilizadas por los propios sistemas de control de versiones en
         \item Como verbo: Hacer un “commit”, o “\textit{\textbf{commitear}}”, es la acción de empaquetar modificaciones de nuestra copia de trabajo, para crear un “\textit{commit}”, o revisión, que va a pertenecer al histórico del proyecto.
     \end{itemize}
     \item[Origin] En sistemas de control de versiones distribuidos, es el nombre del repositorio remoto “central”.
-    \item[Pull] Obtener y aplicar en el repositorio local todos los commits desde un repositorio remoto.
+
+    \item[Pull] Obtener y aplicar en el repositorio local todos los commits desde un repositorio remoto. En caso de existir cambios en local y en los commits, puede surgir conflictos.
+
     \item[Push] Enviar los commits creados en local que no están en el repositorio remoto “central”.
     \item[Repository] Puede tener distintas acepciones dependiendo del sistema de control de versiones que estemos utilizando. Es la estructura de directorios y ficheros (junto con su metadata) en el que guardamos el proyecto que nos interesa versionar. En sistemas distribuidos, tanto la copia local como la remota se denominan repositorios.
+
+    \item[Stage Area] Es el área donde están los cambios que pueden ir en el siguiente commit.
+
     \item[Tag] Una etiqueta es la manera de darle un nombre que podemos identificar de manera “humana” a una revisión concreta. Normalmente se usa para indicar las versiones del software: v1.0, v1.5, ...
     \item[Working copy] Es la copia local de un repositorio, en un momento específico del tiempo o revisión.
 \end{description}
