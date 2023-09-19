@@ -7,6 +7,7 @@ LIBROS=(
 #    "ASIR/1/ISO_operating_systems_deployment/ iso_en_book.tex"
     "ASIR/2/SGBD/ sgbd_book.tex"
     "DAM/1/sistemas_informaticos/ sistemas_informaticos.tex"
+    "DAM/1/sistemas_informaticos/ sistemas_informaticos_web.tex"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces.tex"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces.tex"
     "DAM/2/sistemas_gestion_empresarial/ sistemas_gestion_empresarial.tex"

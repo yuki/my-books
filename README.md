@@ -51,6 +51,8 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
   * [Sistemas Informáticos](https://github.com/yuki/my-books/releases/download/latest/sistemas_informaticos.pdf)
   * [Desarrollo de Interfaces](https://github.com/yuki/my-books/releases/download/latest/desarrollo_interfaces.pdf) (en progreso)
   * [Sistemas de Gestión Empresarial](https://github.com/yuki/my-books/releases/download/latest/sistemas_gestion_empresarial.pdf) (en progreso)
+* Grado Superior para Técnico superior en Desarrollo de Aplicaciones Web
+  * [Sistemas Informáticos](https://github.com/yuki/my-books/releases/download/latest/sistemas_informaticos_web.pdf) (es igual que el de DAM)
 
 
 ### Otros libros
