@@ -49,13 +49,15 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
   * [Administración de sistemas gestores de bases de datos](https://github.com/yuki/my-books/releases/download/latest/sgbd_book.pdf)
 * Grado Superior para Técnico superior en Desarrollo de Aplicaciones Multiplataforma
   * [Sistemas Informáticos](https://github.com/yuki/my-books/releases/download/latest/sistemas_informaticos.pdf)
-  * [Desarrollo de Interfaces](https://github.com/yuki/my-books/releases/download/latest/desarrollo_interfaces.pdf)
+  * [Desarrollo de Interfaces](https://github.com/yuki/my-books/releases/download/latest/desarrollo_interfaces.pdf) (en progreso)
+  * [Sistemas de Gestión Empresarial](https://github.com/yuki/my-books/releases/download/latest/sistemas_gestion_empresarial.pdf) (en progreso)
 
 
 ### Otros libros
 Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas específicos:
 * [Configuración básica de pfSense como firewall de red](https://github.com/yuki/my-books/releases/download/latest/pfsense_book.pdf)
 * [Cómo hacer una buena documentación, o al menos intentarlo](https://github.com/yuki/my-books/releases/download/latest/como_hacer_documentacion.pdf)
+* [Git: Sistemas de control de versiones](https://github.com/yuki/my-books/releases/download/latest/git_book.pdf)
 
 
 ### Anexos
@@ -90,10 +92,11 @@ Si sabes utilizar Github, puedes hacer uso de los **Pull requests** para indicar
 Los libros están generados con **LaTeX**, tratando de buscar que la generación sea la mejor posible. Para realizar los libros he utilizado una clase propia que se puede encontrar [aquí](https://github.com/yuki/yukibook.cls).
 
 Esta clase tiene su propia documentación en el enlace, pero se ha creado por las siguientes razones:
-* Crear una portada propia (utilizando como referencia los libros técnicos de O'Reilly
-* Poder tener títulos y temas propios
+* Crear una portada propia (utilizando como referencia los libros técnicos de O'Reilly, porque me parecía gracioso).
+* Poder tener encabezados y temas en un formato propio.
 * Crear cajas para código o mensajes, buscando la visualización acorde al libro.
-* Para aprender **LaTeX** y no depender de un programa _WYSIWYG_
+* Para aprender **LaTeX** y no depender de un programa _WYSIWYG_.
+* Poder hacer "includes" de partes de un libro en otro, o tener temas comunes. De esta manera, si modifico algo de ese tema común, no tengo que ir copiando/pegando las modificaciones en todos los libros donde lo uso. Modifico en un sitio, y sólo tengo que compilar el libro correspondiente (y GitHub lo hace por mí :D)
 
 Muchas de las imágenes utilizadas en los documentos están realizadas mediante [draw.io](https://www.diagrams.net/)
 
@@ -102,3 +105,11 @@ Si no sabes nada de **LaTeX**, es posible que no sepas cómo utilizar el código
 
 Para evitar eso, he creado un _[workflow](https://github.com/yuki/my-books/blob/main/.github/workflows/build-and-publish.yml)_ que con cada modificación que se sube a Github se crea una acción para formar el PDF y lo puedas descargar con los enlaces de arriba.
 
+
+## Futuro
+Mi idea es en un futuro cercano hacer uso de [Pandoc](https://pandoc.org/) para generar una versión HTML de los libros. La idea es poder hacer uso del formato HTML en clase. Ahora mismo no es 100% posible, pero la idea es:
+
+- [ ] Modificar la clase [yukibook.cls](https://github.com/yuki/yukibook.cls) y separar el formato de la página de los estilos. Ahora mismo soy muy dependiente de la clase LaTeX que he creado.
+- [ ] Entender las posibilidades de Pandoc al crear HTML y la posibilidad de posicionar imágenes.
+- [ ] Crear una plantilla HTML que se adecúe a mis necesidades y que me guste: [estoy en ellos](https://github.com/yuki/pandoc-template-bootstrap5).
+- [ ] Determinar si el resultado final es útil para dar clases.

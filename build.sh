@@ -6,23 +6,10 @@ LIBROS=(
     "ASIR/2/SGBD/ sgbd_book.tex"
     "DAM/1/sistemas_informaticos/ sistemas_informaticos.tex"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces.tex"
+    "DAM/2/desarrollo_interfaces/ desarrollo_interfaces.tex"
+    "DAM/2/sistemas_gestion_empresarial/ sistemas_gestion_empresarial.tex"
     "SMR/2/SOred/ SOred.tex"
-)
-
-for LIBRO in "${LIBROS[@]}"; do
-    RUTA=`echo $LIBRO | cut -d" " -f1`
-    NAME=`echo $LIBRO | cut -d" " -f2`
-
-    cd $RUTA
-    lualatex -shell-escape $NAME
-    makeindex $NAME
-    lualatex -shell-escape $NAME
-    lualatex -shell-escape $NAME
-
-    cd ../../../
-done
-
-OTROS=(
+#
     "otros/PFsense/ pfsense_book.tex"
     "otros/Docker/ docker_book.tex"
     "otros/hacer_documentacion/ como_hacer_documentacion.tex"
@@ -35,44 +22,20 @@ OTROS=(
     "anexos/tabla_sistemas_numeracion tabla_sistemas_numeracion_anexo.tex"
     "anexos/ubuntu_raid1 ubuntu_raid1_anexo.tex"
     "anexos/virtualbox_networking virtualbox_networking_anexo.tex"
+
 )
 
-for LIBRO in "${OTROS[@]}"; do
+for LIBRO in "${LIBROS[@]}"; do
     RUTA=`echo $LIBRO | cut -d" " -f1`
     NAME=`echo $LIBRO | cut -d" " -f2`
 
+#    echo $RUTA
     cd $RUTA
     lualatex -shell-escape $NAME
     makeindex $NAME
     lualatex -shell-escape $NAME
+    lualatex -shell-escape $NAME
 
-    cd ../../
+    cd ../../../
 done
 
-
-#LIBRO=$1
-#ACTION=0
-#
-#if [ $# -eq 1 ]; then
-#
-#    case "$LIBRO" in
-#      "SOred") cd "SMR/2º/Sistemas operativos en red/";ACTION=1;;
-#    esac 
-#    
-#    if [ $ACTION -eq 1 ]; then
-#        lualatex -shell-escape $LIBRO.tex
-#        #biber $LIBRO.tex
-#        makeindex $LIBRO.tex
-#        
-#        lualatex -shell-escape $LIBRO.tex
-#        lualatex -shell-escape $LIBRO.tex
-#    else
-#        echo "ERROR! Introduced book does not exists"
-#        exit 2
-#    fi
-#
-#else 
-#    echo "ERROR! No book"
-#    exit 1
-#
-#fi
