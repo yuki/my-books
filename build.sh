@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $PWD
+
 LIBROS=(
     "ASIR/1/planificacion_administracion_redes/ redes_book.tex"
 #    "ASIR/1/ISO_operating_systems_deployment/ iso_en_book.tex"
@@ -29,13 +31,13 @@ for LIBRO in "${LIBROS[@]}"; do
     RUTA=`echo $LIBRO | cut -d" " -f1`
     NAME=`echo $LIBRO | cut -d" " -f2`
 
-#    echo $RUTA
-    cd $RUTA
-    lualatex -shell-escape $NAME
-    makeindex $NAME
-    lualatex -shell-escape $NAME
-    lualatex -shell-escape $NAME
+    echo $RUTA
+#    cd $RUTA
+#    lualatex -shell-escape $NAME
+#    makeindex $NAME
+#    lualatex -shell-escape $NAME
+#    lualatex -shell-escape $NAME
 
-    cd ../../../
+#    cd ../../../
 done
 
