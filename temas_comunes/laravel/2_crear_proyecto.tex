@@ -43,11 +43,20 @@ En la \href{https://laravel.com/docs/10.x/installation}{documentación} de Larav
 
 %\subsection{}
 
-El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y \textit{Windows Subsystem for Linux} (WSL).
+El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y \textit{Windows Subsystem for Linux} (WSL). Es necesario tener instalado:
+
+\begin{itemize}
+    \item Entorno GNU/Linux
+    \item Docker
+    \item Docker Compose
+    \begin{mycode}{Instalar Docker Compose}{console}{}
+ruben@vega:~$ sudo apt install docker-compose
+    \end{mycode}
+\end{itemize}
 
 Para realizar la instalación sólo vamos a elegir tener el servicio de MySQL, para simplificarlo, tal como se ha comentado previamente. Para ello, deberemos ejecutar lo siguiente en el directorio donde nos interese crear el directorio del proyecto.
 
-\begin{mycode}{Titulo}{console}{{\small }}
+\begin{mycode}{Usamos el instalador de Laravel}{console}{{\small }}
 ruben@vega:~$ curl -s "https://laravel.build/example-app?with=mysql" | bash
 \end{mycode}
 
