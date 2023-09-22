@@ -243,9 +243,9 @@ The key's randomart image is:
 El comando muestra los siguientes pasos:
 \begin{enumerate}
     \item Creación de la pareja de claves pública/privada haciendo uso del sistema criptográfico \href{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}{\textbf{RSA}}.
-    \item Lugar donde se va a guardar la clave privada. Por defecto en \configdir{~/.ssh/id_rsa)}.
+    \item Lugar donde se va a guardar la clave privada. Por defecto en \configdir{~/.ssh/id_rsa}.
     \item Contraseña para securizar la clave privada. De esta manera, para poder usarla habrá que introducir dicha contraseña. Dado que nosotros queremos evitar introducir contraseñas, lo dejaremos en blanco.
-    \item Lugar donde se va a guardar la clave pública. Por defecto en \configdir{~/.ssh/id_rsa.pub)}
+    \item Lugar donde se va a guardar la clave pública. Por defecto en \configdir{~/.ssh/id_rsa.pub}
 \end{enumerate}
 
 Una vez tenemos nuestro par de claves, podemos copiar la clave pública al usuario del servidor que nos interese mediante el siguiente comando:
@@ -254,7 +254,9 @@ Una vez tenemos nuestro par de claves, podemos copiar la clave pública al usuar
 ruben@vega:~$  ssh-copy-id user@server
 \end{mycode}
 
-Para ello es imprescindible conocer previamente la contraseña del usuario en el servidor. Este comando realizará una conexión SSH y copiará la \textbf{clave pública} en el fichero \configfile{~/.ssh/authorized_keys} del usuario en el servidor remoto. Este paso se puede realizar a mano (con un editor de texto).
+Para ello es imprescindible conocer previamente la contraseña del usuario en el servidor. Este comando realizará una conexión SSH y copiará el contenido de la \textbf{clave pública} en el fichero \configfile{~/.ssh/authorized_keys} del usuario en el servidor remoto. Este paso se puede realizar a mano (con un editor de texto).
+
+\errorbox{\textbf{Windows no tiene el comando “ssh-copy-id”, por lo que deberemos hacer el paso a mano, tal como se ha explicado.}}
 
 Al realizar la siguiente conexión, ya no necesitaremos introducir la contraseña del usuario, ya que el sistema remoto podrá autenticarnos a través del sistema clave pública/privada.
 
