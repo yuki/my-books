@@ -32,18 +32,8 @@ Estas son algunas de los servicios que podríamos configurar antes de comenzar a
 
 En la \href{https://laravel.com/docs/10.x/installation}{documentación} de Laravel nos explica cómo realizar la instalación de distintos modos teniendo en cuenta el sistema operativo, los servicios iniciales que nos interesan y el sistema de instalación que mejor se adapte a nuestro entorno.
 
-%En este apartado se van a explicar dos modos:
-%\begin{itemize}
-%    \item Haciendo uso del método oficial y \textbf{Laravel Sail}, que nos permitirá elegir los servicios que necesitamos y que creará el proyecto haciendo uso de contenedores Docker.
-%
-%    \item Instalando Laravel utilizando \href{https://getcomposer.org/}{Composer}, que también es un método oficial, pero en este caso vamos a crear nosotros el contenedor Docker del servicio web y de base de datos. En caso de tener un entorno de PHP con Composer local, quizá no interesa realizar la creación del contenedor Docker.
-%\end{itemize}
-%
-%Ambos métodos son igual de válidos y al final obtendremos un sistema similar.
 
-%\subsection{}
-
-El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y \textit{Windows Subsystem for Linux} (WSL). Es necesario tener instalado:
+El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y \textit{Windows Subsystem for Linux} (WSL). De manera generalizada, es necesario tener instalado:
 
 \begin{itemize}
     \item Entorno GNU/Linux
@@ -51,7 +41,7 @@ El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de 
     \item Docker Compose
     \begin{mycode}{Instalar Docker Compose}{console}{}
 ruben@vega:~$ sudo apt install docker-compose
-    \end{mycode}
+\end{mycode}
 \end{itemize}
 
 Para realizar la instalación sólo vamos a elegir tener el servicio de MySQL, para simplificarlo, tal como se ha comentado previamente. Para ello, deberemos ejecutar lo siguiente en el directorio donde nos interese crear el directorio del proyecto.
@@ -68,8 +58,41 @@ Este comando lo que va a hacer es descargarse un script que va a ejecutar lo sig
 \end{enumerate}
 
 
+\subsection{Ventajas}
+
+Este sistema de instalación permite realizar un despliegue sencillo en un equipo donde tengamos instalado Docker, con todas las ventajas que ello ofrece, aparte de la posibilidad de elegir los servicios que necesitemos inicialmente.
+
+Podríamos resumir las ventajas en la siguiente lista:
+
+\begin{itemize}
+    \item Instalación rápida en un único comando.
+    \item Ventajas de usar Docker: todos los desarrolladores usan el mismo contenedor/entorno de desarrollo.
+    \item No es necesario tener nada más que Docker instalado en el equipo anfitrión (ni PHP, composer, servicios web, ...).
+\end{itemize}
+
+\subsection{Desventajas}
+Aunque las ventajas durante el desarrollo de aplicaciones son notables, también pueden existir algunas desventajas:
+
+\begin{itemize}
+    \item El servidor web que se arranca por defecto no es el más recomendado para despliegues en producción, obteniendo mejor rendimiento con el servidor web \href{https://nginx.org/en/}{Nginx}.
+
+    \item En un principio puede resultar “raro” desarrollar dentro de un contenedor.
+\end{itemize}
 
 
+\section{Iniciar servicios}
 
-\section{Configuración inicial}
+Una vez terminada la descarga del código y tras realizar las acciones que necesita, el propio asistente nos avisa de qué tenemos que realizar para que nuestro entorno arranque.
 
+\begin{mycode}{Arrancamos los servicios}{console}{}
+ruben@vega:~$ cd example-app && ./vendor/bin/sail up -d
+[+] Running 2/2
+  Container example-app-mysql-1         Started    0.4s
+  Container example-app-laravel.test-1  Started    0.7s
+\end{mycode}
+
+Y con ello podemos ir al puerto 80 a través de nuestro navegador y veremos la página principal para comprobar que todo ha ido bien.
+
+\begin{center}
+    \includegraphics[frame,width=0.7\linewidth]{intro.png}
+\end{center}
