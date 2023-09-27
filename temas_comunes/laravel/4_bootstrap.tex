@@ -9,11 +9,43 @@ root@1b29e46c10ae:/var/www/html# npm install
 root@1b29e46c10ae:/var/www/html# npm run build
 \end{mycode}
 
-De esta manera no sólo hemos instalado las dependencias necesarias para hacer uso de Bootstrap, si no que también nos ha generado unas vistas para el sistema de autenticación en \configdir{resources/views/auth} y una plantilla general para la vista.
+De esta manera no sólo hemos instalado las dependencias necesarias para hacer uso de Bootstrap, si no que también nos ha generado unas vistas para el sistema de autenticación en \configdir{resources/views/auth} y una plantilla general para la aplicación.
 
 
-\chapter{Plantilla de vista}
+\chapter{Plantilla general}
 
-\section{cómo usar la plantilla}
+Anteriormente se ha mencionado que Blade es un sistema de plantillas para Laravel. Esto significa que es capaz de generar unos componentes de vistas que a su vez incorporan otras vistas, de esta manera generando plantillas que se pueden reutilizar ahorrando código y simplificando la aplicación.
 
-modificar la vista previa para usar la plantilla
+Con lo realizado previamente se ha generado una plantilla general en el fichero \configfile{resources/views/layouts/app.blade.php}, que se puede dividir en dos apartados:
+
+\begin{itemize}
+    \item \textbf{Cabecera “nav”}: es la cabecera de la aplicación. Aparece el nombre de la aplicación y a la derecha tiene enlaces para hacer login o registrarse en la aplicación con el sistema de autenticación.
+
+    \item \inlineconsole{@yield('content')}: este apartado será sustituido por la vista desde la que se llame a esta plantilla.
+\end{itemize}
+
+De esta manera, en todas las vistas de la aplicación que llamemos a la plantilla, no tendremos que escribir el código de la cabecera. Lógicamente, \textbf{es posible añadir nuevos apartados a esta vista} para cumplir con el objetivo final de la aplicación.
+
+\section{Cómo usar la plantilla}
+
+Para poder hacer uso de la plantilla, debemos indicarlo en las correspondientes vistas. Como ejemplo, se va a utilizar la vista creada en el capítulo anterior, la que muestra por pantalla los \textit{posts} del blog.
+
+La vista modificada quedaría:
+
+\begin{mycode}{Vista modificada usando la plantilla}{html+smarty}{}
+@extends('layouts.app')
+
+@section('content')
+  <div class="container">
+    <ul>
+      {{--esto es un comentario: recorremos el listado de posts--}}
+      @foreach ($posts as $post)
+        {{-- visualizamos los atributos del objeto --}}
+        <li>{{$post->titulo}}. Escrito el {{$post->created_at}}</li>
+      @endforeach
+    </ul>
+  </div>
+@endsection
+\end{mycode}
+
+Tal como se puede ver, lo primero que se indica es que esta vista “extiende” de la plantilla correspondiente. Posteriormente, lo que se hace es indicar una sección de la plantilla que va a ser sustituida por el contenido que aparece entre “@section” y “@endsection”.

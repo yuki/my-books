@@ -279,7 +279,7 @@ Ahora que ya tenemos la ruta creada, es momento de que los datos se visualicen e
 
 El ejemplo va a consistir en obtener todos los posts de la base de datos y hacer un listado con ellos. Para ello vamos a modificar el controlador para obtener los datos:
 
-\begin{mycode}{Rutas de la aplicación web de Laravel}{php}{}
+\begin{mycode}{Función que obtiene datos de la base de datos}{php}{}
 <?php
 // ...
 use App\Models\Post;
@@ -304,7 +304,7 @@ Ahora es momento de visualizar los datos en la vista. Para ello, recorreremos el
 
 El sistema de plantillas tiene una serie de palabras reservadas similar a la de los lenguajes de programación más habituales. En este ejemplo se va a recorrer con un bucle for para obtener la lista, y posteriormente visualizar los atributos:
 
-\begin{mycode}{Rutas de la aplicación web de Laravel}{html+smarty}{}
+\begin{mycode}{Vista del controlador}{html+smarty}{}
 <ul>
     {{--esto es un comentario: recorremos el listado de posts--}}
     @foreach ($posts as $post)

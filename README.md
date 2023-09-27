@@ -60,6 +60,7 @@ Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas 
 * [Configuración básica de pfSense como firewall de red](https://github.com/yuki/my-books/releases/download/latest/pfsense_book.pdf)
 * [Cómo hacer una buena documentación, o al menos intentarlo](https://github.com/yuki/my-books/releases/download/latest/como_hacer_documentacion.pdf)
 * [Git: Sistemas de control de versiones](https://github.com/yuki/my-books/releases/download/latest/git_book.pdf)
+* [Introducción a Laravel](https://github.com/yuki/my-books/releases/download/latest/laravel_book.pdf)
 
 
 ### Anexos
