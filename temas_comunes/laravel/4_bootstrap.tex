@@ -1,0 +1,19 @@
+\chapter{Instalar dependencias}
+
+Laravel tenía soporte nativo de Bootstrap, pero decidió sustituirlo por \href{https://tailwindcss.com/}{Tailwind}. Eso no quita que podamos usar Bootstrap, pero necesitaremos realizar la instalación de dependencias.
+
+\begin{mycode}{Rutas de la aplicación web de Laravel}{console}{}
+root@1b29e46c10ae:/var/www/html# composer require laravel/ui --dev
+root@1b29e46c10ae:/var/www/html# php artisan ui bootstrap --auth
+root@1b29e46c10ae:/var/www/html# npm install
+root@1b29e46c10ae:/var/www/html# npm run build
+\end{mycode}
+
+De esta manera no sólo hemos instalado las dependencias necesarias para hacer uso de Bootstrap, si no que también nos ha generado unas vistas para el sistema de autenticación en \configdir{resources/views/auth} y una plantilla general para la vista.
+
+
+\chapter{Plantilla de vista}
+
+\section{cómo usar la plantilla}
+
+modificar la vista previa para usar la plantilla
