@@ -262,24 +262,53 @@ Route::get('/', function () {
 
 Cualquier intento de acceso a algo que no sea esa ruta dará un error 404. Este es un sistema de seguridad para controlar a qué se tiene acceso en la aplicación, y por eso que debemos modificar este fichero para poder acceder a nuestro nuevo controlador.
 
-\begin{mycode}{Rutas de la aplicación web de Laravel}{php}{}
+\begin{mycode}{Añadiendo rutas para el nuevo controlador}{php}{}
 <?php
 // ...
 use App\Http\Controllers\PostController;
-Route::get('/posts',[PostController::class,'index']);
+Route::controller(PostController::class)->group(function () {
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+});
 \end{mycode}
 
-Esta ruta indica que cuando accedemos en la URL al \textit{path} “/posts” se ejecutará la función “index” del PostController. Si vamos al fichero \configfile{App\Http\Controllers\PostController.php} veremos que por defecto todas las funciones están vacías, y es por eso que no nos devuelve ningún dato.
+Este código indica que se va a utilizar la clase “PostController” para el grupo de las rutas que aparecen en ese trozo de código. Si vamos al fichero \configfile{App\Http\Controllers\PostController.php} veremos que por defecto todas las funciones están vacías, y es por eso que no nos devuelve ningún dato.
 
+Por lo tanto, la idea es:
+
+\begin{itemize}
+    \item \textbf{/posts}: irá a la función “index” del controlador. Esta función normalmente lista el contenido de la tabla de base de datos que hace referencia al modelo. En nuestro caso, mostrará todos los posts del blog (normalmente en formato paginado).
+    \item \textbf{/posts/\{post\}}: esta ruta será la utilizada cuando queramos ir a ver un registro del modelo concreto. En este caso “\{post\}” indicará el “id” dentro de la base de datos que se le pasará a la función “show”.
+\end{itemize}
+
+En el siguiente apartado, cuando modifiquemos el controlador quedará más claro.
+
+\section{Tipos de rutas}
+
+Hay que entender que las rutas funcionan en base al protocolo HTTP. Esto quiere decir que existen distintas maneras de acceder a la misma URL dependiendo del tipo de petición que se realice en base a lo que realicemos con el navegador.
+
+Normalmente, cuando navegamos por internet, las peticiones que se realizan son de tipo \textbf{GET}, ya que estamos pidiendo información al servidor web. En cambio, cuando rellenamos un formulario y le damos a enviar, se hace uso del “verbo” \textbf{POST}, ya que se envían datos al servidor.
+
+Las peticiones HTTP que se pueden utilizar son:
+
+\begin{itemize}
+    \item \textbf{GET}: Se realiza una petición a la ruta especificada. Estas peticiones sólo obtienen información.
+    \item \textbf{POST}: Se envían datos al servidor, que van incluidos dentro del cuerpo de la petición. Lo habitual cuando utilizamos formularios. Se utiliza para crear nuevos recursos.
+    \item \textbf{PUT}: Similar a POST, pero en este caso suele estar orientado a modificar datos previamente creados.
+    \item \textbf{PATCH}: Como PUT, sobreescribe completamente un recurso existente.
+    \item \textbf{DELETE}: Borra el recurso especificado.
+\end{itemize}
+
+Es conveniente mirar la \href{https://laravel.com/docs/10.x/routing}{documentación} cuando queramos realizar algún tipo de petición distinto de GET, ya que nos ayudará a comprender mejor qué es lo que está sucediendo.
 
 \chapter{Controladores y Vistas}
-Ahora que ya tenemos la ruta creada, es momento de que los datos se visualicen en la aplicación. Para ello es necesario entender cómo funciona el sistema de plantillas utilizado por Laravel, llamado \textbf{\href{https://laravel.com/docs/10.x/blade}{Blade}}, que junto con el sistema de \textbf{enrutado} visto previamente, relaciona la URL a la que se llama con el controlador y la vista correspondientes.
+Ahora que ya tenemos las rutas creadas, es momento de que los datos se visualicen en la aplicación. Para ello es necesario entender cómo funciona el sistema de plantillas utilizado por Laravel, llamado \textbf{\href{https://laravel.com/docs/10.x/blade}{Blade}}, que junto con el sistema de \textbf{enrutado} visto previamente, relaciona la URL a la que se llama con el controlador y la vista correspondientes.
 
 \section{Obtener datos en el controlador}
 
-El ejemplo va a consistir en obtener todos los posts de la base de datos y hacer un listado con ellos. Para ello vamos a modificar el controlador para obtener los datos:
+El ejemplo va a consistir en obtener todos los posts de la base de datos y hacer un listado con ellos. Por otro lado, al seleccionar un post concreto, se mostrará dicho post. Para ello vamos a modificar el controlador para modificar las dos funciones que se utilizan en las rutas:
 
-\begin{mycode}{Función que obtiene datos de la base de datos}{php}{}
+\begin{mycode}{Funciones modificadas en el controlador Post}{php}{}
 <?php
 // ...
 use App\Models\Post;
@@ -289,14 +318,18 @@ class PostController extends Controller{
         $posts = Post::orderBy('created_at');
         return view('posts.index',['posts' => $posts]);
     }
+    //...
+    public function show(Post $post){
+        return view('posts.show',['post'=>$post]);
+    }
 \end{mycode}
 
-El problema de este código es que estamos llamando a una vista que todavía no hemos creado, y le estamos pasando como variable en la vista “posts” el valor de la variable “\$posts”.
+El problema de este código es que estamos llamando a unas vistas que todavía no hemos creado, y les estamos pasando como variables a la vista los datos obtenidos dentro de un array. Podremos pasar tantas variables como queramos.
 
 
 \section{Generar vista}
 
-El sistema de plantillas y vistas Blade se guardan en la ruta \configdir{resources/views}, y en este caso lo que estamos diciendo es que haga uso de “posts.index”, que quiere decir el fichero “index.blade.php” del directorio “posts”. Por lo tanto, deberemos crear un fichero en la ruta \configfile{resources/views/posts/index.blade.php}, que corresponde a la vista que estamos llamando.
+El sistema de plantillas y vistas Blade se guardan en la ruta \configdir{resources/views}, y en el primer caso lo que estamos diciendo es que haga uso de “posts.index”, que quiere decir el fichero “index.blade.php” del directorio “posts”. Por lo tanto, deberemos crear un fichero en la ruta \configfile{resources/views/posts/index.blade.php}, que corresponde a la vista que estamos llamando.
 
 \infobox{\textbf{Es recomendable para cada Modelo/Controlador crear un directorio de vistas}}
 
@@ -304,14 +337,19 @@ Ahora es momento de visualizar los datos en la vista. Para ello, recorreremos el
 
 El sistema de plantillas tiene una serie de palabras reservadas similar a la de los lenguajes de programación más habituales. En este ejemplo se va a recorrer con un bucle for para obtener la lista, y posteriormente visualizar los atributos:
 
-\begin{mycode}{Vista del controlador}{html+smarty}{}
+\begin{mycode}{Vista “index.blade.php”}{html+smarty}{}
 <ul>
     {{--esto es un comentario: recorremos el listado de posts--}}
     @foreach ($posts as $post)
         {{-- visualizamos los atributos del objeto --}}
-        <li>{{$post->titulo}}. Escrito el {{$post->created_at}}</li>
+        <li>
+          <a href="posts/{{$post->id}}"> {{$post->titulo}}</a>.
+          Escrito el {{$post->created_at}}
+        </li>
     @endforeach
 </ul>
 \end{mycode}
 
+Si ahora visualizamos la ruta “/posts” obtendremos el listado.
 
+\exercisebox{Crea la vista para visualizar todo el post como fichero “show.blade.php”.}

@@ -1,0 +1,63 @@
+\chapter{Crear rutas necesarias}
+
+Una aplicación web normalmente nos va a permitir crear datos, no sólo visualizarlos. Por lo tanto vamos a tener que crear la vista de un formulario que el usuario pueda utilizar para crear datos a través del controlador.
+
+Tal como hemos dicho, las funcionalidades de la aplicación empiezan por crear una ruta a la que el usuario puede acceder. En este caso, se podrían crear las rutas necesarias para visualizar el formulario de creación, obtener los datos para la creación, edición y actualización de datos...
+
+En lugar de eso el sistema de rutas de Laravel nos permite simplificarlo, y si tenemos un modelo que sabemos que es de tipo “resource”, nos permite crear todas las rutas necesarias para la gestión de los datos. Por lo tanto, las rutas quedarían de la siguiente manera:
+
+\begin{mycode}{Rutas simplificadas para un modelo de tipo “resource”}{php}{}
+<?php
+//...
+Route::resources([
+    'posts' => PostController::class,
+]);
+\end{mycode}
+
+\chapter{Crear registro: vista y controlador}
+
+A la hora de crear un registro, Laravel por defecto hace uso de la ruta “create”, por lo que deberemos crear un botón en la vista principal que nos mande a la URL “/posts/create”, por lo que la vista de creación será \configfile{create.blade.php}. Sin entrar en detalles, ya que es un formulario simple, tendrá la siguiente forma:
+
+\begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
+@section('content')
+<div class="container">
+  <form class="mt-2" name="create_platform" action="{{route('posts.store')}}"
+    method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group mb-3">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" required/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="texto" class="form-label">Texto</label>
+      <textarea type="textarea" rows="5" class="form-control" id="texto" name="texto">
+      </textarea>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="publicado" name="publicado">
+      <label class="form-check-label" for="publicado">¿Publicar?
+      </label>
+    </div>
+  <button type="submit" class="btn btn-primary" name="">Crear</button>
+</form>
+</div>
+\end{mycode}
+
+Al pulsar el botón “Crear” se realizará una petición “\textbf{POST}” a la ruta “\textbf{posts.store}”, por lo tanto es la función que debemos modificar ahora en el controlador, que junto con la función “create”, tendrá la siguiente forma:
+
+\begin{mycode}{Añadiendo funcionalidad al controlador}{php}{}
+<?php
+//...
+public function create(){
+    return view('posts.create');
+}
+
+public function store(Request $request){
+    $post = new Post();
+    $post->titulo = $request->titulo;
+    $post->texto = $request->texto;
+    $post->publicado = $request->has('publicado');
+    $post->save();
+    return redirect()->route('posts.index');
+}
+\end{mycode}
