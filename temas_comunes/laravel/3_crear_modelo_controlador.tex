@@ -16,7 +16,7 @@ Ahora que ya tenemos el entorno creado, es momento de empezar a añadir funciona
 Cada comando contará con su ayuda, por lo que es recomendable ir mirando la ayuda y así conocer las distintas opciones para cada uno de ellos.
 
 
-\chapter{Crear modelo “Posts”}
+\chapter{Crear modelo}
 Un blog tiene una serie de “Posts”, que son las entradas que los usuarios introducen en el blog. De momento vamos a ignorar el apartado de usuarios, para simplificarlo. Una entrada del blog contará con los siguientes atributos:
 
 \begin{itemize}
@@ -33,7 +33,7 @@ root@1b29e46c10ae:/var/www/html# php artisan make:model Post -crms
 
 Este comando nos va a crear el modelo Post junto con:
 \begin{itemize}
-    \item \textbf{Controlador} de tipo “resource”, lo que va a permitir distintas acciones sobre él: listar, crear, ver, ...
+    \item \textbf{Controlador} de tipo “resource”, lo que va a permitir realizar acciones “\textbf{CRUD}” (\textit{create}, \textit{read}, \textit{update} y \textit{delete}), necesarias en cualquier aplicación web.
     \item \textbf{\textit{Migration}}: Un fichero para realizar la migración del modelo en la base de datos.
     \item \textbf{\textit{Seed}}: Un fichero de tipo “semilla” para introducir datos en la base de datos.
 \end{itemize}
@@ -353,3 +353,5 @@ El sistema de plantillas tiene una serie de palabras reservadas similar a la de 
 Si ahora visualizamos la ruta “/posts” obtendremos el listado.
 
 \exercisebox{Crea la vista para visualizar todo el post como fichero “show.blade.php”.}
+
+

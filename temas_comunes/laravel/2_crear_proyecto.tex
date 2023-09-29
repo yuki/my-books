@@ -96,3 +96,13 @@ Y con ello podemos ir al puerto 80 a través de nuestro navegador y veremos la p
 \begin{center}
     \includegraphics[frame,width=0.7\linewidth]{intro.png}
 \end{center}
+
+
+\chapter{Variables de entorno}
+Todo proyecto de Laravel cuenta con unas variables de entorno del proyecto. Es un fichero de configuración situado en la raíz del proyecto que se llama \configfile{.env} y en él se encuentran las credenciales para acceder a la base de datos, servidor SMTP, ...
+
+Dado que hemos generado el entorno a través del asistente, se ha rellenado con la configuración por defecto, entre las que nos encontramos que la aplicación tiene \textbf{el modo debug activado}. Durante el desarrollo nos va a ayudar para poder hacer \textit{debugging} mientras realizamos acciones, pero esta opción debería estar deshabilitada al poner la aplicación en producción.
+
+Por último, es conveniente recordar que este fichero \textbf{nunca debería estar en un repositorio público}, ya que contiene información sensible como lo son los credenciales de acceso a bases de datos o servicios externos.
+
+\errorbox{\textbf{Cuidado con versionar el fichero “\texttt{.env}”, ya que contiene información sensible}}

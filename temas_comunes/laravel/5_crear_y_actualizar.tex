@@ -14,7 +14,23 @@ Route::resources([
 ]);
 \end{mycode}
 
-\chapter{Crear registro: vista y controlador}
+Si miramos las rutas generadas, veremos que nos ha creado todas las rutas necesarias para interactuar con los posts:
+
+\begin{mycode}{Mirando todas las rutas creadas}{console}{}
+root@1b29e46c10ae:/var/www/html# php artisan route:list
+GET|HEAD   posts ............ posts.index › PostController@index
+POST       posts ............ posts.store › PostController@store
+GET|HEAD   posts/create ..... posts.create › PostController@create
+GET|HEAD   posts/{post} ..... posts.show › PostController@show
+PUT|PATCH  posts/{post} ..... posts.update › PostController@update
+DELETE     posts/{post} ..... posts.destroy › PostController@destroy
+GET|HEAD    posts/{post}/edit. posts.edit › PostController@edit
+\end{mycode}
+
+Tal como se puede ver, por haber indicado la ruta anterior, automáticamente nos ha creado las rutas para listar, crear, visualizar, actualizar, editar y borrar el recurso. Con una única línea nos evita tener que escribir todas las líneas que supondrían de configuración.
+
+
+\chapter{Crear registro}
 
 A la hora de crear un registro, Laravel por defecto hace uso de la ruta “create”, por lo que deberemos crear un botón en la vista principal que nos mande a la URL “/posts/create”, por lo que la vista de creación será \configfile{create.blade.php}. Sin entrar en detalles, ya que es un formulario simple, tendrá la siguiente forma:
 
@@ -58,6 +74,111 @@ public function store(Request $request){
     $post->texto = $request->texto;
     $post->publicado = $request->has('publicado');
     $post->save();
+    return redirect()->route('posts.index');
+}
+\end{mycode}
+
+
+\chapter{Editar registro}
+
+Una vez creados los registros nos va a interesar poder editarlos. Para ello, tendremos que añadir a las vistas correspondientes (el listado general y/o desde la vista del post) un botón que nos lleve a la ruta para editar, que es: \configlink{/posts/{id}/edit}.
+
+Para poder visualizar los datos, deberemos obtener desde el controlador los datos referentes a ese “id” para poder visualizarlo en el formulario que crearemos en la vista \configfile{posts/edit.blade.php}. Después, en la función update deberemos realizar el guardado de las modificaciones.
+
+\begin{mycode}{Añadiendo funcionalidad al controlador}{php}{}
+<?php
+//...
+public function edit(Post $post){
+    return view('posts.edit',['post'=>$post]);
+}
+
+public function update(Request $request, Post $post){
+    $post->titulo = $request->titulo;
+    $post->texto = $request->texto;
+    $post->publicado = $request->has('publicado');
+    $post->save();
+    return view('posts.show',['post'=>$post]);
+}
+\end{mycode}
+
+Tal como se puede ver, la función de actualizar lo que hace es recibir los datos del formulario y el registro a actualizar. Debemos sustituir los campos y para finalizar guardar los cambios del registro. Después, volvemos a la vista para visualizar los cambios.
+
+La vista para editar el registro quedaría:
+
+\begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
+@extends('layouts.app')
+@section('content')
+<div class="container">
+  <form class="mt-2" name="create_platform" action="{{route('posts.update',$post)}}"
+    method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    <div class="form-group mb-3">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" required
+        value="{{$post->titulo}}"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="texto" class="form-label">Texto</label>
+      <textarea type="textarea" rows="5" class="form-control" id="texto" name="texto">
+        {{$post->texto}}
+      </textarea>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="publicado" name="publicado"
+        @checked($post->publicado)>
+      <label class="form-check-label" for="publicado">
+      ¿Publicar?
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="">Actualizar</button>
+  </form>
+</div>
+@endsection
+\end{mycode}
+
+Dado que es el formulario de edición, deben existir datos, de ahí que para cada apartado haya que añadir el parámetro “value” en los \textit{inputs}, el valor dentro del \textit{textarea}, o darle el valor correspondiente al \textit{checkbox}.
+
+También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP con los formularios, \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT}{que no se puede utilizar en formularios}, debemos añadir \inlineconsole{@mehotd('PUT')} para que genere un \href{https://laravel.com/docs/10.x/blade#method-field}{método oculto} en el formulario.
+
+\exercisebox{Dado que el formulario de crear y actualizar es prácticamente igual, es interesante }
+
+
+\chapter{Borrar registro}
+
+Por último, tenemos que poder eliminar registros, por lo que deberemos añadir un botón que ejecute la acción de borrado que se recibirá en el controlador.
+Este botón lo vamos a añadir a la lista de posts, que junto con el botón editar del apartado anterior, quedaría:
+
+\begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
+@foreach ($posts as $post)
+  {{-- visualizamos los atributos del objeto --}}
+  <li class="pt-1">
+    <div class="d-flex flex-row">
+      <a href="posts/{{$post->id}}"> {{$post->titulo}}</a>.
+      Escrito el {{$post->created_at}}
+      <a class="btn btn-warning btn-sm" href="{{route('posts.edit',$post)}}"
+        role="button">Editar</a>
+
+      <form action="{{route('posts.destroy',$post)}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-danger" type="submit"
+          onclick="return confirm('Are you sure?')">Delete
+        </button>
+      </form>
+    </div>
+  </li>
+@endforeach
+\end{mycode}
+
+Y por último el controlador debe borrar el objeto cuando se llama a la función \textbf{destroy}:
+
+\begin{mycode}{Añadiendo funcionalidad al controlador}{php}{}
+<?php
+//....
+public function destroy(Post $post) {
+    $post->delete();
     return redirect()->route('posts.index');
 }
 \end{mycode}
