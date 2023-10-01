@@ -355,3 +355,96 @@ Si ahora visualizamos la ruta “/posts” obtendremos el listado.
 \exercisebox{Crea la vista para visualizar todo el post como fichero “show.blade.php”.}
 
 
+\chapter{\textit{Soft Deleting}}
+
+Laravel, a través de su ORM Eloquent, nos permite hacer uso del sistema “\textit{\href{https://laravel.com/docs/10.x/eloquent\#soft-deleting}{soft deleting}}”, que en lugar de borrar los registros de la base de datos, lo que hace es marcarlo como borrado. Esto lo hace a través de una columna en la base de datos, indicando con una fecha cuándo se ha borrado.
+
+Es habitual hacer uso de estos sistemas, por si el borrado ha sido erróneo, y de esta manera poder recuperar registros (ya que realmente no se han borrado).
+
+Para hacer uso de este sistema debemos indicarlo en el modelo, para ello le indicaremos que se va a usar “\textbf{SoftDeletes}”:
+
+\begin{mycode}{Indicar en el modelo el uso de Softdeletes}{php}{}
+<?php
+//...
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Post extends Model{
+    use SoftDeletes;
+    //...
+}
+\end{mycode}
+
+Y también debemos indicarlo en la generación de la base de datos (o en un nuevo \textit{migration}). De esta manera, se creará la columna correspondiente que es necesaria.
+
+\begin{mycode}{Indicar en el “migration” el uso de Softdeletes}{php}{}
+<?php
+//...
+public function up(): void {
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->string("titulo",128);
+        $table->string("texto",5000);
+        $table->boolean("publicado");
+        $table->softDeletes();
+        $table->timestamps();
+    });
+}
+\end{mycode}
+
+Si ejecutamos los \textit{migrations}, veremos que la tabla tiene un campo “\textbf{deleted\_at}”, que por defecto estará a NULL. Si ahora borramos un registro, se actualizará esa columna con la fecha del momento en el que se ha realizado la acción de borrado. \textbf{Estos registros pueden ser recuperados}.
+
+
+
+\chapter{Debug}
+Durante el desarrollo es habitual hacer uso de sistemas de \textit{debug}, por ejemplo para poder ver el contenido de variables y parar la ejecución del algoritmo que estamos programando.
+
+Laravel cuenta con una función llamada \inlineconsole{dd()} que podemos utilizar en cualquier momento. Por ejemplo, si lo usamos en el controlador creado previamente:
+
+\begin{mycode}{Llamar a Tinker con Artisan}{php}{}
+<?php
+ public function index(){
+    $posts = Post::all();
+    dd($posts);
+    return view('posts.index',['posts' => $posts]);
+}
+\end{mycode}
+
+En este caso, se ejecutará la petición de obtener todos los \textit{posts}, y acto seguido la función \inlineconsole{dd($posts)} lo que hará será mostrar por pantalla el contenido de la variable y terminará la ejecución del código.
+
+
+\chapter{Consola Tinker}
+
+Hoy en día muchos \textit{frameworks} tienen algún sistema de consola interactiva con la que poder utilizar las funcionalidades del mismo. De esta manera, podemos realizar comprobaciones, interactuar con los modelos, objetos... pero sin tener que hacerlo desde el código de la web.
+
+En el caso de Laravel la consola se llama \href{https://laravel.com/docs/10.x/artisan#tinker}{Tinker}, y se puede llamar de dos maneras, dependiendo desde dónde lo hagamos:
+\begin{itemize}
+    \item Si lo realizamos desde dentro del contenedor, usaremos Artisan de la siguiente manera:
+\begin{mycode}{Llamar a Tinker con Artisan}{console}{}
+root@1b29e46c10ae:/var/www/html# php artisan tinker
+Psy Shell v0.11.21 (PHP 8.2.10 — cli) by Justin Hileman
+\end{mycode}
+
+    \item Si lo hacemos desde nuestro servidor anfitrión, usaremos Sail:
+\begin{mycode}{Arrancamos los servicios}{console}{}
+ruben@vega:~$ cd example-app && ./vendor/bin/sail tinker
+Psy Shell v0.11.21 (PHP 8.2.10 — cli) by Justin Hileman
+\end{mycode}
+\end{itemize}
+
+Una vez dentro, podremos hacer uso de los modelos, por ejemplo, para ver los datos que tenemos en la base de datos.
+
+\begin{mycode}{Arrancamos los servicios}{psysh}{}
+> Post::all();
+[!] Aliasing 'Post' to 'App\Models\Post' for this Tinker session.
+= Illuminate\Database\Eloquent\Collection {#7247
+    all: [
+    App\Models\Post {#7249
+        id: 1,
+        titulo: "Primer post",
+        texto: "Este es el texto del primer post",
+        publicado: 1,
+        created_at: "2023-10-01 16:57:30",
+        updated_at: null,
+    },
+    ],
+}
+\end{mycode}

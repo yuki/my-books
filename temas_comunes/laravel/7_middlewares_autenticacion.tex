@@ -1,0 +1,86 @@
+\chapter{\textit{Middlewares}}
+
+Un \textit{middleware} en Laravel es un mecanismo que inspecciona y filtra las peticiones HTTP que llegan a la aplicación. El ejemplo más claro, y que veremos después, es comprobar si un usuario está autenticado mientras usa la aplicación. En caso de no estar autenticado, le mandará a la página de login/registro.
+
+Se pueden crear otros \textit{middlewares} que nuestra aplicación necesite, como por ejemplo registrar todas las peticiones que llegan a la aplicación, validaciones \href{https://es.wikipedia.org/wiki/Cross-site_request_forgery}{CSRF} de formularios, validación de cabeceras...
+
+Los \textit{middlewares} se sitúan en la ruta \configdir{app/Http/Middleware/}, donde ya existen varios tras realizar la instalación del \textit{framework} Laravel. Para que entren en funcionamiento, se debe realizar la configuración en el fichero de rutas, ya que se activarán dependiendo de las rutas en las que lo indiquemos.
+
+\chapter{Configurando el \textit{middleware} de autenticación}
+
+El sistema de autenticación de Laravel es el ejemplo más claro de \textit{middleware} que podemos utilizar, ya que por defecto viene instalado, pero no está configurado. En pasos anteriores hemos creado el interfaz para poder registrar usuarios y realizar el login en la aplicación.
+
+Ahora es el momento de realizar la activación del sistema de autenticación, y que si no se ha hecho el login, no se pueda ver la aplicación y nos envíe a la página de registro.
+
+Para ello, debemos realizar la modificación de rutas, en la que debemos indicar qué rutas queremos que estén dentro del \textit{middleware} de autenticación. En este caso vamos a elegir que para toda la aplicación sea necesario estar autenticado:
+
+
+\begin{mycode}{Rutas bajo el \textit{middleware} de autenticación}{php}{}
+<?php
+//...
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+    'posts' => PostController::class,
+    ]);
+});
+\end{mycode}
+
+
+\section{Comprobar rutas bajo \textit{middlewares}}
+Si queremos comprobar qué rutas están bajo la influencia de un \textit{middleware}, necesitaremos mirar las rutas en modo \textit{verbose}:
+
+
+\begin{mycode}{Vista de las rutas en modo \textit{verbose}}{console}{}
+root@1b29e46c10ae:/var/www/html# php artisan route:list -v
+...
+GET|HEAD  posts ............. posts.index › PostController@index
+ → web
+ → App\Http\Middleware\Authenticate
+POST      posts ............. posts.store › PostController@store
+ → web
+ → App\Http\Middleware\Authenticate
+DELETE    posts/{post} ...... posts.destroy › PostController@destroy
+ → web
+ → App\Http\Middleware\Authenticate
+...
+\end{mycode}
+
+Se puede comprobar que estas rutas se aplican para la parte “web” de nuestra aplicación, y que antes de ser ejecutadas pasarán por el \textit{middleware} “\textbf{Authenticate}”.
+
+\chapter{Realizar excepciones}
+
+No siempre vamos a querer que toda la aplicación esté bajo el sistema de autenticación, ya que lo habitual es que sólo sea necesario para las acciones que puedan suponer un riesgo de seguridad (edición de datos, borrado de datos, apartados sensibles,...), por lo tanto es interesante que haya rutas que no requieran de estar autenticado.
+
+Para ver cómo funciona, vamos a añadir excepciones al listado de todos los posts y a la visualización de cada post por separado. Para ello, al fichero de rutas añadiremos:
+
+\begin{mycode}{Rutas que están exentas del \textit{middleware} de autenticación}{php}{}
+<?php
+//...
+Route::controller(PostController::class)->group(function () {
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+})->withoutMiddleware([Auth::class]);
+\end{mycode}
+
+Tal como se puede ver, hemos creado dos rutas del controlador “PostController” que se les indica “\texttt{->withoutMiddleware}”, para que no se aplique, en este caso, la comprobación de autenticación.
+
+
+\chapter{Comprobar si el usuario está autenticado}
+
+Por último, debemos asegurar que los botones de edición o borrado sólo aparezcan cuando el usuario esté logueado. Para ello tenemos el sistema \inlineconsole{@auth ... @endauth}. Si modificamos el fichero \configfile{posts/index.blade.php} para evitar que aparezcan los botones de edición y borrado de un post, quedaría:
+
+\begin{mycode}{Comprobar si se está autenticado}{html+smarty}{{\small }}
+@auth
+  <a class="btn btn-warning btn-sm" href="{{route('posts.edit',$post)}}"
+   role="button">Editar</a>
+
+  <form action="{{route('posts.destroy',$post)}}" method="POST"
+    enctype="multipart/form-data">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-sm btn-danger" type="submit"
+      onclick="return confirm('Are you sure?')">Delete
+    </button>
+  </form>
+@endauth
+\end{mycode}
