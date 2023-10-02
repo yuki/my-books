@@ -6,6 +6,8 @@ Se pueden crear otros \textit{middlewares} que nuestra aplicación necesite, com
 
 Los \textit{middlewares} se sitúan en la ruta \configdir{app/Http/Middleware/}, donde ya existen varios tras realizar la instalación del \textit{framework} Laravel. Para que entren en funcionamiento, se debe realizar la configuración en el fichero de rutas, ya que se activarán dependiendo de las rutas en las que lo indiquemos.
 
+Aparte de estar creados en la ruta especificada, también deben de estar configurados dentro del fichero \configfile{app/Http/kernel.php}, donde ya están configurados para su apartado correspondiente, y donde se han creado unos \textit{alias} que hacen referencia a ellos.
+
 \chapter{Configurando el \textit{middleware} de autenticación}
 
 El sistema de autenticación de Laravel es el ejemplo más claro de \textit{middleware} que podemos utilizar, ya que por defecto viene instalado, pero no está configurado. En pasos anteriores hemos creado el interfaz para poder registrar usuarios y realizar el login en la aplicación.
@@ -20,7 +22,7 @@ Para ello, debemos realizar la modificación de rutas, en la que debemos indicar
 //...
 Route::middleware(['auth'])->group(function () {
     Route::resources([
-    'posts' => PostController::class,
+      'posts' => PostController::class,
     ]);
 });
 \end{mycode}

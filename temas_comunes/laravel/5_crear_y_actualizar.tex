@@ -32,7 +32,17 @@ Tal como se puede ver, por haber indicado la ruta anterior, automáticamente nos
 
 \chapter{Crear registro}
 
-A la hora de crear un registro, Laravel por defecto hace uso de la ruta “create”, por lo que deberemos crear un botón en la vista principal que nos mande a la URL “/posts/create”, por lo que la vista de creación será \configfile{create.blade.php}. Sin entrar en detalles, ya que es un formulario simple, tendrá la siguiente forma:
+A la hora de crear un registro, Laravel por defecto hace uso de la ruta “create”, por lo que deberemos crear un botón en la vista principal que nos mande a la URL “/posts/create”, por lo que la vista de creación será \configfile{create.blade.php}.
+
+En esta vista debemos crear un formulario, en el que se tendrá en cuenta los siguientes apartados:
+
+\begin{itemize}
+    \item \textbf{Ruta del \textit{action} a ejecutar}: se debe indicar la ruta donde se mandarán los datos, que debe coincidir con la función que guardará los datos en la base de datos. Por defecto, la ruta es “store”.
+    \item \textbf{Método}: el método para enviar datos al servidor será POST.
+    \item \inlineconsole{@csrf}: es un atributo especial de Blade que genera un atributo oculto “input” en el formulario donde se guarda el token \href{https://es.wikipedia.org/wiki/Cross-site_request_forgery}{CSRF}, para posteriormente comprobar que es correcto.
+\end{itemize}
+
+Con todo ello, la vista quedaría de la siguiente forma:
 
 \begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
 @section('content')
@@ -101,7 +111,7 @@ public function update(Request $request, Post $post){
 }
 \end{mycode}
 
-Tal como se puede ver, la función de actualizar lo que hace es recibir los datos del formulario y el registro a actualizar. Debemos sustituir los campos y para finalizar guardar los cambios del registro. Después, volvemos a la vista para visualizar los cambios.
+Tal como se puede ver, la función de actualizar lo que hace es recibir los datos del formulario y el registro a actualizar. Existe la posibilidad de conocer si \href{https://laravel.com/docs/10.x/eloquent#updates}{alguno de los campos ha sido modificado} antes de realizar la actualización. Después, debemos sustituir los campos y para finalizar guardar los cambios del registro. Por último, volvemos a la vista para visualizar los cambios.
 
 La vista para editar el registro quedaría:
 
@@ -140,9 +150,9 @@ La vista para editar el registro quedaría:
 
 Dado que es el formulario de edición, deben existir datos, de ahí que para cada apartado haya que añadir el parámetro “value” en los \textit{inputs}, el valor dentro del \textit{textarea}, o darle el valor correspondiente al \textit{checkbox}.
 
-También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP con los formularios, \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT}{que no se puede utilizar en formularios}, debemos añadir \inlineconsole{@mehotd('PUT')} para que genere un \href{https://laravel.com/docs/10.x/blade#method-field}{método oculto} en el formulario.
+También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP con los formularios, \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT}{el método PUT no se puede utilizar en formularios diréctamente}, por lo que debemos añadir \inlineconsole{@method('PUT')} para que lo genere \href{https://laravel.com/docs/10.x/blade#method-field}{oculto} en el formulario.
 
-\exercisebox{Dado que el formulario de crear y actualizar es prácticamente igual, es interesante }
+\exercisebox{Dado que el formulario de crear y actualizar es prácticamente igual, sería interesante crear una única vista que sirva para ambos métodos.}
 
 
 \chapter{Borrar registro}
@@ -172,7 +182,7 @@ Este botón lo vamos a añadir a la lista de posts, que junto con el botón edit
 @endforeach
 \end{mycode}
 
-Y por último el controlador debe borrar el objeto cuando se llama a la función \textbf{destroy}:
+Y por último el controlador debe borrar el objeto cuando se llama a la función \textbf{delete}:
 
 \begin{mycode}{Añadiendo funcionalidad al controlador}{php}{}
 <?php

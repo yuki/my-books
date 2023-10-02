@@ -88,31 +88,31 @@ return new class extends Migration {
 };
 \end{mycode}
 
-La función \inlineconsole{up()} se ejecutará cuando realizamos la migración, mientra que la función \inlineconsole{down()} se usará cuando realicemos un “\textbf{\textit{rollback}}”, es decir, echar para atrás una migración.
+La función \inlineconsole{up()} se ejecutará cuando realizamos la migración, mientra que la función \inlineconsole{down()} se usará cuando realicemos un “\textbf{\textit{rollback}}” (echar para atrás una migración).
 
-\section{Opciones de los migraciones}
+\section{Opciones de las migraciones}
 
 En la \href{https://laravel.com/docs/10.x/migrations#tables}{documentación oficial} se explican cómo funcionan los \textit{migrations} y las funcionalidades básicas y avanzadas que tienen.
 
-Teniendo en cuenta lo visto en el punto anterior, podemos visualizar que las acciones del \textit{migration} contiene varias líneas, y vamos a destacar lo siguiente:
+Teniendo en cuenta lo visto en el punto anterior, podemos visualizar que las acciones del \textit{migration} contiene varias líneas, y vamos a destacar lo siguiente para el fichero \configfile{2014_10_12_000000_create_users_table.php}:
 
 \begin{itemize}
-    \item Crea una tabla llamada “\textbf{users}”, que contiene las siguientes columnas
-    \item \textbf{id}: es un alias a un método \textbf{bigIncrements}. Va a generar una columna de tipo integer, que se va a ir incrementando y que va a ser \textbf{clave primaria}.
+    \item Crea una tabla llamada “\textbf{users}”, que contiene varias columnas
+    \item \textbf{id}: es un alias al método \textbf{bigIncrements}. Va a generar una columna de tipo “\textit{big integer}” sin signo, que se va a ir incrementando y que va a ser \textbf{clave primaria}.
 
     \item \textbf{string}: existen varias columnas de tipo “string”, que son “name”, “email” y “password”. Es lo equivalente a “varchar”, sin indicar en este caso el número de longitud. Se le puede indicar como segundo parámetro.
     \item \textbf{unique()}: el contenido de este campo (en el ejemplo el \textbf{email}) debe ser único en la tabla.
     \item \textbf{timestamp}: crea un campo de tipo TIMESTAMP.
     \item \textbf{nullable}: permite que este campo sea \textbf{null}.
 
-    \item \textbf{timestamps}: Este es un método especial que crea dos campos en la base de datos: “\textbf{created\_at”} y “\textbf{updated\_at}”. De esta manera sabemos cuándo se ha creado y modificado el registro en la base de datos.
+    \item \textbf{timestamps()}: Este es un método especial que crea dos campos en la base de datos: “\textbf{created\_at”} y “\textbf{updated\_at}”. De esta manera sabemos cuándo se ha creado y modificado el registro en la base de datos.
 \end{itemize}
 
 \exercisebox{Añade a la migración del modelo Post, la generación de los campos: “título”, “texto” y “publicado”. Recuerda mirar la documentación oficial.}
 
-\section{Uso de los migraciones}
+\section{Uso de las migraciones}
 
-Una vez tenemos distintos ficheros de migraciones, hay que saber cómo aplicarlos y qué sucede con ellos. De nuevo, en la \href{https://laravel.com/docs/10.x/migrations#running-migrations}{documentación} aparecen distintos ejemplo, de los cuales se van a destacar sólo unos a continuación:
+Una vez tenemos distintos ficheros de migraciones, hay que saber cómo aplicarlos y qué sucede con ellos. De nuevo, en la \href{https://laravel.com/docs/10.x/migrations#running-migrations}{documentación} aparecen distintos ejemplos, de los cuales se van a destacar sólo unos a continuación:
 
 \subsection{Desplegar migraciones}
 Para realizar el despliegue de todas las migraciones debemos ejecutar el siguiente comando:
@@ -185,7 +185,7 @@ mysql> select * from migrations;
 En un momento dado nos puede interesar echar atrás la última migración, y para ello contamos con la opción \textbf{\textit{rollback}}. Este sistema puede que deshaga las migraciones de varios ficheros.
 
 \begin{mycode}{Ejecutar migraciones}{mysql}{}
-root@1b29e46c10ae:/var/www/html# php artisan db
+root@1b29e46c10ae:/var/www/html# php artisan migrate:rollback
 
 INFO  Rolling back migrations.
 2023_09_26_094514_create_posts_table ................  27ms DONE
@@ -203,9 +203,10 @@ En este caso, como el migrate hizo todos los ficheros, el \textit{rollback} se h
 Para asegurar que el sistema de migraciones está funcionando bien, para hacer pruebas, o para realizar despliegues limpios quizá nos interese borrar todas las migraciones de la aplicación o realizar una recarga de las mismas.
 
 \begin{itemize}
-    \item \textbf{\textit{fresh}}: borra todas las tablas de la base de datos y aplica de nuevo todas migraciones.
-    \item \textbf{\textit{reset}}: deshace todas las migraciones de la aplicación. Básicamente es dejar la base de datos limpia. \textbf{En este caso no se borra la tabla “\textit{migration}”}.
-    \item \textbf{\textit{refresh}}: deshace todas las migraciones de la aplicación y las vuelve a aplicar en orden.
+    \item \textbf{db:wipe}: borra todas las tablas, vistas y tipos.
+    \item \textbf{migrate:fresh}: borra todas las tablas de la base de datos y aplica de nuevo todas migraciones.
+    \item \textbf{migrate:reset}: deshace todas las migraciones de la aplicación. Básicamente es dejar la base de datos limpia. \textbf{En este caso no se borra la tabla “\textit{migration}”}.
+    \item \textbf{migrate:refresh}: deshace todas las migraciones de la aplicación y las vuelve a aplicar en orden.
 \end{itemize}
 
 
@@ -335,7 +336,7 @@ El sistema de plantillas y vistas Blade se guardan en la ruta \configdir{resourc
 
 Ahora es momento de visualizar los datos en la vista. Para ello, recorreremos el listado obtenido y lo visualizaremos, todo ello en la vista. El sistema de plantillas \href{https://laravel.com/docs/10.x/blade}{Blade} permite introducir funcionalidad similar a PHP en la vista mezclado con HTML. También permite incrustar código PHP directamente, pero intentaremos evitarlo.
 
-El sistema de plantillas tiene una serie de palabras reservadas similar a la de los lenguajes de programación más habituales. En este ejemplo se va a recorrer con un bucle for para obtener la lista, y posteriormente visualizar los atributos:
+El sistema de plantillas tiene una serie de palabras reservadas similar a la de los lenguajes de programación más habituales. En este ejemplo se va a recorrer con un bucle for la lista, se crea una variable de indexación, y así poder visualizar los atributos:
 
 \begin{mycode}{Vista “index.blade.php”}{html+smarty}{}
 <ul>
@@ -352,7 +353,7 @@ El sistema de plantillas tiene una serie de palabras reservadas similar a la de 
 
 Si ahora visualizamos la ruta “/posts” obtendremos el listado.
 
-\exercisebox{Crea la vista para visualizar todo el post como fichero “show.blade.php”.}
+\exercisebox{Crea la vista para visualizar toda la información del post en “show.blade.php”.}
 
 
 \chapter{\textit{Soft Deleting}}

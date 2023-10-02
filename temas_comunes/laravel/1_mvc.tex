@@ -1,13 +1,13 @@
 \chapter{Modelo-Vista-Controlador}
 
-La arquitectura \textbf{Modelo-Vista-Controlador} es un patrón de diseño de software que separa las funciones que el software realiza en tres capas principales:
+La arquitectura \textbf{Modelo-Vista-Controlador} es un patrón de diseño que separa las funciones que el software realiza en tres capas principales:
 
 \begin{itemize}
     \item \textbf{Modelo de datos}: Es la representación de la información que la que la aplicación interactúa, tanto para obtener la información como para ser actualizada.
 
     El modelo de datos normalmente equivale al diseño de base de datos, donde cada modelo representa a una entidad en un diseño de base de datos relacional.
 
-    El controlador es el encargado de realizar las peticiones al modelo, ya se actualizaciones o la obtención de información.
+    El controlador es el encargado de realizar las peticiones al modelo, ya sean actualizaciones o la obtención de información.
 
     \item \textbf{Controlador}: Responde a acciones del usuario (o eventos), que normalmente desencadenan en una acción al modelo de datos (ya sea obtención de datos, actualización, borrado...).
 
@@ -25,7 +25,7 @@ Aunque existen distintas implementaciones de la arquitectura Modelo-Vista-Contro
 \begin{enumerate}
     \item El usuario interactúa con la interfaz de usuario de alguna forma (por ejemplo, el usuario pulsa un botón, enlace, etc.).
 
-    \item El controlador recibe (por parte de los objetos de la interfaz-vista) la notificación de la acción solicitada por el usuario. El controlador gestiona el evento que llega, frecuentemente a través de un gestor de eventos (handler) o callback.
+    \item El controlador recibe (por parte de los objetos de la interfaz-vista) la notificación de la acción solicitada por el usuario. El controlador gestiona el evento que llega, frecuentemente a través de un gestor de eventos (\textit{handler}) o \textit{callback}.
 
     \item El controlador realiza una petición al modelo, ya sea para solicitar información o para actualizarla. El modelo debe confirmar si la acción se ha realizado de manera correcta o no.
 

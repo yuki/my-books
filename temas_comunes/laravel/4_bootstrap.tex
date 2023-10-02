@@ -52,7 +52,7 @@ La vista modificada quedaría:
 @endsection
 \end{mycode}
 
-Tal como se puede ver, lo primero que se indica es que esta vista “extiende” de la plantilla correspondiente. Posteriormente, lo que se hace es indicar una sección de la plantilla que va a ser sustituida por el contenido que aparece entre “@section” y “@endsection”.
+Tal como se puede ver, lo primero que se indica es que esta vista “extiende” de una plantilla concreta. Después se indica la sección de la plantilla que va a ser sustituida por el contenido que aparece entre “@section” y “@endsection”, que en este caso es la que corresponde al \inlineconsole{@yield('content')} que hemos visto previamente.
 
 
 \chapter{Modificación de rutas}
