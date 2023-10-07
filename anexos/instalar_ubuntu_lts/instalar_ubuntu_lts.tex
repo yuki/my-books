@@ -1,17 +1,17 @@
 \hypertarget{instalar_ubuntu_lts}{}
 
-\chapter{Instalar Ubuntu 20.04 LTS}
-En este anexo realizaremos la instalación de la distribución Ubuntu 20.04 LTS en su versión para servidores. En este anexo no se va a explicar cómo realizar la creación de una máquina virtual donde se aloja el sistema operativo, ya que existen distintos tipos de virtualizadores.
+\chapter{Instalar Ubuntu 22.04 LTS}
+En este anexo realizaremos la instalación de la distribución Ubuntu 22.04 LTS en su versión para servidores. En este anexo no se va a explicar cómo realizar la creación de una máquina virtual donde se aloja el sistema operativo, ya que existen distintos tipos de virtualizadores.
 
 No se realizará una guía “paso a paso”, sino que se centrará en las partes más importantes de la instalación y en las que más dudas puedan surgir.
 
-\section{Descargar Ubuntu 20.04}
-La ISO la obtendremos de la \href{https://ubuntu.com/#download}{web oficial} y seleccionaremos la versión 20.04 LTS de Ubuntu Server. Esta ISO contendrá el sistema base de Ubuntu y nos guiará para realizar la instalación del sistema operativo.
+\section{Descargar Ubuntu 22.04}
+La ISO la obtendremos de la \href{https://ubuntu.com/#download}{web oficial} y seleccionaremos la versión 22.04 LTS de Ubuntu Server. Esta ISO contendrá el sistema base de Ubuntu y nos guiará para realizar la instalación del sistema operativo.
 
 Una vez descargada la ISO tendremos que cargarla en el sistema de virtualización elegido y arrancar la máquina virtual.
 
 
-\section{Instalar Ubuntu 20.04}
+\section{Instalar Ubuntu 22.04}
 Tras arrancar la máquina virtual nos aparecerá un menú para seleccionar el idioma durante la instalación y le daremos a “Instalar Ubuntu Server”.
 
 \begin{center}
@@ -53,8 +53,8 @@ Tras realizar el reinicio de la máquina virtual nos encontraremos con que el si
 Por si acaso, realizaremos la actualización del índice del repositorio, actualizaremos el sistema y en caso necesario realizaremos un nuevo reinicio:
 
 \begin{mycode}{Actualizar Ubuntu}{console}{}
-mikeldi@ubuntu:~$ sudo su
-[sudo] password for mikeldi:
+ruben@ubuntu:~$ sudo su
+[sudo] password for ruben:
 root@ubuntu:~# apt update
 ...
 root@ubuntu:~# apt upgrade

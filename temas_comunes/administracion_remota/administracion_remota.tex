@@ -201,7 +201,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Este “key fingerprint” es un identificador que está relacionado con el fichero de “\textbf{clave pública}” del servidor. Es como el DNI del servidor. La primera vez se nos guarda ese \textit{fingerprint}, y en caso de que en una próxima conexión varíe, nos avisará. No suele ser habitual que este identificador cambie.
 
 
-
+\hypertarget{ssh_clave_publica_privada}{}
 \subsection{Conexión mediante certificados de clave pública/clave privada}
 
 Existe una alternativa a la hora de realizar una conexión SSH para que no nos pida la contraseña del usuario, y es \textbf{hacer uso de los certificados de clave pública y clave privada}. Este concepto de “clave pública y clave privada” viene de la \href{https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica}{\textbf{criptografía asimétrica}}.
@@ -251,10 +251,10 @@ El comando muestra los siguientes pasos:
 Una vez tenemos nuestro par de claves, podemos copiar la clave pública al usuario del servidor que nos interese mediante el siguiente comando:
 
 \begin{mycode}{Crear par de claves pública/privada}{console}{}
-ruben@vega:~$  ssh-copy-id user@server
+ruben@vega:~$  ssh-copy-id user@servidor_remoto
 \end{mycode}
 
-Para ello es imprescindible conocer previamente la contraseña del usuario en el servidor. Este comando realizará una conexión SSH y copiará el contenido de la \textbf{clave pública} en el fichero \configfile{~/.ssh/authorized_keys} del usuario en el servidor remoto. Este paso se puede realizar a mano (con un editor de texto).
+Para ello es imprescindible conocer previamente la contraseña del usuario en el servidor. El comando \commandbox{ssh-copy-id} realizará una conexión SSH y copiará el contenido de la \textbf{clave pública}, \configdir{~/.ssh/id_rsa.pub}, dentro del fichero \configfile{~/.ssh/authorized_keys} del usuario en el servidor remoto. Este paso se puede realizar a mano (con un editor de texto).
 
 \errorbox{\textbf{Windows no tiene el comando “ssh-copy-id”, por lo que deberemos hacer el paso a mano, tal como se ha explicado.}}
 
