@@ -45,28 +45,32 @@ En esta vista debemos crear un formulario, en el que se tendrá en cuenta los si
 Con todo ello, la vista quedaría de la siguiente forma:
 
 \begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
+@extends('layouts.app')
 @section('content')
-<div class="container">
-  <form class="mt-2" name="create_platform" action="{{route('posts.store')}}"
-    method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="form-group mb-3">
-      <label for="titulo" class="form-label">Titulo</label>
-      <input type="text" class="form-control" id="titulo" name="titulo" required/>
-    </div>
-    <div class="form-group mb-3">
-      <label for="texto" class="form-label">Texto</label>
-      <textarea type="textarea" rows="5" class="form-control" id="texto" name="texto">
-      </textarea>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="publicado" name="publicado">
-      <label class="form-check-label" for="publicado">¿Publicar?
+  <div class="container">
+    <form class="mt-2" name="create_platform"
+       action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="form-group mb-3">
+        <label for="titulo" class="form-label">Titulo</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" required/>
+      </div>
+      <div class="form-group mb-3">
+        <label for="texto" class="form-label">Texto</label>
+        <textarea type="textarea" rows="5" class="form-control" id="texto" name="texto">
+        </textarea>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="publicado"
+          name="publicado">
+        <label class="form-check-label" for="publicado">
+        ¿Publicar?
       </label>
-    </div>
-  <button type="submit" class="btn btn-primary" name="">Crear</button>
-</form>
-</div>
+      </div>
+      <button type="submit" class="btn btn-primary" name="">Crear</button>
+    </form>
+  </div>
+@endsection
 \end{mycode}
 
 Al pulsar el botón “Crear” se realizará una petición “\textbf{POST}” a la ruta “\textbf{posts.store}”, por lo tanto es la función que debemos modificar ahora en el controlador, que junto con la función “create”, tendrá la siguiente forma:
@@ -160,12 +164,12 @@ También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP c
 Por último, tenemos que poder eliminar registros, por lo que deberemos añadir un botón que ejecute la acción de borrado que se recibirá en el controlador.
 Este botón lo vamos a añadir a la lista de posts, que junto con el botón editar del apartado anterior, quedaría:
 
-\begin{mycode}{Vista del formulario}{html+smarty}{{\footnotesize }}
+\begin{mycode}{Vista del index.blade.php}{html+smarty}{{\footnotesize }}
 @foreach ($posts as $post)
   {{-- visualizamos los atributos del objeto --}}
   <li class="pt-1">
     <div class="d-flex flex-row">
-      <a href="posts/{{$post->id}}"> {{$post->titulo}}</a>.
+      <a href="{{route('posts.show',$post)}}"> {{$post->titulo}}</a>.
       Escrito el {{$post->created_at}}
       <a class="btn btn-warning btn-sm" href="{{route('posts.edit',$post)}}"
         role="button">Editar</a>

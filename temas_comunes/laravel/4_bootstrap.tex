@@ -14,7 +14,7 @@ A continuación se detalla qué hace cada comando:
     \item \commandbox{composer require laravel/ui --dev}: \href{https://getcomposer.org/}{Composer} es el gestor de dependencias utilizado por PHP. Lo que se está indicando es que se necesita como dependencia el paquete “laravel/ui” durante el desarrollo.
     \item \commandbox{php artisan ui bootstrap --auth}: Se indica qué \textit{framework} para el interfaz se va a utilizar. Aparte, con el parámetro “--auth” se le indica que genera las plantillas para la autenticación.
     \item \commandbox{npm install}: instala las dependencias indicadas en el primer comando.
-    \item \commandbox{npm run build}: ejecuta la acción “build” indicada en el fichero \configfile{package.json}. En este caso “compila” los javascripts y los css que se van a utilizar.
+    \item \commandbox{npm run build}: ejecuta la acción “build” indicada en el fichero \configfile{package.json}. En este caso “compila” los javascripts y los css que se van a utilizar. Más adelante hablamos de ello.
 \end{itemize}
 
 De esta manera no sólo hemos instalado las dependencias necesarias para hacer uso de Bootstrap, si no que también nos ha generado unas vistas para el sistema de autenticación en \configdir{resources/views/auth} y una plantilla general para la aplicación.
@@ -61,3 +61,127 @@ Aparte de lo visto hasta ahora, por haber activado el sistema de autenticación,
 \begin{mycode}{Mirando todas las rutas creadas}{console}{}
 root@1b29e46c10ae:/var/www/html# php artisan route:list
 \end{mycode}
+
+
+\chapter{Añadir CSS o Javascript propio}
+
+Si miramos la plantilla general \configfile{resources/views/layouts/app.blade.php} que se nos ha creado, podemos ver que en la cabecera hay un apartado de scripts:
+
+\begin{mycode}{Plantilla “resources/views/layouts/app.blade.php”}{html+smarty}{}
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+  <!-- ... -->
+  <!-- Scripts -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+\end{mycode}
+
+En las nuevas versiones de Laravel se hace uso de \href{https://vitejs.dev/}{Vite}, que es un sistema que “compila” el css y el javascript para minimizarlo. Esta configuración de la plantilla en el HTML generado queda como unos links de CSS y Javascript al directorio \configdir{public/}.
+
+\infobox{Vite es un sistema que “minimiza” el CSS y Javascript que necesitamos.}
+
+El problema es que si realizamos cualquier modificación del CSS o Javascript, tendríamos que “compilar” para poder ver el efecto. Para evitar esto, Vite puede levantar un pequeño servicio que nos mostrará los cambios en tiempo real.
+
+\section{Configuración de Vite}
+
+La configuración de Vite por defecto hace uso del sistema \href{https://es.wikipedia.org/wiki/Sass}{Sass}, que es un metalenguaje para escribir CSS pero que nos permite el uso de variables, anidamientos estilo herencia, ... Dado que vamos a querer usar CSS, podemos hacer un “include” del fichero \configfile{resources/css/app.css} en la configuración \configfile{resources/sass/app.sass}:
+
+
+\begin{mycode}{Configurando “resources/sass/app.sass”}{sass}{}
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+// Custom CSS
+@import '../css/app.css';
+\end{mycode}
+
+\section{Estilos propios sobre Bootstrap}
+Los estilos de Bootstrap están creados para que por defecto siempre prevalezcan sobre el resto de estilos, y por cómo funciona el  \href{https://css-tricks.com/specifics-on-css-specificity/}{sistema en cascada de CSS}, lo debemos tener en cuenta para añadir nuestros estilos.
+
+No es buena idea hacer uso del sistema “!important” en CSS, por lo que para añadir más puntuación a nuestros estilos, la idea es añadir al “<body>” de nuestro HTML un ID y después en nuestra hoja de estilos hacer uso de ese ID para cada elemento que queramos modificar el estilo.
+
+Por lo tanto, la plantilla general \configfile{resources/views/layouts/app.blade.php} podría quedar tal que:
+
+\begin{mycode}{Plantilla “resources/views/layouts/app.blade.php”}{html+smarty}{}
+...
+<body id="mis-estilos">
+    ...
+</body>
+...
+\end{mycode}
+
+Y en el fichero \configfile{resources/css/app.css}, donde pondremos nuestros estilos, deberían ir precedidos del ID. Por ejemplo, para tener un color propio en los elementos “h1”:
+
+\begin{mycode}{Fichero “resources/css/app.css”}{css}{}
+#mis-estilos h1{
+    color: red;
+}
+\end{mycode}
+
+Ahora sólo queda levantar el servicio Vite o realizar la compilación para que surja efecto el cambio.
+
+
+\section{Cómo usar Vite}
+Para hacer funcionar los CSS o Javascript propios que hemos podido añadir en los ficheros \configfile{resources/css/app.css} o \configfile{resources/js/app.js} se puede hacer de dos maneras:
+
+\begin{itemize}
+    \item \textbf{Levantando un servicio}: los cambios se verán automáticamente a medida que los realizamos. Este sistema \textbf{sólo deberíamos usarlo durante el desarrollo} de la aplicación.
+
+    \item \textbf{Generando} los ficheros finales: el método que minimiza y “compila” los ficheros y los deja en el directorio \configdir{public/build}.
+\end{itemize}
+
+Por defecto, haremos uso de la primera opción durante el desarrollo, mientras que el segundo método es para la puesta en producción, por lo que es importante recordar ejecutar el comando que veremos más adelante.
+
+
+\subsection{Servicio Vite}
+Durante el desarrollo el mejor método es hacer uso del servicio Vite, que podemos levantar dentro del contenedor. Este método levantará el servicio en el puerto 5173 y modificará la plantilla para que haga uso de ello.
+
+Para levantar el servicio, desde la raiz de la aplicación, se ejecutará:
+
+\begin{mycode}{Levantar servicio Vite}{console}{}
+root@1b29e46c10ae:/var/www/html# npm run dev
+> dev
+> vite
+
+VITE v4.4.9  ready in 178 ms
+->  Local:   http://localhost:5173/
+->  Network: http://192.168.144.2:5173/
+->  press h to show help
+
+LARAVEL v10.24.0  plugin v0.8.1
+->  APP_URL: http://localhost
+\end{mycode}
+
+Si miramos el código del HTML generado en la plantilla, veremos cómo se hace referencia a ese puerto:
+
+\begin{mycode}{Código HTML de la web}{HTML}{{\small }}
+<!-- Scripts -->
+<script type="module" src="http://localhost:5173/@vite/client"></script>
+<link rel="stylesheet" href="http://localhost:5173/resources/sass/app.scss" />
+<script type="module" src="http://localhost:5173/resources/js/app.js">
+</script>
+\end{mycode}
+
+
+\subsection{Generar ficheros para producción}
+
+El comando que vamos a especificar a continuación ya lo hemos ejecutado durante la puesta en marcha de Bootstrap, al inicio de este capítulo:
+
+\begin{mycode}{Levantar servicio Vite}{console}{}
+root@1b29e46c10ae:/var/www/html# npm run build
+> build
+> vite build
+
+vite v4.4.9 building for production...
+✓ 104 modules transformed.
+public/build/manifest.json              0.26 kB │ gzip:  0.14 kB
+public/build/assets/app-48669401.css  225.72 kB │ gzip: 30.77 kB
+public/build/assets/app-c75e0372.js   111.35 kB │ gzip: 36.20 kB
+✓ built in 3.58s
+\end{mycode}
+
+Tal como se puede ver, este comando ha realizado la generación de los assets dentro del directorio \configdir{public/build} que son utilizados en la plantilla, que se puede ver al inspeccionar el código HTML generado.

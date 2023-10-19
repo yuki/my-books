@@ -38,7 +38,6 @@ Este comando nos va a crear el modelo Post junto con:
     \item \textbf{\textit{Seed}}: Un fichero de tipo “semilla” para introducir datos en la base de datos.
 \end{itemize}
 
-
 \chapter{Entendiendo las “\textit{migrations}” de base datos}
 
 Hoy en día son muchos los \textit{frameworks} que hacen uso de sistemas de tipo \textbf{\textit{migration}} a la hora de interactuar en el tiempo con la base de datos. Podríamos definirlo como un \textbf{sistema de control de versiones para el esquema de base de datos}.
@@ -89,6 +88,9 @@ return new class extends Migration {
 \end{mycode}
 
 La función \inlineconsole{up()} se ejecutará cuando realizamos la migración, mientra que la función \inlineconsole{down()} se usará cuando realicemos un “\textbf{\textit{rollback}}” (echar para atrás una migración).
+
+
+\warnbox{\textbf{Por convenio, el nombre de los modelos suelen ser en singular, mientras que las tablas se deben crear en plural. \href{https://laravel.com/docs/10.x/eloquent\#table-names}{Pero se puede cambiar el nombre de la tabla}.}}
 
 \section{Opciones de las migraciones}
 
@@ -316,7 +318,7 @@ use App\Models\Post;
 // ...
 class PostController extends Controller{
     public function index(){
-        $posts = Post::orderBy('created_at');
+        $posts = Post::orderBy('created_at')->get();
         return view('posts.index',['posts' => $posts]);
     }
     //...
@@ -340,18 +342,18 @@ El sistema de plantillas tiene una serie de palabras reservadas similar a la de 
 
 \begin{mycode}{Vista “index.blade.php”}{html+smarty}{}
 <ul>
-    {{--esto es un comentario: recorremos el listado de posts--}}
-    @foreach ($posts as $post)
-        {{-- visualizamos los atributos del objeto --}}
-        <li>
-          <a href="posts/{{$post->id}}"> {{$post->titulo}}</a>.
-          Escrito el {{$post->created_at}}
-        </li>
-    @endforeach
+  {{--esto es un comentario: recorremos el listado de posts--}}
+  @foreach ($posts as $post)
+    {{-- visualizamos los atributos del objeto --}}
+    <li>
+      <a href="{{route('posts.show',$post)}}"> {{$post->titulo}}</a>.
+      Escrito el {{$post->created_at}}
+    </li>
+  @endforeach
 </ul>
 \end{mycode}
 
-Si ahora visualizamos la ruta “/posts” obtendremos el listado.
+Si ahora visualizamos la ruta “/posts” obtendremos el listado. Es importante destacar que para el enlace que nos lleva a visualizar un post concreto \textbf{se ha hecho uso del sistema ed rutas} al que se le pasa como parámetro el post.
 
 \exercisebox{Crea la vista para visualizar toda la información del post en “show.blade.php”.}
 
