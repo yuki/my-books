@@ -1,0 +1,14 @@
+\chapter{Añadiendo servicios extra}
+Tal como se ha podido ver, pfSense cuenta con una serie de servicios que vienen instalados y algunos pre-configurados para una configuración básica (NAT, DHCP Server, Reglas de filtrado, … ). Una de las ventajas que tiene pfSense, gracias a ser Software Libre, es que la comunidad trabaja en ampliar las funcionalidades añadiendo nuevos servicios que pueden ser instalados mediante paquetes que están específicamente adaptados para poder ser configurados a través del interfaz web de pfSense.
+
+Entre el software que podemos instalar desde el gestor de paquetes, que se encuentra en “\textbf{System → Package Manager}”, está:
+
+\begin{itemize}
+    \item \textbf{acme}: Sistema automático para desplegar \textbf{certificados} \href{https://letsencrypt.org/es/}{Let's Encrypt}
+    \item \textbf{cron}: Utilidad para ejecutar comandos en un horario específico
+    \item \textbf{frr}: Demonio de enrutado dinámico para BGP, OSPF.
+    \item \textbf{haproxy}: Balanceador de carga TCP/HTTP(S).
+    \item \textbf{nrpe}: servidor NRPE para poder monitorizar el estado de PfSense desde Nagios
+    \item \textbf{squid}: Proxy caché para filtrar contenido web.
+    \item \textbf{squidGuard}: filtrado de URLs, para limitar la conexión a páginas no autorizadas (denegar el acceso a páginas porno, anuncios, casinos online, … ).
+\end{itemize}
