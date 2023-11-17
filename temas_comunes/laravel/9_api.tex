@@ -168,14 +168,113 @@ ruben@vega:~$ curl -s  http://localhost/api/posts | jq
 
 \end{itemize}
 
-%\chapter{Versionar API}
-% https://laravel.io/articles/api-versioning-in-laravel
-% https://dev.to/dalelantowork/laravel-8-api-versioning-4e8
+
+\chapter{Visualizar API}
+
+Suele ser habitual tener un interfaz donde se muestra el funcionamiento de nuestra API, o cuáles son los \textit{endpoints} de la misma. Es decir, qué URL se pueden consultar, qué método hay que utilizar, si es necesario el paso de parámetros, ...
+
+Hoy en día existe la especificación \href{https://www.openapis.org/}{OpenAPI} para la generación de la API, y sobre ella existen distintos interfaces web. Uno de los interfaces más utilizados es \href{https://swagger.io/tools/swagger-ui/}{Swagger UI} que nos muestra un bonito interfaz y a la vez es posible utilizarlo para realizar consultas a la API.
+
+Para poder instalarlo en nuestro proyecto Laravel, necesitamos realizar la instalación de unas dependencias y la posterior instalación en el proyecto.
+
+\begin{mycode}{Instalación de dependencias}{console}{{\small}}
+root@5cff1feaf785:/var/www/html# composer require "darkaonline/l5-swagger"
+
+root@5cff1feaf785:/var/www/html# php artisan vendor:publish \
+    --provider "L5Swagger\L5SwaggerServiceProvider"
+\end{mycode}
 
 
+Ahora deberemos añadir comentarios a las funciones para poder generar el interfaz de manera correcta. En uno de los controladores añadiremos la siguiente cabecera (\textbf{sólo es necesario añadirlo en un controlador}):
+
+\begin{mycode}{Cabecera para la API}{php}{}
+<?php
+/**
+* @OA\Info(title="API", version="1.0")
+*/
+\end{mycode}
+
+
+Para documentar la función \textbf{index}, encima de ella añadiremos lo siguiente:
+
+\begin{mycode}{Comentario para /api/posts}{php}{}
+<?php
+...
+/**
+* @OA\Get(
+*     path="/api/posts",
+*     summary="Mostrar posts",
+*     @OA\Response(
+*         response=200,
+*         description="Mostrar todos los posts."
+*     ),
+*     @OA\Response(
+*         response="default",
+*         description="Ha ocurrido un error."
+*     )
+* )
+*/
+public function index(){
+//...
+\end{mycode}
+
+Y para la función \textbf{show}, que sólo nos muestra un único post, añadiremos los siguientes comentarios:
+
+\begin{mycode}{Comentario para /api/posts/ID}{php}{}
+<?php
+...
+/**
+* @OA\Get(
+*     path="/api/posts/{id}",
+*     summary="Mostrar un post concreto",
+*     @OA\Parameter(
+*          name="id",
+*          description="Project id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*     ),
+*     @OA\Response(
+*         response=200,
+*         description="Mostrar el post especificado."
+*     ),
+*     @OA\Response(
+*         response="default",
+*         description="Ha ocurrido un error."
+*     )
+* )
+*/
+public function show(Post $post) {
+//...
+\end{mycode}
+
+Tras esto, ejecutaremos el comando que recorrerá los controladores para generar el fichero \configfile{storage/api-docs/api-docs.json}:
+
+\begin{mycode}{Generamos el fichero json para Swagger}{console}{}
+root@5cff1feaf785:/var/www/html# php artisan l5-swagger:generate
+Regenerating docs default
+\end{mycode}
+
+Para conocer todas las funcionalidades de los comentarios, es recomendable mirar la \href{https://github.com/zircote/swagger-php#usage}{documentación}. Tras ejecutar el comando anterior, si vamos a la url \href{http://localhost/api/documentation}{http://localhost/api/documentation} tendremos acceso y veremos el interfaz para nuestra API:
+
+\begin{center}
+    \includegraphics[frame,width=0.7\linewidth]{swagger.png}
+\end{center}
 
 % Mostrar SWAGGER.io
 % https://styde.net/como-documentar-una-api-en-laravel-usando-swagger/
 % https://github.com/DarkaOnLine/L5-Swagger
 % https://github.com/zircote/swagger-php
 % https://zircote.github.io/swagger-php/
+
+
+
+
+% Certificados y JWT
+
+
+%\chapter{Versionar API}
+% https://laravel.io/articles/api-versioning-in-laravel
+% https://dev.to/dalelantowork/laravel-8-api-versioning-4e8
