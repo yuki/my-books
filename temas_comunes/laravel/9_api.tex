@@ -13,7 +13,7 @@ Hasta ahora hemos hecho uso del fichero \configfile{routes/web.php} para añadir
 
 Si observamos el fichero, vemos ya existe una ruta creada:
 
-\begin{mycode}{Contenido del fichero web.php}{php}{{\small }}
+\begin{mycode}{Contenido del fichero api.php}{php}{{\small }}
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +27,7 @@ Si obtenemos el listado de rutas, veremos que ya existe una ruta para conocer el
 
 Debemos recordar que para poder añadir las nuevas rutas, hay que incluir el controlador correspondiente, en este caso el \textbf{PostController}.
 
-\begin{mycode}{Añadir nuevas rutas al fichero web.php}{php}{}
+\begin{mycode}{Añadir nuevas rutas al fichero api.php}{php}{}
 <?php
 ...
 use App\Http\Controllers\PostController;
@@ -52,6 +52,30 @@ GET|HEAD        api/posts/{post}/edit  posts.edit › PostController@edit
 GET|HEAD        api/user ....................................................
 \end{mycode}
 
+Por otro lado, dado que la API es un sistema en el que no vamos a guardar un estado (ya que haremos uso de \textit{\textbf{tokens}}), debemos hacer dos pequeños cambios a ficheros de configuración general.
+
+
+En \configfile{app\Http\kernel.php} hay que modificar la sección de la API dejando:
+
+\begin{mycode}{Modificar kernel.php}{php}{\small}
+<?php
+//...
+'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+\end{mycode}
+
+También hay que deshabilitar el \href{https://en.wikipedia.org/wiki/Cross-site\_request\_forgery}{CSRF} para estas rutas. Para ello modificamos el fichero \configfile{app\Http\Middleware\VerifyCsrfToken.php} dejando:
+
+\begin{mycode}{Quitamos la protección CSRF a las rutas de la API}{php}{}
+<?php
+//...
+    protected $except = [
+        'api/*'
+    ];
+\end{mycode}
 
 \chapter{Uso de controladores para la API}
 
@@ -79,7 +103,7 @@ Tal como se puede ver, la función recibe dos modificaciones:
     \item \textbf{Comprobar qué se espera}: Tal como se puede ver, se ha añadido un “if” donde se mira si la petición se espera en formato JSON (“expectsJson()”). En caso afirmativo, se devuelve la respuesta correspondiente en formato JSON.
 \end{itemize}
 
-\errorbox{\textbf{Es recomendable hacer uso de controladores específicos}}
+\errorbox{\textbf{Es recomendable hacer uso de controladores específicos para la API}}
 
 
 
@@ -106,7 +130,7 @@ Es por ello, que lo ideal es crear controladores específicos para las funcional
        \item \textbf{\texttt{--model=Post}}: Para que el nuevo fichero del controlador ya tenga el include del modelo necesario.
     \end{itemize}
 
-    \item \textbf{Modificar la ruta para la API} y que de esta manera haga uso del nuevo controlador exclusivo. El cambio
+    \item \textbf{Modificar la ruta para la API} y que de esta manera haga uso del nuevo controlador exclusivo. El cambio es el siguiente:
 
 \begin{mycode}{Modificar api.php para el nuevo controlador}{php}{}
 <?php
@@ -116,14 +140,20 @@ use App\Http\Controllers\API\PostController;
 
     \item Modificar nuevo controlador, para que devuelva los datos correspondientes:
 
-\begin{mycode}{Modificar api.php para el nuevo controlador}{php}{}
+\begin{mycode}{Modificar el nuevo controlador PostController}{php}{}
 <?php
 ...
+use Illuminate\Http\Response;
 public function index(){
     $posts = Post::orderBy('created_at')->get();
-    return response()->json($posts);
+    return response()->json(['posts'=>$posts])
+        ->setStatusCode(Response::HTTP_OK);
 }
 \end{mycode}
+
+En este caso no hemos realizado ninguna comprobación, pero en una API de verdad debemos comprobar si se han encontrado resultados, y dependiendo de ellos devolver un \textbf{estado de respuesta distinto}.
+
+La \href{https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/HttpFoundation/Response.php}{librería} contiene una gran cantidad de variables para hacer referencia a los posibles códigos que podemos devolver, así como el texto que acompañan al código.
 
 \end{itemize}
 
@@ -134,37 +164,218 @@ Es momento de comprobar que todo funciona de manera correcta, y para ello debemo
 Para realizar la prueba podemos hacerlo de distintas formas, cada una de ellas dependiendo de la motivación que tengamos:
 
 \begin{itemize}
+    \item Utilizando un interfaz gráfico como \href{https://www.postman.com/}{Postman}, que nos va a facilitar hacer peticiones GET y peticiones más complejas.
+
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{postman.png}
+    \end{center}
+
     \item Desde el propio \textbf{navegador web}. Veremos los datos JSON devueltos en formato texto directamente. Para comprobar que funciona, puede ser más que suficiente.
+
+
+
 
     \item Desde una \textbf{consola Linux}, haciendo uso del comando \textbf{curl}, podemos también comprobar de manera rápida si el \textit{endpoint} está funcionando:
 
 \begin{mycode}{Modificar api.php para el nuevo controlador}{console}{}
 ruben@vega:~$ curl -s  http://localhost/api/posts
-[{"id":1,"titulo":"Primer post","texto":"Este..."...}]
+{"posts":[{"id":1,"titulo":"Primer post111","texto":"Este es...”}]}
 \end{mycode}
 
     Si queremos tener un resultado más visual, podremos hacer uso del comando “\textbf{jq}”, que deberemos instalarlo. De esta manera, podremos hacer:
 
 \begin{mycode}{Modificar api.php para el nuevo controlador}{console}{}
 ruben@vega:~$ curl -s  http://localhost/api/posts | jq
-[
-  {
-    "id": 1,
-    "titulo": "Primer post",
-    "texto": "Este es el texto del primer post",
-    "publicado": 1,
-    "deleted_at": null,
-    "created_at": "2023-10-04T08:20:29.000000Z",
-    "updated_at": "2023-11-16T08:08:27.000000Z"
-  }
-]
+{
+    "posts": [
+      {
+        "id": 1,
+        "titulo": "Primer post111",
+        "texto": "Este es el texto del primer post",
+        "publicado": 1,
+        "deleted_at": null,
+        "created_at": "2023-10-04T08:20:29.000000Z",
+        "updated_at": "2023-11-16T08:08:27.000000Z"
+      }
+    ]
+}
 \end{mycode}
 
-    \item Utilizando un interfaz gráfico como \href{https://www.postman.com/}{Postman}, que nos va a facilitar hacer peticiones GET y peticiones más complejas.
+
+\end{itemize}
+
+\chapter{Autenticación}
+
+Para poder realizar ciertas acciones a través de la API es lógico pensar que también deberemos estar autenticados, y para eso es necesario asegurar que al acceder a las rutas lo estemos. Para todo ello, vamos a crear un controlador propio donde tener en cuenta los datos que se envían al acceder a la API.
+
+La idea general es que una aplicación al hacer uso de una API debe tener en cuenta:
+
+\begin{itemize}
+    \item Si el usuario no está registrado, poder registrarse.
+    \item Si el usuario está registrado, se podrá loguear con lo que recibirá un \textbf{\textit{token}}.
+    \item A partir de este momento, cada acción que quiera realizar, deberá ir acompañado del token para demostrar que está autenticado.
+    \item Los \textit{tokens} pueden tener una vida útil. Por lo tanto, si el token expira, deberá volver a loguearse.
+\end{itemize}
+
+\section{Crear controlador de autenticación}
+
+Se va a crear un controlador propio para tener el control de las acciones que se pueden realizar a través de la API, y así asegurar cuál es el estado de los tokens y/o del usuario que pide realizar una acción.
+
+Para crear un controlador propio que sólo será usado para la API:
+
+\begin{mycode}{Crear nuevo controlador}{console}{{\footnotesize }}
+root@5cff1feaf785:/var/www/html# php artisan make:controller API/AuthController
+INFO  Controller [app/Http/Controllers/API/AuthController.php] created successfully.
+\end{mycode}
+
+En este controlador vamos a tener tres funciones:
+
+\begin{itemize}
+    \item \textbf{register}: para que el usuario se pueda registrar.
+    \item \textbf{login}: para que el usuario se pueda loguear y recibir un token.
+    \item \textbf{logout}: para que el usuario se pueda desloguear y de esta manera el token se revoque.
+\end{itemize}
+
+El controlador, quedaría de la siguiente manera.
+
+\errorbox{\textbf{Es importante entender qué hace cada una de las funciones}}
+
+\begin{mycode}{Nuevo AuthController para la API}{php}{{\small }}
+<?php
+namespace App\Http\Controllers\API;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
+
+class AuthController extends Controller {
+
+    public function register(Request $request){
+        $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password']),
+        ]);
+        return response()->json([
+        'name' => $user->name,
+        'email' => $user->email,
+        ])->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function login(Request $request){
+        $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+        ]);
+        $user = User::where('email',  $request->email)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)){
+            return response()->json([
+            'message' => ['Username or password incorrect'],
+            ])->setStatusCode(Response::HTTP_UNAUTHORIZED);
+        }
+        // FIXME: queremos dejar más dispositivos?
+        // $user->tokens()->delete();
+
+        return response()->json([
+        'status' => 'success',
+        'message' => 'User logged in successfully',
+        'name' => $user->name,
+        'token' => $user->createToken($request->device_name)
+        ->plainTextToken,
+        ]);
+    }
+
+    public function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+        'status' => 'success',
+        'message' => 'User logged out successfully'
+        ])->setStatusCode(Response::HTTP_OK);
+    }
+}
+\end{mycode}
+
+Es importante notar un comentario que se ha dejado en la función “\textbf{login}”. Dependiendo de si queremos que la API permita tener varios tokens para un mismo usuario o no (posibles logins desde distintos dispositivos), deberemos dejar comentado o descomentar la línea indicada.
+
+Para que estas funciones entren en juego, debemos modificar el fichero de rutas \configfile{api.php}
+
+\begin{mycode}{Rutas de autenticación para la API}{php}{}
+<?php
+//...
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth:sanctum');
+\end{mycode}
+
+
+
+
+\section{Modificar rutas}
+
+Tal como hemos hecho anteriormente, para que la aplicación funcione bajo el sistema de autenticación, y que automáticamente nos indique que no estamos autenticados, debemos realizar la modificación del fichero de rutas \configfile{api.php}
+
+
+De manera similar a la aplicación web, deberemos indicar qué rutas queremos que se puedan obtener sin estar autenticado y cuáles no.
+
+
+\begin{mycode}{Rutas autenticadas para la API}{php}{}
+<?php
+//...
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::resources([
+        'posts' => PostController::class,
+    ]);
+});
+
+Route::controller(PostController::class)->group(function () {
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+})->withoutMiddleware(['auth:sanctum']);
+\end{mycode}
+
+\section{Pruebas de funcionamiento}
+
+
+Para que la autenticación funcione, podemos realizar pruebas a través de Postman, de manera similar a como hemos hecho anteriormente. Ahora hay que tener en cuenta que la petición va a ser de tipo \textbf{POST}, y dado que queremos crear un \textit{post}, tendremos que realizar el paso de parámetros.
+
+Por lo tanto, los pasos que debemos realizar son:
+
+\begin{itemize}
+    \item Realizar prueba de login. Debemos pasar los parámetros y obtendremos el token y una serie de datos extra, que podremos utilizar en nuestra aplicación.
+    \begin{itemize}
+        \item email
+        \item password
+        \item device\_name
+    \end{itemize}
 
     \begin{center}
-        \includegraphics[width=0.8\linewidth]{postman.png}
+        \includegraphics[width=0.8\linewidth]{postman_login.png}
     \end{center}
+
+    \item Con ese token podremos realizar la prueba de añadir un nuevo \textit{post} a través de la API.
+
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{postman_create.png}
+    \end{center}
+
+    Deberemos indicar:
+
+    \begin{itemize}
+        \item Los parámetros necesarios para la creación del \textit{post}: “título”, “texto” y “publicado”.
+        \item El tipo de token de autenticación en la pestaña “Auth” de Postman tiene que ser de tipo “\textbf{Bearer Token}”.
+    \end{itemize}
 
 \end{itemize}
 
@@ -179,27 +390,34 @@ Para poder instalarlo en nuestro proyecto Laravel, necesitamos realizar la insta
 
 \begin{mycode}{Instalación de dependencias}{console}{{\small}}
 root@5cff1feaf785:/var/www/html# composer require "darkaonline/l5-swagger"
-
 root@5cff1feaf785:/var/www/html# php artisan vendor:publish \
     --provider "L5Swagger\L5SwaggerServiceProvider"
 \end{mycode}
 
 
-Ahora deberemos añadir comentarios a las funciones para poder generar el interfaz de manera correcta. En uno de los controladores añadiremos la siguiente cabecera (\textbf{sólo es necesario añadirlo en un controlador}):
+Para poder generar el interfaz de manera correcta añadimos comentarios a las funciones. En uno de los controladores añadiremos la siguiente cabecera, que nos va a servir para definir el tipo de autenticación:
 
 \begin{mycode}{Cabecera para la API}{php}{}
 <?php
+//...
 /**
-* @OA\Info(title="API", version="1.0")
+* @OA\Info(title="API", version="1.0"),
+* @OA\SecurityScheme(
+*     in="header",
+*     scheme="bearer",
+*     bearerFormat="JWT",
+*     securityScheme="bearerAuth",
+*     type="http",
+* ),
 */
 \end{mycode}
 
 
-Para documentar la función \textbf{index}, encima de ella añadiremos lo siguiente:
+Para documentar la función \textbf{index}, encima de ella añadiremos lo siguiente. Hay que darse cuenta que en este caso sólo hemos documentado la respuesta “200”.
 
 \begin{mycode}{Comentario para /api/posts}{php}{}
 <?php
-...
+//...
 /**
 * @OA\Get(
 *     path="/api/posts",
@@ -217,6 +435,76 @@ Para documentar la función \textbf{index}, encima de ella añadiremos lo siguie
 public function index(){
 //...
 \end{mycode}
+
+Para documentar la función de guardar un \textit{post} desde la API, usaremos los siguientes comentarios:
+
+\begin{mycode}{Comentario para función POST /api/posts}{php}{}
+<?php
+//...
+    /**
+* @OA\Post(
+*     path="/api/posts",
+*     summary="Create a post",
+*     @OA\Parameter(
+*         name="titulo",
+*         in="query",
+*         description="The title of the post",
+*         required=true,
+*         @OA\Schema(
+*             type="string"
+*         )
+*     ),
+*     @OA\Response(
+*         response=200,
+*         description="successful operation",
+*         @OA\JsonContent(
+*             type="string"
+*         ),
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Unauthenticated"
+*     ),
+*     security={
+    *         {"bearerAuth": {}}
+    *     }
+* )
+*/
+public function store(Request $request){
+\end{mycode}
+
+
+Por último, vamos a poner otro ejemplo, para documentar el obtener un \textit{post} concreto. Para ello los comentarios serán:
+
+\begin{mycode}{Comentario para /api/posts/{id}}{php}{}
+<?php
+//...
+/**
+* @OA\Get(
+*     path="/api/posts/{id}",
+*     summary="Mostrar un post concreto",
+*     @OA\Parameter(
+*          name="id",
+*          description="Project id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*     ),
+*     @OA\Response(
+*         response=200,
+*         description="Mostrar el post especificado."
+*     ),
+*     @OA\Response(
+*         response="default",
+*         description="Ha ocurrido un error."
+*     )
+* )
+*/
+public function show(Post $post){
+\end{mycode}
+
 
 Y para la función \textbf{show}, que sólo nos muestra un único post, añadiremos los siguientes comentarios:
 
@@ -247,21 +535,35 @@ Y para la función \textbf{show}, que sólo nos muestra un único post, añadire
 * )
 */
 public function show(Post $post) {
-//...
+    //...
 \end{mycode}
 
-Tras esto, ejecutaremos el comando que recorrerá los controladores para generar el fichero \configfile{storage/api-docs/api-docs.json}:
+
+No se han añadido todos los parámetros en todos los casos, ya que resulta redundante y es fácil añadir los que faltan.
+
+Para conocer todas las funcionalidades de los comentarios, es recomendable mirar la \href{https://github.com/zircote/swagger-php#usage}{documentación}. Desde aquí nos mostrará el enlace para la \href{https://zircote.github.io/swagger-php/#links}{documentación oficial de Swagger PHP}, o lo que nos puede resultar más interesante, que es un conjunto de \href{https://github.com/zircote/swagger-php/tree/master/Examples}{ejemplos} junto con el \href{https://petstore.swagger.io/#/}{resultado en forma de web}.
+
+
+Tras esto, ejecutaremos el comando que recorrerá los controladores para generar el fichero \configfile{storage/api-docs/api-docs.json}. Este es el fichero que el interfaz web tendrá en cuenta a la hora de generar la web que podemos ver a continuación.
+
+El comando es el siguiente:
 
 \begin{mycode}{Generamos el fichero json para Swagger}{console}{}
 root@5cff1feaf785:/var/www/html# php artisan l5-swagger:generate
 Regenerating docs default
 \end{mycode}
 
-Para conocer todas las funcionalidades de los comentarios, es recomendable mirar la \href{https://github.com/zircote/swagger-php#usage}{documentación}. Tras ejecutar el comando anterior, si vamos a la url \href{http://localhost/api/documentation}{http://localhost/api/documentation} tendremos acceso y veremos el interfaz para nuestra API:
+
+
+Tras ejecutar el comando anterior, si vamos a la url \href{http://localhost/api/documentation}{http://localhost/api/documentation} tendremos acceso y veremos el interfaz para nuestra API:
 
 \begin{center}
-    \includegraphics[frame,width=0.7\linewidth]{swagger.png}
+    \includegraphics[frame,width=0.8\linewidth]{swagger.png}
 \end{center}
+
+
+
+\exercisebox{Completar los comentarios añadiendo los parámetros que faltan a la función de crear y los necesarios para la función de borrado de posts.}
 
 % Mostrar SWAGGER.io
 % https://styde.net/como-documentar-una-api-en-laravel-usando-swagger/
@@ -272,7 +574,7 @@ Para conocer todas las funcionalidades de los comentarios, es recomendable mirar
 
 
 
-% Certificados y JWT
+
 
 
 %\chapter{Versionar API}
