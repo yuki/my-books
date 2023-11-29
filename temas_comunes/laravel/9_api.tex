@@ -27,11 +27,13 @@ Si obtenemos el listado de rutas, veremos que ya existe una ruta para conocer el
 
 Debemos recordar que para poder añadir las nuevas rutas, hay que incluir el controlador correspondiente, en este caso el \textbf{PostController}.
 
+\warnbox{Para sólo generar las rutas de la API se llama a \textbf{Route::apiresources}}
+
 \begin{mycode}{Añadir nuevas rutas al fichero api.php}{php}{}
 <?php
 ...
 use App\Http\Controllers\PostController;
-Route::resources([
+Route::apiresources([
     'posts' => PostController::class,
 ]);
 \end{mycode}
@@ -44,11 +46,9 @@ root@5cff1feaf785:/var/www/html# php artisan route:list --path=api
 
 GET|HEAD        api/posts ............ posts.index › PostController@index
 POST            api/posts ............ posts.store › PostController@store
-GET|HEAD        api/posts/create ..... posts.create › PostController@create
 GET|HEAD        api/posts/{post} ..... posts.show › PostController@show
 PUT|PATCH       api/posts/{post} ..... posts.update › PostController@update
 DELETE          api/posts/{post} ..... posts.destroy › PostController@destroy
-GET|HEAD        api/posts/{post}/edit  posts.edit › PostController@edit
 GET|HEAD        api/user ....................................................
 \end{mycode}
 
@@ -334,7 +334,7 @@ De manera similar a la aplicación web, deberemos indicar qué rutas queremos qu
 <?php
 //...
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::resources([
+    Route::apiresources([
         'posts' => PostController::class,
     ]);
 });
