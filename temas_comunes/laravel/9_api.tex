@@ -506,39 +506,6 @@ public function show(Post $post){
 \end{mycode}
 
 
-Y para la función \textbf{show}, que sólo nos muestra un único post, añadiremos los siguientes comentarios:
-
-\begin{mycode}{Comentario para /api/posts/ID}{php}{}
-<?php
-...
-/**
-* @OA\Get(
-*     path="/api/posts/{id}",
-*     summary="Mostrar un post concreto",
-*     @OA\Parameter(
-*          name="id",
-*          description="Project id",
-*          required=true,
-*          in="path",
-*          @OA\Schema(
-*              type="integer"
-*          )
-*     ),
-*     @OA\Response(
-*         response=200,
-*         description="Mostrar el post especificado."
-*     ),
-*     @OA\Response(
-*         response="default",
-*         description="Ha ocurrido un error."
-*     )
-* )
-*/
-public function show(Post $post) {
-    //...
-\end{mycode}
-
-
 No se han añadido todos los parámetros en todos los casos, ya que resulta redundante y es fácil añadir los que faltan.
 
 Para conocer todas las funcionalidades de los comentarios, es recomendable mirar la \href{https://github.com/zircote/swagger-php#usage}{documentación}. Desde aquí nos mostrará el enlace para la \href{https://zircote.github.io/swagger-php/#links}{documentación oficial de Swagger PHP}, o lo que nos puede resultar más interesante, que es un conjunto de \href{https://github.com/zircote/swagger-php/tree/master/Examples}{ejemplos} junto con el \href{https://petstore.swagger.io/#/}{resultado en forma de web}.
