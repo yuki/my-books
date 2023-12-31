@@ -68,4 +68,49 @@ Para entrar en el laboratorio debemos hacer click en {AWS \color{green}●}, lo 
 
 \chapter{Servicios básico de AWS}
 
-AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y desplegar. Es imposible abarcar todos en un curso, por lo que aprenderemos a utilizar unos pocos.
+AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y desplegar. Es imposible abarcar todos en un curso, por lo que aprenderemos a utilizar y a entender qué son sólo de unos pocos. Entre los que vamos a utilizar están:
+
+\begin{itemize}
+	\item \textbf{VPC}: Es la parte que nos proporciona la red virtual en la nube de Amazon, y todo lo que tiene que ver con direccionamiento de red, acceso a internet, ... 
+	\item \textbf{EC2}: Parte central de AWS que se encarga de la computación virtual y otros servicios que tienen que ver con máquinas virtuales.
+	\item \textbf{RDS}: Es el servicio para crear bases de datos relacionales de Amazon. Podemos crear servicios con distintos motores, con distinta configuración, escalado, ...
+\end{itemize}
+
+Cuando entremos a algunos de estos servicios, el interfaz web que nos vamos a encontrar, por norma general, suele ser muy parecido y tiene el siguiente aspecto:
+
+\begin{center}
+	\includegraphics[width=0.8\linewidth]{panel.png}
+\end{center}
+
+Podemos diferenciar dos apartados en la vista:
+\begin{itemize}
+	\item \textbf{Panel lateral izquierdo}: En la imagen resaltado de color azul, es un menú donde podemos ver distintos apartados diferenciados por grupos. Estos apartados nos permitirán crear o configurar servicios que se nos desplegarán en la vista principal.
+	
+	\item \textbf{Vista principal}: En este caso sólo se ha resaltado la parte superior, ya que al entrar a cada tipo de servicio, en esta parte aparece un resumen de los recursos que tenemos contratados.
+	
+	Esta vista central cambiará teniendo en cuenta la opción seleccionada del panel lateral.
+\end{itemize}
+
+\chapter{Regiones y zonas de disponibilidad}
+
+Dado que AWS ofrece un servicio mundial, los servidores que nos ofrecen están desplegados a lo largo de distintos países, para que el acceso desde cada zona sea lo más rápida posible. Esta infraestructura global, actualmente está diferenciada de la siguiente manera tal como aparece en la \href{https://aws.amazon.com/es/about-aws/global-infrastructure/regions_az/?p=ngi&loc=2}{documentación oficial}:
+
+\begin{center}
+	\includegraphics[width=0.8\linewidth]{regiones.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Regiones}: AWS tiene el concepto de una región, que es una ubicación física en todo el mundo donde se agrupan los centros de datos. Se llama a cada grupo de centros de datos lógicos “zona de disponibilidad”. 
+	
+	Regiones: América del Norte, América del Sur, Europa, Medio Oriente, África,  Asia-Pacífico, Australia y Nueva Zelanda.
+	
+	\item \textbf{Zonas de disponibildiad}: Cada región de AWS consta de un mínimo de tres zonas de disponibilidad con acceso aisladas y físicamente separadas dentro de un área geográfica. 
+	
+	El diseño múltiple de zonas de disponibilidad de cada región de AWS ofrece ventajas para los clientes. Cada zona de disponibilidad tiene alimentación, refrigeración y seguridad física independientes y está conectada a través de redes redundantes de latencia ultrabaja.
+	
+	Ejemplo de Regiones en Europa: España (situada en Aragón), Irlanda, Fráncfort, Londres, París, Estocolmo, Milán, Zúrich.
+\end{itemize}
+
+\warnbox{\textbf{AWS Academy está limitado sólo a la zona "Norte de Virginia" de Estados Unidos.}}
+
+Por limitaciones de AWS Academy, todo lo que creemos sólo va a ser creado en la zona de disponibilidad "Norte de Virginia" de Estados Unidos. Esto puede hacer que haya algo más de latencia desde España, pero el resultado de aprendizaje será el mismo.
