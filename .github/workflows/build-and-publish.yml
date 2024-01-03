@@ -26,11 +26,12 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           DAM/2/sistemas_gestion_empresarial/sistemas_gestion_empresarial.pdf
           SMR/2/SOred/SOred.pdf
-          otros/PFsense/pfsense_book.pdf
+          otros/aws/aws_book.pdf
           otros/Docker/docker_book.pdf
-          temas_comunes/laravel/laravel_book.pdf
           otros/git/git_book.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
+          otros/PFsense/pfsense_book.pdf
+          temas_comunes/laravel/laravel_book.pdf
           anexos/gestion_backups/gestion_backups_anexo.pdf
           anexos/glosario/glosario_anexo.pdf
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts_anexo.pdf

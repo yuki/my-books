@@ -85,8 +85,97 @@ Para empezar, podemos crear nuestra instancia con una imagen AMI de un proveedor
 
 A continuación se va a explicar cómo crear una instancia de tipo Linux teniendo en cuenta todas las posibles opciones que podemos elegir. Para crearla haremos click en \includegraphics[height=0.8\baselineskip]{ec2_instance_create.png} y seguiremos las indicaciones para adecuarla a nuestras necesidades.
 
+Las respuestas que debemos contestar y tener en cuenta son:
+
+\begin{itemize}
+	\item \textbf{Nombre y etiquetas}: Es el nombre que le vamos a dar a la instancia (que debería ser un nombre significativo), y posibles etiquetas para identificarla.
+	
+	\item \textbf{Application and OS Images (Amazon Machine Image)}: Imagen AMI que queremos desplegar en la instancia.
+	
+	\item \textbf{Arquitectura}: Arquitectura del procesador.
+	
+	\item \textbf{Tipo de instancia}: El tipo de instancia que queremos desplegar para las necesidades que tenemos.
+	
+	\item \textbf{Par de claves (inicio de sesión)}: El par de claves asimétricas (\textbf{pública-privada}) que vamos a utilizar para realizar la conexión a la instancia. Más adelante explicaremos cómo acceder a la instancia. 
+	
+	\warnbox{\textbf{Debemos elegir el par de claves “vockey” para poder acceder a la instancia.}}
+	
+	\item \textbf{Configuraciones de red}: Ajustar las configuraciones de red. Por defecto podemos elegir el \textbf{grupo de seguridad} que queremos asignar a la instancia. Como opciones avanzadas, podemos desactivar el tener IP pública o asignar la instancia a una subred.
+	
+	\item \textbf{Configurar almacenamiento}: El disco duro principal de la instancia.
+	
+	\item \textbf{Opciones avanzadas}: Distintas opciones de configuraciones que podemos modificar o de hardware que podemos habilitar.
+\end{itemize}
+
+A la derecha del asistente tenemos tenemos un resumen en el que nos aparece las distintas opciones seleccionadas. En este resumen podemos elegir el número de instancias que nos interese crear, por si queremos más de una.
+
+Una vez le damos a “Lanzar instancia” la instancia se creará y empezará el despliegue. Desde el panel de instancias, si seleccionamos la instancia recién creada veremos todos los detalles de la misma:
+
+\begin{center}
+	\includegraphics[frame,width=0.9\linewidth]{ec2_instance_info.png}
+\end{center}
+
+Tal como se puede ver, la información de la instancia está separada en distintas pestañas y en cada una de ellas nos aparecerá mucha información sobre la misma. Parte de esta información será la necesaria para poder acceder a la instancia por SSH.
+
 
 \chapter{Acceder a una instancia}
+
+Para acceder a una instancia desplegada tenemos distintas opciones que podemos visualizar desde el botón \includegraphics[height=0.8\baselineskip]{ec2_instance_connect.png} cuando esté la instancia seleccionada. Entre las opciones, vamos a destacar dos:
+
+\begin{itemize}
+	\item \textbf{Conexión de la instancia EC2}: Es el método más sencillo para acceder a una instancia a través de SSH, ya que vamos a poder realizar la conexión a través del propio navegador web. Esto, por otro lado, no nos va a permitir hacer uso de todas las características que tiene una terminal real.
+	
+	\item \textbf{Cliente SSH}: Al igual que sucede al conectarnos a una máquina virtual normal,  poder acceder a la instancia a través de un cliente SSH de consola. Para ello, necesitamos conocer lo siguiente, que nos aparece en la web:
+	\begin{itemize}
+		\item \textbf{Nombre de usuario}: Dependiendo de la AMI que hayamos desplegado, el usuario de conexión será distinto. Por ejemplo, para instancias Ubuntu el usuario es “\textbf{ubuntu}”; para instancias Debian el usuario es “\textbf{admin}”; para instancias Amazon Linux, el usuario es “\textbf{ec2-user}”. \textbf{Estos usuarios tienen la posibilidad de convertirse en “root” usando el comando sudo}.
+		
+		\infobox{\textbf{Dependiendo de la AMI elegida, el usuario de acceso será distinto.}}
+		
+		\item \textbf{IP pública}: Lógicamente, para poder acceder a la instancia, debemos conocer cuál es su IP pública.
+		
+		\item \textbf{Clave privada de acceso}: El usuario por defecto de la instancia no cuenta con contraseña, por lo que para acceder necesitamos hacer uso de una autenticación basada en \textbf{clave asimétrica} (conocidas también como “\textbf{clave pública-privada}”).
+		
+		\warnbox{\textbf{Para poder acceder a la instancia es necesario usar claves asimétricas.}}
+		
+	\end{itemize}
+\end{itemize}
+
+
+\section{Obtener clave privada}
+
+Tal como se ha dicho previamente, para poder acceder a las instancias recién creadas debemos hacer uso del sistema de claves asimétricas, ya que es el método más seguro de conexión, y así no dependemos de contraseñas.
+
+Al crear el laboratorio se nos ha creado un par de claves llamadas “\textbf{vockey}”, que sólo podemos descargar desde el panel del curso, en el apartado “\faInfo  \textbf{ AWS Details}”, dándole al botón \includegraphics[height=0.8\baselineskip]{ec2_download_pem.png}, que nos descargará un fichero llamado \textbf{labuser.pem}.
+
+\textbf{Este fichero de clave debe tener permisos especiales}. Los ficheros de tipo Linux son que sólo debe tener permisos de lectura para el usuario, dejando el resto de permisos sin asignar. Por lo tanto, en formato binario, \textbf{400}. Para ello debemos hacer:
+
+\begin{mycode}{Cambios de permisos en el fichero}{console}{}
+ruben@vega:~$ chmod 400 labuser.pem
+\end{mycode}
+
+Para realizar la conexión a la instancia, y teniendo en cuenta los datos comentados previamente, el acceso se realizará utilizando el siguiente comando, sustituyendo los datos correspondientes por los correspondientes para la instancia:
+
+\begin{mycode}{Conexión a una instancia mediante cliente SSH}{console}{}
+ruben@vega:~$ ssh -i labsuser.pem admin@3.81.218.164
+admin@ip-172-31-32-168:~$ sudo su
+root@ip-172-31-32-168:/home/admin#
+\end{mycode}
+
+De esta manera, ya estaremos dentro de la instancia desplegada en AWS, y podremos empezar a desplegar el servicio que nos interese.
+
+
+\section{Crear nuevo par de claves}
+En entornos profesionales \textbf{es habitual crear distintas par de claves para cada proyecto, o incluso para cada instancia}, ya que de conseguir una (o en sistemas basados en contraseñas), se obtendría acceso a un gran número de instancias, \textbf{lo que es un fallo de seguridad de extrema gravedad}.
+
+\errorbox{\textbf{En entornos profesionales nunca se debería reutilizar claves, y menos entre distintos proyectos.}}
+
+Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: “\textbf{Red y seguridad → Pares de claves}”. Ahí podremos hacer click sobre el icono \includegraphics[height=0.8\baselineskip]{ec2_new_key.png}, que nos redirigirá a un formulario donde crear las nuevas claves.
+
+\begin{center}
+	\includegraphics[frame,width=0.7\linewidth]{ec2_new_key2.png}
+\end{center}
+
+Una vez rellenado los datos, al darle al botón de crear, se nos descargará el fichero \textbf{que nunca más podremos volver a descargar}, por lo que deberemos guardarla a buen recaudo. A partir de ahora, al crear una nueva instancia, podremos hacer uso de esta nueva clave para el poder realizar el acceso con ella.
 
 
 \chapter{Security Groups}
