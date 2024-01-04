@@ -34,12 +34,3 @@ Para entender y modificar este apartado hay que tener conocimientos profundos de
 \end{itemize}
 
 \errorbox{\textbf{No vamos a realizar ninguna modificación de la configuración que tenemos por defecto.}}
-
-
-\section{Direcciones IP elásticas}
-
-Una IP elástica es una \textbf{IPv4 de direccionamiento público} que podemos asignar a una instancia EC2 (o a un interfaz de red de una EC2) que hayamos creado. Esta dirección IP estará asociado a nuestro VPC aunque la instancia EC2 no esté en funcionamiento.
-
-\warnbox{\textbf{Las direcciones IP elásticas se cobran aparte. Es mejor no contratar una IP elástica hasta que el servicio no se vaya a poner en producción.}}
-
-Tal como explicaremos más adelante, las instancias EC2 no cuentan siempre con la misma IP pública, y es por eso que si queremos que nuestro servicio públicamente siempre tenga la misma IP debemos asociarle una IP elástica.
