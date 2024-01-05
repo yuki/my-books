@@ -1,6 +1,6 @@
 \chapter{Introducción}
 
-\textbf{RDS}, que es la contracción de las siglas en inglés \textit{Relational Database Service}, es el \textbf{servicio de bases de datos relacional} que podemos crear y ejecutar en la nube de AWS sin que tengamos que realizar nosotros la creación e instalación de un sistema operativo en el que corra.
+\textbf{RDS}, contracción de las siglas en inglés \textit{Relational Database Service}, es el \textbf{servicio de bases de datos relacional} que podemos crear y ejecutar en la nube de AWS sin que tengamos que realizar nosotros la creación e instalación de un sistema operativo en el que se ejecute.
 
 Este servicio facilita el despliegue del servicio, permitiendo que podamos crear servicios en alta disponibilidad sin tener que conocer los aspectos de configuración que hay detrás de ellos, ya que Amazon se encarga de realizar la configuración total del servicio.
 
@@ -28,7 +28,7 @@ Marcando esta opción RDS nos creará un sistema clúster del sistema de base de
 
 \begin{itemize}
 	\item \textbf{Instancia primaria}: Es la instancia que permite lectura y escritura.
-	\item \textbf{Instancias en espera con capacidad de lectura}: Estas instancias las desplegará en otras zonas de disponibilidad diferente a donde se encuentra la instancia primaria. \textbf{Esto proporciona alta disponibilidad y redundancia de datos}. También podremos realizar cargas de trabajo de lectura sobre etas instancias.
+	\item \textbf{Instancias en espera con capacidad de lectura}: Estas instancias las desplegará en otras zonas de disponibilidad diferente a donde se encuentra la instancia primaria. \textbf{Esto proporciona alta disponibilidad y redundancia de datos}. También podremos realizar cargas de trabajo de lectura sobre estas instancias.
 \end{itemize}
 
 Se puede crear el sistema Multi-AZ posterior al despliegue de una instancia RDS, ya que quizá no nos interese realizarlo de inicio ya que supone un coste adicional.
@@ -105,7 +105,7 @@ Desde el panel de RDS tenemos el botón para crear una base de datos,  \includeg
 
 Tal como se puede ver, hay muchas opciones entre las que se pueden elegir, pero afortunadamente, \textbf{al lado de cada opción existe un enlace para obtener más información}.
 
-\warnbox{\textbf{Es recomendable leer las distintas opciones que se pueden elegir durante la creación de la instancia de base de datos.}}
+\warnbox{\textbf{Es recomendable leer la documentación de las distintas opciones que se pueden elegir durante la creación de la instancia de base de datos.}}
 
 El despliegue de la base de datos puede tardar alrededor de 5 minutos, ya que crea la instancia, realiza un backup y otras tareas de configuración.
 

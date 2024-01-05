@@ -6,7 +6,9 @@ Hay que tener en cuenta que lo que se va a explicar en este documento es el acce
 
 La ventaja de AWS Academy es que va a permitir a los alumnos a hacer uso del interfaz y de la infraestructura de AWS sin tener que hacer uso de una tarjeta de crédito. Ahora bien, \textbf{existen ciertas limitaciones} que no nos encontraríamos en una cuenta de AWS real.
 
-Dado que es vamos a hacer uso de la infraestructura real de AWS, para que no se abuse de ello, los laboratorios estarán limitados a una cantidad de 100\$ y de 4 horas de uso límite. A medida que vamos realizando despliegues o vamos utilizando servicios, la cantidad de dinero irá disminuyendo. Por otro lado, para evitar que los servicios se queden corriendo (y por tanto, gasten dinero), los laboratorios tendrán un contador que al llegar a 4 horas se apagarán. \textbf{No existe problema en volver a iniciar el laboratorio, o resetear el contador}.
+Como vamos a hacer uso de la infraestructura real de AWS, para que no se abuse de ello, los laboratorios estarán limitados a una cantidad de 100\$ y de 4 horas de uso límite. A medida que vamos realizando despliegues o vamos utilizando servicios, la cantidad de dinero irá disminuyendo.
+
+Por otro lado, para evitar que los servicios se queden corriendo (y por tanto, gasten dinero), los laboratorios tendrán un contador que al llegar a 4 horas se apagarán. \textbf{No existe problema en volver a iniciar el laboratorio, o resetear el contador}.
 
 
 \chapter{Acceder a los cursos}
@@ -27,7 +29,7 @@ Si ya tenemos una cuenta creada previamente, podemos ir al \href{https://www.aws
 
 \chapter{Acceder al laboratorio}
 
-Una vez logueado veremos los posibles cursos en los que estamos matriculados, y debemos ir al curso correspondiente. Una vez en el curso, luego hay que ir a “Módulos → Iniciar el Laboratorio de aprendizaje de AWS Academy”, os aparecerá una página en el que abajo del todo tendréis un botón para aceptar las condiciones de uso, y luego veremos algo similar a la siguiente pantalla:
+Una vez logueado veremos los posibles cursos en los que estamos matriculados, y debemos ir al curso correspondiente. Una vez en el curso, luego hay que ir a “Módulos → Iniciar el Laboratorio de aprendizaje de AWS Academy”, y aparecerá una página en el que abajo del todo tendréis un botón para aceptar las condiciones de uso, y luego veremos algo similar a la siguiente pantalla:
 
 \begin{center}
 	\includegraphics[frame, width=0.9\linewidth]{launcher.png}
@@ -63,12 +65,12 @@ Cuando tenemos el laboratorio encendido la imagen será la siguiente
 	\includegraphics[frame, width=0.9\linewidth]{launcher-started.png}
 \end{center}
 
-Para entrar en el laboratorio debemos hacer click en {AWS \color{green}●}, lo que nos abrirá una nueva pestaña en la que veremos el panel de administración (o “Consola” llamada por AWS) donde tendremos un resumen de los servicios que hemos visitado anteriormente, aplicaciones que tengamos desplegadas, coste... La idea es tener a simple vista lo que más estemos utilizando.
+Para entrar en el laboratorio debemos hacer click en “{AWS \color{green}●}”, lo que nos abrirá una nueva pestaña en la que veremos el panel de administración (o “Consola” llamada por AWS) donde tendremos un resumen de los servicios que hemos visitado anteriormente, aplicaciones que tengamos desplegadas, coste... La idea es tener a simple vista lo que más estemos utilizando.
 
 
 \chapter{Servicios básico de AWS}
 
-AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y desplegar. Es imposible abarcar todos en un curso, por lo que aprenderemos a utilizar y a entender qué son sólo de unos pocos. Entre los que vamos a utilizar están:
+AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y desplegar. Es imposible abarcar todos en un curso, por lo que aprenderemos a utilizar y a entender sólo de unos pocos. Entre los que vamos a utilizar están:
 
 \begin{itemize}
 	\item \textbf{VPC}: Es la parte que nos proporciona la red virtual en la nube de Amazon, y todo lo que tiene que ver con direccionamiento de red, acceso a internet, ... 
@@ -102,15 +104,15 @@ Dado que AWS ofrece un servicio mundial, los servidores que nos ofrecen están d
 \begin{itemize}
 	\item \textbf{Regiones}: AWS tiene el concepto de una región, que es una ubicación física en todo el mundo donde se agrupan los centros de datos. Se llama a cada grupo de centros de datos lógicos “zona de disponibilidad”. 
 	
-	Regiones: América del Norte, América del Sur, Europa, Medio Oriente, África,  Asia-Pacífico, Australia y Nueva Zelanda.
+	Ejemplo de Regiones en Europa: España (situada en Aragón), Irlanda, Fráncfort, Londres, París, Estocolmo, Milán, Zúrich.
 	
 	\item \textbf{Zonas de disponibildiad}: Cada región de AWS consta de un mínimo de tres zonas de disponibilidad con acceso aisladas y físicamente separadas dentro de un área geográfica. 
 	
 	El diseño múltiple de zonas de disponibilidad de cada región de AWS ofrece ventajas para los clientes. Cada zona de disponibilidad tiene alimentación, refrigeración y seguridad física independientes y está conectada a través de redes redundantes de latencia ultrabaja.
 	
-	Ejemplo de Regiones en Europa: España (situada en Aragón), Irlanda, Fráncfort, Londres, París, Estocolmo, Milán, Zúrich.
+	
 \end{itemize}
 
-\warnbox{\textbf{AWS Academy está limitado sólo a la zona "Norte de Virginia" de Estados Unidos.}}
+\warnbox{\textbf{AWS Academy está limitado sólo a la región “Norte de Virginia” de Estados Unidos.}}
 
-Por limitaciones de AWS Academy, todo lo que creemos sólo va a ser creado en la zona de disponibilidad "Norte de Virginia" de Estados Unidos. Esto puede hacer que haya algo más de latencia desde España, pero el resultado de aprendizaje será el mismo.
+Por limitaciones de AWS Academy, todo lo que creemos sólo va a ser creado en la regiónd “Norte de Virginia” de Estados Unidos. Esto puede hacer que haya algo más de latencia desde España, pero el resultado de aprendizaje será el mismo.
