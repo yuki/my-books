@@ -11,7 +11,7 @@
     \vspace{-10pt}
 \end{wrapfigure}
 
-Un router (o encaminador) es el encargado de enrutar (o encaminar) los paquetes que recibe de una red a otra red buscando la ruta más adecuada para ello.
+Un router (o encaminador) es el encargado de enrutar (o encaminar) los paquetes que recibe de una red a otra red buscando la ruta más adecuada para ello. Pertenecen a la \textbf{capa 3 del modelo OSI}.
 
 Un router puede “unir” redes, por lo que para ello es necesario que tenga interfaces configuradas (IPs) en las redes que quiere comunicar. Tendrá tantas interfaces configuradas como redes a las que esté unido.
 
@@ -189,3 +189,19 @@ Lo más habitual es que el servidor DHCP esté configurado en los routers (tal c
 
 \subsection{Configuración}
 Dependiendo del equipo en el que estemos realizando la configuración del servidor DHCP, el interfaz a configurar podrá ser distinto.
+
+
+
+\chapter{Swith}
+
+Un \textit{switch} (o conmutador) es el dispositivo digital que interconecta equipos que están en la misma red, y actúa en la \textbf{capa 2 del modeo OSI}. También permiten conectar distintos segmentos de la misma red, uniendo distintos switches entre sí.
+
+\begin{center}
+	\includegraphics[width=0.8\linewidth]{cisco_CBS350.jpg}
+	\captionof{figure}{Switch profesional \href{https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html}{Cisco Business CBS350-48T-4X}}
+\end{center}
+
+Los switches poseen la capacidad de aprender y almacenar las direcciones de red de la capa 2 (\textbf{direcciones MAC}) de los dispositivos alcanzables a través de cada uno de sus puertos. Por ejemplo, un equipo conectado directamente a un puerto de un switch provoca que el propio switch almacene su dirección MAC. Esto permite que la información dirigida a un dispositivo vaya desde el puerto origen al puerto de destino.
+
+Los switches profesionales tienen un interfaz de configuración (tanto por consola como interfaz web) para poder realizar distintas tareas de configuración, tanto a nivel general como a nivel de puerto individual.
+
