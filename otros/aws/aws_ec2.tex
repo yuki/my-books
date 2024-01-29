@@ -17,7 +17,7 @@ El tipo de instancia hace referencia a parte del hardware que va a tener disponi
 Los nombres de las instancias siguen un convenio que viene explicado en la documentación oficial.
 
 \begin{center}
-	\includesvg[]{ec2_instance_name_convention.svg}
+	\includesvg[]{img/aws/ec2_instance_name_convention.svg}
 \end{center}
 
 Dado que el número de tipos de instancias actualmente es mayor que 700, puede resultar complejo saber exáctamente de primera mano cuál debemos elegir. Por otro lado, en el listado que podemos ver en el panel de EC2, nos aparece la información que a simple vista nos puede dar una idea de cómo es el tipo de instancia.
@@ -25,7 +25,7 @@ Dado que el número de tipos de instancias actualmente es mayor que 700, puede r
 \infobox{\textbf{Para asegurar que se adecúa a nuestras necesidades, es mejor confirmar el tipo de instancia que necesitamos mirando la \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{documentación oficial}.}}
 
 \begin{center}
-	\includegraphics[frame,width=0.9\linewidth]{ec2_instance_types.png}
+	\includegraphics[frame,width=0.9\linewidth]{img/aws/ec2_instance_types.png}
 \end{center}
 
 Los valores que podemos identificar a simple vista son:
@@ -70,7 +70,7 @@ Hay un catálogo de AMI entre las que podemos elegir:
 \end{itemize}
 
 \begin{center}
-	\includegraphics[frame,width=\linewidth]{ec2_ami_catalogue.png}
+	\includegraphics[frame,width=\linewidth]{img/aws/ec2_ami_catalogue.png}
 \end{center}
 
 
@@ -83,7 +83,7 @@ Para empezar, podemos crear nuestra instancia con una imagen AMI de un proveedor
 
 \section{Crear una instancia}
 
-A continuación se va a explicar cómo crear una instancia de tipo Linux teniendo en cuenta todas las posibles opciones que podemos elegir. Para crearla haremos click en \includegraphics[height=0.8\baselineskip]{ec2_instance_create.png} y seguiremos las indicaciones para adecuarla a nuestras necesidades.
+A continuación se va a explicar cómo crear una instancia de tipo Linux teniendo en cuenta todas las posibles opciones que podemos elegir. Para crearla haremos click en \includegraphics[height=0.8\baselineskip]{img/aws/ec2_instance_create.png} y seguiremos las indicaciones para adecuarla a nuestras necesidades.
 
 Las respuestas que debemos contestar y tener en cuenta son:
 
@@ -114,7 +114,7 @@ A la derecha del asistente tenemos tenemos un resumen en el que nos aparece las 
 Una vez le damos a “Lanzar instancia” la instancia se creará y empezará el despliegue. Desde el panel de instancias, si seleccionamos la instancia recién creada veremos todos los detalles de la misma:
 
 \begin{center}
-	\includegraphics[frame,width=0.9\linewidth]{ec2_instance_info.png}
+	\includegraphics[frame,width=0.9\linewidth]{img/aws/ec2_instance_info.png}
 \end{center}
 
 Tal como se puede ver, la información de la instancia está separada en distintas pestañas y en cada una de ellas nos aparecerá mucha información sobre la misma. Parte de esta información será la necesaria para poder acceder a la instancia por SSH.
@@ -122,7 +122,7 @@ Tal como se puede ver, la información de la instancia está separada en distint
 
 \section{Acceder a una instancia}
 
-Para acceder a una instancia desplegada tenemos distintas opciones que podemos visualizar desde el botón \includegraphics[height=0.8\baselineskip]{ec2_instance_connect.png} cuando esté la instancia seleccionada. Entre las opciones, vamos a destacar dos:
+Para acceder a una instancia desplegada tenemos distintas opciones que podemos visualizar desde el botón \includegraphics[height=0.8\baselineskip]{img/aws/ec2_instance_connect.png} cuando esté la instancia seleccionada. Entre las opciones, vamos a destacar dos:
 
 \begin{itemize}
 	\item \textbf{Conexión de la instancia EC2}: Es el método más sencillo para acceder a una instancia a través de SSH, ya que vamos a poder realizar la conexión a través del propio navegador web. Esto, por otro lado, no nos va a permitir hacer uso de todas las características que tiene una terminal real.
@@ -149,7 +149,7 @@ Para acceder a una instancia desplegada tenemos distintas opciones que podemos v
 
 Tal como se ha dicho previamente, para poder acceder a las instancias recién creadas debemos hacer uso del sistema de claves asimétricas, ya que es el método más seguro de conexión, y así no dependemos de contraseñas.
 
-Al crear el laboratorio se nos ha creado un par de claves llamadas “\textbf{vockey}”, que sólo podemos descargar desde el panel del curso, en el apartado “\faInfo  \textbf{ AWS Details}”, dándole al botón \includegraphics[height=0.8\baselineskip]{ec2_download_pem.png}, que nos descargará un fichero llamado \textbf{labuser.pem}.
+Al crear el laboratorio se nos ha creado un par de claves llamadas “\textbf{vockey}”, que sólo podemos descargar desde el panel del curso, en el apartado “\faInfo  \textbf{ AWS Details}”, dándole al botón \includegraphics[height=0.8\baselineskip]{img/aws/ec2_download_pem.png}, que nos descargará un fichero llamado \textbf{labuser.pem}.
 
 \textbf{Este fichero de clave debe tener permisos especiales}. Los ficheros de tipo Linux son que sólo debe tener permisos de lectura para el usuario, dejando el resto de permisos sin asignar. Por lo tanto, en formato binario, \textbf{400}. Para ello debemos hacer:
 
@@ -173,10 +173,10 @@ En entornos profesionales \textbf{es habitual crear distintas par de claves para
 
 \errorbox{\textbf{En entornos profesionales nunca se debería reutilizar claves, y menos entre distintos proyectos.}}
 
-Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: “\textbf{Red y seguridad → Pares de claves}”. Ahí podremos hacer click sobre el icono \includegraphics[height=0.8\baselineskip]{ec2_new_key.png}, que nos redirigirá a un formulario donde crear las nuevas claves.
+Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: “\textbf{Red y seguridad → Pares de claves}”. Ahí podremos hacer click sobre el icono \includegraphics[height=0.8\baselineskip]{img/aws/ec2_new_key.png}, que nos redirigirá a un formulario donde crear las nuevas claves.
 
 \begin{center}
-	\includegraphics[frame,width=0.9\linewidth]{ec2_new_key2.png}
+	\includegraphics[frame,width=0.9\linewidth]{img/aws/ec2_new_key2.png}
 \end{center}
 
 Una vez rellenado los datos, al darle al botón de crear, se nos descargará el fichero \textbf{que nunca más podremos volver a descargar}, por lo que deberemos guardarla a buen recaudo. A partir de ahora, al crear una nueva instancia, podremos hacer uso de esta nueva clave para el poder realizar el acceso con ella.
@@ -201,7 +201,7 @@ Lo ideal es crear security groups que se reutilicen entre varias instancias, ya 
 
 \section{Crear security group}
 
-Los security group se pueden crear desde el panel de \textbf{VPC} o de \textbf{EC2}. En este último caso dentro del apartado “\textbf{Red y seguridad → Security Groups}” y dándole al botón \includegraphics[height=0.8\baselineskip]{ec2_security_group_create.png}, que nos llevará a un formulario donde podemos rellenar:
+Los security group se pueden crear desde el panel de \textbf{VPC} o de \textbf{EC2}. En este último caso dentro del apartado “\textbf{Red y seguridad → Security Groups}” y dándole al botón \includegraphics[height=0.8\baselineskip]{img/aws/ec2_security_group_create.png}, que nos llevará a un formulario donde podemos rellenar:
 
 \begin{itemize}
 	\item Nombre del grupo de seguridad
