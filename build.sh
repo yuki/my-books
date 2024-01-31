@@ -13,7 +13,7 @@ LIBROS=(
     "DAM/2/sistemas_gestion_empresarial/ sistemas_gestion_empresarial.tex"
     "SMR/2/SOred/ SOred.tex"
 #
-    "otros/aws/ aws_book.tex"
+#    "otros/aws/ aws_book.tex"
     "otros/Docker/ docker_book.tex"
     "otros/git/ git_book.tex"
     "otros/hacer_documentacion/ como_hacer_documentacion.tex"

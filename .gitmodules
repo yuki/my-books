@@ -1,3 +1,6 @@
 [submodule "yukibook.cls"]
 	path = yukibook.cls
 	url = git@github.com:yuki/yukibook.cls.git
+[submodule "pandoc-templates"]
+	path = pandoc-templates
+	url = git@github.com:yuki/pandoc-templates.git
