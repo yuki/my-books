@@ -1,0 +1,23 @@
+name: Build PDF
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: build the PDF
+      uses: dante-ev/latex-action@latest
+      with:
+        entrypoint: ./build_pandoc.sh
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: latest
+        files: |
+          otros/aws/aws_book.pdf
+          otros/aws/aws_book.html
