@@ -11,9 +11,14 @@ for LIBRO in "${LIBROS[@]}"; do
     NAME=`echo $LIBRO | cut -d" " -f2`
 
     cd $RUTA
-    ./`echo $RUTA.sh` | pandoc -o $NAME.pdf -d defaults.yaml
-    ./`echo $RUTA.sh` | pandoc -o $NAME.html -d defaults.yaml  --template=template/yuki.tex
+    ./`echo $NAME.sh` | pandoc -o $NAME.html -d defaults.yaml
+    ./`echo $NAME.sh` | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex
+    
+    cp $NAME.html $ORIG/build
+    cp $NAME.pdf $ORIG/build
 
     cd $ORIG
 done
 
+mv pandoc-templates/template build
+mv img build 

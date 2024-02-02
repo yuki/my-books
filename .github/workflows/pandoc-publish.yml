@@ -1,23 +1,34 @@
-name: Build PDF
+name: Pandoc Books Build
 on: [push]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
     - name: Set up Git repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive
-
-    - name: build the PDF
+    - name: build the PDF and HTML
       uses: dante-ev/latex-action@latest
       with:
         entrypoint: ./build_pandoc.sh
-
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: latest
         files: |
           otros/aws/aws_book.pdf
-          otros/aws/aws_book.html
+    - name: Upload artifacts
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: './build'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
