@@ -130,7 +130,7 @@ Si tenemos el **cliente de mysql** instalado en la instancia de computación, po
 ::: mycode
 [Acceso a la base de datos desde consola]{.title}
 
-``` bash
+``` console
 admin@ip-172-31-32-168:~$ mysql -u admin \
    -h prueba-gratuita.cpicwmm0inx1.us-east-1.rds.amazonaws.com  -p
 Enter password: 

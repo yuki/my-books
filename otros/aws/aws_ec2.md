@@ -156,7 +156,7 @@ Al crear el laboratorio se nos ha creado un par de claves llamadas "**vockey**",
 ::: mycode
 [Cambios de permisos en el fichero]{.title}
 
-``` bash
+``` console
 ruben@vega:~$ chmod 400 labuser.pem
 ```
 :::
@@ -166,7 +166,7 @@ Para realizar la conexión a la instancia, y teniendo en cuenta los datos coment
 ::: mycode
 [Conexión a una instancia mediante cliente SSH]{.title}
 
-``` bash
+``` console
 ruben@vega:~$ ssh -i labsuser.pem admin@52.91.155.75 
 admin@ip-172-31-32-168:~$ sudo su
 root@ip-172-31-32-168:/home/admin#

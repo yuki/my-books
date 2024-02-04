@@ -12,4 +12,5 @@
 *.ilg
 *.ind
 svg-inkscape
+input.tex
 .DS_Store
