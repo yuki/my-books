@@ -1,5 +1,5 @@
 name: Pandoc Books Build
-on: [push]
+on: workflow_dispatch
 permissions:
   contents: read
   pages: write
@@ -10,6 +10,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
     - name: Set up Git repository
       uses: actions/checkout@v4
