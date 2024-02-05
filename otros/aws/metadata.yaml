@@ -11,4 +11,6 @@ lang: es
 keywords: ''
 cover: 'img/aws/aws.png'
 download-link: 'aws_book.pdf'
+# other links for footers
+github-link: 'https://github.com/yuki/my-books'
 ...
