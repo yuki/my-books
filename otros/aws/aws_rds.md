@@ -1,4 +1,5 @@
 
+
 # Introducción {#introducción-rds}
 
 **RDS**, contracción de las siglas en inglés *Relational Database Service*, es el **servicio de bases de datos relacional** que podemos crear y ejecutar en la nube de AWS sin que tengamos que realizar nosotros la creación e instalación de un sistema operativo en el que se ejecute.
@@ -127,7 +128,7 @@ Para realizar la conexión a la base de datos, ya sea desde una aplicación o de
 
 Si tenemos el **cliente de mysql** instalado en la instancia de computación, podremos realizar la conexión de la siguiente manera:
 
-::: mycode
+::: {.mycode size=small}
 [Acceso a la base de datos desde consola]{.title}
 
 ``` console
