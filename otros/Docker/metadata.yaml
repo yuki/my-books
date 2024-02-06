@@ -1,0 +1,16 @@
+---
+title:  'Introducción a los contenedores'
+subtitle:  ''
+degree: ''
+author: 'Rubén Gómez Olivencia'
+date: '2023-2024'
+maincolor: 1b81a5
+phrase: ''
+phrase-author: ''
+lang: es
+keywords: [nothing, nothingness]
+cover: 'img/docker/docker.png'
+download-link: 'docker_book.pdf'
+# other links for footers
+github-link: 'https://github.com/yuki/pandoc-templates/'
+...

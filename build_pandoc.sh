@@ -4,6 +4,7 @@ ORIG=`pwd`
 
 LIBROS=(
     "otros/aws/ aws_book"
+    "otros/Docker/ docker_book"
 )
 
 for LIBRO in "${LIBROS[@]}"; do
