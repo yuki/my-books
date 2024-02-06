@@ -27,6 +27,7 @@ jobs:
         files: |
           otros/aws/aws_book.pdf
           otros/Docker/docker_book.pdf
+          otros/git/git_book.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
