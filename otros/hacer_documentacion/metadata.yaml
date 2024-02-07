@@ -1,0 +1,16 @@
+---
+title:  'Cómo hacer una buena documentación'
+subtitle:  'O al menos intentarlo'
+degree: 'Formación Profesional: \linebreak Informática y Comunicaciones'
+author: 'Rubén Gómez Olivencia'
+date: '2023-09-02'
+maincolor: 006c8c
+phrase: ''
+phrase-author: ''
+lang: es
+keywords: []
+cover: 'img/portada.png'
+download-link: 'como_hacer_documentacion.pdf'
+# other links for footers
+github-link: 'https://github.com/yuki/my-books/'
+...
