@@ -14,10 +14,10 @@ LIBROS=(
     "SMR/2/SOred/ SOred.tex"
 #
 #    "otros/aws/ aws_book.tex"
-    "otros/Docker/ docker_book.tex"
-    "otros/git/ git_book.tex"
+#    "otros/Docker/ docker_book.tex"
+#    "otros/git/ git_book.tex"
     "otros/hacer_documentacion/ como_hacer_documentacion.tex"
-    "otros/PFsense/ pfsense_book.tex"
+#    "otros/PFsense/ pfsense_book.tex"
     "temas_comunes/laravel/ laravel_book.tex"
     "anexos/gestion_backups gestion_backups_anexo.tex"
     "anexos/glosario glosario_anexo.tex"
