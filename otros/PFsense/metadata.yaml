@@ -10,7 +10,7 @@ phrase-author: ''
 lang: es
 keywords: []
 cover: 'img/pfsense/pfsense.png'
-download-link: 'example.pdf'
+download-link: 'pfsense_book.pdf'
 # other links for footers
 github-link: 'https://github.com/yuki/my-books/'
 ...
