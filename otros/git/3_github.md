@@ -34,9 +34,7 @@ Una vez hemos creado una cuenta, podremos crear un nuevo repositorio en la plata
     -   **Licencia**: Un fichero con distintas licencias libres para nuestro proyecto.
 
 
-::: frame
-![Opciones al crear un nuevo repositorio en GitHub](img/git/github-new.png){width="70%"}
-:::
+![Opciones al crear un nuevo repositorio en GitHub](img/git/github-new.png){width="70%" framed="true"}
 
 
 En este caso se va a crear un repositorio público llamado **pruebas**, sin ningún tipo de fichero. De esta manera "enlazaremos" el repositorio local de los pasos anteriores con este repositorio.
@@ -106,15 +104,11 @@ Dado que realizar una modificación en un repositorio de GitHub es algo que pued
 
 Elegiremos la opción marcada en azul, lo que nos abrirá el navegador web para realizar el login en la web de GitHub. Una vez hayamos introducido bien los credenciales de acceso, veremos la confirmación. Esto nos creará una autenticación "OAuth de aplicación" en [nuestro perfil de GitHub](https://github.com/settings/applications) (Usuario → Settings → [Applications](https://github.com/settings/applications)), pestaña "*Authorized OAuth Apps*".
 
-::: frame
-![Login realizado correctamente](img/git/github_login2.png){width="50%"}
-:::
+![Login realizado correctamente](img/git/github_login2.png){width="50%" framed="true"}
 
 Y para que siga funcionando, en el **Administrador de Credenciales** de Windows ("Panel de Control → Cuentas de Usuario → Administrador de Credenciales → Credenciales de Windows"), también nos creará una entrada nueva de credenciales genéricas:
 
-::: frame
-![Credenciales de GitHub en Windows](img/git/windows_credentials.png){width="90%"}
-:::
+![Credenciales de GitHub en Windows](img/git/windows_credentials.png){width="90%" framed="true"}
 
 Una vez realizados estos pasos, nos funcionará el comando y enlazará la rama y enviará los commits realizados al servidor remoto.
 

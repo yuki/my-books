@@ -20,31 +20,31 @@ Para crear una rama en el desarrollo, desde el punto en el que nos encontramos, 
 
 -   **Crear rama y luego movernos a ella**: Este caso consta de dos pasos.
 
-    ::: mycode
-    [Crear rama "featureA" y movernos a ella]{.title}
+::: mycode
+[Crear rama "featureA" y movernos a ella]{.title}
 
-    ```console
-    ruben@vega:~/pruebas$ git branch featureA
-    ruben@vega:~/pruebas$ git checkout featureA
-    Cambiado a rama 'feature1'
+```console
+ruben@vega:~/pruebas$ git branch featureA
+ruben@vega:~/pruebas$ git checkout featureA
+Cambiado a rama 'feature1'
 
-    ruben@vega:~/pruebas$ git log
-    commit 170f9ce8c214b82f... (HEAD -> featureA, origin/main, main)
-    Author: Rubén Gómez <ruben@example.com>
-    Date:   Sun Sep 17 18:40:37 2023 +0200
-    ...
-    ```
-    :::
+ruben@vega:~/pruebas$ git log
+commit 170f9ce8c214b82f... (HEAD -> featureA, origin/main, main)
+Author: Rubén Gómez <ruben@example.com>
+Date:   Sun Sep 17 18:40:37 2023 +0200
+...
+```
+:::
 
-    Tal como se puede ver, se ha creado la rama con nombre "featureA", para posteriormente con el comando [git checkout featureA]{.commandbox} cambiarnos a dicha rama.
+Tal como se puede ver, se ha creado la rama con nombre "featureA", para posteriormente con el comando [git checkout featureA]{.commandbox} cambiarnos a dicha rama.
 
-    Con [git log]{.commandbox} podemos comprobar cómo en ese *commit* ahora mismo se encuentran tres puntos de nuestro sistema de repositorios:
-        
-    -   **HEAD -> featureA**: que es la rama en la que nos encontramos ahora.
-    -   **origin/main**: la rama "main" del repositorio remoto.
-    -   **main**: la rama local "main".
+Con [git log]{.commandbox} podemos comprobar cómo en ese *commit* ahora mismo se encuentran tres puntos de nuestro sistema de repositorios:
 
-    Los tres puntos coinciden porque no se han realizado todavía ningún cambio en ninguna rama.
+-   **HEAD -> featureA**: que es la rama en la que nos encontramos ahora.
+-   **origin/main**: la rama "main" del repositorio remoto.
+-   **main**: la rama local "main".
+
+Los tres puntos coinciden porque no se han realizado todavía ningún cambio en ninguna rama.
 
 -   **Crear rama y movernos a ella automáticamente**: en este caso los dos pasos se convierten en uno, pero el resultado es el mismo.
 
@@ -156,9 +156,7 @@ De esta manera, crearemos un nuevo commit con el texto "Merge de FeatureA en mai
 
 Una vez realizado el *merge*, podemos subir los cambios al repositorio central. La rama "featuresA" es una rama local, por lo que a nivel de GitHub esa rama nunca ha existido, aunque podemos ver en el interfaz web que el gráfico sí ha sufrido una ramificación:
 
-::: frame
-![Gráfico en el interfaz de GitHub](img/git/merge_github.png){width="90%"}
-:::
+![Gráfico en el interfaz de GitHub](img/git/merge_github.png){width="90%" framed="true"}
 
 
 # Resolver conflictos en un *merge* {#resolver-conflictos-en-un-merge}

@@ -25,9 +25,7 @@ Dado que el número de tipos de instancias actualmente es mayor que 700, puede r
 **Para asegurar que se adecúa a nuestras necesidades, es mejor confirmar el tipo de instancia que necesitamos mirando la [documentación oficial](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).**
 :::
 
-::: frame
-![ ](img/aws/ec2_instance_types.png){width="90%"}
-:::
+![ ](img/aws/ec2_instance_types.png){width="90%" framed="true"}
 
 Los valores que podemos identificar a simple vista son:
 
@@ -69,9 +67,7 @@ Hay un catálogo de AMI entre las que podemos elegir:
 
 -   **AMI de la comunidad**: Imágenes que pueden ser creadas por proveedores oficiales o por comunidades que crean imágenes con software específico.
 
-::: frame
-![ ](img/aws/ec2_ami_catalogue.png){width="100%"}
-:::
+![ ](img/aws/ec2_ami_catalogue.png){width="100%" framed="true"}
 
 ::: infobox
 **Podemos crear nuestras propias imágenes para poder reusarlas cuando queramos.**
@@ -113,9 +109,7 @@ A la derecha del asistente tenemos tenemos un resumen en el que nos aparece las 
 
 Una vez le damos a "Lanzar instancia" la instancia se creará y empezará el despliegue. Desde el panel de instancias, si seleccionamos la instancia recién creada veremos todos los detalles de la misma:
 
-::: frame
-![ ](img/aws/ec2_instance_info.png){width="90%"}
-:::
+![ ](img/aws/ec2_instance_info.png){width="90%" framed="true"}
 
 Tal como se puede ver, la información de la instancia está separada en distintas pestañas y en cada una de ellas nos aparecerá mucha información sobre la misma. Parte de esta información será la necesaria para poder acceder a la instancia por SSH.
 
@@ -185,9 +179,7 @@ En entornos profesionales **es habitual crear distintas par de claves para cada 
 
 Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: "**Red y seguridad → Pares de claves**". Ahí podremos hacer click sobre el icono `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_new_key.png}`{=latex} `<img src="img/aws/ec2_new_key.png" style="height:1.5rem">`{=html} , que nos redirigirá a un formulario donde crear las nuevas claves.
 
-::: frame
-![ ](img/aws/ec2_new_key2.png){width="90%"}
-:::
+![ ](img/aws/ec2_new_key2.png){width="90%" framed="true"}
 
 Una vez rellenado los datos, al darle al botón de crear, se nos descargará el fichero **que nunca más podremos volver a descargar**, por lo que deberemos guardarla a buen recaudo. A partir de ahora, al crear una nueva instancia, podremos hacer uso de esta nueva clave para el poder realizar el acceso con ella.
 

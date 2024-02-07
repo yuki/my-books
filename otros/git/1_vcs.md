@@ -29,9 +29,7 @@ Aunque existen muchos sistemas de control, vamos a enumerar unos pocos que han t
 
 -   **Git**: Creado por Linus Torvalds en 2005 debido al cambio de licencia de Bitkeeper. Decidió crearlo debido a que quería un sistema distribuido tal como usaba Bitkeeper, pero ninguno de los que había en ese momento le satisfacía.
 
-::: frame
-![Interés por los distintos sistemas de control de versiones. [Fuente](https://fahadhussaincs.blogspot.com/2018/07/git-vs-github-understanding-and.html).](img/git/gitgraph.png){width="70%"}
-:::
+![Interés por los distintos sistemas de control de versiones. [Fuente](https://fahadhussaincs.blogspot.com/2018/07/git-vs-github-understanding-and.html).](img/git/gitgraph.png){width="70%" framed="true"}
 
 Wikipedia tiene una página donde se puede visualizar una [comparativa de distintos sistemas de control de versiones](https://en.wikipedia.org/wiki/Comparison_of_version-control_software). En ella se comparan información general, licencias, características, \... Es una buena manera de conocer otros sistemas aparte de los nombrados previamente.
 

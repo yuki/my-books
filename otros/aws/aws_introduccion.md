@@ -77,9 +77,7 @@ Un proveedor de nube pública es aquel que ofrece los servicios de su propia inf
 
 Hoy en día los proveedores de nube pública son grandes compañías que ofrecen decenas de servicios que son fácilmente contratables a través de un interfaz de administración web, o también a través de sistemas API para poder automatizar tareas.
 
-::: frame
-![Fuente: [Statista](https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/)](img/aws/stats.jpeg){width="70%"}
-:::
+![Fuente: [Statista](https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/)](img/aws/stats.jpeg){width="70%" framed=true}
 
 Entre los proveedores más conocidos de nube pública están:
 

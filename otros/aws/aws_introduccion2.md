@@ -31,9 +31,7 @@ Si ya tenemos una cuenta creada previamente, podemos ir al [panel de acceso](htt
 
 Una vez logueado veremos los posibles cursos en los que estamos matriculados, y debemos ir al curso correspondiente. Una vez en el curso, luego hay que ir a "Módulos → Iniciar el Laboratorio de aprendizaje de AWS Academy", y aparecerá una página en el que abajo del todo tendréis un botón para aceptar las condiciones de uso, y luego veremos algo similar a la siguiente pantalla:
 
-::: frame
-![\ ](img/aws/launcher.png){width="90%"}
-:::
+![\ ](img/aws/launcher.png){width="90%" framed="true"}
 
 En esta pantalla podemos ver distinta información del propio laboratorio y su estado:
 
@@ -61,9 +59,7 @@ El terminal que aparece es un interfaz de administración para el laboratorio, y
 
 Cuando tenemos el laboratorio encendido la imagen será la siguiente
 
-::: frame
-![\ ](img/aws/launcher-started.png){width="90%"}
-:::
+![\ ](img/aws/launcher-started.png){width="90%" framed="true"}
 
 Para entrar en el laboratorio debemos hacer click en "AWS [●]{color="green"}", lo que nos abrirá una nueva pestaña en la que veremos el panel de administración (o "Consola" llamada por AWS) donde tendremos un resumen de los servicios que hemos visitado anteriormente, aplicaciones que tengamos desplegadas, coste\... La idea es tener a simple vista lo que más estemos utilizando.
 
@@ -79,9 +75,7 @@ AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y despleg
 
 Cuando entremos a algunos de estos servicios, el interfaz web que nos vamos a encontrar, por norma general, suele ser muy parecido y tiene el siguiente aspecto:
 
-::: frame
-![\ ](img/aws/panel.png){width="80%"}
-:::
+![\ ](img/aws/panel.png){width="80%" framed="true"}
 
 Podemos diferenciar dos apartados en la vista:
 

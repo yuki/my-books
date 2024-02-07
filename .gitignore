@@ -13,4 +13,5 @@
 *.ind
 svg-inkscape
 input.tex
+example.html
 .DS_Store

@@ -467,7 +467,7 @@ Listar los volúmenes existentes en el sistema. El listado muestra los que se es
 ::: {.mycode size=small}
 [Listar volúmenes]{.titulo}
 
-```bash
+``` console
 ruben@vega:~$ docker volume ls
 DRIVER    VOLUME NAME
 local     0d6c400a6407f5cdea81a2f0158222fdd87d7f3b3e2b5969ca466d743fc71f5c
