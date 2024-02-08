@@ -42,15 +42,17 @@ Dado que se va a optar por realizar la instalación en una máquina virtual, se 
 
 ## Detalles de la máquina virtual {#detalles-de-la-máquina-virtual}
 
-::: float-right
-
-![\ ](img/pfsense/vm-1.png){.float-right width="35%" framed=true}
-
+:::::::::::::: {.columns }
+::: {.column width="60%"}
 No se va a detallar cómo crear una máquina virtual, pero si las características técnicas que debe tener cuando se crea en Virtualbox.
 
 Dado que pfSense está basado en un sistema Unix FreeBSD, la máquina tiene que crearse indicando el tipo "BSD" y la versión "FreeBSD" de 64 bits, tal como aparece en la imagen.
-
 :::
+::: {.column width="33%" }
+![\ ](img/pfsense/vm-1.png){framed=true}
+:::
+::::::::::::::
+
 
 Por otro lado, a la máquina virtual se le van a añadir dos interfaces de red:
 
@@ -271,7 +273,7 @@ Si el tráfico no coincide con alguna regla que sea explícitamente **pass** el 
 **Por defecto pfSense deniega todo el tráfico entrante a sus interfaces.**
 :::
 
-Aunque las opciones "*block*" y "*reject*" rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que "reject" responde con **TCP RST** (o \"*port unreacheable*\") y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (***[DoS](https://es.wikipedia.org/wiki/Ataque_de_denegaci%C3%B3n_de_servicio)***).
+Aunque las opciones "*block*" y "*reject*" rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que "reject" responde con **TCP RST** (o \"*port unreacheable*\") y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (***[DoS](https://es.wikipedia.org/wiki/Ataque_de_denegación_de_servicio)***).
 
 ::: errorbox
 **¡Nunca se debería usar “\textit{reject}” en el interfaz  WAN!**
@@ -350,11 +352,14 @@ Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.
 ![\ ](img/pfsense/firewall-2.png){width="100%" framed=true}
 
 
-::: float-right
-![\ ](img/pfsense/apply.png){.float-right width="20%"}
-
+:::::::::::::: {.columns }
+::: {.column width="78%"}
 Una vez creada la regla aparecerá un botón para aplicar los cambios, por lo que hasta que no sea pulsado ese botón, las nuevas reglas que se hayan creado no tendrán efecto y por tanto no entrarán en funcionamiento.
 :::
+::: {.column width="20%" }
+![\ ](img/pfsense/apply.png)
+:::
+::::::::::::::
 
 ## Orden de las reglas {#orden-de-las-reglas}
 

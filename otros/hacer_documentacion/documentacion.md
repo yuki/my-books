@@ -11,15 +11,19 @@ Es por eso que en este documento se van a dar una serie de consejos y pautas par
 
 # Lenguaje formal/técnico {#lenguaje-formaltécnico}
 
-::: float-right
-![\ ](img/documentacion/debian.png){.float-right width="24%"}
-
+:::::::::::::: {.columns }
+::: {.column width="68%"}
 Aunque pueda parecer obvio, en las documentaciones no se puede utilizar un lenguaje coloquial, por lo que debemos **escribir siempre desde un punto de vista técnico**.
 
 **Se debe utilizar lenguaje formal** y cuando hagamos referencia a opiniones, pensamientos o decisiones **se hará uso del plural mayestático**.
 
 De esta manera se evita que la persona que escribe sea la que dé su opinión, ya que lo habitual es que detrás del proyecto hay un grupo de profesionales que respaldan las decisiones tomadas, que se ha tenido en cuenta la opinión de otros profesionales, o que ha sido supervisado.
 :::
+::: {.column width="28%" }
+![\ ](img/documentacion/debian.png){width="100%"}
+:::
+::::::::::::::
+
 
 ::: infobox
 **Creemos que la solución realizada en este proyeto es la adecuada porque ...**
@@ -63,16 +67,18 @@ Cada editor de texto tiene unos ajustes que se pueden modificar, por lo que es r
 
 Tal como se puede apreciar en este documento, no hacen falta grandes florituras para que un documento quede atractivo a la vista y sea sencillo de leer.
 
-::: float-left
-![\ ](img/documentacion/debian.png){.float-left width="24%"}
-
+:::::::::::::: {.columns }
+::: {.column width="25%"}
+![\ ](img/documentacion/debian.png){width="75%"}
+:::
+::: {.column width="70%" }
 **Hay que tener ojo crítico con nuestros propios documentos** y realizar una comparación entre el trabajo realizado y otros documentos que hayamos visto.
 
 Si nuestro documento no tiene las características exigidas, o a nosotros mismos nos parece que no resulta atractivo, **no es raro pensar que al profesor que lea el documento tampoco le guste**.
+:::
+::::::::::::::
 
 El aspecto visual puede cambiar la predisposición del lector, ayudando a que la lectura sea más agradable y sencilla. Y al contrario, puede predisponer a no querer seguir leyendo y terminar cuanto antes el documento.
-
-:::
 
 ::: errorbox
 **La primera impresión del documento puede hacer que al docente que lo corrija le predisponga para bien o para mal.**
@@ -137,13 +143,15 @@ A la hora de tener capturas de pantalla de ciertas ventanas, o recortadas, puede
 
 A continuación se visualiza la misma imagen con y sin borde:
 
-::: columns2
-```{ \begin{minipage}{0.43\linewidth}```{=latex}
-![image](img/documentacion/captura.png){width="100%" .column}
-```\end{minipage}  \hfill  \begin{minipage}{0.43\linewidth} ```{=latex}
-![image](img/documentacion/captura.png){width="100%" .column framed=true}
-```\end{minipage} }```{=latex}
+
+:::::::::::::: {.columns }
+::: {.column width="43%"}
+![\ ](img/documentacion/captura.png){width="100%"}
 :::
+::: {.column width="43%" }
+![\ ](img/documentacion/captura.png){width="100%" framed=true}
+:::
+::::::::::::::
 
 Como se puede apreciar, la imagen que no tiene borde hace un efecto de "recorte brusco", mientras que con el borde se ve claramente que es una sección recortada.
 
