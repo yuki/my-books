@@ -20,19 +20,36 @@
 
 </head>
   <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
-        <div class="container flex-row d-flex align-items-center flex-wrap text-white">
-          <span>
-              <span class="fs-4">Books</span>
-          </span>
-          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="navbarCollapse navbar-toc" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-danger" id="header" >
+      <nav id="navbar" class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-white" aria-label="header">
+
+        <div class="bd-navbar-toggle">
+          <button class="navbar-toggler p-2 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#TOCsidebarMenu" aria-controls="toc" aria-label="Toggle docs navigation">
+            <i class="fa-solid fa-circle-chevron-right"></i>
           </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <span class="fs-6 flex-row d-flex align-items-center flex-wrap text-white ms-md-auto d-none d-lg-inline"></span>
-            
+        </div>
+
+        <div>
+          Libros
+        </div>
+
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
+          <i class="fa-solid fa-ellipsis text-white"></i>
+        </button>
+
+        <!-- RIGHT OFFCANVAS -->
+        <div class="offcanvas offcanvas-end flex-grow-1" tabindex="-1" id="offcanvasRight" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true" aria-modal="true" role="dialog">
+          <div class="offcanvas-header px-4 pb-0">
+            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">$title$</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+          </div>
+
+          <div class="offcanvas-body p-4 pt-0 p-lg-0">
+            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+
+            <!-- Theme Selector -->
             <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
+              <div class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Cambiar tema</div>
               <li class="nav-item dropdown">
                 <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
                   <i class="fa-solid fa-moon"></i>
@@ -59,6 +76,22 @@
                 </ul>
               </li>
             </ul>
+
+              <li class="d-lg-none nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                <hr class="d-lg-none my-2 text-white-50">
+              </li>
+
+              <!-- Author and links -->
+              <ul class="d-lg-none navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">$date$, $author$</li>
+                <ul class="nav justify-content-end list-unstyled d-flex">
+                  $if(github-link)$
+                    <li class="ms-3"><a class="text-white" href="$github-link$"><i class="fa-brands fa-github"></i></a></li>
+                  $endif$
+                </ul>
+              </ul>
+            </ul>
           </div>
         </div>
       </nav>
@@ -77,6 +110,7 @@
             <li><a href="aws_book.html">AWS</a></li>
             <li><a href="docker_book.html">Docker</a></li>
             <li><a href="git_book.html">Git</a></li>
+            <li><a href="laravel_book.html">Laravel</a></li>
             <li><a href="pfsense_book.html">PfSense</a></li>
           </ul>
         </div>

@@ -142,7 +142,7 @@ Tras realizar la instalación y reiniciar, en el primer arranque desde el disco 
 
 Dependiendo del direccionamiento de red en el que nos encontremos, es posible que haya que configurar la LAN virtual de nuestra infraestructura de red virtualizada.
 
-### A tener en cuenta en redes 192.168.1.0 /24 {#a-tener-en-cuenta-en-redes-192.168.1.0-24}
+### A tener en cuenta en redes 192.168.1.0 /24 {#a-tener-en-cuenta-en-redes-192-168-1-0-24}
 
 Dado que pfSense por defecto hace uso de una red LAN 192.168.1.0/24, en caso de que nuestra LAN física contenga ese direccionamiento, el interfaz LAN de pfSense no será configurado. Tendremos un menú como el siguiente:
 
