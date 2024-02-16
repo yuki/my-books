@@ -1,5 +1,19 @@
 name: Pandoc Books Build
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      compileBook:
+        description: 'Which Book compile?'
+        required: true
+        default: 'ALL'
+        type: choice
+        options:
+          - ALL
+          - AWS
+          - Docker
+          - Git
+          - Laravel
+          - PFsense
 permissions:
   contents: write
   pages: write
@@ -20,6 +34,8 @@ jobs:
       uses: dante-ev/latex-action@latest
       with:
         entrypoint: ./build_pandoc.sh
+      env:
+        COMPILEBOOK: ${{inputs.compileBook}}
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
