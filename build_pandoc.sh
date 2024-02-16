@@ -7,6 +7,7 @@ LIBROS=(
     "otros/Docker/ docker_book"
     "otros/git/ git_book"
     "otros/PFsense/ pfsense_book"
+    "otros/laravel/ laravel_book"
 )
 
 for LIBRO in "${LIBROS[@]}"; do
