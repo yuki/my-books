@@ -41,7 +41,7 @@ public function up(): void{
 Tal como se puede ver, a la hora de crear la tabla en el *migration* se ha creado un campo llamado "**post_id**" que después se le ha indicado que es de tipo "clave foránea". En la [documentación](https://laravel.com/docs/10.x/migrations#foreign-key-constraints) se explican distintas opciones para este tipo de casos.
 
 ::: exercisebox
-** Crea un "seed" para añadir un comentario al primer post **
+**Crea un "seed" para añadir un comentario al primer post**
 :::
 
 # Crear relación de modelos {#crear-relación-de-modelos}

@@ -273,13 +273,14 @@ En el formulario del puerto 8081 (donde no hemos inicializado la variable) sólo
 
 <!-- FIXME: TODO: arreglar esto y ver si merece la pena dejar el código de minipage o hacer una función propia-->
 
-::: columns2
-```{ \begin{minipage}{0.43\linewidth}```{=latex}
+:::::::::::::: {.columns }
+::: {.column width="43%"}
 ![\ ](img/docker/phpmyadmin1.png){width="100%" .column}
-```\end{minipage}  \hfill  \begin{minipage}{0.43\linewidth} ```{=latex}
-![\ ](img/docker/phpmyadmin2.png){width="100%" .column}
-```\end{minipage} }```{=latex}
 :::
+::: {.column width="43%"}
+![\ ](img/docker/phpmyadmin2.png){width="100%" .column}
+:::
+::::::::::::::
 
 ::: center
 [A la izquierda formulario del puerto 8081, sin variable inicializada. A la derecha, puerto 8082 con variable inicializada.]{.footnotesize}
@@ -339,7 +340,7 @@ Para este ejemplo se ha creado un contenedor usando la imagen de [MySQL](https:/
 
 - **-v /opt/mysql-data:/var/lib/mysql**: A través del parámetro **`-v`** se le indica al contenedor que se le va a pasar un volumen. Posteriormente se le indica la ruta del sistema operativo anfitrión [/opt/mysql-data]{.configdir} que se montará dentro del contenedor en [/var/lib/mysql]{.configdir}.
 
-- **-e MYSQL_ROOT_PASSWORD=my-secret-pw**: El parámetro "**-e**" sirve para pasarle al contenedor \textbf{variables de entorno}. En este caso, y tal como dice la [web de la imagen MySQL](https://hub.docker.com/_/mysql), esta es la manera de asignar la contraseña del usuario **root** durante la inicialización de la base de datos.
+- **-e MYSQL_ROOT_PASSWORD=my-secret-pw**: El parámetro "**-e**" sirve para pasarle al contenedor **variables de entorno**. En este caso, y tal como dice la [web de la imagen MySQL](https://hub.docker.com/_/mysql), esta es la manera de asignar la contraseña del usuario **root** durante la inicialización de la base de datos.
 
 
 Tras crear el contenedor, y asegurarnos que está levantado haciendo uso del comando [docker ps]{.commandbox}, podemos realizar la conexión desde el sistema operativo anfitrión o desde cualquier otro lugar usando la contraseña indicada previamente.

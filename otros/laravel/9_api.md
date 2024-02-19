@@ -264,7 +264,7 @@ En este controlador vamos a tener tres funciones:
 El controlador, quedaría de la siguiente manera.
 
 ::: errorbox
-** Es importante entender qué hace cada una de las funciones**
+**Es importante entender qué hace cada una de las funciones**
 :::
 
 ::: {.mycode size=small}

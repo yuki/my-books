@@ -256,7 +256,7 @@ Cuando nos logueamos por primera vez nos aparecerá la primera página del asist
 PfSense es un servidor que actúa como **firewall** (entre otras de sus posibles funciones) y por tanto permite la creación de reglas de filtrado de tráfico para todos los interfaces que tiene configurados.
 
 ::: infobox
-Las reglas se ejecutan \textbf{cuando el tráfico entra al interfaz} y son evaluadas en base a “primer acierto”.
+Las reglas se ejecutan **cuando el tráfico entra al interfaz** y son evaluadas en base a “primer acierto”.
 :::
 
 Las acciones principales de las reglas pueden ser:
@@ -276,7 +276,7 @@ Si el tráfico no coincide con alguna regla que sea explícitamente **pass** el 
 Aunque las opciones "*block*" y "*reject*" rechazan el paquete, la diferencia puede suponer una gran diferencia, ya que "reject" responde con **TCP RST** (o \"*port unreacheable*\") y eso puede permitir la posibilidad de recibir un ataque de denegación de servicio (***[DoS](https://es.wikipedia.org/wiki/Ataque_de_denegación_de_servicio)***).
 
 ::: errorbox
-**¡Nunca se debería usar “\textit{reject}” en el interfaz  WAN!**
+**¡Nunca se debería usar "*reject*" en el interfaz  WAN!**
 :::
 
 En redes privadas es útil hacer uso de "*reject*", porque avisa a los programas que intentan realizar conexiones que la conexión está bloqueada, y por tanto la respuesta es más rápida ya que no se esperan timeouts.
