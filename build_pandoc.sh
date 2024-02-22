@@ -9,6 +9,7 @@ LIBROS=(
     "otros/laravel/ laravel_book"
     "otros/PFsense/ pfsense_book"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces_book"
+    "DAM/2/sistemas_gestion_empresarial/ sge_book"
 )
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
