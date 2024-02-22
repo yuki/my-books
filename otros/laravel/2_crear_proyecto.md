@@ -94,7 +94,7 @@ ruben@vega:~$ cd example-app && ./vendor/bin/sail up -d
 
 Y con ello podemos ir al puerto 80 a través de nuestro navegador y veremos la página principal para comprobar que todo ha ido bien.
 
-![\ ](img/laravel/intro.png){width="70%" framed=true}
+![](img/laravel/intro.png){width="70%" framed=true}
 
 
 # Variables de entorno {#variables-de-entorno}

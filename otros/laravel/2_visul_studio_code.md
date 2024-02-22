@@ -41,14 +41,14 @@ Si hacemos uso de una máquina virtual para el desarrollo, por no usar GNU/Linux
 
 Para conectarnos usaremos la extensión recién instalada "Remote explorer", nos aseguramos que estamos en la opción "Remotes (Tunnels/SSH)" y crearemos una nueva conexión SSH al servidor a través del icono "+", en el que nos pedirá realizar la conexión SSH:
 
-![\ ](img/laravel/visual_studio_code_ssh.png){width="50%" framed=true}
+![](img/laravel/visual_studio_code_ssh.png){width="50%" framed=true}
 
 
 ::: warnbox
 Es recomendable hacer uso del \hyperlink{ssh_clave_publica_privada}{sistema de certificados de clave pública/privada} de SSH para realizar la conexión
 :::
 
-![\ ](img/laravel/visual_studio_code_ssh2.png){width="90%"}
+![](img/laravel/visual_studio_code_ssh2.png){width="90%"}
 
 
 Nos pedirá dónde queremos guardar la configuración, dejando la ruta por defecto, que es el fichero [.ssh/config]{.configfile} dentro de la "home" de nuestro usuario. Si hemos realizado la configuración de los certificados de clave pública/privada, no nos pedirá la contraseña.
@@ -61,7 +61,7 @@ Hacer uso de esta funcionalidad es muy útil ya que al estar dentro del contened
 
 Para realizar la conexión, deberemos ver los contenedores en la extensión "Remote Explorer", en el apartado "**Dev Containers**":
 
-![\ ](img/laravel/visual_studio_code_container.png){width="50%"  framed=true}
+![](img/laravel/visual_studio_code_container.png){width="50%"  framed=true}
 
 
 Al acceder al contenedor, en este caso "example-app_laravel.test_1", Visual Studio nos debería abrir el directorio principal donde está situada la aplicación Laravel, [/var/www/html]{.configdir}.

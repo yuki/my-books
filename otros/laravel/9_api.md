@@ -189,7 +189,7 @@ Para realizar la prueba podemos hacerlo de distintas formas, cada una de ellas d
 
 -   Utilizando un interfaz gráfico como [Postman](https://www.postman.com/), que nos va a facilitar hacer peticiones GET y peticiones más complejas.
 
-    ![\ ](img/laravel/postman.png){width="70%"}
+    ![](img/laravel/postman.png){width="70%"}
 
 -   Desde el propio **navegador web**. Veremos los datos JSON devueltos en formato texto directamente. Para comprobar que funciona, puede ser más que suficiente.
 
@@ -391,13 +391,13 @@ Por lo tanto, los pasos que debemos realizar son:
     -   device_name
 
     ::: center
-    ![\ ](img/laravel/postman_login.png){width="80%"}
+    ![](img/laravel/postman_login.png){width="80%"}
     :::
 
 -   Con ese token podremos realizar la prueba de añadir un nuevo *post* a través de la API.
 
     ::: center
-    ![\ ](img/laravel/postman_create.png){width="80%"}
+    ![](img/laravel/postman_create.png){width="80%"}
     :::
 
     Deberemos indicar:
@@ -561,7 +561,7 @@ Regenerating docs default
 
 Tras ejecutar el comando anterior, si vamos a la url [http://localhost/api/documentation](http://localhost/api/documentation) tendremos acceso y veremos el interfaz para nuestra API:
 
-![\ ](img/laravel/swagger.png){width="80%" framed=true}
+![](img/laravel/swagger.png){width="80%" framed=true}
 
 
 ::: exercisebox

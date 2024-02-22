@@ -6,7 +6,7 @@ Siguiendo con nuestro blog, donde ya tenemos una aplicación donde crear posts s
 
 Sin entrar en los atributos que tiene cada entidad/modelo, la relación que tienen los comentarios respecto a un *post* sería la siguiente:
 
-![\ ](img/laravel/e-r.png){width="50%"}
+![](img/laravel/e-r.png){width="50%"}
 
 Es decir, un *post* puede tener muchos comentarios. Un comentario sólo puede pertenecer a un *post*. En principio el único atributo que vamos a permitir es el propio comentario, aparte de la fecha de creación. Para crear el modelo haríamos:
 

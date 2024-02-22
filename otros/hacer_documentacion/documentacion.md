@@ -20,7 +20,7 @@ Aunque pueda parecer obvio, en las documentaciones no se puede utilizar un lengu
 De esta manera se evita que la persona que escribe sea la que dé su opinión, ya que lo habitual es que detrás del proyecto hay un grupo de profesionales que respaldan las decisiones tomadas, que se ha tenido en cuenta la opinión de otros profesionales, o que ha sido supervisado.
 :::
 ::: {.column width="28%" }
-![\ ](img/documentacion/debian.png){width="100%"}
+![](img/documentacion/debian.png){width="100%"}
 :::
 ::::::::::::::
 
@@ -53,7 +53,7 @@ Aún así, modificar estas preferencias es sencillo y puede hacer que el documen
 
 Tal como se puede ver en este mismo documento, el interlineado y la separación entre párrafos facilita la lectura del mismo, por lo que debería ser una configuración a ajustar.
 
-![\ ](img/documentacion/libreoffice.png){width="70%"}
+![](img/documentacion/libreoffice.png){width="70%"}
 
 Cada editor de texto tiene unos ajustes que se pueden modificar, por lo que es recomendable dedicar un tiempo para entender las distintas configuraciones que ofrece. En la imagen superior se puede ver la configuración que ofrece [Libreoffice](https://es.libreoffice.org/).
 
@@ -69,7 +69,7 @@ Tal como se puede apreciar en este documento, no hacen falta grandes florituras 
 
 :::::::::::::: {.columns }
 ::: {.column width="25%"}
-![\ ](img/documentacion/debian.png){width="75%"}
+![](img/documentacion/debian.png){width="75%"}
 :::
 ::: {.column width="70%" }
 **Hay que tener ojo crítico con nuestros propios documentos** y realizar una comparación entre el trabajo realizado y otros documentos que hayamos visto.
@@ -104,7 +104,7 @@ En los documentos en los que hay que añadir imágenes hay que tener en cuenta c
 
 Dependiendo de la imagen que queramos utilizar, podríamos ajustarla al centro, ocupando gran parte de la zona central del documento, como ya hemos visto más arriba, o como es el ejemplo que se muestra a continuación.
 
-![\ ](img/documentacion/debian.svg){width="70%"}
+![](img/documentacion/debian.svg){width="70%"}
 
 En este caso es el nombre de la distribución [Debian](https://www.debian.org/), pero anteriormente hemos visto una captura de pantalla de un programa. Las imágenes deben tener el tamaño adecuado para ver el contenido de las mismas.
 
@@ -124,7 +124,7 @@ Por ejemplo:
 
 > En LibreOffice podemos modificar todos los estilos yendo al menú del párrafo yendo al menú "Estilos --\> Gestionar estilos", y desde ahí seleccionar el que nos interese modificar. Por ejemplo, el "**Cuerpo de texto**":
 
-![\ ](img/documentacion/libreoffice.png){width="70%"}
+![](img/documentacion/libreoffice.png){width="70%"}
 
 Tal como se puede ver, se ha realizado una pequeña introducción a lo que se quiere explicar para posteriormente añadir una imagen explicativa del resultado obtenido.
 
@@ -132,7 +132,7 @@ Tal como se puede ver, se ha realizado una pequeña introducción a lo que se qu
 
 Cuando en una imagen queremos hacer referencia a algo en concreto, lo ideal es no poner la captura de pantalla del escritorio completo, sino sólo realizar la captura a la ventana de la que estamos hablando.
 
-![\ ](img/documentacion/recortes.png){width="40%"}
+![](img/documentacion/recortes.png){width="40%"}
 
 
 Para ello la aplicación "Herramienta de Recortes" de Windows permiten hacer un recorte perfecto de la ventana que seleccionemos, tal como se puede ver en la imagen anterior, seleccionando el modo. De esta manera obtendremos sólo la ventana que nos interesa, evitando hacer un mal recorte, y conseguiremos que **la atención se centre sobre lo que es realmente importante**.
@@ -146,10 +146,10 @@ A continuación se visualiza la misma imagen con y sin borde:
 
 :::::::::::::: {.columns }
 ::: {.column width="43%"}
-![\ ](img/documentacion/captura.png){width="100%"}
+![](img/documentacion/captura.png){width="100%"}
 :::
 ::: {.column width="43%" }
-![\ ](img/documentacion/captura.png){width="100%" framed=true}
+![](img/documentacion/captura.png){width="100%" framed=true}
 :::
 ::::::::::::::
 

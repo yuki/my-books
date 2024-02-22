@@ -11,7 +11,7 @@ La idea de este documento es crear una pequeña infraestructura de red haciendo 
 
 El esquema de infraestructura real quedaría de la siguiente manera, dependiendo de cómo realicemos la instalación y las posibilidades que tengamos con nuestro proveedor de internet:
 
-![\ ](img/pfsense/pfsense_infraestructure.png){width="100%"}
+![](img/pfsense/pfsense_infraestructure.png){width="100%"}
 
 -   **1ª opción**: el pfSense actúa como conexión directa a internet. Para ello estará conectado a un router neutro, cable-modem, ONT o lo habremos configurado como nuestro ISP nos indique. Por lo tanto pfSense tendrá IP pública a internet y actuará como firewall directo.
 
@@ -49,7 +49,7 @@ No se va a detallar cómo crear una máquina virtual, pero si las característic
 Dado que pfSense está basado en un sistema Unix FreeBSD, la máquina tiene que crearse indicando el tipo "BSD" y la versión "FreeBSD" de 64 bits, tal como aparece en la imagen.
 :::
 ::: {.column width="33%" }
-![\ ](img/pfsense/vm-1.png){framed=true}
+![](img/pfsense/vm-1.png){width="100%" framed=true}
 :::
 ::::::::::::::
 
@@ -62,7 +62,7 @@ Por otro lado, a la máquina virtual se le van a añadir dos interfaces de red:
 
 Dadas las explicaciones previas, una vez creada la máquina virtual nuestra infraestructura virtual quedaría de la siguiente manera:
 
-![\ ](img/pfsense/infraestructura_virtualbox.png){width="50%"}
+![](img/pfsense/infraestructura_virtualbox.png){width="50%"}
 
 Visto este dibujo, la máquina virtual que actuará como PC dentro de la LAN le tendremos que modificar el adaptador virtual para que sea de tipo "Red interna" y escribiremos "**LAN**", por lo que ambas máquinas estarán conectadas mediante un "switch virtual".
 
@@ -85,7 +85,7 @@ Queda por parte del lector el crear esta máquina virtual, pero se recomienda re
 
 Tras poner el CD de instalación en la máquina virtual y arrancar veremos un pequeño menú como muestra la siguiente captura de pantalla:
 
-![\ ](img/pfsense/install-1.png){width="80%"}
+![](img/pfsense/install-1.png){width="80%"}
 
 
 El menú contará con un sistema de cuenta atrás y si no se selecciona nada entrará en la primera opción por defecto. Se podrá ver cómo el sistema arranca y detecta el hardware y al finalizar nos mostrará un menú con las opciones:
@@ -98,7 +98,7 @@ El menú contará con un sistema de cuenta atrás y si no se selecciona nada ent
 
 Tras seleccionar la opción de **instalar**, nos aparecerá un menú para seleccionar la distribución del teclado y a continuación el tipo de partición que queremos utilizar:
 
-![\ ](img/pfsense/install-2.png){width="80%"}
+![](img/pfsense/install-2.png){width="80%"}
 
 -   **Auto (ZFS)**: Sistema de particionado con el sistema de ficheros ZFS. Es el sistema por defecto, aunque ZFS puede consumir más RAM.
 
@@ -146,7 +146,7 @@ Dependiendo del direccionamiento de red en el que nos encontremos, es posible qu
 
 Dado que pfSense por defecto hace uso de una red LAN 192.168.1.0/24, en caso de que nuestra LAN física contenga ese direccionamiento, el interfaz LAN de pfSense no será configurado. Tendremos un menú como el siguiente:
 
-![\ ](img/pfsense/install-3.png){width="80%"}
+![](img/pfsense/install-3.png){width="80%"}
 
 
 Tal como se puede ver en la imagen, el asistente ha cogido IP por DHCP para el interfaz WAN, pero el interfaz LAN no se ha configurado ya que la WAN ya tiene el direccionamiento 192.168.1.0/24.
@@ -156,7 +156,7 @@ Tal como se puede ver en la imagen, el asistente ha cogido IP por DHCP para el i
 
 En las situaciones mencionadas en el paso anterior, o en casos de que queramos modificar la red LAN, podremos cambiarla desde el menú seleccionando la opción 2.
 
-![\ ](img/pfsense/install-4.png){width="80%"}
+![](img/pfsense/install-4.png){width="80%"}
 
 Tal como se puede ver en la imagen anterior, al elegir la opción 2 el asistente nos pregunta por el interfaz que queremos configurar. Durante el proceso nos realiza las siguientes preguntas:
 
@@ -180,7 +180,7 @@ Al terminar el asistente, nos aparecerá de nuevo el menú que pasaremos a expli
 
 Tal como se ha comentado, el menú cuenta con distintas opciones de administración.
 
-![\ ](img/pfsense/boot-1.png){width="70%"}
+![](img/pfsense/boot-1.png){width="70%"}
 
 Como se puede ver en la imagen previa, aparecen 16 posibles opciones a elegir, entre las que destacaremos:
 
@@ -212,7 +212,7 @@ Como se puede ver en la imagen previa, aparecen 16 posibles opciones a elegir, e
 El acceso a la interfaz web de configuración **por defecto sólo está disponible desde la red LAN**, por lo que accederemos desde la máquina virtual dentro de la LAN abriendo un navegador y apuntando a la IP por defecto de la LAN "https://192.168.1.1" (o la que hayamos puesto si hemos [configurado la LAN](#configurar-lan-virtual)). Tendremos que aceptar el certificado de seguridad (ya que es auto-firmado) y nos aparecerá la web de login.
 
 
-![\ ](img/pfsense/login.png){width="70%" framed=true}
+![](img/pfsense/login.png){width="70%" framed=true}
 
 
 Los credenciales por defecto son:
@@ -306,7 +306,7 @@ Tras la instalación de PfSense podemos ir a "Firewall → Rules" y ahí aparece
 
 -   **LAN**: Existen varias reglas creadas por defecto que permiten tráfico:
 
-    ![\ ](img/pfsense/firewall-1.png){width="90%" framed=true}
+    ![](img/pfsense/firewall-1.png){width="90%" framed=true}
 
  - `\faCheck `{=latex} `<i class="fa-solid fa-check"></i>`{=html}  Permite el acceso a la IP de la LAN del pfsense al puerto 80 y 443 para poder administrarlo vía web. Esta regla está especialmente creada para que no se pueda eliminar desde este apartado, ya que el borrarla podría suponer no poder configurar pfSense vía web.
 
@@ -349,7 +349,7 @@ No importa dónde se cree la nueva regla, ya que se podrá modificar después su
 Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.1.1 (servidor DNS de la empresa Cloudflare). La regla quedaría:
 
 
-![\ ](img/pfsense/firewall-2.png){width="100%" framed=true}
+![](img/pfsense/firewall-2.png){width="100%" framed=true}
 
 
 :::::::::::::: {.columns }
@@ -357,7 +357,7 @@ Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.
 Una vez creada la regla aparecerá un botón para aplicar los cambios, por lo que hasta que no sea pulsado ese botón, las nuevas reglas que se hayan creado no tendrán efecto y por tanto no entrarán en funcionamiento.
 :::
 ::: {.column width="20%" }
-![\ ](img/pfsense/apply.png)
+![](img/pfsense/apply.png)
 :::
 ::::::::::::::
 
@@ -371,14 +371,14 @@ Teniendo en cuenta la regla creada en el apartado anterior, vamos a analizar cu�
 
 -   Al **final** del todo:
 
-    ![\ ](img/pfsense/firewall-3.png){width="90%" framed=true}
+    ![](img/pfsense/firewall-3.png){width="90%" framed=true}
 
     Teniendo en cuenta las reglas creadas sobre el interfaz LAN en este orden, la regla de bloqueo al servidor 1.1.1.1 no entrará nunca en funcionamiento. El tráfico cuyo origen sea la LAN coincidirá siempre con la regla que le permite ir a cualquier parte, por lo que al coincidir con esa regla no se analizará ninguna más.
 
 -   Al **comienzo** de las reglas:
 
 
-    ![\ ](img/pfsense/firewall-4.png){width="90%" framed=true}
+    ![](img/pfsense/firewall-4.png){width="90%" framed=true}
 
     En este caso la regla más específica de denegación se ha puesto al principio, por lo que si el tráfico coincide con esta hará lo que indica la regla, bloquear el tráfico al servidor 1.1.1.1. Si no coincide, se seguirán analizando el resto de reglas, y en este caso se permitirá el resto de tráfico.
 
@@ -407,7 +407,7 @@ Normalmente lo habitual suele ser que el acceso desde y hasta la DMZ cumpla con 
 Dado que se va a crear una red nueva, deberemos realizar cambios en la máquina virtual de nuestro servidor pfSense. La nueva infraestructura será la siguiente:
 
 
-![\ ](img/pfsense/infraestructura_dmz_virtualbox.png){width="50%"}
+![](img/pfsense/infraestructura_dmz_virtualbox.png){width="50%"}
 
 
 Tal como se puede apreciar al compararlo con la [infraestructura anterior](#detalles-de-la-máquina-virtual), se ha creado una nueva red interna, por lo que al pfSense se le tendrá que activar una nueva interfaz de tipo "Red interna" y le daremos el nombre de DMZ.
@@ -429,7 +429,7 @@ Dado que pfSense cuenta con un nuevo interfaz, por defecto aparece deshabilitado
 Todas estas modificaciones se realizan desde el interfaz web, a través de "***Interfaces → Assignments***":
 
 
-![\ ](img/pfsense/interfaces.png){width="80%" framed=true}
+![](img/pfsense/interfaces.png){width="80%" framed=true}
 
 
 Tal como se puede ver, aparece la nueva interfaz junto a un botón "Add" que indica que lo podemos añadir a la configuración. Una vez pulsado el botón se le asigna el nombre "OPT1" como nombre por defecto, pero la idea es cambiarlo. Para ello se hace click en el interfaz, y se entra en su configuración.
@@ -468,7 +468,7 @@ Suele ser habitual el realizar estos mapeos para tener controlados los equipos y
 
 Para realizar estos mapeos hay que ir a "Status → DHCP Leases" donde podremos ver todas las IPs que se han otorgado:
 
-![\ ](img/pfsense/dhcp_lease.png){width="100%" framed=true}
+![](img/pfsense/dhcp_lease.png){width="100%" framed=true}
 
 
 ### Modificación de reglas de filtrado {#modificación-de-reglas-de-filtrado}
@@ -484,7 +484,7 @@ Teniendo en cuenta las reglas que normalmente suele tener una red DMZ, que se ha
 Teniendo en cuenta las reglas que se necesitan crear, y dado que pfSense aplica las reglas "al entrar al interfaz", habrá que entender dónde crear cada regla y tener cuidado con el orden con el que se aplican. Como pruebas, se ha aplicado las siguientes reglas:
 
 
-![\ ](img/pfsense/firewall-5.png){width="80%" framed=true}
+![](img/pfsense/firewall-5.png){width="80%" framed=true}
 
 
 ¿Es realmente necesaria la primera regla?

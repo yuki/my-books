@@ -7,7 +7,7 @@ Hay que entender que en este tipo de arquitectura no significa que el Pasivo est
 
 Para crear el sistema "Activo - Pasivo" en PfSense vamos a necesitar 2 servidores, y entre ellos debe existir una conexión directa (interfaz **SYNC**) para que entre ellos se puedan comunicar, conocer el estado del otro, intercambiar configuración, datos de estado de los servicios ... El esquema quedaría:
 
-![\ ](img/pfsense/pfsense-HA.png){width="50%"}
+![](img/pfsense/pfsense-HA.png){width="50%"}
 
 Teniendo en cuenta la infraestructura de la imagen, hay que explicar:
 

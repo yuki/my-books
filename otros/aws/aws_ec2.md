@@ -67,7 +67,7 @@ Hay un catálogo de AMI entre las que podemos elegir:
 
 -   **AMI de la comunidad**: Imágenes que pueden ser creadas por proveedores oficiales o por comunidades que crean imágenes con software específico.
 
-![ ](img/aws/ec2_ami_catalogue.png){width="100%" framed="true"}
+![](img/aws/ec2_ami_catalogue.png){width="100%" framed="true"}
 
 ::: infobox
 **Podemos crear nuestras propias imágenes para poder reusarlas cuando queramos.**

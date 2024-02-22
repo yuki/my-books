@@ -162,7 +162,7 @@ AH00558: httpd: Could not reliably determine the server's ...
 Vemos los logs del servicio Apache al arrancar y si vamos al navegador a la dirección [http://localhost](http://localhost) muestra lo siguiente:
 
 ::: center
-![\ ](img/docker/apache.png){width="60%"}
+![](img/docker/apache.png){width="60%"}
 :::
 
 Y para entender lo que hace el comando, los parámetros son:
@@ -278,7 +278,7 @@ En el formulario del puerto 8081 (donde no hemos inicializado la variable) sólo
 ![\ ](img/docker/phpmyadmin1.png){width="100%" .column}
 :::
 ::: {.column width="43%"}
-![\ ](img/docker/phpmyadmin2.png){width="100%" .column}
+![](img/docker/phpmyadmin2.png){width="100%" .column}
 :::
 ::::::::::::::
 

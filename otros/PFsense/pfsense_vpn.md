@@ -21,12 +21,12 @@ Aunque el sistema de VPN se puede utilizar de muchas maneras (incluso en una mis
 
 También conocido como sistema "**Peer to Peer**". Vamos a suponer que tenemos una empresa con dos sedes separadas geográficamente, cada una de ellas con un servidor PfSense actuando de firewall y conectado a internet, tal como aparece en la siguiente imagen:
 
-![\ ](img/pfsense/vpn-1.png){width="90%"}
+![](img/pfsense/vpn-1.png){width="90%"}
 
 
 La idea, en esta situación, es que los equipos que están en la LAN de la sede 1 puedan llegar a los equipos de la LAN en la sede 2. Para ello, lo que se va a crear es un túnel VPN entre ambos PfSense. Ese túnel se suele denominar "punto a punto" ("peer to peer") y la infraestructura quedaría:
 
-![\ ](img/pfsense/vpn-2.png){width="90%"}
+![](img/pfsense/vpn-2.png){width="90%"}
 
 
 Una vez generado el túnel, cada pfSense tendrá un interfaz nuevo privado (10.0.0.1 y 10.0.0.2) que serán las IPs del túnel establecido.
@@ -43,7 +43,7 @@ Este sistema suele ser el utilizado en las siguientes circunstancias:
 
 En resumen: cualquier equipo que está fuera de la oficina que quiera llegar a los equipos que están en ella, o al equipo al que queremos llegar desde la oficina de manera segura. De esta manera, el PfSense actuará de Servidor VPN y los clientes serán los equipos remotos, por lo que una vez conectados se formará un túnel con cada uno de ellos, quedando la infraestructura tal que:
 
-![\ ](img/pfsense/vpn-3.png){width="90%"}
+![](img/pfsense/vpn-3.png){width="90%"}
 
 
 ## Características de las VPNs {#características-de-las-vpns}
@@ -88,7 +88,7 @@ En estos casos en ambos lados de la VPN el direccionamiento es el mismo. Es la m
 
 El tráfico entre ambos nodos de la conexión VPN debe ser enrutado, y existen distintas maneras de realizar dicho enrutado. Teniendo en cuenta el dibujo:
 
-![\ ](img/pfsense/vpn-2.png){width="90%"}
+![](img/pfsense/vpn-2.png){width="90%"}
 
 -   **Rutas estáticas**: Cada PfSense tendrá rutas estáticas para poder acceder a los equipos de la red LAN de la otra sede. Esto quiere decir, que cuando una comunicación desde un equipo de la Sede1 llegue a la Sede2 llegará con su propia IP de origen. Las rutas serían:
 
@@ -100,7 +100,7 @@ El tráfico entre ambos nodos de la conexión VPN debe ser enrutado, y existen d
 
 El enrutado también se debe realizar cuando la conexión es entre equipos remotos que se conectan a la VPN contra el servidor:
 
-![\ ](img/pfsense/vpn-3.png){width="90%"}
+![](img/pfsense/vpn-3.png){width="90%"}
 
 
 En este caso, sólo los clientes remotos reciben las rutas para acceder a la LAN de la sede.
@@ -167,12 +167,12 @@ Una vez creado el servidor OpenVPN en PfSense deberemos crear al menos dos regla
     Si es un sistema “Peer to Peer” sólo aceptaremos conexiones desde la IP origen.
     :::
 
-    ![\ ](img/pfsense/openvpn-1.png){width="100%" framed=true}
+    ![](img/pfsense/openvpn-1.png){width="100%" framed=true}
 
 
 -   **OpenVPN**: Al crear la VPN, se creará un nuevo interfaz en el que podremos añadir reglas de filtrado. Por defecto, al no tener ninguna regla, se denegará el tráfico, por lo que deberemos crear reglas de aceptación. En este caso, se acepta todo el tráfico que viene de la VPN:
 
-    ![\ ](img/pfsense/openvpn-2.png){width="100%" framed=true}
+    ![](img/pfsense/openvpn-2.png){width="100%" framed=true}
 
 
 ### Clientes de conexión OpenVPN {#clientes-de-conexión-openvpn}

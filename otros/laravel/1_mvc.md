@@ -33,7 +33,7 @@ Aunque existen distintas implementaciones de la arquitectura Modelo-Vista-Contro
 
 :::
 ::: {.column width="40%" }
-![\ ](img/laravel/mvc.png){width="100%"}
+![](img/laravel/mvc.png){width="100%"}
 :::
 ::::::::::::::
 

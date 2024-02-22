@@ -16,7 +16,7 @@ Por otro lado, para evitar que los servicios se queden corriendo (y por tanto, g
 Para acceder a los cursos en los que el profesor nos ha matriculado, nos habrá llegado un mail que nos mandará a una página donde tendremos que indicar si tenemos ya una cuenta o tenemos que crearla:
 
 ::: center
-![\ ](img/aws/create_account.png){width="70%"}
+![](img/aws/create_account.png){width="70%"}
 :::
 
 Debemos introducir una contraseña y aceptar los terminos para poder crear la cuenta. Una vez creada, nos mandará directamente al curso al que nos han matriculado.
@@ -24,14 +24,14 @@ Debemos introducir una contraseña y aceptar los terminos para poder crear la cu
 Si ya tenemos una cuenta creada previamente, podemos ir al [panel de acceso](https://www.awsacademy.com/vforcesite/LMS_Login) y elegir la opción **Student Login**. En ese punto nos aparecerá el formulario en el que debemos introducir el nombre de usuario y la contraseña.
 
 ::: center
-![\ ](img/aws/login.png){width="50%"}
+![](img/aws/login.png){width="50%"}
 :::
 
 # Acceder al laboratorio {#acceder-al-laboratorio}
 
 Una vez logueado veremos los posibles cursos en los que estamos matriculados, y debemos ir al curso correspondiente. Una vez en el curso, luego hay que ir a "Módulos → Iniciar el Laboratorio de aprendizaje de AWS Academy", y aparecerá una página en el que abajo del todo tendréis un botón para aceptar las condiciones de uso, y luego veremos algo similar a la siguiente pantalla:
 
-![\ ](img/aws/launcher.png){width="90%" framed="true"}
+![](img/aws/launcher.png){width="90%" framed="true"}
 
 En esta pantalla podemos ver distinta información del propio laboratorio y su estado:
 
@@ -59,7 +59,7 @@ El terminal que aparece es un interfaz de administración para el laboratorio, y
 
 Cuando tenemos el laboratorio encendido la imagen será la siguiente
 
-![\ ](img/aws/launcher-started.png){width="90%" framed="true"}
+![](img/aws/launcher-started.png){width="90%" framed="true"}
 
 Para entrar en el laboratorio debemos hacer click en "AWS [●]{color="green"}", lo que nos abrirá una nueva pestaña en la que veremos el panel de administración (o "Consola" llamada por AWS) donde tendremos un resumen de los servicios que hemos visitado anteriormente, aplicaciones que tengamos desplegadas, coste\... La idea es tener a simple vista lo que más estemos utilizando.
 
@@ -75,7 +75,7 @@ AWS cuenta hoy en día con infinidad de servicios que podemos utilizar y despleg
 
 Cuando entremos a algunos de estos servicios, el interfaz web que nos vamos a encontrar, por norma general, suele ser muy parecido y tiene el siguiente aspecto:
 
-![\ ](img/aws/panel.png){width="80%" framed="true"}
+![](img/aws/panel.png){width="80%" framed="true"}
 
 Podemos diferenciar dos apartados en la vista:
 
@@ -90,7 +90,7 @@ Podemos diferenciar dos apartados en la vista:
 Dado que AWS ofrece un servicio mundial, los servidores que nos ofrecen están desplegados a lo largo de distintos países, para que el acceso desde cada zona sea lo más rápida posible. Esta infraestructura global, actualmente está diferenciada de la siguiente manera tal como aparece en la [documentación oficial](https://aws.amazon.com/es/about-aws/global-infrastructure/regions_az/?p=ngi&loc=2):
 
 ::: center
-![\ ](img/aws/regiones.png){width="80%"}
+![](img/aws/regiones.png){width="80%"}
 :::
 
 -   **Regiones**: AWS tiene el concepto de una región, que es una ubicación física en todo el mundo donde se agrupan los centros de datos. Se llama a cada grupo de centros de datos lógicos "zona de disponibilidad".
