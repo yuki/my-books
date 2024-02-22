@@ -132,7 +132,7 @@ El objetivo del protocolo TCP es crear conexiones dentro de una red de datos com
 
 Por otro lado, también proporciona un mecanismo para distinguir distintas aplicaciones dentro de una misma máquina, a través del concepto de \textbf{puerto}.
 
-Hoy día TCP es el protocolo más utilizado dentro de las aplicaciones que hacen uso de comunicación en red. Por ejemplo, los protocolos HTTP, SMTP, SSH, FTP... hacen uso de TCP como como protocolo de transporte (\textbf{capa 4 del modelo OSI}).
+Hoy día TCP es el protocolo más utilizado dentro de las aplicaciones que hacen uso de comunicación en red. Por ejemplo, los protocolos HTTP, SMTP, SSH, FTP... hacen uso de TCP como protocolo de transporte (\textbf{capa 4 del modelo OSI}).
 
 
 \subsubsection{Establecer comunicación}
@@ -169,6 +169,7 @@ La fase de finalización de la conexión utiliza una negociación en cuatro paso
 
 Cuando uno de los dos extremos de la conexión desea parar su "mitad" de conexión transmite un segmento con el flag FIN en 1, que el otro interlocutor asentirá con un ACK. Por tanto, una desconexión típica requiere un par de segmentos FIN y ACK desde cada lado de la conexión.
 
+% FIXME: en el PDF aparece como .êN
 Una conexión puede estar "medio abierta" en el caso de que uno de los lados la finalice pero el otro no. El lado que ha dado por finalizada la conexión no puede enviar más datos pero la otra parte si podrá.
 
 

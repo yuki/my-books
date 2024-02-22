@@ -171,10 +171,10 @@ También hay que tener en cuenta que las versiones HTML y CSS de la época no er
 Por otro lado, es habitual que la imagen de la compañía cambie, ya sea por cambios de logotipo, colores corporativos, moda en el tono de los colores\... y todo eso también hace que los interfaces sufran modificaciones.
 
 
-`{ \hfill`{=latex}
-![](img/di/tema_1/twitter1.jpg){height="2cm" inline=true}
-![](img/di/tema_1/twitter2.jpg){height="2cm" inline=true}
-`\hfill }`{=latex}
+::: center
+![](img/di/tema_1/twitter1.jpg){width="70%" inline=true}
+![](img/di/tema_1/twitter2.jpg){width="15%" inline=true}
+:::
 
 ::: center
 [Evolución del logotipo de Twitter.]{.footnotesize}
@@ -278,6 +278,8 @@ Como evolución de estos dispositivos surgen las *tablets* en donde se sigue la 
 
 Al tener más espacio, no se utilizan las aplicaciones de móviles y se "escalan", si no que surgen nuevas posibilidades para que los interfaces dispongan de nuevos menús o lugares donde añadir más información.
 
+<!-- FIXME: hay que corregir estas alturas -->
+
 :::center
 `{ \hfill`{=latex}
 ![](img/di/tema_1/iphone_music.png){height="8cm" inline=true} `\hfill`{=latex}
@@ -367,3 +369,4 @@ En este apartado se van a añadir algunos ejemplos de interfaces que son reales,
     -   Microsoft tiene varias páginas con conceptos de interfaces para tablets plegables en su web. [Enlace 1](https://learn.microsoft.com/en-us/dual-screen/android/test-kit/foldable-concepts), [Enlace 2](https://devblogs.microsoft.com/surface-duo/design-foldable-large-screens/).
 
 -   Las películas de [Iron Man](https://www.youtube.com/watch?v=P5k-4-OEuTk) han ofrecido muchas escenas donde aparecen interfaces muy espectaculares, a nivel holográfico y de realidad aumentada. [Vídeo](https://www.youtube.com/watch?v=P5k-4-OEuTk).
+

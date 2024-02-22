@@ -46,6 +46,7 @@ jobs:
           otros/git/git_book.pdf
           otros/laravel/laravel_book.pdf
           otros/PFsense/pfsense_book.pdf
+          DAM/2/desarrollo_interfaces_book.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
