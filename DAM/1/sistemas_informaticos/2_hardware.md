@@ -60,6 +60,7 @@ Las placas base deben tener un tamaño compatible con las cajas en las que van a
 
 Si queremos profundizar más en los distintos formatos, la [Wikipedia](https://es.wikipedia.org/wiki/Placa_base#Formatos_de_placa_base) cuenta con una sección en la que se comparan los distintos tamaños.
 
+
 #### Conectores de la placa base
 
 Como ya hemos indicado, a la placa base se conectan el resto de componentes que forman el ordenador, y es por eso que va a tener distintos conectores:
@@ -92,7 +93,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
     ::::::::::::::
 
 
-    - **BGA**: De \textit{ball grid array}, o matriz de rejilla de bolas. El procesador cuenta con unas bolas de estaño que al calentarse se sueldan a la placa base. Hoy en día se utiliza en componentes de tamaño reducido, como en móviles, los chips de memoria en los módulos de RAM, ...
+    - **BGA**: De *ball grid array*, o matriz de rejilla de bolas. El procesador cuenta con unas bolas de estaño que al calentarse se sueldan a la placa base. Hoy en día se utiliza en componentes de tamaño reducido, como en móviles, los chips de memoria en los módulos de RAM, ...
 
 
 -   **Conectores de alimentación**: La placa base tendrá distintos conectores provenientes de la fuente de alimentación con diferentes voltajes, para así proveer de alimentación a los componentes conectados a ella.
@@ -190,6 +191,7 @@ De izquierda a derecha, y de arriba abajo:
 
 -   Conectores de audio
 
+
 ### BIOS/UEFI
 
 La BIOS/UEFI es un interfaz de firmware que está incorporado en un chip en la placa base.
@@ -266,6 +268,7 @@ Existen otro tipo de características más técnicas, pero que también son impo
 -   **RISC**: Del inglés *Reduced Instruction Set Computer* (computador con conjunto de instrucciones reducido) es una filosofía de diseño de CPU para computadora que está a favor de conjuntos de instrucciones pequeñas y simples que toman menor tiempo para ejecutarse.
 
     Hoy en día podemos encontrar esta arquitectura sobre todo en [ARM](https://es.wikipedia.org/wiki/Arquitectura_ARM) que se utiliza en procesadores de móviles como los A15 de Apple (pero también en los procesadores de escritorio M1 y M2), Qualcomm Snapdragon, \...
+
 
 #### Rendimiento
 
@@ -364,7 +367,7 @@ A continuación se pueden diferenciar cómo ha variado el formato físico.
 ![Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Desktop_DDR_Memory_Comparison.svg)](img/si/ddr.png){width="100%"}
 :::
 ::: {.column width="30%" }
-![Fuente: [Wikipedia](https://es.wikipedia.org/wiki/DDR_SDRAM)](img/si/ddr_sodimm.png){width="\\linewidth"}
+![Fuente: [Wikipedia](https://es.wikipedia.org/wiki/DDR_SDRAM)](img/si/ddr_sodimm.png){width="100%"}
 :::
 ::::::::::::::
 
@@ -417,7 +420,6 @@ Estos cabezales son los encargados de magnetizar la superficie del plato al real
 :::
 ::::::::::::::
 
-
 ::: center
 [Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Unidad_de_disco_duro)]{.footnotesize}
 :::
@@ -444,7 +446,7 @@ Debido a que los discos duros utilizan partes mecánicas hay que tener cuidado a
 
 ::: errorbox
 **Los discos duros HDD son propensos a golpes, debido a los componentes móviles internos**
-::: 
+:::
 
 
 #### SSD
@@ -456,10 +458,10 @@ Debido a la mejora en la tecnología de guardado de datos, y por no poseer parte
 
 :::::::::::::: {.columns }
 ::: {.column width="48%"}
-![](img/si/ssd.jpg){width="\\linewidth"}
+![](img/si/ssd.jpg){width="100%"}
 :::
 ::: {.column width="48%" }
-![](img/si/ssd2.jpg){width="\\linewidth"}
+![](img/si/ssd2.jpg){width="100%"}
 :::
 ::::::::::::::
 
@@ -526,13 +528,13 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 
 :::::::::::::: {.columns }
 ::: {.column width="30%"}
-![](img/si/fuente_alimentacion_1.jpg){width="\\linewidth"}
+![](img/si/fuente_alimentacion_1.jpg){width="100%"}
 :::
 ::: {.column width="28%" }
-![](img/si/fuente_alimentacion_2.jpg){width="\\linewidth"}
+![](img/si/fuente_alimentacion_2.jpg){width="100%"}
 :::
 ::: {.column width="24%" }
-![](img/si/fuente_alimentacion_3.jpg){width="\\linewidth"}
+![](img/si/fuente_alimentacion_3.jpg){width="100%"}
 :::
 ::::::::::::::
 
@@ -540,6 +542,7 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 ::: center
 [Fuentes de alimentación con cableado completo, semi-modular y full-modular.]{.footnotesize}
 :::
+
 
 ### GPU/Tarjeta gráfica
 
@@ -629,17 +632,6 @@ El conector **HDMI** hoy en día es un estándar muy utilizado, sobre todo en te
 #### Conectores de dispositivos de almacenamiento
 
 Para dispositivos de almacenamiento, como discos duros, CD-ROMs\... ha habido varios tipos de conectores que es importante conocer.
-
-
-:::::::::::::: {.columns }
-::: {.column width="15%"}
-![](img/si/ide.png){width="100%"}
-:::
-::: {.column width="80%" }
-**Parallel-ATA**, o IDE, era un conector que se utilizaba en discos duros y lectores de CD-ROM, con el que a través de un único cable podían conectarse dos dispositivos. Debido a esto, los dispositivos tenían un "*jumper*" que identificaba si era el "maestro" o "esclavo".
-:::
-::::::::::::::
-
 
 :::::::::::::: {.columns }
 ::: {.column width="15%"}

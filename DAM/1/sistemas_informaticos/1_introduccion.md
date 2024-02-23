@@ -47,22 +47,22 @@ Es por eso que no podemos ceñirnos a la evolución de la informática como algo
   ![El ajedrecista. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/El_Ajedrecista)](img/si/ajedrecista.jpg){width=70%}
 
 1919
-: Los inventores estadounidenses W. H. Eccles y F. W. Jordan desarrollan el primer circuito multivibrador o biestable (en léxico electrónico *flip-flop*). El flip-flop permitió diseñar Circuitos electrónicos que podían tener dos estados estables, alternativamente, pudiendo representar así el "**0**" como un estado y el otro con un "**1**". Esto formó la base del almacenamiento y proceso del \textbf{bit binario}, estructura que utilizan las actuales computadoras.
+: Los inventores estadounidenses W. H. Eccles y F. W. Jordan desarrollan el primer circuito multivibrador o biestable (en léxico electrónico *flip-flop*). El flip-flop permitió diseñar Circuitos electrónicos que podían tener dos estados estables, alternativamente, pudiendo representar así el "**0**" como un estado y el otro con un "**1**". Esto formó la base del almacenamiento y proceso del **bit binario**, estructura que utilizan las actuales computadoras.
 
 1924
-: Walther Bothe construye una puerta lógica \textbf{AND} para usarla en experimentos físicos, por lo cual recibió el premio Nobel de física en 1954.
+: Walther Bothe construye una puerta lógica **AND** para usarla en experimentos físicos, por lo cual recibió el premio Nobel de física en 1954.
 
 1936
 : Alan Turing describe la máquina de Turing, la cual formaliza el concepto de algoritmo.
 
 1938
-: Konrad Zuse completa la primera computadora electromecánica, aunque no 100\% operativa, la \textbf{Z1}.
+: Konrad Zuse completa la primera computadora electromecánica, aunque no 100% operativa, la **Z1**.
 
 1944
 : En Inglaterra se construyeron los ordenadores Colossus (Colossus Mark I y Colossus Mark 2), con el objetivo de descifrar las comunicaciones de los alemanes durante la Segunda guerra mundial.
 
 1945
-: [John Von Neumann](https://es.wikipedia.org/wiki/John_von_Neumann) escribe el "First Draf of a report on the EDVAC" una página del primer documento donde se describe el diseño lógico de una computadora utilizando el concepto de programa almacenado (stored-program). Hoy día conocido como \textbf{Arquitectura de von Neumann}.
+: [John Von Neumann](https://es.wikipedia.org/wiki/John_von_Neumann) escribe el "First Draf of a report on the EDVAC" una página del primer documento donde se describe el diseño lógico de una computadora utilizando el concepto de programa almacenado (stored-program). Hoy día conocido como **Arquitectura de von Neumann**.
 
 1946
 : En la Universidad de Pensilvania se construye la ENIAC (Electronic Numerical Integrator And Calculator), que fue la primera computadora electrónica de propósito general
@@ -118,7 +118,7 @@ A partir de la década de los 60 se aceleran los avances, y cada año se crean n
 ::::::::::::::
 
 1986
-: El lenguaje \textbf{SQL} es estandarizado por ANSI.
+: El lenguaje **SQL** es estandarizado por ANSI.
 
 1990
 : [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee) idea el hipertexto para crear el World Wide Web (www) una nueva manera de interactuar con Internet.
@@ -127,7 +127,7 @@ A partir de la década de los 60 se aceleran los avances, y cada año se crean n
 :::::::::::::: {.columns }
 ::: {.column width="80%"}
 1991
-: Linus Torvalds comienza a desarrollar Linux, el \textbf{kernel} (o núcleo) de un sistema operativo compatible con Unix.
+: Linus Torvalds comienza a desarrollar Linux, el **kernel** (o núcleo) de un sistema operativo compatible con Unix.
 :::
 ::: {.column width="10%" }
 ![](img/si/tux.svg){width=100%}
