@@ -173,7 +173,7 @@ A continuación se van a diferenciar los componentes vistos anteriormente en una
 
 Los conectores exteriores de esta placa tienen el siguiente aspecto:
 
-![Placa Base MSI PRO Z690-A. [Manual](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf)](img/si/placa_base_frontal.png){width="100%}
+![Placa Base MSI PRO Z690-A. [Manual](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf)](img/si/placa_base_frontal.png){width="100%"}
 
 
 
@@ -497,13 +497,10 @@ Las primeras unidades tenían un formato de tarjeta de expansión que se conecta
 
 En la siguiente tabla se puede comparar algunas características básicas de los distintos tipos de unidades de almacenamiento vistas.
 
-
-
-
 Hay que tener en cuenta que las velocidades dependen de la tecnología de la unidad y también de la conexión utilizada. Son velocidades aproximadas, y por tanto habría que ver las especificaciones técnicas de cada dispositivo antes de comprarlo.
 
 ::: infobox
-Con las velocidades de lectura y escritura suelen indicar si es **secuencial** o **aleatoria**. **En lecturas y escrituras aleatorias la velocidad es más baja**.
+Con las velocidades de lectura y escritura suelen indicar si es secuencial o aleatoria. En lecturas y escrituras aleatorias la velocidad es más baja.
 :::
 
 También existen pruebas de rendimiento para sistemas de almacenamiento, por lo que es importante informarse bien antes de elegir uno.
@@ -571,7 +568,7 @@ Las tarjetas gráficas actualmente se instalan en la ranura PCI-Express de mayor
 Si nuestro procesador cuenta con una gráfica integrada y aparte tenemos una gráfica dedicada, dependiendo del uso que queramos darle al ordenador, quizá sea conveniente desactivar la integrada a través de la [UEFI](#UEFI).
 
 ::: infobox
-[Si tenemos gráfica integrada y dedicada, quizá nos interese desactivar la integrada a través de UEFI]
+Si tenemos gráfica integrada y dedicada, quizá nos interese desactivar la integrada a través de UEFI
 :::
 
 Las compañías que crean las tarjetas gráficas también han creado **SDK** (*Software Development Kits*, o kits de desarrollo de software), como [Nvidia CUDA](https://en.wikipedia.org/wiki/CUDA), para poder realizar computación paralela y así aprovechar la potencia de cálculo para proyectos de *machine learning*, simulaciones científicas, cálculo de proteínas, secuencias de ADN, \...
