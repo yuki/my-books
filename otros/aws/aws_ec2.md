@@ -77,7 +77,7 @@ Para empezar, podemos crear nuestra instancia con una imagen AMI de un proveedor
 
 ## Crear una instancia {#crear-una-instancia}
 
-A continuación se va a explicar cómo crear una instancia de tipo Linux teniendo en cuenta todas las posibles opciones que podemos elegir. Para crearla haremos click en `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_instance_create.png}`{=latex} `<img src="img/aws/ec2_instance_create.png" style="height:1.5rem">`{=html} y seguiremos las indicaciones para adecuarla a nuestras necesidades.
+A continuación se va a explicar cómo crear una instancia de tipo Linux teniendo en cuenta todas las posibles opciones que podemos elegir. Para crearla haremos click en ![](img/aws/ec2_instance_create.png){inline=true height=0.6cm} y seguiremos las indicaciones para adecuarla a nuestras necesidades.
 
 Las respuestas que debemos contestar y tener en cuenta son:
 
@@ -115,7 +115,7 @@ Tal como se puede ver, la información de la instancia está separada en distint
 
 ## Acceder a una instancia {#acceder-a-una-instancia}
 
-Para acceder a una instancia desplegada tenemos distintas opciones que podemos visualizar desde el botón `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_instance_connect.png}`{=latex} `<img src="img/aws/ec2_instance_connect.png" style="height:1.5rem">`{=html} cuando esté la instancia seleccionada. Entre las opciones, vamos a destacar dos:
+Para acceder a una instancia desplegada tenemos distintas opciones que podemos visualizar desde el botón ![](img/aws/ec2_instance_connect.png){inline=true height=0.6cm} cuando esté la instancia seleccionada. Entre las opciones, vamos a destacar dos:
 
 -   **Conexión de la instancia EC2**: Es el método más sencillo para acceder a una instancia a través de SSH, ya que vamos a poder realizar la conexión a través del propio navegador web. Esto, por otro lado, no nos va a permitir hacer uso de todas las características que tiene una terminal real.
 
@@ -143,7 +143,7 @@ Para acceder a una instancia desplegada tenemos distintas opciones que podemos v
 
 Tal como se ha dicho previamente, para poder acceder a las instancias recién creadas debemos hacer uso del sistema de claves asimétricas, ya que es el método más seguro de conexión, y así no dependemos de contraseñas.
 
-Al crear el laboratorio se nos ha creado un par de claves llamadas "**vockey**", que sólo podemos descargar desde el panel del curso, en el apartado "`<i class="fa-solid fa-info"></i>`{=html} `\faInfo`{=latex} **AWS Details**", dándole al botón `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_download_pem.png}`{=latex} `<img src="img/aws/ec2_download_pem.png" style="height:1.5rem">`{=html}, que nos descargará un fichero llamado **labuser.pem**.
+Al crear el laboratorio se nos ha creado un par de claves llamadas "**vockey**", que sólo podemos descargar desde el panel del curso, en el apartado "`<i class="fa-solid fa-info"></i>`{=html} `\faInfo`{=latex} **AWS Details**", dándole al botón ![](img/aws/ec2_download_pem.png){inline=true height=0.6cm}, que nos descargará un fichero llamado **labuser.pem**.
 
 **Este fichero de clave debe tener permisos especiales**. Los ficheros de tipo Linux son que sólo debe tener permisos de lectura para el usuario, dejando el resto de permisos sin asignar. Por lo tanto, en formato binario, **400**. Para ello debemos hacer:
 
@@ -177,7 +177,7 @@ En entornos profesionales **es habitual crear distintas par de claves para cada 
 **En entornos profesionales nunca se debería reutilizar claves, y menos entre distintos proyectos.**
 :::
 
-Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: "**Red y seguridad → Pares de claves**". Ahí podremos hacer click sobre el icono `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_new_key.png}`{=latex} `<img src="img/aws/ec2_new_key.png" style="height:1.5rem">`{=html} , que nos redirigirá a un formulario donde crear las nuevas claves.
+Si queremos crear un nuevo par de claves lo podemos realizar desde el menú lateal, en el apartado: "**Red y seguridad → Pares de claves**". Ahí podremos hacer click sobre el icono ![](img/aws/ec2_new_key.png){inline=true height=0.6cm}, que nos redirigirá a un formulario donde crear las nuevas claves.
 
 ![ ](img/aws/ec2_new_key2.png){width="90%" framed="true"}
 
@@ -205,7 +205,7 @@ Lo ideal es crear security groups que se reutilicen entre varias instancias, ya 
 
 ## Crear security group {#crear-security-group}
 
-Los security group se pueden crear desde el panel de **VPC** o de **EC2**. En este último caso dentro del apartado "**Red y seguridad → Security Groups**" y dándole al botón `\includegraphics[height=0.8\baselineskip]{img/aws/ec2_security_group_create.png}`{=latex} `<img src="img/aws/ec2_security_group_create.png" style="height:1.5rem">`{=html} , que nos llevará a un formulario donde podemos rellenar:
+Los security group se pueden crear desde el panel de **VPC** o de **EC2**. En este último caso dentro del apartado "**Red y seguridad → Security Groups**" y dándole al botón ![](img/aws/ec2_security_group_create.png){inline=true height=0.6cm} , que nos llevará a un formulario donde podemos rellenar:
 
 -   Nombre del grupo de seguridad
 

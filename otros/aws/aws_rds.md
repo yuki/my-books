@@ -56,7 +56,7 @@ En caso de que haya algún tipo de error, se puede dar marcha atrás, ya que es 
 
 # Crear base de datos MySQL {#crear-base-de-datos-mysql}
 
-Desde el panel de RDS tenemos el botón para crear una base de datos, `\includegraphics[height=0.8\baselineskip]{img/aws/rds_create.png}`{=latex} `<img src="img/aws/rds_create.png" style="height:1.5rem">`{=html} , y tendremos que tener en cuenta las necesidades y lo comentado previamente. Entre las opciones que nos aparecen en la nueva página, y los distintos apartados del formulario podemos destacar:
+Desde el panel de RDS tenemos el botón para crear una base de datos, ![](img/aws/rds_create.png){inline=true height=0.6cm}, y tendremos que tener en cuenta las necesidades y lo comentado previamente. Entre las opciones que nos aparecen en la nueva página, y los distintos apartados del formulario podemos destacar:
 
 -   **Método de creación de base de datos**
 
