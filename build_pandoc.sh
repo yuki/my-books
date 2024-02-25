@@ -10,6 +10,7 @@ LIBROS=(
     "otros/PFsense/ pfsense_book"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces_book"
     "DAM/2/sistemas_gestion_empresarial/ sge_book"
+    "anexos/gestion_backups/ gestion_backups_anexo"
 )
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
@@ -24,8 +25,10 @@ for LIBRO in "${LIBROS[@]}"; do
     wget "https://yuki.github.io/my-books/$NAME.pdf"
 
     if [ "$TODO" = "all" ] || [ "${TODO}_book" = "$NAME" ] ; then
-        ./`echo $NAME.sh` | pandoc -o $NAME.html -d defaults.yaml
-        ./`echo $NAME.sh` | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex
+        echo "BUILDING $NAME.html"
+        ./`echo $NAME.sh` | pandoc -o $NAME.html -d defaults.yaml --verbose
+        echo "BUILDING $NAME.pdf"
+        ./`echo $NAME.sh` | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex --verbose
     fi
     cp $NAME.html $ORIG/build
     cp $NAME.pdf $ORIG/build
