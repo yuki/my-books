@@ -11,6 +11,7 @@ LIBROS=(
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces_book"
     "DAM/2/sistemas_gestion_empresarial/ sge_book"
     "anexos/gestion_backups/ gestion_backups_anexo"
+    "anexos/virtualbox_networking/ virtualbox_networking_anexo"
 )
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
@@ -24,7 +25,7 @@ for LIBRO in "${LIBROS[@]}"; do
     wget "https://yuki.github.io/my-books/$NAME.html"
     wget "https://yuki.github.io/my-books/$NAME.pdf"
 
-    if [ "$TODO" = "all" ] || [ "${TODO}_book" = "$NAME" ] ; then
+    if [ "$TODO" = "all" ] || [ "${TODO}_book" = "$NAME" ] || [ "${TODO}_anexo" = "$NAME" ] ; then
         echo "BUILDING $NAME.html"
         ./`echo $NAME.sh` | pandoc -o $NAME.html -d defaults.yaml --verbose
         echo "BUILDING $NAME.pdf"

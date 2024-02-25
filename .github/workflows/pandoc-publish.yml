@@ -17,6 +17,7 @@ on:
           - SGE
           - Desarrollo_Interfaces
           - Gestion_backups
+          - Virtualbox_networking
 permissions:
   contents: write
   pages: write
@@ -52,6 +53,7 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces_book.pdf
           DAM/2/sistemas_gestion_empresarial/sge_book.pdf
           anexos/gestion_backups/gestion_backups_anexo.pdf
+          anexos/virtualbox_networking/virtualbox_netwoking.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:

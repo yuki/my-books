@@ -1,5 +1,5 @@
 ---
-title: 'Gestión de copias de seguridad'
+title: 'Virtualbox y Networking'
 title-mini: ''
 subtitle: ''
 degree: ''
@@ -10,8 +10,8 @@ phrase: ''
 phrase-author: ''
 lang: es
 keywords: [nothing, nothingness]
-cover: 'img/anexos/gestion_backups/incidente_seguridad.png'
-download-link: 'gestion_backups_anexo.pdf'
+cover: 'img/anexos/virtualbox_networking/virtualbox-bridge.png'
+download-link: 'virtualbox_networking_anexo.pdf'
 # other links for footers
 github-link: 'https://github.com/yuki/my-books'
 ...

@@ -1,3 +1,4 @@
+
 # Creación de copias de seguridad en GNU/Linux {#creación-de-copias-de-seguridad-en-gnulinux}
 
 Tal como hemos visto, la [gestión de copias de seguridad](#gestion_copias_de_seguridad) es de vital importancia para preservar los datos de nuestra empresa. Debemos interiorizar que el realizar copias de seguridad, tanto en nuestro ámbito personal como profesional, es una parte en la gestión de nuestra información así como el comprobar que se realizan de manera correcta.
