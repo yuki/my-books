@@ -676,7 +676,7 @@ Aunque se creó a mediados de los 90, su conector más utilizado (el tipo-A) ape
 
 Para la nueva especificación USB-C trajo consigo un nuevo conector que es reversible (se puede conectar en ambas direcciones), con idea de reemplazar todos los conectores anteriores. La idea es que ambos dispositivos (anfitrión y huésped) se hace uso del mismo conector y el cable que los una llegue a ser universal, teniendo en cuenta la especificación que utilice.
 
-![USB-C. Fuente: [kalimotxo](https://es.wikipedia.org/wiki/USB-C)](img/si/usb-c.png){width="25%"}
+![USB-C. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/USB-C)](img/si/usb-c.png){width="25%"}
 
 Las [placas bases](#placa_base) tienen varios conectores USB typo-A soldados para poder realizar conexiones, pero también tiene conexiones en la placa para poder tener más USB (por ejemplo, gracias a los que vienen en la caja).
 
