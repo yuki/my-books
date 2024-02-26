@@ -30,20 +30,18 @@ Al igual que en decimal, a medida que aumentamos la cantidad, se hace uso de pre
 
 A continuación se expone una tabla de las medidas más utilizadas:
 
-```{=latex}
-\begin{yukitblr}{X X X}
-    Nombre & Símbolo & Cantidad \\
-    \textbf{Bit} & \textbf{b} & $2^0=1$ \\
-    Nibble & & 4b \\
-    \textbf{Byte} & \textbf{B} & 8b \\
-    \textbf{Kibi}byte & \textbf{KiB} & $2^{10}=1024 B$ \\
-    \textbf{Mebi}byte & \textbf{MiB} & $2^{20}=1024 KiB$ \\
-    \textbf{Gibi}byte & \textbf{GiB} & $2^{30}=1024 MiB$ \\
-    \textbf{Tebi}byte & \textbf{TiB} & $2^{40}=1024 GiB$ \\
-    \textbf{Pebi}byte & \textbf{PiB} & $2^{50}=1024 TiB$ \\
-    \textbf{Exbi}byte & \textbf{EiB} & $2^{60}=1024 PiB$ \\
-\end{yukitblr}
-```
+| Nombre       | Símbolo | Cantidad  |
+|:------------:|:-------:|:---------:|
+|  **Bit**     | **b**   | $2^0=1$   |
+| Nibble       |         | 4b  |
+| **Byte**byte | **B**   | 8b  |
+| **Kibi**byte | **KiB** | $2^{10}=1024 B$ |
+| **Mebi**byte | **MiB** | $2^{20}=1024 KiB$ |
+| **Gibi**byte | **GiB** | $2^{30}=1024 MiB$ |
+| **Tebi**byte | **TiB** | $2^{40}=1024 GiB$ |
+| **Pebi**byte | **PiB** | $2^{50}=1024 TiB$ |
+| **Exbi**byte | **EiB** | $2^{60}=1024 PiB$ |
+
 
 Aunque esta es la manera correcta de nombrar las unidades cuando hablamos en términos informáticos, lo habitual es que se haga uso de los prefijos del sistema decimal.
 

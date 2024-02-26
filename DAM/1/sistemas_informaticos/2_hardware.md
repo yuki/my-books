@@ -497,6 +497,84 @@ Las primeras unidades tenían un formato de tarjeta de expansión que se conecta
 
 En la siguiente tabla se puede comparar algunas características básicas de los distintos tipos de unidades de almacenamiento vistas.
 
+
+```<table class="table table-striped table-hover table-bordered ">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">HDD</th>
+<th style="text-align: center;">SSD</th>
+<th style="text-align: center;">SSD (M.2)</th>
+<th style="text-align: center;">NVMe</th>
+<th style="text-align: center;">NVMe</th>
+</tr>
+</thead>
+<tbody class="table-group-divider">
+<tr class="odd">
+<td style="text-align: center;">Conector</td>
+<td style="text-align: center;">SATA</td>
+<td style="text-align: center;">SATA</td>
+<td style="text-align: center;">M.2</td>
+<td style="text-align: center;">M.2</td>
+<td style="text-align: center;">M.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Velocidad Lectura</td>
+<td style="text-align: center;">150MB/s</td>
+<td style="text-align: center;">560 MB/s</td>
+<td style="text-align: center;">560 MB/s</td>
+<td style="text-align: center;">3500 MB/s</td>
+<td style="text-align: center;">7000 MB/s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Velocidad Escritura</td>
+<td style="text-align: center;">120MB/s</td>
+<td style="text-align: center;">510 MB/s</td>
+<td style="text-align: center;">520 MB/s</td>
+<td style="text-align: center;">3000 MB/s</td>
+<td style="text-align: center;">5300 MB/s</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Precio por TB</td>
+<td style="text-align: center;">Bajo</td>
+<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Alto</td>
+<td style="text-align: center;">Alto</td>
+</tr>
+</tbody>
+</table>```{=html} 
+
+
+<!-- FIXME: hay que corregir que las tablas estén unificadas 
+
+|                     | HDD      | SSD      | SSD (M.2)| NVMe      | NVMe       |
+|:-------------------:|:--------:|:--------:|:--------:|:---------:|:----------:|
+| Conector            | SATA     | SATA     | M.2      | M.2       | M.2        |
+| Velocidad Lectura   | 150MB\/s | 560 MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s  |
+| Velocidad Escritura | 120MB\/s | 510 MB\/s | 520 MB\/s | 3000 MB\/s | 5300 MB\/s  |
+| Precio por TB       | Bajo     | Medio    | Medio    | Alto      | Alto       |     
+-->
+
+```{=latex}
+\begin{yukitblrcol}{XXXXXX}
+& HDD & SSD & SSD (M.2)  & NVMe \linebreak (PCIe 3.0) & NVMe \linebreak (PCIe 4.0)\\
+Conector & SATA & SATA & M.2 & M.2  & M.2\\
+Velocidad Lectura & 150MB/s & 560 MB/s & 560 MB/s & 3500 MB/s & 7000 MB/s\\
+Velocidad Escritura & 120MB/s & 510 MB/s  & 520 MB/s &  3000 MB/s & 5300 MB/s\\
+Precio por TB & Bajo & Medio & Medio &  Alto & Alto\\
+\end{yukitblrcol}
+```
+
+
 Hay que tener en cuenta que las velocidades dependen de la tecnología de la unidad y también de la conexión utilizada. Son velocidades aproximadas, y por tanto habría que ver las especificaciones técnicas de cada dispositivo antes de comprarlo.
 
 ::: infobox
@@ -639,7 +717,7 @@ Para dispositivos de almacenamiento, como discos duros, CD-ROMs\... ha habido va
 :::
 ::::::::::::::
 
-![Disco duro, cable IDE y jumper. Fuente: [wikipedia](https://commons.wikimedia.org/wiki/File:P-ata_and_80pin-cable.jpg)](img/si/ide_hdd.jpeg){width="60%"}
+![Disco duro, cable IDE y jumper. Fuente: [wikipedia](https://commons.wikimedia.org/wiki/File:P-ata_and_80pin-cable.jpg)](img/si/ide_hdd.jpeg){width="60%" framed=true}
 
 
 :::::::::::::: {.columns }
@@ -776,13 +854,14 @@ Por otro lado, **con los cables sucede lo mismo**. Debemos confirmar y asegurar 
 
 La caja del ordenador, o chasis, es la estructura metálica donde se introducen (de manera ordenada, y anclando mediante tornillos) los distintos componentes que hemos visto hasta ahora.
 
+![Caja con ordenador instalado. Fuente: [wikipedia](https://en.wikipedia.org/wiki/Computer_case) ](img/si/caja.jpg){width="75%"}
+
 Existen distintos tipos de caja, normalmente variando el tamaño, por lo que es importante adecuar la caja a los componentes que queramos albergar dentro.
 
 ::: warnbox
 **Cuidado con comprar una caja demasiado pequeña y que luego la placa base, o la anchura de la tarjeta gráfica no entre**
 :::
 
-![Caja con ordenador instalado. Fuente: [wikipedia](https://en.wikipedia.org/wiki/Computer_case) ](img/si/caja.jpg){width="75%"}
 
 Los servidores cuentan con unas cajas de tamaño estandarizados en altura, denominado "[Unidad de Rack](https://es.wikipedia.org/wiki/Unidad_rack)" (*rack unit* en inglés, o simplemente "U"), cuya unidad equivale a 44.45 milímetros. De esta manera los servidores contarán con una altura fijada para poder ser instalados en un [bastidor *rack*](https://es.wikipedia.org/wiki/Bastidor_de_19_pulgadas).
 
