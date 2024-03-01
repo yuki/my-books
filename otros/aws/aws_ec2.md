@@ -145,7 +145,7 @@ Tal como se ha dicho previamente, para poder acceder a las instancias recién cr
 
 Al crear el laboratorio se nos ha creado un par de claves llamadas "**vockey**", que sólo podemos descargar desde el panel del curso, en el apartado "`<i class="fa-solid fa-info"></i>`{=html} `\faInfo`{=latex} **AWS Details**", dándole al botón ![](img/aws/ec2_download_pem.png){inline=true height=0.6cm}, que nos descargará un fichero llamado **labuser.pem**.
 
-**Este fichero de clave debe tener permisos especiales**. Los ficheros de tipo Linux son que sólo debe tener permisos de lectura para el usuario, dejando el resto de permisos sin asignar. Por lo tanto, en formato binario, **400**. Para ello debemos hacer:
+**Este fichero de clave debe tener permisos especiales en sistemas GNU/Linux**. El fichero debe tener sólo permisos de lectura para el usuario, dejando el resto de permisos sin asignar. Por lo tanto, en formato binario, **400**. Para ello debemos hacer:
 
 ::: mycode
 [Cambios de permisos en el fichero]{.title}
