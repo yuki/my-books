@@ -71,7 +71,7 @@ A continuación se va a explicar cómo realizar conversiones entre los distintos
 
 La manera más sencilla para realizar las distintas conversiones partiendo de un número decimal es hacer divisiones sucesivas usando la base a la que queremos realizar la conversión.
 
-### \... binario {#binario .unnumbered}
+### \... binario {#binario .unnumbered .unlisted}
 
 Se trata de dividir sucesivamente el número decimal y los sucesivos cocientes entre dos (la base binaria).
 
@@ -82,7 +82,7 @@ Vamos a utilizar como ejemplo el número decimal $\mathbf{27_{(10}}$ :
 
 **Los restos los cogemos en orden inverso** para obtener la siguiente equivalencia: $\mathbf{27_{(10} = 11011_{(2}}$
 
-### \... hexadecimal {#hexadecimal .unnumbered}
+### \... hexadecimal {#hexadecimal .unnumbered .unlisted}
 
 Se trata de dividir sucesivamente el número decimal y los sucesivos cocientes entre 16 (la base hexadecimal). Cuando el cociente o resto sea entre 10 y 15, habrá que cambiarlo por la letra correspondiente.
 
@@ -92,7 +92,7 @@ Se trata de dividir sucesivamente el número decimal y los sucesivos cocientes e
 
 **Los restos los cogemos en orden inverso** para obtener la siguiente equivalencia: $\mathbf{195_{(10} = C3_{(16}}$
 
-### \... octal {#octal .unnumbered}
+### \... octal {#octal .unnumbered .unlisted}
 
 Al igual que los anteriores, hacemos divisiones sucesivas:
 
@@ -104,7 +104,7 @@ Al igual que los anteriores, hacemos divisiones sucesivas:
 
 ### Conversión de binario a\... {#conversión-de-binario-a}
 
-### \... decimal {#decimal .unnumbered}
+### \... decimal {#decimal .unnumbered .unlisted}
 
 El sistema de numeración binario es un sistema posicional donde cada dígito binario (bit) tiene un valor basado en su posición relativa al **LSB** (*Least Significant Bit* = bit menos significativo, que es el que está más a la derecha y que tiene el menor valor).
 
@@ -122,7 +122,7 @@ Nótese que el procedimiento consiste en determinar los valores (es decir, las p
 
 Nótese también que el **MSB** (*Most Significant Bit* = bit más significativo, **el que está más a la izquierda**, el que tiene mayor valor) tiene un valor de $\mathbf{2^4}$ a pesar de que es el quinto bit. Esto se debe a que el **LSB** (*Least Significant Bit*, el bit menos significativo, el que está a la derecha) es el primer bit y tiene un valor de $\mathbf{2^0}$.
 
-### \... octal {#octal-1 .unnumbered}
+### \... octal {#octal-1 .unnumbered .unlisted}
 
 Para convertir un número binario a octal **se agrupan los dígitos de 3 en 3 empezando desde el lado derecho** hacia la izquierda, sustituyendo cada trío de dígitos binarios por su equivalente en octal.
 
@@ -134,7 +134,7 @@ Cogemos como ejemplo el número binario $\mathbf{1100101001001_{(2}}$ para pasar
 $\mathbf{001\ \ 100\ \ 101\ \ 001\ \ 001_{(2} = 14511_{(8}}$
 :::
 
-### \... hexadecimal {#hexadecimal-1 .unnumbered}
+### \... hexadecimal {#hexadecimal-1 .unnumbered .unlisted}
 
 Similar al caso anterior, pero en este caso **la agrupación que se realiza debe de ser de 4 en 4 bits**. Si usamos el mismo ejemplo anterior $\mathbf{1100101001001_{(2}}$ :
 
@@ -144,7 +144,7 @@ $\mathbf{0001\ \ 1001\ \ 0100\ \ 1001_{(2} = 1949_{(16}}$
 
 ### Conversión de hexadecimal a\... {#conversión-de-hexadecimal-a}
 
-### \... binario {#binario-1 .unnumbered}
+### \... binario {#binario-1 .unnumbered .unlisted}
 
 Para pasar de hexadecimal a binario convertiremos cada símbolo hexadecimal a **4 bits**.
 
@@ -155,19 +155,19 @@ $\mathbf{F17A_{(16} = 1111\ \ 0001\ \ 0111\ \ 1010_{(2}}$
 $\mathbf{1A4F_{(16} = 0001\ \ 1010\ \ 0100\ \ 111_{(2}}$
 :::
 
-### \... decimal {#decimal-1 .unnumbered}
+### \... decimal {#decimal-1 .unnumbered .unlisted}
 
 Al igual que hemos hecho con las conversiones previas a decimal, se podría realizar haciendo potencias de 16, pero se entiende que es más complicado de realizar.
 
 Por lo tanto, **la manera más sencilla es pasar primero a binario** como acabamos de ver **y posteriormente convertir ese binario a decimal** como hemos visto previamente.
 
-### \... octal {#octal-2 .unnumbered}
+### \... octal {#octal-2 .unnumbered .unlisted}
 
 Pasar primero a binario y después a octal.
 
 ### Conversión de octal a\... {#conversión-de-octal-a}
 
-### \... binario {#binario-2 .unnumbered}
+### \... binario {#binario-2 .unnumbered .unlisted}
 
 Cada dígito en octal se convierte en su representación **en 3 bits**:
 
@@ -179,7 +179,7 @@ $\mathbf{253_{(8} = 010\ \ 101\ \ 011_{(2}}$
 
 Los ceros de la izquierda se podrían quitar, ya que no alteran el valor.
 
-### \... decimal {#decimal-2 .unnumbered}
+### \... decimal {#decimal-2 .unnumbered .unlisted}
 
 Se puede realizar de dos maneras. La primera es hacer uso de potencias de 8 (similar al paso de pasar de binario a decimal, pero cambiando la base):
 
@@ -195,7 +195,7 @@ $\mathbf{157_{(8} = 111_{(10}}$
 
 Con números grandes puede ser un poco complicado calcular las potencias de 8, por lo que **la alternativa es pasarlo primero a binario** como hemos visto, **y después pasarlo de binario a decimal**.
 
-### \... hexadecimal {#hexadecimal-2 .unnumbered}
+### \... hexadecimal {#hexadecimal-2 .unnumbered .unlisted}
 
 La manera más sencilla es realizar la conversión primero a binario tal como hemos visto, y posteriormente pasar el número binario a hexadecimal como se ha visto previamente.
 
