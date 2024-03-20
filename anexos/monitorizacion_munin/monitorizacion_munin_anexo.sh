@@ -1,0 +1,1 @@
+cat monitorizacion_munin_anexo.md
