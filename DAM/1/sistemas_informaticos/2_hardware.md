@@ -22,7 +22,7 @@ El matemático y físico [John von Neumann](https://es.wikipedia.org/wiki/John_v
 
 -   **Unidad Central de Proceso** (**CPU**, por sus iniciales en inglés), que a su vez, contiene:
 
-    -   **Unidad Aritmético Lógica** (**ALU** en inglés): Es un circuito digital que realiza operaciones aritméticas (suma, resta, multiplicaciones,\...) y operaciones lógicas (AND, OR, X-OR,\...) entre los valores de los argumentos (uno o dos).
+    -   **Unidad Aritmético Lógica** (**ALU** en inglés): Es un circuito digital que realiza operaciones aritméticas (suma, resta, multiplicaciones,...) y operaciones lógicas (AND, OR, X-OR,...) entre los valores de los argumentos (uno o dos).
 
     -   **Registros del procesador**: Memoria de alta velocidad y poca capacidad integrada en la CPU para almacenar datos utilizados durante la ejecución de un programa:
 
@@ -52,7 +52,7 @@ A continuación se van a detallar los componentes necesarios de un ordenador mod
 
 ### Placa base
 
-La placa base (conocida en inglés como *motherboard*) es una tarjeta de circuito impreso que tiene elementos electrónicos (resistencias, condensadores, reguladoresm \...) a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
+La placa base (conocida en inglés como *motherboard*) es una tarjeta de circuito impreso que tiene elementos electrónicos (resistencias, condensadores, reguladores ...) a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
 
 #### Formatos de placa base
 
@@ -104,7 +104,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 
     -   **Northbridge**: O puente norte. Controla el tráfico de los componentes que trabajan a más alta frecuencia. Comunica el microprocesador, la memoria RAM y la GPU (la ranura PCI express).
 
-    -   **Southbridge**: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, \...
+    -   **Southbridge**: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, ...
 
     :::infobox
     **Hoy día el northbridge está integrado en el propio procesador y en algunos casos partes del Southbridge también.**
@@ -112,7 +112,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 
 -   **Ranuras de expansión**: Vamos a identificar estas ranuras como las más modernas **PCIexpress**. Son un bus de comunicación de datos de alta velocidad que es usado principalmente para conectar tarjetas gráficas.
 
-    Es cierto que se pueden conectar otro tipo de tarjetas de expansión, como capturadoras de vídeo, tarjetas de red, controladoras RAID, \...
+    Es cierto que se pueden conectar otro tipo de tarjetas de expansión, como capturadoras de vídeo, tarjetas de red, controladoras RAID, ...
 
     Hoy en día existen conectores (**M.2**) donde poder conectar discos duros que tienen un tipo de conector especial.
 
@@ -120,7 +120,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 
     Algunos de estos conectores tendrán conector exterior (al que se podrá conectar directamente el dispositivo), mientras que otros necesitarán de un adaptador (como sucede hoy día con conectores extra USB o el conector "serie"). Algunos ejemplos son:
 
-    -   **USB**: Donde poder conectar distintos dispositivos como teclados, ratón, pendrives, mandos de juegos, impresoras, \... El USB (**Universal Serial Bus**) es un estándar de comunicación de periféricos hoy día. En las placas actuales también hay conectores de tipo **USB-C**.
+    -   **USB**: Donde poder conectar distintos dispositivos como teclados, ratón, pendrives, mandos de juegos, impresoras, ... El USB (**Universal Serial Bus**) es un estándar de comunicación de periféricos hoy día. En las placas actuales también hay conectores de tipo **USB-C**.
 
     -   Conectores de **pantalla** como **VGA**, **HDMI** o **DisplayPort**. Dependiendo de lo moderna que sea la placa base, contará con uno o varios de estos conectores.
 
@@ -132,12 +132,12 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 
     -   **Conectores para ventiladores**: Para regular la temperatura del microprocesador y del interior de la caja, la placa tiene varios conectores que se conectarán a distintos ventiladores que se regularán en intensidad.
 
-    -   **Otros conectores**: Existen otros conectores para otros puertos que hoy en día no se usan tanto (serie, paralelo, \...) y también los conectores para encender el ordenador, realizar el reset, comprobar el funcionamiento del disco\...
+    -   **Otros conectores**: Existen otros conectores para otros puertos que hoy en día no se usan tanto (serie, paralelo, ...) y también los conectores para encender el ordenador, realizar el reset, comprobar el funcionamiento del disco...
 
 A continuación un diagrama simplificado de una placa base. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Placa_base).
 
 
-![](img/si/placa_base_chipset.png){width="54%"}
+![](img/si/placa_base_chipset.png){width="75%"}
 
 #### Ejemplo de placa base
 
@@ -208,7 +208,7 @@ El sistema básico de entrada-salida (del inglés *Basic Input/Output System*, o
 ![Interfaz BIOS. Fuente [wikipedia](https://upload.wikimedia.org/wikipedia/commons/0/05/Award_BIOS_setup_utility.png)](img/si/bios.png){width="70%"}
 :::
 
-A través de este interfaz se podían configurar algunos aspectos del hardware como las interrupciones de teclado que utilizaban los sistemas operativos antiguos (como MS-DOS), direcciones, el orden del sistema de arranque, \...
+A través de este interfaz se podían configurar algunos aspectos del hardware como las interrupciones de teclado que utilizaban los sistemas operativos antiguos (como MS-DOS), direcciones, el orden del sistema de arranque, ...
 
 
 #### UEFI
@@ -239,7 +239,7 @@ El microprocesador se conecta a la placa base a través del [socket](#socket), y
 
 A la hora de determinar las características principales que cuenta un procesador podemos destacar las siguientes:
 
--   **Frecuencia del reloj**: Es la cantidad de veces que los transistores internos del procesador pueden conmutar eléctricamente (abrir y cerrar el flujo de corriente eléctrica). Hoy en día se mide en GHz (gigahercios), donde 1GHz es mil millones de ciclos por segundo.
+-   **Frecuencia del reloj**: Es la cantidad de veces que los transistores internos del procesador pueden conmutar eléctricamente (abrir y cerrar el flujo de corriente eléctrica). Hoy en día se mide en GHz (giga hercios), donde 1GHz es mil millones de ciclos por segundo.
 
     Normalmente se confunde con el número de operaciones o instrucciones que puede ejecutar en un segundo, pero eso no es del todo correcto.
 
@@ -267,7 +267,7 @@ Existen otro tipo de características más técnicas, pero que también son impo
 
 -   **RISC**: Del inglés *Reduced Instruction Set Computer* (computador con conjunto de instrucciones reducido) es una filosofía de diseño de CPU para computadora que está a favor de conjuntos de instrucciones pequeñas y simples que toman menor tiempo para ejecutarse.
 
-    Hoy en día podemos encontrar esta arquitectura sobre todo en [ARM](https://es.wikipedia.org/wiki/Arquitectura_ARM) que se utiliza en procesadores de móviles como los A15 de Apple (pero también en los procesadores de escritorio M1 y M2), Qualcomm Snapdragon, \...
+    Hoy en día podemos encontrar esta arquitectura sobre todo en [ARM](https://es.wikipedia.org/wiki/Arquitectura_ARM) que se utiliza en procesadores de móviles como los A15 de Apple (pero también en los procesadores de escritorio M1 y M2), Qualcomm Snapdragon, ...
 
 
 #### Rendimiento
@@ -372,12 +372,12 @@ A continuación se pueden diferenciar cómo ha variado el formato físico.
 ::::::::::::::
 
 
-En la [Wikipedia](https://en.wikipedia.org/wiki/DDR_SDRAM#Generations) podemos ver una tabla con la evolución desde DDR hasta DDR5, con todos los datos técnicos como: voltaje utilizado, número de pines, ancho de banda en MB/s\...
+En la [Wikipedia](https://en.wikipedia.org/wiki/DDR_SDRAM#Generations) podemos ver una tabla con la evolución desde DDR hasta DDR5, con todos los datos técnicos como: voltaje utilizado, número de pines, ancho de banda en MB/s...
 
 
 ### Dispositivos de almacenamiento de datos {#dispositivos_almacenamiento}
 
-Los dispositivo de almacenamiento de datos nos permiten leer o grabar datos de forma temporal o permanente. Existen distintos tipos de dispositivos que se pueden diferenciar por formato, tamaño, tecnología, tipo de acceso, \...
+Los dispositivo de almacenamiento de datos nos permiten leer o grabar datos de forma temporal o permanente. Existen distintos tipos de dispositivos que se pueden diferenciar por formato, tamaño, tecnología, tipo de acceso, ...
 
 Si diferenciamos por el tipo de tecnología utilizada para realizar el almacenamiento podemos distinguir:
 
@@ -475,7 +475,7 @@ Hoy en día la manera más habitual de usar este tipo de unidades es con el fact
 
 La especificación de interfaz de controlador de host de memoria no volátil (NVMHCIS, en inglés *non-volatile memory host controller interface specification*) que está conectado a través del bus PCI Express (PCIe). Normalmente se llama NVMe para abreviar.
 
-Este tipo de dispositivos, al igual que el anterior, hacen uso de tecnología FLASH para el almacenamiento de datos. Debido a que están conectados al bus PCI Express, y que la especificación de acceso se creó desde cero (para aprovechar la tecnología moderna de memorias FLASH, el paralelismo de las CPUs\...), consiguen un rendimiento muy superior a las generaciones anteriores.
+Este tipo de dispositivos, al igual que el anterior, hacen uso de tecnología FLASH para el almacenamiento de datos. Debido a que están conectados al bus PCI Express, y que la especificación de acceso se creó desde cero (para aprovechar la tecnología moderna de memorias FLASH, el paralelismo de las CPUs...), consiguen un rendimiento muy superior a las generaciones anteriores.
 
 
 :::::::::::::: {.columns }
@@ -621,7 +621,7 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 
 ### GPU/Tarjeta gráfica
 
-Hoy en día es habitual contar con una tarjeta gráfica en los ordenadores personales, cuando el desempeño de su función va a requerir realizar grandes procesamientos de gráficos como: juegos, edición de vídeo, edifición fotográfica, uso de dibujo asistido por ordenador, \...
+Hoy en día es habitual contar con una tarjeta gráfica en los ordenadores personales, cuando el desempeño de su función va a requerir realizar grandes procesamientos de gráficos como: juegos, edición de vídeo, edición fotográfica, uso de dibujo asistido por ordenador, ...
 
 Podemos diferenciar:
 
@@ -633,7 +633,7 @@ Podemos diferenciar:
 
 Las tarjetas gráficas actualmente se instalan en la ranura PCI-Express de mayor velocidad de la placa base y suele contar con los siguientes componentes:
 
--   **Unidad de procesamiento gráfico**: O **GPU**, es un procesador como la CPU pero diseñado para el procesamiento gráfico. Su finalidad es la de realizar operaciones con vectores, triángulos, texturas, \... lo más rápido posible.
+-   **Unidad de procesamiento gráfico**: O **GPU**, es un procesador como la CPU pero diseñado para el procesamiento gráfico. Su finalidad es la de realizar operaciones con vectores, triángulos, texturas, ... lo más rápido posible.
 
     Las tarjetas gráficas también sirven para realizar codificación/decodificación de vídeo por hardware, lo que disminuye el tiempo en comparación a realizar esa compresión a través de la CPU.
 
@@ -649,7 +649,7 @@ Si nuestro procesador cuenta con una gráfica integrada y aparte tenemos una gr�
 Si tenemos gráfica integrada y dedicada, quizá nos interese desactivar la integrada a través de UEFI
 :::
 
-Las compañías que crean las tarjetas gráficas también han creado **SDK** (*Software Development Kits*, o kits de desarrollo de software), como [Nvidia CUDA](https://en.wikipedia.org/wiki/CUDA), para poder realizar computación paralela y así aprovechar la potencia de cálculo para proyectos de *machine learning*, simulaciones científicas, cálculo de proteínas, secuencias de ADN, \...
+Las compañías que crean las tarjetas gráficas también han creado **SDK** (*Software Development Kits*, o kits de desarrollo de software), como [Nvidia CUDA](https://en.wikipedia.org/wiki/CUDA), para poder realizar computación paralela y así aprovechar la potencia de cálculo para proyectos de *machine learning*, simulaciones científicas, cálculo de proteínas, secuencias de ADN, ...
 
 ::: infobox
 **Podemos usar el procesamiento de la tarjeta gráfica para ayudar a la ciencia usando proyectos como [Folding@Home](https://es.wikipedia.org/wiki/Folding@home) gracias a la [computación distribuida](https://es.wikipedia.org/wiki/Computaci\%C3\%B3n_distribuida)**
@@ -668,7 +668,7 @@ Al igual que el resto de componentes, los conectores para dispositivos gráficos
 ![](img/si/vga.png){width="100%"}
 :::
 ::: {.column width="80%" }
-El conector **VGA** es un conector analóigico que sólo envía la señal gráfica al dispositivo conectado. Hoy día, aunque se puede considerar obsoleto a nivel tecnológico, sigue estando presente en servidores y en proyectores de gama baja, ya que ofrece la suficiente calidad gráfica.
+El conector **VGA** es un conector analógico que sólo envía la señal gráfica al dispositivo conectado. Hoy día, aunque se puede considerar obsoleto a nivel tecnológico, sigue estando presente en servidores y en proyectores de gama baja, ya que ofrece la suficiente calidad gráfica.
 :::
 ::::::::::::::
 
@@ -679,7 +679,7 @@ El conector **VGA** es un conector analóigico que sólo envía la señal gráfi
 ![](img/si/dvi.png){width="100%"}
 :::
 ::: {.column width="80%" }
-El conector **DVI** era el sucesor del conector anterior, y podía ser retrcompatible con VGA, aunque la idea es que este conector permitía tener señales digitales. Había diferentes tipos de conectores, dependiendo del tipo de señal que transportaba. Para portátiles también existió una versión "mini" y otra "micro", que era más delgada.
+El conector **DVI** era el sucesor del conector anterior, y podía ser retrocompatible con VGA, aunque la idea es que este conector permitía tener señales digitales. Había diferentes tipos de conectores, dependiendo del tipo de señal que transportaba. Para portátiles también existió una versión "mini" y otra "micro", que era más delgada.
 :::
 ::::::::::::::
 
@@ -689,7 +689,7 @@ El conector **DVI** era el sucesor del conector anterior, y podía ser retrcompa
 ![](img/si/hdmi.png){width="100%"}
 :::
 ::: {.column width="80%" }
-El conector **HDMI** hoy en día es un estándar muy utilizado, sobre todo en televisiones, ya que permite enviar la señal gráfica y audio. Aunque el conector se mantiene igual, existen distintas revisiones que permiten mayor transmisión de datos (para tecnologías nuevas como HDR, audio con más canales, \...)
+El conector **HDMI** hoy en día es un estándar muy utilizado, sobre todo en televisiones, ya que permite enviar la señal gráfica y audio. Aunque el conector se mantiene igual, existen distintas revisiones que permiten mayor transmisión de datos (para tecnologías nuevas como HDR, audio con más canales, ...)
 :::
 ::::::::::::::
 
@@ -706,7 +706,7 @@ El conector **HDMI** hoy en día es un estándar muy utilizado, sobre todo en te
 
 #### Conectores de dispositivos de almacenamiento
 
-Para dispositivos de almacenamiento, como discos duros, CD-ROMs\... ha habido varios tipos de conectores que es importante conocer.
+Para dispositivos de almacenamiento, como discos duros, CD-ROMs... ha habido varios tipos de conectores que es importante conocer.
 
 :::::::::::::: {.columns }
 ::: {.column width="15%"}
@@ -783,7 +783,7 @@ El conector **RJ-45** es el utilizado en redes de ordenadores que contiene cuatr
 ![](img/si/sma.jpg){width="100%"}
 :::
 ::: {.column width="80%" }
-El conector **SMA** se utiliza en algunos tipos de antenas WiFi desmontables que nos podemos encontrar en algunos routers, placas base, tarjetas PCI\... Es un conector enroscable y fácilmente desmontable.
+El conector **SMA** se utiliza en algunos tipos de antenas WiFi desmontables que nos podemos encontrar en algunos routers, placas base, tarjetas PCI... Es un conector enroscable y fácilmente desmontable.
 :::
 ::::::::::::::
 
@@ -806,7 +806,7 @@ El conector **SMA** se utiliza en algunos tipos de antenas WiFi desmontables que
 ![](img/si/jack.png){width="100%"}
 :::
 ::: {.column width="80%" }
-El **jack** de 3,5mm es el conector más utilizado para audio analógico desde hace muchos años en el ordenador, a pesar de que su aparición (en distinto tamaño) es del año 1878. Hoy en día las placas base tienen distintos conectores para introducir estos jacks dependiendo de si es para altavoces, micrófono, sonido envolvente\...
+El **jack** de 3,5mm es el conector más utilizado para audio analógico desde hace muchos años en el ordenador, a pesar de que su aparición (en distinto tamaño) es del año 1878. Hoy en día las placas base tienen distintos conectores para introducir estos jacks dependiendo de si es para altavoces, micrófono, sonido envolvente...
 :::
 ::::::::::::::
 
@@ -823,7 +823,7 @@ El conector **RS232** (también conocido como "puerto serie"), es un interfaz qu
 
 Desde que los ordenadores se hicieron populares en la década de los 80 hasta ahora ha habido muchos otros tipos de conectores que han llegado a los ordenadores de consumo personal.
 
-También ha habido otros muchos tipos de conectores que se han quedado en el ámbito más profesional ([transceiver SFP](https://es.wikipedia.org/wiki/Transceptor_SFP), conectores [SAS](https://es.wikipedia.org/wiki/Serial_Attached_SCSI) para discos duros, \...) por lo que es imposible abarcarlos a todos.
+También ha habido otros muchos tipos de conectores que se han quedado en el ámbito más profesional ([transceiver SFP](https://es.wikipedia.org/wiki/Transceptor_SFP), conectores [SAS](https://es.wikipedia.org/wiki/Serial_Attached_SCSI) para discos duros, ...) por lo que es imposible abarcarlos a todos.
 
 #### Conector, protocolo y cables: errores frecuentes
 
@@ -891,7 +891,7 @@ Toda la secuencia de arranque se puede dividir en distintas etapas que vamos a v
 
     -   Comprueba el estado de la memoria de vídeo.
 
-    -   Inicializa los sistemas de acceso a dispositivos de almacenamiento (IDE, Serial-ATA, NVMe\...).
+    -   Inicializa los sistemas de acceso a dispositivos de almacenamiento (IDE, Serial-ATA, NVMe...).
 
 4.  La BIOS/UEFI comprueba el número de discos duros existentes. Se comprueba la tabla de particiones del disco duro indicado como primario para el arranque.
 

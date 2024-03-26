@@ -159,13 +159,5 @@ Podemos diferenciar distintos componentes dentro de un sistema informático:
 
 -   **Software**: Es el elemento lógico, es todo aquello que es "intangible". Es el **conjunto de programas y datos** que permiten manejar el hardware, controlando y coordinando su funcionamiento para que realice las tareas deseadas.
 
-    Dentro del software podemos diferenciar distintos tipos (aunque existen otras categorizaciones):
 
-    -   **Software de sistema**: Son aquellos programas que permiten la administración del hardware (de los recursos físicos). Crean una capa de abstracción entre el hardware y los programas que utiliza el usuario. Dentro de este apartado podemos incluir: sistemas operativos, *drivers* (controladores), herramientas de diagnóstico, \...
-
-    -   **Software de desarrollo**: Son aquellos programas que los desarrolladores de software utilizan para crear, depurar y mantener programas.
-
-    -   **Software de aplicación**: En esta categoría entran los programas que tienen una función específica y que normalmente son utilizados por los usuarios finales del sistema.
-
-A partir de aquí profundizaremos en cada uno de estos aspectos en los capítulos siguientes.
 
