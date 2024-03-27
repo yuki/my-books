@@ -8,3 +8,4 @@ cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sist
 cat 3_software.md
 echo [GNU/Linux]{.part}
 cat ../../../temas_comunes/gnu_linux/gnu_linux.md
+cat ../../../temas_comunes/gnu_linux/comandos.md

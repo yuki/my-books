@@ -1,11 +1,11 @@
 
-# Introducción a GNU/Linux
+# Introducción a GNU/Linux {#introduccion-a-gnu-linux}
 
-## Un poco de historia
+## Un poco de historia {#un-poco-de-historia}
 
 Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un poco de historia de la informática y cómo evolucionó en los primeros años.
 
-### El nacimiento de Unix
+### El nacimiento de Unix {#nacimiento-de-unix}
 
 1964-1969
 
@@ -65,7 +65,7 @@ Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un
 
 :   Microsoft anuncia su primer Unix para microcomputadoras de 16 bits (Xenix).
 
-### El nacimiento de GNU (GNU's Not Unix)
+### El nacimiento de GNU (GNU's Not Unix) {#nacimiento-de-gnu}
 
 1971
 
@@ -105,7 +105,7 @@ Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un
 
 
 
-### El nacimiento de Minix
+### El nacimiento de Minix {#nacimiento-de-minix}
 
 1987
 
@@ -119,7 +119,7 @@ Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un
 
 :   Debate con Linus Torvalds sobre la arquitectura del kernel Linux (núcleo monolítico) en lugar de usar un micronúcleo.
 
-### El nacimiento de Linux
+### El nacimiento de Linux {#nacimiento-de-linux}
 
 1991
 
@@ -205,20 +205,20 @@ Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un
 
 :   Microsoft anuncia [WSL](https://es.wikipedia.org/wiki/Windows_Subsystem_for_Linux) (*Windows Subsystem for Linux*) y se puede instalar en Windows 10 y Windows Server 2019. Permite correr ejecutables de Linux nativamente.
 
-### Cronograma de sistemas Unix
+### Cronograma de sistemas Unix {#cronograma-de-sistemas-unix}
 
 En el siguiente cronograma se puede ver la línea temporal de los sistemas Unix:
 
 ![Origen: [Wikipedia](https://commons.wikimedia.org/wiki/File:Evolución_UNIX.png)](img/temas_comunes/gnu_linux/Evolución_UNIX.png){width="70%"}
 
 
-## Resumen
+## Resumen {#resumen-de-linux}
 
 Linux es conocido como un sistema operativo libre pero el nombre de Linux se centra única y exclusivamente en el **kernel** (o **núcleo**) del sistema operativo.
 
 El sistema operativo completo debería llamarse **GNU/Linux**, ya que el kernel es una "pequeña" parte (aunque muy importante) dentro de todo el sistema operativo. El resto de herramientas utilizadas en el sistema operativo pertenecen al proyecto GNU.
 
-# Licencias Libres
+# Licencias Libres {#licencias-libres}
 
 ## Free Software / Software Libre {#free-software--software-libre}
 
@@ -245,7 +245,7 @@ Las libertad en el software se refiere a:
 
 El movimiento del Free Software es un movimiento que tiene que ver más con la filosofía y la ética que con la tecnología en sí misma.
 
-### Copyleft y GNU Public License (GPL)
+### Copyleft y GNU Public License (GPL) {#copyleft-y-gpl}
 
 Es una práctica legal que consiste en el ejercicio del derecho de autor (copyright en inglés) con el objetivo de propiciar el libre uso y distribución de una obra, exigiendo que los concesionarios preserven las mismas libertades al distribuir sus copias y derivados ([Wikipedia](https://es.wikipedia.org/wiki/Copyleft)).
 
@@ -253,13 +253,13 @@ Es una práctica legal que consiste en el ejercicio del derecho de autor (copyri
 
 Con esto nació la licencia GNU GPL, la cual permite al usuario final la libertad de usar, estudiar, compartir y modificar el software recibido. Tiene que quedar claro que un programa comercial puede ser Software Libre.
 
-### Diferencias con el Open Source
+### Diferencias con el Open Source {#diferencias-con-open-source}
 
 Los programas Open Source son aquellos que podemos ver el código fuente pero esto no quiere decir que podamos modificarlo o adaptarlo a nuestras necesidades.
 
 El Open Source es menos restrictivo que el Software Libre y se puede decir que todo Software Libre es Open Source, pero no todo Open Source tiene por qué ser libre.
 
-### Licencias libres más conocidas
+### Licencias libres más conocidas {#licencias-libres-mas-conocidas}
 
 Un listado de las licencias libres más utilizadas (en la [Wikipedia](https://es.wikipedia.org/wiki/Anexo:Comparaci%C3%B3n_de_licencias_de_software_libre) existe una tabla comparativa):
 
@@ -275,17 +275,17 @@ Un listado de las licencias libres más utilizadas (en la [Wikipedia](https://es
 
 -   [Creative Commons](https://es.wikipedia.org/wiki/Licencias_Creative_Commons) (no todas las versiones). Más utilizadas en contenido multimedia.
 
-# Sistema de ficheros en GNU/Linux
+# Sistema de ficheros en GNU/Linux {#sistemas-de-ficheros-en-gnu-linux}
 
 El sistema de ficheros en GNU/Linux, al igual que en Unix, es jerárquico, comenzando en la raíz denominada "/". Partiendo de esta raíz, el resto del sistema de ficheros nace en forma de ramificaciones generando lo que se denominan "rutas de ficheros", que es el camino completo para llegar al mismo.
 
-## Filesystem Hierarchy Standard
+## Filesystem Hierarchy Standard #{fhs}
 
 Debido a que en GNU/Linux todo se representa como ficheros (discos, dispositivos, programas, ... ) es necesario que exista un orden a la hora de ser almacenados. Con esa intención nace en 1993 el estándar de la jerarquía de ficheros de Linux, enfocado a reestructurar los archivos. Posteriormente se unieron otros derivados de UNIX (la comunidad de desarrollo de BSD) por lo que terminó adoptando el nombre FHS.
 
 Aún siendo un estándar, no todas las distribuciones lo siguen al pie de la letra, y otros Unix, como MacOS, tienen sus propias rutas especiales.
 
-## Directorios importantes
+## Directorios importantes {#directorios-importantes}
 
 A continuación se exponen los directorios más importantes del sistema junto con la descripción del contenido que deben de tener:
 
@@ -319,13 +319,13 @@ Junto a todos estos directorios, se ha separado los lugares en los que van los b
 
 Aunque las rutas de los ejecutables denotan quién debería ejecutar el programa, en la vida real no tiene por qué ser una limitación.
 
-## Dispositivos de almacenamiento y discos duros
+## Dispositivos de almacenamiento y discos duros {#dispositivos-de-almacenamiento-discos-duro}
 
 En sistemas operativos Windows es habitual que cada partición cuente con una letra para acceder a ella, al igual que ocurre cuando introducimos un dispositivo de almacenamiento externo (un pendrive).
 
 Tal como se ha comentado, en sistemas Unix el sistema de ficheros es una jerarquía, y por tanto todo dispositivo de almacenamiento nuevo deberá estar montado bajo la raíz "/". Hoy día, en distribuciones con escritorio, al introducir un pendrive éste es auto-montado (es accesible) desde la ruta **/media/**, donde aparecerán tantos directorios como discos hayamos conectado.
 
-### Almacenamiento permanente
+### Almacenamiento permanente {#almacenamiento-permanente}
 
 Si queremos que un disco duro nuevo sea permanente en nuestro sistema, podremos montarlo en cualquier lugar de la estructura jerárquica. Debido a este sistema, el usuario final no se tendrá que preocupar en almacenar los ficheros en una ruta distinta, si no que será el administrador el que haya hecho que esa ruta ahora pertenezca a un disco duro nuevo.
 
@@ -360,7 +360,7 @@ nvme1n1                    259:3    0 931,5G  0 disk
 ```
 :::
 
-# Gestión de usuarios locales en GNU/Linux
+# Gestión de usuarios locales en GNU/Linux {#gestion-usuarios-locales-linux}
 
 En las distribuciones GNU/Linux lo habitual suele ser que existan al menos dos usuarios tras una instalación:
 
@@ -372,7 +372,7 @@ El usuario root, como se ha dicho previamente, es el administrador del sistema, 
 
 Las buenas prácticas nos dicen que las tareas cotidianas del sistema deberíamos realizarlas como usuario normal y **sólo convertirnos en root cuando sea estrictamente necesario**.
 
-## Creación de usuarios locales
+## Creación de usuarios locales {#creacion-de-usuarios-locales-linux}
 
 Tras instalar el sistema, veremos que se nos han creado varios usuarios en el sistema, aparte del usuario **root** y el usuario **no-privilegiado**. Para poder ver los usuarios que existen en nuestro sistema podemos verlo en el fichero [/etc/passwd]{.configfile} o podríamos obtener un listado ejecutando el siguiente comando:
 
@@ -452,7 +452,7 @@ Aparte, también podemos encontrarnos con:
 
 -   **\*NP\***, **!!**: Nunca se ha puesto una contraseña
 
-## Gestión de grupos
+## Gestión de grupos {#gestion-de-grupos-linux}
 
 En algunas distribuciones GNU/Linux, al crear un usuario directamente nos crea un grupo para el nuevo usuario. En otras, el usuario pertenece al grupo "users".
 
@@ -462,7 +462,7 @@ Para saber los grupos a los que pertenece un usuario podemos ejecutar el comando
 ![](img/temas_comunes/gnu_linux/grupo_tabla.png){width="60%"}
 :::
 
-## Permisos de ficheros
+## Permisos de ficheros {#permisos-de-ficheros-linux}
 
 En GNU/Linux los ficheros cuentan con 3 tipos de permisos:
 
@@ -553,7 +553,7 @@ El comando "**sudo**" viene de "**su**per user **do**" (que en inglés sería: "
 
 De esta manera, la gestión de nuestro servidor estaría basada en múltiples usuarios y cada usuario sólo sería capaz de realizar pequeñas tareas, por lo que la seguridad del servidor sería mayor y limitaría lo que los usuarios puedan realizar.
 
-### Configurando "sudoers"
+### Configurando "sudoers" {#configurando-sudoers}
 
 Los permisos de sudo se realizan en el fichero [/etc/sudoers]{.configfile} , y para su edición se hace uso del comando **visudo**, el cual abre el fichero y se asegura que a la hora de guardar la sintaxis es correcta.
 
@@ -614,11 +614,11 @@ ruben    ALL=(ALL:ALL) NOPASSWD:/bin/systemctl suspend
 
 Con esta línea lo que estamos permitiendo es que el usuario "ruben" puede ejecutar el comando "/bin/systemctl suspend" (suspender el equipo) y sin necesidad de meter contraseña al hacer sudo, gracias a la opción "NOPASSWD").
 
-## Diferencias entre "sudo", "su" y "su -"
+## Diferencias entre "sudo", "su" y "su -" {#diferencias-entre-sudo-su}
 
 Como ya se ha comentado en el apartado anterior, "sudo" permite la ejecución de comandos como cualquier usuario, siendo lo habitual ejecutarlo como root. Ahora bien, en entornos donde el usuario root tiene contraseña, nos puede interesar convertirnos en él para realizar tareas sin tener que estar ejecutando "sudo" a cada comando. Al ser root, tendremos que tener especial cuidado.
 
-### Variables de entorno
+### Variables de entorno {#variables-de-entorno}
 
 En cualquier sistema operativo existen las denominadas "variables de entorno". Son variables que cada usuario tiene y sirven para indicar ciertos parámetros que se están utilizando (la SHELL que se está usando), o parámetros que se van a usar a la hora de ejecutar comandos o realizar tareas, ya que se consultan a ellas. En GNU/Linux las variables de entorno se pueden consultar ejecutando:
 
@@ -653,7 +653,7 @@ ruben@vega:~$ echo $PATH
 
 Como se puede ver, es con un "**\$**" y el nombre de la variable en mayúsculas. Existen muchas variables de entorno, y podríamos crear las nuestras propias si así lo necesitáramos.
 
-### La importancia de "su -"
+### La importancia de "su -" {#la-importancia-de-su}
 
 Con el comando "**su**" nos podemos convertir en cualquier otro usuario del sistema siempre y cuando **conozcamos su contraseña**. Hay que notar la diferencia respecto a "**sudo**" que cuando lo ejecutamos nos pide **nuestra contraseña**.
 
