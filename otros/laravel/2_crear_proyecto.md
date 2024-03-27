@@ -97,7 +97,7 @@ Y con ello podemos ir al puerto 80 a través de nuestro navegador y veremos la p
 ![](img/laravel/intro.png){width="70%" framed=true}
 
 
-# Variables de entorno {#variables-de-entorno}
+# Variables de entorno {#variables-de-entorno-laravel}
 
 Todo proyecto de Laravel cuenta con unas variables de entorno del proyecto. Es un fichero de configuración situado en la raíz del proyecto que se llama [.env]{.configfile} y en él se encuentran las credenciales para acceder a la base de datos, servidor SMTP, \...
 

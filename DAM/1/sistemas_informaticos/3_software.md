@@ -105,3 +105,5 @@ Desde la creación de los primeros ordenadores, y al igual que ha sucedido con e
 -   **Sistemas operativos de escritorio**: En la década de 1980, con la aparición y proliferación de ordenadores personales (PC), empiezan a aparecer sistemas operativos más enfocados a usuarios que no son expertos en informática.
 
     Aparecen los primeros interfaces de usuario y escritorios (primero con el Macintosh de Apple en 1984) que junto al ratón facilita la usabilidad de los programas.
+
+

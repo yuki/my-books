@@ -1,7 +1,7 @@
 
 # Gestión de copias de seguridad (backups) {#gestion_copias_de_seguridad}
 
-## Introducción {#introducción}
+## Introducción {#introducción-backups}
 
 Una copia de seguridad, o ***backup***, **es una copia de los datos originales** que se realiza con el fin de disponer de un medio **para recuperarlos en caso de pérdida**. Las copias de seguridad son útiles en caso de que los datos originales se hayan perdido por un fallo humano, fallo de sistema (rotura de disco duro), modificado por un virus, evento natural (incendio del edificio), un ataque (borrado deliberado de los datos), etc...
 

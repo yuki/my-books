@@ -618,7 +618,7 @@ Con esta línea lo que estamos permitiendo es que el usuario "ruben" puede ejecu
 
 Como ya se ha comentado en el apartado anterior, "sudo" permite la ejecución de comandos como cualquier usuario, siendo lo habitual ejecutarlo como root. Ahora bien, en entornos donde el usuario root tiene contraseña, nos puede interesar convertirnos en él para realizar tareas sin tener que estar ejecutando "sudo" a cada comando. Al ser root, tendremos que tener especial cuidado.
 
-### Variables de entorno {#variables-de-entorno}
+### Variables de entorno {#variables-de-entorno-linux}
 
 En cualquier sistema operativo existen las denominadas "variables de entorno". Son variables que cada usuario tiene y sirven para indicar ciertos parámetros que se están utilizando (la SHELL que se está usando), o parámetros que se van a usar a la hora de ejecutar comandos o realizar tareas, ya que se consultan a ellas. En GNU/Linux las variables de entorno se pueden consultar ejecutando:
 

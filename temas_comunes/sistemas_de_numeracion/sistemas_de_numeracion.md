@@ -29,7 +29,7 @@ $146 =1\times10^2 + 4\times10^1 + 6\times10^0$
 Como se puede comprobar, lo que hemos hecho ha sido coger cada símbolo representado y lo hemos multiplicado por la base (en este caso base 10) y a la base le hemos puesto el exponente de la posición en la que se encuentra. **El símbolo de más a la derecha tiene como exponente el cero**, y hacia la izquierda el exponente se incrementa en uno para cada posición.
 
 
-## Sistema binario {#sistema-binario}
+## Sistema binario {#sistema-binario-numeracion}
 
 En informática el sistema binario es el más importante ya que es el sistema que internamente utilizan los circuitos digitales. En este sistema sólo se hace uso de dos símbolos, el "0" y el "1", y por tanto **su base es 2**. Los dos dígitos se denominan **bits** (contracción de **binary digit**).
 

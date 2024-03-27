@@ -20,7 +20,7 @@ En decimal estamos acostumbrados a contar usando el [Sistema Internacional de Un
 
 En decimal hacemos uso de la **base 10**, y por tanto con cada prefijo lo que estamos haciendo es modificar el exponente que indica la cantidad. Para unidades pequeñas el exponente varía de uno en uno, pero a partir de cierta cantidad (**kilo-**), la cantidad cambia multiplicando por 1000 ($10^3$).
 
-## Sistema binario {#sistema-binario}
+## Sistema binario {#sistema-binario-explicacion}
 
 En informática la información se guarda en formato binario, y la unidad más pequeña es el **bit**, que es un acrónimo de ***bi**nary digi**t***. Cada bit es una única unidad que sólo permite dos estados: **0** o **1**. A la hora de representarlo se hace uso de la letra **b** minúscula, por lo tanto, **10b** son 10bits.
 

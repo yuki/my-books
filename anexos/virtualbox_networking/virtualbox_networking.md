@@ -1,7 +1,7 @@
 
 # Virtualbox y adaptadores de red {#virtualbox-y-adaptadores-de-red}
 
-## Introducción {#introducción}
+## Introducción {#introducción-virtualbox}
 
 [Virtualbox](https://www.virtualbox.org/) es una herramienta de virtualización para crear máquinas virtuales de manera sencilla. Es multiplataforma por lo que se puede utilizar en Windows, MacOS y Linux y aparte, es [Software Libre](#software_libre).
 

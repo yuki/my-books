@@ -1,5 +1,5 @@
 
-# Introducción {#introducción}
+# Introducción {#introducción-ec2}
 
 **EC2**, contracción de las siglas en inglés *Elastic Compute Cloud*, es la parte central de AWS que tiene que ver con la computación, donde podremos crear máquinas virtuales y gestionar todo lo relacionado con ellas.
 

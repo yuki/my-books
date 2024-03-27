@@ -1,5 +1,5 @@
 
-# Introducción {#introducción}
+# Introducción {#introducción-pfsense}
 
 En este documento se va a explicar cómo realizar la instalación y configuración de un servidor que hará las funciones de cortafuegos basado en la distribución [pfSense](https://www.pfsense.org/).
 

@@ -1,5 +1,5 @@
 
-# Introducción {#introducción}
+# Introducción {#introducción-contenedores}
 
 Hoy en día es muy habitual hacer uso de los sistemas de contenedores, siendo el más conocido [Docker](https://docs.docker.com/) en el mundo del desarrollo de *software*. Este sistema trae consigo una serie de ventajas que veremos más adelante, que nos permite asegurar, entre otras cosas, que las versiones utilizadas en el entorno de producción son las mismas que durante las etapas de desarrollo.
 

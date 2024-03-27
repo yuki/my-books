@@ -23,7 +23,7 @@ Al igual que sucede con otro tipo de *software*, para que Docker haga uso de tod
 
 En el 2015 la empresa Docker creó la ***[Open Container Initiative](https://en.wikipedia.org/wiki/Open_Container_Initiative)***, proyecto actualemente bajo la Linux Foundation, con la intención de diseñar un estándar abierto para la virtualización a nivel de sistema operativo.
 
-## Instalación {#instalación}
+## Instalación {#instalación-docker}
 
 Dependiendo del sistema operativo en el que nos encontremos, Docker tiene la opción de instalarse de distintas maneras. En sistemas operativos GNU/Linux cada distribución tiene un paquete para poder realizar la instalación del mismo.
 
@@ -41,7 +41,7 @@ El nombre del paquete en Ubuntu y Debian es "docker.io".
 
 En sistemas Windows y MacOS existe la opción de instalar [Docker Desktop](https://docs.docker.com/get-docker/), una versión que utiliza una máquina virtual para simplificar la instalación en estos sistemas.
 
-## Configuración {#configuración}
+## Configuración {#configuración-docker}
 
 
 Tras realizar la instalación veremos cómo el servicio Docker ha levantado un interfaz nuevo en nuestra máquina, cuya IP es **172.17.0.1/16**, siendo el direccionamiento por defecto.
@@ -242,7 +242,7 @@ Es interesante borrar contenedores que hayamos creado de pruebas o contenedores 
 
 Para borrarlo, similar a los casos anteriores, se hará con [docker rm mi-apache]{.commandbox}.
 
-# Variables de entorno {#variables-de-entorno}
+# Variables de entorno {#variables-de-entorno-docker}
 
 Algunos contenedores tienen la opción de recibir variables de entorno al ser creados. Estas variables pueden afectar al comportamiento del contenedor, o para ser inicializado de alguna manera distinta a las opciones por defecto.
 
