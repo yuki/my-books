@@ -93,3 +93,5 @@ Hasta ahora hemos visto las opciones más básicas para sincronizar directorios 
 -   **\-\-delete** sirve para borrar en el destino los ficheros que no existen en el origen.
 
 -   **\-\-exclude "\*txt"** excluye los ficheros que termina con la extensión "txt" al hacer la sincronización.
+
+
