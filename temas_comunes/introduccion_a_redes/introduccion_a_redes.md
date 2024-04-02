@@ -167,3 +167,5 @@ Teniendo en cuenta quién puede acceder a la red, podríamos definir dos tipos d
 -   **Red privada**: es una red que sólo ciertas personas pueden acceder y que no normalmente no es accesible desde otras redes. El ejemplo más sencillo es la red que tenemos en casa.
 
 -   **Red pública**: es una red a la que puede acceder cualquier persona y que interconecta otras redes sin importar su situación geográfica. Internet es una red pública.
+
+

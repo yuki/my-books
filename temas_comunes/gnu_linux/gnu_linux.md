@@ -1,7 +1,7 @@
 
 # Introducción a GNU/Linux {#introduccion-a-gnu-linux}
 
-## Un poco de historia {#un-poco-de-historia}
+## Un poco de historia {#un-poco-de-historia-gnu-linux}
 
 Para conocer cómo nació el movimiento GNU y el kernel Linux debemos conocer un poco de historia de la informática y cómo evolucionó en los primeros años.
 

@@ -17,7 +17,7 @@ Este "espacio de usuario" (donde se ejecutarán aplicaciones, servicios\...) se 
 
 Desde el punto de vista del usuario, que un servicio se ejecute en una máquina virtual o en un contenedor es indistinguible. En cambio, desde el punto de vista de un administrador de sistemas o de un desarrollador, el uso de contenedores trae consigo una serie de ventajas que veremos en apartados posteriores.
 
-## Un poco de historia {#un-poco-de-historia}
+## Un poco de historia {#un-poco-de-historia-contenedores}
 
 Aunque está muy en boga el despliegue de aplicaciones haciendo uso de contenedores, no es un concepto nuevo, ya que lleva existiendo desde la década de los 80 en sistemas UNIX con el concepto de [chroot](https://es.wikipedia.org/wiki/Chroot).
 

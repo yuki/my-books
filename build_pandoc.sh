@@ -8,6 +8,7 @@ LIBROS=(
     "otros/git/ git_book"
     "otros/laravel/ laravel_book"
     "otros/PFsense/ pfsense_book"
+    "DAM/1/sistemas_informaticos/ si_book"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces_book"
     "DAM/2/sistemas_gestion_empresarial/ sge_book"
     "anexos/gestion_backups/ gestion_backups_anexo"

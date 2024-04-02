@@ -32,7 +32,7 @@ Es el método utilizado cuando virtualizamos servidores, ya que podrán dar sus 
 ![Red como Adaptador Puente](img/anexos/virtualbox_networking/virtualbox-bridge.png){width="45%"}
 
 
-### NAT {#nat}
+### NAT {#virtualbox-nat}
 
 Cada máquina virtual contará con su propio "router virtual" que hará NAT, y por eso todas las máquinas virtuales que usen este modo suelen tener la misma IP, pero no pertenecen a la misma red.
 Por defecto no se puede realizar conexión desde la red física al equipo virtualizado.

@@ -1,5 +1,5 @@
 
-# Sistemas de Monitorización
+# Sistemas de Monitorización {#sistemas_monitorizacion}
 
 El sistema de monitorización se encarga de recopilar información acerca del estado de los servidores de una infraestructura. Entre las métricas y datos que debe recopilar se encuentran:
 
@@ -21,7 +21,7 @@ Esta información suele ser almacenada durante un periodo de tiempo determinado 
 **La monitorización de servicios y equipos dentro de una infraestructura debe considerarse parte del proyecto, ya que es una parte muy importante de cara al mantenimiento del mismo.**
 :::
 
-## Monitorización de servidores
+## Monitorización de servidores {#monitorizacion_servidores}
 
 Es habitual que los sistemas de monitorización funcionen en base a plantillas, que posteriormente se pueden asociar a los servidores monitorizados. Estas plantillas contendrán los servicios que deben ser monitorizados en cada tipo de servidor, ya que no es lo mismo monitorizar un servidor web o un servidor con un SGBD.
 
@@ -49,7 +49,7 @@ Para monitorizar un servidor lo habitual suele ser realizar las siguientes opera
 
         -   ...
 
-## Funcionamiento de la monitorización
+## Funcionamiento de la monitorización {#funcionamiento_monitorizacion}
 
 Para conocer cómo funciona un sistema de monitorización lo mejor es que tomemos como ejemplo un tipo de servicio que queremos monitorizar. Como ejemplo se puede tomar las comprobaciones que queremos realizar a un SGBD (Sistema Gestor de Bases de Datos).
 
@@ -104,7 +104,7 @@ Cuando un *check* termina siendo un Warning o un Critical **es habitual que haya
 **Los sistemas de monitorización suelen contar con un sistema de alarmas para que nos avise de los servicios caídos.**
 :::
 
-### Monitorización básica
+### Monitorización básica {#monitorizacion_basica}
 
 Tal como se ha comentado, en los servidores se suele realizar una monitorización del estado del mismo que suele ser común para todos, por lo que lo habitual suele ser tener una plantilla genérica para todos los servidores con la que se monitorizará:
 
@@ -128,7 +128,7 @@ Tal como se ha comentado, en los servidores se suele realizar una monitorizació
 
 Es cierto que no será lo mismo monitorizar un sistema GNU/Linux o un sistema Windows (ya que puede variar alguno de las comprobaciones a realizar), pero el estado general que queremos conocer es el mismo. Por lo tanto, lo habitual es tener dos plantillas, una específica para servidores Windows y otra para GNU/Linux.
 
-### Monitorización de Servicios
+### Monitorización de Servicios {#monitorizacion_servicios}
 
 Aparte de la monitorización básica comentada previamente, necesitaremos monitorizar el estado de los servicios que pueda tener el servidor propiamente dicho. Para ello, de nuevo, se crearía una plantilla específica para cada tipo de Servicio que podamos tener en nuestro servidor.
 
@@ -140,7 +140,7 @@ Es por eso que a la hora de realizar la monitorización de un servidor **es muy 
 **Es muy importante conocer qué funciones desempeña cada servidor en la infraestructura a la que pertenece.**
 :::
 
-## Tipos de monitorización
+## Tipos de monitorización {#tipos_monitorizacion}
 
 Existen varias maneras de realizar la monitorización de un servidor, y dependerá del gestor de monitorización que usemos (en caso de usar uno).
 
@@ -152,13 +152,13 @@ Es habitual que cuando nos referimos a sistemas de monitorización lo dividamos 
 
 Estas dos maneras de monitorización suelen ser excluyentes, aunque algunos sistemas de monitorización permiten ambas, por lo que nos puede interesar usar una u otra dependiendo de la situación.
 
-### Monitorización pasiva
+### Monitorización pasiva {#monitorizacion_pasiva}
 
 En la monitorización pasiva el servidor (u objeto monitorizado) es el encargado de mandar la información de manera periódica al servidor central. El agente instalado se ejecutará como una tarea programada cada cierto tiempo (habitualmente unos pocos minutos) e informará de la situación cambiante, de haberla, al servidor central.
 
 Esta manera de monitorización es utilizada también cuando no hay un servidor central. En este caso, si la comprobación ha sido incorrecta, podría mandar un mail al administrador del servidor.
 
-### Monitorización activa
+### Monitorización activa {#monitorizacion_activa}
 
 Suele ser la manera habitual de proceder de los sistemas que cuentan con un servidor centralizado de monitorización. El servidor de monitorización se encarga de preguntar al servidor, a través de la conexión con el agente, por la comprobación de alguno de los checks, y el agente devuelve la información.
 
@@ -186,7 +186,7 @@ Las etapas serían:
 
 Estos pasos son ejecutados de manera continuada en el servidor de monitorización para cada comprobación que se realiza en cada uno de todos los servidores que se monitorizan. Por lo tanto, se entiende que el propio servidor de monitorización también tiene que ser monitorizado ya que es de vital importancia que su estado sea óptimo.
 
-### Monitorización centralizada
+### Monitorización centralizada {#monitorizacion_centralizada}
 
 Como ya se ha comentado, es el sistema habitual de monitorización. Las ventajas que podemos obtener al hacer uso de este sistema son muchas, pero se pueden destacar las siguientes:
 
@@ -202,7 +202,7 @@ Como ya se ha comentado, es el sistema habitual de monitorización. Las ventajas
 
     -   Esto también es útil para dar acceso a los clientes a la monitorización de sus propios servidores.
 
-### Monitorización reactiva
+### Monitorización reactiva {#monitorizacion_reactiva}
 
 La monitorización reactiva se puede definir como el sistema de monitorización que no sólo se encarga de comprobar y recibir el estado de los servidores, si no que también reacciona a los mismos para tratar de solucionar los problemas encontrados. Tras esta definición está la idea de que **existen ciertos fallos recurrentes que no siempre necesitan la intervención humana para solucionarse**, y que por tanto, se puede tratar de ejecutar antes de que sea considerado un problema real.
 
@@ -210,7 +210,7 @@ Como **ejemplo sencillo** se puede poner **el espacio libre en disco duro**. Ima
 
 Como **ejemplo extremo** (que no suele ser habitual configurarlo así), imaginemos que **la RAM consumida por un SGBD es muy alta** y esté poniendo en peligro el estado del servidor, se podría configurar para que **el sistema reaccione reiniciando el SGBD para que libere la RAM** y vuelva a prestar servicio.
 
-## Gestores de monitorización
+## Gestores de monitorización {#gestores_monitorizacion}
 
 Hoy día existen muchos sistemas de monitorización, y dependiendo de nuestras necesidades deberemos optar por uno u otro. A continuación se expondrán varios ejemplos de gestores de monitorización basados en Software Libre, aunque la gran mayoría de ellos cuentan con un sistema dual. Es decir, se puede descargar y montarlo en tu propio servidor o puedes contratar a la empresa para que ellos tengan el servicio central:
 
@@ -229,3 +229,6 @@ Existen otros sistemas de monitorización basados "en la nube", cuya funcionalid
 -   New Relic
 
 -   DataDog
+
+
+

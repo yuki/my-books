@@ -1,12 +1,12 @@
 
-# Hardware
+# Hardware {#hardware}
 
 Como ya se ha comentado previamente, el **hardware** es todo lo que forma parte del ordenador, que **puede ser tocado físicamente**. Dentro de un ordenador vamos a poder diferenciar distintos componentes que cumplirán una función distinta que detallaremos más adelante.
 
 Es posible que ya conozcamos alguno de estos componentes, pero debemos conocer el origen y cómo surge la arquitectura de los ordenadores modernos.
 
 
-## Arquitectura Von Neumann
+## Arquitectura Von Neumann {#von_neumann}
 
 Las primeras computadoras electromecánicas eran diseñadas para un único propósito, estaban "diseñadas" para realizar una tarea. Un caso conocido puede ser [**Bombe**](https://es.wikipedia.org/wiki/Bombe), una máquina electromecánica capaz de descifrar los sistemas criptográficos nazis de Enigma. [[The Imitation Game](https://www.imdb.com/title/tt2084970/)]{.movie}
 
@@ -44,28 +44,29 @@ Hoy en día, los ordenadores han evolucionado, pero la arquitectura sigue siendo
 **Podemos ver una simulación de la Arquitectura Von Neumann [aquí](https://lab.xitrus.es/VonNeumann/)**
 :::
 
-## Componentes básicos
+## Componentes básicos {#componentes_basicos}
 
 Un ordenador moderno se puede distinguir de distintos componentes, los cuales cumplen una función específica. Así mismo, también pueden contar con subcomponentes integrados que son necesarios para cumplir su cometido final.
 
 A continuación se van a detallar los componentes necesarios de un ordenador moderno.
 
-### Placa base
+### Placa base {#placa_base}
 
 La placa base (conocida en inglés como *motherboard*) es una tarjeta de circuito impreso que tiene elementos electrónicos (resistencias, condensadores, reguladores ...) a la que se conectan el resto de componentes que forman el ordenador. Es por eso que se puede considerar como la parte fundamental a la hora de montar un ordenador, ya que sin ella, el resto de componentes no se podrán comunicar entre sí.
 
-#### Formatos de placa base
+#### Formatos de placa base {#formatos_placa_base}
 
 Las placas base deben tener un tamaño compatible con las cajas en las que van a ir montadas, y es por eso que hay distintos tamaños estandarizados. Cada uno de estos tamaños determinan dónde van a ir montados algunos de los componentes y conectores, así como los agujeros donde irán los tornillos de sujeción a la caja.
 
 Si queremos profundizar más en los distintos formatos, la [Wikipedia](https://es.wikipedia.org/wiki/Placa_base#Formatos_de_placa_base) cuenta con una sección en la que se comparan los distintos tamaños.
 
 
-#### Conectores de la placa base
+#### Conectores de la placa base {#conectores_de_la_placa_base}
 
 Como ya hemos indicado, a la placa base se conectan el resto de componentes que forman el ordenador, y es por eso que va a tener distintos conectores:
 
-
+::: {#socket}
+:::
 -   **Zócalo del microprocesador**: También llamado ***socket***. Es donde se conecta el microprocesador sin tener que soldarlo a la placa, y de esta manera puede ser sustituido. El número de conexiones que conectan la placa base al microprocesador ha ido aumentando a medida que ha ido evolucionando la tecnología, siendo hoy día de hasta 1700 conectores.
 
     Dependiendo del tipo de procesador, y el modelo, el socket variará en número de contactos y el tipo de los mismos. Existen distintas maneras de interconexión:
@@ -139,7 +140,7 @@ A continuación un diagrama simplificado de una placa base. Fuente: [Wikipedia](
 
 ![](img/si/placa_base_chipset.png){width="75%"}
 
-#### Ejemplo de placa base
+#### Ejemplo de placa base {#ejemplo_de_placa_base}
 
 A continuación se van a diferenciar los componentes vistos anteriormente en una placa base real, utilizada para crear un equipo de escritorio moderno:
 
@@ -165,11 +166,11 @@ A continuación se van a diferenciar los componentes vistos anteriormente en una
 
 9.  Ranuras PCIexpress de distintas velocidades.
 
-10. Audio
+A.  Audio
 
-11. Conectores frontales.
+B.  Conectores frontales.
 
-12. USB 3.0
+C.  USB 3.0
 
 Los conectores exteriores de esta placa tienen el siguiente aspecto:
 
@@ -192,7 +193,7 @@ De izquierda a derecha, y de arriba abajo:
 -   Conectores de audio
 
 
-### BIOS/UEFI
+### BIOS/UEFI {#bios_uefi}
 
 La BIOS/UEFI es un interfaz de firmware que está incorporado en un chip en la placa base.
 
@@ -200,7 +201,7 @@ La función principal es la de iniciar el ordenador, realizar una comprobación 
 
 Se ha unificado en esta sección BIOS y UEFI ya que cumplen de manera similar la misma función, pero la segunda es una evolución de la primera.
 
-#### BIOS
+#### BIOS {#bios}
 
 El sistema básico de entrada-salida (del inglés *Basic Input/Output System*, o BIOS) lo creó IBM para sus ordenadores "**Personal Computer**". Posteriormente se obtuvo por ingeniería inversa las funciones que realizaba tratando de buscar equipos que fueran compatibles (denominados "PC-compatible") y de esta manera convirtiéndose en un estándar de facto.
 
@@ -211,7 +212,7 @@ El sistema básico de entrada-salida (del inglés *Basic Input/Output System*, o
 A través de este interfaz se podían configurar algunos aspectos del hardware como las interrupciones de teclado que utilizaban los sistemas operativos antiguos (como MS-DOS), direcciones, el orden del sistema de arranque, ...
 
 
-#### UEFI
+#### UEFI {#uefi}
 
 La ***Unified Extensible Firmware Interface*** (UEFI o «interfaz unificada de firmware extensible») es una especificación pública que define un interfaz entre el sistema operativo y el firmware de la plataforma.
 
@@ -227,7 +228,7 @@ Se puede considerar una evolución de la BIOS que tiene las siguientes caracter�
 
 ![Interfaz UEFI placa Asus.](img/si/uefi.jpg){width="70%"}
 
-### Procesador
+### Procesador {#procesador}
 
 El procesador (o microprocesador) es la unidad central de proceso (CPU) de la [arquitectura Von Neumann](#von_neumann), y es el circuito integrado más complejo que tiene el ordenador. Se puede considerar el "cerebro".
 
@@ -235,7 +236,7 @@ Es el encargado de ejecutar todos los programas y operaciones que realizamos, pe
 
 El microprocesador se conecta a la placa base a través del [socket](#socket), y encima de él se añade un sistema de refrigeración para disipar el calor que genera durante su funcionamiento.
 
-#### Características
+#### Características {#procesador_caracteristicas}
 
 A la hora de determinar las características principales que cuenta un procesador podemos destacar las siguientes:
 
@@ -270,7 +271,7 @@ Existen otro tipo de características más técnicas, pero que también son impo
     Hoy en día podemos encontrar esta arquitectura sobre todo en [ARM](https://es.wikipedia.org/wiki/Arquitectura_ARM) que se utiliza en procesadores de móviles como los A15 de Apple (pero también en los procesadores de escritorio M1 y M2), Qualcomm Snapdragon, ...
 
 
-#### Rendimiento
+#### Rendimiento {#procesador_rendimiento}
 
 Dadas todas las características que hemos visto previamente, no podemos determinar si un procesador es mejor a otro sólo mirando sus características y determinando que "cuanto más mejor". Por ejemplo:
 
@@ -297,7 +298,7 @@ De esta manera, si utilizamos el mismo programa de benchmark en dos procesadores
 ![](img/si/geekbench.png){width="70%"}
 
 
-### Sistema de refrigeración
+### Sistema de refrigeración {#sistema_refrigeracion}
 
 Debido a que el procesador genera calor durante su funcionamiento, y que esto repercute en su funcionamiento, se debe de mantener a una temperatura acorde. Es por ello que debemos hacer uso de un sistema de refrigeración.
 
@@ -327,7 +328,7 @@ El sistema de refrigeración cuenta con dos partes:
         :::
 
 
-### Memoria RAM
+### Memoria RAM {#memoria_ram}
 
 :::::::::::::: {.columns }
 ::: {.column width="60%"}
@@ -402,7 +403,7 @@ Si diferenciamos por el acceso a los datos podemos diferenciar por:
 
 Vamos a centrarnos en los denominados "discos duros" y que son más utilizados a día de hoy:
 
-#### Discos duros HDD
+#### Discos duros HDD {#discos_duros_hdd}
 
 Las [unidades de discos duros](https://es.wikipedia.org/wiki/Unidad_de_disco_duro) (también conocidos como HDD, de *hard disk drive*) emplean un sistema de grabación magnética para almacenar y recuperar archivos digitales.
 
@@ -420,19 +421,20 @@ Estos cabezales son los encargados de magnetizar la superficie del plato al real
 :::
 ::::::::::::::
 
+<!-- FIXME: corregir este enlace por el size-->
 ::: center
 [Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Unidad_de_disco_duro)]{.footnotesize}
 :::
 
 A la hora de guardar la información en los platos se sigue la estructura de la imagen superior, donde:
 
-1.  Es una pista del disco.
+A.  Es una pista del disco.
 
-2.  Es un sector geométrico.
+B.  Es un sector geométrico.
 
-3.  Es un sector de una pista.
+C.  Es un sector de una pista.
 
-4.  Es un grupo de sectores.
+D.  Es un grupo de sectores.
 
 Si tenemos en cuenta las características que debemos tener en cuenta en un HDD, podemos destacar:
 
@@ -449,7 +451,7 @@ Debido a que los discos duros utilizan partes mecánicas hay que tener cuidado a
 :::
 
 
-#### SSD
+#### SSD {#discos_duros_ssd}
 
 Conocidos como *solid state drive*, hace uso de memorias [flash](https://es.wikipedia.org/wiki/Memoria_flash) para el almacenamiento de datos en lugar de platos, y debido a que no tiene componentes móviles, son menos propensos a daños por golpes.
 
@@ -493,7 +495,7 @@ Este tipo de dispositivos, al igual que el anterior, hacen uso de tecnología FL
 
 Las primeras unidades tenían un formato de tarjeta de expansión que se conectaba directamente a la ranura PCIexpress, mientras que hoy día existen los conectores M.2 para instalarlos.
 
-#### Comparativa HDD, SSD y NVMe
+#### Comparativa HDD, SSD y NVMe {#comparativa_hdd_sdd_nvme}
 
 En la siguiente tabla se puede comparar algunas características básicas de los distintos tipos de unidades de almacenamiento vistas.
 
@@ -583,7 +585,7 @@ Con las velocidades de lectura y escritura suelen indicar si es secuencial o ale
 
 También existen pruebas de rendimiento para sistemas de almacenamiento, por lo que es importante informarse bien antes de elegir uno.
 
-### Fuente de alimentación
+### Fuente de alimentación {#fuente_de_alimentacion}
 
 La fuente de alimentación en un ordenador es el componente que convierte la corriente alterna a varias corrientes continuas ya que el ordenador hace uso de diferentes voltajes.
 
@@ -619,7 +621,7 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 :::
 
 
-### GPU/Tarjeta gráfica
+### GPU/Tarjeta gráfica {#gpu_tarjeta_grafica}
 
 Hoy en día es habitual contar con una tarjeta gráfica en los ordenadores personales, cuando el desempeño de su función va a requerir realizar grandes procesamientos de gráficos como: juegos, edición de vídeo, edición fotográfica, uso de dibujo asistido por ordenador, ...
 
@@ -655,11 +657,11 @@ Las compañías que crean las tarjetas gráficas también han creado **SDK** (*S
 **Podemos usar el procesamiento de la tarjeta gráfica para ayudar a la ciencia usando proyectos como [Folding@Home](https://es.wikipedia.org/wiki/Folding@home) gracias a la [computación distribuida](https://es.wikipedia.org/wiki/Computaci\%C3\%B3n_distribuida)**
 :::
 
-### Conectores más importantes
+### Conectores más importantes {#conectores_mas_importantes}
 
 Aunque ya hemos visto de manera generalizada algunos tipos de conexiones que tiene la placa base, vamos a profundizar en este apartado separándolos por secciones.
 
-#### Conectores gráficos
+#### Conectores gráficos {#conectores_graficos}
 
 Al igual que el resto de componentes, los conectores para dispositivos gráficos (pantallas) han sufrido una evolución, y aunque alguno de ellos tiene muchos años, hoy día se sigue utilizando.
 
@@ -704,7 +706,7 @@ El conector **HDMI** hoy en día es un estándar muy utilizado, sobre todo en te
 ::::::::::::::
 
 
-#### Conectores de dispositivos de almacenamiento
+#### Conectores de dispositivos de almacenamiento {#conectores_dispositivos_almacenamiento}
 
 Para dispositivos de almacenamiento, como discos duros, CD-ROMs... ha habido varios tipos de conectores que es importante conocer.
 
@@ -743,7 +745,7 @@ Para dispositivos de almacenamiento, como discos duros, CD-ROMs... ha habido var
 
 
 
-#### USB
+#### USB {#usb}
 
 El USB (*Universal Serial Bus*) es un estándar que define los cables, conectores y protocolos que más se utiliza hoy en día para conectar ordenadores y una infinidad de tipos de dispositivos.
 
@@ -764,7 +766,7 @@ Estos conectores externos tienen un cable que se conectan a unos pines en la pla
 ![Conector USB-2 y USB-3 en placa base (pines)](img/si/usb_placa_base.png){width="35%"}
 
 
-#### Conexiones de red
+#### Conexiones de red {#conexiones_red}
 
 Para que nuestro ordenador se pueda conectar a una red, las placas base ya tienen incorporado al menos un conector para ello.
 
@@ -789,7 +791,7 @@ El conector **SMA** se utiliza en algunos tipos de antenas WiFi desmontables que
 
 
 
-#### Otros conectores
+#### Otros conectores {#otros_conectores}
 
 :::::::::::::: {.columns }
 ::: {.column width="15%"}
@@ -825,7 +827,7 @@ Desde que los ordenadores se hicieron populares en la década de los 80 hasta ah
 
 También ha habido otros muchos tipos de conectores que se han quedado en el ámbito más profesional ([transceiver SFP](https://es.wikipedia.org/wiki/Transceptor_SFP), conectores [SAS](https://es.wikipedia.org/wiki/Serial_Attached_SCSI) para discos duros, ...) por lo que es imposible abarcarlos a todos.
 
-#### Conector, protocolo y cables: errores frecuentes
+#### Conector, protocolo y cables: errores frecuentes {#conector_protocolo_cables}
 
 Hemos visto distintos conectores que durante años su forma física no ha variado, buscando ser retrocompatible con versiones anteriores, pero que la transmisión de velocidad sí se ha ido incrementando a lo largo de los años.
 
@@ -850,7 +852,7 @@ Por otro lado, **con los cables sucede lo mismo**. Debemos confirmar y asegurar 
 :::
 
 
-### Caja del ordenador
+### Caja del ordenador {#caja_ordenador}
 
 La caja del ordenador, o chasis, es la estructura metálica donde se introducen (de manera ordenada, y anclando mediante tornillos) los distintos componentes que hemos visto hasta ahora.
 
@@ -869,7 +871,7 @@ Los servidores cuentan con unas cajas de tamaño estandarizados en altura, denom
 ![Servidor Dell 1U de altura](img/si/servidor.jpg){width="75%"}
 
 
-## Arranque de un ordenador
+## Arranque de un ordenador {#arranque_ordenador}
 
 Una vez el hardware está instalado, es momento de entender cómo funciona el sistema de arranque de nuestro ordenador hasta llegar al Sistema Operativo.
 
@@ -898,3 +900,4 @@ Toda la secuencia de arranque se puede dividir en distintas etapas que vamos a v
 5.  Se ejecuta el gestor de arranque de la tabla de particiones marcada como arrancable.
 
 6.  El gestor de arranque prepara todo lo que necesita el Sistema Operativo para funcionar, lo carga y le transfiere la ejecución a él.
+

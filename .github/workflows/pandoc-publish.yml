@@ -14,6 +14,7 @@ on:
           - Git
           - Laravel
           - PFsense
+          - SI
           - SGE
           - Desarrollo_Interfaces
           - Gestion_backups
@@ -52,6 +53,7 @@ jobs:
           otros/git/git_book.pdf
           otros/laravel/laravel_book.pdf
           otros/PFsense/pfsense_book.pdf
+          DAM/1/sistemas_informaticos/si_book.pdf
           DAM/2/desarrollo_interfaces/desarrollo_interfaces_book.pdf
           DAM/2/sistemas_gestion_empresarial/sge_book.pdf
           anexos/gestion_backups/gestion_backups_anexo.pdf

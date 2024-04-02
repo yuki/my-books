@@ -18,6 +18,7 @@ cat ../../../temas_comunes/redes_componentes_basicos/redes_componentes_basicos.m
 echo [PfSense]{.part}
 cat ../../../otros/PFsense/pfsense.md
 echo [Docker]{.part}
+cat ../../../otros/Docker/contenedores.md
 cat ../../../otros/Docker/docker.md
 echo [Anexos]{.part}
 cat ../../../anexos/virtualbox_networking/virtualbox_networking.md
@@ -26,3 +27,6 @@ cat ../../../anexos/gestion_backups/rsync.md
 echo [Ejercicios]{.part}
 cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
 #cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
+## TODO:
+# meter virtualizacion
+# explicar en Virtualbox cosas para hacer snapshots y algo más

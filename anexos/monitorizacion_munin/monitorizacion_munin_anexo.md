@@ -1,9 +1,9 @@
 
-# Instalar sistema de monitorización Munin
+# Instalar sistema de monitorización Munin {#instalar_munin}
 
 A continuación se detalla cómo realizar la instalación y configuración básica de Munin como sistema de monitorización.
 
-## Introducción
+## Introducción {#munin_introduccion}
 
 [Munin](https://munin-monitoring.org/) es un sistema de monitorización que se instala en cada servidor que queramos monitorizar. Es un sistema de monitorización sencillo que automáticamente monitoriza el propio servidor. Munin puede utilizarse para:
 
@@ -23,7 +23,7 @@ Munin posee un sistema básico de monitorización centralizada, pero dista mucho
 
 La ventaja que se obtiene al utilizar Munin es que es una instalación muy sencilla, tal como veremos a continuación, y que por tanto, para infraestructuras pequeñas puede ser útil.
 
-## Instalación
+## Instalación {#munin_instalacion}
 
 Para que Munin funcione se va a necesitar instalar el propio Munin y [Apache](https://httpd.apache.org/) como servidor web para mostrar la web en la que se visualizan los datos obtenidos de la monitorización.
 
@@ -38,7 +38,7 @@ root@vega:~# apt install munin apache2
 
 Tras la ejecución de este comando, ya se habrá instalado los servicios necesarios para que Munin funcione y el servidor web Apache.
 
-### Configuración de Apache
+### Configuración de Apache {#munin_configuracion_apache}
 
 La configuración para que Munin se pueda ver a través del servidor web Apache se encuentra en el fichero de configuración [/etc/munin/apache24.conf]{.configfile}. Normalmente esta configuración ya está aplicada en el Apache tras realizar la instalación, y se puede ver que existe un enlace simbólico, que si seguimos desde [/etc/apache2/conf-enabled/munin.conf]{.configfile} nos llevará al fichero mencionado previamente.
 
@@ -72,7 +72,7 @@ Tras la instalación, Munin por defecto tiene una configuración sencilla que ha
 
 -   **plugins**: directorio con los plugins activados que se van a utilizar durante la monitorización. En este directorio están los enlaces simbólicos de los plugins que van a ser utilizados durante la monitorización del servidor. Los plugins están en [/usr/share/munin/plugins/]{.configdir}. Normalmente suelen ser scripts en los lenguajes Perl, Python o Shell.
 
-## CRON
+## CRON {#munin_cron}
 
 La monitorización del servidor se realiza a través de un proceso CRON que instala Munin y que por defecto se hace cada 5 minutos. El fichero CRON está situado en [/etc/cron.d/munin]{.configfile}, y cuenta con 4 procesos automáticos que se ejecutan en el servidor:
 

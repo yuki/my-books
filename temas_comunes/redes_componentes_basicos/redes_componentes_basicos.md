@@ -189,7 +189,7 @@ Lo más habitual es que el servidor DHCP esté configurado en los routers (tal c
 
 Dependiendo del equipo en el que estemos realizando la configuración del servidor DHCP, el interfaz a configurar podrá ser distinto.
 
-# Swith {#switch}
+## Swith {#switch}
 
 Un *switch* (o conmutador) es el dispositivo digital que interconecta equipos que están en la misma red, y actúa en la **capa 2 del modeo OSI**. También permiten conectar distintos segmentos de la misma red, uniendo distintos switches entre sí.
 

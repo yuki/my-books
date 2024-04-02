@@ -76,7 +76,7 @@ Si contamos el número de unos que tenemos en el lado izquierdo de la máscara d
 
 -   **IP binario**:`\hspace{25pt}`{=latex} `11000000 10101000 00000001 01100100`
 
--   **Máscara de red**: `11111111 11111111 11111111 00000000`
+-   **Máscara de red**: `11111111 11111111 00000000 00000000`
 
 Con esto obtenemos:
 
