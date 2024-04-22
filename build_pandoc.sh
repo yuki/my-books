@@ -6,6 +6,7 @@ LIBROS=(
     "otros/aws/ aws_book"
     "otros/Docker/ docker_book"
     "otros/git/ git_book"
+    "otros/hacer_documentacion/ como_hacer_documentacion_book"
     "otros/laravel/ laravel_book"
     "otros/PFsense/ pfsense_book"
     "DAM/1/sistemas_informaticos/ si_book"

@@ -10,6 +10,7 @@ on:
         options:
           - ALL
           - AWS
+          - Como_hacer_documentacion
           - Docker
           - Git
           - Laravel
@@ -51,6 +52,7 @@ jobs:
           otros/aws/aws_book.pdf
           otros/Docker/docker_book.pdf
           otros/git/git_book.pdf
+          otros/hacer_documentacion/como_hacer_documentacion_book.pdf
           otros/laravel/laravel_book.pdf
           otros/PFsense/pfsense_book.pdf
           DAM/1/sistemas_informaticos/si_book.pdf
