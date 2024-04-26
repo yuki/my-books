@@ -26,7 +26,7 @@ cat ../../../anexos/gestion_backups/gestion_backups.md
 cat ../../../anexos/gestion_backups/rsync.md
 echo [Ejercicios]{.part}
 cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
-#cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
+cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
 ## TODO:
 # meter virtualizacion
 # explicar en Virtualbox cosas para hacer snapshots y algo más

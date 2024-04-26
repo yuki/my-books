@@ -61,64 +61,8 @@ El modelo OSI está compuesto por siete capas numeradas del 1 al 7 siendo la 1 l
 
 Dentro de cada una de las capas a las unidades de datos se les llama de manera distinta, por lo que es conveniente referirse de manera correcta a ellas. Más adelante también aprenderemos que existen distintos componentes *hardware* que actúan en algunas de las capas.
 
-```{=html}
-<table class="table table-striped table-hover table-bordered ">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Capa</th>
-<th>Nombre de la unidad de datos</th>
-<th>Función</th>
-</tr>
-</thead>
-<tbody class="table-group-divider">
-<tr class="odd">
-<td>7ª - Aplicación</td>
-<td>Datos</td>
-<td>APIs de alto nivel, como compartir recursos y acceso remoto a archivos.</td>
-</tr>
-<tr class="even">
-<td>6ª - Presentación</td>
-<td>Datos</td>
-<td>Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.</td>
-</tr>
-<tr class="odd">
-<td>5ª - Sesión</td>
-<td>Datos</td>
-<td>Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos.</td>
-</tr>
-<tr class="even">
-<td>4ª - Transporte</td>
-<td>Segmento, Datagrama</td>
-<td>Transmisión de segmentos de datos confiable entre puntos de red, incluyendo la segmentación, el acknowledgement y la multiplexación. Aquí actúan los protocolos <strong>TCP</strong> y <strong>UDP</strong>, junto con los <strong>puertos</strong>.</td>
-</tr>
-<tr class="odd">
-<td>3ª - Red</td>
-<td>Paquete</td>
-<td>Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico. Aquí actúan los <strong>routers</strong>.</td>
-</tr>
-<tr class="even">
-<td>2ª - Enlace de datos</td>
-<td>Trama</td>
-<td>Transmisión de datos confiable entre dos nodos conectados mediante una capa física. Aquí actúan los <strong>switches</strong>.</td>
-</tr>
-<tr class="odd">
-<td>1ª - Física</td>
-<td>Bit, Baudios</td>
-<td>Transmisión y recepción de flujos de bits sin procesar por un medio físico.</td>
-</tr>
-</tbody>
-</table>
-
-```
-<!-- FIXME: arreglar tablas 
-
 | Capa | Nombre de la unidad de datos | Función |
-|--------------|-----------|------------|
+|:-----:|:--------:|:------------|
 | 7ª - Aplicación | Datos |  APIs de alto nivel, como compartir recursos y acceso remoto a archivos. |
 | 6ª - Presentación | Datos | Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.|
 | 5ª - Sesión | Datos | Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos. |
@@ -127,42 +71,7 @@ Dentro de cada una de las capas a las unidades de datos se les llama de manera d
 | 2ª - Enlace de datos | Trama | Transmisión de datos confiable entre dos nodos conectados mediante una capa física. Aquí actúan los **switches**.|
 | 1ª - Física | Bit, Baudios | Transmisión y recepción de flujos de bits sin procesar por un medio físico.|
 
-
- -->
-
-```{=latex}
-\begin{yukitblr}{X X X[3,l]}
-    Capa & Nombre de la unidad de datos & Función \\
-
-    7ª - Aplicación & Datos
-    & APIs de alto nivel, como compartir recursos y acceso remoto a archivos. \\
-
-    6ª - Presentación & Datos
-    & Traducción de datos entre un servicio de red y una aplicación, que incluye la codificación de caracteres, la compresión de datos y el cifrado y descifrado de datos.
-    \\
-
-    5ª - Sesión & Datos
-    & Manejo de sesiones de comunicación, por ejemplo el continuo intercambio de información en forma de múltiples transmisiones hacia ambos lados entre dos nodos.
-    \\
-
-    4ª - Transporte & Segmento, Datagrama
-    & Transmisión de segmentos de datos confiable entre puntos de red, incluyendo la segmentación, el acknowledgement y la multiplexación. Aquí actúan los protocolos \textbf{TCP} y \textbf{UDP}, junto con los \textbf{puertos}.
-    \\
-
-    3ª - Red & Paquete
-    & Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico. Aquí actúan los \textbf{routers}.
-    \\
-
-    2ª - Enlace de datos & Trama
-    & Transmisión de datos confiable entre dos nodos conectados mediante una capa física. Aquí actúan los \textbf{switches}.
-    \\
-
-    1ª - Física & Bit, Baudios
-    & Transmisión y recepción de flujos de bits sin procesar por un medio físico.
-    \\
-\end{yukitblr}
-```
-
+Table: {tablename=yukitblr colspec=XXX[3,l]}
 
 
 ## Pila de protocolos TCP/IP {#pila-protocolos-tcp-ip}
@@ -175,81 +84,16 @@ Tal como se puede ver, la pila de protocolos TCP/IP es funcional, al contrario q
 
 La pila TCP/IP cuenta con cuatro capas:
 
-<!-- FIXME: arreglar tablas
 | Capa | Protocolos conocidos | Función |
-|--------------|-----------|------------|
+|:----:|:-----------:|:------------|
 | 4ª - Aplicación | HTTP, FTP, POP, SMTP, ...  | Es la capa más cercana al usuario, utilizada por las aplicaciones a la hora de enviar datos. |
 | 3ª - Transporte | TCP, UDP | Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico. |
 | 2ª - Internet | IPv4, IPv6 | Transmisión de datos confiable entre dos nodos conectados mediante una capa física.|
 | 1ª - Acceso al medio | Ethernet, IEEE 802, 802.11 (wifi) | Es una mezcla de las capas 1 y 2 del modelo OSI.|
 
--->
-
-```{=html}
-<table class="table table-striped table-hover table-bordered ">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Capa</th>
-<th>Protocolos conocidos</th>
-<th>Función</th>
-</tr>
-</thead>
-<tbody class="table-group-divider">
-<tr class="odd">
-<td>4ª - Aplicación</td>
-<td>HTTP, FTP, POP, SMTP, …</td>
-<td>Es la capa más cercana al usuario, utilizada por las aplicaciones a la hora de enviar datos.</td>
-</tr>
-<tr class="even">
-<td>3ª - Transporte</td>
-<td>TCP, UDP</td>
-<td>Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico.</td>
-</tr>
-<tr class="odd">
-<td>2ª - Internet</td>
-<td>IPv4, IPv6</td>
-<td>Transmisión de datos confiable entre dos nodos conectados mediante una capa física.</td>
-</tr>
-<tr class="even">
-<td>1ª - Acceso al medio</td>
-<td>Ethernet, IEEE 802, 802.11 (wifi)</td>
-<td>Es una mezcla de las capas 1 y 2 del modelo OSI.</td>
-</tr>
-</tbody>
-</table>
-```
+Table: {tablename=yukitblr colspec=XXX[3,l]}
 
 
-```{=latex}
-\begin{yukitblr}{X X X[3,l]}
-    Capa & Protocolos conocidos & Función \\
-
-    4ª - Aplicación
-    & HTTP, FTP, POP, SMTP, ...
-    & Es la capa más cercana al usuario, utilizada por las aplicaciones a la hora de enviar datos
-    \\
-
-    3ª - Transporte
-    & TCP, UDP
-    & Estructura y manejo de una red multinodo. Incluye el direccionamiento, el ruteo y el control de tráfico.
-    \\
-
-    2ª - Internet
-    & IPv4, IPv6
-    & Transmisión de datos confiable entre dos nodos conectados mediante una capa física.
-    \\
-
-    1ª - Acceso al medio
-    & Ethernet, IEEE 802, 802.11 (wifi)
-    & Es una mezcla de las capas 1 y 2 del modelo OSI.
-    \\
-\end{yukitblr}
-```
 ### Protocolo TCP {#protocolo-tcp}
 
 El objetivo del protocolo TCP es crear conexiones dentro de una red de datos compuesta por redes de ordenadores para intercambiar datos. La ventaja es que el protocolo busca garantizar que los datos son entregados a su destino sin errores y en el mismo orden en el que se transmitieron.

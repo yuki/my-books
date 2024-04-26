@@ -138,7 +138,8 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 A continuación un diagrama simplificado de una placa base. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Placa_base).
 
 
-![](img/si/placa_base_chipset.png){width="75%"}
+![](img/si/placa_base_chipset.png){width="55%"}
+
 
 #### Ejemplo de placa base {#ejemplo_de_placa_base}
 
@@ -467,6 +468,8 @@ Debido a la mejora en la tecnología de guardado de datos, y por no poseer parte
 :::
 ::::::::::::::
 
+`\vspace{-12pt}`{=latex}
+
 ::: center
 [Izquierda: Interior de SSD de 2,5". Derecha: SSD conector m.2]{.footnotesize}
 :::
@@ -481,13 +484,15 @@ Este tipo de dispositivos, al igual que el anterior, hacen uso de tecnología FL
 
 
 :::::::::::::: {.columns }
-::: {.column width="50%"}
+::: {.column width="47%"}
 ![](img/si/nvme1.jpg){width="100%"}
 :::
 ::: {.column width="35%" }
 ![](img/si/nvme2.jpg){width="100%"}
 :::
 ::::::::::::::
+
+`\vspace{-12pt}`{=latex}
 
 ::: center
 [Izquierda: NVMe en formato tarjeta PCIe. Derecha: NVMe con conector m.2]{.footnotesize}
@@ -499,82 +504,16 @@ Las primeras unidades tenían un formato de tarjeta de expansión que se conecta
 
 En la siguiente tabla se puede comparar algunas características básicas de los distintos tipos de unidades de almacenamiento vistas.
 
+<!-- FIXME: estaría bien poner al lado de los NVMe un `\linebreak`{=latex} para el PDF -->
 
-```<table class="table table-striped table-hover table-bordered ">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">HDD</th>
-<th style="text-align: center;">SSD</th>
-<th style="text-align: center;">SSD (M.2)</th>
-<th style="text-align: center;">NVMe</th>
-<th style="text-align: center;">NVMe</th>
-</tr>
-</thead>
-<tbody class="table-group-divider">
-<tr class="odd">
-<td style="text-align: center;">Conector</td>
-<td style="text-align: center;">SATA</td>
-<td style="text-align: center;">SATA</td>
-<td style="text-align: center;">M.2</td>
-<td style="text-align: center;">M.2</td>
-<td style="text-align: center;">M.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Velocidad Lectura</td>
-<td style="text-align: center;">150MB/s</td>
-<td style="text-align: center;">560 MB/s</td>
-<td style="text-align: center;">560 MB/s</td>
-<td style="text-align: center;">3500 MB/s</td>
-<td style="text-align: center;">7000 MB/s</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Velocidad Escritura</td>
-<td style="text-align: center;">120MB/s</td>
-<td style="text-align: center;">510 MB/s</td>
-<td style="text-align: center;">520 MB/s</td>
-<td style="text-align: center;">3000 MB/s</td>
-<td style="text-align: center;">5300 MB/s</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Precio por TB</td>
-<td style="text-align: center;">Bajo</td>
-<td style="text-align: center;">Medio</td>
-<td style="text-align: center;">Medio</td>
-<td style="text-align: center;">Alto</td>
-<td style="text-align: center;">Alto</td>
-</tr>
-</tbody>
-</table>```{=html} 
-
-
-<!-- FIXME: hay que corregir que las tablas estén unificadas 
-
-|                     | HDD      | SSD      | SSD (M.2)| NVMe      | NVMe       |
+|                     | HDD      | SSD      | SSD (M.2)| NVMe (PCIe 3.0) | NVMe (PCIe 4.0) |
 |:-------------------:|:--------:|:--------:|:--------:|:---------:|:----------:|
 | Conector            | SATA     | SATA     | M.2      | M.2       | M.2        |
 | Velocidad Lectura   | 150MB\/s | 560 MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s  |
 | Velocidad Escritura | 120MB\/s | 510 MB\/s | 520 MB\/s | 3000 MB\/s | 5300 MB\/s  |
-| Precio por TB       | Bajo     | Medio    | Medio    | Alto      | Alto       |     
--->
+| Precio por TB       | Bajo     | Medio    | Medio    | Alto      | Alto       |
 
-```{=latex}
-\begin{yukitblrcol}{XXXXXX}
-& HDD & SSD & SSD (M.2)  & NVMe \linebreak (PCIe 3.0) & NVMe \linebreak (PCIe 4.0)\\
-Conector & SATA & SATA & M.2 & M.2  & M.2\\
-Velocidad Lectura & 150MB/s & 560 MB/s & 560 MB/s & 3500 MB/s & 7000 MB/s\\
-Velocidad Escritura & 120MB/s & 510 MB/s  & 520 MB/s &  3000 MB/s & 5300 MB/s\\
-Precio por TB & Bajo & Medio & Medio &  Alto & Alto\\
-\end{yukitblrcol}
-```
+Table: {tablename=yukitblrcol colspec=XXXXXX}
 
 
 Hay que tener en cuenta que las velocidades dependen de la tecnología de la unidad y también de la conexión utilizada. Son velocidades aproximadas, y por tanto habría que ver las especificaciones técnicas de cada dispositivo antes de comprarlo.

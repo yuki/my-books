@@ -35,25 +35,18 @@ A la hora de crear la tabla de particiones de un disco duro podemos elegir entre
 
 -   **GPT**: De *GUID Partition Table*, propuesta por la especificación EFI, más moderna que la anterior.
 
-En la siguiente tabla se pueden identificar algunas de las diferencias más destacadas entre ambos sistemas:
+En la siguiente tabla se pueden identificar algunas de las diferencias más destacadas entre ambos sistemas, y tal como se puede ver, las ventajas que se incorporan en GPT hacen que el sistema sea más robusto:
 
+|    | MBR | GPT |
+|:--:|:--:|:--:|
+| Tamaño máximo de partición | 2 TB | 18 Exabytes |
+| Nº de particiones primarias | 4 | Ilimitado (Windows reconoce 128) |
+| Tabla de particiones| Al inicio | Al inicio y al final (backup) |
+| ID de la partición | Se almacena en la partición | Identificador único de GUID|
+| Soporte de arranque múltiple | Débil | Las entradas del gestor de arranque están en una partición separada  |
 
-![](img/temas_comunes/particionado_sistemas_ficheros_raid/tabla_gpt_mbr.png){width="100%"}
+Table: {tablename=yukitblrcol colspec=XXX}
 
-
-```{=latex}
-% FIXME: corregir tablas
-%\begin{yukitblrcol}{XXX}
-%    & MBR & GPT\\
-%    Tamaño máximo de partición & 2 TB & 18 Exabytes \\
-%    Nº de particiones primarias & 4 & Ilimitado
-%
-%    (Windows reconoce 128)\\
-%    Tabla de particiones& Al inicio & Al inicio y al final (backup) \\
-%    ID de la partición & Se almacena en la partición & Identificador único de GUID\\
-%    Soporte de arranque múltiple & Débil & Las entradas del gestor de arranque están en una partición separada  \\
-%\end{yukitblrcol}
-```
 
 Para comprobar cuál es el sistema de particiones de nuestro disco duro lo podemos hacer desde:
 
@@ -217,20 +210,16 @@ Existen [muchos sistemas de ficheros](https://en.wikipedia.org/wiki/List_of_file
 
 A continuación se expone una tabla con los sistemas de ficheros predeterminados de distintos Sistemas Operativos y los sistemas de fichero que pueden leer por defecto:
 
-![](img/temas_comunes/particionado_sistemas_ficheros_raid/tabla_sistemas_operativos.png){width="100%"}
+| Sistema Operativo | Sistema de Ficheros | También puede leer |
+| :----: | :----: | :----: |
+| **DOS, Windows 95** |    |    |
+| **Windows 95 OSR2, Windows 98** | FAT16, FAT32 |  |
+|  **Windows NT, 2000, XP,...   Windows 10, Windows 11**  | NTFS (varias versiones)  |  FAT16, FAT32 |
+| **Windows Server > 2012, Windows 11**  | NTFS, ReFS  | FAT16, FAT32, NTFS |
+| **GNU/Linux** | Ext4, ReiserFS | La gran mayoría |
+| **MacOS** | HFS+, APFS | FAT16, FAT32 |
 
-```{=latex}
-% FIXME: tabla
-%\begin{yukitblr}{X X X}
-%    Sistema Operativo & Sistema de Ficheros & Puede leer \\
-%    \textbf{DOS, Windows 95} &  &  \\
-%    \textbf{Windows 95 OSR2\linebreak Windows 98} & FAT16, FAT32 &  \\
-%    \textbf{ Windows NT, 2000, XP,...  \linebreak Windows 10, Windows 11 } & NTFS (varias versiones)  &   \\
-%    \textbf{Windows Server > 2012, Windows 11 } & NTFS, ReFS  & FAT16, FAT32, NTFS \\
-%    \textbf{GNU/LInux} & Ext4, ReiserFS & La gran mayoría \\
-%    \textbf{MacOS} & HFS+, APFS & FAT16, FAT32 \\
-%\end{yukitblr}
-```
+Table: {tablename=yukitblr colspec=XXX}
 
 
 Existen programas y drivers para permitir que los sistemas operativos puedan leer otros sistemas de ficheros que no pueden en origen. **A veces pueden tener limitaciones (en la escritura, permisos, \...)**.
@@ -238,20 +227,18 @@ Existen programas y drivers para permitir que los sistemas operativos puedan lee
 En la [Wikipedia](https://en.wikipedia.org/wiki/Comparison_of_file_systems) existe un listado con distintas características de un gran listado de sistemas de ficheros. A continuación parte de esa información:
 
 
-![](img/temas_comunes/particionado_sistemas_ficheros_raid/tabla_caracteristicas_ficheros.png){width="100%"}
+|   | FAT 32 | NTFS | ReFS | EXT-4 | APFS |
+|:--|:--:|:--:|:--:|:--:|:--:|
+| Nombre de fichero max. | 8.3 (255) | 255 | 255 | 255 | 255 |
+| Volumen max. | 16TB | 16TB | 1YB | 1 EB | ? |
+| Tamaño max. fichero | 4GB | 16TB | 16EB | 16TB | 8 EB |
+| Permisos | No | Si | Si | Si | Si|
+| Compresión | No | Si | No | No | Si|
+| Cifrado | No | Si | No/Si | Si | Si|
 
-```{=latex}
-% FIXME: tabla
-%\begin{yukitblrcol}{X[2]XXXXX}
-%    & FAT 32 & NTFS & ReFS & EXT-4 & APFS \\
-%    Nombre de fichero max. & 8.3 (255) & 255 & 255 & 255 & 255 \\
-%    Volumen max. & 16TB & 16TB & 1YB & 1 EB & ? \\
-%    Tamaño max. fichero & 4GB & 16TB & 16EB & 16TB & 8 EB \\
-%    Permisos & No & Si & Si & Si & Si\\
-%    Compresión & No & Si & No & No & Si\\
-%    Cifrado & No & Si & No/Si & Si & Si\\
-%\end{yukitblrcol}
-```
+Table: {tablename=yukitblrcol colspec=X[2]XXXXX}
+
+
 Debido a que los sistemas de ficheros van adquiriendo características nuevas, es posible que algunas no estuviesen en las primeras versiones y fueran añadidas a *posteriori*.
 
 ## Jerarquía de directorios {#jerarquía-de-directorios}

@@ -1,3 +1,5 @@
+
+
 # Unidades de Información digital {#unidades-de-información-digital}
 
 A la hora de almacenar información digital es importante conocer el tamaño del objeto que queremos almacenar y el espacio libre del lugar en el que lo queremos guardar.
@@ -34,13 +36,15 @@ A continuación se expone una tabla de las medidas más utilizadas:
 |:------------:|:-------:|:---------:|
 |  **Bit**     | **b**   | $2^0=1$   |
 | Nibble       |         | 4b  |
-| **Byte**byte | **B**   | 8b  |
-| **Kibi**byte | **KiB** | $2^{10}=1024 B$ |
-| **Mebi**byte | **MiB** | $2^{20}=1024 KiB$ |
-| **Gibi**byte | **GiB** | $2^{30}=1024 MiB$ |
-| **Tebi**byte | **TiB** | $2^{40}=1024 GiB$ |
-| **Pebi**byte | **PiB** | $2^{50}=1024 TiB$ |
-| **Exbi**byte | **EiB** | $2^{60}=1024 PiB$ |
+| **Byte**     | **B**   | 8b  |
+| **Kibi**byte | **KiB** | $2^{10}=1024$ B |
+| **Mebi**byte | **MiB** | $2^{20}=1024$ KiB |
+| **Gibi**byte | **GiB** | $2^{30}=1024$ MiB |
+| **Tebi**byte | **TiB** | $2^{40}=1024$ GiB |
+| **Pebi**byte | **PiB** | $2^{50}=1024$ TiB |
+| **Exbi**byte | **EiB** | $2^{60}=1024$ PiB |
+
+Table: {tablename=yukitblr}
 
 
 Aunque esta es la manera correcta de nombrar las unidades cuando hablamos en términos informáticos, lo habitual es que se haga uso de los prefijos del sistema decimal.

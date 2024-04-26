@@ -35,7 +35,7 @@ Hay que entender los sistemas de numeración y de esta manera se puede crear.
 | $31_{(10}$  | $11111_{(2}$  | $37_{(8}$   | $1F_{(16}$  |
 | $32_{(10}$  | $100000_{(2}$  | $40_{(8}$   | $20_{(16}$  |
 
-
+Table: {tablename=yukitblr}
 
 
 ```{=latex}
