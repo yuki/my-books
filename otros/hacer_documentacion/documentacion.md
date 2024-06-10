@@ -145,13 +145,15 @@ A continuación se visualiza la misma imagen con y sin borde:
 
 
 :::::::::::::: {.columns }
-::: {.column width="43%"}
+::: {.column width="47%"}
 ![](img/documentacion/captura.png){width="100%"}
 :::
-::: {.column width="43%" }
+::: {.column width="47%" }
 ![](img/documentacion/captura.png){width="100%" framed=true}
 :::
 ::::::::::::::
+
+`\vspace{10pt}`{=latex}
 
 Como se puede apreciar, la imagen que no tiene borde hace un efecto de "recorte brusco", mientras que con el borde se ve claramente que es una sección recortada.
 
@@ -163,9 +165,6 @@ Como se puede apreciar, la imagen que no tiene borde hace un efecto de "recorte 
 
 En todo documento pueden (y deben) existir referencias a otra documentación, o texto copiado y/o adquirido de varias fuentes, y en caso de ser así debe de ser referenciado.
 
-```{=latex}
-\vspace{-10pt}
-```
 > "Las referencias a otras obras son una parte muy importante en la literatura de muchas profesiones; cada una de ellas ha diseñado su propia manera de incluir esta información en el texto, y estas han dado lugar a formatos estandarizados de cita." (Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Wikipedia:Referencias))
 
 Tal como se puede ver en el párrafo anterior, el texto está entrecomillado, con una sangría superior y al final del mismo aparece la fuente de la información original y un enlace a la web de referencia. Existen distintas maneras de referenciar textos o citas de otros documentos, pero no entraremos en detalle sobre ello.

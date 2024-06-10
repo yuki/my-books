@@ -220,7 +220,7 @@ Tal como se puede ver, es una clase con una función en Java simulando el típic
 **Para resolver el conflicto deberemos borrar esas líneas especiales, quedarnos con las partes del código que nos interesen y realizar un nuevo commit**. Es por eso que para la resolución de los conflictos quizá tengan que participar los desarrolladores que han realizado los cambios que han creado el conflicto.
 
 ::: infobox
-** Para resolver el conflicto deberemos borrar esas líneas especiales, quedarnos con las partes del código que nos interesen y realizar un nuevo commit**
+**Para resolver el conflicto deberemos borrar esas líneas especiales, quedarnos con las partes del código que nos interesen y realizar un nuevo commit**
 :::
 
 :::center

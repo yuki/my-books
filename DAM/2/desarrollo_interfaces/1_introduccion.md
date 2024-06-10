@@ -33,7 +33,7 @@ Las CLI pueden emplearse interactivamente, escribiendo instrucciones en alguna e
 
 Esta interfaz existe casi desde los comienzos de la computación, superada en antigüedad solo por las tarjetas perforadas y mecanismos similares. Los ordenadores tenían conectadas "terminales tontas" que permitían enviar comandos al ordenador.
 
-![Terminal VT100. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/VT100)](img/di/tema_1/RT-11_help.jpg){width="45%" framed=true}
+![Terminal VT100. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/VT100)](img/di/tema_1/RT-11_help.jpg){width="40%" framed=true}
 
 Hoy en día la línea de comandos se utiliza a través de programas denominados "emulador de terminales" que ejecutan un intérprete de comandos (llamado "shell"). Estos intérpretes, dependiendo del sistema operativo se pueden elegir, por ejemplo:
 
@@ -77,7 +77,7 @@ El proyecto de Aumento del Intelecto Humano de Doug Engelbart en el Stanford Res
 Mucha de la investigación inicial estuvo basada en como los niños pequeños aprenden. Por lo que el diseño se basó en las primitivas infantiles de coordinación mano-ojo, en lugar de usar lenguajes de comandos.
 
 
-![El primer prototipo de un ratón. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Archivo:SRI_Computer_Mouse.jpg)](img/di/tema_1/mouse.jpg){width="60%" framed=true}
+![El primer prototipo de un ratón. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Archivo:SRI_Computer_Mouse.jpg)](img/di/tema_1/mouse.jpg){width="50%" framed=true}
 
 
 El GUI fue inicialmente desarrollado en [Xerox PARC](https://es.wikipedia.org/wiki/PARC) (*Palo Alto Research Center*) por Alan Kay, Larry Tesler, Dan Ingalls y algunos investigadores más. Usaba ventanas, iconos y menús, incluyendo el primer menú desplegable fijo, para dar soporte a comandos como abrir ficheros, borrar y mover ficheros, etc.
@@ -110,7 +110,7 @@ Con la llegada de la década de 1990, en la que los ordenadores personales (PC, 
 El "boom" comenzó con el Windows 3.11, pero sobre todo con Windows 95, que consiguió ocultar el núcleo del sistema operativo subyacente (MS-DOS) para mostrar directamente el interfaz gráfico desde el inicio.
 
 
-![El interfaz gráfico de Windows 95 en el primer arranque. Fuente: [GUI Gallery](https://guidebookgallery.org/screenshots/win95)](img/di/tema_1/win95.png){width="70%" framed=true}
+![El interfaz gráfico de Windows 95 en el primer arranque. Fuente: [GUI Gallery](https://guidebookgallery.org/screenshots/win95)](img/di/tema_1/win95.png){width="67%" framed=true}
 
 
 Apple compra a NeXT (empresa fundada por Steve Jobs) y utiliza su sistema operativo como los cimientos de Mac OS 8. Posteriormente cambiarían la arquitectura del sistema operativo para ser de estilo UNIX y así presentar Mac OS X en 2001.
@@ -345,7 +345,7 @@ En el caso de las Apple Vision Pro prometen una experiencia de realidad aumentad
 
 
 
-![Apple Vision Pro](img/di/tema_1/apple_vision.jpg){width="60%"}
+![Apple Vision Pro](img/di/tema_1/apple_vision.jpg){width="70%"}
 
 
 # Curiosidades, prototipos y ciencia ficción {#curiosidades-prototipos-y-ciencia-ficción}

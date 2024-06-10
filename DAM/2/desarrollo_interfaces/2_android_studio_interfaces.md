@@ -35,11 +35,17 @@ A la hora de interactuar con las vistas tendremos tres opciones:
 
 ## Componentes en el interfaz {#componentes-en-el-interfaz}
 
+:::::::::::::: {.columns }
+::: {.column width="60%"}
 A la hora de crear nuestro interfaz Android Studio tiene una serie de componentes que podremos utilizarlos diréctamente arrastrando los componentes al interfaz.
 
 Debe quedar claro que cada uno de ellos contará con sus características propias, por lo que es importante hacer uso de la [documentación oficial](https://developer.android.com/reference/android/widget/EditText) a la hora de utilizar cada uno de ellos.
+:::
+::: {.column width="30%" }
+![](img/di/tema_2/componentes.png){width="100%"}
+:::
+::::::::::::::
 
-![](img/di/tema_2/componentes.png){width="30%"}
 
 
 ## Layouts y constraints {#layouts-y-constraints}
@@ -47,9 +53,8 @@ Debe quedar claro que cada uno de ellos contará con sus características propia
 Con la vista inicial, si seleccionamos el texto "Hello World!" veremos que tiene una configuración en el apartado ***Layout*** como el siguiente:
 
 
-![](img/di/tema_2/constraints.png){width="30%"}
-
-
+:::::::::::::: {.columns }
+::: {.column width="60%"}
 Se pueden identificar 4 *constraints* que hacen referencia a los distintos puntos del componente:
 
 -   ***Start***: Lado izquierdo del componente.
@@ -59,6 +64,12 @@ Se pueden identificar 4 *constraints* que hacen referencia a los distintos punto
 -   ***Top***: Parte superior del componente.
 
 -   ***Bottom***: Parte inferior del componente.
+:::
+::: {.column width="30%" }
+![](img/di/tema_2/constraints.png){width="100%"}
+:::
+::::::::::::::
+
 
 De esta manera, cada parte del componente tendrá un *constraint* que estará asociado, en este caso, a una parte del *layout* padre que lo contiene. Si miramos el código fuente del fichero XML, se puede apreciar cómo cada uno de estos aparece escrito:
 
@@ -89,11 +100,17 @@ Es por eso, que para cada componente que queramos añadir a la vista deberá ten
 
 Los componentes pueden estar asociados a otros componentes, pero no tienen por qué estar asociados entre ellos. Por ejemplo, la siguiente vista tiene a nivel horizontal podemos apreciar lo siguiente:
 
+:::::::::::::: {.columns }
+::: {.column width="60%"}
 -   El texto "Hello World" está asociado a ambos lados del layout que lo contiene, y por eso aparece centrado.
 
 -   El componente con texto "Hello3" es más ancho que el texto que lo contiene (atributo ***layout_width***). En el lado izquierdo está asociado al otro componente mientras que en el lado derecho a la vista, haciendo que quede horizontalmente entre ambos.
+:::
+::: {.column width="30%" }
+![](img/di/tema_2/ejemplo_constraints.png){width="100%"}
+:::
+::::::::::::::
 
-![](img/di/tema_2/ejemplo_constraints.png){width="30%" framed=true}
 
 
 ### Cadenas {#cadenas}
@@ -132,11 +149,17 @@ Por ejemplo, la calculadora de iOS a la hora de rotar el dispositivo, la calcula
 
 
 :::::::::::::: {.columns }
+::: {.column width="10%"}
+:::
 ::: {.column width="20%"}
 ![](img/di/tema_2/calculadora_ios.png){width="100%"}
 :::
+::: {.column width="10%"}
+:::
 ::: {.column width="40%" }
 ![](img/di/tema_2/calculadora_ios_landscape.png){width="100%"}
+:::
+::: {.column width="10%"}
 :::
 ::::::::::::::
 
@@ -239,6 +262,8 @@ Es importante conocer qué sucede al rotar el dispositivo, y qué sucede con la 
 
 Existen distintas funciones dentro del ciclo de vida de un ***Activity***, que serán llamadas por el sistema cada vez que se entre en cada uno de estos estados:
 
+:::::::::::::: {.columns }
+::: {.column width="25%"}
 -   onCreate()
 
 -   onStart()
@@ -250,11 +275,14 @@ Existen distintas funciones dentro del ciclo de vida de un ***Activity***, que s
 -   onStop()
 
 -   onDestroy()
+:::
+::: {.column width="70%" }
+![Esquema del "*Activity-lifecycle*". Fuente: [Documentación oficial](https://developer.android.com/guide/components/activities/activity-lifecycle)](img/di/tema_2/activity_lifecycle.png){width="100%"}
+:::
+::::::::::::::
 
-En el siguiente esquema (y en la web oficial de la [documentación](https://developer.android.com/guide/components/activities/activity-lifecycle#alc)) se puede apreciar los estados y sus transiciones:
+En el esquema (y en la web oficial de la [documentación](https://developer.android.com/guide/components/activities/activity-lifecycle#alc)) se puede apreciar los estados y sus transiciones:
 
-
-![Esquema del "*Activity-lifecycle*". Fuente: [Documentación oficial](https://developer.android.com/guide/components/activities/activity-lifecycle)](img/di/tema_2/activity_lifecycle.png){width="80%"}
 
 
 ::: exercisebox

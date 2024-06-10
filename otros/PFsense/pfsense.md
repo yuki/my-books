@@ -353,10 +353,10 @@ Para el ejemplo se va a bloquear todo el tráfico desde la LAN, al servidor 1.1.
 
 
 :::::::::::::: {.columns }
-::: {.column width="78%"}
+::: {.column width="75%"}
 Una vez creada la regla aparecerá un botón para aplicar los cambios, por lo que hasta que no sea pulsado ese botón, las nuevas reglas que se hayan creado no tendrán efecto y por tanto no entrarán en funcionamiento.
 :::
-::: {.column width="20%" }
+::: {.column width="18%" }
 ![](img/pfsense/apply.png)
 :::
 ::::::::::::::

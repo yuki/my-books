@@ -20,6 +20,8 @@ LIBROS=(
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
 
+cp -r pandoc-templates/template build
+cp -r img build 
 
 for LIBRO in "${LIBROS[@]}"; do
     RUTA=`echo $LIBRO | cut -d" " -f1`
@@ -40,6 +42,3 @@ for LIBRO in "${LIBROS[@]}"; do
     cd $ORIG
 
 done
-
-mv pandoc-templates/template build
-mv img build 
