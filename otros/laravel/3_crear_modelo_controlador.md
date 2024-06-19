@@ -271,7 +271,7 @@ class PostSeeder extends Seeder {
 ```
 :::
 
-Para poder hacer uso del modelo "**DB**" es necesario hacer uso de la librería [Illuminate\Support\Facades\DB]{.configfile}. Ahora sólo queda ejecutar el *seed* tal como se explica en la [documentación](https://laravel.com/docs/10.x/seeding):
+Para poder hacer uso del modelo "**DB**" es necesario hacer uso de la librería "**`Illuminate\Support\Facades\DB`**". Ahora sólo queda ejecutar el *seed* tal como se explica en la [documentación](https://laravel.com/docs/10.x/seeding):
 
 ::: mycode
 [Ejecutar el seed]{.title}
