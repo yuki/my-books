@@ -924,7 +924,7 @@ Para evitar ese único punto de fallo, es conveniente realizar la instalación d
 
 ## Instalación del servidor réplica {#instalación-del-servidor-réplica}
 
-La instalación del servidor réplica será igual que la del primer controlador de dominio, tal como hemos visto [anteriormente](#instalar_windows_server). Lógicamente nos aseguraremos que el servidor cuente con otro nombre y otra dirección IP que no coincida con el servidor principal.
+La instalación del servidor réplica será igual que la del primer controlador de dominio, tal como hemos visto [anteriormente](#proceso-de-instalación-de-windows-server-2022). Lógicamente nos aseguraremos que el servidor cuente con otro nombre y otra dirección IP que no coincida con el servidor principal.
 
 También realizaremos la instalación del rol de "**Servicios de dominio de Active Directory**" ya que lo vamos a necesitar más adelante.
 
