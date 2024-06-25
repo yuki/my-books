@@ -16,6 +16,7 @@ LIBROS=(
     "anexos/gestion_backups/ gestion_backups_anexo"
     "anexos/instalar_ubuntu_lts/ instalar_ubuntu_lts_anexo"
     "anexos/monitorizacion_munin/ monitorizacion_munin_anexo"
+    "anexos/ubuntu_raid1/ ubuntu_raid1_anexo"
     "anexos/sistemas_monitorizacion/ sistemas_monitorizacion_anexo"
     "anexos/virtualbox_networking/ virtualbox_networking_anexo"
 )
