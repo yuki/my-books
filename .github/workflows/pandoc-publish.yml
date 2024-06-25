@@ -20,6 +20,7 @@ on:
           - SGE
           - Desarrollo_Interfaces
           - Gestion_backups
+          - Instalar_Ubuntu_LTS
           - Monitorizacion_Munin
           - Sistemas_Monitorizacion
           - Virtualbox_networking
@@ -61,6 +62,7 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces_book.pdf
           DAM/2/sistemas_gestion_empresarial/sge_book.pdf
           anexos/gestion_backups/gestion_backups_anexo.pdf
+          anexos/instalar_ubuntu_lts/instalar_ubuntu_lts_anexo.pdf
           anexos/monitorizacion_munin/monitorizacion_munin_anexo.pdf
           anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.pdf
           anexos/virtualbox_networking/virtualbox_netwoking_anexo.pdf

@@ -1,0 +1,1 @@
+instalar_ubuntu_lts.shcat instalar_ubuntu_lts.md
