@@ -98,6 +98,4 @@ A continuación se expone una tabla que resume los distintos tipos de adaptadore
 
 En la [documentación](https://www.virtualbox.org/manual/ch06.html#natforward) se explica cómo realizar la redirección de puertos.
 
-```{=latex}
-\clearpage
-```
+`\clearpage`{=latex}

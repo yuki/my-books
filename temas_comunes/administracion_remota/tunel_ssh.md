@@ -79,7 +79,5 @@ De esta manera, ahora desde nuestro equipo podremos realizar una conexión SSH a
 **El servicio remoto al que nos queremos conectar debe escuchar en la IP del equipo al que nos queremos conectar. El equipo que usamos para saltar debe poder conectarse a él.**
 :::
 
-```{=latex}
-\clearpage
-```
+`\clearpage`{=latex}
 

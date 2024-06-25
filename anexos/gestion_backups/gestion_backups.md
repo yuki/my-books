@@ -311,8 +311,5 @@ Estos simulacros nos deberían ayudar a asegurar que:
 **Si alguno de los puntos anteriores falla y no es correcto, deberemos repasar todo el plan estratégico de copias de seguridad para solventar los fallos, y así poder volver a realizar un nuevo simulacro para confirmar que esta vez es correcto.**
 :::
 
-```{=latex}
-%TODO: quitar?
-\clearpage
-```
+`\clearpage`{=latex}
 
