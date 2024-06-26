@@ -16,6 +16,7 @@ on:
           - Laravel
           - PFsense
           - ASO
+          - SGBD
           - SI
           - SGE
           - Desarrollo_Interfaces
@@ -59,6 +60,7 @@ jobs:
           otros/laravel/laravel_book.pdf
           otros/PFsense/pfsense_book.pdf
           ASIR/2/administracion_sistemas_operativos/aso_book.pdf
+          ASIR/2/SGBD/sgbd_book.pdf
           DAM/1/sistemas_informaticos/si_book.pdf
           DAM/2/desarrollo_interfaces/desarrollo_interfaces_book.pdf
           DAM/2/sistemas_gestion_empresarial/sge_book.pdf
