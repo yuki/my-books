@@ -10,13 +10,21 @@ cat 3_crm.md
 echo [Odoo]{.part}
 cat 2_odoo.md
 
-# WSL
-echo [Docker]{.part}
+echo [Alta Disponibilidad y Arquitectura de sistemas]{.part}
+cat ../../../temas_comunes/alta_disponibilidad/alta_disponibilidad.md
+cat ../../../temas_comunes/arquitectura_sistemas/arquitectura_sistemas.md
+
+echo [Windows Subsystem for Linux]{.part}
+cat ../../../temas_comunes/wsl/1_introduccion.md
+
+echo [Introducción a Docker]{.part}
 cat ../../../otros/Docker/contenedores.md
 cat ../../../otros/Docker/docker.md
-#echo [Monitorización de servicios]{.part}
-cat ../../../anexos/sistemas_monitorizacion/sistemas_monitorizacion.md
+echo [Monitorización de servicios]{.part}
+cat ../../../anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.md
 echo [Virtualbox]{.part}
 cat ../../../anexos/virtualbox_networking/virtualbox_networking.md
-# Instalar Ubuntu Server
-# cat ../../../temas_comunes/administracion_remota/administracion_remota.md
+echo [Instalar Ubuntu Server 22.04]{.part}
+cat ../../../anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.md
+cat ../../../temas_comunes/administracion_remota/administracion_remota.md
+cat ../../../temas_comunes/administracion_remota/tunel_ssh.md
