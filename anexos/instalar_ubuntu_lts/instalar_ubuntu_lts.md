@@ -84,7 +84,10 @@ Debido a la configuración de red de nuestro servidor, la IP está puesta en mod
 
 Lo modificaremos para que sea parecido a (siempre teniendo en cuenta la IP y gateway de nuestra red):
 
-\begin{mycode}{Configurando IP estática en Ubuntu}{yaml}{}
+::: {.mycode}
+[Configurando IP estática en Ubuntu]{.title}
+
+``` yaml
 network:
   ethernets:
     enp0s3:
@@ -96,7 +99,9 @@ network:
       nameservers:
         addresses: [8.8.8.8,1.1.1.1]
   version: 2
-\end{mycode}
+```
+:::
+
 
 El fichero de configuración que hemos modificado es de tipo [YAML](https://es.wikipedia.org/wiki/YAML), que es un formato de texto que suele ser utilizado en programación o en ficheros de configuración. Este tipo de ficheros tiene en cuenta los espacios para el uso de la identación, y no suele permitir el uso de tabuladores.
 
