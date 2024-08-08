@@ -5,29 +5,29 @@ Una **interfaz** (en plural: interfaces) se utiliza en informática para nombrar
 
 Ejemplos:
 
--   **Interfaces de usuario**: a la hora de hacer uso un programa.
+-   **Interfaces de usuario**: a la hora de hacer uso de un programa.
 
--   **Pantalla y ratón**: cuando hacemos referencia al interfaz *hardware* que utilizamos.
+-   **Dispositivo de interfaz humana**: de las siglas en inglés **HID** (*human interface device*), cuando hacemos referencia al interfaz *hardware* que utilizamos los humanos para interactuar con el ordenador.
 
 -   **Interfaz física**: un componente que se conecta a otro (puerto USB o puerto SATA).
 
 # Evolución de distintos tipos de interfaces de usuario {#evolución-de-distintos-tipos-de-interfaces-de-usuario}
 
-La **interfaz de usuario**, IU es el medio que permite la comunicación entre un usuario y una máquina. Normalmente suelen ser fáciles de entender y fáciles de utilizar, aunque en el ámbito de la informática es preferible referirse a que suelen ser "usables", "amigables e intuitivos" porque es compleja.
+La **interfaz de usuario**, IU (del inglés *User Interface*, **UI**), es el medio que permite la comunicación entre un usuario y una máquina. Normalmente suelen ser fáciles de entender y fáciles de utilizar, aunque en el ámbito de la informática es preferible referirse a que suelen ser "usables, amigables e intuitivas".
 
 Hoy en día podemos diferenciar entre 3 tipos:
 
--   **Interfaz de línea de comandos** (Command-Line Interface, **CLI**): Interfaces alfanuméricas (intérpretes de comandos) que solo presentan texto.
+-   **Interfaz de línea de comandos** (Command-Line Interface, **CLI**): Interfaces alfanuméricas (intérpretes de comandos) que solo presentan texto o interfaces simples generadas con texto y caracteres especiales.
 
 -   **Interfaz gráfica de usuario** (Graphic User Interface, **GUI**): Permiten comunicarse con la computadora de forma rápida e intuitiva representando gráficamente los elementos de control y medida.
 
--   **Interfaz natural de usuario** (Natural User Interface, **NUI**): Pueden ser táctiles, representando gráficamente un "panel de control" en una pantalla sensible al tacto que permite interactuar con el dedo de forma similar a si se accionara un control físico; pueden funcionar mediante reconocimiento del habla, como por ejemplo Siri; o mediante movimientos corporales (como es el caso del antiguo Kinect o las actuales [Vision Pro](https://www.apple.com/apple-vision-pro/) de Apple).
+-   **Interfaz natural de usuario** (Natural User Interface, **NUI**): Pueden ser táctiles, representando gráficamente un "panel de control" en una pantalla sensible al tacto que permite interactuar con el dedo de forma similar a si se accionara un control físico; pueden funcionar mediante reconocimiento del habla, como por ejemplo Siri; o mediante movimientos corporales (como es el caso del antiguo [Kinect](https://es.wikipedia.org/wiki/Kinect) o las actuales [Vision Pro](https://www.apple.com/apple-vision-pro/) de Apple).
 
 En la [Wikipedia](https://en.wikipedia.org/wiki/History_of_the_graphical_user_interface) está la historia de las interfaces gráficas de las que aquí se va a hacer un resumen.
 
 ## Interfaz de línea de comandos {#interfaz-de-línea-de-comandos}
 
-La interfaz de línea de comandos o interfaz de línea de órdenes (en inglés: *command-line interface*, **CLI**) es un tipo de interfaz de usuario de computadora que permite a los usuarios dar instrucciones a algún programa informático o al sistema operativo por medio de una línea de texto simple.
+La interfaz de línea de comandos o interfaz de línea de órdenes (en inglés: *command-line interface*, **CLI**) es un tipo de interfaz de usuario de ordenador que permite a los usuarios dar instrucciones a algún programa informático o al sistema operativo por medio de una línea de texto simple.
 
 Las CLI pueden emplearse interactivamente, escribiendo instrucciones en alguna especie de entrada de texto, o pueden utilizarse de una forma mucho más automatizada (archivo batch), leyendo órdenes desde un archivo de scripts.
 
@@ -72,7 +72,7 @@ Hay que tener en cuenta que estos interfaces se solían utilizar en máquinas co
 
 ### Primeras investigaciones y desarrollos {#primeras-investigaciones-y-desarrollos}
 
-El proyecto de Aumento del Intelecto Humano de Doug Engelbart en el Stanford Research Institute (en Menlo Park, EE. UU.) en la década de los 60 desarrolló el oN-Line System, que incorporaba un cursor manejado con un ratón y múltiples ventanas usadas para trabajar con hipertexto.
+El proyecto de "Aumento del Intelecto Humano" de Doug Engelbart en el Stanford Research Institute (en Menlo Park, EE. UU.) en la década de los 60 desarrolló el oN-Line System, que incorporaba un cursor manejado con un ratón y múltiples ventanas usadas para trabajar con hipertexto.
 
 Mucha de la investigación inicial estuvo basada en como los niños pequeños aprenden. Por lo que el diseño se basó en las primitivas infantiles de coordinación mano-ojo, en lugar de usar lenguajes de comandos.
 
@@ -177,7 +177,7 @@ Por otro lado, es habitual que la imagen de la compañía cambie, ya sea por cam
 :::
 
 ::: center
-[Evolución del logotipo de Twitter.]{.footnotesize}
+[Evolución del logotipo de Twitter/[X](https://x.com/).]{.footnotesize}
 :::
 
 
@@ -208,7 +208,7 @@ Los primeros móviles carecían de pantalla, posteriormente comenzaron a tener p
 :::
 
 
-Posteriormente comenzaron a tener pantallas a color y cada compañía crea su propio sistema operativo. Existe un intento de crear un sistema operativo entre varias compañías llamado Symbian, pero al final es Nokia la desarrolladora y la que más uso le da.
+Posteriormente comenzaron a tener pantallas a color y cada compañía crea su propio sistema operativo. Existe un intento de crear un sistema operativo entre varias compañías llamado [Symbian](https://es.wikipedia.org/wiki/Symbian), pero al final es Nokia la desarrolladora y la que más uso le da.
 
 Durante los primeros años de la década de los 2000 también se ponen de moda las PDA (*personal digital assistant*, asistente digital personal u ordenadores de bolsillo), que normalmente hacían uso de un lapiz para hacer funcionar la pantalla táctil (resistiva) que tenían.
 
@@ -308,7 +308,7 @@ Los primeros pasos que se dieron en este sentido son los denominados "head-up di
 
 En algunos casos esta pantalla puede estar entre el usuario y el salpicadero, integrada en el salpicadero o también como una pantalla puesta en el casco del piloto y cerca del ojo.
 
-Por otro lado, tenemos la realidad virtual, que es un entorno simulado que da una sensación de inmersión al usuario ofreciéndole la posibilidad de moverse en él, y en algunos casos interactuar con elementos del entorno.
+Por otro lado, tenemos **la realidad virtual, que es un entorno simulado que da una sensación de inmersión al usuario ofreciéndole la posibilidad de moverse en él**, y en algunos casos interactuar con elementos del entorno.
 
 Para ello, suele ser habitual contar con unas gafas que nos mostrarán el entorno virtual, y también dispondremos de unos mandos para poder interactuar con el entorno.
 
@@ -339,7 +339,7 @@ El siguiente paso es la conocida como **realidad aumentada**, en el que se trata
 [Ejemplos de realidad aumentada con el móvil]{.footnotesize}
 :::
 
-Y con la idea de que la realidad aumentada sea de uso cotidiano han empezado a evolucionar los sistemas para que poco a poco esto vaya fraguando, aunque el coste todavía sigue siendo elevado, y tampoco está claro cuál será el beneficio y el rendimiento que tendrá.
+Cn la idea de que la realidad aumentada sea de uso cotidiano han empezado a evolucionar los sistemas para que poco a poco esto vaya fraguando, aunque el coste todavía sigue siendo elevado. A día de hoy, tampoco está claro cuál será el beneficio y el rendimiento que tendrá.
 
 En el caso de las Apple Vision Pro prometen una experiencia de realidad aumentada utilizando únicamente gestos de las manos para moverse a través de su interfaz.
 
@@ -362,7 +362,7 @@ En este apartado se van a añadir algunos ejemplos de interfaces que son reales,
 
 -   En 2006, con la aceleración de OpenGL por *hardware* en las tarjetas gráficas, en las distribuciones GNU/Linux nacen los gestores de ventanas con diseños 3D real. Hubo varias alternativas, ya que surgieron varios "forks" de distintos proyectos, pero los más conocidos fueron Compiz y Beryl. [Vídeo](https://www.youtube.com/watch?v=4QokOwvPxrE).
 
--   En 2006 en una charla TED [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han) realiza una demonstración de pantalla multitáctil con muchos gestos que posteriormente se volverían el día a día con los *smartphones*. [Charla TED](https://www.youtube.com/watch?v=QKh1Rv0PlOQ) y [Vídeo de demonstración](https://www.youtube.com/watch?v=wHfKrk8QMM0).
+-   En 2006 en una charla TED [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han) realiza una demonstración de pantalla multitáctil con muchos gestos que posteriormente se volverían el día a día con los *smartphones*. [Charla TED](https://www.youtube.com/watch?v=ac0E6deG4AU) y [Vídeo de demonstración](https://www.youtube.com/watch?v=wHfKrk8QMM0).
 
 -   En 2009 Microsoft presenta un vídeo con el concepto de una tablet plegable llamada [Courier](https://en.wikipedia.org/wiki/Microsoft_Courier). [Vídeo 1](https://www.youtube.com/watch?v=_hzcs43CD_Y), [Vídeo 2](https://www.youtube.com/watch?v=pFQWc79TYcU). El iPad todavía no se había presentado.
 

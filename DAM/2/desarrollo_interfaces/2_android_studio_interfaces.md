@@ -1,13 +1,43 @@
 
 # Interfaces con Android UI {#interfaces-con-android-ui}
 
-A la hora de crear interfaces para dispositivos Android a través de Android Studio estos son generados a través de ficheros [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Para el correcto funcionamiento y compilación del proyecto, estos ficheros deben de cumplir con el estándar XML y ser ficheros válidos.
+A la hora de crear interfaces para dispositivos Android a través de Android Studio, dependiendo de la aplicación que estemos creando, pueden ser generadas de dos maneras distintas:
 
-::: errorbox
-**¡Cuidado a la hora de tocar los ficheros si los editamos a mano!**
-:::
+* **[Diseño de vista en XML](https://developer.android.com/develop/ui/views/layout/declaring-layout?hl=es-419)**: Son generadas a través de ficheros [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) utilizando un editor en el que podremos colocar distintos elementos, restricciones... Para el correcto funcionamiento y compilación del proyecto, estos ficheros deben de cumplir con el estándar XML y ser ficheros válidos. Era el sistema original a la hora de crear vistas.
+* **[Jetpack Compose](https://developer.android.com/courses/jetpack-compose/course?hl=es-419)**: es un *framework* Kotlin para crear interfaces de usuario de manera declarativa. En este caso se "escribe" lo que queremos que tenga el interfaz.
 
-Estos ficheros se encuentran por defecto en la ruta [src/main/res/layout]{.configdir} de nuestro proyecto. No es habitual editar estos ficheros fuera de Android Studio, pero hay que tener en cuenta dónde se almacenan.
+En un mismo proyecto puede coexistir vistas creadas de distintas maneras, por lo que en un proyecto antiguo que se usó XML, podemos ir migrando vistas al formato Compose si usamos Kotlin.
+
+## Diferencias entre ambos modelos
+
+A la hora de elegir qué sistema elegir, dependerá de los conocimientos que tengamos en ambos, pero a continuación se muestra una pequeña tabla comparativa:
+
+<!-- TODO: crear una tabla con esto -->
+* **XML**:
+  * Ventajas:
+    * **Separación de conceptos**: La vista se diferencia cláramente de la lógica
+    * Editor **WYSIWYG**: Android Studio incorpora un editor visual que nos permite colocar los componentes de la vista. Puede ser más intuitivo para algunos desarrolladores
+    * **Reciclaje**: Se pueden generar plantillas/*layouts* XML que pueden ser utilizados en distintos *activities*.
+  * Desventajas:
+    * **Limitado**: A la hora de generar interfaces complejos, el formato XML tiene limitaciones que tienen que ser subsanado con código Java/Kotlin.
+    * ***Verbosity***: Los ficheros XML pueden ser complejos y tener redundancias. Esto puede hacer que se complique a la hora de mantener vistas complejas.
+* **Jetpack Compose**
+  * Ventajas:
+    * **Sintaxis declarativa** que facilita la creación de UI complejas
+    * **Tipado seguro**: Como es código Kotlin, se reduce la posibilidad de cometer errores de tipado y que haya errores durante la ejecución.
+    * **Modularidad**: Jetpack Compose promueve la creación de componentes de interfaz que se puedan reutilizar. Esto facilita el mantenimiento de la aplicación y la escalabilidad.
+    * **Vista previa "en vivo"**: Se puede ver una vista previa a medida que se va generando la vista en código.
+  * Desventajas:
+    * La **curva de aprendizaje** puede ser pronunciada al inicio.
+    * **Compatibilidad**: A día de hoy no debería ser un problema, pero sólo se puede usar con **Android 5.0 (API level 21)** o superior.
+    * Sólo se puede usar con Kotlin.
+
+
+# Diseño de vistas en XML con Android Studio {#vistas-con-xml}
+
+A continuación se explica la creación de un proyecto donde por defecto se nos va a crear el ***MainActivity*** utilizando una vista en formato XML, conocidas como *Android View*, que es el sistema antiguo de creación de vistas.
+
+Los ficheros de las vistas se encuentran por defecto en la ruta [src/main/res/layout]{.configdir} de nuestro proyecto. No es habitual editar estos ficheros fuera de Android Studio, pero hay que tener en cuenta dónde se almacenan.
 
 ## Creando nuestro primer proyecto {#creando-nuestro-primer-proyecto}
 
@@ -91,7 +121,7 @@ De esta manera, cada parte del componente tendrá un *constraint* que estará as
 Si añadimos al interfaz un botón, en la parte baja de la pantalla, centrado y en la posición que nos interese en la vista vertical, veremos que a la hora de ejecutar la vista en el simulador deja de aparecer en la posición que lo hemos indicado.
 
 ::: errorbox
-Los atributos "**layout_editor**" sólo sirven para la vista del editor, no para la vista final. **Para colocar los elementos en su posición correcta hay que usar los constraints**.
+Los atributos "layout_editor" del XML sólo sirven para la vista del editor, no para la vista final. Para colocar los elementos en su posición correcta hay que usar los constraints.
 :::
 
 Es por eso, que para cada componente que queramos añadir a la vista deberá tener sus *constraints* haciendo referencia a otros componentes o al *layout* que lo contiene. En caso de que no hayamos añadido uno, o algo en la vista no sea correcto, nos aparecerá en el interfaz:
@@ -202,7 +232,7 @@ Esto nos creará en el árbol de nuestro proyecto una carpeta con el nombre de l
 
 Gracias a esto nos va a crear una vista nueva, con todos los elementos de la vista original, manteniendo los *constraints*. El nuevo fichero **xml** lo podremos encontrar en una nueva ruta que ha creado un directorio para las vistas apaisadas: [app/src/main/res/layout-land]{.configdir}.
 
-# Dando funcionalidad al interfaz {#dando-funcionalidad-al-interfaz}
+## Dando funcionalidad al interfaz {#dando-funcionalidad-al-interfaz}
 
 Aunque no se va a ahondar en cómo programar para Android, se va a añadir un pequeño ejemplo para entender cómo funciona un botón y un texto y cómo interactuar entre sí.
 
@@ -218,10 +248,7 @@ Teniendo esto en cuenta, el código del fichero **MainActivity.kt** debería que
 [Código Kotlin para hacer funcionar un botón]{.title}
 
 ```kotlin
-package com.example.prueba
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+//... imports previos
 import android.widget.Button
 import android.widget.TextView
 
@@ -230,8 +257,7 @@ class MainActivity : AppCompatActivity() {
     var contador:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //... código ya existente
 
         val button:Button = findViewById(R.id.button)
         val text:TextView = findViewById(R.id.textView)
@@ -246,17 +272,143 @@ class MainActivity : AppCompatActivity() {
 :::
 
 ::: questionbox
-**¿Qué sucede con los datos si rotamos la pantalla?**
+**¿Qué pasa con los datos si rotamos la pantalla?**
 :::
+
+# Diseño de vistas con Jetpack Compose {#vistas-jetpack-compose}
+
+En este caso, el proyecto lo crearemos seleccionando la opción "Empty Activity", lo que nos creará un proyecto donde por defecto se nos va a crear la clase ***MainActivity*** utilizando el nuevo sistema **Jetpack Compose**, para la creación de vistas, y por tanto haciendo uso de la sintaxis declarativa.
+
+Al terminar de crearse el proyecto, si utilizamos en la vista el sistema *Split*, junto al código fuente veremos el mensaje que nos indica que debemos "construir" la vista y refrescar para ver el resultado en tiempo real. Al hacer click, se construirá la vista y a partir de ese momento tendremos una previsualización en tiempo real, tal como aparece a continuación:
+
+:::::::::::::: {.columns }
+::: {.column width="10%"}
+:::
+::: {.column width="50%"}
+![](img/di/tema_2/jetpack_refresh.png){width="100%"}
+:::
+::: {.column width="30%" }
+![](img/di/tema_2/jetpack_preview.png){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::::::::::::::
+
+## Entendiendo la vista por defecto {#entendiendo-vista-inicial}
+
+La vista que nos ha generado el proyecto cuenta con una serie de apartados que hay que entender para poder realizar modificaciones y también saber qué está sucediendo en la vista previa.
+
+### Función que genera un *widget* de vista {#funcion-genera-widget}
+
+Tal como se ha dicho previamente, *Compose* trata de generar vistas, **o partes de ella**, que puedan ser reutilizadas. En este caso, el asistente de creación del proyecto nos ha creado una función `fun Greeting(...)` que genera un pequeño componente de tipo **Text** que genera y visualiza un texto utilizando el párametro que se le pasa a la función, y un posible modificador (luego hablaremos de ellos).
+
+
+::: mycode
+[Widget que genera un texto]{.title}
+
+```kotlin
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+```
+:::
+
+De esta función lo que nos interesa es entender la anotación `@Composable`, que es una anotación que todas las funciones de "componibilidad" deben tener. Este `@Composable` informa al compilador de Compose que esta función está diseñada para convertir datos en IU.
+
+
+### Vista previa de Compose {#vista-previa}
+
+Una de las ventajas que tenemos a la hora de usar Compose es que podemos tener una vista previa a medida que vamos escribiendo el interfaz, sin necesidad de utilizar el emulador del terminal, lo que hace que **consumamos menos recursos**. La función que nos genera la vista previa tiene la anotación `@Preview`, a la que podremos añadir distintos parámetros.
+
+::: mycode
+[Función que genera la vista previa]{.title}
+
+```kotlin
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    JetpackTheme {
+        Greeting("Android")
+    }
+}
+```
+:::
+
+Tal como se ha visto previamente, tenemos una vista previa que nos muestra el "Hello Android", pero esta vista **no simula un interfaz real**. Esto no tiene por qué ser malo, ya que nos podemos centrar sólo en el interfaz/widget que estemos creando.
+
+Podemos tener tantas vistas previas como nos interese, para diferentes dispositivos, modo claro/oscuro... Para generar nuevas vistas previas, debemos añadir una nueva anotación `@Preview` con los parámetros que nos interese. Por ejemplo:
+
+::: mycode
+[Nuevas vistas previas con distintos parámetros]{.title}
+
+```kotlin
+@Preview(showBackground = true, showSystemUi = true, 
+    uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, showSystemUi = true,
+    device = "id:pixel_fold")
+@Preview(showBackground = true, showSystemUi = true,
+    device = "spec:width=411dp,height=891dp,orientation=landscape")
+```
+:::
+
+En estos ejemplos se han añadido distintos parámetros a la anotación `@Preview`, que son:
+
+* **showSystemUi**: nos muestra el interfaz como si se estuviese ejecutando en un dispositivo.
+* **uiMode**: acepta cualquier valor de [Configuration.UI_*](https://developer.android.com/reference/android/content/res/Configuration#UI_MODE_NIGHT_YES). En el ejemplo hará uso del modo noche.
+* **device**: podemos indicar un dispositivo concreto mediante su **id**
+  * Podemos crear nuestro propio tipo de dispositivo con el parámetro **spec:**, en el que le podemos indicar la orientación también.
+
+
+### La vista en MainActivity {#vista-mainactivity}
+
+Tras todo lo anterior, es momento de entender qué sucede en la función principal de nuestra clase **MainActivity**, que es la función que se va a ejecutar al arrancar nuestra aplicación, al igual que en el anterior proyecto, **onCreate**.
+
+::: mycode
+[MainActivity con código Jetpack Compose]{.title}
+
+```kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            JetpackTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
+            }
+        }
+    }
+}
+```
+:::
+
+En esta función el bloque **setContent** define el diseño de la actividad, donde se llaman a las funciones que admiten composición. Estas funciones solo se pueden llamar desde otras funciones del mismo tipo.
+
+Luego podemos ver que todo está también dentro de **JetpackTheme** que es una función que está declarada en el fichero [ui/theme/Theme.kt]{.configfile}. Esta función generada lo que hace es diferenciar si el dispositivo está en modo claro o modo oscuro, para hacer uso del tema que hayamos creado.
+
+
+
+## Disposición y modificadores {#layouts-modificators}
+
+A la hora de crear nuestro interfaz debemos pensar en la composición/disposición (*layout* en inglés) de los distintos elementos. 
+
+
+# Ciclo de vida del *Activity* en Android {#ciclo-de-vida-del-activity-en-android}
+
 
 El contenido del texto de la vista se resetea al rotar el dispositivo. Es decir, **cualquier posible contenido que hubiese en ellos se pierde**. Esto es debido a que el ***Activity*** de la vista se destruye y se vuelve a crear en el nuevo estado de la pantalla.
 
 ::: errorbox
 **Al rotar el dispositivo el \textit{Activity} entra en un ciclo de destrucción-creación**
 :::
-
-
-# Ciclo de vida del *Activity* en Android {#ciclo-de-vida-del-activity-en-android}
 
 Es importante conocer qué sucede al rotar el dispositivo, y qué sucede con la vista y con los componentes que tenemos en primer plano.
 
@@ -330,3 +482,7 @@ override fun onRestoreInstanceState(savedInstanceState: Bundle) {
 }
 ```
 :::
+
+
+# Uso de vistas cruzadas
+
