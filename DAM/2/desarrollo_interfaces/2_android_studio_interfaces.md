@@ -362,6 +362,8 @@ En estos ejemplos se han añadido distintos parámetros a la anotación `@Previe
 * **device**: podemos indicar un dispositivo concreto mediante su **id**
   * Podemos crear nuestro propio tipo de dispositivo con el parámetro **spec:**, en el que le podemos indicar la orientación también.
 
+Existen más posibilidades de cómo generar vistas en la [documentación oficial](https://developer.android.com/develop/ui/compose/tooling/previews?hl=es-419).
+
 
 ### La vista en MainActivity {#vista-mainactivity}
 
@@ -396,9 +398,166 @@ Luego podemos ver que todo está también dentro de **JetpackTheme** que es una 
 
 
 
-## Disposición y modificadores {#layouts-modificators}
+## Disposición de elementos {#disposicion-elementos}
 
-A la hora de crear nuestro interfaz debemos pensar en la composición/disposición (*layout* en inglés) de los distintos elementos. 
+A la hora de crear nuestro interfaz debemos pensar en la composición/disposición (*layout* en inglés) de los distintos elementos. En la [documentación oficial](https://developer.android.com/develop/ui/compose/layouts/basics) hay un ejemplo similar al que se va a explicar aquí, por lo que es recomendable echar un vistazo.
+
+Vamos a suponer el siguiente interfaz básico, donde a la izquierda aparece cómo quedaría el interfaz final, mientras que la disposición de los distintos elementos aparecen resaltados en la imagen de la derecha.
+
+:::::::::::::: {.columns }
+::: {.column width="10%"}
+:::
+::: {.column width="34%"}
+![](img/di/compose/compose_dispose.png){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="34%" }
+![](img/di/compose/compose_dispose_layout.png){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::::::::::::::
+
+Mirando la disposición diseñada, a la hora de convertirlo a programación declarativa debemos entender los distintos apartados que hemos creado y cómo se van a colocar los distintos componentes.
+
+Una primera iteración en programación con Composer quedaría de la siguiente manera, donde se han colocado los componentes con contenido *hardcodeado*, por lo que la función creada siempre mostrará el mismo contenido:
+
+
+:::::::::::::: {.columns }
+::: {.column width="67%"}
+
+::: {.mycode size=scriptsize}
+[Función con código Compose]{.title}
+
+```kotlin
+@Composable
+fun Post() {
+    Column {
+        Column {
+            Text("title")
+            Text("subtitle")
+        }
+        Image(
+            painter = painterResource(R.drawable.dragon),
+            contentDescription = null
+        )
+        Text("Lorem ipsum dolor sit amet, conse...")
+        Row {
+            Column {
+                Image(
+                    painter = painterResource(R.drawable.goku),
+                    contentDescription = null
+                )
+            }
+            Column {
+                Text("Author")
+                Text("2024-09-01")
+            }
+        }
+    }
+}
+```
+:::
+
+:::
+::: {.column width="30%" }
+![](img/di/compose/post1.png){width="100%"}
+:::
+::::::::::::::
+
+Tal como se puede ver en el código, se han utilizado las siguientes funciones para colocar los elementos:
+
+* **[Colmn](https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Column(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,kotlin.Function1))**: pone todos los componentes hijos en una secuencia vertical.
+* **[Row](https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Row(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Horizontal,androidx.compose.ui.Alignment.Vertical,kotlin.Function1))**: para colocar los componentes hijos en una secuencia horizontal.
+
+## Modificadores de los elementos {#modificadores-elementos}
+
+La función creada previamente coloca los distintos elementos haciendo uso de las funciones de Composer, pero para tener una interfaz amigable y con el resultado final, debemos hacer uso de los modificadores para cada elemento. Este será el punto en el que decidiremos "cómo poner bonito" el interfaz.
+
+::: errorbox
+Los modificadores se pueden añadir a nivel de bloque o a nivel de elemento. Hay que tener cuidado con las prioridades de los modificadores.
+:::
+
+
+Los modificadores se pueden añadir a nivel de bloque o a nivel de elemento, por lo que habrá que tener cuidado con el tipo de sentencias que utilizamos, ya que algunas prevalecen sobre otras por tener mayor prioridad.
+
+Añadiendo distintos modificadores, el código quedaría:
+
+:::::::::::::: {.columns }
+::: {.column width="53%"}
+
+
+::: {.mycode size=tiny}
+[Añadidos distintos modificadores]{.title}
+
+```kotlin
+@Composable
+fun Post() {
+    Column (
+        modifier = Modifier // FALTA CÓDIGO
+    ) {
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(10.dp)
+                .fillMaxWidth()
+                // FALTA CÓDIGO
+        ) {
+            Text(
+                text = "title",
+                modifier = Modifier.padding(bottom = 15.dp)
+            )
+            Text("subtitle")
+        }
+        Image(
+            painter = painterResource(R.drawable.dragon),
+            contentDescription = null
+        )
+        Text(
+            text = "Lorem ipsum dolor sit amet, conse...",
+            modifier = Modifier // FALTA CÓDIGO
+        )
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier // FALTA CÓDIGO
+        ){
+            Column {
+                Image(
+                    painter = painterResource(R.drawable.goku),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(color = Color.LightGray)
+                        .size(100.dp)
+                        .padding(5.dp)
+                )
+            }
+            Column (
+                Modifier.padding(start = 10.dp)
+            ) {
+                Text("Author")
+                Text("2024-09-01")
+            }
+        }
+    }
+}
+```
+:::
+
+:::
+::: {.column width="44%" }
+![](img/di/compose/post2.png){width="100%" framed=true}
+:::
+::::::::::::::
+
+
+Se han añadido distintos modificadores tanto a nivel de columna/fila como a nivel de componente final. Tal como se puede ver, el código es bastante auto-explicativo. El código de ejemplo no está completo, se han añadido comentarios donde falta código para dibujar los bordes en algunos modificadores. **Los bordes facilitan ver la disposición de cada conjunto de elementos**
+
+::: exercisebox
+Completa el código anterior añadiendo los modificadores de los bordes para que se asemeje a la imagen mostrada.
+:::
+
 
 
 # Ciclo de vida del *Activity* en Android {#ciclo-de-vida-del-activity-en-android}

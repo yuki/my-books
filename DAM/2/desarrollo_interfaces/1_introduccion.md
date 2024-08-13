@@ -11,7 +11,7 @@ Ejemplos:
 
 -   **Interfaz física**: un componente que se conecta a otro (puerto USB o puerto SATA).
 
-# Evolución de distintos tipos de interfaces de usuario {#evolución-de-distintos-tipos-de-interfaces-de-usuario}
+# Evolución de las interfaces de usuario {#evolución-de-interfaces-de-usuario}
 
 La **interfaz de usuario**, IU (del inglés *User Interface*, **UI**), es el medio que permite la comunicación entre un usuario y una máquina. Normalmente suelen ser fáciles de entender y fáciles de utilizar, aunque en el ámbito de la informática es preferible referirse a que suelen ser "usables, amigables e intuitivas".
 
