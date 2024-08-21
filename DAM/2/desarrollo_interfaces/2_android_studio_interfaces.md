@@ -369,7 +369,7 @@ Existen más posibilidades de cómo generar vistas en la [documentación oficial
 
 Tras todo lo anterior, es momento de entender qué sucede en la función principal de nuestra clase **MainActivity**, que es la función que se va a ejecutar al arrancar nuestra aplicación, al igual que en el anterior proyecto, **onCreate**.
 
-::: mycode
+::: {.mycode size=small}
 [MainActivity con código Jetpack Compose]{.title}
 
 ```kotlin
@@ -419,7 +419,11 @@ Vamos a suponer el siguiente interfaz básico, donde a la izquierda aparece cóm
 :::
 ::::::::::::::
 
-Mirando la disposición diseñada, a la hora de convertirlo a programación declarativa debemos entender los distintos apartados que hemos creado y cómo se van a colocar los distintos componentes.
+::: center
+[Vista real y vista diferenciando la disposición]{.footnotesize}
+:::
+
+Mirando la disposición diseñada, a la hora de convertirlo a programación declarativa debemos entender los distintos apartados que hemos creado y cómo se van a colocar los distintos [componentes](https://developer.android.com/develop/ui/compose/components).
 
 Una primera iteración en programación con Composer quedaría de la siguiente manera, donde se han colocado los componentes con contenido *hardcodeado*, por lo que la función creada siempre mostrará el mismo contenido:
 
@@ -468,7 +472,7 @@ fun Post() {
 
 Tal como se puede ver en el código, se han utilizado las siguientes funciones para colocar los elementos:
 
-* **[Colmn](https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Column(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,kotlin.Function1))**: pone todos los componentes hijos en una secuencia vertical.
+* **[Column](https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Column(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,kotlin.Function1))**: pone todos los componentes hijos en una secuencia vertical.
 * **[Row](https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/package-summary#Row(androidx.compose.ui.Modifier,androidx.compose.foundation.layout.Arrangement.Horizontal,androidx.compose.ui.Alignment.Vertical,kotlin.Function1))**: para colocar los componentes hijos en una secuencia horizontal.
 
 ## Modificadores de los elementos {#modificadores-elementos}
@@ -480,7 +484,7 @@ Los modificadores se pueden añadir a nivel de bloque o a nivel de elemento. Hay
 :::
 
 
-Los modificadores se pueden añadir a nivel de bloque o a nivel de elemento, por lo que habrá que tener cuidado con el tipo de sentencias que utilizamos, ya que algunas prevalecen sobre otras por tener mayor prioridad.
+Los [modificadores](https://developer.android.com/develop/ui/compose/modifiers-list) se pueden añadir a nivel de bloque o a nivel de elemento, por lo que habrá que tener cuidado con el tipo de sentencias que utilizamos, ya que algunas prevalecen sobre otras por tener mayor prioridad.
 
 Añadiendo distintos modificadores, el código quedaría:
 
@@ -558,6 +562,148 @@ Se han añadido distintos modificadores tanto a nivel de columna/fila como a niv
 Completa el código anterior añadiendo los modificadores de los bordes para que se asemeje a la imagen mostrada.
 :::
 
+
+::: exercisebox
+Modifica el código anterior para que el contenido de los textos sean recibidos como parámetros.
+:::
+
+
+### Componentes "vagos"/lazy {#composer-componentes-lazy}
+
+En el ejemplo que estamos viendo estamos haciendo uso de los sistemas de composición *Column* y *Row* para la disposición/colocación de los distintos elementos. Nos permiten realizar la colocación de los elementos según nos interesa.
+
+Cuando tenemos pocos elementos, o un número finito de hijos es correcto hacer uso de estos sistemas. El problema surge cuando tenemos un número no determinado de hijos como puede ser una lista de elementos. En estos casos haremos uso de ***LazyColumn*** (o ***LazyRow*** para filas), ya que sólo renderizará los elementos que están en pantalla, siendo más eficiente en estos casos.
+
+
+### Modificadores reusables {#modificadores-reusables}
+
+En caso de que hagamos uso de modificadores comunes en varios componentes, podemos crear una variable, y asignarla a los distintos componentes.
+
+
+## Vista vertical y horizontal {#composer-vertical-horizontal}
+
+Si giramos el dispositivo con el ejemplo que hemos creado hasta ahora, veremos que la disposición de los elementos se mantiene de manera correcta, salvo por el hecho de que **no tenemos *scroll***. El componente *Column* no tiene scroll por defecto, por lo que deberemos añadirlo al modificador principal:
+
+::: mycode
+[Añadidos distintos modificadores]{.title}
+
+```kotlin
+@Composable
+fun Post() {
+    Column (
+        modifier = Modifier // FALTA CÓDIGO
+            .verticalScroll(rememberScrollState())
+    ) {
+        //...
+    }
+}
+```
+:::
+
+De esta manera, en la vista horizontal nuestra aplicación tendrá *scroll* al haberle dado esa característica a la columna principal.
+
+Por otro lado, si queremos diferenciar cómo generar la composición de la vista dependiendo de si el dispositivo está en vertical u horizontal, podemos hacer lo siguiente:
+
+::: mycode
+[Composición distinta en vertical u horizontal]{.title}
+
+```kotlin
+// Cogemos la configuración actual
+val configuration = LocalConfiguration.current
+
+// Hacemos una composición diferente según estado
+when (configuration.orientation) {
+    Configuration.ORIENTATION_LANDSCAPE -> {
+        LandscapeScreenComposition()
+    }
+    else -> {
+        VerticalScreenComposition()
+    }
+}
+```
+:::
+
+## Crear temas personalizados {#composer-tema-personalizado}
+
+A la hora de crear nuestra aplicación puede ser interesante tener un "tema" (en inglés *theme*) personalizado. Estos "temas" suelen hacer referencia a los colores de la aplicación, la tipografía, ... Y este tema será diferente dependiendo de si tenemos el dispositivo en modo "claro" u "oscuro".
+
+::: infobox
+La personalización de las aplicaciones se hace a través del "tema"/themes, que normalmente tendrá colores corporativos, tipos de letras elegidos, tamaños elegidos...
+:::
+
+Al crear nuestro proyecto veremos que existe un directorio llamado `ui/theme`{.configdir} dentro de la misma ruta donde se encuentra el fichero `MainActivity.kt`{.configfile}. En ese directorio nos encontraremos con tres ficheros, que es recomendable abrir para ver su contenido:
+
+* **Color.kt**: Contiene unas variables con los colores que van a ser utilizados en la aplicación. Los colores se pueden definir de distintas maneras y pueden tener un rango "Alpha" que es la opacidad. Podemos generar nuestro propio [sistema de colores](https://m3.material.io/styles/color/system/overview) y existen distintos [roles](https://m3.material.io/styles/color/roles) que podemos utilizar en nuestra aplicación.
+
+::: errorbox
+Crear un buen sistema de colores puede distinguir a nuestra marca/empresa de las otras.
+:::
+
+* **Type.kt**: En este fichero se hace referencia a las [tipografías](https://m3.material.io/styles/typography/overview), la fuente de letra a utilizar, tipo, tamaño, ... Por defecto existen tres escalas ("**Large**", "**Medium**" y "**Small**") para los siguientes [roles](https://m3.material.io/styles/typography/applying-type):
+  * **Display**: El texto más grande de la pantalla, reservado para textos cortos o numéricos. Funcionan mejor en pantallas grandes. Se suelen usar fuentes "expresivas", de tipo manuscritas.
+  * **Headline**: Adecuados para textos breves en pantallas más pequeñas. Útiles para marcar pasajes de un texto o partes importantes de un contenido.
+  * **Title**: Se deben usar para textos de énfasis medio que sean relativamente cortos.
+  * **Body**: Se usa para textos largos. Hay que tratar de evitar fuentes muy expresivas o decorativas, porque pueden ser más difíciles de leer.
+  * **Label**: Se utiliza para el texto dentro de componentes. Por ejemplo, los botones usan el estilo ***LabelLarge***.
+
+  Se puede ver la explicación de cada tipo de fuente en la [explicación de los estilos](https://m3.material.io/styles/typography/applying-type) y un ejemplo de distintas tipografías en el siguiente enlace a [un proyecto de ejemplo en Github](https://github.com/android/codelab-android-compose/blob/main/BasicLayoutsCodelab/app/src/main/java/com/codelab/basiclayouts/ui/theme/Type.kt).
+* **Theme.kt**: Es el fichero principal del tema, y en el que se conjuga y utiliza lo especificado en los ficheros nombrados anteriormente. Si miramos el fichero de un proyecto recién creado, contiene lo siguiente:
+
+::: {.mycode size=footnotesize}
+  [Fichero Theme.kt]{.title}
+
+```kotlin
+package com.example.jetpack.ui.theme    
+//... 
+private val DarkColorScheme = darkColorScheme(
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
+)
+
+@Composable
+fun JetpackTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    // Dynamic color is available on Android 12+
+    dynamicColor: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) 
+                dynamicDarkColorScheme(context) 
+            else
+                dynamicLightColorScheme(context)
+        }
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
+```
+:::
+
+* **Shapes.kt**: En un proyecto recién creado no se crea este fichero, pero en [este ejemplo](https://github.com/android/codelab-android-compose/blob/main/BasicLayoutsCodelab/app/src/main/java/com/codelab/basiclayouts/ui/theme/Shape.kt) se puede ver su contenido. En este fichero se pueden modificar las [formas](https://m3.material.io/styles/shape/shape-scale-tokens) que podemos utilizar en nuestra aplicación.
+
+::: exercisebox
+Existen distintos tutoriales ([ tutorial 1 ](https://developer.android.com/codelabs/basic-android-kotlin-compose-material-theming?hl=es-419#0) y [ tutorial 2 ](https://developer.android.com/codelabs/jetpack-compose-theming?hl=es-419)) para crear temas con colores propios.
+:::
+
+::: infobox
+[Material Theme Builder](https://material-foundation.github.io/material-theme-builder/) nos ayuda a crear nuestro tema personalizado.
+:::
 
 
 # Ciclo de vida del *Activity* en Android {#ciclo-de-vida-del-activity-en-android}
