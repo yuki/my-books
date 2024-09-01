@@ -138,7 +138,7 @@ Cada sistema operativo y cada sistema de escritorio realizaba sus propias evoluc
 ::::::::::::::
 
 ::: center
-[Evolución de KDE en 1998, 2000 y 2005 1. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/KDE)]{.footnotesize}
+[Evolución de KDE en 1998, 2000 y 2005. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/KDE)]{.footnotesize}
 :::
 
 ## Interfaces web {#interfaces-web}
