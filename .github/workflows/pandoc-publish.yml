@@ -69,7 +69,7 @@ jobs:
           anexos/monitorizacion_munin/monitorizacion_munin_anexo.pdf
           anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.pdf
           anexos/ubuntu_raid1/ubuntu_raid1_anexo.pdf
-          anexos/virtualbox_networking/virtualbox_netwoking_anexo.pdf
+          anexos/virtualbox_networking/virtualbox_networking_anexo.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
