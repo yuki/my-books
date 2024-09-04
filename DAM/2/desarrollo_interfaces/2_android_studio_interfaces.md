@@ -4,7 +4,7 @@
 A la hora de crear interfaces para dispositivos Android a través de Android Studio, dependiendo de la aplicación que estemos creando, pueden ser generadas de dos maneras distintas:
 
 * **[Diseño de vista en XML](https://developer.android.com/develop/ui/views/layout/declaring-layout?hl=es-419)**: Son generadas a través de ficheros [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) utilizando un editor en el que podremos colocar distintos elementos, restricciones... Para el correcto funcionamiento y compilación del proyecto, estos ficheros deben de cumplir con el estándar XML y ser ficheros válidos. Era el sistema original a la hora de crear vistas.
-* **[Jetpack Compose](https://developer.android.com/courses/jetpack-compose/course?hl=es-419)**: es un *framework* Kotlin para crear interfaces de usuario de manera declarativa. En este caso se "escribe" lo que queremos que tenga el interfaz.
+* **[Jetpack Compose](https://developer.android.com/courses/jetpack-compose/course?hl=es-419)**: es un *framework* [Kotlin](https://kotlinlang.org/docs/home.html) para crear interfaces de usuario de manera declarativa. En este caso se programa los componentes que va a tener el interfaz.
 
 En un mismo proyecto puede coexistir vistas creadas de distintas maneras, por lo que en un proyecto antiguo que se usó XML, podemos ir migrando vistas al formato Compose si usamos Kotlin.
 
@@ -631,7 +631,7 @@ A la hora de crear nuestra aplicación puede ser interesante tener un "tema" (en
 La personalización de las aplicaciones se hace a través del "tema"/themes, que normalmente tendrá colores corporativos, tipos de letras elegidos, tamaños elegidos...
 :::
 
-Al crear nuestro proyecto veremos que existe un directorio llamado `ui/theme`{.configdir} dentro de la misma ruta donde se encuentra el fichero `MainActivity.kt`{.configfile}. En ese directorio nos encontraremos con tres ficheros, que es recomendable abrir para ver su contenido:
+Al crear nuestro proyecto veremos que existe un directorio llamado [ui/theme]{.configdir} dentro de la misma ruta donde se encuentra el fichero [MainActivity.kt]{.configfile}. En ese directorio nos encontraremos con tres ficheros, que es recomendable abrir para ver su contenido:
 
 * **Color.kt**: Contiene unas variables con los colores que van a ser utilizados en la aplicación. Los colores se pueden definir de distintas maneras y pueden tener un rango "Alpha" que es la opacidad. Podemos generar nuestro propio [sistema de colores](https://m3.material.io/styles/color/system/overview) y existen distintos [roles](https://m3.material.io/styles/color/roles) que podemos utilizar en nuestra aplicación.
 
@@ -706,18 +706,75 @@ Existen distintos tutoriales ([ tutorial 1 ](https://developer.android.com/codel
 :::
 
 
+## Eventos en Compose
+
+Tal como dice la [documentación oficial](https://developer.android.com/develop/ui/compose/state?hl=es-419), Compose es declarativo y, por lo tanto, la única manera de actualizarlo es llamar al mismo elemento que admite composición con argumentos nuevos. Estos argumentos son representaciones del estado de la IU. Cada vez que se actualiza un estado, se produce una ***recomposición***.
+
+- **Composición**: Es una descripción de la IU que compila Jetpack Compose cuando ejecuta elementos de componibilidad.
+
+- **Composición inicial**: Es la creación de una composición con la primera ejecución de elementos componibles.
+
+- **Recomposición**: Es la nueva ejecución de los elementos de componibilidad a los fines de actualizar la composición cuando los datos cambian.
+
+::: errorbox
+**A un elemento que admite composición se le debe informar, de manera explícita, el estado nuevo para que se actualice según corresponda.**
+:::
+
+**Compose necesita saber de qué estado se debe hacer un seguimiento** a fin de que, cuando reciba una actualización, pueda programar la recomposición. Compose solo realizará la recomponsición de las funciones que deben cambiar. Para ello usaremos los tipos [State](https://developer.android.com/reference/kotlin/androidx/compose/runtime/State) y [MutableState](https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState) de Compose para que Compose pueda observar el estado. La función `Mutablestate` puede actualizar su `value` para actualizar el estado.
+
+
+Vamos a realizar el ejemplo del contador, cuya función sería la siguiente:
+
+::: {.mycode size=footnotesize}
+  [Función contador]{.title}
+
+```kotlin
+@Composable
+fun Contador(modifier: Modifier = Modifier) {
+    var contador: MutableState<Int> = remember { mutableStateOf(0) }
+
+    Surface(modifier = Modifier.fillMaxSize()) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text("${contador.value}")
+            Button(
+                onClick = {
+                    contador.value++
+                }
+            ) {
+                Text("Suma!")
+            }
+        }
+    }
+}
+```
+:::
+
+La variable "contador" es de tipo "MutableState", que se actualiza al pulsar el botón, y Compose al detectar que se ha actualizado su "value", recompone esa parte de la vista, mostrando el nuevo valor.
+
+::: questionbox
+**¿Qué pasa con los datos si rotamos la pantalla?**
+:::
+
+
+::: exercisebox
+Más sobre estados y actualizaciones de vista [en este ejemplo de la documentación](https://developer.android.com/codelabs/jetpack-compose-state?hl=es-419#0) y [en este otro](https://developer.android.com/codelabs/basic-android-kotlin-compose-using-state?hl=es-419#0)
+:::
+
+
 # Ciclo de vida del *Activity* en Android {#ciclo-de-vida-del-activity-en-android}
 
 
-El contenido del texto de la vista se resetea al rotar el dispositivo. Es decir, **cualquier posible contenido que hubiese en ellos se pierde**. Esto es debido a que el ***Activity*** de la vista se destruye y se vuelve a crear en el nuevo estado de la pantalla.
+El contenido de la vista se resetea al rotar el dispositivo. Es decir, **cualquier posible contenido que hubiese en la vista que no se haya guardado se pierde**. Esto es debido a que el ***Activity*** de la vista se destruye y se vuelve a crear en el nuevo estado de la pantalla.
 
 ::: errorbox
-**Al rotar el dispositivo el \textit{Activity} entra en un ciclo de destrucción-creación**
+**Al rotar el dispositivo el *Activity* entra en un ciclo de destrucción-creación**
 :::
 
 Es importante conocer qué sucede al rotar el dispositivo, y qué sucede con la vista y con los componentes que tenemos en primer plano.
 
-Existen distintas funciones dentro del ciclo de vida de un ***Activity***, que serán llamadas por el sistema cada vez que se entre en cada uno de estos estados:
+Existen distintas funciones dentro del **[ciclo de vida de la actividad](https://developer.android.com/guide/components/activities/activity-lifecycle?hl=es-419)**, que serán llamadas por el sistema cada vez que se entre en cada uno de estos estados:
 
 :::::::::::::: {.columns }
 ::: {.column width="25%"}
@@ -738,17 +795,12 @@ Existen distintas funciones dentro del ciclo de vida de un ***Activity***, que s
 :::
 ::::::::::::::
 
-En el esquema (y en la web oficial de la [documentación](https://developer.android.com/guide/components/activities/activity-lifecycle#alc)) se puede apreciar los estados y sus transiciones:
+En el esquema (y en la web oficial de la [documentación](https://developer.android.com/guide/components/activities/activity-lifecycle#alc)) se puede apreciar los estados y sus transiciones.
+
+Ahora bien, si queremos guardar el estado de variables para ser utilizadas al cambiar el estado, habrá variación del tipo de vista que estemos utilizando, ya que con XML o con Compose es distinto. De nuevo, en la documentación sobre [cómo guardar estados de la IU](https://developer.android.com/topic/libraries/architecture/saving-states?hl=es-419#ui-dismissal-user) nos indicará qué métodos debemos usar.
 
 
-
-::: exercisebox
-Añade al **MainActivity.kt** las funciones necesarias para ver todas las transiciones al rotar la pantalla. Que las funciones muestren en el **Logcat** un texto que indique qué se ha ejecutado.
-:::
-
-
-
-## Mantener los estados {#mantener-los-estados}
+## Mantener los estados con XML {#mantener-los-estados-xml}
 
 Una vez sabemos cómo actúa las distintas transiciones de estados de las vistas, es momento de poder guardar el estado para poder recuperar la información al crear el Activity de nuevo. Para ello se van a usar dos funciones:
 
@@ -789,5 +841,35 @@ override fun onRestoreInstanceState(savedInstanceState: Bundle) {
 :::
 
 
-# Uso de vistas cruzadas
+::: exercisebox
+Añade al **MainActivity.kt** las funciones necesarias para ver todas las transiciones al rotar la pantalla. Que las funciones muestren en el **Logcat** un texto que indique qué se ha ejecutado.
+:::
+
+
+
+## Mantener los estados con Compose {#mantener-los-estados-compose}
+
+El [ciclo de vida de los elementos componibles](https://developer.android.com/develop/ui/compose/lifecycle?hl=es-419) es diferente en Jetpack Compose, ya que la *recomposición* se realiza a nivel de componente en lugar de a vista completa.
+
+Para guardar el estado de la variable entre recomposiciones, haremos uso del tipo "rememberSaveable". Esto nos permitirá rotar el dispositivo y mantener el valor de la variable:
+
+::: {.mycode size=footnotesize}
+  [Mantener el estado]{.title}
+
+```kotlin
+@Composable
+fun Contador(modifier: Modifier = Modifier) {
+    var contador: MutableState<Int> = rememberSaveable { mutableStateOf(0) }
+    // ...
+}
+```
+:::
+
+Al hacer uso de "rememberSaveable" nos permite guardar el estado durante la recomposición, pero dado que el ciclo de vida de la actividad puede contener otros estados, no siempre será funcional.
+
+::: errorbox
+Usar "rememberSaveable" no guarda el estado de la recreación de la actividad.
+:::
+
+Para hacer uso más complejo de los estados, en [cómo guardar estados de la IU](https://developer.android.com/topic/libraries/architecture/saving-states?hl=es-419#ui-dismissal-user) y en [estado y Jetpack Compose](https://developer.android.com/develop/ui/compose/state?hl=es-419#store-state) hay más documentación sobre ello.
 
