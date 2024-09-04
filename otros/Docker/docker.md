@@ -39,7 +39,16 @@ ruben@vega:~$ sudo apt install docker.io
 El nombre del paquete en Ubuntu y Debian es "docker.io".
 :::
 
-En sistemas Windows y MacOS existe la opción de instalar [Docker Desktop](https://docs.docker.com/get-docker/), una versión que utiliza una máquina virtual para simplificar la instalación en estos sistemas.
+### Instalación en Windows y/o Mac {#instalacion-docker-windows-mac}
+
+En sistemas Windows y MacOS existe la opción de instalar [Docker Desktop](https://docs.docker.com/get-docker/), una versión que utiliza una máquina virtual para simplificar la instalación en estos sistemas. De todas maneras, también se instala el CLI para poder usar los comandos que veremos a continuación.
+
+En caso de [Windows](https://docs.docker.com/desktop/install/windows-install/#system-requirements), se requiere [tener las extensiones de virtualización habilitadas en la BIOS/UEFI](https://www.virtualmetric.com/blog/how-to-enable-hardware-virtualization) y una de estas dos opciones, que habrá que configurar antes de instalar Docker Desktop:
+
+- Usar [WSL2](#introducción-wsl).
+- Usar Hyper-V y el sistema de contenedores de Windows.
+
+
 
 ## Configuración {#configuración-docker}
 
