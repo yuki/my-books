@@ -18,7 +18,7 @@ Para realizar la instalación necesitaremos de permisos de administrador, y lo r
 [Instalación de WSL en Windows 10]{.title}
 
 ``` powershell
-PS C:\\Windows\system32> wsl --install
+PS C:\Users\ruben> wsl --install
 ```
 :::
 
@@ -37,7 +37,7 @@ Tras realizar la instalación podremos observar que Windows ha realizado una ser
 
 -   Tal como se ha dicho, en WSL-2 las instancias realmente son máquinas virtuales Hyper-V. La configuración de las instancias se encuentran en el directorio [AppData]{.configdir} del usuario que las crea. Por ejemplo, para Debian, se encuentra el disco duro dentro de [./AppData/Local/Packages/TheDebianProject.../LocalState/ext4.vhdx]{.configfile}
 
-    ::: errorbox
+    ::: warnbox
 El directorio AppData está oculto por defecto en el explorador de ficheros de Windows.
     :::
 
@@ -91,6 +91,7 @@ PS C:\Users\ruben> wsl -l -v
 
 ``` powershell
 PS C:\Users\ruben> wsl -d Debian
+ruben@DESKTOP-1RVJ3UP:/mnt/c/Users/ruben$
 ```
 :::
 
@@ -124,6 +125,55 @@ PS C:\Users\ruben> wsl --shutdown
 :::
 
 
+# Acceder al sistema de ficheros de los subsistemas
+
+Microsoft ha creado la posibilidad de poder acceder al sistema de ficheros de los Linux que levantemos con WSL a través del explorador de ficheros de Windows. Esto permite copiar/pegar ficheros entre las distribuciones que hayamos creado y el propio sistema base. En la siguiente imagen se ve el explorador de archivos con tres subsistemas Linux creados:
+
+![Contenido de "/home/ruben" de Ubuntu desde el explorador Windows](img/temas_comunes/wsl/explorador_archivos.png){width="60%" framed=true}
+
+Como alternativa, desde dentro del subsistema Linux [podemos ejecutar aplicaciones Windows](https://learn.microsoft.com/en-us/windows/wsl/filesystems#run-windows-tools-from-linux), por lo que estando en cualquier ruta, podemos llamar al comando [explorer.exe .]{.commandbox} que nos abrirá el explorador de Windows en esa misma ruta:
+
+![Abrir explorador Windows desde Linux](img/temas_comunes/wsl/explorador_archivos_2.png){width="60%"}
+
+
+## Rendimiento de los sistemas de ficheros en WSL
+
+Por cómo funciona WSL y la gestión de sistemas de ficheros entre el sistema anfitrión Windows y el subsistema Linux, tenemos que tener claro que **existen dos sistemas de ficheros independientes, pero accesibles entre ellos**:
+
+- **Sistema de ficheros de Windows**: Es el sistema de ficheros de nuestro equipo Windows. Hay que tener en cuenta, que cuando entramos al subsistema Linux, por defecto nos encontramos en ese mismo sistema de ficheros:
+  
+::: {.mycode}
+[Al entrar al subsistema Linux, estamos en el sistema de ficheros de Windows]{.title}
+
+``` powershell
+PS C:\Users\ruben\Desktop> wsl -d Ubuntu
+ruben@DESKTOP-1RVJ3UP:/mnt/c/Users/ruben/Desktop$
+```
+:::
+
+  Tal como se puede ver, al entrar en Ubuntu, la ruta en la que nos encontramos es [/mnt/c/Users/ruben/Desktop]{.configdir}, que es el sistema de ficheros de Windows (`C:`) **montado en la ruta de Linux** `/mnt/c`. Por eso, desde Linux tendremos acceso a todo el sistema de ficheros de Windows desde esa ruta.
+
+- **Sistema de ficheros del subsistema Linux**: La máquina virtual de Linux que hemos creado tiene su propio sistema de ficheros, que como en cualquier Linux, está en `/`. 
+
+::: {.mycode}
+[Pasamos al sistema de ficheros real de Linux]{.title}
+
+``` powershell
+ruben@DESKTOP-1RVJ3UP:/mnt/c/Users/ruben/Desktop$ cd
+ruben@DESKTOP-1RVJ3UP:~$ pwd
+/home/ruben
+```
+:::
+
+  Tal como se puede ver, con el comando [pwd]{.commandbox}, ahora nos encontramos en el sistema de ficheros de Linux real.
+
+
+A la hora de hacer uso de aplicaciones en el susbsistema Linux, es recomendable hacerlo dentro del sistema de ficheros de Linux, no en el sistema montado, debido a que el [rendimiento](https://learn.microsoft.com/en-us/windows/wsl/filesystems#file-storage-and-performance-across-file-systems) en el sistema montado es mucho peor. Por tanto, nos debemos asegurar que la aplicación está en la ruta correcta.
+
+::: errorbox
+**Usar el sistema de ficheros de Windows montado en el subsistema Linux perjudica el rendimiento.**
+:::
+
 
 # Docker dentro de WSL {#docker-dentro-de-wsl}
 
@@ -141,5 +191,5 @@ systemd=true
 :::
 
 
-Salimos de la distribución y tenemos que forzar su reinicio. Una vez realizado estos pasos, si volvemos a entrar en la instancia, [systemd]{.commandbox} estará funcionando y por tanto podremos hacer uso del Docker Engine.
+Salimos de la distribución y tenemos que forzar su reinicio. Una vez realizado estos pasos, si volvemos a entrar en la instancia, [systemd]{.commandbox} estará funcionando y por tanto podremos instalar y hacer uso del Docker Engine como si fuese una máquina virtual creada al modo tradicional.
 
