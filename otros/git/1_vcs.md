@@ -12,7 +12,7 @@ Si pensamos en un documento, un ciclo de vida con modificaciones puede ser:
 5.  Añadir logo de la compañía.
 6.  Modificaciones finales.
 
-Los sistemas de control de versiones pueden controlar las modificaciones de cualquier tipo de fichero, pero son especialmente útiles cuando se trata con ficheros de tipo texto, como código fuente, documentos tipo texto/markdown, imágenes de tipo vectorial svg\...
+Los sistemas de control de versiones pueden controlar las modificaciones de cualquier tipo de fichero, pero **son especialmente útiles cuando se trata con ficheros de tipo texto**, como código fuente, documentos tipo texto/[markdown](https://es.wikipedia.org/wiki/Markdown), imágenes de tipo vectorial svg\...
 
 
 # Un poco de historia {#un-poco-de-historia}
@@ -21,9 +21,9 @@ Aunque existen muchos sistemas de control, vamos a enumerar unos pocos que han t
 
 -   **CVS**: En inglés *concurrent versions systems*, creado en el año 1990, comenzó como un *frontend* de un sistema de versiones anterior (llamado RCS). Añadió funcionalidades sobre RCS hasta que se consideró un sistema propio. En el mundo del software libre ganó muchos adeptos a pesar de que era complicado de utilizar y tenía ciertas carencias y fallos.
 
--   **Subversion**: Apareció en el año 2000 con la intención de ser parecido a CVS pero tratando de corregir fallos del anterior y añadirle características que carecía. Hace uso de un sistema basado en un repositorio central al que se envían los cambios. Debido a las mejoras que tenía, y la aparición del portal [Sourceforge](https://sourceforge.net/), se vuelve muy utilizado y prácticamente como el sistema principal del Sofware Libre.
+-   **Subversion**: Apareció en el año 2000 con la intención de ser parecido a CVS pero tratando de corregir fallos del anterior y añadirle características que carecía. Hace uso de un sistema **basado en un repositorio central** al que se envían los cambios. Debido a las mejoras que tenía, y la aparición del portal [Sourceforge](https://sourceforge.net/), se vuelve muy utilizado y prácticamente como el sistema principal del Sofware Libre.
 
--   **Bitkeeper**: Es un sistema de control de versiones distribuido originalmente como software privativo, pero que permitió hacer uso de manera gratuita a los desarrolladores del kernel Linux (hasta el año 2005). Los desarrolladores del kernel Linux adoptaron esta solución porque ya desde 1998 [estaban teniendo problemas](https://lkml.org/lkml/1998/9/30/122), y no podían adoptar un sistema centralizado.
+-   **Bitkeeper**: Es un sistema de control de versiones **distribuido** originalmente como software privativo, pero que permitió hacer uso de manera gratuita a los desarrolladores del kernel Linux (hasta el año 2005). Los desarrolladores del kernel Linux adoptaron esta solución porque ya desde 1998 [estaban teniendo problemas](https://lkml.org/lkml/1998/9/30/122), y **no podían adoptar un sistema centralizado**.
 
 -   **GNU Bazaar**: Creado en 2005 por la empresa Canonical (creadores de Ubuntu), es un sistema de control de versiones distribuido. La idea era impulsarlo como gestor del código utilizado en Ubuntu.
 
@@ -67,13 +67,17 @@ Esto suponía que era necesario tener siempre acceso a internet, y aparte, que p
 
 Tampoco se podía saber si alguien había realizado modificaciones en el código hasta que no se intentasen subir nuevas modificaciones. De haber modificaciones y no tenerlas en la copia de trabajo local, había que resolver el conflicto, pudiendo dejar el servidor central en estado bloqueado.
 
+::: errorbox
+Los conflictos bloquean el servidor, por lo que hasta que no se resuelvan, nadie puede subir cambios.
+:::
+
 ## Distribuido {#distribuido}
 
-Los sistemas de control de versiones distribuidos siguen la filosofía de que en cada copia de trabajo existen todos los datos, metadatos y el histórico completo de modificaciones que ha tenido el proyecto desde el inicio de los tiempos.
+Los sistemas de control de versiones distribuidos siguen la filosofía de que **en cada copia de trabajo existen todos los datos, metadatos y el histórico completo de modificaciones** que ha tenido el proyecto desde el inicio de los tiempos.
 
 Gracias a eso, permite hacer uso del trabajo *offline*, no necesitando la conexión a internet hasta que no nos interese subir los cambios realizados a un repositorio donde el resto de desarrolladores puedan acceder.
 
-También es posible crear ramas locales, comprobar cómo ha evolucionado el proyecto, realizar *diffs*\... sin necesidad de realizar ningún tipo de conexión, por lo que estos cambios se realizan en local **mejorando la velocidad de trabajo**.
+También es posible crear ramas locales, comprobar cómo ha evolucionado el proyecto, realizar *diffs* ... **sin necesidad de realizar ningún tipo de conexión**, por lo que estos cambios se realizan en local **mejorando la velocidad de trabajo**.
 
 Trabajando de esta manera, también **nos permite centrarnos en las características que estamos realizando**, dejando para más adelante la posibilidad de que existan conflictos.
 
@@ -83,7 +87,9 @@ Por otro lado, el flujo de trabajo puede variar entre proyectos, y dentro de nue
 ![*Workflow* distribuido. [Fuente](https://git-scm.com/about/distributed).](img/git/workflow-b.png){width="65%"}
 :::
 
+::: infobox
 En los sistemas distribuidos podemos hacer que el sistema de control de versiones se adapte a nuestra manera de trabajar, y no al revés.
+:::
 
 
 # Glosario {#glosario}
@@ -112,13 +118,15 @@ Commit
 
     - Como nombre: Un "***commit***" (o revisión), es el conjunto de modificaciones que se empaquetan conjuntamente. Un "commit" muestra las modificaciones realizadas respecto al commit anterior.
 
+      ::: warnbox
       Los commits deberían llevar modificaciones que tengan que ver entre sí y tratando de que sea código válido.
+      :::
 
     - Como verbo: Hacer un "commit", o "***commitear***", es la acción de empaquetar modificaciones de nuestra copia de trabajo, para crear un "*commit*", o revisión, que va a pertenecer al histórico del proyecto.
 
 
 Origin
-:   En sistemas de control de versiones distribuidos, es el nombre del repositorio remoto "central".
+:   En Git, es el nombre por defecto del repositorio remoto del que nos hemos clonado el repositorio.
 
 Pull
 :   Obtener y aplicar en el repositorio local todos los commits desde un repositorio remoto. En caso de existir cambios en local y en los commits, puede surgir conflictos.

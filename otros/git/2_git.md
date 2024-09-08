@@ -2,7 +2,7 @@
 
 # Introducción {#git_introducción}
 
-[Git](https://git-scm.com/) es un sistema de control de versiones distribuido creado en 2005 por Linus Torvalds, el mismo creador del kernel Linux. En tres días el sistema de control de versiones ya estaba versionando su propio código, y en dos semanas ya tenía gestión de ramas.
+[Git](https://git-scm.com/) es un sistema de control de versiones distribuido creado en 2005 por [Linus Torvalds](https://es.wikipedia.org/wiki/Linus_Torvalds), el mismo creador del [kernel Linux](https://es.wikipedia.org/wiki/N%C3%BAcleo_Linux). En tres días el sistema de control de versiones ya estaba versionando su propio código, y en dos semanas ya tenía gestión de ramas.
 
 El proyecto se inició debido a que el sistema que utilizaban para la gestión del kernel Linux (Bitkeeper, en ese momento software privativo) decidió dejar de dar licencias gratuitas a los desarrolladores de Software Libre.
 
@@ -31,18 +31,13 @@ Git está presente en todos los sistemas operativos actuales. Dependiendo del si
 Podemos hacer uso de Git a través de sistemas de consola o de aplicaciones gráficas. Hoy en día los entornos de desarrollo más conocidos también lo tienen integrado, por lo que es posible hacer uso de Git desde ellos.
 
 -   Windows:
-
     -   [Git Bash](https://gitforwindows.org/)
-
 -   MacOS:
-
     -   MacOS tiene integrado Git dentro de las herramientas de desarrollador de Xcode. Para instalar únicamente Git desde un terminal debemos ejecutar: [xcode-select --install]{.commandbox}
-
-    -   Como mejor opción se recomienda usar [Brew.sh](https://brew.sh/) e instalarlo a través de él.
-
+    -   Para tener la última versión se recomienda usar [Brew.sh](https://brew.sh/) e instalarlo a través de él.
 -   GNU/Linux:
-
     -   Hoy en día todas las distribuciones tienen en sus repositorios Git, por lo que lo recomendable es hacer uso del sistema de instalación propio (apt, yast, \...). También es probable que ya esté instalado.
+
 
 # Primeros pasos {#primeros-pasos}
 
@@ -63,7 +58,7 @@ A nivel de configuración podemos llegar a tener configuraciones específicas gl
 
 # Estado de los ficheros {#estado-de-los-ficheros}
 
-Dentro del repositorio, los ficheros que vayamos creando y/o modificando pueden estar en distintos estados. Esto es lo que se denomina "ciclo de vida" o *lifecycle* de un fichero.Los ficheros pueden estar en los siguientes estados:
+Dentro del repositorio, los ficheros que vayamos creando y/o modificando pueden estar en distintos estados. Esto es lo que se denomina "ciclo de vida" o *lifecycle* de un fichero. Los ficheros pueden estar en los siguientes estados:
 
 -   **Sin seguimiento**: Es un fichero nuevo que no está en seguimiento por el sistema de control de versiones. Aunque se realicen cambios en él, no podremos volver a versiones previas. En caso de usar un repositorio remoto, este fichero no estará en él.
 
@@ -203,7 +198,7 @@ Primer commit
 ```
 :::
 
-De manera gráfica, el histórico de los *commits* podríamos representarlo de la siguiente manera:
+De manera gráfica, el histórico de los *commits* podríamos representarlo de la siguiente manera, empezando por la izquierda el commit más antiguo:
 
 ::: center
 ![Estado tras varios commits](img/git/log.png){width="70%"}
@@ -220,13 +215,13 @@ ruben@vega:~/pruebas$ git diff
 ```
 :::
 
-Y obtendríamos algo como esto, donde las líneas que empiezan con "-" han sido borradas y las que empiezan con "+" son añadidos.
+Y obtendríamos algo como esto, donde las líneas que empiezan con "**-**" han sido borradas y las que empiezan con "**+**" son añadidos.
 
 ::: center
 ![Cambios respecto al commit anterior](img/git/diff.png){width="90%"}
 :::
 
-Esta diferencia es más fácil verla en entornos de desarrollo como en [Visual Studio Code](https://code.visualstudio.com/).
+Esta diferencia se aprecia de la siguiente manera en entornos de desarrollo como [Visual Studio Code](https://code.visualstudio.com/).
 
 ::: center
 ![Diff en Visual Studio Code](img/git/diff_code.png){width="100%"}

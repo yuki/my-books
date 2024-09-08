@@ -25,7 +25,7 @@ Para crear una rama en el desarrollo, desde el punto en el que nos encontramos, 
 
 ```console
 ruben@vega:~/pruebas$ git branch featureA
-ruben@vega:~/pruebas$ git checkout featureA
+ruben@vega:~/pruebas$ git switch featureA
 Cambiado a rama 'feature1'
 
 ruben@vega:~/pruebas$ git log
@@ -36,7 +36,7 @@ Date:   Sun Sep 17 18:40:37 2023 +0200
 ```
 :::
 
-Tal como se puede ver, se ha creado la rama con nombre "featureA", para posteriormente con el comando [git checkout featureA]{.commandbox} cambiarnos a dicha rama.
+Tal como se puede ver, se ha creado la rama con nombre "featureA", para posteriormente con el comando [git switch featureA]{.commandbox} cambiarnos a dicha rama.
 
 Con [git log]{.commandbox} podemos comprobar cómo en ese *commit* ahora mismo se encuentran tres puntos de nuestro sistema de repositorios:
 
@@ -52,7 +52,7 @@ Los tres puntos coinciden porque no se han realizado todavía ningún cambio en 
 [Crear rama "featureB" y movernos a ella directamente]{.title}
 
 ``` console
-ruben@vega:~/pruebas$ git checkout -b featureB
+ruben@vega:~/pruebas$ git switch -c featureB
 Cambiado a nueva rama 'featureB'
 ```
 :::
@@ -60,14 +60,14 @@ Cambiado a nueva rama 'featureB'
 
 ## Cambiar entre ramas {#cambiar-entre-ramas}
 
-Ahora que ya sabemos cómo crear ramas, hay que entender cómo podemos cambiar entre ellas, aunque el comando lo acabamos de ver en el punto anterior: [git checkout branch]{.commandbox}, donde "branch" es el nombre de la rama a la que queremos ir.
+Ahora que ya sabemos cómo crear ramas, hay que entender cómo podemos cambiar entre ellas, aunque el comando lo acabamos de ver en el punto anterior: [git switch branch]{.commandbox}, donde "branch" es el nombre de la rama a la que queremos ir.
 
 Siguiendo con el ejemplo anterior, si queremos volver a la rama "main", deberíamos hacer:
 
 :::mycode
 [Volver a la rama "main"]{.title}
 ``` console
-ruben@vega:~/pruebas$ git checkout main
+ruben@vega:~/pruebas$ git switch main
 Cambiado a rama 'main'
 Tu rama está actualizada con 'origin/main'.
 ```
@@ -78,7 +78,7 @@ Si queremos volver a la rama "featureA":
 ::: mycode
 [Volver a la rama "featureA"]{.title}
 ``` console
-ruben@vega:~/pruebas$ git checkout featureA
+ruben@vega:~/pruebas$ git switch featureA
 Cambiado a rama 'featureA'
 ```
 :::
@@ -108,6 +108,7 @@ Por otro lado, desde ese punto surgen dos ramas:
 - **featureA**, con el único commit 1e30067.
 - **main**, que tiene 2 commits.
 
+Se puede también ver que existe una rama "featureB" que se mantiene en el mismo punto que antes, ya que no se ha decidido añadir nada todavía en esa rama. Y ese mismo punto es el que coincide con el repositorio remoto "origin/main".
 
 Tras realizar estas modificaciones, a continuación vamos a ver cómo podemos fusionar los cambios de una rama en la otra.
 
@@ -144,7 +145,7 @@ Para realizar la fusión, debemos seguir estos pasos:
 ::: mycode
 [Volver a la rama "main"]{.title}
 ``` console
-ruben@vega:~/pruebas$ git checkout main
+ruben@vega:~/pruebas$ git switch main
 ruben@vega:~/pruebas$ git merge featureA -m "Merge de FeatureA en main"
 ```
 :::
@@ -154,7 +155,7 @@ De esta manera, crearemos un nuevo commit con el texto "Merge de FeatureA en mai
 ![Merge donde hay commits en ambas ramas](img/git/merge_final.png){width="90%"}
 
 
-Una vez realizado el *merge*, podemos subir los cambios al repositorio central. La rama "featuresA" es una rama local, por lo que a nivel de GitHub esa rama nunca ha existido, aunque podemos ver en el interfaz web que el gráfico sí ha sufrido una ramificación:
+Una vez realizado el *merge*, podemos subir los cambios al repositorio central. La rama "featureA" es una rama local, por lo que a nivel de GitHub esa rama nunca ha existido, aunque podemos ver en el interfaz web que el gráfico sí ha sufrido una ramificación:
 
 ![Gráfico en el interfaz de GitHub](img/git/merge_github.png){width="90%" framed="true"}
 

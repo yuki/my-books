@@ -1,7 +1,7 @@
 
 # Usar GitHub como repositorio remoto {#usar-github-como-repositorio-remoto}
 
-[GitHub](https://github.com/) es un portal donde podemos crear repositorios para poder usarlo como sistema centralizado de nuestros proyectos.
+[GitHub](https://github.com/) es una web donde podemos crear repositorios y usarlo como sistema centralizado de nuestros proyectos.
 
 Entre las característica que tiene, se pueden destacar:
 
@@ -13,7 +13,7 @@ Entre las característica que tiene, se pueden destacar:
 
 -   Gestión de "*pull requests*" para integrar cambios en la rama principal.
 
--   Sistema de "acciones", que ayudan para el sistema de "integración continua". Con estas acciones podemos generar "*releases*", compilar el código y comprobar si hay errores, pasar tests, \... Hay mucha [documentación](https://docs.github.com/en/actions) al respecto.
+-   Sistema de [acciones automatizadas](https://docs.github.com/en/actions), que ayudan para el sistema de [CI/CD](https://es.wikipedia.org/wiki/CI/CD). Con estas acciones podemos generar "*releases*", compilar el código y comprobar si hay errores, pasar tests, \... Hay mucha [documentación](https://docs.github.com/en/actions) al respecto.
 
 ## Crear repositorio {#crear-repositorio}
 
@@ -31,7 +31,7 @@ Una vez hemos creado una cuenta, podremos crear un nuevo repositorio en la plata
 
     -   **.gitignore**: Un fichero que nos permite ignorar ficheros dentro de nuestro "área de trabajo". Podemos elegir de una plantilla para distintos lenguajes de programación.
 
-    -   **Licencia**: Un fichero con distintas licencias libres para nuestro proyecto.
+    -   **Licencia**: Podemos elegir entre distintas licencias libres para nuestro proyecto.
 
 
 ![Opciones al crear un nuevo repositorio en GitHub](img/git/github-new.png){width="70%" framed="true"}
@@ -40,7 +40,7 @@ Una vez hemos creado una cuenta, podremos crear un nuevo repositorio en la plata
 En este caso se va a crear un repositorio público llamado **pruebas**, sin ningún tipo de fichero. De esta manera "enlazaremos" el repositorio local de los pasos anteriores con este repositorio.
 
 
-# Enlazar repositorio con remoto {#enlazar-repositorio-con-remoto}
+# Enlazar repositorio local con remoto {#enlazar-repositorio-local-con-remoto}
 
 GitHub nos muestra cuáles son los pasos para enlazar un repositorio existente con el que acabamos de crear en su plataforma, a través de la línea de comandos:
 
@@ -60,7 +60,7 @@ Vamos a tratar de entender qué es lo que hace cada uno de los comandos, ya que 
 
     Con este comando se añade un repositorio remoto con el nombre "**origin**". Básicamente estamos diciéndole al repositorio local que cuando realicemos algo sobre el repositorio remoto “origin” haga uso de esa URL.
 
-    El nombre "origin" se puede cambiar, pero es el nombre que decidieron ponerle:
+    **El nombre "origin" se puede cambiar**, pero es el nombre que han decidido estandarizar:
 
     ::: center
        ![Enlazamos repositorio local con remoto de nombre "origin"](img/git/remote.png){width="70%"}
@@ -84,19 +84,85 @@ Vamos a tratar de entender qué es lo que hace cada uno de los comandos, ya que 
 
       Estos parámetros sólo los usaremos para realizar el primer envío. Estos indican al repositorio local que haga uso del servidor remoto "origin" para enlazar la rama en la que nos encontramos ("main") con la rama remota "main" a la hora de enviar las revisiones.
 
-      Los nombres de las ramas no tienen por qué coincidir, pero que sean iguales nos va a facilitar identificar ambas.
+      ::: warnbox
+      **Los nombres de las ramas no tienen por qué coincidir, pero que sean iguales nos va a facilitar identificar ambas.**
+      :::
 
       ::: center
       ![Enlazamos rama local con rama remota](img/git/remote_push.png){width="70%"}
       :::
 
 
-Al realizar el último comando en windows nos aparecerá una ventana para que realicemos el **login de usuario** en GitHub.
+Al ejecutar el último comando, se va a tratar de enviar información a GitHub, por lo que deberemos hacer uso de un sistema de autenticación para asegurar que tenemos acceso al repositorio.
 
 
-## Añadiendo credenciales de acceso en Windows {#añadiendo-credenciales-de-acceso-en-windows}
 
-Dado que realizar una modificación en un repositorio de GitHub es algo que puede puede conllevar un peligro en el código fuente, nos aparecerá una ventana para que realicemos el login de usuario.
+## Sistemas de autenticación con GitHub {#autenticacion-github}
+
+Para asegurar que quien manda información al servidor remoto es quien dice ser, GitHub cuenta [distintos sistemas de autenticación](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github).
+
+A continuación se detallan los utilizados para línea de comandos
+
+
+### Autenticación SSH (certificados de clave pública/clave privada) {#autenticación-github-ssh}
+
+A la hora de utilizar la conexión/autenticación SSH con GitHub, para que no nos pida el usuario y la contraseña es **hacer uso de los certificados de clave pública y clave privada**. Este concepto de "clave pública y clave privada" viene de la [**criptografía asimétrica**](https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica).
+
+Este sistema de criptografía asimétrica hace uso de dos claves que están asociadas entre sí:
+
+-   **Clave privada**: Es la base del sistema criptográfico, y como su nombre indica, se debe de mantener en privado. **Nunca se debe de compartir**, ya que entonces se podrían hacer pasar por nosotros.
+
+-   **Clave pública**: Asociada a la clave privada, la clave pública puede ser compartida y enviada a otros ordenadores para poder realizar la conexión.
+
+Para generar el par de claves se realiza con el siguiente comando (**que funciona tanto en Windows como en Linux**):
+
+::: mycode
+[Crear par de claves pública/privada]{.title}
+
+``` console
+ruben@vega:~$  ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ruben/.ssh/id_rsa):
+
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+
+Your identification has been saved in /home/ruben/.ssh/id_rsa
+Your public key has been saved in /home/ruben/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:SPqPOYBmPb8PCFhcZgqcWZPZzaL5RNfMeKmHqebvC7E ruben@vega
+The key's randomart image is:
++---[RSA 3072]----+
+|o +oB o = .      |
+| * B.+ = *       |
+|  + + + =        |
+| o o + = .       |
+|. .o+.o S        |
+|  +.+*o          |
+| o  +Eo          |
+|     .+=         |
+|      *B+        |
++----[SHA256]-----+
+```
+:::
+
+El comando muestra los siguientes pasos:
+
+1. Creación de la pareja de claves pública/privada haciendo uso, en este caso, del sistema criptográfico [**RSA**](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). En otros caso puede ser Ed25519.
+2. Lugar donde se va a guardar la clave privada. En este caso en [.ssh/id_rsa]{.configfile}.
+3. Contraseña para securizar la clave privada. De esta manera, para poder usarla habrá que introducir dicha contraseña. Dado que nosotros queremos evitar introducir contraseñas, lo dejaremos en blanco.
+4. Lugar donde se va a guardar la clave pública. En este caso en [.ssh/id_rsa.pub]{.configfile}.
+
+Una vez tenemos nuestro par de claves, podemos copiar la clave pública en nuestro perfil de GitHub, apartado "SSH and GPG Keys".
+
+![Añadir clave pública en GitHub](img/git/github_public-key.png){width="50%" framed=true}
+
+De esta manera, ya podremos hacer uso del protocolo SSH para el sistema de autenticación contra GitHub.
+
+
+### Añadiendo credenciales de acceso en Windows {#añadiendo-credenciales-de-acceso-en-windows}
+
+En el caso no utilizar el sistema de autenticación anterior, nos aparecerá una ventana para que realicemos el login de usuario.
 
 ::: center
 ![Ventana para realizar el login en Github](img/git/github_login.png){width="50%"}
