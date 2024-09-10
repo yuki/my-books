@@ -53,6 +53,24 @@ Para realizar una configuración avanzada, existe una [documentación](https://l
 
 -   [.wslconfig]{.configfile}: **fichero en el directorio del usuario de Windows**. Este fichero tendrá la configuración que afectará a todas las distribuciones que hayamos instalado con WSL 2.
 
+
+# WSL con usuarios no privilegiados
+
+WSL hace uso de ciertas características que necesitan de permisos de administrador. En caso de no tener permisos de administrador, por defecto sólo se hará uso de WSL versión 1, por lo que el rendimiento de los subsistemas es peor.
+
+Por lo tanto, para poder utilizar WSL2 **se necesita tener acceso a los credenciales de administrador** y ejecutar los siguientes comandos:
+
+::: {.mycode}
+[Usar WSL2 en usuarios no privilegiados]{.title}
+
+``` powershell
+PS C:\Users\usuario> wsl --update
+
+PS C:\Users\usuario> wsl --set-default-version 2
+```
+:::
+
+
 # Comandos útiles {#comandos-útiles}
 
 Una vez realizada la instalación, existen ciertos comandos que nos pueden ser útil a la hora de hacer uso de WSL. No se van a detallar todos, ya que con [wsl --help]{.commandbox} obtendremos la ayuda del comando y muchas más opciones.
@@ -97,10 +115,29 @@ ruben@DESKTOP-1RVJ3UP:/mnt/c/Users/ruben$
 
 
 ::: {.mycode}
+[Terminar/Apagar una distribución]{.title}
+
+``` powershell
+PS C:\Users\ruben> wsl -t Debian
+```
+:::
+
+
+
+::: {.mycode}
+[Apagar todas las instancias]{.title}
+
+``` powershell
+PS C:\Users\ruben> wsl --shutdown
+```
+:::
+
+
+::: {.mycode}
 [Eliminar una distribución instalada]{.title}
 
 ``` powershell
-PS C:\Users\ruben> wsl --unregister Ubuntu
+PS C:\Users\ruben> wsl --unregister Debian
 ```
 :::
 
@@ -116,13 +153,6 @@ PS C:\Users\ruben> wsl --import Ubuntu2 ubuntu2_files ./ubuntu.tar
 :::
 
 
-::: {.mycode}
-[Apagar las instancias]{.title}
-
-``` powershell
-PS C:\Users\ruben> wsl --shutdown
-```
-:::
 
 
 # Acceder al sistema de ficheros de los subsistemas
@@ -177,9 +207,18 @@ A la hora de hacer uso de aplicaciones en el susbsistema Linux, es recomendable 
 
 # Docker dentro de WSL {#docker-dentro-de-wsl}
 
-Microsoft tiene un apartado en su [documentación](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-containers) para utilizar Docker dentro de WSL. El "problema" es que este sistema hace uso de [Docker Desktop](https://www.docker.com/products/docker-desktop/) en lugar del servicio (o *engine*) que se puede instalar en distribuciones GNU/Linux por defecto.
+Si queremos tener Docker dentro de un subsistema Linux, existen dos posibilidades completamente diferenciadas:
 
-Si no queremos hacer uso de [Docker Desktop](#instalacion-docker-windows-mac), dentro de la instancia que nos interese utilizar con Docker deberemos crear un fichero en [/etc/wsl.conf]{.configfile} con el siguiente contenido.
+- Utilizar [Docker Desktop](#instalacion-docker-windows-mac) en Windows. Docker Desktop usará WSL por debajo y tenemos la posibilidad de que los subsistemas hagan uso del Docker engine creado instalado en Docker Desktop. Este es el modo aconsejado por la [documentación de Microsoft](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-containers).
+- Instalar el Docker Engine dentro de un subsistema Linux.
+
+Este último método lo explicamos a continuación.
+
+##  Instalar Docker Engine en WSL {#docker-engine-dentro-de-wsl}
+
+En algunos casos nos puede interesar no hacer uso de [Docker Desktop](#instalacion-docker-windows-mac), porque lo que queremos es tener la posibilidad de un control total de Docker, como si de una instalación de máquina virtual completa de Linux se tratara. Es por ello que debemos realizar una pequña modificación en el funcionamiento del subsistema Linux correspondiente.
+
+Supongamos que hemos creado el subsistema Linux de la distribución Ubuntu, deberemos entrar en ella, y tendremos que crear un fichero en [/etc/wsl.conf]{.configfile} con el siguiente contenido.
 
 ::: {.mycode}
 [Configuración del fichero wsl.conf]{.title}
