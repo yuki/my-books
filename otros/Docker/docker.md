@@ -43,6 +43,8 @@ El nombre del paquete en Ubuntu y Debian es "docker.io".
 
 En sistemas Windows y MacOS existe la opción de instalar [Docker Desktop](https://docs.docker.com/get-docker/), una versión que utiliza una máquina virtual para simplificar la instalación en estos sistemas. De todas maneras, también se instala el CLI para poder usar los comandos que veremos a continuación.
 
+![Docker Desktop](img/docker/docker_desktop.png){width="90%" framed=true}
+
 En caso de [Windows](https://docs.docker.com/desktop/install/windows-install/#system-requirements), se requiere [tener las extensiones de virtualización habilitadas en la BIOS/UEFI](https://www.virtualmetric.com/blog/how-to-enable-hardware-virtualization) y una de estas dos opciones, que habrá que configurar antes de instalar Docker Desktop:
 
 - Usar [WSL2](#introducción-wsl).
@@ -76,9 +78,13 @@ Esta IP hará de **puente** (similar a lo que sucede con las máquinas virtuales
 
 ## Usar Docker con usuario sin privilegios {#usar-docker-con-usuario-sin-privilegios}
 
-Para evitar tener que hacer uso de Docker con usuario root, se puede añadir a los usuarios no privilegiados dentro del grupo "docker" que se ha creado durante la instalación.
+Para poder hacer uso de Docker con un usuario sin permisos de root/administrador, se debe añadir a los usuarios no privilegiados dentro de un grupo. Dependiendo de dónde usemos Docker, tendremos que realizarlo de una manera u otra.
 
-Para ello, podemos editar el fichero [/etc/group]{.configfile}, y añadir el usuario al grupo, o mejor, ejecutar estos comandos que ponemos a continuación:
+### Linux
+
+En este caso, el grupo que debe tener el usuario es "**docker**", que se lo podemos añadir al usuario de distintas maneras:
+ - Editar el fichero [/etc/group]{.configfile}, y añadir el usuario al grupo
+ - Ejecutar estos comandos que ponemos a continuación:
 
 :::mycode
 [Algunas de las opciones del comando docker]{.title}
@@ -95,6 +101,20 @@ ruben@vega:~$ newgrp docker
 :::
 
 A partir de ahora ya se puede hacer uso de Docker con el usuario al que hayamos añadido al grupo.
+
+
+### Windows
+
+Para que un usuario en Windows pueda usar Docker Desktop tiene que pertenecer al grupo "**docker-users**". Para añadirlo, desde un PowerShell **con permisos de administrador**, ejecutaremos:
+
+::: {.mycode}
+[Añadir al usuario "usuario" al grupo docker-users]{.title}
+
+``` powershell
+PS C:\Users\ruben> net localgroup "docker-users" "usuario" /add
+```
+:::
+
 
 ## Primeros pasos {#primeros-pasos}
 
