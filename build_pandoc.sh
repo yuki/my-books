@@ -4,6 +4,7 @@ ORIG=`pwd`
 
 LIBROS=(
     "otros/aws/ aws_book"
+    "otros/aws_docentes/ aws_docentes_book"
     "otros/Docker/ docker_book"
     "otros/git/ git_book"
     "otros/hacer_documentacion/ como_hacer_documentacion_book"

@@ -10,6 +10,7 @@ on:
         options:
           - ALL
           - AWS
+          - AWS_docentes
           - Como_hacer_documentacion
           - Docker
           - Git
@@ -54,6 +55,7 @@ jobs:
         tag_name: latest
         files: |
           otros/aws/aws_book.pdf
+          otros/aws_docentes/aws_docentes_book.pdf
           otros/Docker/docker_book.pdf
           otros/git/git_book.pdf
           otros/hacer_documentacion/como_hacer_documentacion_book.pdf
