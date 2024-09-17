@@ -18,7 +18,7 @@ on:
           - PFsense
           - ASO
           - SGBD
-          - SI
+          - Sistemas_Informaticos
           - SGE
           - Desarrollo_Interfaces
           - Gestion_backups
@@ -54,24 +54,24 @@ jobs:
       with:
         tag_name: latest
         files: |
-          otros/aws/aws_book.pdf
-          otros/aws_docentes/aws_docentes_book.pdf
-          otros/Docker/docker_book.pdf
-          otros/git/git_book.pdf
-          otros/hacer_documentacion/como_hacer_documentacion_book.pdf
-          otros/laravel/laravel_book.pdf
-          otros/PFsense/pfsense_book.pdf
-          ASIR/2/administracion_sistemas_operativos/aso_book.pdf
-          ASIR/2/SGBD/sgbd_book.pdf
-          DAM/1/sistemas_informaticos/si_book.pdf
-          DAM/2/desarrollo_interfaces/desarrollo_interfaces_book.pdf
-          DAM/2/sistemas_gestion_empresarial/sge_book.pdf
-          anexos/gestion_backups/gestion_backups_anexo.pdf
-          anexos/instalar_ubuntu_lts/instalar_ubuntu_lts_anexo.pdf
-          anexos/monitorizacion_munin/monitorizacion_munin_anexo.pdf
-          anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.pdf
-          anexos/ubuntu_raid1/ubuntu_raid1_anexo.pdf
-          anexos/virtualbox_networking/virtualbox_networking_anexo.pdf
+          otros/aws/aws.pdf
+          otros/aws_docentes/aws_docentes.pdf
+          otros/Docker/docker.pdf
+          otros/git/git.pdf
+          otros/hacer_documentacion/como_hacer_documentacion.pdf
+          otros/laravel/laravel.pdf
+          otros/PFsense/pfsense.pdf
+          ASIR/2/administracion_sistemas_operativos/aso.pdf
+          ASIR/2/SGBD/sgbd.pdf
+          DAM/1/sistemas_informaticos/si.pdf
+          DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
+          DAM/2/sistemas_gestion_empresarial/sge.pdf
+          anexos/gestion_backups/gestion_backups.pdf
+          anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf
+          anexos/monitorizacion_munin/monitorizacion_munin.pdf
+          anexos/sistemas_monitorizacion/sistemas_monitorizacion.pdf
+          anexos/ubuntu_raid1/ubuntu_raid1.pdf
+          anexos/virtualbox_networking/virtualbox_networking.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
