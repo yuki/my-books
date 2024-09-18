@@ -39,7 +39,7 @@ ruben@vega:~$ docker run -d -e POSTGRES_USER=odoo \
 ::: mycode
 [Crear y arrancar el contenedor de la base de datos]{.title}
 ```console
-ruben@vega:~$ docker run -p 8069:8069 --name odoo \
+ruben@vega:~$ docker run -d -p 8069:8069 --name odoo \
 --link odoo_db:db -t odoo
 ```
 :::
