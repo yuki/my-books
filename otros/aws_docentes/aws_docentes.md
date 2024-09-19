@@ -44,7 +44,18 @@ Tenemos cláramente dos partes diferenciadas, el menú de la izquierda que conti
 * **Ayuda**: Recursos de ayuda para el docente, donde podemos acceder a los foros y nos aparecen noticias de actualizaciones de la plataforma.
 
 
-## Creación de clases {#lms-clases}
+# Cursos para docentes {#cursos-docentes}
+
+Dentro del LMS nos encontramos con varios cursos docentes que **es recomendable realizar** para conocer distintos apartados dentro de AWS.
+
+Existe el curso ***Educator Getting Started with AWS Academy*** (está en castellano) que ha sido creado con información general de AWS Academy.
+
+::: infobox
+Para conocer el programa AWS Academy es recomendable realizar el curso ***Educator Getting Started with AWS Academy***.
+:::
+
+
+# Creación de clases {#lms-clases}
 
 Tal como se ha dicho previamente, las clases para estudiantes se crean desde el apartado "Usuario":
 
