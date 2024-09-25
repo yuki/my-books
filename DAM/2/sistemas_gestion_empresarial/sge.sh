@@ -10,6 +10,9 @@ cat 3_crm.md
 echo [Odoo]{.part}
 cat 2_odoo.md
 
+echo [Uso de datos en informes]{.part}
+cat ../../../anexos/datastudio/datastudio.md
+
 echo [Alta Disponibilidad y Arquitectura de sistemas]{.part}
 cat ../../../temas_comunes/alta_disponibilidad/alta_disponibilidad.md
 cat ../../../temas_comunes/arquitectura_sistemas/arquitectura_sistemas.md

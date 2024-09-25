@@ -16,7 +16,7 @@ Los paneles de información suelen contar con las siguientes características:
 -   Son **interactivos**: podemos hacer que los gráficos estén enlazados entre sí, y de esta manera al seleccionar un apartado de uno, el resto se actualizan.
 
     ::: center
-    ![Gráficos enlazados](img/di/tema_3/graficos.png){width="90%" framed=true}
+    ![Gráficos enlazados](img/anexos/datastudio/graficos.png){width="90%" framed=true}
     :::
 
 -   Se pueden generar **filtros** para realizar una búsqueda en los datos.
@@ -90,7 +90,7 @@ En primer lugar vamos a necesitar crear una fuente de datos, donde deberemos sub
 
 :::::::::::::: {.columns }
 ::: {.column width="30%"}
-![Realizar búsqueda en[OpenData Euskadi](https://opendata.euskadi.eus/inicio/)](img/di/tema_3/opendata.png){width="100%"}
+![Realizar búsqueda en[OpenData Euskadi](https://opendata.euskadi.eus/inicio/)](img/anexos/datastudio/opendata.png){width="100%"}
 :::
 ::: {.column width="63%" }
 
@@ -126,11 +126,11 @@ Para poder hacer uso de los datos en los paneles de información, primero debemo
 
 En el caso de utilizar una hoja de cálculo de Google, deberemos darle permisos para poder acceder, y elegiremos la hoja de cálculo que nos interese. También nos va a permitir seleccionar unas opciones durante la importación:
 
-![Crear fuente de datos](img/di/tema_3/crear_fuente_datos.png){width="90%" framed=true}
+![Crear fuente de datos](img/anexos/datastudio/crear_fuente_datos.png){width="90%" framed=true}
 
 Tras realizar la importación, dentro de la fuente de datos deberemos identificar el tipo de fuente que es cada dato. En algunos casos Looker Studio identificará el tipo correcto, pero en otros no, como sucede con las posiciones de geolocalización.
 
-![Datos normalizados](img/di/tema_3/datos_normalizados.png){width="90%" framed=true}
+![Datos normalizados](img/anexos/datastudio/datos_normalizados.png){width="90%" framed=true}
 
 Una vez realizada la normalización de los datos, podemos comenzar a crear el informe.
 
