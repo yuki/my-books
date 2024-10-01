@@ -155,3 +155,4 @@ A continuación se explican algunos de ellos:
     -   **Mapa de burbujas**: Geolocaliza los datos añadiendo pequeños círculos. Estos pueden ser de distintos colores identificando algún aspecto destacable de los datos.
 
 En el siguiente [enlace](https://lookerstudio.google.com/reporting/a08f1776-4f54-4421-9a3e-69f2f4130b80/page/GaKdD) se puede ver los aspectos más básicos de un informe.
+
