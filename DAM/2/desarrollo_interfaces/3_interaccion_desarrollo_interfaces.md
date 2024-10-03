@@ -5,7 +5,11 @@ Durante el desarrollo de aplicaciones hay que tener en cuenta ciertas cuestiones
 
 ![Aspectro de la experiencia de usuario. [Referencia](https://www.preapps.com/blog/11-ways-how-to-market-a-dating-app-699/).](img/di/tema_3/aspectro_usabilidad.svg){width=100%}
 
+Si simplificamos el aspectro a tener en cuenta y nos centramos sólo en las necesidades que puede tener un proyecto, los elementos a tener en cuenta para la experiencia de usuario también se simplifican, **aunque mantienen la importancia**.
 
+En este aspecto, [Jesse James Garrett](https://en.wikipedia.org/wiki/Jesse_James_Garrett) divide los elementos que tienen relación con la experiencia de usuario en varios elementos separados en cinco capas. Aunque se hacía referencia a los sistemas web, también son válidos en aplicaciones de escritorio y móvil.
+
+![Elementos de UX según Jesse James Garrett. [Fuente traducida](http://www.jjg.net/elements/translations/elements_es.pdf)](img/di/tema_3/elementos_experiencia_usuario.png){width=70%}
 
 # Definiendo conceptos
 
