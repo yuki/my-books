@@ -56,6 +56,9 @@ Jakob Nielsen definió la usabilidad como el atributo de calidad que mide lo fá
 - **Errores**: ¿Cuántos errores cometen los usuarios, cómo de graves son estos errores y con qué facilidad pueden recuperarse de ellos?
 - **Satisfacción**: ¿Cómo de agradable es utilizar el diseño?
 
+::: infobox
+Existe la norma [ISO 9241](https://en.wikipedia.org/wiki/ISO_9241) enfocada a la calidad en usabilidad y ergonomía del hardware y software.
+:::
 
 
 ## Experiencia de usuario {#experiencia-usuario}
@@ -82,18 +85,55 @@ La interfaz de usuario (en inglés *user interface*, **UI**) es la capa que se s
 
 En esta interfaz de usuario aparecerán todos los elementos con los que el usuario interactuará de manera directa. Estos elementos generarán eventos o realizarán algún tipo de actividad en el producto, que normalmente generará una salida/respuesta.
 
-::: errorbox
-Para diseñar el interfaz, debemos tener clara la interacción humano-aplicación.
-:::
-
 
 ### Procesos de diseño de un interfaz de usuario {#procesos-diseño-interfaz-usuario}
 
 El diseño de la interfaz de usuario es una disciplina asociada al diseño industrial y se enfoca en maximizar la usabilidad y la experiencia de usuario.
 
-Antes de realizar el diseño del interfaz de usuario debemos tener clara
+Antes de realizar el diseño del interfaz de usuario debemos tener claro cómo queremos que sea la interacción entre la persona que va a utilizar la aplicación y la propia aplicación.
 
-A la hora de diseñar interfaces, es útil hacer uso de sistemas de prototipado utilizando herramientas específicas para ello. En algunos casos, incluso pueden tener una funcionalidad básica.
+::: errorbox
+Para diseñar el interfaz, debemos tener clara la interacción humano-aplicación.
+:::
 
 
+Para el diseño de la interfaz deberemos tener en cuenta, al menos, los siguientes puntos:
+
+- Elaborar una **lista de los elementos funcionales** requeridos por el sistema para que cumpla los objetivos del proyecto. Esto se realiza teniendo claro los **requisitos** del proyecto.
+- **Analizar los usuarios potenciales de la aplicación y las tareas que van a realizar**. Normalmente se hace a través de un trabajo de campo estudiando la forma en la que realizan las tareas, entrevistando a los usuarios, ... Algunas de las preguntas que debemos contestar son:
+  - ¿Qué querría el usuario que haga el sistema?
+  - ¿Cómo encajaría el sistema en el flujo de trabajo o las actividades diarias?
+  - ¿Cuán competente es el usuario técnicamente y qué sistemas parecidos ya utiliza?
+  - ¿Qué estilos de aspecto y comportamiento son los preferidos del usuario?
+- Es importante tener clara cómo es la **arquitectura de la información**, que es el estudio, análisis, organización, disposición, estructuración y presentación de la información.
+- A la hora de diseñar interfaces, **es útil hacer uso de sistemas de prototipado** utilizando herramientas específicas para ello. En algunos casos, incluso pueden tener una funcionalidad básica.
+- Ya se ha mencionado previamente, pero es importante recalcar realizar **pruebas de usabilidad**, en las que el usuario pueda expresar lo que piensa mientras utiliza la aplicación.
+
+
+### Principios y requisitos de diseño de una interfaz de usuario {#principios-requisitos-interfaz}
+
+Las características dinámicas de un sistema se describen en términos de requisitos diálogo
+
+La norma [ISO 9241](https://en.wikipedia.org/wiki/ISO_9241) establece una serie de conceptos y elementos básicos de ergonomía que suponen un punto de partida para facilitar el diálogo entre los sistemas y las personas que usan dichos sistemas, con **definiciones de alto nivel**, **aplicaciones ilustrativas** y **ejemplos de los principios definidos**. Los principios aplicables representan los aspectos dinámicos de la interfaz y pueden considerarse, de forma general, como la "sensación" que produce la interfaz.
+
+Tal como nos dice la [wikipedia](https://es.wikipedia.org/wiki/Dise%C3%B1o_de_interfaz_de_usuario#Principios_y_requisitos_de_dise%C3%B1o_de_una_interfaz_de_usuario), los siete principios son los siguientes:
+
+- **Adecuación a la tarea**: el diálogo es adecuado a la tarea cuando asiste al usuario en la compleción eficaz y eficiente de la tarea.
+- **Carácter autodescriptivo**: el diálogo es autodescriptivo cuando cada paso del diálogo es inmediatamente comprensible ya sea mediante la información devuelta por el propio sistema o por una explicación a solicitud del - usuario.
+- C**onformidad con las expectativas del usuario**: el diálogo es conforme con las expectativas del usuario cuando es consistente y se ajusta a las características del usuario, tales como conocimiento de la tarea, - educación, experiencia, y otros convenios comúnmente aceptados.
+- **Adecuación al aprendizaje**: el diálogo es adecuado al aprendizaje cuando ofrece soporte y guía para que el usuario aprenda a utilizar el sistema.
+- **Controlabilidad**: el diálogo es controlable cuando el usuario es capaz de iniciar y controlar la dirección y ritmo de la interacción hasta el punto en el que la tarea ha sido completada.
+- Tolerancia a errores: el diálogo es tolerante a errores si, con independencia de que haya errores de la entrada, el resultado pretendido puede ser alcanzado sin acción necesaria por parte del usuario, o con una acción - mínima.
+- Personalizable: el diálogo es personalizable cuando la interfaz de software puede ser modificada para ajustarse a las necesidades de la tarea, preferencias individuales, y habilidades del usuario.
+
+
+En cuanto a la **presentación de la información**, cómo se organiza en la aplicación, la visualización de los objetos y la codificación de la información, también se tiene que tener en cuenta varios puntos:
+
+- **Claridad**: el contenido de la información es presentado de forma rápida y precisa.
+- **Discriminabilidad**: la información visualizada puede ser distinguida de forma precisa.
+- **Concisión**: los usuarios no son sobrecargados con información irrelevante.
+- **Consistencia**: el diseño es único y conforme a las expectativas del usuario.
+- **Detectabilidad**: la atención del usuario es dirigida hacia la información necesaria.
+- **Legibilidad**: la información es fácil de leer.
+- **Comprensibilidad**: el significado es claramente inteligible, no ambiguo, interpretable y reconocible.
 
