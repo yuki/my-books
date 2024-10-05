@@ -38,9 +38,9 @@ for LIBRO in "${LIBROS[@]}"; do
 
     if [ "$TODO" = "all" ] || [ "${TODO}" = "$NAME" ] ; then
         echo "BUILDING $NAME.html"
-        ./`echo $NAME.sh` | pandoc -o $NAME.html -d defaults.yaml --verbose
+        ./book.sh | pandoc -o $NAME.html -d defaults.yaml --verbose
         echo "BUILDING $NAME.pdf"
-        ./`echo $NAME.sh` | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex --verbose
+        ./book.sh | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex --verbose
     fi
     cp $NAME.html $ORIG/build
     cp $NAME.pdf $ORIG/build
