@@ -44,6 +44,34 @@ Tenemos cláramente dos partes diferenciadas, el menú de la izquierda que conti
 * **Ayuda**: Recursos de ayuda para el docente, donde podemos acceder a los foros y nos aparecen noticias de actualizaciones de la plataforma.
 
 
+## Confirmar e-mail {#confirmar-mail}
+
+Una vez hemos entrado en la plataforma, debemos confirmar la cuenta de correo electrónico. Los pasos hay que realizarlos desde el apartado **Configuraciones** del panel de nuestro usuario.
+
+![Panel de usuario](img/aws/docentes_panel_usuario.png){width="50%" framed=true}
+
+En el lado derecho aparece la sección "Maneras para contactar" donde aparece nuestra dirección de correo. El icono de exclamación indica que no hemos confirmado que la cuenta existe. Si hacemos click en nuestra cuenta, nos indicará que nos ha mandado un correo.
+
+
+::::::::::::::: {.columns }
+:::: {.column width="25%"}
+![](img/aws/docentes_email_confirm.png){width="100%" framed=true}
+::::
+:::: {.column width="30%"}
+![](img/aws/docentes_email_reenviar.png){width="100%" framed=true}
+::::
+:::: {.column width="40%"}
+![](img/aws/docentes_email_recibido.png){width="100%" framed=true}
+::::
+:::::::::::::::
+
+En ese correo tendremos, tal como se ve en la tercera imagen de arriba, un enlace para confirmar el registro. Y una vez confirmada, la dirección en el panel de usuario aparecerá sin enlace y sin la exclamación.
+
+![Dirección confirmada](img/aws/docentes_email_confirmado.png){width="40%" framed=true}
+
+
+
+
 # Cursos para docentes {#cursos-docentes}
 
 Dentro del LMS nos encontramos con varios cursos docentes que **es recomendable realizar** para conocer distintos apartados dentro de AWS.
