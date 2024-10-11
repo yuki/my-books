@@ -7,3 +7,4 @@ cat 2_android_studio_interfaces.md
 echo [Desarrollo de aplicaciones]{.part}
 cat 3_interaccion_desarrollo_interfaces.md
 cat 4_toma_requisitos.md
+cat 5_diseño_modelos.md
