@@ -157,7 +157,7 @@ Un ejemplo de un requisito transaccional es el visto anteriormente, como **regis
 
 Los requisitos de datos, como su propio nombre indica, tiene que ver con los datos que la aplicación va a utilizar. Es importante entender que los requisitos funcionales que salen de los puntos anteriores requerirán a su vez de los datos que la aplicación va a utilizar.
 
-Se puede entender que es el análisis para entender qué datos se van a utilizar, para posteriormente realizar el esquema Entidad-Relación de la base de datos.
+Se debe entender el análisis realizado para entender qué datos se van a utilizar, para posteriormente realizar el esquema Entidad-Relación de la base de datos.
 
 ::: infobox
 Partiendo de los requisitos de datos podemos generar la base de datos de la aplicación.
