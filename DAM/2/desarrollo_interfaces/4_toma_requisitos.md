@@ -27,7 +27,7 @@ También es importante que el analista y jefe de proyecto se pongan en la piel d
 
 Una vez obtenida la información por parte del cliente, se debe realizar un análisis  de los requisitos, de esta manera, pueden surgir dudas, y en ese caso, volver al paso anterior.
 
-Diferenciando los tipos de requisitos, también nos ayudará a entender el alcance de cada uno de ellos para así poder gestionar distintos apartados de la aplicación.
+Diferenciar los tipos de requisitos nos ayudará a entender el alcance de cada uno de ellos para así poder gestionar distintos apartados de la aplicación.
 
 A la hora de analizar los requisitos, se suele crear una tabla donde se indicará:
 
