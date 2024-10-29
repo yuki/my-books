@@ -1,7 +1,7 @@
 
 # Crear primer proyecto en Laravel {#crear-primer-proyecto-en-laravel}
 
-A la hora de crear un proyecto en Laravel lo primero que deberíamos hacer es visitar la [documentación](https://laravel.com/docs/10.x/installation), ya que nos dará distintas opciones dependiendo del sistema operativo en el que nos encontremos. Aparte, podremos ver si ha habido cambios desde la última vez que hayamos creado un proyecto.
+A la hora de crear un proyecto en Laravel lo primero que deberíamos hacer es visitar la [documentación](https://laravel.com/docs/11.x/installation), ya que nos dará distintas opciones dependiendo del sistema operativo en el que nos encontremos. Aparte, podremos ver si ha habido cambios desde la última vez que hayamos creado un proyecto.
 
 ## Servicios a utilizar {#servicios-a-utilizar}
 
@@ -19,7 +19,7 @@ Otros servicios que podemos instalar y que nos darán ciertas funcionalidades so
 
 -   Uso de [MinIO](https://min.io/) para simular el **almacenamiento en la nube S3**. De esta manera no tendremos que crear un Bucket de pruebas.
 
--   Sistema de **búsqueda *full-text*** en la base de datos gracias a [Scout](https://laravel.com/docs/10.x/scout#introduction) y haciendo uso del backend [MeiliSearch](https://www.meilisearch.com/).
+-   Sistema de **búsqueda *full-text*** en la base de datos gracias a [Scout](https://laravel.com/docs/11.x/scout#introduction) y haciendo uso del backend [MeiliSearch](https://www.meilisearch.com/).
 
 -   Creación y automatización de **tests** utilizando [Selenium](https://www.selenium.dev/).
 
@@ -27,7 +27,7 @@ Estas son algunas de los servicios que podríamos configurar antes de comenzar a
 
 ## Instalación mediante Sail y Docker {#instalación-mediante-sail-y-docker}
 
-En la [documentación](https://laravel.com/docs/10.x/installation) de Laravel nos explica cómo realizar la instalación de distintos modos teniendo en cuenta el sistema operativo, los servicios iniciales que nos interesan y el sistema de instalación que mejor se adapte a nuestro entorno.
+En la [documentación](https://laravel.com/docs/11.x/installation) de Laravel nos explica cómo realizar la instalación de distintos modos teniendo en cuenta el sistema operativo, los servicios iniciales que nos interesan y el sistema de instalación que mejor se adapte a nuestro entorno.
 
 El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y *Windows Subsystem for Linux* (WSL). De manera generalizada, es necesario tener instalado:
 

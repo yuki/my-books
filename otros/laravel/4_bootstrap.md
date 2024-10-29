@@ -15,9 +15,9 @@ root@1b29e46c10ae:/var/www/html# npm run build
 
 A continuación se detalla qué hace cada comando:
 
--   [composer require laravel/ui --dev]{.commandbox}: [Composer](https://getcomposer.org/) es el gestor de dependencias utilizado por PHP. Lo que se está indicando es que se necesita como dependencia el paquete "laravel/ui" durante el desarrollo.
+-   [composer require laravel/ui \-\-dev]{.commandbox}: [Composer](https://getcomposer.org/) es el gestor de dependencias utilizado por PHP. Lo que se está indicando es que se necesita como dependencia el paquete "laravel/ui" durante el desarrollo.
 
--   [php artisan ui bootstrap --auth]{.commandbox}: Se indica qué *framework* para el interfaz se va a utilizar. Aparte, con el parámetro "--auth" se le indica que genera las plantillas para la autenticación.
+-   [php artisan ui bootstrap \-\-auth]{.commandbox}: Se indica qué *framework* para el interfaz se va a utilizar. Aparte, con el parámetro "--auth" se le indica que genera las plantillas para la autenticación.
 
 -   [npm install]{.commandbox}: instala las dependencias indicadas en el primer comando.
 
@@ -150,7 +150,11 @@ Ahora sólo queda levantar el servicio Vite o realizar la compilación para que 
 
 Para hacer funcionar los CSS o Javascript propios que hemos podido añadir en los ficheros [resources/css/app.css]{.configfile} o [resources/js/app.js]{.configfile} se puede hacer de dos maneras:
 
--   **Levantando un servicio**: los cambios se verán automáticamente a medida que los realizamos. Este sistema **sólo deberíamos usarlo durante el desarrollo** de la aplicación.
+-   **Levantando un servicio**: los cambios se verán automáticamente a medida que los realizamos.
+
+    ::: errorbox
+    Este sistema sólo se debería usar durante el desarrollo de la aplicación.
+    :::
 
 -   **Generando** los ficheros finales: el método que minimiza y "compila" los ficheros y los deja en el directorio [public/build]{.configdir}.
 
@@ -169,12 +173,12 @@ root@1b29e46c10ae:/var/www/html# npm run dev
 > dev
 > vite
 
-VITE v4.4.9  ready in 178 ms
+VITE v5.4.10  ready in 178 ms
 ->  Local:   http://localhost:5173/
 ->  Network: http://192.168.144.2:5173/
 ->  press h to show help
 
-LARAVEL v10.24.0  plugin v0.8.1
+LARAVEL v11.29.0  plugin v1.0.5
 ->  APP_URL: http://localhost
 ```
 :::
@@ -203,8 +207,8 @@ root@1b29e46c10ae:/var/www/html# npm run build
 > build
 > vite build
 
-vite v4.4.9 building for production...
-✓ 104 modules transformed.
+vite v5.4.10 building for production...
+✓ 111 modules transformed.
 public/build/manifest.json              0.26 kB │ gzip:  0.14 kB
 public/build/assets/app-48669401.css  225.72 kB │ gzip: 30.77 kB
 public/build/assets/app-c75e0372.js   111.35 kB │ gzip: 36.20 kB

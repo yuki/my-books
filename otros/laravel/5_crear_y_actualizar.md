@@ -131,7 +131,7 @@ public function update(Request $request, Post $post){
 ```
 :::
 
-Tal como se puede ver, la función de actualizar lo que hace es recibir los datos del formulario y el registro a actualizar. Existe la posibilidad de conocer si [alguno de los campos ha sido modificado](https://laravel.com/docs/10.x/eloquent#updates) antes de realizar la actualización. Después, debemos sustituir los campos y para finalizar guardar los cambios del registro. Por último, volvemos a la vista para visualizar los cambios.
+Tal como se puede ver, la función de actualizar lo que hace es recibir los datos del formulario y el registro a actualizar. Existe la posibilidad de conocer si [alguno de los campos ha sido modificado](https://laravel.com/docs/11.x/eloquent#updates) antes de realizar la actualización. Después, debemos sustituir los campos y para finalizar guardar los cambios del registro. Por último, volvemos a la vista para visualizar los cambios.
 
 La vista para editar el registro quedaría:
 
@@ -173,7 +173,7 @@ La vista para editar el registro quedaría:
 
 Dado que es el formulario de edición, deben existir datos, de ahí que para cada apartado haya que añadir el parámetro "value" en los *inputs*, el valor dentro del *textarea*, o darle el valor correspondiente al *checkbox*.
 
-También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP con los formularios, [el método PUT no se puede utilizar en formularios diréctamente](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT), por lo que debemos añadir [@method('PUT')]{.inlineconsole} para que lo genere [oculto](https://laravel.com/docs/10.x/blade#method-field) en el formulario.
+También hay que tener en cuenta que debido a cómo funciona el protocolo HTTP con los formularios, [el método PUT no se puede utilizar en formularios diréctamente](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT), por lo que debemos añadir [@method('PUT')]{.inlineconsole} para que lo genere [oculto](https://laravel.com/docs/11.x/blade#method-field) en el formulario.
 
 ::: exercisebox
 Dado que el formulario de crear y actualizar es prácticamente igual, sería interesante crear una única vista que sirva para ambos métodos.

@@ -46,7 +46,7 @@ Los sistemas ORM (del inglés *Object-Relational mapping*, o "mapeo objeto-relac
 
 Este sistema "simula" una base de datos orientada a objetos (que no están muy extendidas) haciendo uso de las bases de datos relacionales que son ampliamente utilizadas y son más conocidas. De esta manera, también es un sistema menos a mantener.
 
-Estos sistemas ORM suelen ocultar cómo se generan las peticiones a la base de datos, ya que para el programador lo único que hace es interactuar con objetos. El motor que usa Laravel se llama [Eloquent](https://laravel.com/docs/10.x/eloquent#retrieving-models).
+Estos sistemas ORM suelen ocultar cómo se generan las peticiones a la base de datos, ya que para el programador lo único que hace es interactuar con objetos. El motor que usa Laravel se llama [Eloquent](https://laravel.com/docs/11.x/eloquent#retrieving-models).
 
 Muchos *framewors* de programación hacen uso de sistemas ORM, por lo que dependerá de cuál usemos podremos hacer uso de uno o podremos elegir entre varios. La wikipedia tiene una página donde se [listan distintos ORMs](https://en.wikipedia.org/wiki/List_of_object%E2%80%93relational_mapping_software) separados por lenguajes de programación.
 

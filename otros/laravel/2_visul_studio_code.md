@@ -26,16 +26,14 @@ Para desarrollar con Laravel, aunque se puede extender a cualquier proyecto que 
 Entre las extensiones que se recomiendan están:
 
 -   [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack): Nos instala un grupo de extensiones para poder trabajar contra un servidor remoto.
-
 -   [Laravel Extension Pack](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-extension-pack): Es una "meta-extensión", ya que incluye a otras extensiones creadas especialmente para ayudar durante el desarrollo de Laravel.
-
 -   [PHP Extension Pack](https://marketplace.visualstudio.com/items?itemName=xdebug.php-pack): Es un conjunto de extensiones que nos va a permitir trabajar de manera más cómoda durante el desarrollo de código PHP.
-
 -   [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag): Muy útil durante el desarrollo de HTML, ya que cuando creamos una etiqueta, automáticamente nos crea la etiqueta de cerrado.
+-   [VSCode icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons): Aunque no es una extensión que nos ayude a programar, si que nos ayuda a identificar distintos ficheros, ya que añade iconos extra a nuestro entorno de trabajo.
 
 Existe una infinidad de extensiones que nos pueden ayudar durante el desarrollo,
 
-## Conexión al servidor {#conexión-al-servidor}
+## Desarrollo con conexión SSH a servidor remoto {#conexión-al-servidor}
 
 Si hacemos uso de una máquina virtual para el desarrollo, por no usar GNU/Linux en la máquina anfitriona donde hemos instalado el contenedor de Laravel, Visual Studio Code nos permite conectarnos por SSH a un servidor donde vayamos a realizar el desarrollo.
 
@@ -53,9 +51,9 @@ Es recomendable hacer uso del \hyperlink{ssh_clave_publica_privada}{sistema de c
 
 Nos pedirá dónde queremos guardar la configuración, dejando la ruta por defecto, que es el fichero [.ssh/config]{.configfile} dentro de la "home" de nuestro usuario. Si hemos realizado la configuración de los certificados de clave pública/privada, no nos pedirá la contraseña.
 
-## Conexión al contenedor {#conexión-al-contenedor}
+## Desarrollo en un contenedor Docker {#conexión-al-contenedor}
 
-Gracias a la extensión "remote development" instalada previamente, vamos a poder trabajar **dentro del contenedor de Laravel**. De esta manera Visual Studio Code va a tener acceso al intérprete de PHP para poder ayudarnos durante el desarrollo.
+Gracias a la extensión "Remote Development" instalada previamente, vamos a poder trabajar **dentro de un contenedor**, en este caso de Laravel.  De esta manera Visual Studio Code se podrá conectar a un contenedor local y da igual que se esté ejecutando en Linux, Windows o MacOS. La ventaja de este sistema es que vamos a tener acceso al intérprete de PHP para poder ayudarnos durante el desarrollo.
 
 Hacer uso de esta funcionalidad es muy útil ya que al estar dentro del contenedor, estamos dentro del entorno de desarrollo de manera "inmersiva", pudiendo instalar componentes o ejecutar órdenes dentro del contenedor.
 
@@ -64,6 +62,6 @@ Para realizar la conexión, deberemos ver los contenedores en la extensión "Rem
 ![](img/laravel/visual_studio_code_container.png){width="50%"  framed=true}
 
 
-Al acceder al contenedor, en este caso "example-app_laravel.test_1", Visual Studio nos debería abrir el directorio principal donde está situada la aplicación Laravel, [/var/www/html]{.configdir}.
+Al acceder al contenedor, en este caso "example-app_laravel.test_1", nos aseguramos entrar al directorio principal donde está situada la aplicación Laravel, [/var/www/html]{.configdir}.
 
 

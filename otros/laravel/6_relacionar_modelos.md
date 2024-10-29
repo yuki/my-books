@@ -38,7 +38,7 @@ public function up(): void{
 ```
 :::
 
-Tal como se puede ver, a la hora de crear la tabla en el *migration* se ha creado un campo llamado "**post_id**" que después se le ha indicado que es de tipo "clave foránea". En la [documentación](https://laravel.com/docs/10.x/migrations#foreign-key-constraints) se explican distintas opciones para este tipo de casos.
+Tal como se puede ver, a la hora de crear la tabla en el *migration* se ha creado un campo llamado "**post_id**" que después se le ha indicado que es de tipo "clave foránea". En la [documentación](https://laravel.com/docs/11.x/migrations#foreign-key-constraints) se explican distintas opciones para este tipo de casos.
 
 ::: exercisebox
 **Crea un "seed" para añadir un comentario al primer post**
@@ -46,7 +46,7 @@ Tal como se puede ver, a la hora de crear la tabla en el *migration* se ha cread
 
 # Crear relación de modelos {#crear-relación-de-modelos}
 
-Hasta ahora la relación se ha creado a nivel de base de datos, pero es necesario que Laravel a nivel de *framework*, mientras programamos, sea consciente de que los modelos están relacionados entre sí. Para ello, una vez más en la [documentación](https://laravel.com/docs/10.x/eloquent-relationships#one-to-many) se puede ver cómo Eloquent hace uso de los distintos tipos de relaciones.
+Hasta ahora la relación se ha creado a nivel de base de datos, pero es necesario que Laravel a nivel de *framework*, mientras programamos, sea consciente de que los modelos están relacionados entre sí. Para ello, una vez más en la [documentación](https://laravel.com/docs/11.x/eloquent-relationships#one-to-many) se puede ver cómo Eloquent hace uso de los distintos tipos de relaciones.
 
 Para ello, deberemos modificar ambos ficheros de los modelos que entran en juego en esta relación:
 

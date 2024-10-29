@@ -9,7 +9,16 @@ Por todo ello, a continuación se va a explicar cómo hacer que nuestra aplicaci
 
 # Rutas para la API {#rutas-para-la-api}
 
-Hasta ahora hemos hecho uso del fichero [routes/web.php]{.configfile} para añadir rutas a nuestra aplicación. En el mismo directorio podemos ver que existe otro fichero llamado [routes/api.php]{.configfile}, que, como su propio nombre indica, vamos a utilizar para añadir las rutas que utilizaremos en nuestra API.
+Hasta ahora hemos hecho uso del fichero [routes/web.php]{.configfile} para añadir rutas a nuestra aplicación. En versiones anteriores de Laravel existía un fichero [routes/api.php]{.configfile}, pero han decidido que por defecto no es necesario.
+
+Para que nuestra aplicación cuente con el sistema de API debemos ejecutar:
+
+::: {.mycode}
+[Crear sistema API]{.title}
+```console
+root@5cff1feaf785:/var/www/html# php artisan install:api
+```
+:::
 
 Si observamos el fichero, vemos ya existe una ruta creada:
 
@@ -20,9 +29,9 @@ Si observamos el fichero, vemos ya existe una ruta creada:
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
-});
+})->middleware('auth:sanctum');
 ```
 :::
 
@@ -50,7 +59,7 @@ Si ahora visualizamos el listado de rutas completo veremos las nuevas rutas. Si 
 
 
 ::: {.mycode size=small}
-[Añadir nuevas rutas al fichero web.php]{.title}
+[Listar nuevas rutas]{.title}
 ```console
 root@5cff1feaf785:/var/www/html# php artisan route:list --path=api
 
@@ -66,7 +75,7 @@ GET|HEAD        api/user ....................................................
 Por otro lado, dado que la API es un sistema en el que no vamos a guardar un estado (ya que haremos uso de \textit{\textbf{tokens}}), debemos hacer dos pequeños cambios a ficheros de configuración general.
 
 
-En [app\\Http\\kernel.php]{.configfile} hay que modificar la sección de la API dejando:
+En [app/Http/kernel.php]{.configfile} hay que modificar la sección de la API dejando:
 
 ::: {.mycode size=small}
 [Modificar kernel.php]{.title}
@@ -81,7 +90,7 @@ En [app\\Http\\kernel.php]{.configfile} hay que modificar la sección de la API 
 ```
 :::
 
-También hay que deshabilitar el [CSRF](https://en.wikipedia.org/wiki/Cross-site\_request\_forgery) para estas rutas. Para ello modificamos el fichero \configfile{app\Http\Middleware\VerifyCsrfToken.php} dejando:
+También hay que deshabilitar el [CSRF](https://en.wikipedia.org/wiki/Cross-site\_request\_forgery) para estas rutas. Para ello modificamos el fichero [app/Http/Middleware/VerifyCsrfToken.php]{.configfile} dejando:
 
 ::: mycode
 [Quitamos la protección CSRF a las rutas de la API]{.title}
@@ -146,9 +155,9 @@ Es por ello, que lo ideal es crear controladores específicos para las funcional
 
     -   **"API/PostController"**: Esto indica cuál es la ruta donde se creará el fichero, que en este caso es [app/Http/Controllers/API/PostController.php]{.configfile}.
 
-    -   **`–api`**: Este parámetro va a generar un controlador que carece de las funciones "create" y "edit", ya que no son necesarias en una API, dado que son exclusivas a visualizar los formularios en un interfaz web.
+    -   **`--api`**: Este parámetro va a generar un controlador que carece de las funciones "create" y "edit", ya que no son necesarias en una API, dado que son exclusivas a visualizar los formularios en un interfaz web.
 
-    -   **`–model=Post`**: Para que el nuevo fichero del controlador ya tenga el include del modelo necesario.
+    -   **`--model=Post`**: Para que el nuevo fichero del controlador ya tenga el include del modelo necesario.
 
 -   **Modificar la ruta para la API** y que de esta manera haga uso del nuevo controlador exclusivo. El cambio es el siguiente:
 

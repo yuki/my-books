@@ -9,7 +9,7 @@ Entre las características que tiene Laravel, se pueden destacar:
 
 -   Sistema de enrutamiento, también RESTful.
 
--   Motor de plantillas web llamado [Blade](https://laravel.com/docs/10.x/blade). Nos permite:
+-   Motor de plantillas web llamado [Blade](https://laravel.com/docs/11.x/blade). Nos permite:
 
     -   Crear plantillas que pueden incluir otras plantillas.
 
@@ -17,9 +17,9 @@ Entre las características que tiene Laravel, se pueden destacar:
 
     -   Permite cachear las plantillas hasta que se modifiquen.
 
--   Creador de queries a la base de datos llamada [Fluent](https://laravel.com/docs/10.x/queries).
+-   Creador de queries a la base de datos llamada [Fluent](https://laravel.com/docs/11.x/queries).
 
--   [Eloquent](https://laravel.com/docs/10.x/eloquent) como ORM (*object-relational mapper*).
+-   [Eloquent](https://laravel.com/docs/11.x/eloquent) como ORM (*object-relational mapper*).
 
 -   Uso de "*migrations*" para crear la base de datos a modo de sistema de control de versiones.
 

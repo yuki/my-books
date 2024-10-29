@@ -5,7 +5,7 @@ Ahora que ya tenemos el entorno creado, es momento de empezar a añadir funciona
 
 # Artisan {#artisan}
 
-[Artisan](https://laravel.com/docs/10.x/artisan) es la interfaz de línea de comandos que vamos a utilizar para realizar todo tipo de interacción entre el proyecto y el propio *framework* Laravel. Esta interfaz nos va a permitir, entre otras cosas:
+[Artisan](https://laravel.com/docs/11.x/artisan) es la interfaz de línea de comandos que vamos a utilizar para realizar todo tipo de interacción entre el proyecto y el propio *framework* Laravel. Esta interfaz nos va a permitir, entre otras cosas:
 
 -   Crear modelos y controladores.
 
@@ -104,12 +104,12 @@ return new class extends Migration {
 La función [up()]{.inlineconsole} se ejecutará cuando realizamos la migración, mientra que la función [down()]{.inlineconsole} se usará cuando realicemos un "***rollback***" (echar para atrás una migración).
 
 ::: warnbox
-**Por convenio, el nombre de los modelos suelen ser en singular, mientras que las tablas se deben crear en plural. [Pero se puede cambiar el nombre de la tabla](https://laravel.com/docs/10.x/eloquent\#table-names).**
+**Por convenio, el nombre de los modelos suelen ser en singular, mientras que las tablas se deben crear en plural. [Pero se puede cambiar el nombre de la tabla](https://laravel.com/docs/11.x/eloquent\#table-names).**
 :::
 
 ## Opciones de las migraciones {#opciones-de-las-migraciones}
 
-En la [documentación oficial](https://laravel.com/docs/10.x/migrations#tables) se explican cómo funcionan los *migrations* y las funcionalidades básicas y avanzadas que tienen.
+En la [documentación oficial](https://laravel.com/docs/11.x/migrations#tables) se explican cómo funcionan los *migrations*, las funcionalidades básicas y avanzadas que tienen, así como los distintos [tipos de columnas](https://laravel.com/docs/11.x/migrations#available-column-types) que podemos utilizar.
 
 Teniendo en cuenta lo visto en el punto anterior, podemos visualizar que las acciones del *migration* contiene varias líneas, y vamos a destacar lo siguiente para el fichero [2014_10_12_000000_create_users_table.php]{.configfile}:
 
@@ -133,7 +133,7 @@ Añade a la migración del modelo Post, la generación de los campos: “título
 
 ## Uso de las migraciones {#uso-de-las-migraciones}
 
-Una vez tenemos distintos ficheros de migraciones, hay que saber cómo aplicarlos y qué sucede con ellos. De nuevo, en la [documentación](https://laravel.com/docs/10.x/migrations#running-migrations) aparecen distintos ejemplos, de los cuales se van a destacar sólo unos a continuación:
+Una vez tenemos distintos ficheros de migraciones, hay que saber cómo aplicarlos y qué sucede con ellos. De nuevo, en la [documentación](https://laravel.com/docs/11.x/migrations#running-migrations) aparecen distintos ejemplos, de los cuales se van a destacar sólo unos a continuación:
 
 ### Desplegar migraciones {#desplegar-migraciones}
 
@@ -246,7 +246,7 @@ Para asegurar que el sistema de migraciones está funcionando bien, para hacer p
 
 A la hora de crear una aplicación es posible que nos interese que tras realizar un primer despliegue existan datos en la base de datos. Ya sea porque estos datos son necesarios para el correcto funcionamiento de la aplicación o para darle una funcionalidad básica.
 
-Para poblar de datos la base de datos existe el sistema de semillas, o ***seeds***. Este sistema funciona a través de sus propios ficheros, que se pueden crear por modelo (tal como hemos hecho en este capítulo), o de manera general en una semilla propia.
+Para poblar de datos la base de datos existe el sistema de semillas, o ***[seeds](https://laravel.com/docs/11.x/seeding)***. Este sistema funciona a través de sus propios ficheros, que se pueden crear por modelo (tal como hemos hecho en este capítulo), o de manera general en una semilla propia.
 
 Con la generación del modelo se ha creado también el fichero al que vamos a añadirle el código necesario para que cree un primer post de pruebas: [app/database/seeders/PostSeeder.php]{.configfile}.
 
@@ -271,7 +271,7 @@ class PostSeeder extends Seeder {
 ```
 :::
 
-Para poder hacer uso del modelo "**DB**" es necesario hacer uso de la librería "**`Illuminate\Support\Facades\DB`**". Ahora sólo queda ejecutar el *seed* tal como se explica en la [documentación](https://laravel.com/docs/10.x/seeding):
+Para poder hacer uso del modelo "**DB**" es necesario hacer uso de la librería "**`Illuminate\Support\Facades\DB`**". Ahora sólo queda ejecutar el *seed* tal como se explica en la [documentación](https://laravel.com/docs/11.x/seeding):
 
 ::: mycode
 [Ejecutar el seed]{.title}
@@ -316,13 +316,30 @@ Route::controller(PostController::class)->group(function () {
 ```
 :::
 
-Este código indica que se va a utilizar la clase "PostController" para el grupo de las rutas que aparecen en ese trozo de código. Si vamos al fichero [`App\Http\Controllers\PostController.php`]{.configfile} veremos que por defecto todas las funciones están vacías, y es por eso que no nos devuelve ningún dato.
+Este código indica que se va a utilizar la clase "PostController" para el grupo de las rutas que aparecen en ese trozo de código. Si vamos al fichero [App/Http/Controllers/PostController.php]{.configfile} veremos que por defecto todas las funciones están vacías, y es por eso que no nos devuelve ningún dato.
 
 Por lo tanto, la idea es:
 
 -   **/posts**: irá a la función "index" del controlador. Esta función normalmente lista el contenido de la tabla de base de datos que hace referencia al modelo. En nuestro caso, mostrará todos los posts del blog (normalmente en formato paginado).
 
 -   **/posts/{post}**: esta ruta será la utilizada cuando queramos ir a ver un registro del modelo concreto. En este caso "{post}" indicará el "id" dentro de la base de datos que se le pasará a la función "show".
+
+Existe un comando para visualizar qué rutas están configuradas en nuestra aplicación: 
+
+::: mycode
+[Añadiendo rutas para el nuevo controlador]{.title}
+``` console
+root@1b29e46c10ae:/var/www/html# php artisan route:list
+
+  GET|HEAD       / ................................................. 
+  GET|HEAD       posts ........... posts.index › PostController@index
+  GET|HEAD       posts/{post} ...... posts.show › PostController@show
+  GET|HEAD       storage/{path} ....................... storage.local
+  GET|HEAD       up ................................................. 
+                                                   Showing [5] routes
+```
+:::
+
 
 En el siguiente apartado, cuando modifiquemos el controlador quedará más claro.
 
@@ -344,12 +361,12 @@ Las peticiones HTTP que se pueden utilizar son:
 
 -   **DELETE**: Borra el recurso especificado.
 
-Es conveniente mirar la [documentación](https://laravel.com/docs/10.x/routing) cuando queramos realizar algún tipo de petición distinto de GET, ya que nos ayudará a comprender mejor qué es lo que está sucediendo.
+Es conveniente mirar la [documentación](https://laravel.com/docs/11.x/routing) cuando queramos realizar algún tipo de petición distinto de GET, ya que nos ayudará a comprender mejor qué es lo que está sucediendo.
 
 
 # Controladores y Vistas {#controladores-y-vistas}
 
-Ahora que ya tenemos las rutas creadas, es momento de que los datos se visualicen en la aplicación. Para ello es necesario entender cómo funciona el sistema de plantillas utilizado por Laravel, llamado **[Blade](https://laravel.com/docs/10.x/blade)**, que junto con el sistema de **enrutado** visto previamente, relaciona la URL a la que se llama con el controlador y la vista correspondientes.
+Ahora que ya tenemos las rutas creadas, es momento de que los datos se visualicen en la aplicación. Para ello es necesario entender cómo funciona el sistema de plantillas utilizado por Laravel, llamado **[Blade](https://laravel.com/docs/11.x/blade)**, que junto con el sistema de **enrutado** visto previamente, relaciona la URL a la que se llama con el controlador y la vista correspondientes.
 
 ## Obtener datos en el controlador {#obtener-datos-en-el-controlador}
 
@@ -384,7 +401,7 @@ El sistema de plantillas y vistas Blade se guardan en la ruta [resources/views]{
 **Es recomendable para cada Modelo/Controlador crear un directorio de vistas**
 :::
 
-Ahora es momento de visualizar los datos en la vista. Para ello, recorreremos el listado obtenido y lo visualizaremos, todo ello en la vista. El sistema de plantillas [Blade](https://laravel.com/docs/10.x/blade) permite introducir funcionalidad similar a PHP en la vista mezclado con HTML. También permite incrustar código PHP directamente, pero intentaremos evitarlo.
+Ahora es momento de visualizar los datos en la vista. Para ello, recorreremos el listado obtenido y lo visualizaremos, todo ello en la vista. El sistema de plantillas [Blade](https://laravel.com/docs/11.x/blade) permite introducir funcionalidad similar a PHP en la vista mezclado con HTML. También permite incrustar código PHP directamente, pero intentaremos evitarlo.
 
 El sistema de plantillas tiene una serie de palabras reservadas similar a la de los lenguajes de programación más habituales. En este ejemplo se va a recorrer con un bucle for la lista, se crea una variable de indexación, y así poder visualizar los atributos:
 
@@ -412,7 +429,7 @@ Crea la vista para visualizar toda la información del post en "show.blade.php".
 
 # *Soft Deleting* {#soft-deleting}
 
-Laravel, a través de su ORM Eloquent, nos permite hacer uso del sistema "*[soft deleting](https://laravel.com/docs/10.x/eloquent#soft-deleting)*", que en lugar de borrar los registros de la base de datos, lo que hace es marcarlo como borrado. Esto lo hace a través de una columna en la base de datos, indicando con una fecha cuándo se ha borrado.
+Laravel, a través de su ORM Eloquent, nos permite hacer uso del sistema "*[soft deleting](https://laravel.com/docs/11.x/eloquent#soft-deleting)*", que en lugar de borrar los registros de la base de datos, lo que hace es marcarlo como borrado. Esto lo hace a través de una columna en la base de datos, indicando con una fecha cuándo se ha borrado.
 
 Es habitual hacer uso de estos sistemas, por si el borrado ha sido erróneo, y de esta manera poder recuperar registros (ya que realmente no se han borrado).
 
@@ -460,7 +477,7 @@ Durante el desarrollo es habitual hacer uso de sistemas de *debug*, por ejemplo 
 Laravel cuenta con una función llamada [dd()]{.inlineconsole} que podemos utilizar en cualquier momento. Por ejemplo, si lo usamos en el controlador creado previamente:
 
 ::: mycode
-[Llamar a Tinker con Artisan]{.title}
+[Añadida llamada al debug]{.title}
 ``` php
 <?php
  public function index(){
@@ -477,34 +494,30 @@ En este caso, se ejecutará la petición de obtener todos los *posts*, y acto se
 
 Hoy en día muchos *frameworks* tienen algún sistema de consola interactiva con la que poder utilizar las funcionalidades del mismo. De esta manera, podemos realizar comprobaciones, interactuar con los modelos, objetos\... pero sin tener que hacerlo desde el código de la web.
 
-En el caso de Laravel la consola se llama [Tinker](https://laravel.com/docs/10.x/artisan#tinker), y se puede llamar de dos maneras, dependiendo desde dónde lo hagamos:
-
--   Si lo realizamos desde dentro del contenedor, usaremos Artisan de la siguiente manera:
+En el caso de Laravel la consola se llama [Tinker](https://laravel.com/docs/11.x/artisan#tinker). Para asegurarnos que cuenta con toda la información actualizada, debemos ejecutar un comando previo.
 
 ::: mycode
 [Llamar a Tinker con Artisan]{.title}
 ``` console
+root@1b29e46c10ae:/var/www/html# composer dump-autoload
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+
+   INFO  Discovering packages.
+...
 root@1b29e46c10ae:/var/www/html# php artisan tinker
 Psy Shell v0.11.21 (PHP 8.2.10 — cli) by Justin Hileman
 ```
 :::
 
--   Si lo hacemos desde nuestro servidor anfitrión, usaremos Sail:
-
-::: mycode
-[Arrancamos los servicios]{.title}
-``` console
-ruben@vega:~$ cd example-app && ./vendor/bin/sail tinker
-Psy Shell v0.11.21 (PHP 8.2.10 — cli) by Justin Hileman
-```
-:::
 
 Una vez dentro, podremos hacer uso de los modelos, por ejemplo, para ver los datos que tenemos en la base de datos.
 
 ::: mycode
-[Arrancamos los servicios]{.title}
+[Obtenemos los Posts en Tinker]{.title}
 ``` psysh
-> Post::all();
+>>> Post::all();
 [!] Aliasing 'Post' to 'App\Models\Post' for this Tinker session.
 = Illuminate\Database\Eloquent\Collection {#7247
     all: [
