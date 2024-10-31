@@ -37,7 +37,7 @@ Route::get('/user', function (Request $request) {
 
 Si obtenemos el listado de rutas, veremos que ya existe una ruta para conocer el estado del usuario. A continuación vamos a añadir las rutas correspondientes para toda la gestión de los “posts” de nuestra aplicación.
 
-Debemos recordar que para poder añadir las nuevas rutas, hay que incluir el controlador correspondiente, en este caso el \textbf{PostController}.
+Debemos recordar que para poder añadir las nuevas rutas, hay que incluir el controlador correspondiente, en este caso el **PostController**.
 
 ::: warnbox
 Para sólo generar las rutas de la API se llama a **Route::apiresources**
@@ -72,7 +72,11 @@ GET|HEAD        api/user ....................................................
 ```
 :::
 
-Por otro lado, dado que la API es un sistema en el que no vamos a guardar un estado (ya que haremos uso de \textit{\textbf{tokens}}), debemos hacer dos pequeños cambios a ficheros de configuración general.
+<!--
+
+FIXME: TODO: ESTO ES NECESARIO?
+
+Por otro lado, dado que la API es un sistema en el que no vamos a guardar un estado (ya que haremos uso de ***tokens***), debemos hacer dos pequeños cambios a ficheros de configuración general.
 
 
 En [app/Http/kernel.php]{.configfile} hay que modificar la sección de la API dejando:
@@ -103,6 +107,8 @@ También hay que deshabilitar el [CSRF](https://en.wikipedia.org/wiki/Cross-site
 ```
 :::
 
+-->
+
 # Uso de controladores para la API {#uso-de-controladores-para-la-api}
 
 Para que la modificación previa funcione es necesario modificar el controlador, ya que actualmente sólo devuelve la vista en formato código HTML. Por tanto, si queremos utilizar el mismo controlador, deberemos modificar las funciones. En el caso de la función "index" del PostController queda:
@@ -128,6 +134,17 @@ Tal como se puede ver, la función recibe dos modificaciones:
 -   **Añadir parámetro "Request"**: De esta manera, podremos conocer si la petición viene desde la web, o si por el contrario se espera la respuesta en formato JSON.
 
 -   **Comprobar qué se espera**: Tal como se puede ver, se ha añadido un "if" donde se mira si la petición se espera en formato JSON ("expectsJson()"). En caso afirmativo, se devuelve la respuesta correspondiente en formato JSON.
+
+Para comprobar que recibimos un JSON a la petición deseada, podemos ejecutar el siguiente comando:
+
+::: mycode
+[Modificar api.php para el nuevo controlador]{.title}
+```console
+ruben@vega:~$ curl -s  http://localhost/posts
+{"posts":[{"id":1,"titulo":"Primer post","texto":"Este es...”}]}
+```
+:::
+
 
 ::: errorbox
 **Es recomendable hacer uso de controladores específicos para la API**
@@ -196,7 +213,7 @@ Es momento de comprobar que todo funciona de manera correcta, y para ello debemo
 
 Para realizar la prueba podemos hacerlo de distintas formas, cada una de ellas dependiendo de la motivación que tengamos:
 
--   Utilizando un interfaz gráfico como [Postman](https://www.postman.com/), que nos va a facilitar hacer peticiones GET y peticiones más complejas.
+-   Utilizando un interfaz gráfico como [Postman](https://www.postman.com/) o Firecamp (versión [web](https://firecamp.dev/) o [escritorio](https://github.com/firecamp-dev/firecamp)), que nos va a facilitar hacer peticiones complejas a la API.
 
     ![](img/laravel/postman.png){width="70%"}
 
@@ -219,17 +236,17 @@ Si queremos tener un resultado más visual, podremos hacer uso del comando "**jq
 ```console
 ruben@vega:~$ curl -s  http://localhost/api/posts | jq
 {
-    "posts": [
+  "posts": [
     {
-        "id": 1,
-        "titulo": "Primer post111",
-        "texto": "Este es el texto del primer post",
-        "publicado": 1,
-        "deleted_at": null,
-        "created_at": "2023-10-04T08:20:29.000000Z",
-        "updated_at": "2023-11-16T08:08:27.000000Z"
+      "id": 1,
+      "titulo": "Primer post",
+      "texto": "Este es el texto del primer post",
+      "publicado": 1,
+      "deleted_at": null,
+      "created_at": "2024-10-29T17:09:56.000000Z",
+      "updated_at": "2024-10-29T18:09:56.000000Z"
     }
-    ]
+  ]
 }
 ```
 :::
@@ -293,52 +310,53 @@ class AuthController extends Controller {
 
     public function register(Request $request){
         $validatedData = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
         ]);
 
         $user = User::create([
-        'name' => $validatedData['name'],
-        'email' => $validatedData['email'],
-        'password' => Hash::make($validatedData['password']),
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
         ]);
+
         return response()->json([
-        'name' => $user->name,
-        'email' => $user->email,
+            'name' => $user->name,
+            'email' => $user->email,
         ])->setStatusCode(Response::HTTP_CREATED);
     }
 
     public function login(Request $request){
         $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'device_name' => 'required',
         ]);
+
         $user = User::where('email',  $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)){
+        if (! $user || !Hash::check($request->password, $user->password)){
             return response()->json([
-            'message' => ['Username or password incorrect'],
+                'message' => ['Username or password incorrect'],
             ])->setStatusCode(Response::HTTP_UNAUTHORIZED);
         }
         // FIXME: queremos dejar más dispositivos?
         // $user->tokens()->delete();
 
         return response()->json([
-        'status' => 'success',
-        'message' => 'User logged in successfully',
-        'name' => $user->name,
-        'token' => $user->createToken($request->device_name)
-        ->plainTextToken,
+            'status' => 'success',
+            'message' => 'User logged in successfully',
+            'name' => $user->name,
+            'token' => $user->createToken($request->device_name)->plainTextToken,
         ]);
     }
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
         return response()->json([
-        'status' => 'success',
-        'message' => 'User logged out successfully'
+            'status' => 'success',
+            'message' => 'User logged out successfully'
         ])->setStatusCode(Response::HTTP_OK);
     }
 }
@@ -347,12 +365,33 @@ class AuthController extends Controller {
 
 Es importante notar un comentario que se ha dejado en la función "**login**". Dependiendo de si queremos que la API permita tener varios tokens para un mismo usuario o no (posibles logins desde distintos dispositivos), deberemos dejar comentado o descomentar la línea indicada.
 
+Tal como se puede ver, a la hora de realizar la acción de ***login***, se llama a `createToken($request->device_name)`, por lo que es necesario que el Modelo tenga acceso a esa función. Por ello, nos aseguramos que [app/Models/User.php]{.configfile} cuente con:
+
+::: {.mycode}
+[Modificar modelo User]{.title}
+```php
+<?php
+namespace App\Models;
+//...
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasApiTokens, HasFactory, Notifiable;
+    //...
+}
+```
+:::
+
+
 Para que estas funciones entren en juego, debemos modificar el fichero de rutas [api.php]{.configfile}.
 
 ::: mycode
 [Rutas de autenticación para la API]{.title}
 ``` php
 <?php
+use App\Http\Controllers\API\AuthController;
 //...
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -364,6 +403,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
 ## Modificar rutas {#modificar-rutas}
 
 Tal como hemos hecho anteriormente, para que la aplicación funcione bajo el sistema de autenticación, y que automáticamente nos indique que no estamos autenticados, debemos realizar la modificación del fichero de rutas [api.php]{.configfile}
+
 
 De manera similar a la aplicación web, deberemos indicar qué rutas queremos que se puedan obtener sin estar autenticado y cuáles no.
 

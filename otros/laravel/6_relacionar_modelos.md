@@ -59,7 +59,6 @@ Para ello, deberemos modificar ambos ficheros de los modelos que entran en juego
 //...
 use Illuminate\Database\Eloquent\Relations\HasMany;
 class Post extends Model{
-    use HasFactory;
     public function comentarios(): HasMany {
         return $this->hasMany(Comentario::class);
     }
@@ -77,7 +76,6 @@ class Post extends Model{
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comentario extends Model{
-    use HasFactory;
     public function post(): BelongsTo{
         return $this->belongsTo(Post::class);
     }
