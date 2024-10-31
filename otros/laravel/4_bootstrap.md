@@ -144,6 +144,10 @@ Y en el fichero [resources/css/app.css]{.configfile}, donde pondremos nuestros e
 ```
 :::
 
+::: warnbox
+En este fichero pueden aparecer includes de **tailwind**. Es recomendable quitarlos para que no conflicten con Bootstrap.
+:::
+
 Ahora sólo queda levantar el servicio Vite o realizar la compilación para que surja efecto el cambio.
 
 ## Cómo usar Vite {#cómo-usar-vite}
