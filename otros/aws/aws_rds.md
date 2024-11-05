@@ -28,6 +28,23 @@ Dependiendo del proyecto que queramos desplegar, deberemos elegir entre el siste
 
 A la hora de desplegar una instancia RDS existen distintas características que podemos tener en cuenta, que son muy interesantes y en principio no importa qué SGBD elijamos, ya que están disponibles para todos ellos.
 
+
+## Instancia única {#rds-instancia-unica}
+"Instancia de base de datos única" es la opción más sencilla a la hora de realizar un despliegue. En este caso tendremos una única instancia de base de datos que aceptará lecturas y escrituras.
+
+El problema de este tipo de instancias es que de existir un error, o de caerse la zona de disponibilidad, perderemos acceso a la base de datos.
+
+## Instancia de base de datos Multi-AZ {#instancia-multi-az}
+
+Amazon RDS provee alta disponibilidad y soporte de *failover* en caso de fallo utilizando despliegues Multi-AZ. En este caso se crea una segunda instancia que es réplica de la primera en otra zona de disponibilidad, tal como se puede ver en el siguiente esquema:
+
+::: center
+![Fuente: [AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html)](img/aws/rds_con-multi-AZ.png){width="70%"}
+:::
+
+En caso de fallo, las conexiones automáticamente cambiarán a la réplica en la otra zona de disponibilidad. Este cambio puede durar entre 60 y 120 segundos tal como dice la [documentación oficial](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.Failover.html).
+
+
 ## Clúster de base de datos Multi-AZ {#clúster-de-base-de-datos-multi-az}
 
 Marcando esta opción RDS nos creará un sistema clúster del sistema de base de datos que hayamos elegido teniendo en cuenta las siguientes características:
@@ -35,6 +52,14 @@ Marcando esta opción RDS nos creará un sistema clúster del sistema de base de
 -   **Instancia primaria**: Es la instancia que permite lectura y escritura.
 
 -   **Instancias en espera con capacidad de lectura**: Estas instancias las desplegará en otras zonas de disponibilidad diferente a donde se encuentra la instancia primaria. **Esto proporciona alta disponibilidad y redundancia de datos**. También podremos realizar cargas de trabajo de lectura sobre estas instancias.
+
+El esquema sería el siguiente:
+
+::: center
+![Fuente: [AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html)](img/aws/rds_multi-az-db-cluster.png
+){width="70%"}
+:::
+
 
 Se puede crear el sistema Multi-AZ posterior al despliegue de una instancia RDS, ya que quizá no nos interese realizarlo de inicio ya que supone un coste adicional.
 
