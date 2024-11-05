@@ -67,7 +67,7 @@ Al crear nuestro proyecto Laravel, ya contamos con una serie de ficheros de migr
 
 De esta manera, los migrations se van a poder ejecutar en orden de fecha de creación, donde normalmente suele ser:
 
--   **De más antiguo a más nuevo**: Se van creando las tablas, y se van añadiendo modificaciones. Es el ciclo normal de de desarrollo, y este es el sistema de uso habitual.
+-   **De más antiguo a más nuevo**: Se van creando las tablas, y se van añadiendo modificaciones. Es el ciclo normal de desarrollo, y este es el sistema de uso habitual.
 
 -   **De más nuevo a más antiguo**: Se vuelve atrás en el proyecto, eliminando modificaciones. Utilizado para ir a una versión antigua del proyecto.
 
