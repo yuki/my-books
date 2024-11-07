@@ -254,6 +254,8 @@ Con la generación del modelo se ha creado también el fichero al que vamos a a�
 [*Seed* del PostSeeder.php]{.title}
 ``` php
 <?php
+namespace Database\Seeders;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

@@ -187,7 +187,7 @@ LARAVEL v11.29.0  plugin v1.0.5
 ```
 :::
 
-Si miramos el código del HTML generado en la plantilla, veremos cómo se hace referencia a ese puerto:
+Si miramos el código del HTML generado obtenido del **navegador web**, veremos cómo se hace referencia a ese puerto:
 
 ::: {.mycode size=small}
 [Código HTML de la web]{.title}
