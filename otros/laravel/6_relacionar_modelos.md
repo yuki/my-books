@@ -85,3 +85,75 @@ class Comentario extends Model{
 
 Tras esto, ya sea a través de una acción o desde Tinker, podremos obtener los comentarios de un *post* específico, perfecto para dibujarlos en la vista donde se visualiza el *post*. Y al revés, dado un comentario, obtener a qué *post* pertenece.
 
+
+
+## Modificaciones en vistas, controllers y rutas
+
+Una vez hecha la relación, es momento de que se puedan crear los comentarios. Vamos a empezar realizando modificaciones en las vistas. La idea es que desde la vista de un Post, se pueda añadir un comentario, por lo tanto, en el fichero [resources/views/posts/show.blade.php]{.configfile} añadimos:
+
+
+::: mycode
+[Modificada la vista para añadir comentarios]{.title}
+```html+smarty
+@auth
+  <div>
+    <h3>Añadir comentario</h3>
+    <form class="mt-2" name="create_platform"
+      action="{{route('comentarios.store')}}" method="POST" 
+      enctype="multipart/form-data">
+      
+      @csrf
+      <input type="text" class="form-control" id="post" name="post" 
+        required hidden value="{{$post->id}}"/>
+
+      <div class="form-group mb-3">
+        <textarea type="textarea" rows="5" class="form-control" 
+            id="texto" name="texto"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" name="">
+        Comenta!
+      </button>
+    </form>
+  </div>
+@endauth
+```
+:::
+
+
+A continuación añadimos una ruta para poder llamar a la función **store** de comentarios. Tal como se puede ver, para poder añadir un comentario debemos estar logueados, ya que sea ha incluído la ruta dentro del *middleware* de autenticación.
+
+
+::: mycode
+[Añadir ruta para guardar comentarios]{.title}
+```php
+<?php
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+      'posts' => PostController::class,
+    ]);
+    Route::post('/comentarios', [ComentarioController::class, 'store'])
+        ->name('comentarios.store');
+});
+```
+:::
+
+
+Por último, dentro del controlador **ComentarioController** se debe modificar la función **store** para guardar la información enviada desde el formulario. Las modificaciones se realizan en [app/Htpp/posts/ComentarioController.php]{.configfile}
+
+
+::: mycode
+[Función store del ComentarioController]{.title}
+```php
+<?php
+//...
+public function store(Request $request) {
+    $comentario = new Comentario();
+    $comentario->texto=$request->texto;
+    $post = Post::find($request->post);
+    $post->comentarios()->save($comentario);
+    return redirect()->route('posts.show',['post'=>$post]);
+}
+```
+:::
+
+
