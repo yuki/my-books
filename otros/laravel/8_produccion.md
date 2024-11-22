@@ -49,49 +49,52 @@ Este paso no tiene mayor dificultad, ya que se presupone que tenemos nuestro pro
 
 El clonado del repositorio lo realizaremos como cualquier otro proyecto, por lo que no se explicará cómo realizarlo. Hay que recordar que en este clonado faltarán ficheros y directorios tal como se ha explicado previamente.
 
-## Crear contenedores temporales {#crear-contenedores-temporales}
+## Crear contenedor temporal {#crear-contenedor-temporal}
 
-Para poder crear y levantar los contenedores necesarios necesitamos del fichero de configuración donde están las contraseñas. Para este ejemplo, copiaremos el fichero [.env]{.configfile} del directorio de desarrollo.
+Para poder crear y levantar los contenedores necesarios necesitamos del fichero de configuración donde están las contraseñas. Para este ejemplo, copiaremos el fichero [.env.example]{.configfile} a [.env]{.configfile} y modificaremos los apartados oportunos (normalmente, el apartado de la base de datos).
 
 ::: warnbox
-En producción suele haber un SGBD en otro servidor configurado para varios proyectos, por eso, entre otras cosas, el fichero de configuración será distinto.
+Es importante asegurar que el fichero .env esté configurado de manera correcta.
 :::
 
-Ahora, levantaremos los contenedores a través del comando [docker compose up -d]{.commandbox}. Debido a que nos siguen faltando directorios de las dependencias, el servidor MySQL no se levantará, pero más adelante se solucionará.
-
-Por lo tanto, deberemos ejecutar lo siguiente:
+Ahora, levantaremos un contenedor intermedio para instalar las dependencias necesarias a través de **composer**. Para ello, debemos ejecutar lo siguiente:
 
 ::: {.mycode size=small}
-[Usamos el instalador de Laravel]{.title}
+[Levantamos contenedor temporal]{.title}
 ``` console
-ruben@vega:~/proyecto_produccion$ docker compose up -d
-WARN[0000] The "WWWUSER" variable is not set. Defaulting to a blank string.
-WARN[0000] The "WWWGROUP" variable is not set. Defaulting to a blank string.
-[+] Running 3/2
- ✓ Network proyecto_produccion_sail              Created    0.1s
- ✓ Container proyecto_produccion-mysql-1         Created    0.0s
- ✓ Container proyecto_produccion-laravel.test-1  Created    0.0s
-Attaching to proyecto_produccion-laravel.test-1, proyecto_produccion-mysql-1
+ruben@vega:~/proyecto_produccion$ docker run --rm  -v "$(pwd)":/opt -w /opt \
+  -it laravelsail/php83-composer:latest /bin/bash
+
+root@b58c9150c04d:/opt# composer install
+
+root@b58c9150c04d:/opt# php artisan key:generate
 ````
 :::
 
-Tal como se ha comentado, el contenedor de MySQL no se va a levantar debido a que en el fichero de configuración [docker-compose.yml]{.configfile} aparecen configuraciones de ficheros dentro del directorio [vendor]{.configdir} que todavía no existen.
+Los últimos dos comandos ejecutados se realizan dentro del contenedor y sirven para instalar las dependencias y para generar la variable de entorno **APP_KEY** dentro del fichero [.env]{.configfile}.
+
+Tras esto, todos los paquetes necesarios de Laravel deberían estar instalados. Al terminar la ejecución, saldremos de este conendor y automáticamente se borrará, ya que no es necesario volver a usarlo.
 
 
-## Instalación de las dependencias necesarias {#instalacion-de-las-dependencias-necesarias}
+## Crear contenedor final {#crear-contenedor-final}
 
-Las dependencias que se necesitan instalar son componentes del *framework* Laravel, y por tanto para ello necesitamos entrar al contenedor y ejecutar ciertos comandos, tal como se va a mostrar a continuación. Más adelante se explicarán los comandos realizados.
+Por último, levantaremos el que será el contenedor de Laravel de igual manera que hemos hecho durante el desarrollo:
+
 
 ::: {.mycode size=footnotesize}
-[Usamos el instalador de Laravel]{.title}
+[Levantamos el contenedor de Laravel]{.title}
 ```console
-ruben@vega:~/proyecto_produccion$ docker compose exec -it laravel.test /bin/bash
+ruben@vega:~/proyecto_produccion$ ./vendor/bin/sail up
+```
+:::
 
-root@469e75d4a713:/var/www/html# composer install
-Installing dependencies from lock file (including require-dev)
-Verifying lock file contents can be installed on current platform.
-Package operations: 111 installs, 0 updates, 0 removals
-...
+### Instalación de las dependencias finales {#instalacion-dependencias}
+
+Y tenemos que entrar en el contenedor para realizar las últimas tareas para asegurar que el proyecto funciona:
+
+::: {.mycode size=footnotesize}
+[Tareas finales]{.title}
+```console
 root@469e75d4a713:/var/www/html# npm install
 added 37 packages, and audited 38 packages in 1s
 ...
@@ -107,38 +110,11 @@ root@469e75d4a713:/var/www/html# chmod 777 -R storage/
 
 A continuación la explicación de los comandos ejecutados, ya que es importante entender qué se ha realizado:
 
--   [docker compose exec -it laravel.test /bin/bash]{.commandbox} : con este comando vamos a entrar dentro del contenedor de Laravel, donde debemos realizar la instalación de las dependencias.
-
--   [composer install]{.commandbox} : instalamos las depedencias necesarias a través del gestor de dependencias [Composer](https://getcomposer.org/).
-
 -   [npm install]{.commandbox} : instalamos las depedencias necesarias a través del gestor de dependencias [NPM](https://www.npmjs.com/).
 
 -   [npm run build]{.commandbox} : es necesario generar los assets de javascript y CSS para que la aplicación funcione.
 
 -   [chmod 777 -R storage/]{.commandbox} : Modificamos los permisos de ciertos ficheros para que el servidor web pueda escribir datos.
 
-## Crear contenedores finales {#crear-contenedores-finales}
-
-Ahora que ya tenemos las dependencias instaladas, es momento de poder parar los contenedores temporales, eliminarlos y levantar los contenedores finales. Para ello, realizaremos los siguientes pasos, desde nuestra consola de Ubuntu:
-
-::: {.mycode size=footnotesize}
-[Usamos el instalador de Laravel]{.title}
-```console
-ruben@vega:~/proyecto_produccion$ docker compose down -v
-✓ Container proyecto_produccion-laravel.test-1  Removed    0.9s
-✓ Container proyecto_produccion-mysql-1         Removed    0.0s
-✓ Volume proyecto_produccion-mysql              Removed    0.0s
-✓ Network proyecto_produccion_sail              Removed
-
-ruben@vega:~/proyecto_produccion$ ./vendor/bin/sail up -d
-```
-:::
-
-Los comandos realizados son:
-
--   [docker compose down -v]{.commandbox} : tira abajo los contenedores temporales y borra los volúmenes que utilizan los contenedores. El parámetro [-v]{.inlineconsole} es necesario para borrar el volumen de MySQL ya que durante el arranque del contenedor anterior ha tenido errores y por tanto
-
--   [./vendor/bin/sail up -d]{.commandbox} : este comando ya lo conocemos, y es para levantar los contenedores necesarios de la aplicación.
-
-A partir de este momento la aplicación estará funcionando y habrá que ejecutar las migraciones y/o los *seeds* necesarios para ajustar la base de datos a la realidad de nuestra aplicación.
+Tras esto, el contenedor debería estar funcionando y ya sólo queda lanzar los *migration* y los *seeder* correspondientes.
 
