@@ -251,6 +251,54 @@ ruben@vega:~$ curl -s  http://localhost/api/posts | jq
 ```
 :::
 
+# Gestionar excepciones {#gestionar-excepciones}
+
+Laravel gestiona las excepciones generando por defecto un *stacktrace* con la excepción y un error 404, por lo que en caso de existir alguna excepción en la API, el errorcode será correcto, pero devolverá información interna del *framework*.
+
+Vamos a utilizar como ejemplo la función **show** del nuevo controlador creado. El código para esta función es:
+
+::: mycode
+[Modificar la función show de API/PostController]{.title}
+``` php
+<?php
+...
+public function show(Post $post) {
+    return response()->json($post)->setStatusCode(Response::HTTP_OK);
+}
+```
+:::
+
+
+Si ahora realizamos la petición a la API de un **id** existente, nos devolverá el JSON con el contenido. En cambio, con un **id** no existente **obtendremos un json con el *stacktrace* de la excepción**.
+
+::: exercisebox
+Realizar petición a la API de un ID de un post inexistente y ver el resultado.
+:::
+
+Para evitar eso, debemos modificar el fichero [bootstrap/app.php]{.configfile} y asegurar que le añadimos lo siguiente:
+
+::: {.mycode size=small}
+[Modificar bootstrap/app.php]{.title}
+``` php
+<?php
+...
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+...
+
+->withExceptions(function (Exceptions $exceptions) {
+  $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+      if ($request->is('api/*')) {
+          return response()->json([
+              'message' => 'Record not found.'
+          ], 404);
+      }
+  });
+})->create();
+```
+:::
+
+
 # Autenticación {#autenticación}
 
 Para poder realizar ciertas acciones a través de la API es lógico pensar que también deberemos estar autenticados, y para eso es necesario asegurar que al acceder a las rutas lo estemos. Para todo ello, vamos a crear un controlador propio donde tener en cuenta los datos que se envían al acceder a la API.
@@ -293,7 +341,7 @@ El controlador, quedaría de la siguiente manera.
 **Es importante entender qué hace cada una de las funciones**
 :::
 
-::: {.mycode size=small}
+::: {.mycode size=footnotesize}
 [Nuevo AuthController para la API]{.title}
 ```php
 <?php
