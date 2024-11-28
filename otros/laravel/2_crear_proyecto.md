@@ -32,16 +32,7 @@ En la [documentación](https://laravel.com/docs/11.x/installation) de Laravel no
 El sistema es similar utilizando GNU/Linux, Windows y MacOS, con la salvedad de que en Windows deberíamos instalar Docker Desktop y *Windows Subsystem for Linux* (WSL). De manera generalizada, es necesario tener instalado:
 
 - Entorno GNU/Linux
-- Docker
-- Docker Compose
-    
-::: mycode
-[Instalar Docker Compose]{.title}
-```console
-ruben@vega:~$ sudo apt install docker-compose
-```
-:::
-
+- Docker y Docker Compose (ambos integrados en **Docker Desktop**)
 
 Para realizar la instalación sólo vamos a elegir tener el servicio de MySQL, para simplificarlo, tal como se ha comentado previamente. Para ello, deberemos ejecutar lo siguiente en el directorio donde nos interese crear el directorio del proyecto.
 
