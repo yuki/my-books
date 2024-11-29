@@ -45,28 +45,29 @@ Los libros que están ahora mismo creados son libros utilizados para Formación 
 Si quieres verlos de forma individual:
 
 * Grado Superior para Técnico superior en Desarrollo de Aplicaciones Multiplataforma
-  * Sistemas Informáticos ([HTML](https://yuki.github.io/my-books/si_book.html), [PDF](https://yuki.github.io/my-books/si_book.pdf))
-  * Desarrollo de Interfaces ([HTML](https://yuki.github.io/my-books/desarrollo_interfaces_book.html), [PDF](https://yuki.github.io/my-books/desarrollo_interfaces_book.pdf)) (en progreso)
-  * Sistemas de Gestión Empresarial ([HTML](https://yuki.github.io/my-books/sge_book.html), [PDF](https://yuki.github.io/my-books/sge_book.pdf)) (en progreso)
+  * Sistemas Informáticos ([HTML](https://yuki.github.io/my-books/sistemas_informaticos.html), [PDF](https://yuki.github.io/my-books/sistemas_informaticos.pdf))
+  * Desarrollo de Interfaces ([HTML](https://yuki.github.io/my-books/desarrollo_interfaces.html), [PDF](https://yuki.github.io/my-books/desarrollo_interfaces.pdf)) (en progreso)
+  * Sistemas de Gestión Empresarial ([HTML](https://yuki.github.io/my-books/sge.html), [PDF](https://yuki.github.io/my-books/sge.pdf)) (en progreso)
 
 
 * Grado Medio para Técnico en Sistemas microinformáticos y redes
-  * Sistemas Operativos en red ([PDF](https://github.com/yuki/my-books/releases/download/latest/SOred.pdf))
+  * Sistemas Operativos en red
 * Grado Superior para Técnico superior en Administración de Sistemas informáticos en red
-  * Planificación y administración de redes ([PDF](https://github.com/yuki/my-books/releases/download/latest/redes_book.pdf). **NOTA: No está acabado**)
-  * Administración de sistemas gestores de bases de datos ([PDF](https://github.com/yuki/my-books/releases/download/latest/sgbd_book.pdf))
+  * Admnistración de Sistemas Operativos ([HTML](https://yuki.github.io/my-books/aso.html), [PDF](https://yuki.github.io/my-books/aso.pdf))
+  * Planificación y administración de redes
+  * Administración de sistemas gestores de bases de datos ([HTML](https://yuki.github.io/my-books/sgbd.html), [PDF](https://yuki.github.io/my-books/sgbd.pdf))
 
 
 
 ### Otros libros
 Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas específicos:
 
-* AWS: Sistemas en nube pública ([AWS](https://yuki.github.io/my-books/aws_book.html), [PDF](https://yuki.github.io/my-books/aws_book.pdf))
-* Cómo hacer una buena documentación, o al menos intentarlo ([HTML](https://yuki.github.io/my-books/como_hacer_documentacion_book.html), [PDF](https://yuki.github.io/my-books/como_hacer_documentacion_book.pdf))
-* Configuración básica de PfSense como firewall de red ([HTML](https://yuki.github.io/my-books/pfsense_book.html), [PDF](https://yuki.github.io/my-books/pfsense_book.pdf))
-* Git: Sistemas de control de versiones ([HTML](https://yuki.github.io/my-books/git_book.html), [PDF](https://yuki.github.io/my-books/git_book.pdf))
-* Introducción a Docker ([HTML](https://yuki.github.io/my-books/docker_book.html), [PDF](https://yuki.github.io/my-books/docker_book.pdf))
-* Introducción a Laravel ([HTML](https://yuki.github.io/my-books/laravel_book.html), [PDF](https://yuki.github.io/my-books/laravel_book.pdf))
+* AWS: Sistemas en nube pública ([AWS](https://yuki.github.io/my-books/aws.html), [PDF](https://yuki.github.io/my-books/aws.pdf))
+* Cómo hacer una buena documentación, o al menos intentarlo ([HTML](https://yuki.github.io/my-books/como_hacer_documentacion.html), [PDF](https://yuki.github.io/my-books/como_hacer_documentacion.pdf))
+* Configuración básica de PfSense como firewall de red ([HTML](https://yuki.github.io/my-books/pfsense.html), [PDF](https://yuki.github.io/my-books/pfsense.pdf))
+* Git: Sistemas de control de versiones ([HTML](https://yuki.github.io/my-books/git.html), [PDF](https://yuki.github.io/my-books/git.pdf))
+* Introducción a Docker ([HTML](https://yuki.github.io/my-books/docker.html), [PDF](https://yuki.github.io/my-books/docker.pdf))
+* Introducción a Laravel ([HTML](https://yuki.github.io/my-books/laravel.html), [PDF](https://yuki.github.io/my-books/laravel.pdf))
 
 
 
@@ -74,13 +75,12 @@ Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas 
 Y por último, hay ciertos Anexos creados, que están incluídos en varios de los libros. Algunos de estos anexos son apuntes mínimos y en otros se profundiza más.
 
 Como también puede ser interesante tenerlos por separado, se pueden ver desde aquí:
-* Gestión de copias de seguridad ([HTML](https://yuki.github.io/my-books/gestion_backups_anexo.html), [PDF](https://yuki.github.io/my-books/gestion_backups_anexo.pdf))
-* Glosario de varios términos informáticos ([PDF](https://github.com/yuki/my-books/releases/download/latest/glosario_anexo.pdf))
-* Instalar Ubuntu LTS ([PDF](https://github.com/yuki/my-books/releases/download/latest/instalar_ubuntu_lts_anexo.pdf))
-  * Crear sistema RAID 1 en Ubuntu ([PDF](https://github.com/yuki/my-books/releases/download/latest/ubuntu_raid1_anexo.pdf))
-* Sistemas de monitorización ([HTML](https://yuki.github.io/my-books/sistemas_monitorizacion_anexo.html), [PDF](https://yuki.github.io/my-books/sistemas_monitorizacion_anexo.pdf))
-  * Monitorización básica con Munin ([HTML](https://yuki.github.io/my-books/monitorizacion_munin_anexo.html), [PDF](https://yuki.github.io/my-books/monitorizacion_munin_anexo.pdf))
-* Virtualbox y networking ([HTML](https://yuki.github.io/my-books/virtualbox_networking_anexo.html), [PDF](https://yuki.github.io/my-books/virtualbox_networking_anexo.pdf))
+* Gestión de copias de seguridad ([HTML](https://yuki.github.io/my-books/gestion_backups.html), [PDF](https://yuki.github.io/my-books/gestion_backups.pdf))
+* Instalar Ubuntu LTS ([HTML](https://yuki.github.io/my-books/instalar_ubuntu_lts.html), [PDF](https://yuki.github.io/my-books/instalar_ubuntu_lts.pdf))
+  * Crear sistema RAID 1 en Ubuntu ([PDF](https://github.com/yuki/my-books/releases/download/latest/ubuntu_raid1.pdf))
+* Sistemas de monitorización ([HTML](https://yuki.github.io/my-books/sistemas_monitorizacion.html), [PDF](https://yuki.github.io/my-books/sistemas_monitorizacion.pdf))
+  * Monitorización básica con Munin ([HTML](https://yuki.github.io/my-books/monitorizacion_munin.html), [PDF](https://yuki.github.io/my-books/monitorizacion_munin.pdf))
+* Virtualbox y networking ([HTML](https://yuki.github.io/my-books/virtualbox_networking.html), [PDF](https://yuki.github.io/my-books/virtualbox_networking.pdf))
 
 
 
