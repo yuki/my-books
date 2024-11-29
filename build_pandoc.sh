@@ -21,6 +21,7 @@ LIBROS=(
     "anexos/ubuntu_raid1/ ubuntu_raid1"
     "anexos/sistemas_monitorizacion/ sistemas_monitorizacion"
     "anexos/virtualbox_networking/ virtualbox_networking"
+    "temas_comunes/wsl/ wsl"
 )
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"

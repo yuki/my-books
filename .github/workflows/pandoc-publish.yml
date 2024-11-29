@@ -27,6 +27,7 @@ on:
           - Ubuntu_RAID1
           - Sistemas_Monitorizacion
           - Virtualbox_networking
+          - WSL
 permissions:
   contents: write
   pages: write
@@ -72,6 +73,7 @@ jobs:
           anexos/sistemas_monitorizacion/sistemas_monitorizacion.pdf
           anexos/ubuntu_raid1/ubuntu_raid1.pdf
           anexos/virtualbox_networking/virtualbox_networking.pdf
+          temas_comunes/wsl/wsl.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:

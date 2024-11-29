@@ -4,9 +4,9 @@
 
 [WSL](https://learn.microsoft.com/es-es/windows/wsl/) (del inglés *Windows Subsystem for Linux*) es una capa de compatibilidad que ha desarrollado Microsoft para correr ejecutables creados para sistemas Linux de manera nativa en Windows.
 
-Desde el año 2019 la versión por defecto es la 2, que introdujo muchos cambios en el sistema, ya que esta versión corre dentro de una capa de virtualización creada a través de un subconjunto del virtualizador [Hyper-V](https://es.wikipedia.org/wiki/Hyper-V). Esto hace que el kernel que se está ejecutando sea mucho más compatible con los binarios de Linux que la versión 1. A pesar de usar virtualización, también mejora el rendimiento respecto a la versión anterior.
+Desde el año 2019 la versión por defecto es la 2, que introdujo muchos cambios en el sistema, ya que esta versión corre dentro de una capa de virtualización creada a través de un **subconjunto del virtualizador [Hyper-V](https://es.wikipedia.org/wiki/Hyper-V)**. Esto hace que el kernel que se está ejecutando sea mucho más compatible con los binarios de Linux que la versión 1. A pesar de usar virtualización, también mejora el rendimiento respecto a la versión anterior.
 
-Por defecto WSL no viene instalado en el sistema en Windows 10, por lo que es necesario realizar la instalación para poder ejecutar las aplicaciones que deseemos (como Docker, por ejemplo).
+Por defecto WSL no viene instalado en el sistema en Windows 10, por lo que es necesario realizar la instalación para poder ejecutar las aplicaciones que deseemos (como Docker, por ejemplo). En versiones Windows 11 sí viene instalado.
 
 # Instalación {#instalación-wsl}
 
@@ -33,17 +33,26 @@ Por defecto, la distribución que se instala es Ubuntu.
 
 Tras realizar la instalación podremos observar que Windows ha realizado una serie de configuraciones para adecuar la nueva instalación del servicio.
 
--   Al tener las instancias levantadas, se genera un nuevo interfaz de red Hyper-V, con una red 172.25.240.0/20.
+- Al tener las instancias levantadas, se genera un nuevo interfaz de red Hyper-V, con una red 172.25.240.0/20.
+- Tal como se ha dicho, en WSL-2 las instancias realmente son máquinas virtuales Hyper-V. La configuración de las instancias se encuentran en el directorio [AppData]{.configdir} del usuario que las crea. Por ejemplo, para Debian, se encuentra el disco duro dentro de [./AppData/Local/Packages/TheDebianProject.../LocalState/ext4.vhdx]{.configfile}
 
--   Tal como se ha dicho, en WSL-2 las instancias realmente son máquinas virtuales Hyper-V. La configuración de las instancias se encuentran en el directorio [AppData]{.configdir} del usuario que las crea. Por ejemplo, para Debian, se encuentra el disco duro dentro de [./AppData/Local/Packages/TheDebianProject.../LocalState/ext4.vhdx]{.configfile}
-
-    ::: warnbox
+  ::: warnbox
 El directorio AppData está oculto por defecto en el explorador de ficheros de Windows.
-    :::
+  :::
 
--   Dentro de las instancias se puede acceder al disco duro de Windows a través de [/mnt/c]{.configdir}, o la unidad correspondiente.
+- Dentro de las instancias se puede acceder al disco duro de Windows a través de [/mnt/c]{.configdir}, o la unidad correspondiente.
+- Desde Windows se puede acceder al sistema de ficheros de las instancias a través del explorador de ficheros, ya que nos aparecen las instancias que tenemos creadas.
 
--   Desde Windows se puede acceder al sistema de ficheros de las instancias a través del explorador de ficheros, ya que nos aparecen las instancias que tenemos creadas.
+Para poder realizar una configuración general de todo el ecosistema WSL se puede realizar desde una aplicación (disponible desde verano del 2024):
+
+![Aplicación de configuración de WSL](img/temas_comunes/wsl/configuracion.png){width="100%" framed=true}
+
+En esta aplicación se pueden modificar aspectos tan interesantes como:
+
+- Procesadores lógicos dentro del WSL
+- Tamaño máximo de la memoria
+- Modo de red (NAT, mirrored, o proxy)
+
 
 ## Configuración avanzada {#configuración-avanzada}
 
@@ -199,7 +208,7 @@ ruben@DESKTOP-1RVJ3UP:~$ pwd
 
 
 A la hora de hacer uso de aplicaciones en el susbsistema Linux, es recomendable hacerlo dentro del sistema de ficheros de Linux, no en el sistema montado, debido a que el [rendimiento](https://learn.microsoft.com/en-us/windows/wsl/filesystems#file-storage-and-performance-across-file-systems) en el sistema montado es mucho peor. Por tanto, nos debemos asegurar que la aplicación está en la ruta correcta.
-
+ 
 ::: errorbox
 **Usar el sistema de ficheros de Windows montado en el subsistema Linux perjudica el rendimiento.**
 :::
@@ -209,7 +218,7 @@ A la hora de hacer uso de aplicaciones en el susbsistema Linux, es recomendable 
 
 Si queremos tener Docker dentro de un subsistema Linux, existen dos posibilidades completamente diferenciadas:
 
-- Utilizar [Docker Desktop](#instalacion-docker-windows-mac) en Windows. Docker Desktop usará WSL por debajo y tenemos la posibilidad de que los subsistemas hagan uso del Docker engine creado instalado en Docker Desktop. Este es el modo aconsejado por la [documentación de Microsoft](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-containers).
+- Utilizar **[Docker Desktop](#instalacion-docker-windows-mac) en Windows**. Docker Desktop usará WSL por debajo y tenemos la posibilidad de que los subsistemas hagan uso del Docker engine creado instalado en Docker Desktop. Este es el modo aconsejado por la [documentación de Microsoft](https://learn.microsoft.com/es-es/windows/wsl/tutorials/wsl-containers).
 - Instalar el Docker Engine dentro de un subsistema Linux.
 
 Este último método lo explicamos a continuación.
@@ -217,6 +226,10 @@ Este último método lo explicamos a continuación.
 ##  Instalar Docker Engine en WSL {#docker-engine-dentro-de-wsl}
 
 En algunos casos nos puede interesar no hacer uso de [Docker Desktop](#instalacion-docker-windows-mac), porque lo que queremos es tener la posibilidad de un control total de Docker, como si de una instalación de máquina virtual completa de Linux se tratara. Es por ello que debemos realizar una pequña modificación en el funcionamiento del subsistema Linux correspondiente.
+
+::: warnbox
+Es más sencillo hacer uso de Docker Desktop en lugar de este sistema.
+:::
 
 Supongamos que hemos creado el subsistema Linux de la distribución Ubuntu, deberemos entrar en ella, y tendremos que crear un fichero en [/etc/wsl.conf]{.configfile} con el siguiente contenido.
 
