@@ -53,7 +53,7 @@ El clonado del repositorio lo realizaremos como cualquier otro proyecto, por lo 
 
 Para poder crear y levantar los contenedores necesarios necesitamos del fichero de configuración donde están las contraseñas. Para este ejemplo, copiaremos el fichero [.env.example]{.configfile} a [.env]{.configfile} y modificaremos los apartados oportunos (normalmente, el apartado de la base de datos).
 
-::: warnbox
+::: errorbox
 Es importante asegurar que el fichero .env esté configurado de manera correcta.
 :::
 
