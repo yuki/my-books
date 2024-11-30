@@ -10,7 +10,7 @@ phrase: ''
 phrase-author: ''
 lang: es
 keywords: [nothing, nothingness]
-cover: 'img/temas_comunes/wsl/logo.png'
+cover: '`img/temas_comunes/wsl/logo.svg`{=html}`img/temas_comunes/wsl/logo.svg`{=latex}'
 # other links for footers
 github-link: 'https://github.com/yuki/my-books/'
 ...

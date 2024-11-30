@@ -10,8 +10,8 @@
    sodipodi:docname="logo.svg"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    inkscape:export-filename="logo.png"
-   inkscape:export-xdpi="113.84212"
-   inkscape:export-ydpi="113.84212"
+   inkscape:export-xdpi="113.68"
+   inkscape:export-ydpi="113.68"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -50,9 +50,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="164.04877"
-     inkscape:cy="298.39906"
+     inkscape:zoom="2"
+     inkscape:cx="217"
+     inkscape:cy="436.5"
      inkscape:window-width="2560"
      inkscape:window-height="1341"
      inkscape:window-x="0"
@@ -61,7 +61,7 @@
      inkscape:current-layer="g650"
      showguides="true"
      showgrid="false"
-     inkscape:export-bgcolor="#ffffffff">
+     inkscape:export-bgcolor="#ffffff00">
     <inkscape:grid
        id="grid642"
        units="px"
@@ -87,6 +87,14 @@
        transform="translate(-662.0696,-78.104834)"
        style="opacity:1"
        inkscape:label="logo">
+      <rect
+         style="opacity:1;fill:#ffffff"
+         id="rect1"
+         width="305"
+         height="368"
+         x="700.06958"
+         y="188.10483"
+         inkscape:label="background" />
       <path
          id="path639"
          style="fill:url(#linearGradient656);stroke-width:3.52961"
@@ -96,8 +104,9 @@
       <path
          id="path645-0"
          style="opacity:1;fill:#ffc700;fill-opacity:1;stroke-width:1.11585"
-         d="m 993.90754,388.71876 a 146.33638,146.33638 0 0 1 -141.88672,111.9082 146.33638,146.33638 0 0 1 -141.64648,-110.79688 142.27052,142.27052 0 0 0 -0.625,8.72266 142.27052,142.27052 0 0 0 142.27148,142.26953 142.27052,142.27052 0 0 0 142.26954,-142.26953 142.27052,142.27052 0 0 0 -0.38282,-9.83398 z"
-         inkscape:label="yellow" />
+         d="M 994.2904,388.76563 C 978.42648,454.30305 919.45072,500.46928 852.02082,500.62696 785.00525,500.48554 726.02474,454.8505 709.74934,389.84113 c -0.29767,2.90046 0.1189,5.79834 0,8.71161 5.5e-4,78.57383 63.69765,142.27006 142.27148,142.26953 78.57307,-5.4e-4 142.26899,-63.69646 142.26954,-142.26953 -0.0142,-3.28143 0.24102,-6.51451 4e-5,-9.78711 z"
+         inkscape:label="yellow"
+         sodipodi:nodetypes="ccccscc" />
       <g
          id="g611"
          inkscape:label="eyes"
