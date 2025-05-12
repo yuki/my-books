@@ -63,7 +63,7 @@ Podemos utilizar imágenes públicas descargadas a través de un ***registry*** 
 **Las imágenes Docker  pueden ser públicas o privadas y se almacenan en un repositorio llamado *registry*, siendo el más conocido Docker Hub**
 :::
 
-**Se pueden crear nuestras propias imágenes privadas**, que pueden ser almacenadas en nuestros equipos o a través de un **registry privado** que podemos crear (también existen servicios de pago).
+**Se pueden [crear nuestras propias imágenes privadas](#crear-imagenes-docker)**, que pueden ser almacenadas en nuestros equipos o a través de un **registry privado** que podemos crear (también existen servicios de pago).
 
 ### Contenedores Docker {#contenedores-docker}
 
