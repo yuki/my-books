@@ -17,6 +17,7 @@ on:
           - Docker
           - Gestion_backups
           - Git
+          - Glosario
           - Instalar_Ubuntu_LTS
           - Laravel
           - Monitorizacion_Munin
@@ -70,6 +71,7 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           DAM/2/sistemas_gestion_empresarial/sge.pdf
           anexos/gestion_backups/gestion_backups.pdf
+          anexos/glosario/glosario.pdf
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf
           anexos/monitorizacion_munin/monitorizacion_munin.pdf
           anexos/sistemas_monitorizacion/sistemas_monitorizacion.pdf

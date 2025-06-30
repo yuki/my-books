@@ -17,6 +17,7 @@ LIBROS=(
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces"
     "DAM/2/sistemas_gestion_empresarial/ sge"
     "anexos/gestion_backups/ gestion_backups"
+    "anexos/glosario/ glosario"
     "anexos/instalar_ubuntu_lts/ instalar_ubuntu_lts"
     "anexos/monitorizacion_munin/ monitorizacion_munin"
     "anexos/ubuntu_raid1/ ubuntu_raid1"
