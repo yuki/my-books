@@ -10,6 +10,7 @@ LIBROS=(
     "otros/hacer_documentacion/ como_hacer_documentacion"
     "otros/laravel/ laravel"
     "otros/PFsense/ pfsense"
+    "ASIR/1/planificacion_administracion_redes/ redes"
     "ASIR/2/administracion_sistemas_operativos/ aso"
     "ASIR/2/SGBD/ sgbd"
     "DAM/1/sistemas_informaticos/ sistemas_informaticos"

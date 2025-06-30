@@ -9,23 +9,24 @@ on:
         type: choice
         options:
           - ALL
+          - ASO
           - AWS
           - AWS_docentes
           - Como_hacer_documentacion
-          - Docker
-          - Git
-          - Laravel
-          - PFsense
-          - ASO
-          - SGBD
-          - Sistemas_Informaticos
-          - SGE
           - Desarrollo_Interfaces
+          - Docker
           - Gestion_backups
+          - Git
           - Instalar_Ubuntu_LTS
+          - Laravel
           - Monitorizacion_Munin
-          - Ubuntu_RAID1
+          - PFsense
+          - Redes
+          - SGBD
+          - SGE
+          - Sistemas_Informaticos
           - Sistemas_Monitorizacion
+          - Ubuntu_RAID1
           - Virtualbox_networking
           - WSL
 permissions:
@@ -62,6 +63,7 @@ jobs:
           otros/hacer_documentacion/como_hacer_documentacion.pdf
           otros/laravel/laravel.pdf
           otros/PFsense/pfsense.pdf
+          ASIR/1/planificacion_administracion_redes/redes.pdf
           ASIR/2/administracion_sistemas_operativos/aso.pdf
           ASIR/2/SGBD/sgbd.pdf
           DAM/1/sistemas_informaticos/si.pdf
