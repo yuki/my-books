@@ -52,7 +52,7 @@ jobs:
       env:
         COMPILEBOOK: ${{inputs.compileBook}}
     - name: Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: latest
         files: |
@@ -77,9 +77,9 @@ jobs:
           anexos/virtualbox_networking/virtualbox_networking.pdf
           temas_comunes/wsl/wsl.pdf
     - name: Upload artifacts
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: './build'
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v2
+      uses: actions/deploy-pages@v4
