@@ -19,6 +19,7 @@ on:
           - Git
           - Glosario
           - Instalar_Ubuntu_LTS
+          - Introduccion_Programacion
           - Laravel
           - Monitorizacion_Munin
           - PFsense
@@ -62,6 +63,7 @@ jobs:
           otros/Docker/docker.pdf
           otros/git/git.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
+          otros/introduccion_programacion/introduccion_programacion.pdf
           otros/laravel/laravel.pdf
           otros/PFsense/pfsense.pdf
           ASIR/1/planificacion_administracion_redes/redes.pdf

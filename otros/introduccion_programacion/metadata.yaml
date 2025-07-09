@@ -1,0 +1,16 @@
+---
+title: 'Introducción a la Programación'
+title-mini: 'IP'
+subtitle: ''
+degree: 'Formación Profesional: \linebreak Informática y Comunicaciones'
+author: 'Rubén Gómez Olivencia'
+date: '2025-09-02'
+maincolor: 366a96
+phrase: 'Python desde cero'
+phrase-author: ''
+lang: es
+keywords: []
+cover: 'img/introduccion_programacion/python-powered-w.png'
+# other links for footers
+github-link: 'https://github.com/yuki/my-books/'
+...
