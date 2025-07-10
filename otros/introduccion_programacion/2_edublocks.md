@@ -171,64 +171,89 @@ Los bloques de este grupo nos va a permitir realizar peticiones a páginas web, 
 :::::::::::::::
 
 
-## 3.4 Primer programa: decir "¡Hola!"
+## Empezamos a programar {#empezamos-programar}
 
-### 🧪 Objetivo:
-Mostrar en pantalla un mensaje: `"¡Hola mundo!"`.
+La mejor manera para aprender es **¡programar!**. Vamos a hacer unos programas sencillos para aprender a usar EduBlocks y ver dónde están los bloques más usados y para qué sirven.
 
-### 🧩 Pasos en EduBlocks:
-1. Ve a la categoría **"Text"**.
-2. Arrastra el bloque que dice `print("")`.
-3. Haz clic en el bloque y escribe dentro: `¡Hola mundo!`.
-4. Pulsa el botón **Run** o **Ejecutar**.
+### ¡Hola Mundo! {#hola-mundo}
 
-### ✅ Resultado esperado:
-Aparecerá en la parte inferior:  
-`¡Hola mundo!`
+Cuando aprendemos a programar en un lenguaje concreto, el primer programa que se suele hacer es el conocido como "hola mundo". Es un programa sencillo que muestra en pantalla un mensaje: `"¡Hola mundo!"`.
 
----
+Para programarlo tenemos que:
 
-## 3.5 Leer datos del usuario
+1. Ir a la categoría **Statements**.
+2. Arrastra el bloque que dice: `print("Hello World")`, que sirve para imprimir por pantalla
+3. Haz clic en el bloque y cambiar para que ponga: `"¡Hola mundo!"`.
+4. Pulsa el botón ![](img/introduccion_programacion/edublocks_run.png){inline=true height=2em}
 
-### 🎯 Objetivo:
-Pedir al usuario que escriba su nombre, y luego saludarlo.
+Deberíamos tener en Edublocks lo siguiente:
 
-### 🧩 Pasos en EduBlocks:
-1. Ve a la categoría **"Variables"**.
-2. Arrastra un bloque para crear una variable: por ejemplo, `nombre = input("")`.
-3. En el texto del bloque, escribe: `"¿Cómo te llamas?"`
-4. Luego, usa un bloque `print("")` y escribe: `"Hola, " + nombre`.
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![](img/introduccion_programacion/edublocks_program_1.png){width="70%"}
+::::
+:::: {.column width="48%"}
 
-### 💬 Resultado:
-Si el usuario escribe “Ane”, el programa mostrará:  
-`Hola, Ane`
+::: mycode
+[Código fuente en Python]{.title}
 
----
+```python
+#Start code here
+print("¡Hola mundo!")
+```
+:::
 
-## 3.6 Decisiones: if... else...
+::::
+:::::::::::::::
 
-### 🎯 Objetivo:
-Preguntar la edad y decir si puedes entrar a una discoteca.
+Y el resultado debería ser:
 
-### 🧩 Pasos:
-1. Crear una variable `edad = int(input("¿Qué edad tienes?"))`
-2. Usar un bloque `if... else` (condicional).
-3. Dentro del `if`, escribir la condición: `edad >= 18`
-4. En cada parte, usar `print()` para mostrar un mensaje:
+![](img/introduccion_programacion/edublocks_program_1_output.png){width="50%" framed=true}
 
-- Si tiene 18 o más: `"Puedes entrar"`
-- Si no: `"No puedes entrar"`
 
----
 
-## 3.7 Bucle while (repetición)
+### Leer datos del usuario
 
-### 🎯 Objetivo:
-Contar del 1 al 5.
+La gran mayoría de los programas necesitan *input* de los usuarios. En este caso vamos a pedir al usuario que escriba su nombre, y luego lo vamos a saludar.
 
-### 🧩 Pasos:
-1. Crear una variable `contador = 1`
-2. Usar un bloque `while contador <= 5:`
-3. Dentro del bucle:
-   - Mostrar el valor del contador
-   - Aumentar el contador (`contador = contador + 1`)
+Los pasos a dar son:
+
+1. Ir a la categoría **"Variables"**.
+2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: `nombre_usuario`. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
+
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![Para asignar valor a la variable](img/introduccion_programacion/variable_assign.png){width="70%"}
+::::
+:::: {.column width="48%"}
+![Para usar el valor de la variable](img/introduccion_programacion/variable.png){width="70%"}
+::::
+:::::::::::::::
+
+3. Coge el bloque para asignar valor a la variable
+4. Vete a la sección **Statements** y coge el bloque **Input**. Ponlo dentro del bloque anterior y que el texto que sea: "¿Cómo te llamas?". Esto nos va a pedir el valor al usuario
+5. Vete a la sección **Statements** y coge el bloque para imprimir por pantalla
+6. Vete a la sección **Text** y coge el bloque que empieza por **"f"**, y ponlo dentro del bloque anterior. En el texto pon "Hola " y comprueba que la variable seleccionada es "nombre_usuario".
+
+
+Deberíamos tener en Edublocks lo siguiente:
+
+![Código de bloques](img/introduccion_programacion/edublocks_program_2.png){width="70%"}
+
+
+::: mycode
+[Código fuente en Python]{.title}
+
+```python
+#Start code here
+nombre_usuario = input("¿Cómo te llamas? ")
+print(f"Hola {nombre_usuario}")
+```
+:::
+
+
+Y el resultado, tras usar el programa, es:
+
+![](img/introduccion_programacion/edublocks_program_2_output.png){width="50%" framed=true}
+
+
