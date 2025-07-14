@@ -33,6 +33,22 @@ Hay muchos lenguajes, y cada uno tiene sus características. Algunos son más f�
 - **Scratch o Edublocks**: se programa con bloques, muy visual y fácil para empezar.
 
 
+## Componentes de un lenguaje de programación {#componentes-lenguaje-programación}
+
+Al igual que los lenguajes que usamos en nuestro día a día, los lenguajes de programación también tienen reglas:
+
+
+- **Alfabeto**: Conjunto de símbolos para formar las palabras utilizadas por el lenguaje. Normalmente son letras, dígitos, símbolos (+,-,:,(),[],...)
+- **Léxico**: Las palabras que el lenguaje tiene reservadas para programar. Si alguna de las palabras del léxico se escribe mal, el programa no se podrá compilar/ejecutar.
+  - if, else, for, while, ...
+- **Sintaxis**: Son las reglas que tiene el lenguaje para asegurar que una cadena de palabras forman una oración válida. En lenguaje natural la diferencia sería:
+  - "Yo conduzco un coche"
+  - "Coche conduzco yo"
+- **Semántica**: Determina que la frase tiene sentido (puede estar bien escrita, pero no tiene sentido). Las siguientes frases son un ejemplo en lenguaje natural:
+  - "Yo conduzco un coche"
+  - "Un coche me conduce"
+
+
 ## Tipos de lenguajes {#tipos-lenguajes-programación}
 
 El ordenador solo entiende **código máquina** (unos y ceros, el código binario). Por eso, los programas escritos en lenguajes como Python o Java necesitan **traducirse** a un lenguaje que el ordenador pueda ejecutar.
