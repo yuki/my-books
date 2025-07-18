@@ -1,7 +1,7 @@
 
 # ¿Qué es programar? {#programar}
 
-Programar es **dar instrucciones a un ordenador** para que realice una tarea. Esto se realiza escribiendo el **código fuente** con las instrucciones que termina en la creación de una aplicación informática (programa o videojuego).
+Programar es **dar instrucciones a un ordenador** para que realice una tarea. Esto se realiza escribiendo el **código fuente** con las instrucciones que queremos dar. Esto termina en la creación de una aplicación informática (programa, página web, videojuego, ...).
 
 Programar se suele comparar con crear una receta de cocina en la que se deben indicar todos los pasos a realizar (programa) que posteriormente se interpreta por otro cocinero (el ordenador). Cualquier instrucción que no se especifique de manera correcta, hará que la receta final (el programa realizado) no funcione. 
 
@@ -120,7 +120,7 @@ Si llevas el código fuente a otro ordenador y no está instalado el intérprete
 
 ### Lenguajes compilados {#lenguajes-compilados}
 
-Un lenguaje **compilado** necesita un **compilador**, que convierte todo el código fuente de una vez en un archivo ejecutable. El resultado de la compilación genera código máquina (binario) que es directamente interpretado por el sistema operativo y la CPU. Los lenguajes compilados más conocidos son:
+Un lenguaje **compilado** necesita un **compilador**, que convierte todo el código fuente en un archivo ejecutable. El resultado de la compilación genera código máquina (binario) que es directamente interpretado por el sistema operativo y la CPU. Los lenguajes compilados más conocidos son:
 
 - C
 - C++

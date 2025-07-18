@@ -173,11 +173,11 @@ Los bloques de este grupo nos va a permitir realizar peticiones a páginas web, 
 
 ## Empezamos a programar {#empezamos-programar}
 
-La mejor manera para aprender es **¡programar!**. Vamos a hacer unos programas sencillos para aprender a usar EduBlocks y ver dónde están los bloques más usados y para qué sirven.
+La mejor manera para aprender es **¡programando!**. Vamos a hacer un programa sencillo para aprender a usar EduBlocks y ver dónde están los bloques más usados y para qué sirven.
 
 ### ¡Hola Mundo! {#hola-mundo}
 
-Cuando aprendemos a programar en un lenguaje concreto, el primer programa que se suele hacer es el conocido como "hola mundo". Es un programa sencillo que muestra en pantalla un mensaje: `"¡Hola mundo!"`.
+Cuando aprendemos a programar en un lenguaje concreto, el primer programa que se suele hacer es conocido como "hola mundo". Es un programa sencillo que muestra en pantalla un mensaje: `"¡Hola mundo!"`.
 
 Para programarlo tenemos que:
 
@@ -209,51 +209,4 @@ print("¡Hola mundo!")
 Y el resultado debería ser:
 
 ![](img/introduccion_programacion/edublocks_program_1_output.png){width="50%" framed=true}
-
-
-
-### Leer datos del usuario
-
-La gran mayoría de los programas necesitan *input* de los usuarios. En este caso vamos a pedir al usuario que escriba su nombre, y luego lo vamos a saludar.
-
-Los pasos a dar son:
-
-1. Ir a la categoría **"Variables"**.
-2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: `nombre_usuario`. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
-
-::::::::::::::: {.columns }
-:::: {.column width="48%"}
-![Para asignar valor a la variable](img/introduccion_programacion/variable_assign.png){width="70%"}
-::::
-:::: {.column width="48%"}
-![Para usar el valor de la variable](img/introduccion_programacion/variable.png){width="70%"}
-::::
-:::::::::::::::
-
-3. Coge el bloque para asignar valor a la variable
-4. Vete a la sección **Statements** y coge el bloque **Input**. Ponlo dentro del bloque anterior y que el texto que sea: "¿Cómo te llamas?". Esto nos va a pedir el valor al usuario
-5. Vete a la sección **Statements** y coge el bloque para imprimir por pantalla
-6. Vete a la sección **Text** y coge el bloque que empieza por **"f"**, y ponlo dentro del bloque anterior. En el texto pon "Hola " y comprueba que la variable seleccionada es "nombre_usuario".
-
-
-Deberíamos tener en Edublocks lo siguiente:
-
-![Código de bloques](img/introduccion_programacion/edublocks_program_2.png){width="70%"}
-
-
-::: mycode
-[Código fuente en Python]{.title}
-
-```python
-#Start code here
-nombre_usuario = input("¿Cómo te llamas? ")
-print(f"Hola {nombre_usuario}")
-```
-:::
-
-
-Y el resultado, tras usar el programa, es:
-
-![](img/introduccion_programacion/edublocks_program_2_output.png){width="50%" framed=true}
-
 

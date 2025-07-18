@@ -50,7 +50,7 @@ En estas plataformas es posible que exista cierta limitación, ya que es posible
 
 Al igual que sucede con el lenguaje hablado, los lenguajes de programación evolucionan con el tiempo. Los lenguajes de programación suelen tener distintas versiones a lo largo del tiempo, añadiendo mejoras y en algunos casos quitando cosas obsoletas.
 
-Python 2.0 salió en el año 2000 y la última versión 2.7.8 en 2014. Python 3, salió en 2008, fue diseñado para rectificar ciertos errores fundamentales en el diseño del lenguaje, lo que hacía que en ciertos aspectos el lenguaje perdiese retro-compatibilidad (los programas escritos para 2.0 no se podían ejecutar con el intérprete de 3.x sin hacer cambios).
+Python 2.0 salió en el año 2000 y la última versión de esa rama (2.7.18) en 2020. Python 3, salió en 2008, fue diseñado para rectificar ciertos errores fundamentales en el diseño del lenguaje, lo que hacía que en ciertos aspectos el lenguaje perdiese retro-compatibilidad (los programas escritos para 2.0 no se podían ejecutar con el intérprete de 3.x sin hacer cambios).
 
 Durante muchos años python 2.7.X y 3.X han coexistido para dar tiempo a hacer la migración de proyectos grandes, hasta que en 2020 se decidió dejar de dar soporte a las versiones 2.X. Hoy en día todo código que veamos debería ser de la versión 3 en adelante.
 
@@ -59,20 +59,51 @@ Python actualmente está en la versión **3.13** (más concretamente 3.13.5).
 
 # Variables {#variables}
 
-Una **variable** es un nombre que usamos para **guardar un dato** en la memoria del ordenador. Podemos imaginarla como una **caja con una etiqueta**, donde guardamos un valor que luego podemos usar, cambiar o mostrar. Por ejemplo, si escribimos `nombre = "Rubén"`, estamos guardando el texto `"Rubén"` en una variable llamada `nombre`.  
+Una **variable** es un nombre que usamos para **guardar un dato** en la memoria del ordenador. Podemos imaginarla como una **caja con una etiqueta**, donde guardamos un valor que luego podemos usar, cambiar o mostrar.
+
+Para crear una variable en EduBlocks tenemos que:
+
+1. Ir a la categoría **"Variables"**.
+2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: `nombre_usuario`. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
+
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![Para asignar valor a la variable](img/introduccion_programacion/variable_assign.png){width="70%"}
+::::
+:::: {.column width="48%"}
+![Para usar el valor de la variable](img/introduccion_programacion/variable.png){width="70%"}
+::::
+:::::::::::::::
 
 En Python las variables se definen de forma dinámica. Esto quiere decir que no debemos especificar qué tipo de datos va a tener antes de ser declarada.
+
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![Para asignar valor a la variable](img/introduccion_programacion/edublocks_input.png){width="70%"}
+::::
+:::: {.column width="48%"}
 
 ::: mycode
 [Asignar valor a las variables]{.title}
 
 ```python
-nombre = "Rubén"
-nombre = 1
+#Start code here
+nombre_usuario = "Rubén"
+nombre_usuario = 1
 ```
 :::
 
+::::
+:::::::::::::::
+
+
 En la primera sentencia asignamos un valor a la variable, y posteriormente sustituimos el valor por otro. Estos datos son de distinto tipo. En otros lenguajes de programación no se puede realizar la asignación de distintos tipos de datos en la misma variable.
+
+Debido a que los lenguajes de programación tienen un léxico propio, esas palabras no las podremos utilizar como variables, ya que dará error. En la [documentación oficial](https://docs.python.org/3/reference/lexical_analysis.html#keywords) están las palabras reservadas, como: False, rawait, else, ...
+
+::: errorbox
+Hay ciertas [palabras reservadas](https://docs.python.org/3/reference/lexical_analysis.html#keywords) que no podemos usar como nombres de variables.
+:::
 
 
 ## Tipos de datos {#tipos-datos}
@@ -94,10 +125,16 @@ A continuación una breve descripción de los **tipos más comunes**:
 | NoneType      | None               | Representa la **ausencia de valor**              |
 Table: {tablename=yukitblr colspec=XXX[3,l]}
 
-A continuación vamos a ver ejemplos usando Edublocks y el código en Python real para los distintos tipos de datos.
-
 ::: infobox
 Es importante entender los distintos tipos de datos en programación y para qué sirve cada uno.
+:::
+
+A continuación vamos a ver ejemplos usando Edublocks y el código en Python real para los tipos de datos más sencillos. Más adelante veremos el resto de los tipos de datos.
+
+Para realizar ciertas operaciones, será necesario convertir un tipo de datos a otro, ya que si son de distintos tipos, dará error.
+
+::: infobox
+Existe la posibilidad de convertir un tipo de datos a otro.
 :::
 
 
@@ -172,7 +209,7 @@ entero = 5
 :::::::::::::::
 
 :::errorbox
-Es importante diferenciar que "numero" y "entero" son dos tipos de datos completamente distintos.
+Es importante diferenciar que las variables "numero" y "entero" son dos tipos de datos completamente distintos.
 :::
 
 
@@ -188,7 +225,7 @@ Solo tienen dos valores posibles: **True** (verdadero) o **False** (falso). Sirv
 :::: {.column width="48%"}
 
 ::: mycode
-[Variables con texto]{.title}
+[Variables con booleans]{.title}
 
 ```python
 mayor_de_edad = True
@@ -198,17 +235,4 @@ usado = False
 
 ::::
 :::::::::::::::
-
-
-
-
-# Entrada y salida de datos con input() y print()
-
-# Operadores básicos (aritméticos y lógicos)
-
-# Estructuras de control:
-
-## Condicionales: if, else
-
-## Bucles: while, for
 
