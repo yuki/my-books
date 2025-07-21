@@ -172,9 +172,8 @@ Los pasos a dar son:
 
 1. Crear una variable.
 2. Coge el bloque para asignar valor a la variable
-3. Vete a la sección **Statements** y coge el bloque **Input**. Ponlo dentro del bloque anterior y que el texto que sea: "¿Cómo te llamas?". Esto nos va a pedir el valor al usuario
-4. Vete a la sección **Statements** y coge el bloque para imprimir por pantalla
-5. Vete a la sección **Text** y coge el bloque que empieza por **"f"**, y ponlo dentro del bloque anterior. En el texto pon "Hola " y comprueba que la variable seleccionada es "nombre_usuario".
+3. Vete a la sección **Statements** y coge el bloque **Input**. Ponlo dentro del bloque anterior y que el texto que sea: "¿Cómo te llamas?". Esto nos va a pedir el valor al usuario.
+4. Imprime por pantalla un texto que diga "Hola " con el valor del dato obtenido.
 
 
 Deberíamos tener en Edublocks lo siguiente:
@@ -198,16 +197,5 @@ Y el resultado, tras usar el programa, es:
 ![](img/introduccion_programacion/edublocks_program_2_output.png){width="50%" framed=true}
 
 
-
-
-
-# Operadores básicos (aritméticos y lógicos)
-
-# Estructuras de control:
-
-## Condicionales: if, else
-
-## Bucles: while, for
-
-
+Es importante entender que **el input obtenido siempre va a ser de tipo "*string*"** con lo introducido por el usuario. Da igual que el texto sólo sean números. A continuación veremos cómo convertir datos entre distintos tipos.
 

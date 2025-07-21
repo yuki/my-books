@@ -64,7 +64,7 @@ Una **variable** es un nombre que usamos para **guardar un dato** en la memoria 
 Para crear una variable en EduBlocks tenemos que:
 
 1. Ir a la categoría **"Variables"**.
-2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: `nombre_usuario`. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
+2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: [nombre_usuario]{.verbatim}. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
@@ -112,18 +112,19 @@ En Python, cada dato que usamos tiene un **tipo**, que indica qué tipo de infor
 
 A continuación una breve descripción de los **tipos más comunes**:
 
-| Tipo de dato  | Nombre (en inglés) | Descripción breve                                |
-|---------------|--------------------|--------------------------------------------------|
-| int           | Integer            | Números enteros, sin decimales. Pueden ser positivos o negativos |
-| float         | Floating point     | Números con decimales. Pueden ser positivos o negativos |
-| str           | String             | Texto, siempre entre comillas                    |
-| bool          | Boolean            | Verdadero (**True**) o falso (**False**)             |
-| list          | List               | Lista ordenada y modificable de elementos        |
-| tuple         | Tuple              | Lista ordenada, **no modificable** (inmutable)   |
-| dict          | Dictionary         | Datos en forma **clave : valor**                 |
-| set           | Set                | Conjunto **sin elementos repetidos**, sin orden  |
-| NoneType      | None               | Representa la **ausencia de valor**              |
-Table: {tablename=yukitblr colspec=XXX[3,l]}
+| Nombre        | Ejemplo en código                        | Descripción breve                                |
+|---------------|------------------------------------------|--------------------------------------------------|
+| int           | [edad = 18]{.verbatim}                              | Números enteros, sin decimales. Pueden ser positivos o negativos |
+| float         | [precio = 3.99]{.verbatim}                          | Números con decimales. Pueden ser positivos o negativos |
+| str           | [nombre = "Ruben"]{.verbatim}                         | Texto, siempre entre comillas                    |
+| bool          | [activo = True]{.verbatim}                          | Verdadero (**True**) o falso (**False**)             |
+| list          | [frutas = ["pera", "uva"]]{.verbatim}               | Lista ordenada y modificable de elementos        |
+| tuple         | [coordenadas = (3, 5)]{.verbatim}                   | Lista ordenada, **no modificable** (inmutable)   |
+| dict          | [persona = {"nombre": "Ruben", "edad": 42}]{.verbatim}| Datos en forma **clave : valor**                 |
+| set           | [numeros = {1, 2, 3}]{.verbatim}                    | Conjunto **sin elementos repetidos**, sin orden  |
+| NoneType      | [nada = None]{.verbatim}                            | Representa la **ausencia de valor**              |
+Table: {tablename=yukitblr colspec=X[1,l]X[3,l]X[5,l]}
+
 
 ::: infobox
 Es importante entender los distintos tipos de datos en programación y para qué sirve cada uno.
@@ -132,11 +133,6 @@ Es importante entender los distintos tipos de datos en programación y para qué
 A continuación vamos a ver ejemplos usando Edublocks y el código en Python real para los tipos de datos más sencillos. Más adelante veremos el resto de los tipos de datos.
 
 Para realizar ciertas operaciones, será necesario convertir un tipo de datos a otro, ya que si son de distintos tipos, dará error.
-
-::: infobox
-Existe la posibilidad de convertir un tipo de datos a otro.
-:::
-
 
 ### Números enteros (int) {#integers}
 
@@ -215,7 +211,7 @@ Es importante diferenciar que las variables "numero" y "entero" son dos tipos de
 
 ### Booleanos (bool) {#bool}
 
-Solo tienen dos valores posibles: **True** (verdadero) o **False** (falso). Sirve para hacer operaciones lógicas.
+Solo tienen dos valores posibles: **True** (verdadero) o **False** (falso). Sirve para hacer operaciones lógicas o para guardar datos que sólo pueden ser verdadero o falso.
 
 
 ::::::::::::::: {.columns }

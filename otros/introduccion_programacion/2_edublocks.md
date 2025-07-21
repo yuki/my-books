@@ -177,13 +177,13 @@ La mejor manera para aprender es **¡programando!**. Vamos a hacer un programa s
 
 ### ¡Hola Mundo! {#hola-mundo}
 
-Cuando aprendemos a programar en un lenguaje concreto, el primer programa que se suele hacer es conocido como "hola mundo". Es un programa sencillo que muestra en pantalla un mensaje: `"¡Hola mundo!"`.
+Cuando aprendemos a programar en un lenguaje concreto, el primer programa que se suele hacer es conocido como "hola mundo". Es un programa sencillo que muestra en pantalla un mensaje: ["¡Hola mundo!"]{.verbatim}.
 
 Para programarlo tenemos que:
 
 1. Ir a la categoría **Statements**.
-2. Arrastra el bloque que dice: `print("Hello World")`, que sirve para imprimir por pantalla
-3. Haz clic en el bloque y cambiar para que ponga: `"¡Hola mundo!"`.
+2. Arrastra el bloque que dice: [print("Hello World")]{.verbatim}, que sirve para imprimir por pantalla
+3. Haz clic en el bloque y cambiar para que ponga: ["¡Hola mundo!"]{.verbatim}.
 4. Pulsa el botón ![](img/introduccion_programacion/edublocks_run.png){inline=true height=2em}
 
 Deberíamos tener en Edublocks lo siguiente:

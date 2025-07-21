@@ -129,7 +129,7 @@ Un lenguaje **compilado** necesita un **compilador**, que convierte todo el cód
 Al programar con lenguajes compilados, los pasos son:
 
 1. Escribes el código (por ejemplo, en C++).
-2. Lo **compilas**, lo que hace que genere un archivo ejecutable (por ejemplo, `programa.exe`).
+2. Lo **compilas**, lo que hace que genere un archivo ejecutable (por ejemplo, [programa.exe]{.verbatim}).
 3. Ese archivo ya puede ejecutarse sin necesidad del código fuente.
 
 Los programas compilados se pueden llevar a otro ordenador y se puede ejecutar directamente, sin necesidad de tener en ese ordenador nada instalado.
@@ -183,7 +183,7 @@ Antes de programar tenemos que entender qué problema queremos solucionar y pens
 Por ejemplo, si queremos hacer un programa que tenga en cuenta si una persona puede entrar en una discoteca y sólo pueden entrar los mayores de 18 años. La lógica del programa sería:
 
 1. Preguntar la edad de la persona.
-2. Comprobar si la edad es mayor o igual que 18 (`edad>=18`).
+2. Comprobar si la edad es mayor o igual que 18 ([edad>=18]{.verbatim}).
 3. Si es mayor o igual → dejar entrar.
 4. Si es menor → no dejar entrar.
 
@@ -195,6 +195,6 @@ Después de pensar el plan, es momento de escribir el código fuente del program
 Cuando se programa, es normal que las cosas no funcionen a la primera. Hay tres tipos de errores muy comunes:
 
 - **Errores de sintaxis**: El código tiene una "falta de ortografía". Por ejemplo, olvidarse de un paréntesis o escribir mal una palabra clave.
-- **Errores de lógica**: El código se ejecuta, pero **no hace lo que tú querías**. Por ejemplo, poner el signo `>` en lugar de `<`.
+- **Errores de lógica**: El código se ejecuta, pero **no hace lo que tú querías**. Por ejemplo, poner el signo [>]{.verbatim} en lugar de [<]{.verbatim}.
 - **Errores de ejecución**: El programa se bloquea mientras está funcionando. Se ha escrito una instrucción que hace que el programa "se rompa": dividir entre cero o leer una variable que no existe.
 
