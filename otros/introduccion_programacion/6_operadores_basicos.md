@@ -78,7 +78,7 @@ No vamos a hacer uso de estos dos operadores especiales.
 :::
 
 
-# Operadores lógicos combinados (and, or, not) {#operadores-logicos-combinados}
+# Operadores lógicos combinados: "and", "or", "not" {#operadores-logicos-combinados}
 
 Sirven para **combinar condiciones**. En el siguiente capítulo los entenderemos mejor.
 

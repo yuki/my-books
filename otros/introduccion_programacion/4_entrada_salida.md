@@ -79,7 +79,7 @@ Si intentamos usar una variable que no existe, tendremos un error al ejecutar nu
 :::
 
 
-## Concatenar datos con print {#concatenar-datos}
+## Concatenar datos con print() {#concatenar-datos}
 
 **Print** es una función que permite que pasemos más de un parámetro, para poder sacar por pantalla más datos con la misma instrucción. En el grupo de bloques "**Text**" tenemos un bloque para poder añadir más textos al *print*.
 
@@ -125,7 +125,7 @@ print(f"Hola {nombre_usuario}")
 :::::::::::::::
 
 
-## Parámetros especiales "sep", "end"
+## Parámetros especiales: "sep", "end"
 
 **Print** tiene dos parámetros especiales que tienen un valor por defecto que podemos modificar. Estos parámetros son:
 
