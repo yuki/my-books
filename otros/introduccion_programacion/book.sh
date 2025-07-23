@@ -12,3 +12,5 @@ echo [Operadores básicos]{.part}
 cat 6_operadores_basicos.md
 echo [Estructuras de control]{.part}
 cat 7_estructuras_control.md
+echo [Ejercicios]{.part}
+cat 0_ejercicios.md
