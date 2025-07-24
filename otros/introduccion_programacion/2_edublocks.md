@@ -12,7 +12,7 @@ La programación por bloques es una manera **más visual** de programar, ideal p
 Nos ayuda a **conocer la estructura del código** de manera sencilla. Además, con EduBlocks, como también nos muestra el código Python, es ideal para ir aprendiendo poco a poco.
 
 
-## Primeros pasos con EduBlocks {#primeros-pasos-edublocks}
+## Crear proyectos en Edublocks {#crear-proyecto-edublocks}
 
 Para usar EduBlocks en el navegador hay que acceder a su página web: [https://app.edublocks.org](https://app.edublocks.org), donde nos podremos registrar, loguear, o empezar a programar directamente. Si nos registramos nos guardará los proyectos creados.
 

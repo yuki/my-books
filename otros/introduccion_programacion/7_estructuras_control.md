@@ -253,11 +253,11 @@ El bloque [else]{.verbatim} en Edublocks también está dentro del grupo **Logic
 
 1. Se crea una variable, con el tipo de datos **int**, con un valor de 17.
 2. Se imprime por pantalla "Hola".
-3. Se analiza la condición [edad >= 18]{.verbatim}. ¿Es esta condición [True]{.verbatim}? No, **por lo tanto se salta al bloque else** y se imprime el código que está dentro del bloque [else]{.verbatim}: "Eres menor de edad".
+3. [edad >= 18]{.verbatim}. ¿Es esta condición [True]{.verbatim}? No, **por lo tanto se salta al bloque else**.
 4. Se imprime por pantalla "Adios".
 
 ::: exercisebox
-[Solución](#ejercicio-else-anidado). Amplía el ejemplo anterior para que cuando entre en el [else]{.verbatim} se compruebe:
+Añade en el [else]{.verbatim}, sin ver la [solución](#ejercicio-else-anidado):
 
 - si es mayor de 13: que escriba: "Eres adolescente"
 - si no, pero es mayor a 6: escriba: "¿En qué curso estás?"

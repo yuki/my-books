@@ -59,37 +59,24 @@ Según **cómo se hace esa traducción**, los lenguajes se dividen en:
 - Lenguajes **compilados**
 - Lenguajes **híbridos**
 
+::: exercisebox
+Busca al menos 2 lenguajes de programación para cada tipo.
+:::
 
-Hay otras muchas maneras de diferenciar los lenguajes de programación, como por ejemplo:
 
-- Según el nivel de abstracción:
-  - Lenguajes de bajo nivel
-  - Lenguajes de alto nivel
-- Según el paradigma de programación:
-  - Imperativos
-  - Declarativos
-  - Orientados a objetos
-  - Funcionales
-  - Lógicos
-- Según su propósito:
-  - De propósito general
-  - De propósito específico (por ejemplo, para bases de datos o web)
-- Según la sintaxis:
-  - De sintaxis simple (como Python)
-  - De sintaxis estricta (como Java o C++)
-- Según su tipado:
-  - Tipado estático
-  - Tipado dinámico
-  - Tipado fuerte
-  - Tipado débil
-- Según la gestión de memoria:
-  - Con gestión manual (como C)
-  - Con recolector de basura (como Java o Python)
-- Según su orientación al hardware o al sistema:
-  - Lenguajes de sistema
-  - Lenguajes de aplicación
+Hay otro muchos criterios para diferenciar los lenguajes de programación. Estas diferenciaciones son más profundas, por lo que no vamos a entrar en ellas, pero en la siguiente tabla se pueden ver algunas de ellas.
 
-Estas diferenciaciones son más profundas, por lo que no vamos a entrar en ellas.
+| Criterios de diferenciación | Clasificación |   
+|----------|------------|
+| Según el nivel de abstracción | Lenguajes de bajo nivel. Lenguajes de alto nivel. |
+| Según el paradigma de programación | Imperativos. Declarativos. Orientados a objetos. Orientados a objetos. Funcionales. Lógicos.
+| Según su propósito | De propósito general. De propósito específico (por ejemplo, para bases de datos o web).
+| Según la sintaxis | De sintaxis simple (como Python). De sintaxis estricta (como Java o C++) | 
+| Según su tipado | Estático. Dinámico. Fuerte. Débil |
+| Según la gestión de memoria | Con gestión manual (como C). Con recolector de basura (como Java o Python) |
+| Según su orientación al hardware o al sistema | Lenguajes de sistema. Lenguajes de aplicación. |
+
+Table: {tablename=yukitblr colspec=X[l]X[l]}
 
 
 ### Lenguajes interpretados {#lenguajes-interpretados}
@@ -110,12 +97,12 @@ Dependiendo del lenguaje y su intérprete, el paso 2 y 3 pueden variar. En algun
 
 Si llevas el código fuente a otro ordenador y no está instalado el intérprete 
 
-#### Ventajas
-- Muy fáciles de probar.
-- Ideales para aprender y hacer pruebas rápidas.
+| Ventajas | Desventajas|   
+|----------|------------|
+| Muy fáciles de probar. | Suelen ser **más lentos** que los compilados. |
+| Ideales para aprender y hacer pruebas rápidas. |  |
 
-#### Inconvenientes
-- Suelen ser **más lentos** que los compilados.
+Table: {tablename=yukitblr colspec=X[l]X[l]}
 
 
 ### Lenguajes compilados {#lenguajes-compilados}
@@ -134,13 +121,13 @@ Al programar con lenguajes compilados, los pasos son:
 
 Los programas compilados se pueden llevar a otro ordenador y se puede ejecutar directamente, sin necesidad de tener en ese ordenador nada instalado.
 
-#### Ventajas:
-- Muy **rápido al ejecutarse**.
-- Ideal para programas grandes o que necesitan rendimiento.
+| Ventajas | Desventajas|   
+|----------|------------|
+| Muy **rápido al ejecutarse**. | Si haces un cambio, tienes que compilar otra vez. |
+| Ideal para programas grandes o que necesitan rendimiento. | Los errores aparecen todos de golpe al compilar. |
 
-#### Inconvenientes:
-- Si haces un cambio, tienes que compilar otra vez.
-- Los errores aparecen todos de golpe al compilar.
+Table: {tablename=yukitblr colspec=X[l]X[l]}
+
 
 
 ### Lenguajes híbridos {#lenguajes-híbridos}
@@ -159,13 +146,12 @@ Al programar en un lenguaje híbrido, los pasos son:
 
 En este caso, el intérprete debe estar instalado en el ordenador donde queramos ejecutar el programa
 
-#### Ventajas:
-- Buena velocidad.
-- Portabilidad: el mismo programa funciona en distintos sistemas.
+| Ventajas | Desventajas|   
+|----------|------------|
+| Buena velocidad. | Necesitas tener instalada la máquina virtual. |
+| Portabilidad: el mismo programa funciona en distintos sistemas. | A veces, un poco más complejo de configurar. |
 
-#### Inconvenientes:
-- Necesitas tener instalada la máquina virtual.
-- A veces, un poco más complejo de configurar.
+Table: {tablename=yukitblr colspec=X[l]X[l]}
 
 
 

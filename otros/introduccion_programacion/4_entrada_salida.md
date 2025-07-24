@@ -197,5 +197,13 @@ Y el resultado, tras usar el programa, es:
 ![](img/introduccion_programacion/edublocks_program_2_output.png){width="50%" framed=true}
 
 
-Es importante entender que **el input obtenido siempre va a ser de tipo "*string*"** con lo introducido por el usuario. Da igual que el texto sólo sean números. A continuación veremos cómo convertir datos entre distintos tipos.
+Es importante entender que **el input obtenido siempre va a ser de tipo "*string*"** con lo introducido por el usuario. Da igual que el texto sólo sean números. A continuación veremos cómo convertir datos entre distintos [tipos]{#ejercicio-input}.
 
+
+::: exercisebox
+Crea un programa que pregunte al usuario y coja los siguientes datos, para al final imprimir una frase con todos los datos obtenidos:
+
+- Su nombre
+- Su edad
+- Su dirección
+:::

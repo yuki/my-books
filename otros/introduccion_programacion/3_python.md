@@ -132,7 +132,9 @@ Es importante entender los distintos tipos de datos en programación y para qué
 
 A continuación vamos a ver ejemplos usando Edublocks y el código en Python real para los tipos de datos más sencillos. Más adelante veremos el resto de los tipos de datos.
 
-Para realizar ciertas operaciones, será necesario convertir un tipo de datos a otro, ya que si son de distintos tipos, dará error.
+::: exercisebox
+Crea un programa con variables para los primeros cuatro tipos de datos.
+:::
 
 ### Números enteros (int) {#integers}
 
