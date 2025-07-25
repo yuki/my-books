@@ -18,7 +18,7 @@ Para usar EduBlocks en el navegador hay que acceder a su página web: [https://a
 
 Si seleccionamos **"Python"** nos aparecerá el siguiente pop-up para crear un proyecto:
 
-![](img/introduccion_programacion/edublocks_project.png){width="40%" framed=true}
+![](img/introduccion_programacion/edublocks/edublocks_project.png){width="40%" framed=true}
 
 Ahí podemos elegir:
 
@@ -28,7 +28,7 @@ Ahí podemos elegir:
 
 Al darle al botón **Create**, nos aparecerá el entorno donde podremos empezar a programar:
 
-![](img/introduccion_programacion/edublocks_entorno.png){width="70%" framed=true}
+![](img/introduccion_programacion/edublocks/edublocks_entorno.png){width="70%" framed=true}
 
 Se pueden diferenciar tres apartados:
 
@@ -44,7 +44,7 @@ Vamos a explicar los distintos grupos de bloques, aunque no hace falta entender 
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_imports.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_imports.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Los lenguajes de programación suelen estar separados en "módulos", por lo que para usar ciertas características de los lenguajes hay que importar el módulo correspondiente. En EduBlocks hay módulos para fechas, matemáticas...
@@ -54,7 +54,7 @@ Los lenguajes de programación suelen estar separados en "módulos", por lo que 
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_variables.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_variables.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Para crear variables debemos usar este grupo, para después poder usarlas. Más adelante hablaremos de las variables.
@@ -65,7 +65,7 @@ Para crear variables debemos usar este grupo, para después poder usarlas. Más 
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_statements.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_statements.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Son bloques básicos, para mostrar datos, obtener datos desde el teclado, convertir texto a números...
@@ -75,7 +75,7 @@ Son bloques básicos, para mostrar datos, obtener datos desde el teclado, conver
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_text.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_text.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Bloques para realizar tareas con texto: combinar textos, convertirlo a mayúsculas, minúsculas, contar letras...
@@ -85,7 +85,7 @@ Bloques para realizar tareas con texto: combinar textos, convertirlo a mayúscul
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_math.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_math.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 En este apartado hay bloques para realizar operaciones matemáticas. Para poder usarlas **hay que importar el módulo de matemáticas**.
@@ -95,7 +95,7 @@ En este apartado hay bloques para realizar operaciones matemáticas. Para poder 
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_logic.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_logic.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 En este grupo **hay bloques muy importantes para la lógica de un programa**. Más adelante hablaremos y los entenderemos.
@@ -105,7 +105,7 @@ En este grupo **hay bloques muy importantes para la lógica de un programa**. M�
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_lists.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_lists.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Operaciones con listas, que es un tipo de variable.
@@ -115,7 +115,7 @@ Operaciones con listas, que es un tipo de variable.
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_loops.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_loops.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 En este grupo **hay bloques muy importantes para realizar tareas repetitivas**. Más adelante hablaremos y los entenderemos.
@@ -125,7 +125,7 @@ En este grupo **hay bloques muy importantes para realizar tareas repetitivas**. 
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_definitions.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_definitions.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Bloques para crear funciones.
@@ -134,7 +134,7 @@ Bloques para crear funciones.
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_turtle.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_turtle.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Bloques para dibujar. Es necesario importar el módulo "turtle".
@@ -144,7 +144,7 @@ Bloques para dibujar. Es necesario importar el módulo "turtle".
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_graphs.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_graphs.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Si queremos crear gráficos (de líneas, de barras horizontales...) podemos usar estos bloques.
@@ -153,7 +153,7 @@ Si queremos crear gráficos (de líneas, de barras horizontales...) podemos usar
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_random.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_random.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Si necesitamos crear números aleatorios podemos usar las funciones de este grupo.
@@ -163,7 +163,7 @@ Si necesitamos crear números aleatorios podemos usar las funciones de este grup
 
 ::::::::::::::: {.columns }
 :::: {.column width="25%"}
-![](img/introduccion_programacion/edublocks_requests.png){width="100%"}
+![](img/introduccion_programacion/edublocks/edublocks_requests.png){width="100%"}
 ::::
 :::: {.column width="74%"}
 Los bloques de este grupo nos va a permitir realizar peticiones a páginas web, obtener información de ellas o coger datos de ficheros JSON.
@@ -184,13 +184,13 @@ Para programarlo tenemos que:
 1. Ir a la categoría **Statements**.
 2. Arrastra el bloque que dice: [print("Hello World")]{.verbatim}, que sirve para imprimir por pantalla
 3. Haz clic en el bloque y cambiar para que ponga: ["¡Hola mundo!"]{.verbatim}.
-4. Pulsa el botón ![](img/introduccion_programacion/edublocks_run.png){inline=true height=2em}
+4. Pulsa el botón ![](img/introduccion_programacion/edublocks/edublocks_run.png){inline=true height=2em}
 
 Deberíamos tener en Edublocks lo siguiente:
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_program_1.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_program_1.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -208,5 +208,5 @@ print("¡Hola mundo!")
 
 Y el resultado debería ser:
 
-![](img/introduccion_programacion/edublocks_program_1_output.png){width="50%" framed=true}
+![](img/introduccion_programacion/edublocks/edublocks_program_1_output.png){width="50%" framed=true}
 

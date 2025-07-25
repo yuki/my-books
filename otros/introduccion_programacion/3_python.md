@@ -64,14 +64,14 @@ Una **variable** es un nombre que usamos para **guardar un dato** en la memoria 
 Para crear una variable en EduBlocks tenemos que:
 
 1. Ir a la categoría **"Variables"**.
-2. Pulsa el botón ![](img/introduccion_programacion/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: [nombre_usuario]{.verbatim}. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
+2. Pulsa el botón ![](img/introduccion_programacion/edublocks/edublocks_create_variable.png){inline=true height=2em} para crear una variable. Nos aparece un *pop-up* para darle un nombre a la variable: [nombre_usuario]{.verbatim}. Verás que ahora en la categoría aparecen 2 bloques nuevos (uno es para darle valor a la variable y otro para usarla)
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![Para asignar valor a la variable](img/introduccion_programacion/variable_assign.png){width="70%"}
+![Para asignar valor a la variable](img/introduccion_programacion/edublocks/edublocks_variable_assign.png){width="70%"}
 ::::
 :::: {.column width="48%"}
-![Para usar el valor de la variable](img/introduccion_programacion/variable.png){width="70%"}
+![Para usar el valor de la variable](img/introduccion_programacion/edublocks/edublocks_variable.png){width="70%"}
 ::::
 :::::::::::::::
 
@@ -79,7 +79,7 @@ En Python las variables se definen de forma dinámica. Esto quiere decir que no 
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![Para asignar valor a la variable](img/introduccion_programacion/edublocks_input.png){width="70%"}
+![Para asignar valor a la variable](img/introduccion_programacion/edublocks/edublocks_input.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -143,7 +143,7 @@ Son números **sin decimales**, positivos o negativos.
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_int.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_int.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -166,7 +166,7 @@ Son números con decimales (coma flotante). También pueden ser positivos y nega
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_float.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_float.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -189,7 +189,7 @@ Son textos entre comillas, que pueden contener letras, números o símbolos. Es 
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_str.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_str.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -218,7 +218,7 @@ Solo tienen dos valores posibles: **True** (verdadero) o **False** (falso). Sirv
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_bool.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_bool.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 

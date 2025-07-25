@@ -5,7 +5,7 @@ Aunque ya hemos visto previamente un ejemplo de cómo mostrar datos, vamos a exp
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_print_1.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_1.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -28,7 +28,7 @@ También podemos pasarle como parámetro el valor de una variable:
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks_print_2.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_2.png){width="70%"}
 ::::
 :::: {.column width="38%"}
 
@@ -85,7 +85,7 @@ Si intentamos usar una variable que no existe, tendremos un error al ejecutar nu
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks_print_3.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_3.png){width="70%"}
 ::::
 :::: {.column width="38%"}
 
@@ -107,7 +107,7 @@ Como alternativa, también podemos **formatear la salida** de una manera [más s
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks_print_4.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_4.png){width="70%"}
 ::::
 :::: {.column width="38%"}
 
@@ -134,7 +134,7 @@ print(f"Hola {nombre_usuario}")
 
 Un par de ejemplos de cómo se pueden usar estos parámetros:
 
-![](img/introduccion_programacion/edublocks_print_5.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_5.png){width="70%"}
 
 
 ::: mycode
@@ -157,7 +157,7 @@ La salida debería ser como la imagen de la derecha. Se han añadido los "print(
 ::::
 :::: {.column width="48%"}
 
-![](img/introduccion_programacion/edublocks_print_5_output.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_5_output.png){width="70%"}
 
 ::::
 :::::::::::::::
@@ -178,7 +178,7 @@ Los pasos a dar son:
 
 Deberíamos tener en Edublocks lo siguiente:
 
-![Código de bloques](img/introduccion_programacion/edublocks_program_2.png){width="70%"}
+![Código de bloques](img/introduccion_programacion/edublocks/edublocks_program_2.png){width="70%"}
 
 
 ::: mycode
@@ -194,7 +194,7 @@ print(f"Hola {nombre_usuario}")
 
 Y el resultado, tras usar el programa, es:
 
-![](img/introduccion_programacion/edublocks_program_2_output.png){width="50%" framed=true}
+![](img/introduccion_programacion/edublocks/edublocks_program_2_output.png){width="50%" framed=true}
 
 
 Es importante entender que **el input obtenido siempre va a ser de tipo "*string*"** con lo introducido por el usuario. Da igual que el texto sólo sean números. A continuación veremos cómo convertir datos entre distintos [tipos]{#ejercicio-input}.

@@ -51,7 +51,7 @@ Para verlo en código con Edublocks, y su correspondencia en Python, tenemos el 
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_flujo_if.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_flujo_if.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -171,7 +171,7 @@ Las estructuras de control se pueden anidar. Esto quiere decir que dentro del bl
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_flujo_if_anidado.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_flujo_if_anidado.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -232,7 +232,7 @@ Vamos a usar el siguiente código como [ejemplo]{#ejemplo-if-else}:
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_flujo_if_else.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_flujo_if_else.png){width="70%"}
 ::::
 :::: {.column width="48%"}
 
@@ -280,7 +280,7 @@ Añade en el [else]{.verbatim}, sin ver la [solución](#ejercicio-else-anidado):
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_flujo_if_elif.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_flujo_if_elif.png){width="70%"}
 ::::
 :::: {.column width="50%"}
 
@@ -352,7 +352,7 @@ Vamos a hacer un ejemplo que imprima los primeros 10 números. En Edublocks los 
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_bucle_while.png){width="90%"}
+![](img/introduccion_programacion/edublocks/edublocks_bucle_while.png){width="90%"}
 ::::
 :::: {.column width="50%"}
 
@@ -382,7 +382,7 @@ El bucle [for]{.verbatim} se utiliza para recorrer elementos de una secuencia: u
 
 A continuación un ejemplo usando una lista:
 
-![](img/introduccion_programacion/edublocks_bucle_for.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_bucle_for.png){width="70%"}
 
 
 ::: mycode
@@ -402,7 +402,7 @@ Otro ejemplo con la función [[range()]{.verbatim}](https://docs.python.org/3/li
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks_bucle_for_range.png){width="90%"}
+![](img/introduccion_programacion/edublocks/edublocks_bucle_for_range.png){width="90%"}
 ::::
 :::: {.column width="50%"}
 

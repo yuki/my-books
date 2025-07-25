@@ -29,7 +29,7 @@ Hay que tener en cuenta que:
 
 En Edublocks estas operaciones están en el apartado **Math**, y se puede seleccionar el operador a través de un desplegable:
 
-![](img/introduccion_programacion/edublocks_operators_arithmetic.png){width="60%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_arithmetic.png){width="60%"}
 
 
 # Operadores lógicos {#operadores-logicos}
@@ -51,7 +51,7 @@ Table: {tablename=yukitblr colspec=XXXX}
 
 Todos los ejemplos utilizados son con números, pero lo habitual es hacer uso de variables.
 
-![](img/introduccion_programacion/edublocks_operators_logic.png){width="60%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_logic.png){width="60%"}
 
 ## Operadores especiales: "is" y "is not"
 
@@ -90,6 +90,6 @@ Sirven para **combinar condiciones**. En el siguiente capítulo los entenderemos
 
 Table: {tablename=yukitblr colspec=XXXX}
 
-![](img/introduccion_programacion/edublocks_operators_logic2.png){width="60%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_logic2.png){width="60%"}
 
 
