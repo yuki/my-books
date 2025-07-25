@@ -1,7 +1,9 @@
 
 # Estructuras de control {#estructuras-control}
 
-Las **estructuras de control** son fundamentales en programación, por lo que todos los lenguajes de programación las tienen, aunque pueden variar en las palabras utilizadas. Estas estructuras nos permiten que el programa **tome decisiones** o **repita acciones** de forma automática, según ciertas condiciones. Gracias a ellas, podemos crear programas más inteligentes y útiles.
+Las **estructuras de control** son fundamentales en programación, por lo que todos los lenguajes de programación las tienen, aunque pueden variar en las palabras utilizadas.
+
+Estas estructuras nos permiten que el programa **tome decisiones** o **repita acciones** de forma automática, según ciertas condiciones. Gracias a ellas, podemos crear programas más inteligentes y útiles.
 
 En Python, las estructuras de control más importantes son:
 
@@ -221,7 +223,11 @@ Vamos a entender qué sucede:
 ::::
 :::::::::::::::
 
-Tal como se puede ver, al utilizar una infraestructura "[if-else]{.verbatim}" siempre va a haber una parte del código que se va a ejecutar.
+::: infobox
+En un condicional "[if-else]{.verbatim}", uno de los dos bloques se va a ejecutar.
+:::
+
+Tal como se puede ver, al utilizar una infraestructura "[if-else]{.verbatim}" siempre va a haber un bloque de código que se va a ejecutar.
 Vamos a usar el siguiente código como [ejemplo]{#ejemplo-if-else}: 
 
 ::::::::::::::: {.columns }
@@ -312,9 +318,120 @@ La alternativa a este código, sería el siguiente,
 
 ## Bucles {#bucles}
 
+Un **bucle** es una estructura que permite **repetir un bloque de instrucciones varias veces**, de forma automática **mientras se cumpla una condición**. Sirve para hacer tareas repetitivas sin tener que escribir el mismo código una y otra vez, ya que eso sería muy ineficiente.
+
+Por ejemplo, si queremos mostrar los números del 1 al 10, podemos usar un bucle en lugar de escribir 10 veces [print()]{.verbatim}. Python tiene dos tipos principales de bucles: [while]{.verbatim} y [for]{.verbatim}.
+
+Al escribir un bucle hay que tener en cuenta que la condición en algún no se cumpla, porque si no estaríamos en lo que se llama **bucle infinito**.
+
+### Bucle "while" {#bucle-while}
+
+Sirve para repetir un bloque de instrucciones mientras se cumpla una condición. Cuando la condición deja de cumplirse, el bucle se detiene y se continúa con el flujo normal del programa.
+
+::::::::::::::: {.columns }
+:::: {.column width="45%"}
+
+Teniendo en cuenta el diagrama de flujo:
+
+- El "código 1" se va a ejecutar siempre en nuestro programa.
+- Se llega a la sentencia "while condición" y se analiza:
+  - Si la condición se cumple, se ejecuta el "código A", y se vuelve a analizar la condición.
+  - Si no se cumple, se salta el bucle.
+- Se ejecuta "código 2".
 
 
-### while
+::::
+:::: {.column width="53%"}
 
-### for
+![](img/introduccion_programacion/bucle_while.svg){width="70%"}
+
+::::
+:::::::::::::::
+
+Vamos a hacer un ejemplo que imprima los primeros 10 números. En Edublocks los bucles están en el grupo **Loops**.
+
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![](img/introduccion_programacion/edublocks_bucle_while.png){width="90%"}
+::::
+:::: {.column width="50%"}
+
+::: mycode
+[Código fuente en Python]{.title}
+
+```python
+#Start code here
+contador = 1
+while contador <= 10:
+  print(contador)
+  contador = contador + 1
+```
+:::
+
+::::
+:::::::::::::::
+
+
+::: exercisebox
+Haz un programa que pida un número al usuario, e imprima todos los números en orden inverso hasta llegar a 0. Recuerda [la conversión de tipos de datos](tabla-conversion).
+:::
+
+### Bucle "for" {#bucle-for}
+
+El bucle [for]{.verbatim} se utiliza para recorrer elementos de una secuencia: una lista ([list]{.verbatim}), un conjunto [set]{.verbatim}, una cadena de texto, un rango de números con [range()]{.verbatim}.
+
+A continuación un ejemplo usando una lista:
+
+![](img/introduccion_programacion/edublocks_bucle_for.png){width="70%"}
+
+
+::: mycode
+[Código fuente en Python]{.title}
+
+```python
+#Start code here
+personajes = ["Mario", "Zelda", "Lara Croft"]
+for personaje in personajes:
+  print(f"Me gustan las sagas de {personaje}")
+```
+:::
+
+Otro ejemplo con la función [[range()]{.verbatim}](https://docs.python.org/3/library/functions.html#func-range). Esta función acepta distinta cantidad de parámetros:
+- **[range(10)]{.verbatim}**: genera una lista desde **0 hasta el número indicado menos uno** (no se incluye el número indicado).
+- **[range(start,stop,step)]{.verbatim}**: genera una lista empezando por [start]{.verbatim} hasta el [stop]{.verbatim} menos uno, aumentando en pasos de [step]{.verbatim} (si no se pone, por defecto es 1).
+
+::::::::::::::: {.columns }
+:::: {.column width="48%"}
+![](img/introduccion_programacion/edublocks_bucle_for_range.png){width="90%"}
+::::
+:::: {.column width="50%"}
+
+::: mycode
+[Código fuente en Python]{.title}
+
+```python
+#Start code here
+for i in range(10):
+  print(f"El {i}")
+print("Nuevo contador")
+for i in range(-10, 10):
+  print(f"El {i}")
+```
+:::
+
+::::
+:::::::::::::::
+
+
+::: exercisebox
+Crea un bucle [for]{.verbatim} desde 0 hasta 400 usando pasos de 5.
+:::
+
+
+### Instrucciones útiles en los bucles {#bucles-instrucciones-utiles}
+
+Existen unas instrucciones que podemos utilizar dentro de los bucles que pueden ser útiles:
+
+- **[break]{.verbatim}**: Sirve para salir del bucle antes de que termine.
+- **[continue]{.verbatim}**: Sirve para saltar a la siguiente iteración del bucle (sin ejecutar nada más en la iteración actual).
 
