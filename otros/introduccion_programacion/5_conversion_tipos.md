@@ -9,7 +9,7 @@ Pasar de un tipo de datos a otro se llama **conversión de tipos** o *type casti
 
 ## Funciones de conversión más comunes {#tabla-conversion}
 
-A continuación una tabla resumen de cómo se realiza la conversión de datos entre distintos tipos. Algunas de estas conversiones no se pueden usar en Edublocks.
+A continuación una tabla resumen de cómo se realiza la conversión de datos entre distintos tipos. Algunas de estas conversiones no aparecen en Edublocks.
 
 | Función     | Qué hace                                      | Ejemplo                    |
 |-------------|-----------------------------------------------|----------------------------|
@@ -38,7 +38,7 @@ print(type(nombre).__name__)
 ```
 :::
 
-::: exercisebox
+::: questionbox
 ¿Qué diferencia hay entre las dos últimas sentencias?
 :::
 

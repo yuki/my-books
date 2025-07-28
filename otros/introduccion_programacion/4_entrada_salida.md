@@ -27,10 +27,10 @@ En el código vemos que usamos **print**, que es una función interna del lengua
 También podemos pasarle como parámetro el valor de una variable:
 
 ::::::::::::::: {.columns }
-:::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks/edublocks_print_2.png){width="70%"}
+:::: {.column width="48%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_2.png){width="95%"}
 ::::
-:::: {.column width="38%"}
+:::: {.column width="48%"}
 
 ::: mycode
 [Código fuente en Python]{.title}
@@ -85,7 +85,7 @@ Si intentamos usar una variable que no existe, tendremos un error al ejecutar nu
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks/edublocks_print_3.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_3.png){width="100%"}
 ::::
 :::: {.column width="38%"}
 
@@ -107,7 +107,7 @@ Como alternativa, también podemos **formatear la salida** de una manera [más s
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}
-![](img/introduccion_programacion/edublocks/edublocks_print_4.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_4.png){width="100%"}
 ::::
 :::: {.column width="38%"}
 
@@ -129,12 +129,12 @@ print(f"Hola {nombre_usuario}")
 
 **Print** tiene dos parámetros especiales que tienen un valor por defecto que podemos modificar. Estos parámetros son:
 
-- **sep**: especifica el separador que se usa para concatenar el resto de parámetros. Por defecto es un espacio " ".
+- **sep**: especifica el separador que se usa para concatenar el resto de parámetros. Por defecto es un espacio.
 - **end**: especifica cómo se termina el string. Por defecto es un salto de línea, cuyo valor en programación suele ser "**\\n**".
 
 Un par de ejemplos de cómo se pueden usar estos parámetros:
 
-![](img/introduccion_programacion/edublocks/edublocks_print_5.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_5.png){width="80%"}
 
 
 ::: mycode
@@ -153,7 +153,7 @@ print(1)
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-La salida debería ser como la imagen de la derecha. Se han añadido los "print(1)" para ver cómo afecta el parámetro "*end*" al cambiarlo y su valor por defecto. Aparte, si no se ponen, Edublock tiene un fallo y no muestra el resultado.
+La salida debería ser como la imagen de la derecha. Se han añadido los [print(1)]{.verbatim} para ver cómo afecta el parámetro [end]{.verbatim} al cambiarlo y su valor por defecto. Aparte, si no se ponen, Edublock tiene un fallo y no muestra el resultado.
 ::::
 :::: {.column width="48%"}
 
@@ -201,9 +201,9 @@ Es importante entender que **el input obtenido siempre va a ser de tipo "*string
 
 
 ::: exercisebox
-Crea un programa que pregunte al usuario y coja los siguientes datos, para al final imprimir una frase con todos los datos obtenidos:
+Crea un programa (sin mirar la [solución](#programa-inputs)) que pregunte al usuario y coja los siguientes datos, para al final imprimir una frase con todos los datos obtenidos:
 
 - Su nombre
 - Su edad
-- Su dirección
+- La ciudad donde vive
 :::

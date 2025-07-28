@@ -3,7 +3,7 @@
 
 En programación, los **operadores** son símbolos que se usan para hacer cálculos o comparar valores. En algunos casos sólo se van a poder utilizar con algunos tipos de datos concretos, y otros con cualquier tipo, por lo que hay que asegurar que se usan de manera correcta.
 
-A continuación se van a explicar los distintos tipos de operadores existentes, y aunque se van a utilizar con sistemas numéricos, es importante entender que lo **habitual es hacerlo con variables**.
+A continuación se van a explicar los distintos tipos de operadores existentes, y aunque se van a utilizar con números, es importante entender que lo **habitual es hacerlo con variables**.
 
 
 # Operadores aritméticos {#operadores-aritméticos}
@@ -25,6 +25,8 @@ Table: {tablename=yukitblr colspec=XXXX}
 Hay que tener en cuenta que:
 
 - La división **[/]{.verbatim}** siempre da un número con decimales (**float**), aunque sea exacta.
+- La división entera **[//]{.verbatim}** dará el resultado sin contar los decimales, y genera un **int**.
+- El módulo **[%]{.verbatim}** dará el resto de la división, en tipo **int**.
 - Si se combinan dos tipos de datos, el resultado usará el tipo de datos necesario para poder mostrar el resultado.
 
 En Edublocks estas operaciones están en el apartado **Math**, y se puede seleccionar el operador a través de un desplegable:
@@ -32,9 +34,14 @@ En Edublocks estas operaciones están en el apartado **Math**, y se puede selecc
 ![](img/introduccion_programacion/edublocks/edublocks_operators_arithmetic.png){width="60%"}
 
 
+::: exercisebox
+Escribe un programa que calcule el área de un rectángulo (base x altura) usando dos variables (sin mirar la [solución](#ejercicio-area)). Los datos se los tienes que pedir al usuario. Recuerda [la conversión de tipos de datos](tabla-conversion).
+:::
+
+
 # Operadores lógicos {#operadores-logicos}
 
-Se usan para **comparar valores** y obtener un resultado **verdadero** (**[True]{.verbatim}**) o **falso** (**[False]{.verbatim}**).
+Se usan para **comparar valores** y obtener un resultado lógico: **verdadero** (**[True]{.verbatim}**) o **falso** (**[False]{.verbatim}**).
 
 | Operador | Significado  | Ejemplo  | Resultado  |
 |----------|--------------|----------|------------|
@@ -49,9 +56,20 @@ Se usan para **comparar valores** y obtener un resultado **verdadero** (**[True]
 
 Table: {tablename=yukitblr colspec=XXXX}
 
-Todos los ejemplos utilizados son con números, pero lo habitual es hacer uso de variables.
+Todos los ejemplos utilizados son con números, pero lo habitual es hacer uso de variables. En Edublocks está en el grupo **Logic**.
 
 ![](img/introduccion_programacion/edublocks/edublocks_operators_logic.png){width="60%"}
+
+
+::: exercisebox
+¿Qué valor devuelven las siguientes expresiones? (piénsalas primero y luego compruébalo en Python, antes de mirar la [solución](#ejercicios-logicos)):
+
+ - [3 == "3"]{.verbatim}
+ - [4 <= 4.0]{.verbatim}
+ - ["hola" != "Hola"]{.verbatim}
+
+:::
+
 
 ## Operadores especiales: "is" y "is not"
 
@@ -88,8 +106,19 @@ Sirven para **combinar condiciones**. En el siguiente capítulo los entenderemos
 | [or]{.verbatim}  | O (al menos una verdadera) | [3 > 5 or 10 > 2]{.verbatim} | [True]{.verbatim}  |
 | [not]{.verbatim} | No (niega el valor)  | [not True]{.verbatim}              | [False]{.verbatim} |
 
-Table: {tablename=yukitblr colspec=XXXX}
+Table: {tablename=yukitblr colspec=X[1]X[2]X[2]X[1]}
 
-![](img/introduccion_programacion/edublocks/edublocks_operators_logic2.png){width="60%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_logic2.png){width="80%"}
 
+
+::: exercisebox
+¿Qué valor devuelven las siguientes expresiones? (piénsalas primero y luego compruébalo en Python, antes de mirar la [solución](#ejercicios-logicos-combinados)):
+
+- [True == True and False == True]{.verbatim}
+- [5 > 3 and 4 < 2]{.verbatim}
+- [5 > 3 or 4 < 2]{.verbatim}
+- [not (7 <= 7)]{.verbatim}
+- [not (0)]{.verbatim}
+
+:::
 

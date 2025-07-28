@@ -95,7 +95,7 @@ Los pasos para programar con un lenguaje interpretado son:
 
 Dependiendo del lenguaje y su intérprete, el paso 2 y 3 pueden variar. En algunos casos el intérprete lee todo el código fuente y si hay algún error (en la escritura), no lo ejecuta y muestra el error antes de ejecutar ninguna instrucción.
 
-Si llevas el código fuente a otro ordenador y no está instalado el intérprete 
+Si llevas el código fuente a otro ordenador y no está instalado el intérprete, el programa no se podrá ejecutar.
 
 | Ventajas | Desventajas|   
 |----------|------------|
@@ -113,18 +113,19 @@ Un lenguaje **compilado** necesita un **compilador**, que convierte todo el cód
 - C++
 - Rust
 
-Al programar con lenguajes compilados, los pasos son:
+Al programar con lenguajes compilados, los pasos, simplificados, son:
 
 1. Escribes el código (por ejemplo, en C++).
 2. Lo **compilas**, lo que hace que genere un archivo ejecutable (por ejemplo, [programa.exe]{.verbatim}).
-3. Ese archivo ya puede ejecutarse sin necesidad del código fuente.
+3. Ese archivo ya puede ejecutarse sin necesidad del código fuente ni del compilador.
 
-Los programas compilados se pueden llevar a otro ordenador y se puede ejecutar directamente, sin necesidad de tener en ese ordenador nada instalado.
+Los programas compilados se pueden llevar a otro ordenador y se puede ejecutar directamente (siempre que sea la misma arquitectura y sistema operativo). A veces es necesario instalar también dependencias (por ejemplo, DirectX en juegos).
 
 | Ventajas | Desventajas|   
 |----------|------------|
-| Muy **rápido al ejecutarse**. | Si haces un cambio, tienes que compilar otra vez. |
-| Ideal para programas grandes o que necesitan rendimiento. | Los errores aparecen todos de golpe al compilar. |
+| Muy **rápido al ejecutarse**. | Al cambiar algo, hay que compilar otra vez. |
+| Ideal para programas grandes o que necesitan rendimiento. | Compilar un programa grande puede requerir tiempo. |
+| Los errores aparecen al compilar. |  |
 
 Table: {tablename=yukitblr colspec=X[l]X[l]}
 
@@ -141,7 +142,7 @@ Los lenguajes **híbridos** combinan lo mejor de los dos mundos: primero **compi
 Al programar en un lenguaje híbrido, los pasos son:
 
 - Escribes el código (por ejemplo, en Java).
-- Lo compilas a un formato intermedio (por ejemplo, *bytecode*). En el caso de Java, se compila con el llamado **JDK** (Java Development Kit).
+- Lo compilas a un formato intermedio (*bytecode* en Java). En el caso de Java, se compila con el llamado **JDK** (Java Development Kit).
 - Ese bytecode se ejecuta en una **máquina virtual**, como la JVM (Java Virtual Machine).
 
 En este caso, el intérprete debe estar instalado en el ordenador donde queramos ejecutar el programa
@@ -166,14 +167,10 @@ Programar es como resolver un puzzle. Necesitas analizar el problema, pensar có
 Antes de programar tenemos que entender qué problema queremos solucionar y pensar cómo lo vamos a solucionar.
 :::
 
-Por ejemplo, si queremos hacer un programa que tenga en cuenta si una persona puede entrar en una discoteca y sólo pueden entrar los mayores de 18 años. La lógica del programa sería:
+::: exercisebox 
+Escribe las instrucciones de un programa para ser un portero de discoteca. Debe tener en cuenta que sólo pueden entrar los mayores de 18 años. [Solución](#programa-discoteca).
+:::
 
-1. Preguntar la edad de la persona.
-2. Comprobar si la edad es mayor o igual que 18 ([edad>=18]{.verbatim}).
-3. Si es mayor o igual → dejar entrar.
-4. Si es menor → no dejar entrar.
-
-Después de pensar el plan, es momento de escribir el código fuente del programa. Cada punto anterior, al escribir el código fuente, pueden ser una o más instrucciones
 
 
 # Errores al programar {#errores-al-programar}
@@ -181,6 +178,6 @@ Después de pensar el plan, es momento de escribir el código fuente del program
 Cuando se programa, es normal que las cosas no funcionen a la primera. Hay tres tipos de errores muy comunes:
 
 - **Errores de sintaxis**: El código tiene una "falta de ortografía". Por ejemplo, olvidarse de un paréntesis o escribir mal una palabra clave.
-- **Errores de lógica**: El código se ejecuta, pero **no hace lo que tú querías**. Por ejemplo, poner el signo [>]{.verbatim} en lugar de [<]{.verbatim}.
-- **Errores de ejecución**: El programa se bloquea mientras está funcionando. Se ha escrito una instrucción que hace que el programa "se rompa": dividir entre cero o leer una variable que no existe.
+- **Errores de lógica**: El código se ejecuta, pero **no hace lo que tú querías**. Por ejemplo, poner el signo [>]{.verbatim} en lugar de [<]{.verbatim}. Estos errores sólo se pueden apreciar al ejecutar el programa.
+- **Errores de ejecución**: El programa se bloquea mientras está funcionando. Se ha escrito una instrucción que hace que el programa "se rompa": dividir entre cero, leer una variable con valores "extraños"...
 

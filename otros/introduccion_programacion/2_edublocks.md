@@ -6,10 +6,9 @@
 
 ## ¿Por qué usar bloques para empezar? {#empezar-bloques}
 
-La programación por bloques es una manera **más visual** de programar, ideal para aprender, y también es más fácil de entender.
-- **Evita errores de escritura**, como olvidar un paréntesis o escribir mal una palabra.
+La programación por bloques es una manera **más visual** de programar, ideal para aprender, y también es más fácil de entender. Nos va a ayudar a **evitar errores de escritura**, como olvidar un paréntesis o escribir mal una palabra clave del lenguaje.
 
-Nos ayuda a **conocer la estructura del código** de manera sencilla. Además, con EduBlocks, como también nos muestra el código Python, es ideal para ir aprendiendo poco a poco.
+También nos va a ayudar a **conocer la estructura del código** de manera sencilla. Además, con EduBlocks, como también nos muestra el código Python, es ideal para ir aprendiendo poco a poco.
 
 
 ## Crear proyectos en Edublocks {#crear-proyecto-edublocks}
@@ -24,7 +23,7 @@ Ahí podemos elegir:
 
 - **Project name**: El nombre del proyecto. Debemos elegir un nombre significativo para luego poder volver a él.
 - **Mode**: Aquí podemos elegir el lenguaje de programación. Tiene que aparecer **Python**.
-- **Type**: Podemos elegir si queremos programar por bloques o directamente en texto. Elegirmemos **Blocks**.
+- **Type**: Podemos elegir si queremos programar por bloques o directamente en texto. Elegiremos **Blocks**.
 
 Al darle al botón **Create**, nos aparecerá el entorno donde podremos empezar a programar:
 
@@ -39,7 +38,7 @@ Se pueden diferenciar tres apartados:
 
 ## Grupos de bloques {#grupos-de-bloques}
 
-Vamos a explicar los distintos grupos de bloques, aunque no hace falta entender qué significan de momento:
+Vamos a explicar los distintos grupos de bloques, aunque de momento no hace falta entender qué significan:
 
 
 ::::::::::::::: {.columns }
@@ -98,7 +97,7 @@ En este apartado hay bloques para realizar operaciones matemáticas. Para poder 
 ![](img/introduccion_programacion/edublocks/edublocks_logic.png){width="100%"}
 ::::
 :::: {.column width="74%"}
-En este grupo **hay bloques muy importantes para la lógica de un programa**. Más adelante hablaremos y los entenderemos.
+En este grupo **hay bloques muy importantes para la lógica de los programas**. Más adelante veremos cómo usarlos.
 ::::
 :::::::::::::::
 
@@ -108,7 +107,7 @@ En este grupo **hay bloques muy importantes para la lógica de un programa**. M�
 ![](img/introduccion_programacion/edublocks/edublocks_lists.png){width="100%"}
 ::::
 :::: {.column width="74%"}
-Operaciones con listas, que es un tipo de variable.
+Operaciones con listas, que es un tipo de datos.
 ::::
 :::::::::::::::
 
@@ -118,7 +117,7 @@ Operaciones con listas, que es un tipo de variable.
 ![](img/introduccion_programacion/edublocks/edublocks_loops.png){width="100%"}
 ::::
 :::: {.column width="74%"}
-En este grupo **hay bloques muy importantes para realizar tareas repetitivas**. Más adelante hablaremos y los entenderemos.
+En este grupo **hay bloques muy importantes para realizar tareas repetitivas**. Más adelante los veremos y los usaremos.
 ::::
 :::::::::::::::
 

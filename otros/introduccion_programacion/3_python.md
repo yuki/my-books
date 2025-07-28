@@ -50,7 +50,7 @@ En estas plataformas es posible que exista cierta limitación, ya que es posible
 
 Al igual que sucede con el lenguaje hablado, los lenguajes de programación evolucionan con el tiempo. Los lenguajes de programación suelen tener distintas versiones a lo largo del tiempo, añadiendo mejoras y en algunos casos quitando cosas obsoletas.
 
-Python 2.0 salió en el año 2000 y la última versión de esa rama (2.7.18) en 2020. Python 3, salió en 2008, fue diseñado para rectificar ciertos errores fundamentales en el diseño del lenguaje, lo que hacía que en ciertos aspectos el lenguaje perdiese retro-compatibilidad (los programas escritos para 2.0 no se podían ejecutar con el intérprete de 3.x sin hacer cambios).
+Python 2.0 salió en el año 2000 y la última versión de esa rama (2.7.18) en 2020. Python 3 salió en 2008 y fue diseñado para rectificar ciertos errores fundamentales en el diseño del lenguaje. Esto hizo que en ciertos aspectos el lenguaje perdiese retro-compatibilidad (los programas escritos para 2.0 no se pueden ejecutar con el intérprete de 3.x sin hacer cambios).
 
 Durante muchos años python 2.7.X y 3.X han coexistido para dar tiempo a hacer la migración de proyectos grandes, hasta que en 2020 se decidió dejar de dar soporte a las versiones 2.X. Hoy en día todo código que veamos debería ser de la versión 3 en adelante.
 
@@ -59,7 +59,7 @@ Python actualmente está en la versión **3.13** (más concretamente 3.13.5).
 
 # Variables {#variables}
 
-Una **variable** es un nombre que usamos para **guardar un dato** en la memoria del ordenador. Podemos imaginarla como una **caja con una etiqueta**, donde guardamos un valor que luego podemos usar, cambiar o mostrar.
+Una **variable** es un nombre que usamos para **guardar un dato** en la memoria RAM del ordenador. Podemos imaginarla como una **caja con una etiqueta**, donde guardamos un valor que luego podemos usar, cambiar o mostrar.
 
 Para crear una variable en EduBlocks tenemos que:
 
@@ -99,7 +99,7 @@ nombre_usuario = 1
 
 En la primera sentencia asignamos un valor a la variable, y posteriormente sustituimos el valor por otro. Estos datos son de distinto tipo. En otros lenguajes de programación no se puede realizar la asignación de distintos tipos de datos en la misma variable.
 
-Debido a que los lenguajes de programación tienen un léxico propio, esas palabras no las podremos utilizar como variables, ya que dará error. En la [documentación oficial](https://docs.python.org/3/reference/lexical_analysis.html#keywords) están las palabras reservadas, como: False, rawait, else, ...
+Debido a que los lenguajes de programación tienen un léxico propio, esas palabras no las podremos utilizar como variables, ya que dará error. En la [documentación oficial](https://docs.python.org/3/reference/lexical_analysis.html#keywords) están las palabras reservadas, como: False, await, else, ...
 
 ::: errorbox
 Hay ciertas [palabras reservadas](https://docs.python.org/3/reference/lexical_analysis.html#keywords) que no podemos usar como nombres de variables.
@@ -108,7 +108,7 @@ Hay ciertas [palabras reservadas](https://docs.python.org/3/reference/lexical_an
 
 ## Tipos de datos {#tipos-datos}
 
-En Python, cada dato que usamos tiene un **tipo**, que indica qué tipo de información representa y qué se puede hacer con él. Conocer los tipos de datos es importante para saber cómo usarlos correctamente en un programa.
+En Python, cada dato que usamos tiene un **tipo**, que indica el tipo de información que representa y qué se puede hacer con él. Conocer los tipos de datos es importante para saber cómo usarlos correctamente en un programa.
 
 A continuación una breve descripción de los **tipos más comunes**:
 
@@ -133,7 +133,7 @@ Es importante entender los distintos tipos de datos en programación y para qué
 A continuación vamos a ver ejemplos usando Edublocks y el código en Python real para los tipos de datos más sencillos. Más adelante veremos el resto de los tipos de datos.
 
 ::: exercisebox
-Crea un programa con variables para los primeros cuatro tipos de datos.
+Crea un programa con variables para los primeros cinco tipos de datos e imprime sus valores.
 :::
 
 ### Números enteros (int) {#integers}
@@ -185,7 +185,7 @@ valor = -2.3
 
 ### Cadenas de texto (str) {#str}
 
-Son textos entre comillas, que pueden contener letras, números o símbolos. Es importante diferenciar que el contenido de un texto, aunque sea un número, el tipo es distinto
+Son textos entre comillas, que pueden contener letras, números o símbolos. Es importante diferenciar que el contenido de un texto, aunque sea un número, el tipo es distinto.
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
