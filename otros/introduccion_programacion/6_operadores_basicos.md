@@ -22,16 +22,23 @@ Sirven para hacer **operaciones matemáticas**, por lo que se utilizan con tipos
 
 Table: {tablename=yukitblr colspec=XXXX}
 
+
 Hay que tener en cuenta que:
 
+
+::::::::::::::: {.columns }
+:::: {.column width="68%"}
 - La división **[/]{.verbatim}** siempre da un número con decimales (**float**), aunque sea exacta.
 - La división entera **[//]{.verbatim}** dará el resultado sin contar los decimales, y genera un **int**.
 - El módulo **[%]{.verbatim}** dará el resto de la división, en tipo **int**.
 - Si se combinan dos tipos de datos, el resultado usará el tipo de datos necesario para poder mostrar el resultado.
+::::
+:::: {.column width="30%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_arithmetic.png){width="100%"}
+::::
+:::::::::::::::
 
-En Edublocks estas operaciones están en el apartado **Math**, y se puede seleccionar el operador a través de un desplegable:
-
-![](img/introduccion_programacion/edublocks/edublocks_operators_arithmetic.png){width="60%"}
+En Edublocks estas operaciones están en el apartado **Math**, y se puede seleccionar el operador a través de un desplegable.
 
 
 ::: exercisebox
@@ -58,7 +65,7 @@ Table: {tablename=yukitblr colspec=XXXX}
 
 Todos los ejemplos utilizados son con números, pero lo habitual es hacer uso de variables. En Edublocks está en el grupo **Logic**.
 
-![](img/introduccion_programacion/edublocks/edublocks_operators_logic.png){width="60%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_logic.png){width="30%"}
 
 
 ::: exercisebox
@@ -108,7 +115,7 @@ Sirven para **combinar condiciones**. En el siguiente capítulo los entenderemos
 
 Table: {tablename=yukitblr colspec=X[1]X[2]X[2]X[1]}
 
-![](img/introduccion_programacion/edublocks/edublocks_operators_logic2.png){width="80%"}
+![](img/introduccion_programacion/edublocks/edublocks_operators_logic2.png){width="60%"}
 
 
 ::: exercisebox

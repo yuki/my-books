@@ -5,7 +5,7 @@ Aunque ya hemos visto previamente un ejemplo de cómo mostrar datos, vamos a exp
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![](img/introduccion_programacion/edublocks/edublocks_print_1.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_print_1.png){width="40%"}
 ::::
 :::: {.column width="48%"}
 
@@ -81,7 +81,9 @@ Si intentamos usar una variable que no existe, tendremos un error al ejecutar nu
 
 ## Concatenar datos con print() {#concatenar-datos}
 
-**Print** es una función que permite que pasemos más de un parámetro, para poder sacar por pantalla más datos con la misma instrucción. En el grupo de bloques "**Text**" tenemos un bloque para poder añadir más textos al *print*.
+**Print** es una función que permite que pasemos más de un parámetro, para poder sacar por pantalla más datos con la misma instrucción.
+
+En el grupo de bloques "**Text**" tenemos un bloque para poder añadir más textos al *print*, entre los que también podemos añadir variables.
 
 ::::::::::::::: {.columns }
 :::: {.column width="58%"}

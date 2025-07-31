@@ -68,7 +68,7 @@ Para crear una variable en EduBlocks tenemos que:
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![Para asignar valor a la variable](img/introduccion_programacion/edublocks/edublocks_variable_assign.png){width="70%"}
+![Para asignar valor a la variable](img/introduccion_programacion/edublocks/edublocks_variable_assign.png){width="80%"}
 ::::
 :::: {.column width="48%"}
 ![Para usar el valor de la variable](img/introduccion_programacion/edublocks/edublocks_variable.png){width="70%"}
@@ -79,7 +79,7 @@ En Python las variables se definen de forma dinámica. Esto quiere decir que no 
 
 ::::::::::::::: {.columns }
 :::: {.column width="48%"}
-![Para asignar valor a la variable](img/introduccion_programacion/edublocks/edublocks_input.png){width="70%"}
+![](img/introduccion_programacion/edublocks/edublocks_input.png){width="90%"}
 ::::
 :::: {.column width="48%"}
 
