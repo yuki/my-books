@@ -84,7 +84,7 @@ Con esto obtenemos:
 
 -   **Identificador del dispositivo:** `1.100`
 
-Si observamos, la máscara de red, al ser 32 bits, también se puede escribir en formato decimal, aplicando al igual que antes, la creación de 4 grupos de 8 bits. En el ejemplo anterior **la máscara sería: `255.255.0.0`** .
+La máscara de red, al ser 32 bits, también se puede escribir en formato decimal, aplicando al igual que antes, la creación de 4 grupos de 8 bits. En el ejemplo anterior **la máscara sería: `255.255.0.0`** .
 
 Existe un tercer método para escribir la máscara de red: "**/n**", donde "**n**" es un número indicando el número de **unos** (y por tanto, los bits que identifican el prefijo de la red) que tiene la máscara de red. En nuestro caso, la máscara también se puede escribir como **/16**, ya que es el número de unos que tiene nuestra máscara.
 
