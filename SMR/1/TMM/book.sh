@@ -1,5 +1,9 @@
 echo [Zenbaketa sistemak eta unitateak]{.part}
 cat ../../../temas_comunes/sistemas_de_numeracion/sistemas_de_numeracion_eus.md
+cat ../../../temas_comunes/unidades_informacion/unidades_informacion_eus.md
+echo [Hardware]{.part}
+cat ../../../DAM/1/sistemas_informaticos/1_introduccion_eus.md
+cat ../../../DAM/1/sistemas_informaticos/2_hardware_eus.md
 
 # cogido del IVAC: https://ivac-eei.eus//upload/cf/documentos/66/ifc_t_sis_mic_red_ud_0221_c.pdf
 # UD 1: Estructura funcional del ordenador digital. 7 h.
@@ -15,10 +19,6 @@ cat ../../../temas_comunes/sistemas_de_numeracion/sistemas_de_numeracion_eus.md
 # UD 11: Dispositivos de Entrada/Salida. Mantenimiento de periféricos. 23 h.
 # UD 12: Dispositivos multimedia. 10 h
 
-# cat ../../../temas_comunes/unidades_informacion/unidades_informacion.md
-# echo [Hardware y Software]{.part}
-# cat 1_introduccion.md
-# cat 2_hardware.md
 # cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid.md
 # cat 3_software.md
 # echo [GNU/Linux]{.part}
