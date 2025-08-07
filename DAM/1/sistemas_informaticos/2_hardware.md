@@ -437,7 +437,7 @@ C.  Es un sector de una pista.
 
 D.  Es un grupo de sectores.
 
-Si tenemos en cuenta las características que debemos tener en cuenta en un HDD, podemos destacar:
+Si tenemos en cuenta las características de un HDD, podemos destacar:
 
 -   **Tiempo medio de acceso**: tiempo medio que tarda el cabezal en situarse en la pista y el sector deseado.
 
@@ -568,7 +568,7 @@ Podemos diferenciar:
 
 -   **Gráficos integrados**: Hoy en día los procesadores pueden contar con una unidad de procesamiento gráfico interna, que para el desempeño del uso del ordenador y tareas livianas (ver vídeos, juegos antiguos o con pocas necesidades) puede ser suficiente.
 
-    Para confirmar si nuestro procesador tiene o no, deberíamos mirar las especificaciones técnicas del mismo (por ejemplo: [Intel i7-12700KF](https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/specifications.html) no cuenta con procesador gráfico mientras que el [i7-12700](https://www.intel.com/content/www/us/en/products/sku/134591/intel-core-i712700-processor-25m-cache-up-to-4-90-ghz/specifications.html) sí).
+    Para confirmar si nuestro procesador tiene o no, deberíamos mirar las especificaciones técnicas del mismo (por ejemplo: [Intel i7-14700KF](https://www.intel.com/content/www/us/en/products/sku/236789/intel-core-i7-processor-14700kf-33m-cache-up-to-5-60-ghz/specifications.html) no cuenta con procesador gráfico mientras que el [i7-14700](https://www.intel.la/content/www/xl/es/products/sku/236781/intel-core-i7-processor-14700-33m-cache-up-to-5-40-ghz/specifications.html) sí).
 
 -   **Gráficos dedicados**: Este es el caso de las denominadas tarjetas gráficas, que van conectadas a una ranura PCI-express. **Nos vamos a centrar en este tipo de tarjetas**.
 
