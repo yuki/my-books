@@ -1,9 +1,13 @@
 echo [Zenbaketa sistemak eta unitateak]{.part}
+cat ../../../temas_comunes/sistemas_de_comunicacion/sistemas_de_comunicacion_eus.md
 cat ../../../temas_comunes/sistemas_de_numeracion/sistemas_de_numeracion_eus.md
 cat ../../../temas_comunes/unidades_informacion/unidades_informacion_eus.md
 echo [Hardware]{.part}
 cat ../../../DAM/1/sistemas_informaticos/1_introduccion_eus.md
 cat ../../../DAM/1/sistemas_informaticos/2_hardware_eus.md
+echo [Ariketak]{.part}
+cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
+cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
 
 # cogido del IVAC: https://ivac-eei.eus//upload/cf/documentos/66/ifc_t_sis_mic_red_ud_0221_c.pdf
 # UD 1: Estructura funcional del ordenador digital. 7 h.
@@ -39,9 +43,6 @@ cat ../../../DAM/1/sistemas_informaticos/2_hardware_eus.md
 # cat ../../../anexos/virtualbox_networking/virtualbox_networking.md
 # cat ../../../anexos/gestion_backups/gestion_backups.md
 # cat ../../../anexos/gestion_backups/rsync.md
-echo [Ariketak]{.part}
-cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
-cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
 ## TODO:
 # meter virtualizacion
 # explicar en Virtualbox cosas para hacer snapshots y algo más
