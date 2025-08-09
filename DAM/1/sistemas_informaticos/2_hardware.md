@@ -146,7 +146,7 @@ A continuación un diagrama simplificado de una placa base. Fuente: [Wikipedia](
 A continuación se van a diferenciar los componentes vistos anteriormente en una placa base real, utilizada para crear un equipo de escritorio moderno:
 
 ::: center
-![Placa Base MSI PRO Z690-A. [Manual](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf) ](img/si/placa_base.jpg){width="100%"}
+![Placa Base MSI PRO Z690-A. [Manual](https://download-2.msi.com/archive/mnu_exe/mb/PROZ690-AWIFI_PROZ690-A100x150.pdf) ](img/si/placa_base.jpg){width="100%"}
 :::
 
 1.  Zócalo (socket) del procesador.
@@ -175,7 +175,7 @@ C.  USB 3.0
 
 Los conectores exteriores de esta placa tienen el siguiente aspecto:
 
-![Placa Base MSI PRO Z690-A. [Manual](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf)](img/si/placa_base_frontal.png){width="100%"}
+![Placa Base MSI PRO Z690-A. [Manual](https://download-2.msi.com/archive/mnu_exe/mb/PROZ690-AWIFI_PROZ690-A100x150.pdf)](img/si/placa_base_frontal.png){width="100%"}
 
 
 

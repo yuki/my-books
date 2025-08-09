@@ -147,7 +147,7 @@ Ondoren, plaka nagusi baten diagrama sinplifikatu bat. Iturria: [Wikipedia](http
 Jarraian, aurretik ikusitako osagaiak bereiziko dira benetako plaka nagusi batean, mahaigaineko ordenagailu moderno bat sortzeko erabilia:
 
 ::: center
-![Placa Base MSI PRO Z690-A. [Eskuliburua](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf) ](img/si/placa_base.jpg){width="100%"}
+![Placa Base MSI PRO Z690-A. [Eskuliburua](https://download-2.msi.com/archive/mnu_exe/mb/PROZ690-AWIFI_PROZ690-A100x150.pdf) ](img/si/placa_base.jpg){width="100%"}
 :::
 
 1.  Prozesadorearen socket-a.
@@ -176,7 +176,7 @@ C.  USB 3.0
 
 Plaka honen kanpoko konektoreek honako itxura dute:
 
-![Placa Base MSI PRO Z690-A. [Eskuliburua](https://download.msi.com/archive/mnu_exe/mb/M7D25v2.0.pdf)](img/si/placa_base_frontal.png){width="100%"}
+![Placa Base MSI PRO Z690-A. [Eskuliburua](https://download-2.msi.com/archive/mnu_exe/mb/PROZ690-AWIFI_PROZ690-A100x150.pdf)](img/si/placa_base_frontal.png){width="100%"}
 
 
 
