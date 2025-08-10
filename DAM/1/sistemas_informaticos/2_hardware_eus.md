@@ -371,7 +371,7 @@ Ondoren, formatu fisikoak nola aldatu diren ikus daiteke.
 
 [Wikipedia](https://en.wikipedia.org/wiki/DDR_SDRAM#Generations)n DDR-tik DDR5-era arteko eboluzioa ikus daiteke, datu tekniko guztiekin: erabilitako tentsioa, pin kopurua, banda-zabalera MB/s-etan...
 
-### Datuen biltegiratze-gailuak {#dispositivos_almacenamiento}
+### Datuen biltegiratze-gailuak {#biltegiratze_gailuak}
 
 Datuen biltegiratze-gailuek datuak aldi baterako edo betiko irakurri edo grabatzeko aukera ematen digute. Formatu, tamaina, teknologia, sarbide mota, ... arabera bereiz daitezke.
 

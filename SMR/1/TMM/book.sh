@@ -5,6 +5,7 @@ cat ../../../temas_comunes/unidades_informacion/unidades_informacion_eus.md
 echo [Hardware]{.part}
 cat ../../../DAM/1/sistemas_informaticos/1_introduccion_eus.md
 cat ../../../DAM/1/sistemas_informaticos/2_hardware_eus.md
+cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid_eus.md
 echo [Ariketak]{.part}
 cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
 cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
@@ -23,7 +24,6 @@ cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
 # UD 11: Dispositivos de Entrada/Salida. Mantenimiento de periféricos. 23 h.
 # UD 12: Dispositivos multimedia. 10 h
 
-# cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid.md
 # cat 3_software.md
 # echo [GNU/Linux]{.part}
 # cat ../../../temas_comunes/gnu_linux/gnu_linux.md
