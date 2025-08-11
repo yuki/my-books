@@ -15,6 +15,7 @@ on:
           - Como_hacer_documentacion
           - Desarrollo_Interfaces
           - Docker
+          - EKS
           - Gestion_backups
           - Git
           - Glosario
@@ -73,6 +74,7 @@ jobs:
           DAM/1/sistemas_informaticos/si.pdf
           DAM/2/interfazeen_garapena/interfazeen_garapena.pdf
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
+          DAM/2/enpresa_kudeaketako_sistemak/eks.pdf
           DAM/2/sistemas_gestion_empresarial/sge.pdf
           anexos/gestion_backups/gestion_backups.pdf
           anexos/glosario/glosario.pdf
