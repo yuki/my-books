@@ -19,6 +19,7 @@ on:
           - Git
           - Glosario
           - Instalar_Ubuntu_LTS
+          - Interfazeen_Garapena
           - Introduccion_Programacion
           - Laravel
           - Monitorizacion_Munin
@@ -70,6 +71,7 @@ jobs:
           ASIR/2/administracion_sistemas_operativos/aso.pdf
           ASIR/2/SGBD/sgbd.pdf
           DAM/1/sistemas_informaticos/si.pdf
+          DAM/2/interfazeen_garapena/interfazeen_garapena.pdf
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           DAM/2/sistemas_gestion_empresarial/sge.pdf
           anexos/gestion_backups/gestion_backups.pdf

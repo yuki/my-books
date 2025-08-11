@@ -15,6 +15,7 @@ LIBROS=(
     "ASIR/2/administracion_sistemas_operativos/ aso"
     "ASIR/2/SGBD/ sgbd"
     "DAM/1/sistemas_informaticos/ sistemas_informaticos"
+    "DAM/2/interfazeen_garapena/ interfazeen_garapena"
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces"
     "DAM/2/sistemas_gestion_empresarial/ sge"
     "anexos/gestion_backups/ gestion_backups"
