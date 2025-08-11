@@ -405,17 +405,12 @@ A la hora de crear nuestro interfaz debemos pensar en la composición/disposici�
 Vamos a suponer el siguiente interfaz básico, donde a la izquierda aparece cómo quedaría el interfaz final, mientras que la disposición de los distintos elementos aparecen resaltados en la imagen de la derecha.
 
 :::::::::::::: {.columns }
-::: {.column width="10%"}
-:::
-::: {.column width="34%"}
+
+::: {.column width="44%"}
 ![](img/di/compose/compose_dispose.png){width="100%"}
 :::
-::: {.column width="10%"}
-:::
-::: {.column width="34%" }
+::: {.column width="44%" }
 ![](img/di/compose/compose_dispose_layout.png){width="100%"}
-:::
-::: {.column width="10%"}
 :::
 ::::::::::::::
 
@@ -776,24 +771,9 @@ Es importante conocer qué sucede al rotar el dispositivo, y qué sucede con la 
 
 Existen distintas funciones dentro del **[ciclo de vida de la actividad](https://developer.android.com/guide/components/activities/activity-lifecycle?hl=es-419)**, que serán llamadas por el sistema cada vez que se entre en cada uno de estos estados:
 
-:::::::::::::: {.columns }
-::: {.column width="25%"}
--   onCreate()
 
--   onStart()
+![Esquema del "*Activity-lifecycle*". Fuente: [Documentación oficial](https://developer.android.com/guide/components/activities/activity-lifecycle)](img/di/tema_2/activity_lifecycle.png){width="70%"}
 
--   onResume()
-
--   onPause()
-
--   onStop()
-
--   onDestroy()
-:::
-::: {.column width="70%" }
-![Esquema del "*Activity-lifecycle*". Fuente: [Documentación oficial](https://developer.android.com/guide/components/activities/activity-lifecycle)](img/di/tema_2/activity_lifecycle.png){width="100%"}
-:::
-::::::::::::::
 
 En el esquema (y en la web oficial de la [documentación](https://developer.android.com/guide/components/activities/activity-lifecycle#alc)) se puede apreciar los estados y sus transiciones.
 
