@@ -30,6 +30,7 @@ on:
           - SGE
           - Sistemas_Informaticos
           - Sistemas_Monitorizacion
+          - TMM
           - Ubuntu_RAID1
           - Virtualbox_networking
           - WSL
@@ -76,6 +77,7 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           DAM/2/enpresa_kudeaketako_sistemak/eks.pdf
           DAM/2/sistemas_gestion_empresarial/sge.pdf
+          SMR/1/TMM/tmm.pdf
           anexos/gestion_backups/gestion_backups.pdf
           anexos/glosario/glosario.pdf
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf

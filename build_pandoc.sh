@@ -19,6 +19,7 @@ LIBROS=(
     "DAM/2/desarrollo_interfaces/ desarrollo_interfaces"
     "DAM/2/enpresa_kudeaketako_sistemak/ eks"
     "DAM/2/sistemas_gestion_empresarial/ sge"
+    "SMR/1/TMM/ tmm"
     "anexos/gestion_backups/ gestion_backups"
     "anexos/glosario/ glosario"
     "anexos/instalar_ubuntu_lts/ instalar_ubuntu_lts"
