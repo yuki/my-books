@@ -25,6 +25,7 @@ on:
           - Laravel
           - Monitorizacion_Munin
           - PFsense
+          - Programazioan_sartu
           - Redes
           - SGBD
           - SGE
@@ -67,6 +68,7 @@ jobs:
           otros/git/git.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
           otros/introduccion_programacion/introduccion_programacion.pdf
+          otros/introduccion_programacion/euskera/programazioan_sartu.pdf
           otros/laravel/laravel.pdf
           otros/PFsense/pfsense.pdf
           ASIR/1/planificacion_administracion_redes/redes.pdf

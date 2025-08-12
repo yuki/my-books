@@ -9,6 +9,7 @@ LIBROS=(
     "otros/git/ git"
     "otros/hacer_documentacion/ como_hacer_documentacion"
     "otros/introduccion_programacion/ introduccion_programacion"
+    "otros/introduccion_programacion/euskera/ programazioan_sartu"
     "otros/laravel/ laravel"
     "otros/PFsense/ pfsense"
     "ASIR/1/planificacion_administracion_redes/ redes"
