@@ -1,9 +1,9 @@
 
 # Zer da programatzea? {#programar}
 
-Programatzea **ordenagailu bati jarraibideak ematea** da, hark zeregin bat bete dezan. Horretarako, eman nahi ditugun jarraibideak jasotzen dituen **kode iturria** idazten da. Horrek azken emaitza gisa aplikazio informatiko bat sortzen du (programa, webgunea, bideojokoa, ...).
+Programatzea **ordenagailu bati jarraibideak ematea** da, zeregin bat bete dezan. Horretarako, eman nahi ditugun jarraibideak jasotzen dituen **kode iturria** idazten da. Horrek azken emaitza gisa aplikazio informatiko bat sortzen du (programa, webgunea, bideojokoa, ...).
 
-Programatzea askotan sukaldaritza-errezeta bat sortzearen antzekotzat hartzen da, non egin beharreko urrats guztiak (programa) zehaztu behar diren, gero beste sukaldari batek (ordenagailuak) interpretatzeko. Jarraibideren bat behar bezala adierazten ez bada, azken errezeta (egindako programa) ez da funtzionatuko.
+Programatzea askotan sukaldaritza-errezeta bat sortzearen antzekotzat hartzen da, non egin beharreko urrats guztiak (programa) zehaztu behar diren, gero beste sukaldari batek (ordenagailuak) interpretatzeko. Jarraibideren bat behar bezala adierazten ez bada, errezetak (egindako programa) ez du funtzionatuko.
 
 [[Exact Instructions Challenge](https://www.youtube.com/watch?v=FN2RM-CHkuI&ab_channel=JoshDarnit)]{.movie} adibide bat da konparazio horretatik.
 
@@ -21,13 +21,13 @@ Egin nahi dugun aplikazioaren arabera, programazio-lengoaia bat edo bestea erabi
 
 # Programazio-lengoaiak {#lenguajes-programación}
 
-Ordenagailuek ez dute gure hizkuntza zuzenean ulertzen. Haiekin hitz egiteko, **programazio-lengoaiak** erabiltzen ditugu, hau da, ordenagailuak ulertu eta exekutatu ditzakeen jarraibideak idazteko modu bereziak.
+Ordenagailuek ez dute gure hizkuntza zuzenean ulertzen. Haiekin "hitz egiteko", **programazio-lengoaiak** erabiltzen ditugu, hau da, ordenagailuak ulertu eta exekutatu ditzakeen jarraibideak idazteko modu bereziak.
 
 Hainbat hizkuntza daude, eta bakoitzak bere ezaugarriak ditu. Batzuk ikasteko errazagoak dira, beste batzuk azkarragoak edo indartsuagoak zeregin jakin batzuetarako. Programazio-lengoai ezagunen adibide batzuk:
 
 
 - **Python**: oso erraza, hasteko aproposa. Zientzian, robotikan, adimen artifizialean... erabiltzen da.
-- **C edo C++**: oso azkarra, bideojokoetan, sistema eragileetan, robotetan erabiltzen da.
+- **C / C++**: oso azkarra, bideojokoetan, sistema eragileetan, robotetan erabiltzen da.
 - **Java**: enpresetan, mugikor-aplikazioetan (Android), sistema handietan oso erabilia.
 - **JavaScript**: webgune interaktiboak egiteko erabiltzen da. Web-nabigatzailean exekutatzen da (Chrome edo Firefox bezalakoetan).
 - **PHP**: webguneak sortzeko erabiltzen da.
@@ -39,13 +39,13 @@ Hainbat hizkuntza daude, eta bakoitzak bere ezaugarriak ditu. Batzuk ikasteko er
 Eguneroko bizitzan erabiltzen ditugun hizkuntzek bezala, programazio-lengoaiak ere arauak dituzte. Hizkuntz naturalen arauak hain zuzen ere:
 
 - **Alfabetoa**: Hizkuntzak erabiltzen dituen hitzak osatzeko sinboloen multzoa. Normalean letrak, digituak eta sinboloak dira (+, -, :, (), [], ...).
-- **Lexikoa**: Hizkuntzak programatzeko gordeta dituen hitzak. Lexikoko hitz bat gaizki idazten bada, programa ezingo da konpilatu/ exekutatu.
+- **Lexikoa**: Hizkuntzak programatzeko gordeta dituen hitzak. Lexikoko hitz bat gaizki idazten bada, programa ezingo da konpilatu/exekutatu.
   - if, else, for, while, ...
 - **Sintaxia**: Hizkuntzak dituen arauak, hitz-kate batek esaldi balioduna osatzen duela ziurtatzeko. Hizkuntza naturalean honako desberdintasuna izango litzateke:
-  - "Ni auto bat gidatzen dut"
-  - "Autoa gidatzen dut ni"
+  - "Nik auto bat gidatzen dut"
+  - "Autoa gidatzen ni"
 - **Semantika**: Esaldiak zentzua duela zehazten du (ondo idatzita egon daiteke, baina zentzurik ez izan). Honako esaldi hauek dira adibideak hizkuntza naturalean:
-  - "Ni auto bat gidatzen dut"
+  - "Nik auto bat gidatzen dut"
   - "Auto batek ni gidatzen nau"
 
 
@@ -89,7 +89,7 @@ Table: {tablename=yukitblr colspec=X[l]X[l]}
 
 - Python
 - JavaScript
-- Bash
+- PHP
 
 
 Hizkuntza interpretatu batekin programatzeko urratsak hauek dira:
@@ -106,7 +106,7 @@ Iturburu-kodea beste ordenagailu batera eramaten baduzu eta interpretatzailea in
 
 | Abantailak | Desabantailak |
 |------------|---------------|
-| Probatzeko oso errazak dira. | Normalean **motelagoak** dira konpilatutakoak baino. |
+| Probatzeko errazak izaten dira. | Normalean **motelagoak** dira konpilatutakoak baino. |
 | Ikasteko eta proba azkarrak egiteko aproposak. |  |
 
 Table: {tablename=yukitblr colspec=X[l]X[l]}
@@ -130,7 +130,7 @@ Hizkuntza konpilatuekin programatzean, urrats sinplifikatuak hauek dira:
 3. Fitxategi hori exekutatu daiteke, iturburu-koderik edo konpilatzailerik gabe.
 
 
-Konpilatutako programak beste ordenagailu batera eraman daitezke eta zuzenean exekutatu (betiere arkitektura eta sistema eragilea berdinak badira). Batzuetan, mendekotasunak ere instalatu behar izaten dira (adibidez, jokoetan DirectX).
+Konpilatutako programak beste ordenagailu batera eraman daitezke eta zuzenean exekutatu (betiere arkitektura eta sistema eragilea berdinak badira). Batzuetan, mendekotasunak (*dependencias*) ere instalatu behar izaten dira (adibidez, jokoetan DirectX).
 
 | Abantailak | Desabantailak |
 |------------|---------------|
@@ -164,7 +164,7 @@ Kasu honetan, programa exekutatu nahi den ordenagailuan interpretea instalatuta 
 
 | Abantailak | Desabantailak |   
 |------------|---------------|
-| Abiadura ona. | Makina birtuala instalatuta egon behar du. |
+| Abiadura ona. | Makina birtuala instalatuta egon behar da. |
 | Portabilitatea: programa bera sistema desberdinetan funtzionatzen du. | Batzuetan, konfigurazioa pixka bat konplexuagoa izan daiteke. |
 
 Table: {tablename=yukitblr colspec=X[l]X[l]}
@@ -184,7 +184,7 @@ Programatzen hasi aurretik, konpondu nahi dugun arazoa ulertu behar dugu eta nol
 
 
 :::exercisebox
-Idatzi diskotekako atezain izateko programa baten jarraibideak. Kontuan hartu behar duzu 18 urtetik gorakoak soilik sar daitezkeela. [Irtenbidea](#programa-discoteca).
+Idatzi diskotekako atezain izateko programa baten jarraibideak. Kontuan hartu behar duzu 18 urtetik gorakoak soilik sar daitezkeela. [Erantzuna](#programa-discoteca).
 :::
 
 

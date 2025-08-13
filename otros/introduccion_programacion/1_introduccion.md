@@ -85,7 +85,7 @@ Un lenguaje **interpretado** necesita un **intérprete**, que es un programa que
 
 - Python
 - JavaScript
-- Bash
+- PHP
 
 Los pasos para programar con un lenguaje interpretado son:
 

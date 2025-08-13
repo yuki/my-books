@@ -9,9 +9,9 @@ Bloke bidezko programazioa **ikusgarriagoa** da, ikasteko aproposa, eta errazago
 
 Gainera, **kodearen egitura** modu errazean ezagutzen lagunduko digu. EduBlocks-ek Python kodea ere erakusten digunez, poliki-poliki ikasteko aproposa da.
 
-## Proiektuak sortzea EduBlocks-en {#crear-proyecto-edublocks}
+## Proiektuak sortzen EduBlocks-en {#crear-proyecto-edublocks}
 
-EduBlocks nabigatzailean erabiltzeko, bere webgunera jo behar dugu: [https://app.edublocks.org](https://app.edublocks.org), eta bertan erregistratu, saioa hasi, edo zuzenean programatzen hasi gaitezke. Erregistratzen bagara, sortutako proiektuak gordeko dizkigu.
+EduBlocks nabigatzailean erabiltzeko bere webgunera jo behar dugu: [https://app.edublocks.org](https://app.edublocks.org), eta bertan erregistratu, saioa hasi, edo zuzenean programatzen hasi gaitezke. Erregistratzen bagara, sortutako proiektuak gordeko dizkigu.
 
 **"Python"** hautatzen badugu, proiektu bat sortzeko hurrengo leihoa agertuko zaigu:
 
@@ -19,7 +19,7 @@ EduBlocks nabigatzailean erabiltzeko, bere webgunera jo behar dugu: [https://app
 
 Hemen aukeratu dezakegu:
 
-- **Project name**: Proiektuaren izena. Izena esanguratsua izan behar du, gero berriz aurkitzeko.
+- **Project name**: Proiektuaren izena. Izena esanguratsua jarri behar dugu, gero berriz aurkitzeko.
 - **Mode**: Programazio-hizkuntza aukeratzeko. **Python** agertu behar da.
 - **Type**: Bloke bidez programatu edo zuzenean testuan idatzi nahi dugun aukeratzeko. **Blocks** hautatuko dugu.
 
