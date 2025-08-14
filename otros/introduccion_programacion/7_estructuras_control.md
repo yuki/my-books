@@ -410,6 +410,12 @@ while contador <= 10:
 ::::
 :::::::::::::::
 
+Del código anterior podemos destacar:
+
+- [contador = 1]{.verbatim}: inicializamos una variable con el valor **1**.
+- [while]{.verbatim}: es la palabra clave para indicar que vamos a entrar en el bucle.
+  - [contador <= 10:]{.verbatim}: es la condición para que entre en el bloque del bucle.
+  - [contador = contador + 1]{.verbatim}: esta sentencia es la más importante, ya que hacemos que la variable se incremente en cada iteración. De no añadirla, **estaríamos en un bucle infinito porque contador siempre valdría 1**.
 
 ::: exercisebox
 Haz un programa (sin mirar la [solución](#ejercicio-bucle-inverso)) que pida un número al usuario, e imprima todos los números en orden inverso hasta llegar a 0.
@@ -437,6 +443,17 @@ personajes = ["Mario", "Zelda", "Lara Croft"]
 for personaje in personajes:
   print(f"Me gustan las sagas de {personaje}")
 ```
+:::
+
+A continuación la explicación más importante del código anterior:
+
+- [personajes]{.verbatim}: es una variable de tipo lista que contiene distintos elementos.
+- [for]{.verbatim}: es la palabra clave para indicar que vamos a entrar en un bucle
+  - [personaje]{.verbatim}: sirve para crear una nueva variable a la que se le va a asignar cada elemento de la lista a medida que el bucle recorre la lista.
+  - [in personajes:]{.verbatim}: indica que se va a recorrer el contenido de la lista [personajes]{.verbatim}.
+
+::: warnbox
+Es importante elegir un buen nombre de la variable con la que iteramos, tiene que tener sentido.
 :::
 
 Otro ejemplo con la función [[range()]{.verbatim}](https://docs.python.org/3/library/functions.html#func-range). Esta función acepta distinta cantidad de parámetros:
