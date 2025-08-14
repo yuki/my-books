@@ -179,7 +179,7 @@ Egin beharreko urratsak:
 
 Edublocks-en honako hau izan beharko genuke:
 
-![Código de bloques](img/introduccion_programacion/edublocks/edublocks_program_2.png){width="70%"}
+![Blokeen kodea](img/introduccion_programacion/edublocks/edublocks_program_2.png){width="70%"}
 
 
 ::: mycode
