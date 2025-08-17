@@ -83,11 +83,12 @@ Para poder hacer uso de Docker con un usuario sin permisos de root/administrador
 ### Linux
 
 En este caso, el grupo que debe tener el usuario es "**docker**", que se lo podemos añadir al usuario de distintas maneras:
+
  - Editar el fichero [/etc/group]{.configfile}, y añadir el usuario al grupo
  - Ejecutar estos comandos que ponemos a continuación:
 
 :::mycode
-[Algunas de las opciones del comando docker]{.title}
+[Añadir el grupo docker al usuario correspondiente]{.title}
 
 ```console
 ruben@vega:~$ sudo addgroup ruben docker
@@ -95,7 +96,6 @@ ruben@vega:~$ sudo addgroup ruben docker
 Adding user `ruben' to group `docker' ...
 Adding user ruben to group docker
 Done.
-
 ruben@vega:~$ newgrp docker
 ```
 :::
@@ -280,7 +280,7 @@ El creador de la imagen Docker puede crear las variables de entorno que necesite
 A continuación se van a crear 2 contenedores de PHPMyAdmin, diferenciados por el puerto, el nombre, y la variable de entorno **PMA_ARBITRARY**:
 
 -   El primer contenedor va a estar en el puerto 8081, se le va a dar el nombre "myadmin-1" y no va a tener la variable de entorno incializada.
--   El segundo contenedor va a estar en el puerto 8082, se va a llamar "myadmin-2" y va a tener la variable **PMA_ARBITRARY** inicializada a "1", tal como aparece en la [documentación de la imagen de PHPMyAdmin](https://hub.docker.com/_/phpmyadmin).
+-   El segundo contenedor usará el puerto 8082, llamado "myadmin-2" y la variable **PMA_ARBITRARY** inicializada a "1", tal como aparece en la [documentación de la imagen de PHPMyAdmin](https://hub.docker.com/_/phpmyadmin).
 
 Para ello, se han ejecutado los siguientes comandos:
 
@@ -300,14 +300,18 @@ Si ahora en nuestro navegador web apuntamos al puerto 8081 y al puerto 8082 de l
 
 En el formulario del puerto 8081 (donde no hemos inicializado la variable) sólo podemos indicar el usuario y la contraseña. Por el contrario, en el formulario del puerto 8082, al inicializar la variable **PMA_ARBITRARY**, y tal como nos dice la documentación de la imagen, nos permite indicar la IP del servidor MySQL al que nos queremos conectar.
 
-<!-- FIXME: TODO: arreglar esto y ver si merece la pena dejar el código de minipage o hacer una función propia-->
-
 :::::::::::::: {.columns }
-::: {.column width="43%"}
+::: {.column width="10%"}
+:::
+::: {.column width="35%"}
 ![\ ](img/docker/phpmyadmin1.png){width="100%" .column}
 :::
-::: {.column width="43%"}
+::: {.column width="10%"}
+:::
+::: {.column width="35%"}
 ![](img/docker/phpmyadmin2.png){width="100%" .column}
+:::
+::: {.column width="10%"}
 :::
 ::::::::::::::
 
@@ -320,7 +324,7 @@ Dado que una variable puede afectar al comportamiento (o la creación) del servi
 
 ::: infobox
 **Es recomendable leer la documentación de las imágenes Docker para identificar las posibles variables de entorno que existen y ver si nos son útiles.**
-::: 
+:::
 
 
 # Volumen persistente de datos {#volumen-persistente-de-datos}
@@ -343,7 +347,7 @@ En la siguiente imagen se puede ver una infraestructura con dos contenedores y d
 -   **Contenedor MySQL**: Dado que los datos de la base de datos deben ser guardados, en este caso se le asigna un volumen que permite escritura. Por lo tanto, lo que se crea dentro del contenedor en [/var/lib/mysql]{.configdir} realmente se estará guardando en el sistema operativo anfitrión en [/opt/mysql-data]{.configdir}.
 
 ::: center
-![Ejemplo de dos volúmenes asignados a distintos contenedores](img/docker/volumes.png){width="65%"}
+![Ejemplo de dos volúmenes asignados a distintos contenedores](img/docker/volumes.png){width="50%"}
 :::
 
 
@@ -352,7 +356,7 @@ En la siguiente imagen se puede ver una infraestructura con dos contenedores y d
 Al añadir un volumen cuando creamos un contenedor hace que por defecto sea en modo lectura-escritura. Cualquier escritura realizada dentro del contenedor en la ruta especificada va a resultar en que el fichero se creará en la ruta indicada del sistema operativo anfitrión.
 
 ::: {.mycode size=small}
-[Añadir volumen sólo lectura al crear un contenedor]{.title}
+[Añadir volumen de escritura al crear un contenedor]{.title}
 
 ``` console
 ruben@vega:~$ ls /opt/mysql-data
@@ -375,7 +379,7 @@ Para este ejemplo se ha creado un contenedor usando la imagen de [MySQL](https:/
 Tras crear el contenedor, y asegurarnos que está levantado haciendo uso del comando [docker ps]{.commandbox}, podemos realizar la conexión desde el sistema operativo anfitrión o desde cualquier otro lugar usando la contraseña indicada previamente.
 
 ::: {.mycode size=small}
-[Añadir volumen sólo lectura al crear un contenedor]{.title}
+[Comprobar estado de MySQL]{.title}
 
 ``` console
 ruben@vega:~$ mysql -h127.0.0.1 -uroot -P3306 -p
@@ -548,7 +552,7 @@ CONTAINER ID  NAME    CPU %   MEM USAGE / LIMIT     MEM %   NET I/O          BLO
 Un contenedor tiene un ciclo de vida que puede pasar por distintos estados. Para pasar entre estados se debe realizar a través de distintos comandos de Docker.
 
 ::: center
-![Estados de un contenedor](img/docker/lifecycle.png){width="100%"}
+![Estados de un contenedor](img/docker/lifecycle.png){width="80%"}
 :::
 
 En la imagen se representa los estados más básicos junto con los comandos para pasar entre ellos.
