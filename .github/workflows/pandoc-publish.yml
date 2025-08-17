@@ -15,6 +15,7 @@ on:
           - Como_hacer_documentacion
           - Desarrollo_Interfaces
           - Docker
+          - Docker_euskeraz
           - EKS
           - Gestion_backups
           - Git
@@ -65,6 +66,7 @@ jobs:
           otros/aws/aws.pdf
           otros/aws_docentes/aws_docentes.pdf
           otros/Docker/docker.pdf
+          otros/Docker/euskera/docker_euskeraz.pdf
           otros/git/git.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
           otros/introduccion_programacion/introduccion_programacion.pdf

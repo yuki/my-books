@@ -118,10 +118,10 @@ A la hora de desarrollar una aplicación es habitual hacer pruebas utilizando di
 
 Cuando se hace uso de una máquina virtual dependemos de las versiones que tiene nuestra distribución y es posible que no podamos instalar nuevas versiones u otras versiones en paralelo.
 
-Por ejemplo, la última versión de PHP actualmente es la 8.2.4 y de Apache la 2.4.56:
+Por ejemplo, la última versión de PHP actualmente es la 8.4.11 y de Apache la 2.4.65:
 
-- En **Debian 11** sólo se puede instalar PHP 7.4 y Apache 2.4.54.
-- En **Ubuntu 22.04** la versión de PHP es la 8.1 y la de Apache la 2.4.52.
+- En **Debian 12** sólo se puede instalar PHP 8.2.29 y Apache 2.4.62.
+- En **Ubuntu 24.04** la versión de PHP es la 8.3.6 y la de Apache la 2.4.58.
 
 Con Docker, podremos levantar contenedores con distintas versiones del servicio que nos interese en paralelo para comprobar si nuestra aplicación/servicio es compatible.
 

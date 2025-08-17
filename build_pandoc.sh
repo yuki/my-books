@@ -6,6 +6,7 @@ LIBROS=(
     "otros/aws/ aws"
     "otros/aws_docentes/ aws_docentes"
     "otros/Docker/ docker"
+    "otros/Docker/euskera/ docker_euskeraz"
     "otros/git/ git"
     "otros/hacer_documentacion/ como_hacer_documentacion"
     "otros/introduccion_programacion/ introduccion_programacion"
