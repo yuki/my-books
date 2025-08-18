@@ -30,6 +30,7 @@ LIBROS=(
     "anexos/sistemas_monitorizacion/ sistemas_monitorizacion"
     "anexos/virtualbox_networking/ virtualbox_networking"
     "temas_comunes/wsl/ wsl"
+    "temas_comunes/wsl/euskera/ wsl_euskeraz"
 )
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"

@@ -18,11 +18,11 @@ cat ../../../temas_comunes/alta_disponibilidad/alta_disponibilidad.md
 cat ../../../temas_comunes/arquitectura_sistemas/arquitectura_sistemas.md
 
 echo [Windows Subsystem for Linux]{.part}
-cat ../../../temas_comunes/wsl/1_introduccion.md
+cat ../../../temas_comunes/wsl/euskera/1_introduccion.md
 
 echo [Introducción a Docker]{.part}
-cat ../../../otros/Docker/contenedores.md
-cat ../../../otros/Docker/docker.md
+cat ../../../otros/Docker/euskera/contenedores.md
+cat ../../../otros/Docker/euskera/docker.md
 echo [Monitorización de servicios]{.part}
 cat ../../../anexos/sistemas_monitorizacion/sistemas_monitorizacion_anexo.md
 echo [Virtualbox]{.part}
