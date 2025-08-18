@@ -37,7 +37,7 @@ COPY src/ /var/www/html/
 ```
 :::
 
-## Crear imagen {#crear-imagen}
+<!-- ## Crear imagen {#crear-imagen}
 
-hay que añadir cosas...
+hay que añadir cosas... -->
 
