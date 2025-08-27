@@ -499,12 +499,12 @@ Hurrengo taulan ikus daitezke biltegiratze-unitate mota desberdinen oinarrizko e
 
 <!-- FIXME: estaría bien poner al lado de los NVMe un `\linebreak`{=latex} para el PDF -->
 
-|                     | HDD      | SSD      | SSD (M.2)| NVMe (PCIe 3.0) | NVMe (PCIe 4.0) |
-|:-------------------:|:--------:|:--------:|:--------:|:---------:|:----------:|
-| Konektorea          | SATA     | SATA     | M.2      | M.2       | M.2        |
-| Irakurketa abiadura | 150MB\/s | 560 MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s  |
-| Idazketa abiadura   | 120MB\/s | 510 MB\/s | 520 MB\/s | 3000 MB\/s | 5300 MB\/s  |
-| Prezioa TB-ko       | Bajo     | Medio    | Medio    | Alto      | Alto       |
+|                     | HDD      | SSD       | NVMe (PCIe 3.0) | NVMe (PCIe 4.0) | NVMe (PCIe 5.0) |
+|:-------------------:|:--------:|:---------:|:----------:|:-----------:|:-----------:|
+| Konektorea          | SATA     | SATA      | M.2        | M.2         | M.2         |
+| Irakurketa abiadura | 150MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s  | 14000 MB\/s |
+| Idazketa abiadura   | 120MB\/s | 510 MB\/s | 3000 MB\/s | 5300 MB\/s  | 10000 MB\/s |
+| Prezioa TB-ko       | Bajo     | Medio     | Alto       | Alto        | Alto        |
 
 Table: {tablename=yukitblrcol colspec=XXXXXX}
 

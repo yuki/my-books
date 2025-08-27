@@ -506,12 +506,12 @@ En la siguiente tabla se puede comparar algunas características básicas de los
 
 <!-- FIXME: estaría bien poner al lado de los NVMe un `\linebreak`{=latex} para el PDF -->
 
-|                     | HDD      | SSD      | SSD (M.2)| NVMe (PCIe 3.0) | NVMe (PCIe 4.0) |
-|:-------------------:|:--------:|:--------:|:--------:|:---------:|:----------:|
-| Conector            | SATA     | SATA     | M.2      | M.2       | M.2        |
-| Velocidad Lectura   | 150MB\/s | 560 MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s  |
-| Velocidad Escritura | 120MB\/s | 510 MB\/s | 520 MB\/s | 3000 MB\/s | 5300 MB\/s  |
-| Precio por TB       | Bajo     | Medio    | Medio    | Alto      | Alto       |
+|                     | HDD      | SSD       | NVMe (PCIe 3.0) | NVMe (PCIe 4.0) | NVMe (PCIe 5.0) |
+|:-------------------:|:--------:|:---------:|:----------:|:----------:|:-----------:|
+| Conector            | SATA     | SATA      | M.2        | M.2        | M.2         |
+| Velocidad Lectura   | 150MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s | 1400 MB\/s |
+| Velocidad Escritura | 120MB\/s | 510 MB\/s | 3000 MB\/s | 5300 MB\/s | 10000 MB\/s |
+| Precio por TB       | Bajo     | Medio     | Alto       | Alto       | Alto        |
 
 Table: {tablename=yukitblrcol colspec=XXXXXX}
 
