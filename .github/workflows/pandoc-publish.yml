@@ -13,6 +13,7 @@ on:
           - AWS
           - AWS_docentes
           - Como_hacer_documentacion
+          - Dokumetazioa_egiteko
           - Desarrollo_Interfaces
           - Docker
           - Docker_euskeraz
@@ -70,6 +71,7 @@ jobs:
           otros/Docker/euskera/docker_euskeraz.pdf
           otros/git/git.pdf
           otros/hacer_documentacion/como_hacer_documentacion.pdf
+          otros/hacer_documentacion/euskera/dokumetazioa_egiteko.pdf
           otros/introduccion_programacion/introduccion_programacion.pdf
           otros/introduccion_programacion/euskera/programazioan_sartu.pdf
           otros/laravel/laravel.pdf

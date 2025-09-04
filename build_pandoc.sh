@@ -9,6 +9,7 @@ LIBROS=(
     "otros/Docker/euskera/ docker_euskeraz"
     "otros/git/ git"
     "otros/hacer_documentacion/ como_hacer_documentacion"
+    "otros/hacer_documentacion/euskera dokumetazioa_egiteko"
     "otros/introduccion_programacion/ introduccion_programacion"
     "otros/introduccion_programacion/euskera/ programazioan_sartu"
     "otros/laravel/ laravel"
