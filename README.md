@@ -1,26 +1,10 @@
 # Libros de texto
-En este repositorio vas a encontrar distintos libros de texto para distintos cursos de FP creados con [Markdown](https://markdown.es/sintaxis-markdown/) que se procesan con [Pandoc](https://pandoc.org/) para generar el resultado en HTML y PDF.
+En este repositorio vas a encontrar distintos libros de texto para distintos módulos de Formación Profesional creados con [Markdown](https://markdown.es/sintaxis-markdown/) que se procesan con [Pandoc](https://pandoc.org/) para generar el resultado en HTML y PDF.
 
 Más adelante verás que la licencia utilizada para estos libros es una licencia libre de Creative Commons.
 
 
 ![Cultura libre](https://raw.githubusercontent.com/yuki/yukibook.cls/main/img/seal.svg)
-
-
-## Tabla de contenidos
-- [Libros de texto](#libros-de-texto)
-  - [Tabla de contenidos](#tabla-de-contenidos)
-  - [¿Por qué?](#por-qué)
-  - [¿Están terminados?](#están-terminados)
-  - [Libros realizados](#libros-realizados)
-    - [Otros libros](#otros-libros)
-    - [Anexos](#anexos)
-  - [¿Puedo utilizarlos?](#puedo-utilizarlos)
-    - [¿Puedo modificarlos?](#puedo-modificarlos)
-  - [¿Cómo están hechos?](#cómo-están-hechos)
-    - [Auto-generación](#auto-generación)
-
-
 
 ## ¿Por qué?
 Realizar apuntes propios tiene ventajas importantes:
@@ -35,54 +19,12 @@ Realizar apuntes propios tiene ventajas importantes:
 ## ¿Están terminados?
 Los libros son un trabajo contínuo y están en constantes actualizaciones. Son funcionales y se pueden utilizar, pero puede haber apartados en los que se necesite profundizar más, añadir ejercicios (porque los tengo en Moodle), ...
 
-En caso de ser modificados, el HTML y los PDF se autogeneran y podrás descargar las últimas versiones en los enlaces que aparecen a continuación.
+En caso de ser modificados el HTML y los PDF se autogeneran desde un Github Action.
 
+## ¿Dónde puedo obtenerlos?
+Los puedes ver en formato HTML desde [este enlace](https://yuki.github.io/my-books/). Algunos de ellos están traducidos al euskera.
 
-
-## Libros realizados
-Los libros que están ahora mismo creados son libros utilizados para Formación Profesional, y que puedes visualizar desde [este enlace](https://yuki.github.io/my-books/).
-
-Si quieres verlos de forma individual:
-
-* Grado Superior para Técnico superior en Desarrollo de Aplicaciones Multiplataforma
-  * Sistemas Informáticos ([HTML](https://yuki.github.io/my-books/sistemas_informaticos.html), [PDF](https://yuki.github.io/my-books/sistemas_informaticos.pdf))
-  * Desarrollo de Interfaces ([HTML](https://yuki.github.io/my-books/desarrollo_interfaces.html), [PDF](https://yuki.github.io/my-books/desarrollo_interfaces.pdf)) (en progreso)
-  * Sistemas de Gestión Empresarial ([HTML](https://yuki.github.io/my-books/sge.html), [PDF](https://yuki.github.io/my-books/sge.pdf)) (en progreso)
-
-
-* Grado Medio para Técnico en Sistemas microinformáticos y redes
-  * Sistemas Operativos en red
-* Grado Superior para Técnico superior en Administración de Sistemas informáticos en red
-  * Admnistración de Sistemas Operativos ([HTML](https://yuki.github.io/my-books/aso.html), [PDF](https://yuki.github.io/my-books/aso.pdf))
-  * Planificación y administración de redes
-  * Administración de sistemas gestores de bases de datos ([HTML](https://yuki.github.io/my-books/sgbd.html), [PDF](https://yuki.github.io/my-books/sgbd.pdf))
-
-
-
-### Otros libros
-Aparte de estos libros, se han creado los siguientes libros/apuntes sobre temas específicos:
-
-* AWS: Sistemas en nube pública ([AWS](https://yuki.github.io/my-books/aws.html), [PDF](https://yuki.github.io/my-books/aws.pdf))
-* Cómo hacer una buena documentación, o al menos intentarlo ([HTML](https://yuki.github.io/my-books/como_hacer_documentacion.html), [PDF](https://yuki.github.io/my-books/como_hacer_documentacion.pdf))
-* Configuración básica de PfSense como firewall de red ([HTML](https://yuki.github.io/my-books/pfsense.html), [PDF](https://yuki.github.io/my-books/pfsense.pdf))
-* Git: Sistemas de control de versiones ([HTML](https://yuki.github.io/my-books/git.html), [PDF](https://yuki.github.io/my-books/git.pdf))
-* Introducción a Docker ([HTML](https://yuki.github.io/my-books/docker.html), [PDF](https://yuki.github.io/my-books/docker.pdf))
-* Introducción a Laravel ([HTML](https://yuki.github.io/my-books/laravel.html), [PDF](https://yuki.github.io/my-books/laravel.pdf))
-
-
-
-### Anexos
-Y por último, hay ciertos Anexos creados, que están incluídos en varios de los libros. Algunos de estos anexos son apuntes mínimos y en otros se profundiza más.
-
-Como también puede ser interesante tenerlos por separado, se pueden ver desde aquí:
-* Gestión de copias de seguridad ([HTML](https://yuki.github.io/my-books/gestion_backups.html), [PDF](https://yuki.github.io/my-books/gestion_backups.pdf))
-* Instalar Ubuntu LTS ([HTML](https://yuki.github.io/my-books/instalar_ubuntu_lts.html), [PDF](https://yuki.github.io/my-books/instalar_ubuntu_lts.pdf))
-  * Crear sistema RAID 1 en Ubuntu ([PDF](https://github.com/yuki/my-books/releases/download/latest/ubuntu_raid1.pdf))
-* Sistemas de monitorización ([HTML](https://yuki.github.io/my-books/sistemas_monitorizacion.html), [PDF](https://yuki.github.io/my-books/sistemas_monitorizacion.pdf))
-  * Monitorización básica con Munin ([HTML](https://yuki.github.io/my-books/monitorizacion_munin.html), [PDF](https://yuki.github.io/my-books/monitorizacion_munin.pdf))
-* Virtualbox y networking ([HTML](https://yuki.github.io/my-books/virtualbox_networking.html), [PDF](https://yuki.github.io/my-books/virtualbox_networking.pdf))
-
-
+Desde esa web tienes acceso a cada libro en formato HTML, y en la cabecera de cada uno de ellos hay un icono (<img src="https://github.com/user-attachments/assets/4e8ce536-b631-46e4-9f1a-f4bbd6a289dd" width="20" />) para poder verlo/descargarlo en formato PDF (o cambiando en la URL "html" por "pdf").
 
 
 ## ¿Puedo utilizarlos?
@@ -99,7 +41,7 @@ Si sabes utilizar Github, puedes hacer uso de los **Pull requests** para indicar
 
 
 ## ¿Cómo están hechos?
-Originalmente los libros estaban creados con **LaTeX** (y algunos siguen así), pero no podía generar de manera correcta el HTML. Ahora están generados con **Markdown**, para ser procesados con [Pandoc](https://pandoc.org/) y unas plantillas que he creado especiales para ello que puedes encontrar [aquí](https://github.com/yuki/pandoc-templates/).
+Originalmente los libros estaban creados con **LaTeX**, pero no podía generar de manera correcta el HTML. Ahora están generados con **Markdown**, para ser procesados con [Pandoc](https://pandoc.org/) y unas plantillas que he creado especiales para ello que puedes encontrar en mi repositorio [pandoc-templates](https://github.com/yuki/pandoc-templates/).
 
 Esta plantilla tiene su propia documentación en el enlace, pero se ha creado por las siguientes razones:
 * Crear una portada propia, utilizando como referencia los libros técnicos de O'Reilly (me parecía gracioso 😆).
@@ -112,4 +54,4 @@ Muchas de las imágenes utilizadas en los documentos están realizadas mediante 
 ### Auto-generación
 Si no sabes nada de **Pandoc**, es posible que no sepas cómo utilizar el código fuente de los libros para generar los PDF y el HTML. 
 
-Para evitar eso, he creado un _[workflow](https://github.com/yuki/my-books/blob/main/.github/workflows/pandoc-publish.yml)_ que me permite a través de una "Github Action" generar el PDF y el HTML y así tener el resultado [final](https://yuki.github.io/pandoc-templates/) directamente online.
+Para evitar eso, he creado un _[workflow](https://github.com/yuki/my-books/blob/main/.github/workflows/pandoc-publish.yml)_ que me permite a través de una "Github Action" generar el PDF y el HTML y así tener el resultado [final](https://yuki.github.io/my-books/) directamente online.
