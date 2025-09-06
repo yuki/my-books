@@ -1,6 +1,6 @@
-echo [Cómo hacer documentación]{.part}
+echo [Dokumentazio ona nola egin]{.part}
 cat documentacion.md
-echo [Elementos en una documentación]{.part}
+echo [Dokumentu baten elementuak]{.part}
 cat elementos.md
-echo [Rúbrica]{.part}
+echo [Errubrika]{.part}
 cat rubrica.md

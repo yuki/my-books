@@ -103,49 +103,50 @@ Berriro ere, gomendagarria da egindakoa kritikatzea, egindakoaren itxura orokorr
 
 Irudiak gehitu behar diren dokumentuetan kontuan hartu behar da nola egingo den konposizioa, irudien tamaina eta non kokatuko diren.
 
-### Tamaño y posicionamiento {#tamaño-y-posicionamiento}
+### Tamaina eta kokapena {#tamaina-eta-kokapena}
 
-Dependiendo de la imagen que queramos utilizar, podríamos ajustarla al centro, ocupando gran parte de la zona central del documento, como ya hemos visto más arriba, o como es el ejemplo que se muestra a continuación.
+Erabiliko dugun irudiaren arabera, dokumentuaren erdialdean jar daiteke, zati handi bat okupatuz, goian ikusi dugun bezala, edo behean agertzen den adibidean bezala.
 
 ![](img/documentacion/debian.svg){width="70%"}
 
-En este caso es el nombre de la distribución [Debian](https://www.debian.org/), pero anteriormente hemos visto una captura de pantalla de un programa. Las imágenes deben tener el tamaño adecuado para ver el contenido de las mismas.
+Kasu honetan [Debian](https://www.debian.org/) banaketaren izena da, baina lehenago programaren pantaila-argazki bat ikusi dugu. Irudiek tamaina egokia izan behar dute, bertako edukia ondo ikusteko.
 
-### Explicación sobre las imágenes {#explicación-sobre-las-imágenes}
 
-A lo largo de este documento se han añadido ciertas imágenes que se han puesto de distintos tamaños tanto a la izquierda como a la derecha de párrafos.
+### Irudien azalpena {#irudien-azalpena}
 
-Estas imágenes han sido un mero ejemplo de cómo se pueden poner imágenes que acompañan al párrafo, **siempre dentro de los márgenes del documento y dejando espacio al texto**. Las imágenes no deben de estar pegadas al texto por ningún margen.
+Dokumentu honetan hainbat irudi gehitu dira, tamaina desberdinetan, paragrafoen ezkerrean zein eskuinean.
+
+Irudi hauek adibide hutsak izan dira, paragrafoari laguntzen dioten irudiak nola jar daitezkeen erakusteko, **beti dokumentuaren marjinaren barruan eta testuari tartea utziz**. Irudiak ez dira testuaren kontra egon behar marjinetan.
 
 ::: errorbox
-**Toda imagen que sea añadida al documento debe llevar consigo una explicación.**
+**Dokumentuan gehitzen den irudi guztiak azalpen bat izan behar dituzte.**
 :::
 
-En el caso de las imágenes que están situadas al lado de los párrafos, los párrafos harán referencia a las imágenes. En el caso de imágenes centradas, lo ideal es que antes antes de la misma se detalle a qué hace referencia.
+Paragrafoen alboan dauden irudien kasuan, paragrafoek irudiei erreferentzia egingo diete. Irudiak erdian daudenean, komenigarria da irudiaren aurretik zer adierazten duen zehaztea.
 
-Por ejemplo:
+Adibidez:
 
-> En LibreOffice podemos modificar todos los estilos yendo al menú del párrafo yendo al menú "Estilos --\> Gestionar estilos", y desde ahí seleccionar el que nos interese modificar. Por ejemplo, el "**Cuerpo de texto**":
+> LibreOffice-n estilo guztiak alda ditzakegu paragrafoaren menura joanda, eta gero "Estiloak --\> Estiloak kudeatu" menura sartuta, interesatzen zaigun estiloa hautatuz. Adibidez, "**Testu gorputza**":
 
 ![](img/documentacion/libreoffice.png){width="70%"}
 
-Tal como se puede ver, se ha realizado una pequeña introducción a lo que se quiere explicar para posteriormente añadir una imagen explicativa del resultado obtenido.
+Ikus daitekeen bezala, azaldu nahi denari sarrera labur bat egin zaio, eta ondoren lortutako emaitzaren azalpen-irudi bat gehitu da.
 
-### Recorte de imágenes {#recorte-de-imágenes}
 
-Cuando en una imagen queremos hacer referencia a algo en concreto, lo ideal es no poner la captura de pantalla del escritorio completo, sino sólo realizar la captura a la ventana de la que estamos hablando.
+### Irudien mozketa {#irudien-mozketa}
+
+Irudi batean zerbait zehatzari erreferentzia egin nahi diogunean, egokiena ez da pantaila osoaren argazkia jartzea, baizik eta aipatzen ari garen leihoaren argazkia soilik egitea.
 
 ![](img/documentacion/recortes.png){width="40%"}
 
 
-Para ello la aplicación "Herramienta de Recortes" de Windows permiten hacer un recorte perfecto de la ventana que seleccionemos, tal como se puede ver en la imagen anterior, seleccionando el modo. De esta manera obtendremos sólo la ventana que nos interesa, evitando hacer un mal recorte, y conseguiremos que **la atención se centre sobre lo que es realmente importante**.
+Horretarako, Windows-eko "Mozketa tresna" (*Herramienta de Recortes*) aplikazioak aukera ematen du hautatutako leihoaren mozketa perfektua egiteko, goiko irudian ikus daitekeen bezala, modua aukeratuz. Horrela, interesatzen zaigun leihoa bakarrik lortuko dugu, mozketa txarra saihestuz, eta **arreta benetan garrantzitsua den horretan zentratzea lortuko dugu**.
 
-Si queremos concretar algo dentro de una imagen, es recomendable bordear esa sección de un color (rojo, por ejemplo) para que sea más apreciable. En algunos casos también podría añadirse una pequeña flecha para mostrar la opción.
+Irudi baten barruan zerbait zehaztu nahi badugu, gomendagarria da atal hori kolore batez (gorriz, adibidez) inguratzea, nabarmenagoa izan dadin. Zenbait kasutan gezi txiki bat ere gehi daiteke aukera erakusteko.
 
-A la hora de tener capturas de pantalla de ciertas ventanas, o recortadas, puede ser conveniente añadir un pequeño borde, ya que en los escritorios actuales las ventanas hacen uso de fondo blanco y no se vería de manera correcta con el fondo blanco del documento.
+Leiho jakin batzuen pantaila-argazkiak edo moztuak ditugunean, komenigarria izan daiteke borde txiki bat gehitzea, gaur egungo mahaigaineko leihoek atzealde zuria erabiltzen dutelako eta dokumentuaren atzealde zuriaren aurka ez litzatekeelako ondo ikusiko.
 
-A continuación se visualiza la misma imagen con y sin borde:
-
+Ondoren, irudi bera ertza gabe eta ertzarekin ikus daiteke:
 
 :::::::::::::: {.columns }
 ::: {.column width="47%"}
@@ -158,39 +159,39 @@ A continuación se visualiza la misma imagen con y sin borde:
 
 `\vspace{10pt}`{=latex}
 
-Como se puede apreciar, la imagen que no tiene borde hace un efecto de "recorte brusco", mientras que con el borde se ve claramente que es una sección recortada.
+Ikus daitekeenez, borde gabeko irudiak "mozketa zakarra" efektua ematen du, eta ertza duenean argiago ikusten da moztutako atala dela.
 
 ::: infobox
-**Es recomendable poner un borde a las capturas de ventanas**
+**Leihoen pantaila-argazkiei ertza jartzea gomendagarria da**
 :::
 
-# Referencias {#referencias}
+# Erreferentziak {#erreferentziak}
 
-En todo documento pueden (y deben) existir referencias a otra documentación, o texto copiado y/o adquirido de varias fuentes, y en caso de ser así debe de ser referenciado.
+Dokumentu guztietan egon daitezke (eta egon behar dute) beste dokumentazio batzuetara, kopiatutako edo hainbat iturritatik jasotako testuetara erreferentziak, eta horrela bada, erreferentziatu egin behar da.
 
-> "Las referencias a otras obras son una parte muy importante en la literatura de muchas profesiones; cada una de ellas ha diseñado su propia manera de incluir esta información en el texto, y estas han dado lugar a formatos estandarizados de cita." (Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Wikipedia:Referencias))
+> "Beste lan batzuetara egindako erreferentziak oso garrantzitsuak dira lanbide askotako literaturan; bakoitzak informazio hori testuan sartzeko bere modua diseinatu du, eta horrek aipamenen formatu estandarizatuak sortzea ekarri du." (Iturria: [Wikipedia](https://es.wikipedia.org/wiki/Wikipedia:Referencias))
 
-Tal como se puede ver en el párrafo anterior, el texto está entrecomillado, con una sangría superior y al final del mismo aparece la fuente de la información original y un enlace a la web de referencia. Existen distintas maneras de referenciar textos o citas de otros documentos, pero no entraremos en detalle sobre ello.
+Goiko paragrafoan ikus daitekeen bezala, testua komatxo artean dago, goiko marjinarekin, eta amaieran informazioaren jatorria eta webgunerako esteka agertzen dira. Beste dokumentuetako testuak edo aipamenak erreferentziatzeko modu desberdinak daude, baina ez gara horretan sakonduko.
 
-Por tanto, si a la hora de crear un documento hacemos referencia a otros textos, deberíamos indicarlo, y más cuando hacemos copia-pega del mismo. Hay que ser objetivos y dar a conocer al lector que lo que acaba de leer no es de elaboración propia y que por tanto se ha utilizado el texto de otro autor. De ahí que **hay que referenciar al autor original o la página web de donde se ha sacado la información**.
+Beraz, dokumentu bat sortzerakoan beste testu batzuei erreferentzia egiten badiegu, adierazi beharko genuke, eta are gehiago kopiatu eta itsatsi egiten dugunean. Objektiboak izan behar dugu eta irakurleari jakinarazi behar diogu irakurri duen hori ez dela gure sorkuntza, eta beste egile baten testua erabili dela. Horregatik, **jatorrizko egilea edo informazioa atera den webgunea erreferentziatu behar da**.
 
-Otro ejemplo podría ser: tal como escribió [Isaac Newton](https://es.wikipedia.org/wiki/Isaac_Newton) a Hooke: "*Si he visto más lejos es porque estoy sentado sobre los hombros de gigantes.*", lo que viene a decir que hasta él mismo había basado sus estudios y había conseguido sus logros haciendo uso de las aportaciones de otros grandes científicos anteriores. Como se puede ver, la referencia está entre comillas también y en tipo de letra itálica.
+Beste adibide bat izan daiteke: [Isaac Newton](https://es.wikipedia.org/wiki/Isaac_Newton)ek Hookeri idatzi ziona: "*Urrunago ikusi badut, erraldoien sorbaldetan eserita egon naizelako da.*", horrek esan nahi du berak ere bere ikasketak eta lorpenak aurreko zientzialari handien ekarpenak erabiliz lortu zituela. Ikus daitekeenez, erreferentzia komatxo artean dago eta letra etzanez idatzita dago.
 
-# Releer el documento antes de entregar {#releer-el-documento-antes-de-entregar}
+# Dokumentua entregatu aurretik berrikusi {#dokumentua-entregatu-aurretik-berrikusi}
 
-Un documento técnico no es algo que se realice en un día, por lo que pasa por varias etapas durante su escritura, y es por eso que antes de realizar la entrega se debe de repasar lo escrito.
+Dokumentu tekniko bat ez da egun batean egiten den zerbait, idazketan zehar hainbat etapa izaten ditu, eta horregatik, entregatu aurretik idatzitakoa berrikusi behar da.
 
-Aunque pueda parecer obvio, este paso no se suele realizar porque quien realiza el documento suele pensar que cuando realizó la escritura ya lo hizo bien. Aún pudiendo ser cierto, una lectura posterior siempre va a sacar a relucir fallos e incongruencias de lo escrito.
+Oso agerikoa dirudien arren, urrats hau ez da normalean egiten, dokumentua idazten duenak pentsatzen duelako idazketa egiterakoan ondo egin zuela. Egia izan daitekeen arren, irakurketa beranduago beti aterako ditu idatzitakoaren akatsak eta kontraesanak.
 
-En algunos casos puede que durante la escritura inicial se nos olvidase corregir faltas de ortografía, o la estructura del documento no se realizase de la mejor manera correcta, o incluso que se explique lo mismo en dos párrafos contiguos.
+Zenbait kasutan, hasierako idazketan ortografia-akatsak zuzentzea ahaztu zaigu, dokumentuaren egitura ez da egokiena izan, edo bi paragrafo jarraian gauza bera azaldu dugu.
 
-Es por eso que **todos los componentes que han realizado el proyecto deben de leer y aportar correcciones al mismo antes de realizar la entrega final** al cliente.
+Horregatik, **proiektua egin duten kide guztiek dokumentua irakurri eta zuzenketak egin behar dituzte azken entregaren aurretik** bezeroari.
 
-# Actualización del documento {#actualización-del-documento}
+# Dokumentuaren eguneraketa {#dokumentuaren-eguneraketa}
 
-Un documento técnico suele ser un "ente vivo", que debe ser actualizado cuando los distintos servicios/componentes del proyecto sufran actualizaciones, modificaciones o simplemente se dejen de utilizar.
+Dokumentu tekniko bat "izaki bizidun" bat izaten da normalean, proiektuaren zerbitzu/komponente desberdinek eguneraketak, aldaketak edo erabilerarik ez izatea jasaten dutenean eguneratu behar dena.
 
-La documentación técnica debe reflejar fielmente el estado actual de la infraestructura/programa/web, ya que de nada sirve tener información anticuada que ya no refleja la realidad, y que puede ser incluso contraproducente.
+Dokumentazio teknikoak azpiegitura/programa/web-aren egungo egoera zehaztasunez islatu behar du, bestela ez du balio informazio zaharkitua izateak, eta are okerragoa izan daiteke.
 
-Esta documentación servirá a nuevos integrantes de la compañía a conocer cuál es el estado de la infraestructura/programa/web, o también a una empresa externa nueva que vaya a realizar modificaciones sobre la misma.
+Dokumentazio honek konpainiako kide berriei azpiegitura/programa/web-aren egoera ezagutzeko balioko die, edo kanpoko enpresa berri bati bertan aldaketak egiteko.
 
