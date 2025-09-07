@@ -8,3 +8,6 @@ echo [Docker irudiak]{.part}
 cat imagenes.md
 echo [Windows Subsystem for Linux]{.part}
 cat ../../../temas_comunes/wsl/euskera/1_introduccion.md
+
+echo [Ariketak]{.part}
+cat ../ejercicios/0_ejercicios_eus.md
