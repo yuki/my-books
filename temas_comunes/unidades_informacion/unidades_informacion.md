@@ -47,7 +47,28 @@ A continuación se expone una tabla de las medidas más utilizadas:
 Table: {tablename=yukitblr}
 
 
-Aunque esta es la manera correcta de nombrar las unidades cuando hablamos en términos informáticos, lo habitual es que se haga uso de los prefijos del sistema decimal.
+## Sistema decimal {#sistema-decimal-explicacion}
+
+Aunque la manera correcta de nombrar las unidades cuando hablamos en términos informáticos debería ser la anterior (en sistema binario), lo habitual es que se haga uso de los prefijos del sistema decimal. En la siguiente tabla se ven los nombres y cantidades:
+
+| Nombre       | Símbolo | Cantidad  |
+|:------------:|:-------:|:---------:|
+|  **Bit**     | **b**   | $2^0=1$   |
+| Nibble       |         | 4b  |
+| **Byte**     | **B**   | 8b  |
+| **Kilo**byte | **KB** | $10^{3}=1000$ B |
+| **Mega**byte | **MB** | $10^{6}=1000$ KB |
+| **Giga**byte | **GB** | $10^{9}=1000$ MB |
+| **Tera**byte | **TB** | $10^{12}=1000$ GB |
+| **Peta**byte | **PB** | $10^{15}=1000$ TB |
+| **Exa**byte  | **EB** | $10^{18}=1000$ PB |
+
+Table: {tablename=yukitblr}
+
+::: errorbox
+Cuando hablamos de unidades informáticas **deberíamos usar el sistema binario**, ya que es tal como se guarda la información y la cantidad real.
+:::
+
 
 ## Usos {#usos}
 
@@ -55,8 +76,17 @@ A la hora de utilizar las medidas vistas previamente hay que diferenciar qué qu
 
 -   **Almacenamiento**: A la hora de querer expresar una cantidad de almacenamiento (para un disco duro, un *pendrive* USB, RAM, \...) se hace uso del **Byte** y de sus múltiplos usando los prefijos vistos previamente.
 
+    :::::::::::::: {.columns }
+    ::: {.column width="40%"}
+    ![](img/temas_comunes/unidades_informacion/hdd.png){width="100%"}
+    :::
+    ::: {.column width="50%" }
+    ![](img/temas_comunes/unidades_informacion/hdd2.png){width="100%" framed=true}
+    :::
+    ::::::::::::::
+    
     ::: center
-    ![](img/temas_comunes/unidades_informacion/hdd.png){width="40%"}
+    [Exploradores de ficheros mostrando la cantidad en decimal y binario.]{.footnotesize}
     :::
 
 -   **Transmisión**: Cuando hablamos de tasa de transferencia de datos se hace uso del término "tasa de bits" (en inglés ***bitrate***), que indican el número de bits que se transmiten por unidad de tiempo. Hoy día se suele medir en kbps (o kb/s, kilobits por segundo), Mbps (Mb/s, o megabit por segundo), \... Para convertirlo a Bytes por segundo habría que dividirlo por "8".

@@ -49,7 +49,28 @@ Jarraian erabilienak diren neurriak azaltzen dituen taula bat dago:
 Table: {tablename=yukitblr}
 
 
-Hau da unitateak izendatzeko modu zuzena informatikan hitz egiten dugunean, baina ohikoa da sistema hamartarreko aurrizkiak erabiltzea.
+## Sistema hamartarra {#sistema-decimal-explicacion}
+
+Informatika arloan unitateak izendatzeko modu zuzena aurrekoa izan beharko litzateke (sistema bitarra), baina ohikoa da sistema hamartarreko aurrizkiak erabiltzea. Hurrengo taulan izenak eta kantitateak ikus daitezke:
+
+| Izena       | Simbolo | Kopurua  |
+|:------------:|:-------:|:---------:|
+|  **Bit**     | **b**   | $2^0=1$   |
+| Nibble       |         | 4b  |
+| **Byte**     | **B**   | 8b  |
+| **Kilo**byte | **KB** | $10^{3}=1000$ B |
+| **Mega**byte | **MB** | $10^{6}=1000$ KB |
+| **Giga**byte | **GB** | $10^{9}=1000$ MB |
+| **Tera**byte | **TB** | $10^{12}=1000$ GB |
+| **Peta**byte | **PB** | $10^{15}=1000$ TB |
+| **Exa**byte  | **EB** | $10^{18}=1000$ PB |
+
+Table: {tablename=yukitblr}
+
+::: errorbox
+Informatikako unitateei buruz hitz egiten dugunean **sistema bitarra erabili beharko genuke**, informazioa horrela gordetzen eta benetako kantitatea hori baita.
+:::
+
 
 ## Erabilerak {#erabilerak}
 
@@ -57,8 +78,17 @@ Aurreko neurriak erabiltzerakoan, zer neurtu nahi dugun bereizi behar da, ez bai
 
 -   **Biltegiratzea**: Biltegiratze-kantitate bat adierazi nahi dugunean (disko gogor bat, USB *pendrive* bat, RAM, \...), **Byte** eta bere multiploak erabiltzen dira, aurretik ikusitako aurrizkiak erabiliz.
 
+    :::::::::::::: {.columns }
+    ::: {.column width="40%"}
+    ![](img/temas_comunes/unidades_informacion/hdd.png){width="100%"}
+    :::
+    ::: {.column width="50%" }
+    ![](img/temas_comunes/unidades_informacion/hdd2.png){width="100%" framed=true}
+    :::
+    ::::::::::::::
+    
     ::: center
-    ![](img/temas_comunes/unidades_informacion/hdd.png){width="40%"}
+    [Fitxategi esploratzaileak kantitatea hamartarrean eta bitarrean erakusten.]{.footnotesize}
     :::
 
 -   **Transmisioa**: Datuen transferentzia-tasari buruz hitz egiten dugunean "bit-tasa" terminoa erabiltzen da (ingelesez ***bitrate***), eta horrek denbora-unitate bakoitzean transmititzen diren bit kopurua adierazten du. Gaur egun, normalean kbps (edo kb/s, kilobit segundoko), Mbps (Mb/s, megabit segundoko), \... erabiltzen dira. Byte segundoko bihurtzeko, "8"-z zatitu behar da.
