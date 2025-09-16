@@ -276,3 +276,4 @@ También se puede utilizar este sistema para carpetas compartidas por red, aunqu
 En los sistemas operativos GNU/Linux (aunque también sucede en las variantes UNIX como FreeBSD y MacOS) la jerarquía comienza en un único punto representado con "**/**" denominado **directorio raiz** o "barra".
 
 El [***Filesystem Hierarchy Standard*** (FHS)](https://es.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) es la referencia para conocer dónde se deben almacenar los ficheros dentro de la jerarquía, siendo algunos de los directorios más conocidos. Más adelante hablaremos de ello.
+

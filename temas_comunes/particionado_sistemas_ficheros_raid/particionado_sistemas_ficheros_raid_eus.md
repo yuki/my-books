@@ -272,3 +272,4 @@ Sare bidez partekatutako karpetetarako ere erabil daiteke, nahiz eta ez den beha
 GNU/Linux sistema eragileetan (eta UNIX aldaeretan, hala nola FreeBSD eta MacOS) hierarkia puntu bakar batean hasten da, "**/**" izeneko **erro direktorioa** edo "barra".
 
 [***Filesystem Hierarchy Standard*** (FHS)](https://es.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) da fitxategiak hierarkian non gorde behar diren jakiteko erreferentzia, eta ezagunenetako batzuk hauek dira. Geroago hitz egingo dugu horri buruz.
+
