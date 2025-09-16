@@ -9,5 +9,5 @@ cat imagenes.md
 echo [Windows Subsystem for Linux]{.part}
 cat ../../temas_comunes/wsl/1_introduccion.md
 
-echo [Ejericicios]{.part}
+echo [Ejercicios]{.part}
 cat ejercicios/0_ejercicios.md
