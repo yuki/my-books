@@ -24,7 +24,7 @@ Horregatik, ezin dugu informatika azken hamarkadetan gertatu denarekin bakarrik 
 : Lehen kalkulagailua sortu zen gurpil eta engranajeen bidez.
 
 1801
-: Txartel zulatuen erabileraren bidez, ehungailu baten mekanismoa kontrolatzen da marrazkiak eta diseinuak egiteko. [Bideoa](https://www.youtube.com/watch?v=MQzpLLhN0fY).
+: Txartel zulatuen erabileraren bidez, ehungailu baten mekanismoa kontrolatzen da marrazkiak eta diseinuak egiteko. [[Bideoa](https://www.youtube.com/watch?v=MQzpLLhN0fY)]{.movie}.
 
 1837
 : Charles Babbagek makina analitikoa deskribatzen du. Ordenagailu moderno baten helburu orokorreko diseinua da.

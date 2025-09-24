@@ -21,7 +21,7 @@ Es por eso que no podemos ceñirnos a la evolución de la informática como algo
 : Se crea la primera calculadora mediante ruedas y engranajes.
 
 1801
-: Mediante el uso de tarjetas perforadas se controla el mecanismo de una máquina de tejer para realizar dibujos y diseños. [Vídeo](https://www.youtube.com/watch?v=MQzpLLhN0fY).
+: Mediante el uso de tarjetas perforadas se controla el mecanismo de una máquina de tejer para realizar dibujos y diseños. [[Vídeo](https://www.youtube.com/watch?v=MQzpLLhN0fY)]{.movie}.
 
 1837
 : Charles Babbage describe la máquina analítica. Es el diseño de un computador moderno de propósito general.
