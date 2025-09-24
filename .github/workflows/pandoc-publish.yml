@@ -55,7 +55,7 @@ jobs:
       with:
         submodules: recursive
     - name: build the PDF and HTML
-      uses: dante-ev/latex-action@latest
+      uses: dante-ev/latex-action@edge
       with:
         entrypoint: ./build_pandoc.sh
       env:
