@@ -24,6 +24,7 @@ on:
           - Instalar_Ubuntu_LTS
           - Interfazeen_Garapena
           - Introduccion_Programacion
+          - Ionic
           - Laravel
           - Monitorizacion_Munin
           - PFsense
@@ -74,6 +75,7 @@ jobs:
           otros/hacer_documentacion/euskera/dokumetazioa_egiteko.pdf
           otros/introduccion_programacion/introduccion_programacion.pdf
           otros/introduccion_programacion/euskera/programazioan_sartu.pdf
+          otros/ionic/ionic.pdf
           otros/laravel/laravel.pdf
           otros/PFsense/pfsense.pdf
           ASIR/1/planificacion_administracion_redes/redes.pdf
