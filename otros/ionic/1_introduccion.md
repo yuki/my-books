@@ -90,5 +90,13 @@ Los parámetros explicados:
 - [-v "$(pwd):/workdir"]{.verbatim}: para enlazar el directorio en el que estamos como volumen persistente de datos, y configurado en la ruta [/workdir]{.configdir} dentro del contenedor.
 - [--workdir /workdir]{.verbatim}: el directorio que usamos al entrar en el contenedor.
 
+Para poder desarrollar con Visual Studio Code dentro del contenedor vamos a necesitar la extensión [remote development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Una vez instalada, nos aparecerá un nuevo icono en el lateral del IDE y podremos ver los contenedores que tenemos arrancados:
 
+![](img/ionic/vscode_container.png){width=40% framed=true}
+
+Con esta extensión podemos conectarnos al contenedor, se nos abrirá una nueva ventana del IDE, y desde ahí podremos abrir el directorio [/workdir]{.verbatim} que está dentro del contenedor. 
+
+::: errorbox
+Trabajar dentro de un contenedor no nos permitirá usar el emulador de Android/iOS de manera sencilla.
+:::
 
