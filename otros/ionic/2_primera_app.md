@@ -92,13 +92,11 @@ Para poder compilar el proyecto para Android necesitamos realizar los siguientes
 - Instalar dependencias
   - [npm install @capacitor/android]{.commandbox}
 - Añadir al proyecto la intención de compilar para Android
-  - [npx cap add android]{.commandbox}
-- Generamos los assets del proyecto
-  - [ionic build]{.commandbox}
+  - [ionic capacitor add android]{.commandbox}
 - Sincronizamos los assets en el proyecto Android
-  - [npx cap sync]{.commandbox}
+  - [ionic capacitor sync]{.commandbox}
 - Abrimos el proyecto en Android Studio
-  - [npx cap open android]{.commandbox}
+  - [ionic capacitor open android]{.commandbox}
 - Generar el proyecto y ya se podrá compilar
 
 # Compilar para iOS {#compilar-ios}
@@ -110,13 +108,11 @@ Los pasos son muy parecidos a los realizados para Android, y se pueden ver en la
 - Necesitamos tener instalado [CocoaPods](https://cocoapods.org/), y para ello necesitamos una versión actualizada del lenguaje de programación [Ruby](https://www.ruby-lang.org/) (se recomienda usar [Brew](https://brew.sh/) para realizar la instalación).
   - [gem install cocoapods]{.commandbox}
 - Añadir al proyecto la intención de compilar para iOS
-  - [npx cap add ios]{.commandbox}
-- Generamos los assets del proyecto
-  - [ionic build]{.commandbox}
+  - [ionic capacitor add ios]{.commandbox}
 - Sincronizamos los assets en el proyecto iOS
-  - [npx cap sync]{.commandbox}
+  - [ionic capacitor sync]{.commandbox}
 - Compilar proyecto, previamente nos pregunta por el emulador que queremos utilizar:
-  - [npx cap run ios]{.commandbox}
+  - [ionic capacitor run ios]{.commandbox}
 
 # Usar la aplicación {#usar-aplicación}
 
