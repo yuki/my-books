@@ -61,7 +61,7 @@ Desde la web para [descargar](https://nodejs.org/en/download) Node, tenemos dist
   - **[Chocolatey](https://chocolatey.org/)**: Es un gestor para poder instalar aplicaciones en Windows desde la línea de comandos.
 - **Gestor de paquetes**: Junto con Node se pueden instalar disitintos gestores de paquetes, que después usaremos durante el desarrollo de nuestras aplicaciones.
   - **[npm](https://en.wikipedia.org/wiki/Npm)**: es el gestor de paquetes utilizado por defecto con Node.js. Originalmente creado por Isaac Z. Schlueter, hoy en día está bajo el amparo de Github.
-  - **[yarn](https://en.wikipedia.org/wiki/Yarn_(package_manager))**: la alternativa más extendida a *npm*, creado en una colaboración entre Facebook, Google y otras compañías. 
+  - **[yarn](https://en.wikipedia.org/wiki/Yarn_(package_manager))**: la alternativa más extendida a *npm*, creado en una colaboración entre Facebook, Google y otras compañías.
 
 Aparte de estos sistemas más "modernos", en la propia web se puede descargar un instalador clásico para cada sistema.
 
@@ -79,7 +79,7 @@ Si estamos en un entorno Windows, se recomienda realizar lo siguiente desde un *
 ``` console
 ruben@vega:~$ docker run  -it --name ionic -p 8100:8100 \
 --entrypoint /bin/bash -v "$(pwd):/workdir" --workdir /workdir node
-root@a1d346824085:/workdir# 
+root@a1d346824085:/workdir#
 ```
 :::
 
@@ -94,7 +94,7 @@ Para poder desarrollar con Visual Studio Code dentro del contenedor vamos a nece
 
 ![](img/ionic/vscode_container.png){width=40% framed=true}
 
-Con esta extensión podemos conectarnos al contenedor, se nos abrirá una nueva ventana del IDE, y desde ahí podremos abrir el directorio [/workdir]{.verbatim} que está dentro del contenedor. 
+Con esta extensión podemos conectarnos al contenedor, se nos abrirá una nueva ventana del IDE, y desde ahí podremos abrir el directorio [/workdir]{.verbatim} que está dentro del contenedor.
 
 ::: errorbox
 Trabajar dentro de un contenedor no nos permitirá usar el emulador de Android/iOS de manera sencilla.

@@ -30,7 +30,7 @@ No vamos a adentrarnos en el resto de momento, pero es interesante echarles un o
 
 # Páginas y navegación entre vistas {#paginas-navegacion}
 
-En Ionic, cada **pantalla** de la aplicación es una **página**. Al crear una pantalla nueva se nos van a generar unos ficheros asociados a la misma. 
+En Ionic, cada **pantalla** de la aplicación es una **página**. Al crear una pantalla nueva se nos van a generar unos ficheros asociados a la misma.
 
 ## Crear una página {#crear-una-pagina}
 
@@ -72,7 +72,7 @@ Al crear la página nos genera un directorio con el nombre de la página, [src/a
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } 
+import { IonContent, IonHeader, IonTitle, IonToolbar }
     from '@ionic/angular/standalone';
 
 @Component({
@@ -151,7 +151,7 @@ Lo primero es añadir el ***toggle*** a la vista [src/app/contacto/contacto.page
 ``` ng2
 <ion-list [inset]="true">
   <ion-item>
-    <ion-toggle (ionChange)="toggleChange($event)" 
+    <ion-toggle (ionChange)="toggleChange($event)"
                 justify="space-between">
       Dark Mode
     </ion-toggle>
@@ -206,7 +206,7 @@ Para modificar este comportamiento debemos comprobar el fichero [src/global.css]
 ::: {.mycode}
 [Añadir lógica]{.title}
 ``` scss
-//  @import "@ionic/angular/css/palettes/dark.always.css"; 
+//  @import "@ionic/angular/css/palettes/dark.always.css";
 @import "@ionic/angular/css/palettes/dark.class.css";
 // @import '@ionic/angular/css/palettes/dark.system.css';
 ```
