@@ -235,13 +235,16 @@ enum Direction {
 :::
 ::::::::::::::
 
-El resto de constantes tendrán un valor auto-incremental partiendo del valor inicial (sea 0, o el que hayamos puesto).
 
 :::::::::::::: {.columns }
 
 ::: {.column width="40%" }
+El resto de constantes tendrán un valor auto-incremental partiendo del valor inicial (sea 0, o el que hayamos puesto). En el caso de crear un *enum* de tipo *string*, cada miembro debe ser inicializado con un texto.
+:::
 
-::: {.mycode}
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
 [Enum de texto]{.title}
 
 ``` typescript
@@ -251,10 +254,213 @@ enum Direction {
 }
 ```
 :::
+
+:::
+::::::::::::::
+
+
+# Estructuras básicas {#estructuras-basicas}
+
+A continuación se van a explicar las estructuras básicas, que son iguales que en JavaScript. 
+
+## Estructuras condicionales {#estructuras-condicionales}
+
+A continuación las estructuras condicionales más habituales. Como en otros lenguajes de programación, se pueden hacer uso de los operadores lógicos **&&** (AND), **||** (OR) y **!** (NOT). 
+También existe la posibilidad de utilizar el **operador ternario**: [condicion ? siTrue : siFalse]{.verbatim} .
+
+:::::::::::::: {.columns }
+
+::: {.column width="40%" }
+
+::: {.mycode}
+[Condicional if]{.title}
+
+``` typescript
+let num: number = 20;
+if (num > 18) {
+  console.log("Mayor");
+}
+```
 :::
 
-::: {.column width="50%"}
-En el caso de crear un *enum* de tipo *string*, cada miembro debe ser inicializado con un texto.
+:::
+
+::: {.column width="40%"}
+
+::: {.mycode}
+[Condicional if-else]{.title}
+
+``` typescript
+let num: number = 10;
+if (num > 18) {
+  console.log("Mayor");
+} else {
+  console.log("Menor");
+}
+```
+:::
+
+:::
+
+::::::::::::::
+
+:::::::::::::: {.columns }
+
+::: {.column width="40%"}
+
+::: {.mycode}
+[Condicional else if]{.title}
+
+``` typescript
+let num: number = 20;
+if (num < 18) {
+  console.log("Pequeño");
+} else if (num > 65) {
+  console.log("Muy mayor");
+}
+```
+:::
+
+:::
+
+::: {.column width="40%" }
+
+::: {.mycode size=footnotesize}
+[Estructura switch-case]{.title}
+
+``` typescript
+let num: number = 18;
+switch(num){
+  case 7:
+    console.log("Siete");
+    break;
+  default:
+    return "Otro numero";
+}
+```
+:::
+
+:::
+
+::::::::::::::
+
+A la hora de manejar una gran cantidad de condiciones, en lugar de usar [if-else]{.verbatim}, lo ideal es hacer uso del sistema [switch-case]{.verbatim} . Nótese las palabras resevadas [break]{.verbatim} para salir de la función y [default]{.verbatim} que se ejecutará cuando no coincide con ninguno de los casos expresados.
+
+
+## Bucles {#bucles}
+
+Existen distintos tipos de bucles. El bucle [for]{.verbatim} es utilizado cuando conocemos previamente el número de veces que queremos itera, y también se puede utilizar para recorrer un array.
+
+Dentro de los bucles, y utilizando una condicional, podemos usar [continue]{.verbatim} si queremos omitir parte del bucle y saltar a la siguiente iteración.
+
+:::::::::::::: {.columns }
+
+::: {.column width="40%" }
+
+::: {.mycode size=footnotesize}
+[Bucle for]{.title}
+
+``` typescript
+for (let i = 0; i < 5; i++) {
+  console.log(`Contador ${i}`);
+}
+```
+:::
+
+:::
+
+::: {.column width="58%"}
+
+::: {.mycode size=footnotesize}
+[Bucle for y array]{.title}
+
+``` typescript
+const frutas: string[] = ["Manzana", "Pera"];
+for (let i = 0; i < frutas.length; i++) {
+  console.log(`Fruta ${i + 1}: ${frutas[i]}`);
+}
+```
+:::
+
+:::
+::::::::::::::
+
+Existe la variante [for...of]{.verbatim} que nos permite iterar sobre los elementos de colecciones, como son los Arrays ([\[\]]{.verbatim}),  Strings ([""]{.verbatim}), Mapas ([Map]{.verbatim}) y Conjuntos ([Set]{.verbatim}). Y para poder iterar entre las propiedades de un objeto existe [for...in]{.verbatim}, de esta manera tendremos acceso a sus posibles *key* y *values*.
+
+
+:::::::::::::: {.columns }
+
+::: {.column width="45%" }
+
+
+::: {.mycode size=footnotesize}
+[Bucle for...of y array]{.title}
+
+``` typescript
+const frutas: string[] = 
+      ["Manzana", "Pera"];
+for (const f of frutas) {
+  console.log(`Fruta: ${f}`);
+}
+```
+:::
+
+:::
+
+::: {.column width="45%" }
+
+
+::: {.mycode size=footnotesize}
+[Bucle for...in]{.title}
+
+``` typescript
+const p = {
+  name: "Ruben",
+  job: "Teacher"
+};
+for (const key in p) { 
+  console.log(`${key}: 
+      ${p[key as keyof typeof p]}`
+  );
+}
+```
+:::
+
+:::
+
+::::::::::::::
+
+También podemos hacer uso de bucles [while]{.verbatim} y [do-while]{.verbatim}.
+
+:::::::::::::: {.columns }
+
+::: {.column width="45%" }
+
+
+::: {.mycode size=footnotesize}
+[Bucle while]{.title}
+
+``` typescript
+while (condición) {
+  // Código 
+}
+```
+:::
+
+:::
+
+::: {.column width="45%" }
+
+
+::: {.mycode size=footnotesize}
+[Bucle do-while]{.title}
+
+``` typescript
+do {
+  // Código
+} while (condición);
+```
+:::
 
 :::
 
@@ -277,15 +483,13 @@ En caso de que las funciones devuelvan un dato, también hay que especificar el 
 function sumar(a: number, b: number = 10): number {
   return a + b;
 }
-
 function saludar(nombre: string, mensaje?: string): void {
   console.log(mensaje ? `${mensaje}, ${nombre}` : `Hola, ${nombre}`);
 }
-
 console.log(sumar(2));    // 12
 console.log(sumar(3, 5)); // 8
-saludar("Ana");         // Hola, Ana
-saludar("Bob", "Buenos días"); // Buenos días, Bob
+saludar("Ana");           // Hola, Ana
+saludar("Bob", "Buenas"); // Buenas, Bob
 ```
 :::
 
