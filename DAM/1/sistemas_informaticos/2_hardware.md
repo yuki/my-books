@@ -107,7 +107,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 
     -   **Southbridge**: O puente sur, comunica los periféricos, los dispositivos de almacenamiento, puertos de entrada/salida como USB, ethernet, ...
 
-    :::infobox
+    ::: warnbox
     **Hoy día el northbridge está integrado en el propio procesador y en algunos casos partes del Southbridge también.**
     :::
 

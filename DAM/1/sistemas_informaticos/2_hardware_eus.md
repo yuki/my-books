@@ -107,7 +107,7 @@ Aipatu dugun bezala, plaka nagusira konektatzen dira ordenagailua osatzen duten 
 
     -   **Southbridge**: Edo hegoaldeko zubia, periferikoak, biltegiratze gailuak, sarrera/irteera portuak (USB, ethernet, ...) konektatzen ditu.
 
-    :::infobox
+    ::: warnbox
     **Gaur egun northbridge prozesadorean bertan integratuta dago, eta kasu batzuetan southbridge-aren zatiak ere bai.**
     :::
 
