@@ -114,7 +114,7 @@ export class HomePage {
 ::: {.mycode size=footnotesize}
 [Modificar home.page.html]{.title}
 ``` html+ng2
-<ion-button 
+<ion-button
   [disabled]="isDisabled()">
     Pulsa
 </ion-button>
@@ -180,10 +180,10 @@ Para poder controlar qué se visualiza en la vista, al igual que sucede en el *b
   <!-- ... -->
 } @else if (isAdmin()){
   <h2>Admin settings</h2>
-  <!-- ... -->  
+  <!-- ... -->
 } @else{
   <h2>User settings</h2>
-  <!-- ... -->  
+  <!-- ... -->
 }
 ```
 :::
@@ -216,7 +216,7 @@ Para poder controlar qué se visualiza en la vista, al igual que sucede en el *b
 
 
 ::: errorbox
-En versiones antiguas de Angular existían [NgIf]{.verbatim} y [NgFor]{.verbatim}, pero están **obsoletas**. 
+En versiones antiguas de Angular existían [NgIf]{.verbatim} y [NgFor]{.verbatim}, pero están **obsoletas**.
 :::
 
 Para realizar repeticiones en la vista, como en el caso de una lista, podemos hacer uso del bucle [@for]{.verbatim}. En la [documentación](https://angular.dev/api/core/@for#index-and-other-contextual-variables) nos muestra que en el bucle podemos hacer uso de variables implícitas que siempre están disponibles como:
@@ -235,7 +235,7 @@ Para realizar repeticiones en la vista, como en el caso de una lista, podemos ha
 [Modificar home.page.ts]{.title}
 ``` typescript
 frutas = ['Manzana', 'Pera', '
-        Naranja', 'Banana', 
+        Naranja', 'Banana',
         'Kiwi'];
 ```
 :::
@@ -246,7 +246,7 @@ frutas = ['Manzana', 'Pera', '
 ::: {.mycode size=footnotesize}
 [Modificar home.page.html]{.title}
 ``` html
-@for (fruta of frutas; track fruta; 
+@for (fruta of frutas; track fruta;
       let idx = $index) {
   <p class="{{$even ? 'even':''}}">
     {{fruta}} + {{idx}}
@@ -352,7 +352,7 @@ Puede ser interesante inicializar el valor, de ahí que dentro del [input()]{.ve
 ::: {.column width="44%" }
 
 ::: {.mycode size=footnotesize}
-[Modificar home.page.ts]{.title}
+[Modificar listado.page.ts]{.title}
 ``` typescript
 export class ListadoComponent {
   //recibimos el parámetro indicando
@@ -367,8 +367,8 @@ export class ListadoComponent {
 ::: {.column width="44%" }
 
 ::: {.mycode size=footnotesize}
-[Modificar home.page.html]{.title}
-``` typescript
+[Modificar listado.page.html]{.title}
+``` html
 @if (lista().length > 0) {
   @for (item of lista();track item){
     <p>{{item}}</p>
@@ -392,7 +392,109 @@ La función [input]{.verbatim} realmente hace uso de señales **de sólo lectura
 
 ## Parámetros *model* {#parámetros-model}
 
-Los parámetros [model()]{.verbatim} son *inputs* especiales que permiten propagar cambios de vuelta al componente padre.
+Los parámetros [model()]{.verbatim} son *inputs* especiales que permiten propagar cambios de vuelta al componente padre. De esta manera, si desde el componente hijo necesitamos actualizar un valor del padre, al realizar el cambio el padre recibirá el cambio.
 
+Modificamos el componente padre para crear un valor que le pasamos al hijo. Desde el componente padre también podemos modificar ese valor con un botón:
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Modificar home.page.ts]{.title}
+``` typescript
+export class HomePage {
+  valor = signal(10);
+  constructor() { }
+  incvalor() {
+    this.valor.update(v => v + 1);
+  }
+}
+```
+:::
+
+:::
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Modificar home.page.html]{.title}
+``` html+ng2
+<app-incrementar [(valor)]="valor" />
+<ion-button (click)="incvalor()">
+  inc valor
+</ion-button>
+```
+:::
+
+:::
+::::::::::::::
+
+Ahora desde el componente hijo vamos a reciibr el valor mediante [model()]{.verbatim}:
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Modificar incrementar.page.ts]{.title}
+``` typescript
+export class IncrementarComponent {
+  valor = model<number>(0);
+
+  incrementar() {
+    this.valor.update(v => v + 1);
+  }
+}
+```
+:::
+
+:::
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Modificar incrementar.page.html]{.title}
+``` html+ng2
+{{valor()}}
+<ion-button (click)="incrementar()">
+  inc valor
+</ion-button>
+```
+:::
+
+:::
+::::::::::::::
+
+
+## Proyección de contenido con ng-content {#contenidos-ng-content}
+
+Es posible que necesitemos crear componentes que sólo van a ser contenedores de contenido, en los que quizá no exista ninguna lógica más hayá del aspecto visual. Para estos casos existe [[ng-content]{.verbatim}](https://angular.dev/guide/components/content-projection).
+
+
+Desde el componente padre llamamos al componente hijo añadiendo contenido, y en el hijo simplemente ponemos [ng-content]{.verbatim} para visualizarlo.
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Llamada al componente hijo]{.title}
+``` html
+<custom-card>
+  <p>Contenido proyectado</p>
+</custom-card>
+```
+:::
+
+:::
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[En el componente hijo]{.title}
+``` html
+<div class="card-shadow">
+  <ng-content />
+</div>
+```
+:::
+
+:::
+::::::::::::::
 
 
