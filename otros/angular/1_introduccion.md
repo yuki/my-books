@@ -6,7 +6,7 @@
 Una de las ventajas de usar Angular es la creación de **SPA** (*single-page applications*). Las SPA permiten que el usuario interactúe con la aplicación reescribiendo partes de la web actual con datos obtenidos del servidor. De esta manera, permite construir interfaces dinámicas y estructuradas.
 
 
-## Historía {#historia-angular}
+## Historia {#historia-angular}
 
 Es importante conocer un poco la historia de Angular, ya que originalmente, la primera versión se llamaba AngularJS debido a que estaba basado en Javascript. 
 
@@ -63,7 +63,7 @@ Desde la web para [descargar](https://nodejs.org/en/download) Node, tenemos dist
 Aparte de estos sistemas más "modernos", en la propia web se puede descargar un instalador clásico para cada sistema.
 
 
-## Instalar Angular CLI {#instlar-angular-cli}
+## Instalar Angular CLI {#instalar-angular-cli}
 
 Tras instalar Node, vamos a instalar el cliente de consola de Angular. Para ello usaremos el gestor de paquetes **npm**:
 
@@ -109,9 +109,9 @@ root@a1d346824085:/workdir#
 Los parámetros explicados:
 
 - [-p 4200:4200]{.verbatim}: por defecto es el puerto que se usa con Angular.
-- [--entrypoint /bin/bash]{.verbatim}: por defecto, la imagen ejecuta como *entrypoint* el comando [node]{.commandbox}, y de esta manera lo sobreescribimos para usar [/bin/bash]{.commandbox} al entrar en el contenedor.
+- [\-\-entrypoint /bin/bash]{.verbatim}: por defecto, la imagen ejecuta como *entrypoint* el comando [node]{.commandbox}, y de esta manera lo sobreescribimos para usar [/bin/bash]{.commandbox} al entrar en el contenedor.
 - [-v "$(pwd):/workdir"]{.verbatim}: para enlazar el directorio en el que estamos como volumen persistente de datos, y configurado en la ruta [/workdir]{.configdir} dentro del contenedor.
-- [--workdir /workdir]{.verbatim}: el directorio que usamos al entrar en el contenedor.
+- [\-\-workdir /workdir]{.verbatim}: el directorio que usamos al entrar en el contenedor.
 
 Para poder desarrollar con Visual Studio Code dentro del contenedor vamos a necesitar la extensión [remote development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Una vez instalada, nos aparecerá un nuevo icono en el lateral del IDE y podremos ver los contenedores que tenemos arrancados:
 
@@ -124,7 +124,7 @@ Trabajar dentro de un contenedor no nos permitirá usar el emulador de Android/i
 :::
 
 
-# Crear primera aplicación {#crear-aplicacion}
+# Crear primera aplicación {#crear-aplicación}
 
 Vamos a crear una primera aplicación para ver cómo funciona el asistente de generación del proyecto:
 
@@ -138,19 +138,19 @@ ruben@vega:~$ ng new pruebas
 
 Nos realiza las siguientes preguntas:
 
-- **Formato de hojas de estilo**: A la hora de desarrollar con Angular podemos hacer uso de distintoas formatos en los que queremos escribir nuestros estilos:
+- **Formato de hojas de estilo**: A la hora de desarrollar con Angular podemos hacer uso de distintos formatos en los que queremos escribir nuestros estilos:
   - **CSS**: El sistema de hojas de estilo en cascada ([CSS](https://developer.mozilla.org/es/docs/Web/CSS)) tradicional en el desarrollo web.
-  - **Sass (SCSS)**: Del inglés *syntactically awesome style sheets*, es un lenguaje preprocesado que tras ser interpretado genera CSS. Nació en 2006 para cubrir carencias que tenía CSS como variables, reutilización de código...
+  - **[Sass](https://en.wikipedia.org/wiki/Sass_(style_sheet_language)) (SCSS)**: Del inglés *syntactically awesome style sheets*, es un lenguaje pre-procesado que tras ser interpretado genera CSS. Nació en 2006 para cubrir carencias que tenía CSS como variables, reutilización de código...
   - **Sass (Indented)**: Es una variante del caso anterior utilizando un metalenguaje.
-  - **Less**: Otro sistema preprocesado para generar hojas de estilo, que nació en 2009 como alternativa a Sass.
+  - **Less**: Otro sistema pre-procesado para generar hojas de estilo, que nació en 2009 como alternativa a Sass.
 - **Habilitar SSR y SSG**: Por defecto no se habilita. Se recomienda leer los siguientes enlaces para decidir si activar estas opciones o no:
   - **SSR**: *[Server-Side Rendering](https://angular.dev/guide/routing/rendering-strategies#server-side-rendering-ssr)* permite generar HTML en el lado del servidor para la petición inicial de una ruta, de esta manera permite contenido dinámico para bueno SEO.
-  - **SSG**: *[Static Site Generation](https://angular.dev/guide/routing/rendering-strategies#static-site-generation-ssg-prerendering)* pre-renderiza las páginas en HTML estáticos cuando se "compila" el proyecto. El servidor envía HTML precompilado para la carga inicial de la página
+  - **SSG**: *[Static Site Generation](https://angular.dev/guide/routing/rendering-strategies#static-site-generation-ssg-prerendering)* pre-renderiza las páginas en HTML estáticos cuando se "compila" el proyecto. El servidor envía HTML pre-compilado para la carga inicial de la página
 - Crear aplicación ***zoneless*** sin **zone.js**: Por defecto la respuesta es "no". Zone.js usa eventos y tareas *async* como indicadores para cuando los estados de la aplicación puedan ser modificados.
 - Uso de **utilidades de Inteligencia Artificial** en el proyecto: con la expansión de la IA, al generar un nuevo proyecto podemos hacer que se [configure para distintos LLM](https://angular.dev/ai/develop-with-ai).
 
 
-Para no tener que responder a estas preguntas el CLI nos permite añadir parámetros y valores al crear el proyecto. Se puede ver con [ng new --help]{.verbatim}.
+Para no tener que responder a estas preguntas el CLI nos permite añadir parámetros y valores al crear el proyecto. Se puede ver con [ng new \-\-help]{.commandbox}.
 
 
 ## Estructura del proyecto {#angular-estructura-proyecto}
@@ -159,7 +159,7 @@ Una vez creado el proyecto podremos comprobar cómo se ha creado una estructura 
 
 Dentro de la estructura generada podemos destacar:
 
-- [angular.json]{.configfile}: Es el fichero de configuración de nuestra aplicación. A pesar de no entender algunos aspectos de la configuración es conveniente echar un ojo, ya que otros son autoexplicativos.
+- [angular.json]{.configfile}: Es el fichero de configuración de nuestra aplicación. A pesar de no entender algunos aspectos de la configuración es conveniente echar un ojo, ya que otros son auto-explicativos.
 - [node_modules]{.configdir}: El directorio donde se guardan las dependencias que necesita nuestro proyecto. Este directorio está ignorado en GIT.
 - [package.json]{.configfile}: Es el fichero que contiene qué dependencias necesita nuestro proyecto, indicando la versión, si es para desarrollo o producción, y los scripts necesarios para ejecutar/"compilar"/testear nuestra aplicación.
 - [public]{.configdir}: Es el directorio donde podemos guardar *assets* públicos.

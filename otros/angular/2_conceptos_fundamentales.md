@@ -1,5 +1,48 @@
 
 
+# Componentes {#angular-componentes}
+
+Los **componentes** son la unidad básica de construcción en Angular. Cada parte visible de nuestra webapp (botones, tarjetas, secciones de una página, layouts...) puede representarse como un componente.
+
+Un componente está formado por los siguientes ficheros:
+
+- [.css]{.verbatim} / [.scss]{.verbatim}: Estilos propios del componente, para que de esta manera sea independiente a otros. Dependiendo del formato elegido al generar el proyecto, serán pre-procesados para generar un CSS válido.
+- [.html]{.verbatim}: Es la plantilla del componente, en formato HTML, donde se mostrará lo que queremos visualizar.
+- [.spec.ts]{.verbatim}: Fichero para realizar pruebas unitarias.
+- [.ts]{.verbatim}: Contiene la lógica y la clase del componente.
+
+Al crear nuestra aplicación se ha generado el componente principal llamado **app-root** que está dentro del directorio [src/app/]{.configdir}.
+
+::: questionbox
+Comprueba el contenido de los ficheros [app.html]{.verbatim}, [app.scss]{.verbatim}, [app.spects.ts]{.verbatim} y [app.ts]{.verbatim}.
+:::
+
+::: exercisebox
+Modifica el componente para que en el HTML aparezca tu nombre en color rojo.
+:::
+
+
+## Crear un componente {#crear-componente}
+
+Para crear un componente nuevo vamos a hacer uso del CLI. Para ver todas las opciones se puede usar [ng generate \-\-help]{.commandbox}
+
+
+::: {.mycode}
+[Modificar home.page.ts]{.title}
+``` console
+ruben@vega:~/pruebas $ ng generate component prueba
+CREATE src/app/prueba/prueba.scss (0 bytes)
+CREATE src/app/prueba/prueba.spec.ts (528 bytes)
+CREATE src/app/prueba/prueba.ts (186 bytes)
+CREATE src/app/prueba/prueba.html (21 bytes)
+```
+:::
+
+Tal como se puede ver en la salida del comando, nos ha generado cuatro ficheros dentro del directorio [src/app/prueba]{.configdir}, de esta manera, cada componente es independiente y se mantiene ordenado nuestro entorno de trabajo.
+
+::: infobox
+Podemos crear componentes dentro de una estructura jerárquica de directorios propia, para ordenar los componentes por características: [ng generate componente user/profile]{.commandbox}
+:::
 
 
 ## Ciclo de vida de un componente
@@ -246,7 +289,7 @@ La palabra reservada [track]{.verbatim} sirve para generar una **clave única** 
 
 ## *Pipes* {#angular-pipes}
 
-Las *pipes* (o "tuberías") son un operador especial que se puede usar en las vistas para transformar datos de manera declarativa. Existen [funciones ya predefinidas](https://angular.dev/guide/templates/pipes#built-in-pipes) y podemos crear nuestras funciones. Este sistema está basado en los *[pipes](https://en.wikipedia.org/wiki/Pipeline_(Unix))* de Unix y su caracter "[|]{.verbatim}".
+Las *pipes* (o "tuberías") son un operador especial que se puede usar en las vistas para transformar datos de manera declarativa. Existen [funciones ya predefinidas](https://angular.dev/guide/templates/pipes#built-in-pipes) y podemos crear nuestras funciones. Este sistema está basado en los *[pipes](https://en.wikipedia.org/wiki/Pipeline_(Unix))* de Unix y su carácter "[|]{.verbatim}".
 
 
 ::: {.mycode}
@@ -411,7 +454,7 @@ export class HomePage {
 :::
 ::::::::::::::
 
-Ahora desde el componente hijo vamos a reciibr el valor mediante [model()]{.verbatim}:
+Ahora desde el componente hijo vamos a recibir el valor mediante [model()]{.verbatim}:
 
 :::::::::::::: {.columns }
 ::: {.column width="44%" }
@@ -448,7 +491,7 @@ export class IncrementarComponent {
 
 ## Proyección de contenido con ng-content {#contenidos-ng-content}
 
-Es posible que necesitemos crear componentes que sólo van a ser contenedores de contenido, en los que quizá no exista ninguna lógica más hayá del aspecto visual. Para estos casos existe [[ng-content]{.verbatim}](https://angular.dev/guide/components/content-projection).
+Es posible que necesitemos crear componentes que sólo van a ser contenedores de contenido, en los que quizá no exista ninguna lógica aparte del aspecto visual. Para estos casos existe [[ng-content]{.verbatim}](https://angular.dev/guide/components/content-projection).
 
 
 Desde el componente padre llamamos al componente hijo añadiendo contenido, y en el hijo simplemente ponemos [ng-content]{.verbatim} para visualizarlo.
