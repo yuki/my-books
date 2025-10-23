@@ -12,6 +12,7 @@ LIBROS=(
     "otros/hacer_documentacion/euskera dokumetazioa_egiteko"
     "otros/introduccion_programacion/ introduccion_programacion"
     "otros/introduccion_programacion/euskera/ programazioan_sartu"
+    "otros/angular/ angular"
     "otros/ionic/ ionic"
     "otros/laravel/ laravel"
     "otros/PFsense/ pfsense"

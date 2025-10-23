@@ -1,22 +1,5 @@
 
-# Introducción {#introducción-angular}
 
-**[Angular](https://angular.dev/)** es un *framework* desarrollado por **Google** para crear aplicaciones web de tipo ***single-page*** basadas en componentes. A veces también se llama "Angular 2+" debido a que la primera versión de Angular, nombrada AngularJS, usaba JavaScript como lenguaje.
-
-Las **SPA** (*single-page applications*) permiten que el usuario interactúe con la aplicación reescribiendo la web actual, o partes, con datos obtenidos del servidor. De esta manera, permite construir interfaces dinámicas, estructuradas y mantenibles usando **TypeScript** como lenguaje principal.
-
-
-## Arquitectura básica de Angular {#arquitectura-básica-angular}
-Una aplicación Angular se compone principalmente de:
-
-- **Componentes** ([Component]{.verbatim}): representan las pantallas o partes visuales. En la [documentación oficial](https://angular.dev/guide/components) existe mucha información acerca de cómo funcionan, por lo que es recomendable ir a ella para ver todos los detalles.
-- **Servicios** ([Service]{.verbatim}): contienen la lógica o manipulan datos.
-- **Plantillas (*templates*)**: definen el HTML de cada componente.
-- **Rutas (*Routing*)**: gestionan la navegación entre páginas.
-
-Estos elementos trabajan juntos siguiendo el patrón **MVC** (Modelo - Vista - Controlador) adaptado al entorno web.
-
-En las últimas versiones de Angular los componentes por defecto son *standalone* (facilita la migración a otras aplicaciones) mientras que anteriormente eran de tipo **NgModule**.
 
 
 ## Ciclo de vida de un componente
@@ -39,10 +22,10 @@ El ciclo de vida varía ligeramente al crearse el componente o durante sus actua
 
 :::::::::::::: {.columns }
 ::: {.column width="44%" }
-![](img/ionic/angular-lifecycle.png){width=100%}
+![](img/angular/angular-lifecycle.png){width=100%}
 :::
 ::: {.column width="44%" }
-![](img/ionic/angular-lifecycle2.png){width=100%}
+![](img/angular/angular-lifecycle2.png){width=100%}
 :::
 ::::::::::::::
 

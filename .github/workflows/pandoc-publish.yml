@@ -9,6 +9,7 @@ on:
         type: choice
         options:
           - ALL
+          - Angular
           - ASO
           - AWS
           - AWS_docentes
@@ -75,6 +76,7 @@ jobs:
           otros/hacer_documentacion/euskera/dokumetazioa_egiteko.pdf
           otros/introduccion_programacion/introduccion_programacion.pdf
           otros/introduccion_programacion/euskera/programazioan_sartu.pdf
+          otros/angular/angular.pdf
           otros/ionic/ionic.pdf
           otros/laravel/laravel.pdf
           otros/PFsense/pfsense.pdf
