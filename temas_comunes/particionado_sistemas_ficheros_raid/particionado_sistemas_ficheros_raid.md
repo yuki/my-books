@@ -47,6 +47,23 @@ En la siguiente tabla se pueden identificar algunas de las diferencias más dest
 
 Table: {tablename=yukitblrcol colspec=XXX}
 
+En la siguiente imagen se puede ver la diferencia entre ambos sistemas al crear la tabla de particiones:
+
+:::::::::::::: {.columns }
+::: {.column width="10%"}
+:::
+::: {.column width="34%"}
+![](img/temas_comunes/particionado_sistemas_ficheros_raid/mbr.svg){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="34%" }
+![](img/temas_comunes/particionado_sistemas_ficheros_raid/gpt.svg){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::::::::::::::
+
 
 Para comprobar cuál es el sistema de particiones de nuestro disco duro lo podemos hacer desde:
 
@@ -146,9 +163,14 @@ Estos discos están conectados (a la controladora, o la placa base) pero sin est
 
 De esta manera, al entrar en el grupo, el RAID comenzará a arreglarse de manera automática sin tener que esperar a que el administrador de sistemas se entere de que ha habido algún error.
 
+
+
 ## Sistemas de ficheros {#sistemas-de-ficheros}
 
-**Los sistemas de ficheros controlan cómo se almacenan y recuperan los datos**. Sin un sistema de archivos, los datos colocados en un medio de almacenamiento serían un gran cuerpo de datos sin manera de saber dónde termina un dato y comienza el siguiente.
+**Los sistemas de ficheros controlan cómo se almacenan y recuperan los datos**. Sin un sistema de archivos, los datos colocados en un medio de almacenamiento serían un gran cuerpo de datos sin manera de saber dónde termina un dato y comienza el siguiente. Un sistema de ficheros se crea sobre una partición creada previamente, que a su vez está en un disco duro:
+
+![Ejemplo de disco duro con particiones.](img/temas_comunes/particionado_sistemas_ficheros_raid/particiones.svg){width="100%"}
+
 
 ::: infobox
 **Un sistema de ficheros nos proporciona una "*vista lógica*" de cómo se almacenan los datos.**

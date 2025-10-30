@@ -47,6 +47,25 @@ Hurrengo taulan bi sistema hauen arteko desberdintasun nabarmenenak ikus daitezk
 
 Table: {tablename=yukitblrcol colspec=XXX}
 
+
+Hurrengo irudian bi sistemen arteko aldeak ikus daitezke partizio-taula sortzean:
+
+
+:::::::::::::: {.columns }
+::: {.column width="10%"}
+:::
+::: {.column width="34%"}
+![](img/temas_comunes/particionado_sistemas_ficheros_raid/mbr.svg){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="34%" }
+![](img/temas_comunes/particionado_sistemas_ficheros_raid/gpt.svg){width="100%"}
+:::
+::: {.column width="10%"}
+:::
+::::::::::::::
+
 Gure disko gogorraren partizio-sistema zein den egiaztatzeko:
 
 -   **Windows**-en: Disko kudeatzailetik.
@@ -145,9 +164,14 @@ Disko hauek konektatuta daude (kontrolagailura edo plaka nagusira), baina ez dau
 
 Horrela, taldean sartzean, RAID-a automatikoki konpontzen hasiko da, sistemaren administratzaileak errorea gertatu dela jakin arte itxaron beharrik gabe.
 
+
+
 ## Fitxategi-sistemak {#sistemas-de-ficheros}
 
-**Fitxategi-sistemek datuak nola gordetzen eta berreskuratzen diren kontrolatzen dute**. Fitxategi-sistemarik gabe, biltegiratze-euskarrian gordetako datuak datu-multzo handi bat izango lirateke, non ezinezkoa litzatekeen datu bat non amaitzen den eta hurrengoa non hasten den jakitea.
+**Fitxategi-sistemek datuak nola gordetzen eta berreskuratzen diren kontrolatzen dute**. Fitxategi-sistemarik gabe, biltegiratze-euskarrian gordetako datuak datu-multzo handi bat izango lirateke, non ezinezkoa litzatekeen datu bat non amaitzen den eta hurrengoa non hasten den jakitea. Fitxategi-sistema bat aurrez sortutako partizio baten gainean sortzen da, eta partizio hori, aldi berean, disko gogor batean dago:
+
+![Partizioak dituen disko gogorraren adibidea.](img/temas_comunes/particionado_sistemas_ficheros_raid/particiones.svg){width="100%"}
+
 
 ::: infobox
 **Fitxategi-sistemak datuak nola gordetzen diren "*ikuspegi logiko*" bat eskaintzen digu.**
