@@ -138,7 +138,7 @@ Como ya hemos indicado, a la placa base se conectan el resto de componentes que 
 A continuación un diagrama simplificado de una placa base. Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Placa_base).
 
 
-![](img/si/placa_base_chipset.png){width="55%"}
+![](img/si/placa_base_chipset.png){width="75%"}
 
 
 #### Ejemplo de placa base {#ejemplo_de_placa_base}
@@ -509,7 +509,7 @@ En la siguiente tabla se puede comparar algunas características básicas de los
 |                     | HDD      | SSD       | NVMe (PCIe 3.0) | NVMe (PCIe 4.0) | NVMe (PCIe 5.0) |
 |:-------------------:|:--------:|:---------:|:----------:|:----------:|:-----------:|
 | Conector            | SATA     | SATA      | M.2        | M.2        | M.2         |
-| Velocidad Lectura   | 150MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s | 1400 MB\/s |
+| Velocidad Lectura   | 150MB\/s | 560 MB\/s | 3500 MB\/s | 7000 MB\/s | 14000 MB\/s |
 | Velocidad Escritura | 120MB\/s | 510 MB\/s | 3000 MB\/s | 5300 MB\/s | 10000 MB\/s |
 | Precio por TB       | Bajo     | Medio     | Alto       | Alto       | Alto        |
 
