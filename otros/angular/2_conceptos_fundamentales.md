@@ -154,7 +154,6 @@ incrementar() {
 :::
 ::::::::::::::
 
-<!-- TODO: two-way binding -->
 
 
 ### Control de datos {#control-de-datos}
@@ -581,4 +580,146 @@ Vamos a especificar las funciones más importantes que se ejecutan durante la cr
 
 Table: {tablename=yukitblr colspec=X[2]X[3]X[3]}
 
+
+# Rutas y navegación {#rutas-navegación}
+
+Al navegar a una URL (del inglés *Uniform Resource Locator*) con nuestro navegador, éste realiza una petición de red al servidor web y el retorno suele ser una página HTML. Al hacer click sobre un enlace, el ciclo vuelve a empezar.
+
+Angular permite crear aplicaciones de una sola página (SPA) y esto hace que el comportamiento citado sea diferente. En este caso, lo habitual suele ser realizar la petición al servidor web a la primera página, [index.html]{.verbatim}, y el **enrutador de Angular**, desde el lado cliente, controla el cambio de URL.
+
+El enrutamiento en Angular se compone de tres partes principales:
+
+- Las rutas definen qué componente se muestra cuando un usuario visita una URL específica.
+- Los ***outlets*** son marcadores de posición en las plantillas que cargan y renderizan componentes dinámicamente según la ruta activa.
+- Los enlaces permiten a los usuarios navegar entre las diferentes rutas de la aplicación sin recargar la página completa.
+
+
+## Configuración básica del router {#configuración-router}
+
+Para usar el sistema de rutas, debemos asegurar que  [provideRouter]{.verbatim} está en la configuración principal ([app.config.ts]{.configfile}) y se importa un conjunto de **rutas**, en este caso a través del fichero [app.routes.ts]{.configfile}.
+
+::: {.mycode size=footnotesize}
+[Configuración de la aplicación]{.title}
+``` ts
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, 
+         provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes)
+  ]
+};
+```
+:::
+
+En el componente principal [app]{.verbatim} deberíamos tener la configuración y en su template lo siguiente:
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+::: {.mycode}
+[Componente principal]{.title}
+``` ts
+import { RouterOutlet } 
+  from '@angular/router';
+
+@Component({
+  imports: [RouterOutlet],
+  // ...
+})
+```
+:::
+
+:::
+::: {.column width="44%" }
+
+::: {.mycode}
+[Plantilla del componente]{.title}
+``` html
+<router-outlet />
+```
+:::
+
+:::
+::::::::::::::
+
+
+La directiva [<router-outlet/>]{.verbatim} es un marcador de posición que indica la ubicación donde el enrutador debe renderizar el componente para la URL actual. Con los siguientes apartados se entenderá mejor
+
+
+## Ejemplo de rutas y navegación básica {#ejemplo-básico-rutas}
+
+Para entender cómo se crean las rutas necesarias de nuestra aplicación, vamos a suponer que nuestra aplicación cuenta con las siguientes URLs:
+
+- [/]{.verbatim}: página principal de la aplicación.
+- [/home]{.verbatim}: página principal del usuario.
+- [/login]{.verbatim}: página para poder loguearnos en la aplicación.
+
+Para ello, en el fichero de rutas ([app.routes.ts]{.configfile}) añadiremos lo siguiente:
+
+::: {.mycode size=footnotesize}
+[Ejemplo de rutas]{.title}
+``` ts
+import { Routes } from '@angular/router';
+import { Home } from './home/home';
+import { Login } from './user/login/login';
+
+export const routes: Routes = [
+    {
+        path: 'home',
+        component: Home,
+        title: 'Home Page'
+    },
+    {
+        path: 'login',
+        component: Login,
+        title: 'Login Page'
+    }
+];
+```
+:::
+
+El apartado [title]{.verbatim} de la configuración es opcional y sirve para modificar el título de la página, para que así sea más accesible.
+
+::: exercisebox
+Crea los dos componentes necesarios: [Home]{.verbatim} y [Login]{.verbatim} .
+:::
+
+Para poder navegar entre las rutas creadas se va a usar [RouterLink]{.verbatim}, por lo que en el template de nuestro componente principal vamos a crear unos enlaces de la siguiente manera:
+
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Vista principal]{.title}
+``` html
+<ul>
+  <li>
+    <a routerLink="/home">Home</a>
+  </li>
+  <li>
+    <a routerLink="/login">Login</a>
+  </li>
+</ul>
+<router-outlet />
+<div id="footer">footer</div>
+```
+:::
+
+:::
+::: {.column width="44%" }
+![](img/angular/angular-rutas.png){width="100%" framed=true}
+:::
+::::::::::::::
+
+Y añadiendo un poco de CSS para pruebas, nuestra vista debería quedar tal como aparece en la imagen.
+
+::: infobox
+Al navegar a [/login]{.verbatim} el sistema de rutas carga el componente **Login** en la posición de [<router-outlet />]{.verbatim}. Lo mismo al navegar a [/home]{.verbatim}.
+:::
 
