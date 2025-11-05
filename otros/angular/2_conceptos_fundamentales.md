@@ -601,7 +601,7 @@ Para usar el sistema de rutas, debemos asegurar que  [provideRouter]{.verbatim} 
 ::: {.mycode size=footnotesize}
 [Configuración de la aplicación]{.title}
 ``` ts
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, 
+import { ApplicationConfig, provideBrowserGlobalErrorListeners,
          provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -624,7 +624,7 @@ En el componente principal [app]{.verbatim} deberíamos tener la configuración 
 ::: {.mycode}
 [Componente principal]{.title}
 ``` ts
-import { RouterOutlet } 
+import { RouterOutlet }
   from '@angular/router';
 
 @Component({
@@ -721,5 +721,87 @@ Y añadiendo un poco de CSS para pruebas, nuestra vista debería quedar tal como
 
 ::: infobox
 Al navegar a [/login]{.verbatim} el sistema de rutas carga el componente **Login** en la posición de [<router-outlet />]{.verbatim}. Lo mismo al navegar a [/home]{.verbatim}.
+:::
+
+
+## Definir parámetros en la URL {#definir-parámetros}
+
+En las aplicaciones web actuales es habitual tener URLs parametrizadas, que son rutas dinámicas que posibilitan mostrar datos diferentes teniendo en cuenta los parámetros de la URL.
+
+Vamos a hacer un ejemplo con URLs del estilo:
+
+- [/user/:id/:social]{.verbatim}: nos mostrará la red [:social]{.verbatim} del usuario [:id]{.verbatim}.
+- [/user/:id]{.verbatim}: donde [:id]{.verbatim} es el parámetro y que nos mostrará la página del usuario concreto.
+
+Debemos añadir las rutas para que llamen a los componentes correspondientes:
+
+::: {.mycode}
+[Nuevas rutas]{.title}
+``` ts
+export const routes: Routes = [
+    {
+        path: 'user/:id/:social',
+        component: Social
+    },
+    {
+        path: 'user/:id/',
+        component: UserProfile
+    },
+];
+```
+:::
+
+Y ahora en los componentes correspondientes se debe realizar la lectura de los parámetros para poder ser usados. Para ello se va a usar [ActivatedRoute](https://angular.dev/guide/routing/read-route-state)
+
+::: {.mycode}
+[Componente]{.title}
+``` ts
+import { ActivatedRoute } from '@angular/router';
+// ...
+export class UserProfile {
+  readonly id: string | null;
+  private route = inject(ActivatedRoute);
+
+  constructor() {
+    this.id = this.route.snapshot.paramMap.get('id');
+  }
+}
+```
+:::
+
+::: exercisebox
+Es momento de realizar lo mismo para el componente **Social**.
+:::
+
+
+
+## Ruta *Wildcard* {#ruta-wildcard}
+
+Para manejar URLs inexistentes, se debe usar la ruta comodín [**]{.verbatim}, y **debe colocarse la última** dentro del array de rutas en el fichero [app.routes.ts]{.configfile}.
+
+::: {.mycode}
+[Rutas]{.title}
+``` ts
+export const routes: Routes = [
+  //...
+  {
+      path: '**',
+      component: NotFound
+  },
+];
+```
+:::
+
+
+
+## Orden de las rutas {#orden-rutas}
+
+Aunque no se ha dicho explícitamente, **las rutas deben tener un orden concreto** para que el funcionamiento sea el esperado. El router de Angular evalúa las rutas **de arriba hacia abajo**, siguiendo el orden en que aparecen en el array de configuración.
+
+Cuando el usuario navega a una URL, Angular busca la **primera ruta que coincide** con ese patrón, y deja de buscar. Es por eso que es importante **[poner las rutas más específicas antes](https://angular.dev/guide/routing/define-routes#how-angular-matches-urls)**.
+
+
+::: infobox
+Las rutas deben seguir un orden: de más específicas a menos.
 :::
 
