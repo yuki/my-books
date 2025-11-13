@@ -110,7 +110,7 @@ Un servicio se puede inyectar en otro servicio: [documentación](https://angular
 
 
 
-# Consumo de API REST {#consumo-api-rest}
+# Cómo usar una API REST {#usar-api-rest}
 
 Para realizar las peticiones HTTP a una API (*Application Programming Interface*) necesitamos usar [HTTPClient](https://angular.dev/api/common/http/HttpClient), que se proporciona a través de [provideHttpClient](https://angular.dev/api/common/http/provideHttpClient). Lo habitual es configurar este *provider* en la configuración general de nuestra aplicación, [src/app/app.config.ts]{.configfile} y aseguramos que contiene:
 
@@ -130,9 +130,13 @@ export const appConfig: ApplicationConfig = {
 ```
 :::
 
-Ahora ya podemos inyectar [HTTPClient{}]{.verbatim} dentro de nuestro componente, servicio u otra clase. Vamos a crear un nuevo servicio llamado **"Cliente"** para realizar las peticiones a la API:
+Ahora ya podemos inyectar [HTTPClient{}]{.verbatim} dentro de nuestro componente, servicio u otra clase. 
 
-::: {.mycode}
+## Crear servicio para API {#servicio-api}
+
+Vamos a crear un nuevo servicio llamado **"Cliente"** para realizar las peticiones a la API en las que se han incluido dos funciones. Para el ejemplo se ha utilizado la [API de eventos culturales de OpenData Euskadi](https://opendata.euskadi.eus/api-culture/?api=culture_events):
+
+::: {.mycode size=footnotesize}
 [Nuevo servicio]{.title}
 ``` ts
 import { HttpClient } from '@angular/common/http';
@@ -143,8 +147,97 @@ import { inject, Injectable } from '@angular/core';
 })
 export class Cliente {
   private http = inject(HttpClient);
+  private apiUrl = "https://api.euskadi.eus/culture/events/v1.0";
+  data = null;
+  page = 0;
+  elements = 20;
+
+  get_events(): Observable<any[]> {
+    this.page = this.page + 1;
+    return this.http.get<any>(this.apiUrl+
+        '/events?_elements='+this.elements+
+        '&_page='+this.page);
+  }
+
+  get_event(id:number): Observable<any[]> {
+    this.page = this.page + 1;
+    return this.http.get<any>(this.apiUrl+
+        '/events/'+id);
+  }
 }
 ```
 :::
 
 
+En el código anterior se ha hecho uso de [any]{.verbatim} como tipo de objeto de la respuesta, pero lo ideal sería tener en cuenta el modelo de datos recibido y tenerlo en cuenta.
+
+
+## Usar servicio de API {#usar-api}
+
+Una vez tengamos nuestro servicio creado, es momento de hacer uso de él y ver que funciona.
+
+::: exercisebox
+Crea una ruta y un componente para la URL [/events]{.verbatim} .
+:::
+
+En este nuevo componente vamos a hacer que al ir a la URL correspondiente se realice la llamada para obtener todos los eventos. Para ello, modifica la clase y la plantilla:
+
+
+:::::::::::::: {.columns }
+::: {.column width="44%" }
+
+
+::: {.mycode size=footnotesize}
+[Uso del servicio]{.title}
+``` ts
+export class Events {
+  cliente = inject(Cliente);
+  data: any = signal(null);
+  
+  constructor() {
+    this.cliente.get_events()
+      .subscribe((response) => {
+        this.data = response;
+        console.log(this.data);
+    });
+  }
+}
+```
+:::
+
+:::
+::: {.column width="44%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+``` html
+@for (event of data.items; 
+  track event.id;
+  let idx = $index) {
+  <h3>
+    <a href="/events/{{event.id}}">
+    {{event.nameEs}}
+    </a>
+  </h3>
+
+  <hr/>
+}
+```
+:::
+
+:::
+::::::::::::::
+
+La idea es que al cargar el componente, a través de la función [constructor()]{.verbatim} se realiza la llamada a la función del servicio que obtiene todos los eventos, y también lo manda a la consola de log para asegurar que está funcionando.
+
+Por otro lado, en la plantilla se recorre el objeto obtenido en formato JSON y mostramos a modo de ejemplo el nombre del evento.
+
+::: exercisebox
+Crea otra ruta [/events/:id]{.verbatim} para visualizar un evento concreto.
+:::
+
+
+
+
+
+<!-- https://angular.schule/blog/2025-06-openapi-generator -->
