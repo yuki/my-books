@@ -101,7 +101,7 @@ Si estamos en un entorno Windows, se recomienda realizar lo siguiente desde un *
 
 ``` console
 ruben@vega:~$ docker run  -it --name angular -p 4200:4200 \
---entrypoint /bin/bash -v "$(pwd):/workdir" --workdir /workdir node
+--entrypoint /bin/bash -v "$(pwd):/workdir" --workdir /workdir node:24
 root@a1d346824085:/workdir#
 ```
 :::
@@ -178,7 +178,7 @@ Para ejecutar el proyecto recién creado, entramos al directorio y ejecutamos [n
 [Ejecutar aplicación]{.title}
 
 ``` console
-ruben@vega:~/pruebas $ ng serve
+ruben@vega:~/pruebas $ ng serve --host 0.0.0.0
 Initial chunk files | Names         | Raw size
 main.js             | main          | 47.75 kB | 
 styles.css          | styles        | 96 bytes | 
@@ -193,6 +193,7 @@ Watch mode enabled. Watching for file changes...
 NOTE: Raw file sizes do not reflect development server 
 per-request transformations.
   -  Local:   http://localhost:4200/
+  -  Network: http://172.17.0.2:4200/
   -  press h + enter to show help
 ```
 :::
@@ -200,5 +201,41 @@ per-request transformations.
 Si abrimos nuestro navegador en la dirección indicada [http://localhost:4200](http://localhost:4200/), veremos lo siguiente:
 
 ![](img/angular/angular_app_base.png){width=70% framed=true}
+
+
+# Continuar desarrollo de una aplicación {#angular-producción}
+
+Si queremos continuar el desarrollo de una aplicación en otro equipo, o un proyecto creado hace tiempo que tenemos en GitHub, es necesario crear un entorno de desarrollo es similar a lo visto anteriormente, con matices.
+
+Para crear un nuevo entorno, los pasos a dar serían los siguientes:
+
+1. Descargar código fuente del proyecto
+2. Asegurar que tenemos instalado el Angular/Cli
+3. Instalar dependencias dentro del directorio del proyecto
+
+::: {.mycode}
+[Instalar dependencias]{.title}
+
+``` console
+root@025c365f282c:/workdir/proyecto# npm install 
+```
+:::
+
+4. Ejecutar aplicación 
+
+Tal como se puede ver, la única diferencia respecto a crear un proyecto nuevo es el punto de instalar las dependencias, ya que sin estas nuestra aplicación no podrá funcionar.
+
+
+# Poner en producción {#angular-producción}
+
+Cuando necesitemos [poner nuestra aplicación en producción](https://angular.dev/tools/cli/deployment) Angular tiene un asistente que nos permite realizar el despliegue en distintos servicios como [Firebase](https://firebase.google.com/), [GitHub Pages](https://pages.github.com/) o [Amazon S3](https://aws.amazon.com/es/s3/?nc2=h_ql_prod_st_s3).
+
+Es importante entender cuáles son los pasos que hay que realizar para poner nuestra aplicación en producción:
+
+1. **Construir los ficheros de la aplicación**: El código TypeScript, junto con las vistas HTML y su CSS, se transpila y genera los ficheros finales necesarios de nuestra aplicación. Estos ficheros son estáticos.
+    - Este proceso se puede realizar también con el comando [ng build]{.commandbox} cuando queramos.
+2. **Desplegar aplicación**: Es necesario desplegar los ficheros detrás de un servidor web. Se puede realizar de dos maneras:
+    - Usar una **plataforma** (Firebase, GitHub Pages, Amazon S3, ...) donde desplegar nuestra aplicación. Para ello se debe añadir la dependencia necesaria y usar el asistente [ng deploy]{.commandbox} para desplegar la aplicación.
+    - Usar un **servidor web propio**. Para ello debemos seguir las [recomendaciones necesarias](https://angular.dev/tools/cli/deployment#server-configuration) para configurar nuestro servidor.
 
 
