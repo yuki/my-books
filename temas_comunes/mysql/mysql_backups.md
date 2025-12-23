@@ -110,6 +110,14 @@ Al hacer el backup de esta manera, en el fichero no aparecerá la creación de l
 
 Puede darse casos que nos interese realizar backups de una única tabla, o poder hacer backups de una tabla de manera más seguida, y para ello podremos ejecutar:
 
+::: mycode
+[Hacer backup de una sola tabla]{.title}
+
+``` console
+root@ubuntu:~# mysqldump DB1 asignaturas > backup-DB1-asignaturas.sql
+```
+:::
+
 
 
 De esta manera hacemos backup de la tabla "asignaturas" de la base de datos DB1.
