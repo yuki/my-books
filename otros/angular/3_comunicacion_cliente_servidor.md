@@ -199,8 +199,8 @@ export class Events {
   constructor() {
     this.cliente.get_events()
       .subscribe((response) => {
-        this.data = response;
-        console.log(this.data);
+        this.data.set(response);
+        console.log(this.data());
     });
   }
 }
@@ -213,17 +213,20 @@ export class Events {
 ::: {.mycode size=footnotesize}
 [Plantilla]{.title}
 ``` html
-@for (event of data.items; 
-  track event.id;
-  let idx = $index) {
-  <h3>
-    <a href="/events/{{event.id}}">
-    {{event.nameEs}}
-    </a>
-  </h3>
+@if (data()) {
+  @for (event of data.items; 
+    track event.id;
+    let idx = $index) {
+    <h3>
+      <a href="/events/{{event.id}}">
+      {{event.nameEs}}
+      </a>
+    </h3>
 
-  <hr/>
+    <hr/>
+  }
 }
+
 ```
 :::
 
