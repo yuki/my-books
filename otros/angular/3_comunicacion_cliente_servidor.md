@@ -214,7 +214,7 @@ export class Events {
 [Plantilla]{.title}
 ``` html
 @if (data()) {
-  @for (event of data.items; 
+  @for (event of data().items;
     track event.id;
     let idx = $index) {
     <h3>
