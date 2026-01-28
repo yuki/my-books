@@ -744,7 +744,7 @@ export const routes: Routes = [
         component: Social
     },
     {
-        path: 'user/:id/',
+        path: 'user/:id',
         component: UserProfile
     },
 ];
