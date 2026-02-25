@@ -14,6 +14,7 @@ on:
           - AWS
           - AWS_docentes
           - Clonezilla
+          - Clonezilla_euskeraz
           - Como_hacer_documentacion
           - Dokumetazioa_egiteko
           - Desarrollo_Interfaces
@@ -71,6 +72,7 @@ jobs:
           otros/aws/aws.pdf
           otros/aws_docentes/aws_docentes.pdf
           otros/clonezilla/clonezilla.pdf
+          otros/clonezilla/euskera/clonezilla_euskeraz.pdf
           otros/Docker/docker.pdf
           otros/Docker/euskera/docker_euskeraz.pdf
           otros/git/git.pdf
@@ -99,7 +101,7 @@ jobs:
           anexos/ubuntu_raid1/ubuntu_raid1.pdf
           anexos/virtualbox_networking/virtualbox_networking.pdf
           temas_comunes/wsl/wsl.pdf
-          temas_comunes/wsl/wsl_euskeraz.pdf
+          temas_comunes/wsl/euskera/wsl_euskeraz.pdf
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
       with:
