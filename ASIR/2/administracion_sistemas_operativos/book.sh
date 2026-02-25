@@ -1,5 +1,6 @@
 echo [Windows Server 2022]{.part}
 cat ../../../temas_comunes/windows_server/Windows_Server.md
+cat ../../../temas_comunes/windows_server/sysprep.md
 echo [GNU/Linux]{.part}
 cat ../../../temas_comunes/gnu_linux/gnu_linux.md
 cat ../../../temas_comunes/gnu_linux/samba.md
