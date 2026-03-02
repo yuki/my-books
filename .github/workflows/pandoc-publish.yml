@@ -32,6 +32,7 @@ on:
           - Monitorizacion_Munin
           - PFsense
           - Programazioan_sartu
+          - RAID_software
           - Redes
           - SGBD
           - SGE
@@ -97,6 +98,7 @@ jobs:
           anexos/glosario/glosario.pdf
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf
           anexos/monitorizacion_munin/monitorizacion_munin.pdf
+          anexos/raid_software/raid_software.pdf
           anexos/sistemas_monitorizacion/sistemas_monitorizacion.pdf
           anexos/ubuntu_raid1/ubuntu_raid1.pdf
           anexos/virtualbox_networking/virtualbox_networking.pdf
