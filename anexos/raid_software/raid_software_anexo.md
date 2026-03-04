@@ -109,7 +109,7 @@ Para crear el RAID haremos uso del siguiente comando:
 
 
 ::: {.mycode size=footnotesize}
-[Comprobar discos duros]{.title}
+[Crear RAID-1]{.title}
 
 ``` console
 root@vega:~# mdadm --create  /dev/md0  --level=1 --raid-devices=2 /dev/vdb /dev/vdc

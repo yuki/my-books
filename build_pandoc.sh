@@ -32,6 +32,7 @@ LIBROS=(
     "anexos/instalar_ubuntu_lts/ instalar_ubuntu_lts"
     "anexos/monitorizacion_munin/ monitorizacion_munin"
     "anexos/raid_software/ raid_software"
+    "anexos/raid_software/euskera/ raid_software_euskeraz"
     "anexos/sistemas_monitorizacion/ sistemas_monitorizacion"
     "anexos/ubuntu_raid1/ ubuntu_raid1"
     "anexos/virtualbox_networking/ virtualbox_networking"

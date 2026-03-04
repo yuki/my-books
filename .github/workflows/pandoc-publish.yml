@@ -33,6 +33,7 @@ on:
           - PFsense
           - Programazioan_sartu
           - RAID_software
+          - RAID_software_euskeraz
           - Redes
           - SGBD
           - SGE
@@ -99,6 +100,7 @@ jobs:
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf
           anexos/monitorizacion_munin/monitorizacion_munin.pdf
           anexos/raid_software/raid_software.pdf
+          anexos/raid_software/euskera/raid_software_euskeraz.pdf
           anexos/sistemas_monitorizacion/sistemas_monitorizacion.pdf
           anexos/ubuntu_raid1/ubuntu_raid1.pdf
           anexos/virtualbox_networking/virtualbox_networking.pdf
