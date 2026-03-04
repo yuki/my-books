@@ -56,7 +56,7 @@ Para crear particiones en GNU/Linux existen distintos programas (**Gparted**, po
 Vamos a usar [cfdisk]{.commandbox} para cada uno de los discos:
 
 ::: mycode
-[Particionar /dev/sdb]{.title}
+[Particionar /dev/vdb]{.title}
 
 ``` console
 root@vega:~# cfdisk /dev/vdb

@@ -59,7 +59,7 @@ GNU/Linuxen partizioak sortzeko hainbat programa daude (**Gparted**, adibidez), 
 [cfdisk]{.commandbox} erabiliko dugu disko bakoitzerako:
 
 ::: mycode
-[Partizioak sortu /dev/sdb-n]{.title}
+[Partizioak sortu /dev/vdb-n]{.title}
 
 ``` console
 root@vega:~# cfdisk /dev/vdb
@@ -163,7 +163,7 @@ GNU/Linuxen RAID sistema bat erabiltzean, RAID sistema guztien egoera orokorra e
 
 
 ::: {.mycode size=footnotesize}
-[RAID-1 egoera egiaztatu]{.title}
+[RAID-en egoera egiaztatu]{.title}
 
 ``` console
 root@vega:~# cat /proc/mdstat
@@ -182,7 +182,7 @@ Ikusten badugu, egoera honetan sistemak sinkronizatzen ari dela adierazten digu.
 Sinkronizazioa amaitzen denean, honelako zerbait agertuko litzateke:
 
 ::: {.mycode size=footnotesize}
-[Comprobar estado RAID-1]{.title}
+[RAID-en egoera egiaztatu]{.title}
 
 ``` console
 root@vega:~# cat /proc/mdstat
@@ -197,7 +197,7 @@ unused devices: <none>
 RAID degradatu bat begiratzen badugu, hau da, disko bat kenduta dagoenean, honelako zerbait agertuko zaigu:
 
 ::: {.mycode size=footnotesize}
-[RAID-1 con fallo]{.title}
+[RAID-1 akatsekin]{.title}
 
 ``` console
 root@vega:~# cat /proc/mdstat
