@@ -1,5 +1,5 @@
 
-# Raid 1 Software en GNU/Linux {#raid-software}
+# Raid-1 Software en GNU/Linux {#raid-software}
 
 Vamos a realizar la configuración de un RAID-1 en un sistema GNU/Linux usando la herramienta [mdadm]{.commandbox}. Debería estar instalado en nuestro sistema (Debian, Ubuntu, Mint, ...), ya que es un comando básico, aunque en otras distribuciones quizá sea necesario instalarlo.
 
@@ -25,6 +25,10 @@ vdc      8:32   0   10G  0 disk
 :::
 
 Tal como se puede ver, tenemos dos discos duros sin particionar: [vdb]{.verbatim} y [vdc]{.verbatim}, de 10GB cada uno. En otros casos puede ser **sdb**, **sdc**...
+
+::: infobox
+Algunas distribuciones GNU/Linux permiten crear un sistema RAID antes de realizar la instalación, y así instalar el sistema operativo sobre el propio RAID.
+:::
 
 
 ### Crear particiones {#crear-particiones}
@@ -86,6 +90,17 @@ Hasta ahora los cambios realizados en el disco son "virtuales", no se han aplica
 ::: warnbox
 Recuerda que hay que hacer estos cambios en cada disco que participe en el RAID.
 :::
+
+Al final de todo el proceso, tendríamos lo siguiente:
+
+:::::::::::::: {.columns }
+::: {.column width="45%"}
+![Particiones creadas](img/anexos/raid_software/raid-particiones-1.svg){width="100%"}
+:::
+::: {.column width="45%" }
+![Creado RAID-1 sobre las particiones](img/anexos/raid_software/raid-particiones-2.svg){width="100%"}
+:::
+::::::::::::::
 
 
 ## Crear RAID-1 {#crear-raid}
@@ -246,4 +261,29 @@ Para ello podemos hacer uso de Gparted seleccionando [md0]{.verbatim} como disco
 
 ![](img/anexos/raid_software/gparted-raid.png){width=85% framed=true}
 
+Tras realizar la creación del sistema de ficheros, la imagen de todos los pasos que hemos creado sería el siguiente:
+
+![](img/anexos/raid_software/raid-final.svg){width=65%}
+
+Por lo tanto, el resumen final sería:
+
+1. Crear particiones si es necesario.
+2. Crear sistema RAID en las particiones/discos correspondientes.
+3. Crear sistema de ficheros sobre el RAID creado.
+4. Usar el sistema de ficheros de manera habitual.
+
+
+# Ejercicio propuesto {#ejercicio-raid}
+
+Para entender mejor cómo funciona los sistemas RAID se propone realizar el siguiente ejercicio:
+
+1. Crear 3 discos duros en una máquina virtual de 15GB cada uno.
+2. Crear sistema RAID-1 de 10GB en el que participen los 3 discos duros.
+3. Crear sistema RAID-5 con el espacio restante.
+
+
+![](img/anexos/raid_software/raid-ejercicio.svg){width=65%}
+
+
+4. Crear sistemas de ficheros sobre los RAID recién creados.
 
