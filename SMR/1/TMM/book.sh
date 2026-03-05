@@ -6,6 +6,8 @@ echo [Hardware]{.part}
 cat ../../../DAM/1/sistemas_informaticos/1_introduccion_eus.md
 cat ../../../DAM/1/sistemas_informaticos/2_hardware_eus.md
 cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid_eus.md
+echo [RAID-1 software Linuxen]{.part}
+cat ../../../anexos/raid_software/euskera/raid_software_anexo.md
 echo [Ariketak]{.part}
 cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
 cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
