@@ -3,9 +3,9 @@
 
 Tal como hemos visto, la [gestión de copias de seguridad](#gestion_copias_de_seguridad) es de vital importancia para preservar los datos de nuestra empresa. Debemos interiorizar que el realizar copias de seguridad, tanto en nuestro ámbito personal como profesional, es una parte en la gestión de nuestra información así como el comprobar que se realizan de manera correcta.
 
-Al igual que sucede en Windows, existen múltiples sistemas para realizar copias de seguridad en GNU/Linux, pero uno de los más sencillos de utilizar ya suele venir instalado en la gran mayoría de las distribuciones hoy día: **rsync**.
+Al igual que sucede en Windows, existen múltiples sistemas para realizar copias de seguridad en GNU/Linux, pero uno de los más sencillos de utilizar ya suele venir instalado en la gran mayoría de las distribuciones hoy día: [rsync]{.commandbox}.
 
-## Rsync como sistema para sincronizar directorios {#rsync-como-sistema-para-sincronizar-directorios}
+## Rsync para sincronizar directorios (copia exacta) {#rsync-como-sistema-para-sincronizar-directorios}
 
 Rsync es una aplicación que ofrece la posibilidad de realizar la sincronización de directorios (de manera local o en remoto) de manera eficiente, ya que es capaz de sincronizar sólo las modificaciones realizadas en los ficheros.
 
@@ -13,7 +13,7 @@ Por defecto, **rsync** copia las modificaciones o ficheros nuevos que existen en
 
 La manera más sencilla de utilizar rsync es para crear una sincronización de un directorio local a un servidor remoto en el que almacenar una copia de los datos.
 
-::: errorbox
+::: infobox
 **Esta sincronización remota equivale a realizar una copia completa de todos los datos (de manera recursiva), o lo que es lo mismo, un *full-backup*.**
 :::
 
@@ -35,7 +35,7 @@ ruben@vega:~$ rsync -av directorio_origen/  directorio_destino2
 
 En este ejemplo, como hemos añadido una barra "/" al final del directorio origen, lo que estamos indicando es que el contenido (y sólo el contenido) se va a sincronizar dentro de "directorio_destino2".
 
-::: errorbox
+::: warnbox
 Hay que tener cuidado con esa "**/**", ya que ponerla o no ponerla da resultados distintos en la sincronización.
 :::
 
@@ -69,6 +69,10 @@ Con este comando realizaremos la sincronización al servidor remoto haciendo uso
 
 Tal como se ha comentado, rsync hará uso de SSH para realizar la conexión remota, por lo que los datos se enviarán de manera segura y cifrada.
 
+::: errorbox
+Con lo visto hasta ahora sólo podríamos recuperar el estado final de un fichero.
+:::
+
 ### Obtener datos remotos {#obtener-datos-remotos}
 
 Si queremos realizar la sincronización en el orden inverso, obtener los datos estando en el servidor de backup y traernos los datos de un servidor remoto, el comando sería:
@@ -82,16 +86,40 @@ root@backups:~# rsync -av 10.40.30.5:/home/sistemas  /home/backups
 
 En este caso, estando en el servidor de backups, vamos a traernos los datos del servidor 10.40.30.5. En este caso, antes de la IP del servidor no hemos puesto usuario, por lo que se realizará la conexión con el mismo usuario que somos actualmente, en este caso **root**.
 
-### Opciones extra {#opciones-extra}
+## Rsync para hacer backups
+
+En los ejemplos anteriores hemos realizado copias completas cada vez que ejecutamos rsync, por lo que no podemos recuperar cómo estaba un fichero en una fecha exacta.
+
+Si queremos realizar un **backup incremental** tenemos que añadir un parámetros nuevos, siendo el comando final así:
+
+
+::: {.mycode size=footnotesize}
+[Hacer backup incremental]{.title}
+```console
+ruben@vega:~$ rsync -av --backup --backup-dir="Old/`date -I`" origen/  destino
+```
+:::
+
+La explicación de los nuevos parámetros es:
+
+- **[\-b]{.verbatim}** o **[\-\-backup]{.verbatim}**: sirve para crear un backup de los ficheros que han sido modificados (en lugar de ser reemplazados).
+- **[\-\-backup-dir=]{.verbatim}**: indica dónde se van a guardar **en destino** los ficheros modificados antes de recibir los últimos cambios. Dependiendo de cómo queremos que sea nuestro backup incremental, podemos usar un directorio o poner fechas, como en el ejemplo anterior. Como ejemplo:
+  - **[\-\-backup-dir="Old/\`date -I\`"]{.verbatim}**: Este ejemplo sirve para crear backups incrementales diarios. En el directorio destino se crearán directorios de la siguiente forma: "**2026-03-04**", "**2026-05-01**",... y así podremos acceder a cómo estaban los ficheros si se han modificado en ciertas fechas.
+  - **[\-\-backup-dir="Old/\`date +%Y-%m-%d_%H:%M\`"]{.verbatim}**: Similar al caso anterior, pero añadiendo la hora, por si nuestro sistema de backup se ejecuta cada pocos minutos: "**2026-03-04_16:34**", "**2026-04-01_00:04**", ...
+
+
+
+
+## Opciones extra {#opciones-extra}
 
 Hasta ahora hemos visto las opciones más básicas para sincronizar directorios (tanto locales como remotos), pero rsync cuenta con muchas opciones extra que es interesante conocer:
 
--   **\-z** o **\-\-compress** sirve para comprimir los datos antes de realizar el envío o recepción de los datos. Sólo es útil si vamos a realizar la sincronización de manera remota.
+-   **[\-z]{.verbatim}** o **[\-\-compress]{.verbatim}** sirve para comprimir los datos antes de realizar el envío o recepción de los datos. Sólo es útil si vamos a realizar la sincronización de manera remota.
 
--   **\-\-progress** sirve para ver el progreso de cómo va la transferencia de los ficheros
+-   **[\-\-progress]{.verbatim}** sirve para ver el progreso de cómo va la transferencia de los ficheros
 
--   **\-\-delete** sirve para borrar en el destino los ficheros que no existen en el origen.
+-   **[\-\-delete]{.verbatim}** sirve para borrar en el destino los ficheros que no existen en el origen. **No habría que usarlo con la opción [\-\-backup]{.verbatim}**
 
--   **\-\-exclude "\*txt"** excluye los ficheros que termina con la extensión "txt" al hacer la sincronización.
+-   **[\-\-exclude "\*txt"]{.verbatim}** excluye los ficheros que termina con la extensión "txt" al hacer la sincronización.
 
 

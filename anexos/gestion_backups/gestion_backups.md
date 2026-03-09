@@ -229,7 +229,7 @@ Por lo tanto, a la hora de utilizar esta metodología, como ya se ha comentado, 
 
 #### Incrementales {#incrementales}
 
-﻿Supongamos que realizamos una copia completa de los datos el domingo, esta será la base para las siguientes copias incrementales de los datos:
+Supongamos que realizamos una copia completa de los datos el domingo, esta será la base para las siguientes copias incrementales de los datos:
 
 
 ![](img/anexos/gestion_backups/incremental.png){width="70%"}
