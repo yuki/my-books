@@ -17,6 +17,7 @@ on:
           - Clonezilla_euskeraz
           - Como_hacer_documentacion
           - Dokumetazioa_egiteko
+          - Desarrollo_Entorno_Cliente
           - Desarrollo_Interfaces
           - Docker
           - Docker_euskeraz
@@ -95,6 +96,7 @@ jobs:
           DAM/2/desarrollo_interfaces/desarrollo_interfaces.pdf
           DAM/2/enpresa_kudeaketako_sistemak/eks.pdf
           DAM/2/sistemas_gestion_empresarial/sge.pdf
+          DAW/2/desarrollo_entorno_cliente/desarrollo_entorno_cliente.pdf
           SMR/1/TMM/tmm.pdf
           anexos/gestion_backups/gestion_backups.pdf
           anexos/gestion_backups/euskera/gestion_backups_euskeraz.pdf
