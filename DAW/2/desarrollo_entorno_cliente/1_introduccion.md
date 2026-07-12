@@ -46,7 +46,7 @@ En esta época, cualquier procesamiento complejo debía realizarse en el servido
 
 ### Lenguajes en entorno servidor {#primeros-lenguajes-entorno-servidor}
 
-Aunque en esta asignatura nos vamos a centrar en el entorno cliente, es interesante conocer que en estos primeros años, para poder hacer las páginas web dinámicas, se hacía uso de los lenguajes más habituales de la época en entornos UNIX, como son [C](https://en.wikipedia.org/wiki/C_(programming_language)), [Perl](https://en.wikipedia.org/wiki/Perl) y posteriormente [Python](https://en.wikipedia.org/wiki/Python_(programming_language)).
+Aunque en esta asignatura nos vamos a centrar en el entorno cliente, es interesante conocer que en estos primeros años, para poder hacer las páginas web programando en el *backend*, se hacía uso de los lenguajes más habituales de la época en entornos UNIX, como son [C](https://en.wikipedia.org/wiki/C_(programming_language)), [Perl](https://en.wikipedia.org/wiki/Perl) y posteriormente [Python](https://en.wikipedia.org/wiki/Python_(programming_language)).
 
 Para usar estos lenguajes de programación se usaba el interfaz [**CGI** (*Common Gateway Interface*)](https://en.wikipedia.org/wiki/Common_Gateway_Interface), que permitía a los servidores web ejecutar un programa externo que procesaba la petición HTTP.
 
@@ -58,6 +58,10 @@ El proceso funcionaba de la siguiente manera para cada petición HTTP:
 4. Finalizar el proceso.
 
 Esto hacía que consumiese mucha CPU y recursos de memoria.
+
+::: warnbox
+El uso de CGI fue antes de los servidores de aplicaciones o módulos en los servidores web.
+:::
 
 ## JavaScript: el nacimiento de las páginas dinámicas {#javascript-nacimiento}
 
@@ -120,13 +124,33 @@ En 2020 Adobe dejó de dar soporte a Flash y los navegadores eliminaron completa
 
 ## AJAX: aplicaciones más rápidas {#ajax}
 
-A principios de los años 2000 comenzó a popularizarse una técnica llamada **[AJAX](https://en.wikipedia.org/wiki/Ajax_(programming))** (*Asynchronous JavaScript and XML*).
+En 1999 Microsoft crea la técnica llamada **[AJAX](https://en.wikipedia.org/wiki/Ajax_(programming))** (*Asynchronous JavaScript and XML*), como evolución a las etiquetas *iframe* de 1996, todo ello exclusivo de Internet Explorer 5.0.
 
 Antes de AJAX, cada vez que el usuario realizaba una acción era necesario recargar completamente la página. Gracias a AJAX, el navegador podía comunicarse con el servidor en segundo plano y actualizar únicamente una parte de la página. Esto permitió crear aplicaciones mucho más rápidas y con una mejor experiencia de usuario.
 
 ::: infobox
 Aunque originalmente utilizaba XML para intercambiar datos, actualmente la mayoría de aplicaciones utilizan el formato **[JSON](https://en.wikipedia.org/wiki/JSON)**.
 :::
+
+## jQuery: simplificando el desarrollo web {#jquery-simplificando-desarrollo-web}
+
+A partir de 2006, **[jQuery](https://jquery.com/)** se convirtió en una de las bibliotecas de JavaScript más populares. En aquella época, desarrollar aplicaciones web con JavaScript puro resultaba complicado porque **cada navegador implementaba el DOM y los eventos de forma ligeramente diferente**. Además, muchas funcionalidades que hoy consideramos habituales, como `querySelector()`, `fetch()` o una gestión uniforme de eventos, todavía no existían o no estaban disponibles en todos los navegadores.
+
+El principal objetivo de jQuery era ofrecer una API sencilla y compatible con todos los navegadores. Gracias a ello, los desarrolladores podían seleccionar elementos utilizando selectores similares a CSS, modificar el contenido de una página, gestionar eventos, crear animaciones o realizar peticiones AJAX sin preocuparse por las diferencias entre navegadores. Esto reducía considerablemente la cantidad de código necesario y facilitaba el desarrollo de aplicaciones web.
+
+Durante varios años, jQuery estuvo presente en la mayoría de los sitios web de Internet y fue una herramienta casi imprescindible para cualquier desarrollador frontend. Su éxito fue tan grande que muchas de las funcionalidades que popularizó terminaron incorporándose de forma nativa a JavaScript y a los navegadores modernos.
+
+:::infobox
+Muchas de las funcionalidades que popularizó terminaron incorporándose de forma nativa a JavaScript y a los navegadores modernos.
+:::
+
+Con la aparición de HTML5, la estandarización de las APIs del navegador y el desarrollo de frameworks como **Angular**, **React** y **Vue.js**, la necesidad de utilizar jQuery fue disminuyendo. En la actualidad sigue presente en algunos proyectos antiguos, pero en las nuevas aplicaciones web es mucho menos frecuente, ya que los navegadores modernos y los frameworks actuales ofrecen soluciones más completas y potentes.
+
+Aunque jQuery fue la más conocida, durante esos años hubo otras librerías que trataban de extender JavaScript:
+
+- **[Prototype](https://en.wikipedia.org/wiki/Prototype_JavaScript_Framework)**, de 2005, muy utilizada junto con Ruby on Rails. Añadía métodos al DOM y simplificaba JavaScript.
+- **script.aculo.us**, creada sobre Protoype, era una librería para crear animaciones, efectos visuales y *drag & drop*.
+- [Ext JS](https://en.wikipedia.org/wiki/Ext_JS): Orientada a aplicaciones empresariales con interfaces muy similares a programas de escritorio. Sigue existiendo, aunque con un uso mucho menor.
 
 ## HTML5: el navegador gana capacidades {#html5}
 
@@ -302,12 +326,12 @@ En  la imagen podemos  diferenciar:
 - **Cliente**: Formado por nuestro equipo y el navegador web que usemos.
 - **Servidor**: Una aplicación web moderna suele contar con:
   - **Servidor Web**: [Apache HTTP Server](https://httpd.apache.org/) o [Nginx](https://nginx.org/), por poner dos ejemplos muy conocidos.
-  - Lenguaje de programación entorno servidor / *frameweork*
+  - Lenguaje de programación entorno servidor / *framework*
   - **Base de datos**: en las bases de datos relacionales las más conocidas son: [MySQL](https://www.mysql.com/), [MariaDB](https://mariadb.org/) o [PostgreSQL](https://www.postgresql.org/).
 
 ## Tecnologías del lado del cliente {#tecnologías-lado-cliente}
 
-Actualmente existen tres tecnologías fundamentales que se usan en el entorno cliente:
+Tal como hemos visto previamente, actualmente existen tres tecnologías fundamentales que se usan en el entorno cliente:
 
 - **HTML**: define la estructura de una página.
 - **CSS**: define el aspecto visual.
@@ -361,6 +385,43 @@ Hoy en día, debido a lo complejo que es crear un motor de renderizado, aunque e
   Apple obliga a hacer uso de este motor en todos los navegadores web de dispositivos iOS e iPad. Esto quiere decir que aunque uses la aplicación Chrome, el motor de renderizado en iOS es Webkit.
 - **[Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine))**: En 2013 Google anuncia que crea un fork de Webkit para crear su propio motor y de esta manera ser más independiente de Apple en el desarrollo del motor. Es el motor utilizado en el navegador web de código abierto [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)). Hoy día es el motor más usado ya que muchos navegadores hacen uso de él: Microsoft Edge, Opera, Vivaldi, Brave...
 
-![Meme de navegadores y motores de renderizado](img/dec/web_meme.jpg){width=100% framed=true}
+![Meme de navegadores y motores de renderizado. Origen: [programmerhumor](https://programmerhumor.io/webdev-memes/when-you-realize-every-new-ai-browser-is-just-chromium-in-disguise-gadg)](img/dec/web_meme.jpg){width=100% framed=true}
 
-En la Wikipedia se puede ver una [comparativa de navegadores web](https://en.wikipedia.org/wiki/Comparison_of_web_browsers) 
+En la Wikipedia se puede ver una [comparativa de navegadores web](https://en.wikipedia.org/wiki/Comparison_of_web_browsers) y otra [comparativa de los motores de renderizado](https://en.wikipedia.org/wiki/Comparison_of_browser_engines).
+
+# Herramientas para desarrollar {#herramientas-desarrollo}
+
+Aunque a lo largo del curso usaremos distintas herramientas, al inicio de curso sólo haremos uso de unas pocas. Para empezar haremos uso de:
+
+- **Editor**: [Visual Studio Code](https://code.visualstudio.com/) (extensiones recomendadas: ESLint, Prettier, Live Server).
+- **[Git](https://git-scm.com/)** como sistema de control de versiones.
+- **[GitHub](https://github.com/)** como repositorio remoto.
+- **Navegador web**: Firefox, Chrome, ...
+  - **Herramientas de desarrollador**: Todos los navegadores incluyen herramientas para facilitar el desarrollo. Normalmente se abren pulsando `F12` o `Ctrl + Shift + I`.
+
+<!-- 
+
+# Organización de un proyecto web {#organización-proyecto}
+
+Un proyecto suele organizarse mediante carpetas.
+
+Ejemplo:
+
+```
+proyecto/
+│
+├── index.html
+├── css/
+│     estilos.css
+│
+├── js/
+│     app.js
+│
+├── img/
+│
+├── assets/
+│
+└── components/
+```
+
+Una buena organización facilita el mantenimiento del proyecto. -->
