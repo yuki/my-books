@@ -134,7 +134,7 @@ Aunque originalmente utilizaba XML para intercambiar datos, actualmente la mayor
 
 ## jQuery: simplificando el desarrollo web {#jquery-simplificando-desarrollo-web}
 
-A partir de 2006, **[jQuery](https://jquery.com/)** se convirtió en una de las bibliotecas de JavaScript más populares. En aquella época, desarrollar aplicaciones web con JavaScript puro resultaba complicado porque **cada navegador implementaba el DOM y los eventos de forma ligeramente diferente**. Además, muchas funcionalidades que hoy consideramos habituales, como `querySelector()`, `fetch()` o una gestión uniforme de eventos, todavía no existían o no estaban disponibles en todos los navegadores.
+A partir de 2006, **[jQuery](https://jquery.com/)** se convirtió en una de las bibliotecas de JavaScript más populares. En aquella época, desarrollar aplicaciones web con JavaScript puro resultaba complicado porque **cada navegador implementaba el DOM y los eventos de forma ligeramente diferente**. Además, muchas funcionalidades que hoy consideramos habituales, como [querySelector()]{.verbatim}, [fetch()]{.verbatim} o una gestión uniforme de eventos, todavía no existían o no estaban disponibles en todos los navegadores.
 
 El principal objetivo de jQuery era ofrecer una API sencilla y compatible con todos los navegadores. Gracias a ello, los desarrolladores podían seleccionar elementos utilizando selectores similares a CSS, modificar el contenido de una página, gestionar eventos, crear animaciones o realizar peticiones AJAX sin preocuparse por las diferencias entre navegadores. Esto reducía considerablemente la cantidad de código necesario y facilitaba el desarrollo de aplicaciones web.
 
@@ -166,7 +166,7 @@ Gracias a HTML5, los navegadores modernos comenzaron a convertirse en una plataf
 ::::::::::::::
 
 - Reproducción de vídeo y audio sin complementos (Youtube empezó a usarlo como reproductor para el iPhone).
-- Dibujos mediante la etiqueta `<canvas>`.
+- Dibujos mediante la etiqueta [<canvas>]{.verbatim}.
 - Gráficos vectoriales con SVG.
 - Almacenamiento local de datos.
 - Geolocalización.
@@ -397,7 +397,7 @@ Aunque a lo largo del curso usaremos distintas herramientas, al inicio de curso 
 - **[Git](https://git-scm.com/)** como sistema de control de versiones.
 - **[GitHub](https://github.com/)** como repositorio remoto.
 - **Navegador web**: Firefox, Chrome, ...
-  - **Herramientas de desarrollador**: Todos los navegadores incluyen herramientas para facilitar el desarrollo. Normalmente se abren pulsando `F12` o `Ctrl + Shift + I`.
+  - **Herramientas de desarrollador**: Todos los navegadores incluyen herramientas para facilitar el desarrollo. Normalmente se abren pulsando [F12]{.verbatim} o [Ctrl + Shift + I]{.verbatim}.
 
 <!-- 
 

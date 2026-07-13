@@ -76,7 +76,7 @@ Desde 2015, cada año se publican nuevas versiones del estándar incorporando pe
 | 2005 | Se populariza AJAX y comienzan a aparecer aplicaciones web más dinámicas. |
 | 2006 | jQuery simplifica el desarrollo con JavaScript. |
 | 2009 | Se publica ECMAScript 5. Mejoras en  los objetos, modo "estricto", mejoras en JSON, ... |
-| 2015 | ECMAScript 2015 (ES6) introduce una profunda modernización del lenguaje. Variables `let` y `const`, clases, módulos, promesas, parámetros por defecto... |
+| 2015 | ECMAScript 2015 (ES6) introduce una profunda modernización del lenguaje. Variables [let]{.verbatim} y [const]{.verbatim}, clases, módulos, promesas, parámetros por defecto... |
 | 2016-Actualidad | Publicación anual de nuevas versiones de ECMAScript. |
 
 Table: {tablename=yukitblr colspec=X[-1]X[l]}
@@ -151,7 +151,7 @@ Estas restricciones protegen al usuario frente a posibles páginas maliciosas.
 
 ## Política del mismo origen (*Same-Origin Policy*) {#sop}
 
-Una medida de seguridad muy importante es la **[Política del mismo origen** (*Same-Origin Policy*)](https://en.wikipedia.org/wiki/Same-origin_policy). Esta política impide que una página web pueda acceder libremente a la información de otra página perteneciente a un sitio diferente. Si el usuario tiene abiertas simultáneamente dos páginas distintas, el código de una de ellas no podrá acceder al contenido de la otra.
+Una medida de seguridad muy importante es la **[Política del mismo origen (*Same-Origin Policy*)](https://en.wikipedia.org/wiki/Same-origin_policy)**. Esta política impide que una página web pueda acceder libremente a la información de otra página perteneciente a un sitio diferente. Si el usuario tiene abiertas simultáneamente dos páginas distintas, el código de una de ellas no podrá acceder al contenido de la otra.
 
 ## Restricciones en las peticiones HTTP {#cors}
 
