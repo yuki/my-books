@@ -97,9 +97,7 @@ La creación de máquinas virtuales nos permite crear entornos aislados en los q
 Las máquinas virtuales se virtualizan a nivel de hardware, donde debe existir un Sistema Operativo con Hypervisor que permita dicha virtualización. Por otro lado, los contenedores se virtualizan en la capa de aplicación, haciendo que este sistema sea mucho más ligero, permitiendo utilizar esos recursos en los servicios que necesitamos hacer funcionar dentro de los contenedores.
 
 
-::: center
 ![Infraestructura Máquinas Virtuales vs Docker](img/docker/docker_vs_vm.png){width="85%"}
-:::
 
 
 En la imagen se puede apreciar una comparativa diferenciando cómo quedaría una infraestructura de 3 aplicaciones levantadas en distintas máquinas virtuales o en distintos contenedores.

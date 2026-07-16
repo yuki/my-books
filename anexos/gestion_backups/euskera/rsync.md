@@ -107,7 +107,7 @@ Parametro berrien azalpena honakoa da:
 - **[\-b]{.verbatim}** edo **[\-\-backup]{.verbatim}**: aldatutako fitxategien backup-a sortzeko erabiltzen da (ordezkatu beharrean).
 - **[\-\-backup-dir=]{.verbatim}**: **helmugan** (**en destino**) aldatutako fitxategiak non gordeko diren adierazten du, azken aldaketak jaso aurretik. Gure backup inkrementala nolakoa izatea nahi dugunaren arabera, direktorio bat erabil dezakegu edo datak jarri, aurreko adibidean bezala. Adibidez:
   - **[\-\-backup-dir="Old/\`date -I\`"]{.verbatim}**: Adibide honek eguneroko backup inkrementalak sortzeko balio du. Helmugako direktorioan honelako karpetak sortuko dira: "**2026-03-04**", "**2026-05-01**", ... eta horrela jakin ahal izango dugu fitxategiak nola zeuden data jakin batzuetan aldatu badira.
-  - **[\-\-backup-dir="Old/\`date +%Y-%m-%d_%H:%M\`"]{.verbatim}**: Aurreko kasuaren antzekoa da, baina ordua ere gehitzen du, gure backup sistema minutu gutxiro exekutatzen bada: "**2026-03-04_16:34**", "**2026-04-01_00:04**", ...
+  - **[\-\-backup-dir="Old/\`date +\\%Y-\\%m-\\%d_\\%H:\\%M\`"]{.verbatim}**: Aurreko kasuaren antzekoa da, baina ordua ere gehitzen du, gure backup sistema minutu gutxiro exekutatzen bada: "**2026-03-04_16:34**", "**2026-04-01_00:04**", ...
 
 
 

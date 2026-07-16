@@ -17,7 +17,7 @@ Jarraian dauden eragile motak azalduko ditugu, eta nahiz eta adibideetan zenbaki
 | [*]{.verbatim}  | Biderketa       | [5 * 2]{.verbatim}  | [10]{.verbatim}  |
 | [/]{.verbatim}  | Zatiketa        | [7 / 2]{.verbatim}  | [3.5]{.verbatim} |
 | [//]{.verbatim} | Zatiketa osoa   | [7 // 2]{.verbatim} | [3]{.verbatim}   |
-| [%]{.verbatim}  | Moduloa (hondarra)| [7 % 2]{.verbatim}  | [1]{.verbatim}   |
+| `%`             | Moduloa (hondarra)| `7 % 2`           | [1]{.verbatim}   |
 | [**]{.verbatim} | Berreketa       | [2 ** 3]{.verbatim} | [8]{.verbatim}   |
 
 Table: {tablename=yukitblr colspec=XXXX}
@@ -29,7 +29,7 @@ Kontuan hartu beharrekoak:
 :::: {.column width="68%"}
 - **[/]{.verbatim}** zatiketak beti ematen du koma daraman zenbaki bat (**float**), nahiz eta zehatza izan.
 - **[//]{.verbatim}** zatiketa osoak emaitza ematen du dezimalik gabe, eta **int** sortzen du.
-- **[%]{.verbatim}** moduloak zatiketaren hondarra ematen du, **int** motakoa.
+- **`%`** moduloak zatiketaren hondarra ematen du, **int** motakoa.
 - Bi datu mota konbinatuz gero, emaitzak behar den datu mota erabiliko du emaitza ondo adierazteko.
 ::::
 :::: {.column width="30%"}

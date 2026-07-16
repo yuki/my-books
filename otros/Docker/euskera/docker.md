@@ -302,7 +302,7 @@ Orain gure web nabigatzailean zerbitzariaren IPko 8081 eta 8082 atakak bisitatuz
 ::: {.column width="10%"}
 :::
 ::: {.column width="35%"}
-![\ ](img/docker/phpmyadmin1.png){width="100%" .center}
+![](img/docker/phpmyadmin1.png){width="100%" .center}
 :::
 ::: {.column width="10%"}
 :::

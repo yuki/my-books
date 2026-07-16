@@ -49,7 +49,7 @@ En esta pantalla podemos ver distinta información del propio laboratorio y su e
 
 -   **`\faInfo\space`{=latex} `<i class="fa-solid fa-info"></i>`{=html} Readme**: Tutoriales y manuales sobre el laboratorio.
 
--   **`\faUndo\space`{=latex} `<i class="fa-solid fa-undo"></i>`{=html} Reset**: Resetea el laboratorio y borrará todo el contenido realizado. Lo deja como si estuviese recién inicializado.
+-   **`\faArrowRotateLeft\space`{=latex} `<i class="fa-solid fa-undo"></i>`{=html} Reset**: Resetea el laboratorio y borrará todo el contenido realizado. Lo deja como si estuviese recién inicializado.
 
 El terminal que aparece es un interfaz de administración para el laboratorio, y desde el que podríamos realizar administración del laboratorio, o incluso levantar nuevos servicios a través del CLI **aws**. Por otro lado, no lo vamos a utilizar.
 

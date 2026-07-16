@@ -1,3 +1,4 @@
+*.tex
 *.log
 *.aux
 *.listing
@@ -6,6 +7,7 @@
 *.synctex.gz
 *.toc
 *_minted*
+*minted
 *.pdf
 *.html
 *.fdb_latexmk
@@ -15,4 +17,5 @@
 svg-inkscape
 input.tex
 example.html
+build/*
 .DS_Store

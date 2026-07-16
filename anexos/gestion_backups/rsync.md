@@ -105,7 +105,7 @@ La explicación de los nuevos parámetros es:
 - **[\-b]{.verbatim}** o **[\-\-backup]{.verbatim}**: sirve para crear un backup de los ficheros que han sido modificados (en lugar de ser reemplazados).
 - **[\-\-backup-dir=]{.verbatim}**: indica dónde se van a guardar **en destino** los ficheros modificados antes de recibir los últimos cambios. Dependiendo de cómo queremos que sea nuestro backup incremental, podemos usar un directorio o poner fechas, como en el ejemplo anterior. Como ejemplo:
   - **[\-\-backup-dir="Old/\`date -I\`"]{.verbatim}**: Este ejemplo sirve para crear backups incrementales diarios. En el directorio destino se crearán directorios de la siguiente forma: "**2026-03-04**", "**2026-05-01**",... y así podremos acceder a cómo estaban los ficheros si se han modificado en ciertas fechas.
-  - **[\-\-backup-dir="Old/\`date +%Y-%m-%d_%H:%M\`"]{.verbatim}**: Similar al caso anterior, pero añadiendo la hora, por si nuestro sistema de backup se ejecuta cada pocos minutos: "**2026-03-04_16:34**", "**2026-04-01_00:04**", ...
+  - **[\-\-backup-dir="Old/\`date +\\%Y-\\%m-\\%d_\\%H:\\%M\`"]{.verbatim}**: Similar al caso anterior, pero añadiendo la hora, por si nuestro sistema de backup se ejecuta cada pocos minutos: "**2026-03-04_16:34**", "**2026-04-01_00:04**", ...
 
 
 

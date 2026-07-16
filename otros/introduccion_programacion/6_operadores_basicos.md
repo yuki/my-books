@@ -17,7 +17,7 @@ Sirven para hacer **operaciones matemáticas**, por lo que se utilizan con tipos
 | [*]{.verbatim}  | Multiplicación  | [5 * 2]{.verbatim}  | [10]{.verbatim}  |
 | [/]{.verbatim}  | División        | [7 / 2]{.verbatim}  | [3.5]{.verbatim} |
 | [//]{.verbatim} | División entera | [7 // 2]{.verbatim} | [3]{.verbatim}   |
-| [%]{.verbatim}  | Módulo (resto)  | [7 % 2]{.verbatim}  | [1]{.verbatim}   |
+| `%`             | Módulo (resto)  | `7 % 2`            | [1]{.verbatim}   |
 | [**]{.verbatim} | Potencia        | [2 ** 3]{.verbatim} | [8]{.verbatim}   |
 
 Table: {tablename=yukitblr colspec=XXXX}
@@ -30,7 +30,7 @@ Hay que tener en cuenta que:
 :::: {.column width="68%"}
 - La división **[/]{.verbatim}** siempre da un número con decimales (**float**), aunque sea exacta.
 - La división entera **[//]{.verbatim}** dará el resultado sin contar los decimales, y genera un **int**.
-- El módulo **[%]{.verbatim}** dará el resto de la división, en tipo **int**.
+- El módulo **`%`** dará el resto de la división, en tipo **int**.
 - Si se combinan dos tipos de datos, el resultado usará el tipo de datos necesario para poder mostrar el resultado.
 ::::
 :::: {.column width="30%"}

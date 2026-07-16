@@ -304,7 +304,7 @@ En el formulario del puerto 8081 (donde no hemos inicializado la variable) sólo
 ::: {.column width="10%"}
 :::
 ::: {.column width="35%"}
-![\ ](img/docker/phpmyadmin1.png){width="100%" .column}
+![](img/docker/phpmyadmin1.png){width="100%" .column}
 :::
 ::: {.column width="10%"}
 :::
