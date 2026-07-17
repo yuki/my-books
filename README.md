@@ -41,7 +41,7 @@ Si sabes utilizar Github, puedes hacer uso de los **Pull requests** para indicar
 
 
 ## ¿Cómo están hechos?
-Originalmente los libros estaban creados con **LaTeX**, pero no podía generar de manera correcta el HTML. Ahora están generados con **Markdown**, para ser procesados con [Pandoc](https://pandoc.org/) y unas plantillas que he creado especiales para ello que puedes encontrar en mi repositorio [pandoc-templates](https://github.com/yuki/pandoc-templates/).
+Originalmente los libros estaban creados con **LaTeX**, pero no podía generar de manera correcta el HTML. Ahora están generados con **Markdown**, para ser procesados con [Pandoc](https://pandoc.org/) y unas plantillas que he creado especiales. Estas plantillas están en el siguiente repositorio [pandoc-templates](https://github.com/yuki/pandoc-templates/).
 
 Esta plantilla tiene su propia documentación en el enlace, pero se ha creado por las siguientes razones:
 * Crear una portada propia, utilizando como referencia los libros técnicos de O'Reilly (me parecía gracioso 😆).

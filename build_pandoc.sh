@@ -44,6 +44,8 @@ LIBROS=(
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
 
+apt update && apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-panflute
+
 cp -r pandoc-templates/template build
 cp -r img build 
 
