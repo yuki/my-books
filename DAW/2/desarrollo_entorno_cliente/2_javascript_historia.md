@@ -27,7 +27,7 @@ En 1997 la organización **ECMA International** publicó la primera especificaci
 
 Aunque JavaScript nació como un lenguaje para navegadores, actualmente puede ejecutarse en muchos otros entornos. Algunos ejemplos son:
 
-- Servidores web mediante [Node.js](https://nodejs.org/es).
+- Servidores web mediante [Node.js](https://nodejs.org/es) como entorno de ejecución.
 - Aplicaciones de escritorio.
 - Aplicaciones móviles.
 - Herramientas de automatización.
