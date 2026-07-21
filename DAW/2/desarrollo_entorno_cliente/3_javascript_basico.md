@@ -68,7 +68,7 @@ La forma más habitual a la hora de escribir código JavaScript es en un fichero
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="49%" }
 
 ::: {.mycode size=scriptsize}
 [Código js/app.js]{.title}
@@ -414,7 +414,7 @@ let edad = 20;
 ::::::::::::::
 
 
-## Diferencias entre `let`, `const` y `var` {#diferencias-variables}
+## Diferencias entre [let]{.verbatim}, [const]{.verbatim} y [var]{.verbatim} {#diferencias-variables}
 
 A la hora de declarar variables podemos usar tres palabras reservadas:
 
@@ -468,18 +468,29 @@ var nombre = "Ana";
 ::::::::::::::
 
 
+## Ámbito de las variables {#ámbito-variables}
+
+El **[ámbito](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types\#variable_scope)** (*scope*) determina desde qué partes del programa puede accederse a una variable. Existen cuatro ámbitos:
+
+- ***Global scope***: El ámbito por defecto para todo el código en modo *script*.
+- ***Module scope***: El ámbito para el código de módulos (lo veremos más adelante).
+- ***Function scope***: El ámbito dentro de una misma función.
+- ***Block scope***: Para variables [let]{.verbatim} y [const]{.verbatim} el ámbito que hay entre llaves (un [bloque](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block)).
+
 Sirva como resumen la siguiente tabla:
 
 |                          | **let**                    | **const**                        | **var**               |
 |--------------------------|----------------------------|----------------------------------|-----------------------|
-| Ámbito (scope)           | Bloque                     | Bloque                           | Función               |
+| Ámbito (scope)           | Bloque                     | Bloque                           | Función/Global        |
 | Re-declaración permitida | Sí                         | **No**                           |  Sí                   |
 | Re-asignación permitida  | Sí                         | No                               |  Sí                   |
 | Uso recomendado          | Para variables que cambian | Para valores fijos o referencias | **Evitarlo**          |
 
 Table: {tablename=yukitblrcol colspec=XXXX}
 
-
+::: errorbox
+Es importante tener en cuenta el *scope* de las variables para evitar errores.
+:::
 
 ## Convención de nombres
 
@@ -522,6 +533,8 @@ Como otros lenguajes de programación, JavaScript cuenta con unos tipos de datos
 
 
 ::: exercisebox
+[[04](https://github.com/yuki/ejercicios/blob/main/daw/dec/04.html)]{.solution}
+
 Prueba todos los tipos de datos descritos hasta ahora, haciendo hincapié en [[symbol]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/Symbol)
 :::
 
@@ -645,14 +658,19 @@ Boolean(NaN)
 
 
 ::: exercisebox
+[[05](https://github.com/yuki/ejercicios/blob/main/daw/dec/05.html)]{.solution}
+
 Haz una prueba de las distintas conversiones de tipos vistas.
 :::
+
 
 ## Comparación entre [==]{.verbatim} y [===]{.verbatim}
 
 Debido a las conversiones automáticas que realiza JavaScript por defecto, hace que se vea especialmente afectados los operadores de comparación. Esto hace que a veces podamos tener fallos en nuestro código no deseados:
 
 ::: exercisebox
+[[06a](https://github.com/yuki/ejercicios/blob/main/daw/dec/06a.html)]{.solution}
+
 ¿Qué resultados dan la siguientes operaciones?
 
 - [5 == 5]{.verbatim}
@@ -664,6 +682,8 @@ Debido a las conversiones automáticas que realiza JavaScript por defecto, hace 
 Para evitar las conversiones automáticas existe el operador [[===]{.verbatim} o *strict equality*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality) que devuelve un **Boolean** y tiene en cuenta tanto el valor como el tipo de datos.
 
 ::: exercisebox
+[[06b](https://github.com/yuki/ejercicios/blob/main/daw/dec/06b.html)]{.solution}
+
 ¿Qué resultados dan la siguientes operaciones?
 
 - [5 === 5]{.verbatim}
@@ -683,7 +703,7 @@ Es recomendable hacer uso de [===]{.verbatim} a la hora de realizar comparacione
 
 # Operadores {#operadores}
 
-Los operadores permiten realizar operaciones sobre uno o varios valores. Gracias a ellos es posible realizar cálculos matemáticos, comparar datos, combinar condiciones, asignar valores o modificar variables. No vamos a entrar en todos ellos, ya que son muchos, pero todos ellos se encuentran en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators).
+Los operadores permiten realizar operaciones sobre uno o varios valores. Gracias a ellos es posible realizar cálculos matemáticos, comparar datos, combinar condiciones, asignar valores o modificar variables. No vamos a entrar en todos ellos, ya que son muchos, pero todos ellos se encuentran en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators) y están diferenciados por "familias" (de asignación, comparación, aritméticos...).
 
 ## Operadores aritméticos {#operadores-aritméticos}
 
@@ -714,6 +734,8 @@ Permiten almacenar un valor en una variable. Aunque el operador más utilizado e
 
 
 ::: exercisebox
+[[07a](https://github.com/yuki/ejercicios/blob/main/daw/dec/07a.html)]{.solution}
+
 Escribe un ejemplo para cada una de las asignaciones anteriores.
 :::
 
@@ -753,6 +775,8 @@ console.log(--x);
 ::::::::::::::
 
 ::: exercisebox
+[[07b](https://github.com/yuki/ejercicios/blob/main/daw/dec/07b.html)]{.solution}
+
 ¿Cuál es el resultado del código anterior?
 :::
 
@@ -806,6 +830,41 @@ console.log(`Hola ${nombre} ${apellido}`);
 ```
 :::
 
+## Operador de asignación si izquierda nula [??]{.verbatim} {#}
+
+Existe el operador *[nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)* que coge el dato de la derecha únicamente cuando el de la izquierda vale [null]{.verbatim} o [undefined]{.verbatim}.
+
+::: mycode
+[Nullish coalescing assignment]{.title}
+
+```javascript
+const a = { duration: 50 };
+a.speed ??= 25;
+console.log(a.speed);
+// Expected output: 25
+
+a.duration ??= 10;
+console.log(a.duration);
+// Expected output: 50
+```
+:::
+
+
+
+```javascript
+const nombre = null;
+
+console.log(nombre ?? "Anónimo");
+```
+
+Resultado:
+
+```
+Anónimo
+```
+
+Este operador evita muchos errores relacionados con valores inexistentes.
+
 
 # Entrada y salida de datos {#entrada-salida-datos}
 
@@ -857,6 +916,11 @@ Esta función hoy en día no se usa ya que tiene varios inconvenientes y su func
 - Su apariencia depende del navegador.
 - No pueden personalizarse.
 
+::: exercisebox
+[[08](https://github.com/yuki/ejercicios/blob/main/daw/dec/08.html)]{.solution}
+
+Pide con [prompt()]{.verbatim} el nombre y apellido y usa la consola para mostrar los datos usando *template literals*
+:::
 
 ## Mostrar mensajes mediante [alert()]{.verbatim} {#mostrar-mensajes-alert}
 
@@ -913,24 +977,6 @@ document.getElementById("mensaje").textContent = "Hola!";
 
 
 <!-- 
-
-# Operador de fusión nula (`??`)
-
-Devuelve el operando de la derecha únicamente cuando el de la izquierda vale `null` o `undefined`.
-
-```javascript
-const nombre = null;
-
-console.log(nombre ?? "Anónimo");
-```
-
-Resultado:
-
-```
-Anónimo
-```
-
-Este operador evita muchos errores relacionados con valores inexistentes.
 
 ---
 
