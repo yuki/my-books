@@ -2,19 +2,19 @@
 ::: {#instalar_ubuntu_lts}
 :::
 
-# Instalar Ubuntu 22.04 LTS {#instalar-ubuntu-22.04-lts}
+# Instalar Ubuntu 22.04 LTS {#instalar-ubuntu-22-04-lts}
 
 En este anexo realizaremos la instalación de la distribución Ubuntu 22.04 LTS en su versión para servidores. En este anexo no se va a explicar cómo realizar la creación de una máquina virtual donde se aloja el sistema operativo, ya que existen distintos tipos de virtualizadores.
 
 No se realizará una guía "paso a paso", sino que se centrará en las partes más importantes de la instalación y en las que más dudas puedan surgir.
 
-## Descargar Ubuntu 22.04 {#descargar-ubuntu-22.04}
+## Descargar Ubuntu 22.04 {#descargar-ubuntu-22-04}
 
 La ISO la obtendremos de la [web oficial](https://ubuntu.com/#download) y seleccionaremos la versión 22.04 LTS de Ubuntu Server. Esta ISO contendrá el sistema base de Ubuntu y nos guiará para realizar la instalación del sistema operativo.
 
 Una vez descargada la ISO tendremos que cargarla en el sistema de virtualización elegido y arrancar la máquina virtual.
 
-## Instalar Ubuntu 22.04 {#instalar-ubuntu-22.04}
+## Instalar Ubuntu 22.04 {#instalar-ubuntu-22-04}
 
 Tras arrancar la máquina virtual nos aparecerá un menú para seleccionar el idioma durante la instalación y le daremos a "Instalar Ubuntu Server".
 

@@ -125,7 +125,7 @@ ruben@server1:~$ sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
 
 
 
-### En Ubuntu 20.04 {#en-ubuntu-20.04}
+### En Ubuntu 20.04 {#en-ubuntu-20-04}
 
 La versión [LTS](#lts) de Ubuntu 20.04 cuenta con la versión **8.0 de MySQL** (concretamente la **8.0.21** en el momento en el que es creado este documento).
 

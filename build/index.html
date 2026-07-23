@@ -1,92 +1,37 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$ data-bs-theme="auto">
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-  <meta name="author" content="Ruben Gomez Olivencia">
 
   <title>Libros</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link href="template/css/dark_mode.css" rel="stylesheet">
+  <style>
+    :root, [data-bs-theme=light] {
+      --templatecolor: #dc3545;
+      --bs-heading-color: var(--templatecolor);
+    }
+
+    [data-bs-theme=dark] {
+      --bs-heading-color: var(--bs-gray-100);
+    }
+  </style>
   <link href="template/css/template.css" rel="stylesheet">
-  <link href="template/css/pygments/friendly.css" rel="stylesheet">
-  <link href="template/css/pygments/github-dark.css" rel="stylesheet">
-
-
 </head>
-  <body>
-    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-danger" id="header" >
-      <nav id="navbar" class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-white" aria-label="header">
+  <body style="overflow: auto;">
+    <nav class="navbar navbar-dark px-2" id="header">
+      <button
+        id="mobile-theme-button"
+        class="btn btn-outline-light d-md-none"
+        type="button"
+      >
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+    </nav>
 
-
-
-        <div>
-          Libros
-        </div>
-
-        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
-          <i class="fa-solid fa-ellipsis text-white"></i>
-        </button>
-
-        <!-- RIGHT OFFCANVAS -->
-        <div class="offcanvas offcanvas-end flex-grow-1" tabindex="-1" id="offcanvasRight" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true" aria-modal="true" role="dialog" style="background-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity));">
-          <div class="offcanvas-header px-4 pb-0">
-            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Opciones</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-          </div>
-
-          <div class="offcanvas-body p-4 pt-0 p-lg-0">
-            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-
-            <!-- Theme Selector -->
-            <div class="d-lg-none me-2 text-white navbar-nav d-flex flex-wrap flex-row">Cambiar tema</div>
-            <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
-              
-              <li class="nav-item dropdown">
-                <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
-                  <i class="fa-solid fa-moon"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;" id="theme-selector-menu">
-                  <li href="fa-sun" data-bs-theme-value="light">
-                    <button type="button" class="dropdown-item d-flex align-items-center">
-                      <i class="fa-solid fa-sun opacity-50 theme-icon"></i>
-                      Light
-                    </button>
-                  </li>
-                  <li href="fa-moon" data-bs-theme-value="dark">
-                    <button type="button" class="dropdown-item d-flex align-items-center">
-                      <i class="fa-solid fa-moon opacity-50 theme-icon"></i>
-                      Dark
-                    </button>
-                  </li>
-                  <li href="fa-circle-half-stroke" data-bs-theme-value="auto">
-                    <button type="button" class="dropdown-item d-flex align-items-center">
-                      <i class="fa-solid fa-circle-half-stroke opacity-50 theme-icon"></i>
-                      Auto
-                    </button>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <div class="container">
-
-      <!-- if TOC, the class properties changed -->
-      <main class="ms-sm-auto col-md-9 col-lg-10 px-md-4" id="main">
-        <div class="justify-content-between align-items-center p-2" data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-smooth-scroll="true" tabindex="0">
-
-
+      <main class="mx-auto" style="width: 1024px;">
         <div id="book">
           <h1 class="pt-2 pb-3">Sistemas Microinformáticos y Redes</h1>
           <ul>
@@ -140,9 +85,9 @@
             </ul>
             <li>Clonezilla: Introducción a los sistemas de clonación (<a href="clonezilla.html">Castellano</a> / <a href="clonezilla_euskeraz.html">Euskera</a>)</li>
             <li>Cómo hacer documentación técnica (<a href="como_hacer_documentacion.html">Castellano</a> / <a href="dokumetazioa_egiteko.html">Euskera</a>)</li>
-            <li>Docker (<a href="docker.html">Castellano</a>,<a href="docker_euskeraz.html">Euskera</a>)</li>
+            <li>Docker (<a href="docker.html">Castellano</a> / <a href="docker_euskeraz.html">Euskera</a>)</li>
             <li><a href="git.html">Git: Sistemas de control de versiones</a></li>
-            <li>Introducción a la programación (<b>no terminado</b>) (<a href="introduccion_programacion.html">Castellano</a>, <a href="programazioan_sartu.html">Euskera</a>)</li>
+            <li>Introducción a la programación (<b>no terminado</b>) (<a href="introduccion_programacion.html">Castellano</a> / <a href="programazioan_sartu.html">Euskera</a>)</li>
             <li><a href="laravel.html">Introducción a Laravel</a></li>
             <li><a href="pfsense.html">PfSense: Configuración básica como firewall de red</a></li>
           </ul>
@@ -151,22 +96,21 @@
           <p>Anexos comunes utilizados en distintos libros:</p>
           <ul>
             <li><a href="gestion_backups.html">Gestión de copias de seguridad (backups)</a></li>
-            <li>Gestión de copias de seguridad (backups) (<a href="gestion_backups.html">Castellano</a>, <a href="gestion_backups_euskeraz.html">Euskera</a>)</li>
+            <li>Gestión de copias de seguridad (backups) (<a href="gestion_backups.html">Castellano</a> / <a href="gestion_backups_euskeraz.html">Euskera</a>)</li>
             <li><a href="glosario.html">Glosario</a></li>
             <li><a href="instalar_ubuntu_lts.html">Instalar Ubuntu LTS</a></li>
-            <li>RAID software en Linux(<a href="raid_software.html">Castellano</a>, <a href="raid_software_euskeraz.html">Euskera</a>)</li>
+            <li>RAID software en Linux(<a href="raid_software.html">Castellano</a> / <a href="raid_software_euskeraz.html">Euskera</a>)</li>
             <li><a href="sistemas_monitorizacion.html">Sistemas de monitorización</a></li>
             <ul>
               <li><a href="monitorizacion_munin.html">Monitorización básica con Munin</a></li>
             </ul>
             <li><a href="virtualbox_networking.html">VirtualBox y adaptadores de red</a></li>
-            <li>WSL: Windows Subsystem for Linux (<a href="wsl.html">Castellano</a>, <a href="wsl_euskeraz.html">Euskera</a>)</li>
+            <li>WSL: Windows Subsystem for Linux (<a href="wsl.html">Castellano</a> / <a href="wsl_euskeraz.html">Euskera</a>)</li>
           </ul>
 
         </div>
 
-
-        <div class="gitbox"><p class="title">GitHub</p>
+        <div class="gitbox col-7"><p class="title">GitHub</p>
           <div class="d-flex flex-row"><p class="align-self-center icon"></p>
             <div class="align-self-center content">
               <p><strong>Todos estos libros están en el repositorio <a href="https://github.com/yuki/my-books">https://github.com/yuki/my-books</a></strong></p>
@@ -174,13 +118,7 @@
           </div>
         </div>
 
-      </div>
       </main>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="template/js/dark_mode.js"></script>
-    <script src="template/js/template.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
