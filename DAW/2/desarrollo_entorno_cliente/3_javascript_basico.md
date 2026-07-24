@@ -23,7 +23,6 @@ El código integrado consiste en escribir el código JavaScript directamente den
     <title>Mi primera página</title>
 </head>
 <body>
-
     <h1>Hola Mundo</h1>
     <!-- esto es un comentario HTML -->
     <script>
@@ -123,7 +122,7 @@ function saludar(nombre) {
 ::: {.mycode size=scriptsize}
 [Código js/app.js]{.title}
 ```javascript
-saludar("Rubén");
+saludar("Bob");
 ```
 :::
 
@@ -334,7 +333,7 @@ Las variables permiten almacenar información en memoria para poder utilizarla p
 [Crear y usar una variable]{.title}
 
 ```javascript
-let nombre = "Rubén";
+let nombre = "Alice";
 console.log(nombre);
 ```
 :::
@@ -347,7 +346,7 @@ En este caso:
 
 - [let]{.verbatim}: indica que vamos a declarar una variable.
 - [nombre]{.verbatim}: es el identificador.
-- ["Rubén"]{.verbatim}: es el valor almacenado.
+- ["Alice"]{.verbatim}: es el valor almacenado.
 - [console.log(nombre);]{.verbatim}: uso de la variable
 
 :::
@@ -564,7 +563,7 @@ console.log(-42 / 0);
 ::: {.mycode}
 [Ejemplo tipos de datos]{.title}
 ```javascript
-let nombre = "Rubén";
+let nombre = "Charlie";
 let ciudad = 'Bilbao';
 let saludo = `Hola`;
 console.log("Hola "+nombre)
@@ -580,7 +579,7 @@ console.log(edad);
 ::::::::::::::
 
 
-## Objetos {#objetos}
+## Objetos {#objetos-resumen}
 
 El resto de tipos de datos no descritos previamente son de tipo [[Object]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures#objects), entre los que se pueden incluir funciones, arrays, expresiones regulares, [[Map]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) o objetos de tipo Error.
 
@@ -590,7 +589,7 @@ Un objeto ejemplo de objeto sería el siguiente:
 [Ejemplo de Object]{.title}
 ```javascript
 const alumno = {
-    nombre: "Rubén",
+    nombre: "Alice",
     edad: 20,
     aprobado: true
 };
@@ -598,7 +597,7 @@ console.log(alumno.nombre)
 ```
 :::
 
-Más adelante nos adentraremos en los objetos.
+Más adelante profundizaremos en la sección de [Objetos](#objetos).
 
 ## Operador [typeof]{.verbatim} {#operador-typeof}
 
@@ -607,7 +606,7 @@ JavaScript incorpora el operador [[typeof]{.verbatim}](https://developer.mozilla
 ::: {.mycode}
 [Operador typeof]{.title}
 ```javascript
-let nombre = "Rubén";
+let nombre = "Bob";
 typeof nombre;
 ```
 :::
@@ -822,15 +821,15 @@ El operador [+]{.verbatim} también puede utilizarse para unir cadenas de texto,
 [Concatenar texto]{.title}
 
 ```javascript
-const nombre = "Rubén";
-const apellido = "Gómez";
+const nombre = "John";
+const apellido = "Doe";
 console.log(nombre + " " + apellido);
 // mejor así
 console.log(`Hola ${nombre} ${apellido}`);
 ```
 :::
 
-## Operador de asignación si izquierda nula [??]{.verbatim} {#}
+## Operador de asignación si izquierda nula [??]{.verbatim} {#operador-asignacion-izquierda-nula}
 
 Existe el operador *[nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)* que coge el dato de la derecha únicamente cuando el de la izquierda vale [null]{.verbatim} o [undefined]{.verbatim}.
 
@@ -841,27 +840,13 @@ Existe el operador *[nullish coalescing assignment](https://developer.mozilla.or
 const a = { duration: 50 };
 a.speed ??= 25;
 console.log(a.speed);
-// Expected output: 25
+// Salida esperada: 25
 
 a.duration ??= 10;
 console.log(a.duration);
-// Expected output: 50
+// Salida esperada: 50
 ```
 :::
-
-
-
-```javascript
-const nombre = null;
-
-console.log(nombre ?? "Anónimo");
-```
-
-Resultado:
-
-```
-Anónimo
-```
 
 Este operador evita muchos errores relacionados con valores inexistentes.
 

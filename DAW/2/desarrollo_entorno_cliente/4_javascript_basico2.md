@@ -113,7 +113,6 @@ Si queremos escribir una estructura sencilla [if..else]{.verbatim} podemos hacer
 const edad = 20;
 
 const mensaje = edad >= 18 ? "Mayor" : "Menor";
-
 ```
 :::
 
@@ -139,6 +138,12 @@ switch (action) {
 :::
 
 Es importante añadir la sentencia [break]{.verbatim} al final de cada bloque, porque si no se seguirá ejecutando en "cascada" el resto de niveles inferiores. El bloque [default]{.verbatim} se ejecutará si no coincide con ninguno de los bloques anteriores.
+
+::: exercisebox
+[[09c](https://github.com/yuki/ejercicios/blob/main/daw/dec/09c.html)]{.solution}
+
+Usa el condicional [switch]{.verbatim} usando y sin usar [break]{.verbatim}.
+:::
 
 
 # Bucles {#bucles}
@@ -225,6 +230,12 @@ En este caso en la sentencia se diferencian tres partes:
 - **Actualización**: [i++]{.verbatim}
 
 
+::: exercisebox
+[[10a](https://github.com/yuki/ejercicios/blob/main/daw/dec/10a.html)]{.solution}
+
+Crea un ejemplo de cada uno de los bucles vistos.
+:::
+
 
 ## El bucle [for...of]{.verbatim} {#bucle-for-of}
 
@@ -252,7 +263,7 @@ Con el bucle [for...in]{.verbatim} se puede recorrer las propiedades de un objet
 [Bucle for...in]{.title}
 ```javascript
 const alumno = {
-    nombre: "Rubén",
+    nombre: "Bob",
     edad: 20
 };
 
@@ -320,6 +331,12 @@ for (let i = 1; i <= 5; i++) {
 
 :::
 ::::::::::::::
+
+::: exercisebox
+[[10b](https://github.com/yuki/ejercicios/blob/main/daw/dec/10b.html)]{.solution}
+
+Crea un ejemplo de cada uno de los bucles vistos.
+:::
 
 
 # Gestión de errores básica {#gestión-errores}
@@ -454,8 +471,8 @@ function saludar(nombre) {
 ::: {.mycode}
 [Llamar a función]{.title}
 ```javascript
-saludar("Rubén");
-saludar("clase");
+saludar("Ann");
+saludar("Bob");
 ```
 :::
 
@@ -492,12 +509,19 @@ function saludar(nombre="Usuario") {
 [Llamar a función]{.title}
 ```javascript
 saludar();
-saludar("Rubén");
+saludar("Alice");
 ```
 :::
 
 :::
 ::::::::::::::
+
+::: exercisebox
+[[11a](https://github.com/yuki/ejercicios/blob/main/daw/dec/11a.html)]{.solution}
+
+Crea un ejemplo de función con valor por defecto.
+:::
+
 
 ### Paso de argumentos {#paso-argumentos}
 
@@ -530,6 +554,12 @@ sumar(4);
 ::::::::::::::
 
 El segundo parámetro, al no haberle pasado un argumento, tendrá el valor [undefined]{.verbatim}. Por este motivo conviene utilizar parámetros por defecto cuando sea necesario o tenerlo en cuenta al crear la función.
+
+::: exercisebox
+[[11b](https://github.com/yuki/ejercicios/blob/main/daw/dec/11b.html)]{.solution}
+
+Crea un ejemplo de función con parámetros.
+:::
 
 
 ## Valor de retorno {#valor-retorno}
@@ -569,15 +599,18 @@ Si una función no tiene [return]{.verbatim} el valor que devuelve por defecto e
 Cuando se ejecuta [return]{.verbatim} la función termina. Si no hay [return]{.verbatim}, por defecto devuelve [undefined]{.verbatim}.
 :::
 
+::: exercisebox
+[[11c](https://github.com/yuki/ejercicios/blob/main/daw/dec/11c.html)]{.solution}
+
+Crea un ejemplo de función con retorno.
+:::
+
 
 ## Funciones anónimas y funciones flecha (*arrow Functions*) {#arrow-functions}
 
 JavaScript moderno incorpora una sintaxis para crear **funciones anónimas**, más compacta para definir funciones que carecen de nombre/identificador. Otra manera de crear funciones anónimas son las conocidas como "funciones flecha" (*arrow functions*). 
 
 Las funciones anónimas son usadas cuando no es necesario reutilizar su código, para asignar valores directamente a una variable, para asignar como argumento a otra función o para ser devueltas desde una función.
-
-<!-- TODO: quitar esto -->
-`{\pagebreak}`{=latex}
 
 A continuación distintos ejemplos de funciones anónimas y la sintaxis que se puede utilizar.
 
@@ -632,8 +665,11 @@ const m = () => "Hola!";
 ::::::::::::::
 
 
+::: exercisebox
+[[11d](https://github.com/yuki/ejercicios/blob/main/daw/dec/11d.html)]{.solution}
 
-
+Crea distintos ejemplos de funciones anónimas y flecha.
+:::
 
 
 <!-- 
