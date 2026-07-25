@@ -376,7 +376,7 @@ Cada motor de renderizado cumplía "a su manera" el estándar. Aparte, podían a
 
 Para comprobar si los navegadores cumplían con los estándares aparecieron distintos tests, entre los que se pueden destacar el [Acid2](https://en.wikipedia.org/wiki/Acid2) y [Acid3](https://en.wikipedia.org/wiki/Acid3).
 
-![Resultados de Acid2 en distintos navegadores](img/dec/acid2.png)
+![Resultados de Acid2 en distintos navegadores](img/dec/acid2.png){width=40%}
 
 Hoy en día, debido a lo complejo que es crear un motor de renderizado, aunque existen muchos navegadores web, no existen apenas motores de renderizado. Esto quiere decir, que aunque uses Google Chrome o Microsoft Edge u Opera, los tres hacen uso del mismo motor de renderizado.
 

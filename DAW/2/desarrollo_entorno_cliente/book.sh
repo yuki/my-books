@@ -7,3 +7,5 @@ cat 3_javascript_basico.md
 cat 4_javascript_basico2.md
 echo [JavaScript: Objetos]{.part}
 cat 5_javascript_objetos.md
+echo [JavaScript: Programación Orientada a Objetos]{.part}
+cat 6_javascript_poo.md

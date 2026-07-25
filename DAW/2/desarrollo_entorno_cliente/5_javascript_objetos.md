@@ -413,7 +413,7 @@ Realiza el ejercicio anterior e interioriza lo que sucede.
 Para realizar una copia real del objeto debemos hacer uso del operador *[Spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)* [...]{.verbatim}, aunque también se puede utilizar [Object.assign()]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="45%"}
 
 ::: {.mycode size=footnotesize}
 [Copia superficial]{.title}
@@ -432,7 +432,7 @@ console.log(alumno1 === alumno2);
 :::
 
 :::
-::: {.column width="50%" }
+::: {.column width="52%" }
 
 ::: {.mycode size=footnotesize}
 [Copia superficial]{.title}
@@ -664,6 +664,13 @@ for (const dato of datos) {
 ::::::::::::::
 
 
+::: exercisebox
+[[13a](https://github.com/yuki/ejercicios/blob/main/daw/dec/13a.html)]{.solution}
+
+Crea un array, modifica algún elemento, comprueba su longitud y recórrelo.
+:::
+
+
 ## Métodos de arrays {#array-metodos}
 
 JavaScript incorpora numerosos métodos para trabajar con arrays. Muchos de ellos modifican el contenido del array y otros devuelven uno nuevo. A continuación veremos los más utilizados, pero es interesante ver la [documentación de arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) para ver todos.
@@ -685,7 +692,7 @@ numeros.unshift(5);
 // eliminar el primero
 numeros.shift();
 // obtener una parte del array
-const nums = numeros.slice(1, 3)
+const nums = numeros.slice(1, 3);
 ```
 :::
 
@@ -735,7 +742,14 @@ En nla siguiente tabla un resumen de los métodos vistos:
 
 ## Copia de arrays {#copia-arrays}
 
-Al igual que pasaba con los objetos, si tenemos un array creado, al asignarlo a otra variable no estamos realizando una copia, sino una referencia al dato.
+Al igual que pasaba con los objetos, si tenemos un array creado, al asignarlo a otra variable no estamos realizando una copia, sino una referencia al dato. Es importante tener esto en cuenta, por lo que recuerda lo visto en [copia profunda](#copia-profunda) de los objetos para hacerlo con arrays.
+
+
+::: exercisebox
+[[13b](https://github.com/yuki/ejercicios/blob/main/daw/dec/13b.html)]{.solution}
+
+Usa los métodos anteriores y copia arrays como los objetos.
+:::
 
 <!-- 
 
