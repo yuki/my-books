@@ -773,7 +773,7 @@ Usa las funciones anteriores para modificar las clases de un elemento.
 :::
 
 
-# Crear y eliminar elementos del DOM {#crear-eliminar-elementos-dom}
+# Gestión de elementos del DOM {#crear-eliminar-elementos-dom}
 
 Hasta ahora hemos aprendido a modificar elementos que ya existían en la página. Normalmente, en una aplicación web también vamos a querer crear nuevos elementos, insertarlos en cualquier posición o eliminarlos cuando dejan de ser necesarios. Por ejemplo:
 
@@ -1040,7 +1040,7 @@ const fragmento = document.createDocumentFragment();
 ```
 :::
 
-### # Añadir elementos {#fragmento-añadir-elemento}
+### Añadir elementos {#fragmento-añadir-elemento}
 
 Vamos a suponer que tenemos una lista vacía y queremos añadir varios elementos en ella. Anteriormente hemos visto cómo añadir uno a uno. En este caso lo que 
 
