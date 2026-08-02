@@ -206,116 +206,27 @@ La mayoría de aplicaciones web utilizan una arquitectura denominada **cliente-s
 
 En la siguiente tabla se puede ver un resumen de las diferencias existentes entre el entorno cliente y el servidor:
 
-```{=html}
-<table " data-tablename="yukitblrcol"
-    class="table table-striped table-responsive table-hover table-bordered border-secondary-subtle">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Cliente</th>
-            <th>Servidor</th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-        <tr>
-            <td>Puede ser</td>
-            <td>
-                <ul>
-                    <li>Ordenador / móvil / tablet …</li>
-                    <li>Navegador Web</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>Servidor remoto</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Función</td>
-            <td>
-                <ul>
-                    <li>Solicitar información.</li>
-                    <li>Gestiona la interfaz.</li>
-                    <li>Ejecutar código cliente.</li>
-                    <li>Recoger las acciones del usuario.</li>
-                    <li>“Sólo lo usa un usuario”</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>Recibir peticiones.</li>
-                    <li>Gestiona la lógica de negocio.</li>
-                    <li>Acceder a bases de datos.</li>
-                    <li>Enviar respuestas al cliente.</li>
-                    <li>Puede atender miles de usuarios.</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Tecnologías</td>
-            <td>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Javascript</li>
-                    <li>WebAssembly (Wasm)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>PHP</li>
-                    <li>Python</li>
-                    <li>Ruby on Rails</li>
-                    <li>Java</li>
-                    <li>NodeJS</li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
-```
++-------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+|             | Cliente                                                                | Servidor                                                            |
++=============+========================================================================+=====================================================================+
+| Puede ser   | ● Ordenador / móvil / tablet …      `<br>`{=html} `\linebreak`{=latex} | ● Servidor remoto                                                   |
+|             | ● Navegador Web                                                        |                                                                     |
++-------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+| Función     | ● Solicitar información.            `<br>`{=html} `\linebreak`{=latex} | ● Recibir peticiones.            `<br>`{=html} `\linebreak`{=latex} |
+|             | ● Gestiona la interfaz.             `<br>`{=html} `\linebreak`{=latex} | ● Gestiona la lógica de negocio. `<br>`{=html} `\linebreak`{=latex} |
+|             | ● Ejecutar código cliente.          `<br>`{=html} `\linebreak`{=latex} | ● Acceder a bases de datos.      `<br>`{=html} `\linebreak`{=latex} |
+|             | ● Recoger las acciones del usuario. `<br>`{=html} `\linebreak`{=latex} | ● Enviar respuestas al cliente.  `<br>`{=html} `\linebreak`{=latex} |
+|             | ● "Sólo lo usa un usuario"                                             | ● Puede atender miles de usuarios.                                  |
++-------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+| Tecnologías | ● HTML                              `<br>`{=html} `\linebreak`{=latex} | ● PHP                            `<br>`{=html} `\linebreak`{=latex} |
+|             | ● CSS                               `<br>`{=html} `\linebreak`{=latex} | ● Python                         `<br>`{=html} `\linebreak`{=latex} |
+|             | ● Javascript                        `<br>`{=html} `\linebreak`{=latex} | ● Ruby on Rails                  `<br>`{=html} `\linebreak`{=latex} |
+|             | ● WebAssembly (Wasm)                `<br>`{=html} `\linebreak`{=latex} | ● Java                           `<br>`{=html} `\linebreak`{=latex} |
+|             |                                                                        | ● NodeJS                                                            |
++-------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
 
-```{=latex}
-\begin{yukitblrcol}{X[1]X[2,l]X[2,l]}
-& Cliente & Servidor \\
-Puede ser &  
-      ▪ Ordenador / móvil / tablet … \linebreak
-      ▪ Navegador Web
-   & 
-      ▪ Servidor remoto
-   \\ 
-Función  & 
-      ▪ Solicitar información. \linebreak
-      ▪ Gestiona la interfaz. \linebreak
-      ▪ Ejecutar código cliente. \linebreak
-      ▪ Recoger las acciones del usuario. \linebreak
-      ▪ “Sólo lo usa un usuario”.
-   &
-      ▪ Recibir peticiones. \linebreak
-      ▪ Gestiona la lógica de negocio. \linebreak
-      ▪ Acceder a bases de datos. \linebreak
-      ▪ Enviar respuestas al cliente. \linebreak
-      ▪ Puede atender miles de usuarios.
-   \\
-Tecnologías  &
-      ▪ HTML \linebreak
-      ▪ CSS \linebreak
-      ▪ Javascript \linebreak
-      ▪ WebAssembly (Wasm)
-   &
-      ▪ PHP \linebreak
-      ▪ Python \linebreak
-      ▪ Ruby on Rails \linebreak
-      ▪ Java \linebreak
-      ▪ NodeJS
-   \\
-\end{yukitblrcol}
-```
+Table: Comparativa simplificada entre entorno Cliente y Servidor. {tablename=yukitblrcol colspec=X[1]X[2,l]X[2,l]}
 
-::: center
-[Comparativa simplificada entre entorno Cliente y Servidor]{.footnotesize}
-:::
 
 En la siguiente imagen se puede ver una simplificación de la arquitectura:
 
