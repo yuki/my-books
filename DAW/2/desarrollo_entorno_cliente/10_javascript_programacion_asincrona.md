@@ -36,11 +36,11 @@ Table: {tablename=yukitblrcol colspec=X[2,l]X[5,l]X[5,l]}
 
 Imaginemos el siguiente código JavaScript:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Código JavaScript]{.title}
 ```javascript
-function task(message) {
-    // emulate time consuming task
+function tarea(message) {
+    // emula tarea que consume tiempo
     let n = 10000000000;
     while (n > 0){
         n--;
@@ -48,18 +48,12 @@ function task(message) {
     console.log(message);
 }
 
-console.log('Start script...');
-task('Call an API');
-console.log('Done!');
+console.log('Empieza');
+task('Llamamos API');
+console.log('Terminado');
 ```
 :::
 
-
-El resultado va a ser el siguiente:
-
-1. Start script...
-2. Call an API
-3. Done!
 
 Mientras se ejecuta el paso 2, la función tarda tiempo y por tanto todo el resto de procesos **quedan bloquedos y a la espera**. Esto es un proceso a evitar. Cuando utilizamos una aplicación web se realizan continuamente operaciones asíncronas:
 
@@ -98,6 +92,9 @@ JavaScript es *single-threaded*, **sólo puede ejecutar una instrucción de cód
 
 JavaScript da más prioridad a las *micro-task* que a las *macro-task* y se puede comprobar con el siguiente ejemplo:
 
+:::::::::::::: {.columns }
+::: {.column width="47%"}
+
 ::: mycode
 [Ejemplo de [medium.com](https://medium.com/@vigenhovhannisiano/javascript-event-loop-explained-with-simple-diagrams-and-real-examples-8296c85ab964)]{.title}
 ```javascript
@@ -115,12 +112,20 @@ console.log("4");
 ```
 :::
 
+:::
+::: {.column width="47%" }
+
 Aunque todavía no entendamos qué realiza cada parte, la salida va a ser la siguiente:
 
 - 1
 - 4
 - 3 - micro-task
 - 2 - macro-task
+
+
+:::
+::::::::::::::
+
 
 ::: errorbox
 JavaScript da más prioridad a las *micro-task* que a las *macro-task*.
@@ -540,7 +545,7 @@ Una vez creada la *Promise* hay que consumirla para poder obtener el valor de la
 
 - [then()]{.verbatim}: Se ejecuta cuando la Promise se resuelve con éxito.
 - [catch()]{.verbatim}: Se ejecuta cuando la Promise se rechaza con error.
-- [finally()]{.verbatim}: Se ejecuta **siempre**, al terminar el proceso de la promesa (después del [then()]{.verbatim} o el [catch]{.verbatim}). Esta función es útil para:
+- [finally()]{.verbatim}: Se ejecuta **siempre**, al terminar el proceso de la promesa (después del [then()]{.verbatim} o el [catch()]{.verbatim}). No recibe parámetros y no puede cambiar el valor de la *promise*. Esta función es útil para:
   - Ocultar indicadores de carga.
   - Liberar recursos.
   - Restaurar la interfaz.
@@ -642,7 +647,7 @@ Crea promesas con operaciones encadenadas y usa las tres formas de escribir las 
 
 A continuación un ejemplo de cómo se podría realizar las mismas operaciones con callbacks y con Promises:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [*Callback hell* de login de usuario 123]{.title}
 
 ```javascript
@@ -674,28 +679,346 @@ login(123, (error,usuario) => {
 ```
 :::
 
-Mientras que con Promesas sería:
+En este ejemplo de *callback hell* se ha añadido la gestión de errores y comprobaciones que en el [anterior apartado](#callback-hell) no se habían indicado. Tal como se puede ver, esto incrementa la dificultad a la hora de tener que realizar modificaciones en el futuro.
 
-::: mycode
-[*Callback hell* de login de usuario 123]{.title}
+Si por el contrario usamos [Promise]{.verbatim} quedaría de una de las dos siguientes maneras, dependiendo de si usamos la versión "larga" o abreviada.
 
+
+:::::::::::::: {.columns }
+::: {.column width="49%"}
+
+::: {.mycode size=footnotesize}
+[Login de usuario]{.title}
 ```javascript
 obtenerUsuario(123)
   .then((usuario) => {
-      return obtenerPerfil(usuario.id);
+    return obtenerPerfil(usuario.id);
   })
   .then((usuario) => {
-      return obtenerPedidos(usuario.id);
+    return obtenerPedidos(usuario.id);
   })
   .then((pedidos) => {
-      return obtenerFactura(pedidos[0].id);
+    return obtenerFactura(pedidos[0].id);
   })
   .then((factura) => {
-      console.log(factura);
+    console.log(factura);
   })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+:::
+
+:::
+::: {.column width="49%" }
+
+::: {.mycode size=footnotesize}
+[Login de usuario]{.title}
+```javascript
+obtenerUsuario(123)
+  .then(obtenerPerfil)
+  .then(obtenerPedidos)
+  .then(obtenerFactura)
+  .then(mostrarFactura)
   .catch((error) => {
       console.error(error);
   });
 ```
 :::
+
+:::
+::::::::::::::
+
+
+## [Promise.all()]{.verbatim} {#promise-all}
+
+Permite esperar a que finalicen varias promesas para ejecutar después una función, pero sólo se ejecutará cuando todas hayan terminado correctamente:
+
+::: mycode
+[Esperar promesas]{.title}
+```javascript
+Promise.all([
+    promesa1,
+    promesa2,
+    promesa3
+])
+.then((resultados) => {
+    console.log(resultados);
+});
+```
+:::
+
+
+Si cualquiera de las promesas produce un error, [Promise.all()]{.verbatim} finaliza inmediatamente con dicho error.
+
+## [Promise.race()]{.verbatim} {#promise-race}
+
+Devuelve el resultado de la primera promesa que finalice, da igual cuál sea.
+
+::: mycode
+[Esperar promesas]{.title}
+```javascript
+Promise.race([
+    promesa1,
+    promesa2
+])
+.then((resultado) => {
+    console.log(resultado);
+});
+```
+:::
+
+## [Promise.allSettled()]{.verbatim} {#promise-allsettled}
+
+Sirve para esperar el resultado de varias *Promise* pero sin importar si algunas fallan. Útil para hacer un reporte de estado, para saber qué funcionó y qué no.
+
+Con [Promise.allSettled()]{.verbatim} siempre vamos a obtener un array de objetos de tipo [{status, value/reason}]{.verbatim}.
+
+- **status**: podrá tener el valor [fulfilled]{.verbatim} para las promesas cumplidas y [rejected]{.verbatim} para las rechazadas
+- El segundo campo será:
+  - **value**: si la promesa ha tenido éxito, tendremos el resultado.
+  - **reason**: si la promesa ha fallado, tendremos el error.
+
+::: exercisebox
+[[18f](https://github.com/yuki/ejercicios/blob/main/daw/dec/18f.html)]{.solution}
+
+Crea ejemplos con [Promise.all()]{.verbatim}, [Promise.race()]{.verbatim} y [Promise.allSettled()]{.verbatim}
+:::
+
+
+
+# [async]{.verbatim} y [await]{.verbatim} {#async-await}
+
+Las promesas solucionaron gran parte de los problemas de los *callbacks*. Sin embargo, cuando varias promesas se encadenan, el código puede seguir siendo más complejo de lo deseable. 
+
+Para simplificar todavía más la programación asíncrona, ECMAScript 2017 incorporó las palabras reservadas [async]{.verbatim} y [await]{.verbatim}, cuyo  objetivo consiste en escribir código asíncrono con un aspecto muy parecido al código secuencial.
+
+
+::: infobox
+El objetivo de [async]{.verbatim} y [await]{.verbatim} es escribir código asíncrono con un aspecto similar al código secuencial.
+:::
+
+
+## Declarar función [async]{.verbatim} {#función-async}
+
+Usando la palabra reservada [async]{.verbatim} declaramos que una función sea asíncrona y **siempre devuelve una promesa**. Podemos crear en funciones estándar o flecha. 
+
+:::::::::::::: {.columns }
+::: {.column width="49%"}
+
+::: {.mycode size=footnotesize}
+[Función async]{.title}
+```javascript
+async function saludo() {
+    return "Hola";
+}
+```
+:::
+
+:::
+::: {.column width="49%" }
+
+::: {.mycode size=footnotesize}
+[Función async flecha]{.title}
+```javascript
+const saludo = async () => {
+    return "Hola";
+};
+```
+:::
+
+:::
+::::::::::::::
+
+Aunque aparentemente devuelve una cadena, en realidad devuelve una **promesa resuelta** con ese valor.
+
+## Esperar función con [await]{.verbatim} {#función-await}
+
+La palabra reservada [await]{.verbatim} permite esperar el resultado de una promesa. Mientras la promesa no finalice, la función asíncrona permanecerá en espera. Hay que recordar que esto no bloqueará todo el programa, si no que JavaScript dejará de lado esta función y seguirá haciendo caso a otra parte del programas.
+
+
+:::::::::::::: {.columns }
+::: {.column width="47%"}
+
+::: {.mycode size=footnotesize}
+[Función async]{.title}
+```javascript
+function esperar() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Finalizado");
+        }, 2000);
+    });
+}
+```
+:::
+
+:::
+::: {.column width="47%" }
+
+::: {.mycode size=footnotesize}
+[Función async flecha]{.title}
+```javascript
+async function ejemplo() {
+    console.log("Inicio");
+    const resultado = await esperar();
+    console.log(resultado);
+    console.log("Fin");
+}
+
+ejemplo();
+```
+:::
+
+:::
+::::::::::::::
+
+
+En el ejemplo anterior parece que se está ejecutando síncronamente, pero se ha utilizado las funciones de JavaScript que permite no bloquear el resto de la aplicación.
+
+::: exercisebox
+[[18g](https://github.com/yuki/ejercicios/blob/main/daw/dec/18g.html)]{.solution}
+
+Crea 3 botones que realicen lo siguiente:
+
+1. Loguee "Botóin 1 pulsado"
+2. Llama a la función [task]{.verbatim} del ejercicio [18a](https://github.com/yuki/ejercicios/blob/main/daw/dec/18a.html). Intenta pulsar el botón 1. ¿Qué pasa?
+3. Llama a una función [async]{.verbatim} como el ejemplo anterior y espera con [await]{.verbatim}. Intenta pulsar el botón 1. ¿Qué pasa?
+:::
+
+
+A continuación una comparación de cómo sería un ejemplo con promesas y otro con async/await.
+
+:::::::::::::: {.columns }
+::: {.column width="49%"}
+
+::: {.mycode size=footnotesize}
+[Con promesas]{.title}
+```javascript
+esperar()
+  .then((resultado) => {
+    console.log(resultado);
+  });
+```
+:::
+
+:::
+::: {.column width="49%" }
+
+::: {.mycode size=footnotesize}
+[Función async flecha]{.title}
+```javascript
+const resultado = await esperar();
+
+console.log(resultado);
+```
+:::
+
+:::
+::::::::::::::
+
+
+## Tratamiento de errores {#tratamiento-errores}
+
+Cuando una promesa produce un error, normalmente utilizaremos [try...catch]{.verbatim}.
+
+::: mycode
+[Función async flecha]{.title}
+```javascript
+async function ejemplo() {
+    try {
+        const datos = await obtenerDatos();
+        console.log(datos);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+```
+:::
+
+Aunque ya estudiamos [[try...catch]{.verbatim}](#try-catch) anteriormente, a partir de este momento será especialmente importante, ya que constituye el mecanismo habitual para gestionar errores en funciones asíncronas.
+
+
+## Varias operaciones {#varias-operaciones}
+
+Con las *Promise* hemos visto cómo concatenar operaciones. Ahora podemos hacer llamadas a varias funciones y esperar l resultado, siendo más legible:
+
+:::::::::::::: {.columns }
+::: {.column width="40%"}
+
+::: {.mycode size=footnotesize}
+[Con promesas]{.title}
+```javascript
+obtenerDatos()
+  .then((datos) => {
+    return procesar(datos);
+  })
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+:::
+
+:::
+::: {.column width="55%" }
+
+::: {.mycode size=footnotesize}
+[Función async/await]{.title}
+```javascript
+async function ejemplo() {
+  try {
+    const datos = await obtenerDatos();
+    const resultado = await procesar(datos);
+    console.log(resultado);
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+```
+:::
+
+:::
+::::::::::::::
+
+El problema de esto es que estamos programando de manera secuencial, por lo que estamos haciendo que el tiempo de ambas funciones se sumen. Para eso es importante recordar que podemos **esperar en paralelo** con [Promise.all]{.verbatim}.
+
+::: {.mycode size=footnotesize}
+[Esperando en paralelo]{.title}
+```javascript
+async function perfilUsuario(id) {
+  try {
+    const [datos, facturas] = await Promise.all([
+        obtenerDatos(id),
+        obtenerFacturas(id)
+    ])
+    console.log(facturas);
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+```
+:::
+
+
+::: exercisebox
+[[18h](https://github.com/yuki/ejercicios/blob/main/daw/dec/18h.html)]{.solution}
+
+Crea 3 botones que llamen a funciones diferentes que a su vez usen un temporizador de 3, 2 y 1 un segundo. 
+¿Qué forma tarda menos en ejecutarse?
+
+1. Con [Promise]{.verbatim} anidando [then]{.verbatim}
+2. Con [async/await]{.verbatim} secuencial.
+3. Con [async/await]{.verbatim} con [Promise.all]{.verbatim} en paralelo.
+
+:::
+
+## ¿Cuándo utilizar [async]{.verbatim} y [await]{.verbatim}?
+
+Siempre que trabajemos con promesas y necesitemos realizar varias operaciones consecutivas. Actualmente constituyen el enfoque recomendado para el desarrollo de aplicaciones JavaScript modernas.
 
