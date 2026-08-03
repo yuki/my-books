@@ -15,6 +15,7 @@ echo [JavaScript: Eventos]{.part}
 cat 08_javascript_eventos.md
 echo [Formularios y validación]{.part}
 cat 09_javascript_formularios.md
-
+echo [Programación asíncrona y comunicación con servidores]{.part}
+cat 10_javascript_programacion_asincrona.md
 
 # TODO: Meter temas de "use strict". DONDE? supongo que por el punto 3
