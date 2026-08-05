@@ -216,7 +216,7 @@ Tal como se puede ver, al seleccionar todos los elementos de tipo [p]{verbatim} 
 
 
 
-### ¿Qué método utilizar? {#método-utilizar}
+### ¿Qué método utilizar? {#método-utilizar-seleccionar}
 
 Actualmente la mayoría de desarrolladores utilizan únicamente tres métodos:
 
@@ -857,7 +857,7 @@ document.body.append(tarjeta);
 ::::::::::::::
 
 
-### ¿Qué método utilizar? {#método-utilizar}
+### ¿Qué método utilizar? {#método-utilizar-crear}
 
 Anteriormente hemos visto el método [[innerHTML]{.verbatim}](#innerHTML) y ahora el método [createElement()]{.verbatim}, y aunque ambas técnicas son válidas, presentan diferencias importantes.
 

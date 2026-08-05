@@ -339,7 +339,7 @@ Crea un ejemplo de cada uno de los bucles vistos.
 :::
 
 
-# Gestión de errores básica {#gestión-errores}
+# Gestión de errores básica {#gestión-errores-básica}
 
 JavaScript permite detectar y gestionar errores para evitar que la aplicación finalice de forma inesperada.
 
