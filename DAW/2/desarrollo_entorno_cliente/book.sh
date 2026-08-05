@@ -5,13 +5,13 @@ cat  02_javascript_historia.md
 echo [Conceptos básicos de JavaScript]{.part}
 cat 03_javascript_basico.md
 cat 04_javascript_basico2.md
-echo [JavaScript: Objetos]{.part}
+echo [Objetos]{.part}
 cat 05_javascript_objetos.md
-echo [JavaScript: Programación Orientada a Objetos]{.part}
+echo [Programación Orientada a Objetos]{.part}
 cat 06_javascript_poo.md
 echo [JavaScript: uso del *Document Object Model*]{.part}
 cat 07_javascript_dom.md
-echo [JavaScript: Eventos]{.part}
+echo [Eventos]{.part}
 cat 08_javascript_eventos.md
 echo [Formularios y validación]{.part}
 cat 09_javascript_formularios.md
@@ -19,5 +19,7 @@ echo [Programación asíncrona]{.part}
 cat 10_javascript_programacion_asincrona.md
 echo [Comunicación con servidores]{.part}
 cat 11_javascript_fetch.md
+echo [Almacenamiento de datos en el navegador]{.part}
+cat 12_javascript_almacenamiento.md
 
 # TODO: Meter temas de "use strict". DONDE? supongo que por el punto 3

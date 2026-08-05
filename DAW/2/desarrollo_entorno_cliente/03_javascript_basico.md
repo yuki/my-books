@@ -246,6 +246,46 @@ Es importante conocer las diferencias de cómo cargar nuestro código.
 
 Como todos los lenguajes de programación, JavaScript cuenta con su propia gramática y léxico. En la documentación de MDN se explica [el léxico completo](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar).
 
+
+# Modo estricto (["use strict"]{.verbatim}) {#modo-estricto}
+
+JavaScript fue diseñado originalmente para ser un lenguaje muy flexible. Durante sus primeros años permitía realizar determinadas acciones que podían dar lugar a errores difíciles de detectar, como crear variables sin declararlas o utilizar construcciones poco recomendables. Para mejorar la seguridad y facilitar el desarrollo de aplicaciones, **ECMAScript 5 (ES5)** introdujo en 2009 el **modo estricto** (*[Strict Mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)*).
+
+El modo estricto se activa escribiendo la siguiente instrucción al comienzo de un fichero o de una función:
+
+
+::: mycode
+[Añadiendo modo estricto]{.title}
+
+```javascript
+"use strict";
+```
+:::
+
+A partir de ese momento el intérprete aplica un conjunto de reglas más estrictas que ayudan a detectar errores durante el desarrollo. Por ejemplo, impide crear variables de forma accidental, evita determinadas operaciones consideradas inseguras y genera excepciones en situaciones que anteriormente podían pasar desapercibidas. Esto facilita la detección de errores y contribuye a escribir código más robusto y mantenible.
+
+En la actualidad, los **módulos ECMAScript** (ficheros que utilizan [import]{.verbatim} y [export]{.verbatim}) funcionan automáticamente en modo estricto, por lo que no es necesario escribir la cabecera en ellos. Sin embargo, sigue siendo recomendable conocer esta directiva, ya que continúa apareciendo en numerosos proyectos y permite comprender el funcionamiento de aplicaciones desarrolladas antes de la popularización de los módulos.
+
+A lo largo de este libro utilizaremos siempre las características modernas de JavaScript y seguiremos las recomendaciones actuales del lenguaje. Aunque en muchos proyectos modernos el modo estricto ya se activa automáticamente, conocer su finalidad ayuda a comprender la evolución de JavaScript y la importancia de adoptar buenas prácticas desde el comienzo del desarrollo.
+
+::: exercisebox
+[[03d](https://github.com/yuki/ejercicios/blob/main/daw/dec/03d.html)]{.solution}
+
+Crea un fichero JavaScript con el siguiente código. ¿Qué sucede?
+
+::: mycode
+[Uso estricto]{.title}
+
+```javascript
+"use strict";
+nombre = "Ana";
+console.log(nombre);
+```
+:::
+
+:::
+
+
 # Comentarios {#comentarios}
 
 Los comentarios son fragmentos de texto incluidos en el código fuente que **no son ejecutados por el motor de JavaScript**. Su finalidad es ayudar a comprender el funcionamiento del programa, documentar decisiones de diseño o desactivar temporalmente determinadas instrucciones durante el desarrollo.

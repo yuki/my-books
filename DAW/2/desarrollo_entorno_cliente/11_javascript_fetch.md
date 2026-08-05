@@ -143,8 +143,6 @@ cargarUsuarios();
 ::::::::::::::
 
 
-
-
 ## Gestión de errores {#gestión-errores-fetch}
 
 Para la gestión de errores a la hora de realizar peticiones usaremos [try...catch]{.verbatim}.
