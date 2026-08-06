@@ -148,7 +148,9 @@ Usa el condicional [switch]{.verbatim} usando y sin usar [break]{.verbatim}.
 
 # Bucles {#bucles}
 
-Para realizar sentencias repetitivas y la ejecución repetida de bloques existen las **estructuras repetitivas**, también conocidas como **bucles**. Un bucle permite ejecutar un bloque de instrucciones varias veces mientras se cumpla una determinada condición. Tal como pasa en otros lenguajes de programación, en JavaScript hay varios tipos de bucles:
+Para realizar sentencias repetitivas y la ejecución repetida de bloques existen las **estructuras repetitivas**, también conocidas como **bucles**.
+
+Un bucle permite ejecutar un bloque de instrucciones varias veces mientras se cumpla una determinada condición. Tal como pasa en otros lenguajes de programación, en JavaScript hay varios tipos de bucles:
 
 ## El bucle [while]{.verbatim} {#bucle-while}
 

@@ -497,7 +497,7 @@ Entre las aplicaciones existentes podemos destacar [Postman](https://www.postman
 Desde una **consola Linux**, haciendo uso del comando **curl**, también podemos comprobar de manera rápida si el *endpoint* está funcionando:
 
 ::: mycode
-[Modificar api.php para el nuevo controlador]{.title}
+[Uso de curl en consola]{.title}
 ```console
 ruben@vega:~$ curl -s  http://localhost/api/posts
 {"posts":[{"id":1,"titulo":"Primer post111","texto":"Este es...”}]}
@@ -507,7 +507,7 @@ ruben@vega:~$ curl -s  http://localhost/api/posts
 Si queremos tener un resultado más visual, podremos hacer uso del comando "**jq**", que deberemos instalarlo. De esta manera, podremos hacer:
 
 ::: mycode
-[Modificar api.php para el nuevo controlador]{.title}
+[Uso de jq para formatear la salida]{.title}
 ```console
 ruben@vega:~$ curl -s  http://localhost/api/posts | jq
 {

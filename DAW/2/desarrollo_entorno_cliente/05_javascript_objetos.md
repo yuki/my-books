@@ -7,38 +7,55 @@ En JavaScript podemos usar **[objetos](https://developer.mozilla.org/en-US/docs/
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="32%"}
 
 ::: mycode
 [Crear objeto]{.title}
 ```javascript
 const alumno = {
-    nombre: "Alice",
-    edad: 20,
-    direccion: {
-        ciudad: "Bilbao",
-        calle: "una",
-    }
+  nombre: "Alice",
+  edad: 20,
+  direccion: {
+    ciudad: "Bilbao",
+    calle: "una",
+  }
 };
 ```
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="32%" }
 
 ::: mycode
 [Crear objeto]{.title}
 ```javascript
 const alumno = {
-    "nombre": "Bob",
-    "edad": 20,
-    "direccion": {
-        "ciudad": "Bilbao",
-        "calle": "una",
-    }
+  "nombre": "Bob",
+  "edad": 20,
+  "direccion": {
+    "ciudad": "BI",
+    "calle": "una",
+  }
 };
 ```
 :::
+
+:::
+::: {.column width="32%" }
+
+::: mycode
+[Crear objeto]{.title}
+```javascript
+const nombre = "Bob";
+const edad = 30;
+const alumno = {
+  nombre,
+  edad,
+  //...
+};
+```
+:::
+
 
 :::
 ::::::::::::::
