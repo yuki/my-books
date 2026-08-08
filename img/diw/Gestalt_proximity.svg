@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="712" height="298">
+ <g id="c2">
+  <g id="c">
+   <g id="r3">
+    <circle id="o" cx="60" cy="50" r="10" stroke="#000" fill="#eee"/>
+    <use xlink:href="#o" transform="translate(0,40)"/>
+    <use xlink:href="#o" transform="translate(0,80)"/>
+   </g>
+   <use xlink:href="#r3" transform="translate(0,120)"/>
+  </g>
+  <use xlink:href="#c" transform="translate(40)"/>
+ </g>
+ <use xlink:href="#c2" transform="translate(80)"/>
+ <use xlink:href="#c2" transform="translate(160)"/>
+ <use xlink:href="#c2" transform="translate(325)"/>
+ <use xlink:href="#c2" transform="translate(440)"/>
+ <use xlink:href="#c2" transform="translate(555)"/>
+</svg>
