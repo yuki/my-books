@@ -349,8 +349,8 @@ A la hora de modificar un registro de información podemos hacer uso de dos mét
 - **PATCH**: permite modificar únicamente algunos campos.
 
 
-:::::::::::::: {.columns }
-::: {.column width="47%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Método PUT]{.title}
@@ -374,7 +374,7 @@ await fetch(
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Método PATCH]{.title}

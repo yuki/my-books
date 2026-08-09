@@ -1,5 +1,5 @@
-echo [Historia de las interfaces]{.part}
-cat 1_introduccion.md
+echo [Introducción a las interfaces de usuario]{.part}
+cat ../../../temas_comunes/interfaces_usuario/1_introduccion.md
 
 echo [Android UI]{.part}
 cat 2_android_studio_interfaces.md

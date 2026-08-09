@@ -14,7 +14,7 @@ El DOM convierte todos los elementos HTML (también XML o SVG) en objetos JavaSc
 Veamos el siguiente HTML y cuál es el árbol DOM que se genera.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -34,7 +34,7 @@ Veamos el siguiente HTML y cuál es el árbol DOM que se genera.
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ![Árbol DOM](img/dec/dom.svg){width="100%"}
 
@@ -82,8 +82,8 @@ Aunque habitualmente trabajaremos con elementos HTML, el DOM contiene distintos 
 - Comentarios.
 - Texto.
 
-:::::::::::::: {.columns }
-::: {.column width="47%"}
+En el siguiente ejemplo el **elemento** [<p>]{.verbatim} es un nodo. El texto ["Bienvenido"]{.verbatim} también constituye otro **nodo**.
+
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -91,14 +91,6 @@ Aunque habitualmente trabajaremos con elementos HTML, el DOM contiene distintos 
 <p>Bienvenido.</p>
 ```
 :::
-
-:::
-::: {.column width="47%" }
-
-El **elemento** [<p>]{.verbatim} es un nodo. El texto ["Bienvenido"]{.verbatim} también constituye otro **nodo**.
-
-:::
-::::::::::::::
 
 ### El nodo raíz: [document]{.verbatim} {#objeto-document}
 
@@ -130,8 +122,8 @@ JavaScript proporciona [varios métodos](https://developer.mozilla.org/en-US/doc
 
 Dentro de HTML las etiquetas pueden tener un identificador que debe ser único en todo el documento llamado [id]{.verbatim}.
 
-:::::::::::::: {.columns }
-::: {.column width="38%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="40%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -141,7 +133,7 @@ Dentro de HTML las etiquetas pueden tener un identificador que debe ser único e
 :::
 
 :::
-::: {.column width="59%" }
+::: {.column width="60%" }
 
 ::: {.mycode size=footnotesize}
 [Selección por id]{.title}
@@ -163,8 +155,8 @@ Si no se encuentra ningún elemento, el resultado será [null]{.verbatim}.
 
 Con este método vamos a poder seleccionar prácticamente cualquier selector de CSS.
 
-:::::::::::::: {.columns }
-::: {.column width="38%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="40%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -176,7 +168,7 @@ Con este método vamos a poder seleccionar prácticamente cualquier selector de 
 :::
 
 :::
-::: {.column width="59%" }
+::: {.column width="60%" }
 
 ::: {.mycode size=footnotesize}
 [Selección por CSS]{.title}
@@ -817,7 +809,7 @@ En este caso se ha creado un párrafo, se le ha dado contenido, se le ha añadid
 Vamos a hacer un ejemplo más complejo, creando una estructura de elementos completamente nueva:
 
 :::::::::::::: {.columns }
-::: {.column width="57%"}
+::: {.column width="65%"}
 
 
 ::: {.mycode size=footnotesize}
@@ -837,7 +829,7 @@ document.body.append(tarjeta);
 :::
 
 :::
-::: {.column width="38%" }
+::: {.column width="35%" }
 
 ::: {.mycode size=footnotesize}
 [HTML generado]{.title}

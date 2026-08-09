@@ -5,15 +5,60 @@ Una **interfaz** (en plural: interfaces) se utiliza en informática para nombrar
 
 Ejemplos:
 
--   **Interfaces de usuario**: a la hora de hacer uso de un programa.
+- **Interfaces de usuario**: cuando un usuario final hacer uso de un programa
+- **Dispositivo de interfaz humana**: de las siglas en inglés **HID** (*human interface dece*), cuando hacemos referencia al interfaz *hardware* que utilizamos los humanos para inractuar con el ordenador
+- **Interfaz física**: un componente que se conecta a otro (puerto USB o puerto SATA).
 
--   **Dispositivo de interfaz humana**: de las siglas en inglés **HID** (*human interface device*), cuando hacemos referencia al interfaz *hardware* que utilizamos los humanos para interactuar con el ordenador.
 
--   **Interfaz física**: un componente que se conecta a otro (puerto USB o puerto SATA).
+# Interfaces de usuario {#interfaces-usuario}
+
+Una interfaz de usuario (User Interface o **UI**) es el conjunto de elementos visuales e interactivos que permiten a una persona comunicarse con una aplicación o un sistema informático. Gracias a ellas podemos realizar acciones como pulsar un botón, seleccionar una opción de un menú, o navegar entre distintas páginas.
+
+Normalmente suelen ser fáciles de entender y fáciles de utilizar, aunque en el ámbito de la informática es preferible referirse a que suelen ser "usables, amigables e intuitivas".
+
+Actualmente, las interfaces continúan evolucionando y ya no se limitan únicamente a pantallas con botones. Existen interfaces táctiles, asistentes por voz, realidad aumentada, realidad virtual e incluso sistemas capaces de interpretar gestos.
+
+
+## La interfaz como medio de comunicación {#interfaz-medio-comunicación}
+
+Puede resultar útil imaginar la interfaz como un **traductor** entre el usuario y el ordenador (o aplicación). El usuario expresa lo que desea hacer mediante acciones sencillas que el programa transforma en instrucciones que él mismo puede comprender y ejecutar, para después devolver información al usuario. Por tanto, **la comunicación es bidireccional**.
+
+
+## Características de una buena interfaz {#características-buen-interfaz}
+
+Una buena interfaz debe permitir que el usuario consiga sus objetivos con el menor esfuerzo posible. Entre sus principales características destacan:
+
+- **Simplicidad**: Una interfaz sencilla contiene únicamente los elementos necesarios. Sobrecargar la pantalla con botones, colores o información que no son necesarios para la acción a realizar suele provocar confusión.
+- **Claridad**: Los elementos deben indicar claramente su función. El usuario no debería tener que adivinar qué hace cada elemento. Ejemplo:
+  - "Guardar" es más claro que "Aceptar".
+  - Un icono de una papelera suele representar la acción de eliminar.
+  - Un icono de una lupa suele representar una búsqueda.
+- **Consistencia**: Todos los elementos similares deben comportarse de forma similar. La consistencia permite que el usuario aprenda rápidamente cómo funciona la aplicación.
+- **Rapidez**: La interfaz debe responder inmediatamente a las acciones del usuario. En caso de que una operación tarde varios segundos en completarse, la aplicación debe mostrar algún tipo de respuesta:
+  - Un indicador de carga.
+  - Una barra de progreso.
+  - Un mensaje informativo.
+- **Accesibilidad**: Todas las personas deberían poder utilizar la aplicación independientemente de sus capacidades.
+- **Adaptabilidad**: La interfaz debe adaptarse correctamente a cualquier tamaño de pantalla.
+
+
+## La importancia de la primera impresión {#importancia-primera-impresión}
+
+Diversos estudios sobre experiencia de usuario muestran que una persona suele formarse una opinión inicial sobre una página web en apenas unos segundos. Durante ese breve tiempo el usuario decide si:
+
+- La página parece profesional.
+- Encuentra fácilmente la información.
+- Confía en el sitio.
+- Continúa navegando o abandona la página.
+
+Por este motivo, el diseño visual tiene un impacto directo sobre la percepción de calidad de una aplicación. Pero es importante recordar que una interfaz bonita no tiene por qué ser una buena interfaz.
+
+::: errorbox
+Una interfaz bonita no tiene por qué ser una buena interfaz
+:::
+
 
 # Evolución de las interfaces de usuario {#evolución-de-interfaces-de-usuario}
-
-La **interfaz de usuario**, IU (del inglés *User Interface*, **UI**), es el medio que permite la comunicación entre un usuario y una máquina. Normalmente suelen ser fáciles de entender y fáciles de utilizar, aunque en el ámbito de la informática es preferible referirse a que suelen ser "usables, amigables e intuitivas".
 
 Hoy en día podemos diferenciar entre 3 tipos:
 
@@ -37,16 +82,25 @@ Esta interfaz existe casi desde los comienzos de la computación, superada en an
 
 Hoy en día la línea de comandos se utiliza a través de programas denominados "emulador de terminales" que ejecutan un intérprete de comandos (llamado "shell"). Estos intérpretes, dependiendo del sistema operativo se pueden elegir, por ejemplo:
 
--   En **Windows** se puede hacer uso del antiguo **cmd** o el más nuevo y mejorado **PowerShell**. También se puede utilizar otros, pero no vienen de serie instalados (como **bash**)
+- En **Windows** se puede hacer uso del antiguo **cmd** o el más nuevo y mejorado **PowerShell**. También se puede utilizar otros, pero no vienen de serie instalados (como **bash**)
+- En sistemas **GNU/Linux** el intérprete más utilizado y que está instalado en la gran mayoría de distribuciones es **bash**. En los últimos años ha ganado mucho mercado **zsh** gracias al *framework* [Oh-my-zsh](https://ohmyz.sh/).
+- En sistemas MacOS el intérprete por defecto es **zsh**.
 
--   En sistemas **GNU/Linux** el intérprete más utilizado y que está instalado en la gran mayoría de distribuciones es **bash**. En los últimos años ha ganado mucho mercado **zsh** gracias al *framework* [Oh-my-zsh](https://ohmyz.sh/).
-
--   En sistemas MacOS el intérprete por defecto es **zsh**.
-
-![Interfaz BASH. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Linux_command-line._Bash._GNOME_Terminal._screenshot.png)](img/di/tema_1/bash.png){width="45%"}
+![Interfaz BASH. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Linux_command-line._Bash._GNOME_Terminal._screenshot.png)](img/di/tema_1/bash.png){width="75%"}
 
 
 Los conceptos de CLI, shell y emulador de terminal **no son lo mismo** ya que CLI se refiere al paradigma, mientras que un shell o un emulador de terminal son programas informáticos específicos, que usualmente en conjunto implementan la CLI. **Sin embargo, los tres suelen utilizarse como sinónimos**.
+
++-------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Ventajas                                                                | Inconvenientes                                                    |
++=========================================================================+===================================================================+
+| ● Muy rápida para usuarios expertos. `<br>`{=html} `\linebreak`{=latex} | ● Requiere memorizar comandos. `<br>`{=html} `\linebreak`{=latex} |
+| ● Gran capacidad de automatización.                                     | ● Poco intuitiva para principiantes.                              |
++-------------------------------------------------------------------------+-------------------------------------------------------------------+
+
+Table: {tablename=yukitblr colspec=X[1,l]X[1,l]}
+
+
 
 ## Interfaz gráfica de usuario {#interfaz-gráfica-de-usuario}
 
@@ -59,10 +113,10 @@ Su función principal es proporcionar un entorno visual sencillo para permitir l
 Las interfaces gráficas no nacen con los escritorios, si no que ya en pasos anteriores existen librerías que simulan ventanas o entornos haciendo uso de caracteres de texto y colores.
 
 :::::::::::::: {.columns }
-::: {.column width="48%"}
+::: {.column width="50%"}
 ![FreeDos Edit. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Fdedit.png)](img/di/tema_1/Fdedit.png){width="100%" framed=true}
 :::
-::: {.column width="48%" }
+::: {.column width="50%" }
 ![Midnight Commander. Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Midnight_Commander_(2005)_en.png)](img/di/tema_1/mc.png){width="100%" framed=true}
 :::
 ::::::::::::::
@@ -88,7 +142,7 @@ En 1979, el equipo encabezado por Steve Wozniak, Steve Jobs y Jef Raskin (junto 
 
 
 
-![El interfaz gráfico de LisaOS 1.0. Fuente: [GUI Gallery](https://guidebookgallery.org/screenshots/lisaos10)](img/di/tema_1/lisaos10.png){width="80%" framed=true}
+![El interfaz gráfico de LisaOS 1.0. Fuente: [GUI Gallery](https://guidebookgallery.org/screenshots/lisaos10)](img/di/tema_1/lisaos10.png){width="100%" framed=true}
 
 
 En 1984 Apple lanzó el Macintosh, el cual presentó una evolución del sistema operativo de Lisa, llamado "System", en el que se puede apreciar partes que apenas han cambiado desde entonces.
@@ -126,13 +180,13 @@ Se anuncian entornos de escritorio libres como Gnome y KDE, que evolucionan en p
 Cada sistema operativo y cada sistema de escritorio realizaba sus propias evoluciones que si tenían calado eran "copiadas" en los otros, generando también ciertas "modas" en colores, iconos o efectos de ventanas.
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="34%"}
 ![](img/di/tema_1/kde1.jpg){width="100%" framed=true}
 :::
-::: {.column width="30%"}
+::: {.column width="34%"}
 ![](img/di/tema_1/kde2.png){width="100%" framed=true}
 :::
-::: {.column width="30%"}
+::: {.column width="32%"}
 ![](img/di/tema_1/kde35.png){width="100%" framed=true}
 :::
 ::::::::::::::
@@ -189,17 +243,11 @@ Los primeros móviles carecían de pantalla, posteriormente comenzaron a tener p
 
 
 :::::::::::::: {.columns }
-::: {.column width="20%"}
+::: {.column width="50%"}
+![](img/di/tema_1/t10.jpg){width="50%" }
 :::
-::: {.column width="20%"}
-![](img/di/tema_1/t10.jpg){width="100%" }
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="20%" }
-![](img/di/tema_1/nokia.png){width="100%"}
-:::
-::: {.column width="20%"}
+::: {.column width="50%" }
+![](img/di/tema_1/nokia.png){width="50%"}
 :::
 ::::::::::::::
 
@@ -220,17 +268,11 @@ Todo cambió con la llegada del iPhone en el 2007 y los primeros *smartphones*, 
 
 
 :::::::::::::: {.columns }
-::: {.column width="10%"}
+::: {.column width="50%"}
+![](img/di/tema_1/iphone.jpg){width="70%"}
 :::
-::: {.column width="35%"}
-![](img/di/tema_1/iphone.jpg){width="100%"}
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="27%" }
-![](img/di/tema_1/htc.jpg){width="100%"}
-:::
-::: {.column width="10%"}
+::: {.column width="50%" }
+![](img/di/tema_1/htc.jpg){width="60%"}
 :::
 ::::::::::::::
 
@@ -258,15 +300,11 @@ Con estos cambios, los sistemas operativos y las interfaces sufren un cambio rad
 Con todo ello, surge un nuevo "problema" que hasta este momento no se había planteado en los interfaces, que es **la rotación del dispositivo**. Esta rotación debe hacer que la aplicación que se está ejecutando se adapte a la nueva posición del terminal, pasando de vertical a horizontal o viceversa.
 
 :::::::::::::: {.columns }
-::: {.column width="20%"}
-:::
-::: {.column width="30%"}
+::: {.column width="40%"}
 ![](img/di/tema_1/music.jpg){width="100%"}
 :::
-::: {.column width="50%" }
+::: {.column width="60%" }
 ![](img/di/tema_1/iphone_coverflow.png){width="100%"}
-:::
-::: {.column width="20%"}
 :::
 ::::::::::::::
 
@@ -321,17 +359,11 @@ Para poder movernos por el entorno, algunos de estos sistemas hacen uso de *[tra
 El siguiente paso es la conocida como **realidad aumentada**, en el que se trata de integrar elementos virtuales en la vida real. No es algo nuevo, ya que lleva años existiendo en juegos y aplicaciones.
 
 :::::::::::::: {.columns }
-::: {.column width="10%"}
+::: {.column width="50%"}
+![](img/di/tema_1/pokemon.jpg){width="70%"}
 :::
-::: {.column width="25%"}
-![](img/di/tema_1/pokemon.jpg){width="100%"}
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="25%" }
-![](img/di/tema_1/ikea.jpg){width="100%"}
-:::
-::: {.column width="10%"}
+::: {.column width="50%" }
+![](img/di/tema_1/ikea.jpg){width="70%"}
 :::
 ::::::::::::::
 
@@ -348,25 +380,34 @@ En el caso de las Apple Vision Pro prometen una experiencia de realidad aumentad
 ![Apple Vision Pro](img/di/tema_1/apple_vision.jpg){width="70%"}
 
 
+## Interfaces por voz {#interfaces-voz}
+
+La primera herramienta que permitió ejecutar reconocimiento digital de voz fue presentado en 1962. Aunque hubo distintas aplicaciones y asistentes virtuales [antes](https://es.wikipedia.org/wiki/Asistente_virtual\#Historia), no fue hasta la aparición de Siri en [2010](https://es.wikipedia.org/wiki/Siri) cuando su uso pasó al gran público.
+
+Los interfaces por voz hoy en día están asociados al teléfono móvil y a los asistentes virtuales que son capaces de reconocer lenguaje natural y ejecutar las acciones que se les pide. Los asistentes más conocidos son [Siri](https://es.wikipedia.org/wiki/Siri), [Alexa](https://es.wikipedia.org/wiki/Amazon_Alexa) y [Google Assistant](https://es.wikipedia.org/wiki/Asistente_de_Google).
+
+
 # Curiosidades, prototipos y ciencia ficción {#curiosidades-prototipos-y-ciencia-ficción}
 
 En este apartado se van a añadir algunos ejemplos de interfaces que son reales, pero que no dejan de ser meras curiosidades, ejemplos de prototipos de interfaces que de momento no han llegado a nada, y la visión en algunos casos que nos da las películas de ciencia ficción.
 
--   Demonstración de 1982 de posibles usos de tecnología táctil en pantallas. Realmente la pantalla no es táctil, tiene sensores alrededor de ella. [Vídeo](https://www.youtube.com/watch?v=JAcZpQCLb4E).
+-   Demonstración de 1982 de posibles usos de tecnología táctil en pantallas. Realmente la pantalla no es táctil, tiene sensores alrededor de ella. [[Vídeo](https://www.youtube.com/watch?v=JAcZpQCLb4E)]{.youtube}.
 
--   En [Jurassic Park](https://www.imdb.com/title/tt0107290/) aparece un interfaz para navegar un sistema de ficheros en 3D. [It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c).
+-   En [[Jurassic Park](https://www.imdb.com/title/tt0107290/)]{.movie} aparece un interfaz para navegar un sistema de ficheros en 3D. [It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c).
 
--   La película [Minority Report](https://www.imdb.com/title/tt0181689/) del 2002 muestra un interfaz que se utiliza con las manos. [Vídeo](https://www.youtube.com/watch?v=33Raqx9sFbo).
+-   La película [[Minority Report](https://www.imdb.com/title/tt0181689/)]{.movie} del 2002 muestra un interfaz que se utiliza con las manos. [[Vídeo](https://www.youtube.com/watch?v=33Raqx9sFbo)]{.youtube}.
 
--   En 2003 Microsoft muestra un [vídeo](https://www.youtube.com/watch?v=b9ifQvQCO7Y) de lo que será su próximo Windows, llamado Longhorn. Este interfaz nunca llegó a la versión final, aunque sí que hubo versiones de [demonstración](https://www.youtube.com/watch?v=pjExyeyLBG0) que se parecían un poco, pero la versión final que se llamó Vista nunca llegó a ser como los primeros conceptos.
+-   En 2003 Microsoft muestra un [[vídeo](https://www.youtube.com/watch?v=b9ifQvQCO7Y)]{.youtube} de lo que será su próximo Windows, llamado Longhorn. Este interfaz nunca llegó a la versión final, aunque sí que hubo versiones de [[demonstración](https://www.youtube.com/watch?v=pjExyeyLBG0)]{.youtube} que se parecían un poco, pero la versión final que se llamó Vista nunca llegó a ser como los primeros conceptos.
 
--   En 2006, con la aceleración de OpenGL por *hardware* en las tarjetas gráficas, en las distribuciones GNU/Linux nacen los gestores de ventanas con diseños 3D real. Hubo varias alternativas, ya que surgieron varios "forks" de distintos proyectos, pero los más conocidos fueron Compiz y Beryl. [Vídeo](https://www.youtube.com/watch?v=4QokOwvPxrE).
+-   En 2006, con la aceleración de OpenGL por *hardware* en las tarjetas gráficas, en las distribuciones GNU/Linux nacen los gestores de ventanas con diseños 3D real. Hubo varias alternativas, ya que surgieron varios "forks" de distintos proyectos, pero los más conocidos fueron Compiz y Beryl. [[Vídeo](https://www.youtube.com/watch?v=4QokOwvPxrE)]{.youtube}.
 
--   En 2006 en una charla TED [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han) realiza una demonstración de pantalla multitáctil con muchos gestos que posteriormente se volverían el día a día con los *smartphones*. [Charla TED](https://www.youtube.com/watch?v=ac0E6deG4AU) y [Vídeo de demonstración](https://www.youtube.com/watch?v=wHfKrk8QMM0).
+-   En 2006 en una charla TED [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han) realiza una demonstración de pantalla multitáctil con muchos gestos que posteriormente se volverían el día a día con los *smartphones*. [[Charla TED](https://www.youtube.com/watch?v=ac0E6deG4AU) y [Vídeo de demonstración](https://www.youtube.com/watch?v=wHfKrk8QMM0)]{.youtube}.
 
--   En 2009 Microsoft presenta un vídeo con el concepto de una tablet plegable llamada [Courier](https://en.wikipedia.org/wiki/Microsoft_Courier). [Vídeo 1](https://www.youtube.com/watch?v=_hzcs43CD_Y), [Vídeo 2](https://www.youtube.com/watch?v=pFQWc79TYcU). El iPad todavía no se había presentado.
+-   En 2009 Microsoft presenta un vídeo con el concepto de una tablet plegable llamada [Courier](https://en.wikipedia.org/wiki/Microsoft_Courier). [[Vídeo 1](https://www.youtube.com/watch?v=_hzcs43CD_Y)]{.youtube}, [[Vídeo 2](https://www.youtube.com/watch?v=pFQWc79TYcU)]{.youtube}. El iPad todavía no se había presentado.
 
     -   Microsoft tiene varias páginas con conceptos de interfaces para tablets plegables en su web. [Enlace 1](https://learn.microsoft.com/en-us/dual-screen/android/test-kit/foldable-concepts), [Enlace 2](https://devblogs.microsoft.com/surface-duo/design-foldable-large-screens/).
 
--   Las películas de [Iron Man](https://www.youtube.com/watch?v=P5k-4-OEuTk) han ofrecido muchas escenas donde aparecen interfaces muy espectaculares, a nivel holográfico y de realidad aumentada. [Vídeo](https://www.youtube.com/watch?v=P5k-4-OEuTk).
+-   Las películas de [[Iron Man](https://www.imdb.com/es-es/title/tt0371746/)]{.movie} han ofrecido muchas escenas donde aparecen interfaces muy espectaculares, a nivel holográfico y de realidad aumentada. [[Vídeo](https://www.youtube.com/watch?v=P5k-4-OEuTk)]{.youtube}.
+
+-   Película [[Her](https://www.imdb.com/es-es/title/tt1798709/)]{.movie} en la que se ve la relación entre un humano y su asistente virtual.
 

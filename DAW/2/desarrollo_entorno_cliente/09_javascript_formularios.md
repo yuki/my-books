@@ -467,7 +467,7 @@ password.addEventListener("blur", (e)=>{
 Los controles pueden activarse o desactivarse mediante la propiedad [disabled]{.verbatim} que es de tipo booleano. En el HTML con poner el atributo es suficiente para indicar que está deshabilitado.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -477,7 +477,7 @@ Los controles pueden activarse o desactivarse mediante la propiedad [disabled]{.
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Deshabilitar control]{.title}
@@ -497,7 +497,7 @@ En el momento en el que se deshabilita el campo no podrá recibir el foco y tamp
 Existe la propiedad [readonly]{.verbatim} para hacer que un control no pueda ser modificado. El usuario puede leer el contenido, el control puede recibir el foco y se envía en el formulario. Se suele utilizar, por ejemplo, cuando al usuario se le asigna un ID único o nombre de usuario que no podrá modificar.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -507,7 +507,7 @@ Existe la propiedad [readonly]{.verbatim} para hacer que un control no pueda ser
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Deshabilitar control]{.title}
@@ -539,7 +539,7 @@ Todas estas validaciones se realizan automáticamente al pulsar el botón de env
 JavaScript también puede consultar el estado de esta validación con la función [checkValidity()]{.verbatim} para el campo, devolviendo un boobleano.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -549,7 +549,7 @@ JavaScript también puede consultar el estado de esta validación con la funció
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Comprobar validación]{.title}
@@ -687,8 +687,8 @@ Aunque ya se ha ido indicando en apartados anteriores cómo realizar una buena e
 
 Siempre que sea posible, el mensaje debe aparecer cerca del control que contiene el error, de esta manera el usuario identifica inmediatamente qué dato debe corregir. Para ello se puede utilizar elementos HTML que en principio estén ocultos y que en caso de error aparezcan:
 
-:::::::::::::: {.columns }
-::: {.column width="33%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="37%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -708,7 +708,7 @@ Siempre que sea posible, el mensaje debe aparecer cerca del control que contiene
 :::
 
 :::
-::: {.column width="62%" }
+::: {.column width="63%" }
 
 ::: {.mycode size=footnotesize}
 [Comprobar validación]{.title}
@@ -732,7 +732,7 @@ Si la validación se está haciendo en tiempo real, una vez el usuario corrige e
 Aparte del mensaje de error, resulta recomendable indicar visualmente el control con un color diferente, para que resalte cuál es el que contiene el error. Previamente se ha indicado que HTML5 cuenta con unas clases CSS especiales, pero podemos crear unas clases propias.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
 ```css
@@ -743,14 +743,13 @@ Aparte del mensaje de error, resulta recomendable indicar visualmente el control
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
-[Comprobar validación]{.title}
+[JavaScript]{.title}
 ```javascript
-// añadir clase error
+// añadir y quitar clase
 nombre.classList.add("error");
-// quitar clase
 nombre.classList.remove("error");
 ```
 :::

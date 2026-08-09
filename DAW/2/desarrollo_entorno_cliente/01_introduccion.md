@@ -155,7 +155,7 @@ Aunque jQuery fue la más conocida, durante esos años hubo otras librerías que
 ## HTML5: el navegador gana capacidades {#html5}
 
 :::::::::::::: {.columns }
-::: {.column width="75%"}
+::: {.column width="85%"}
 En 2007 se publicó el primer borrador de [HTML5](https://en.wikipedia.org/wiki/HTML5), una importante evolución del lenguaje HTML. HTML5 incorporó numerosas funcionalidades que antes solo podían conseguirse mediante tecnologías externas como Flash.
 
 Gracias a HTML5, los navegadores modernos comenzaron a convertirse en una plataforma de desarrollo mucho más completa gracias a que incorporaron APIs para ejecutar de forma nativa:

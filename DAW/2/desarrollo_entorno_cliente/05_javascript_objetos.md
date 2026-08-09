@@ -6,8 +6,8 @@ Hasta ahora hemos trabajado con variables capaces de almacenar un único dato, p
 En JavaScript podemos usar **[objetos](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects)**, que son una estructura que permite agrupar información relacionada. Cada dato dentro de un objeto es una **propiedad**, que se puede declarar con o sin comillas (normalmente sin comillas). De los objetos de JavaScript se deriva el formato [JSON](https://es.wikipedia.org/wiki/JSON) (*JavaScript Object Notation*), ampliamente utilizado hoy en día en internet, como alternativa a [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language).
 
 
-:::::::::::::: {.columns }
-::: {.column width="32%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="33%"}
 
 ::: mycode
 [Crear objeto]{.title}
@@ -24,7 +24,7 @@ const alumno = {
 :::
 
 :::
-::: {.column width="32%" }
+::: {.column width="33%" }
 
 ::: mycode
 [Crear objeto]{.title}
@@ -41,7 +41,7 @@ const alumno = {
 :::
 
 :::
-::: {.column width="32%" }
+::: {.column width="33%" }
 
 ::: mycode
 [Crear objeto]{.title}
@@ -75,7 +75,7 @@ Una vez creado un objeto, es posible consultar el valor de sus propiedades, modi
 
 Para acceder a las propiedades podemos hacerlo de dos maneras:
 
-:::::::::::::: {.columns }
+:::::::::::::: {.columns columnsep="0.5cm"}
 ::: {.column width="47%"}
 
 ::: {.mycode size=footnotesize}
@@ -88,7 +88,7 @@ console.log(alumno.direccion.calle);
 :::
 
 :::
-::: {.column width="50%" }
+::: {.column width="53%" }
 
 ::: {.mycode size=footnotesize}
 [Acceder a propiedades]{.title}
@@ -107,7 +107,7 @@ El uso de corchetes suele ser más habitual cuando el nombre de la propiedad lo 
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Acceder a propiedades]{.title}
@@ -118,7 +118,7 @@ console.log(alumno[propiedad])
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Modificar propiedades]{.title}
@@ -284,7 +284,7 @@ Usa el método para recorrer objetos que mejor se adecúe en cada momento.
 Los objetos también puede contener funciones, que reciben el nombre de **métodos**. Los métodos se pueden declarar de dos maneras tal como podemos ver a continuación:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Método]{.title}
@@ -300,7 +300,7 @@ alumno.saludar();
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Método]{.title}
@@ -324,7 +324,7 @@ alumno.saludar("tu");
 Dentro de un método podemos acceder al propio objeto utilizando la palabra reservada [this]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Uso de "this"]{.title}
@@ -340,7 +340,7 @@ alumno.saludar();
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 ["this" no funciona *arrow-functions*]{.title}
@@ -556,7 +556,7 @@ A diferencia de otros lenguajes, JavaScript permite crear arrays de distintos ti
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Acceder simple]{.title}
@@ -567,7 +567,7 @@ const llenar = [];
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Array objetos]{.title}
@@ -598,7 +598,7 @@ Para acceder y modificar elementos de un array debemos hacerlo a través de su �
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Acceder a un índice]{.title}
@@ -608,7 +608,7 @@ console.log(datos[0]);
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Modificar un índice]{.title}
@@ -626,7 +626,7 @@ datos[2] = 30;
 Para poder saber cuántos elementos tiene el array tenemos la propiedad [length]{.verbatim}. Por lo tanto, si queremos acceder al último elemento, tendremos que restarle 1.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Longitud del array]{.title}
@@ -636,7 +636,7 @@ console.log(datos.length);
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Último elemento]{.title}
@@ -654,7 +654,7 @@ datos[datos.length-1];
 La forma clásica consiste en utilizar un bucle [for]{.verbatim}, aunque actualmente se hace uso de [for...of]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Recorrer array]{.title}
@@ -666,7 +666,7 @@ for (let i=0; i<datos.length; i++) {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Recorrer array]{.title}
@@ -694,7 +694,7 @@ JavaScript incorpora numerosos métodos para trabajar con arrays. Muchos de ello
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="48%"}
 
 ::: {.mycode size=footnotesize}
 [Métodos array]{.title}
@@ -714,12 +714,12 @@ const nums = numeros.slice(1, 3);
 :::
 
 :::
-::: {.column width="50%" }
+::: {.column width="52%" }
 
 ::: {.mycode size=footnotesize}
 [Métodos array]{.title}
 ```javascript
-const colores = ["Rojo", "Verde", "Azul"];
+const colores = ["Rojo","Verde","Azul"];
 // buscar un elemento
 console.log(colores.includes("Verde"));
 // obtener la posición

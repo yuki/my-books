@@ -87,13 +87,12 @@ Con la vista inicial, si seleccionamos el texto "Hello World!" veremos que tiene
 ::: {.column width="60%"}
 Se pueden identificar 4 *constraints* que hacen referencia a los distintos puntos del componente:
 
--   ***Start***: Lado izquierdo del componente.
+- ***Start***: Lado izquierdo del componente.
+- ***End***: Lado derecho del componente.
+- ***Top***: Parte superior del componente.
+- ***Bottom***: Parte inferior del componente.
 
--   ***End***: Lado derecho del componente.
-
--   ***Top***: Parte superior del componente.
-
--   ***Bottom***: Parte inferior del componente.
+De esta manera, cada parte del componente tendrá un *constraint* que estará asociado, en este caso, a una parte del *layout* padre que lo contiene. Si miramos el código fuente del fichero XML, se puede apreciar cómo cada uno de estos aparece escrito:
 :::
 ::: {.column width="30%" }
 ![](img/di/tema_2/constraints.png){width="100%"}
@@ -101,7 +100,6 @@ Se pueden identificar 4 *constraints* que hacen referencia a los distintos punto
 ::::::::::::::
 
 
-De esta manera, cada parte del componente tendrá un *constraint* que estará asociado, en este caso, a una parte del *layout* padre que lo contiene. Si miramos el código fuente del fichero XML, se puede apreciar cómo cada uno de estos aparece escrito:
 
 ::: mycode
 [Código XML de un TextView]{.title}
@@ -145,9 +143,16 @@ Los componentes pueden estar asociados a otros componentes, pero no tienen por q
 
 ### Cadenas {#cadenas}
 
+:::::::::::::: {.columns }
+::: {.column width="60%"}
+
 Las [cadenas](https://developer.android.com/develop/ui/views/layout/constraint-layout#constrain-chain) sirven para enlazar un grupo de componentes (o vistas) de manera bidireccional entre ellos. Se pueden realizar cadenas de manera vertical y horizontal. Ejemplo de cadena vertical con los 3 elementos que están centrados.
 
-![](img/di/tema_2/cadenas.png){width="30%" framed=true}
+:::
+::: {.column width="70%" }
+![](img/di/tema_2/cadenas.png){width="80%" framed=true}
+:::
+::::::::::::::
 
 
 ## Vista vertical y horizontal {#vista-vertical-y-horizontal}
@@ -186,7 +191,7 @@ Por ejemplo, la calculadora de iOS a la hora de rotar el dispositivo, la calcula
 :::
 ::: {.column width="10%"}
 :::
-::: {.column width="40%" }
+::: {.column width="50%" }
 ![](img/di/tema_2/calculadora_ios_landscape.png){width="100%"}
 :::
 ::: {.column width="10%"}
@@ -221,10 +226,10 @@ Esto nos creará en el árbol de nuestro proyecto una carpeta con el nombre de l
 
 
 :::::::::::::: {.columns }
-::: {.column width="35%"}
+::: {.column width="50%"}
 ![](img/di/tema_2/crear_landscape.png){width="100%"}
 :::
-::: {.column width="35%" }
+::: {.column width="50%" }
 ![](img/di/tema_2/vista.png){width="100%"}
 :::
 ::::::::::::::
@@ -253,12 +258,9 @@ import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-
     var contador:Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         //... código ya existente
-
         val button:Button = findViewById(R.id.button)
         val text:TextView = findViewById(R.id.textView)
 
@@ -406,10 +408,10 @@ Vamos a suponer el siguiente interfaz básico, donde a la izquierda aparece cóm
 
 :::::::::::::: {.columns }
 
-::: {.column width="44%"}
+::: {.column width="50%"}
 ![](img/di/compose/compose_dispose.png){width="100%"}
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 ![](img/di/compose/compose_dispose_layout.png){width="100%"}
 :::
 ::::::::::::::
@@ -484,7 +486,7 @@ Los [modificadores](https://developer.android.com/develop/ui/compose/modifiers-l
 Añadiendo distintos modificadores, el código quedaría:
 
 :::::::::::::: {.columns }
-::: {.column width="53%"}
+::: {.column width="55%"}
 
 
 ::: {.mycode size=tiny}
@@ -545,7 +547,7 @@ fun Post() {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="45%" }
 ![](img/di/compose/post2.png){width="100%" framed=true}
 :::
 ::::::::::::::

@@ -40,7 +40,7 @@ Cada clase únicamente puede tener un constructor.
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Nueva clase]{.title}
@@ -63,7 +63,7 @@ class Alumno {
 ::: {.mycode size=footnotesize}
 [Crear objetos]{.title}
 ```javascript
-const alumno1 = new Alumno("Alice", 20);
+const alumno1 = new Alumno("Alice",20);
 
 const alumno2 = new Alumno("Bob",25);
 
@@ -87,7 +87,7 @@ En lugar de permitir que cualquier parte del programa modifique libremente los d
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Nueva clase]{.title}
@@ -104,7 +104,7 @@ class Cuenta {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Crear objetos]{.title}
@@ -136,7 +136,7 @@ Aunque pueda parecer extraño, JavaScript incorporó los elementos y métodos pr
 Una propiedad y un método privado sólo se podrá acceder desde la propia clase, tal como sucede en otros lenguajes que cuentan con programación orientada a objetos.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Nueva clase]{.title}
@@ -158,7 +158,7 @@ class Cuenta {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Crear objetos]{.title}
@@ -203,7 +203,7 @@ Un ***getter*** permite consultar una propiedad como si fuese un atributo, mient
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Setter y getter]{.title}
@@ -229,7 +229,7 @@ class Cuenta {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Cómo se usa]{.title}
@@ -258,7 +258,7 @@ Cuando una clase hija define su propio constructor, debe llamar al constructor d
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Setter y getter]{.title}
@@ -278,7 +278,7 @@ class Persona {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Crear objetos]{.title}
@@ -318,7 +318,7 @@ Teniendo en cuenta la clase "**Persona**" del ejemplo anterior, a continuación 
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Setter y getter]{.title}
@@ -334,7 +334,7 @@ class Alumno extends Persona {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Crear objetos]{.title}

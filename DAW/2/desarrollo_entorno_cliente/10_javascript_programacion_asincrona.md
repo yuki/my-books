@@ -93,7 +93,7 @@ JavaScript es *single-threaded*, **sólo puede ejecutar una instrucción de cód
 JavaScript da más prioridad a las *micro-task* que a las *macro-task* y se puede comprobar con el siguiente ejemplo:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="55%"}
 
 ::: mycode
 [Ejemplo de [medium.com](https://medium.com/@vigenhovhannisiano/javascript-event-loop-explained-with-simple-diagrams-and-real-examples-8296c85ab964)]{.title}
@@ -113,7 +113,7 @@ console.log("4");
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="45%" }
 
 Aunque todavía no entendamos qué realiza cada parte, la salida va a ser la siguiente:
 
@@ -205,7 +205,7 @@ Esta función es útil para:
 La función [setInterval()]{.verbatim} ejecuta una función repetidamente, cuando pasen los milisegundos indicados.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Llama a una función]{.title}
@@ -215,7 +215,7 @@ setInterval(hola(), 2000);
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Usa función flecha]{.title}
@@ -294,7 +294,7 @@ En este caso:
 En el ejemplo anterior se ha pasado una función ya existente, pero se puede pasar funciones anónimas y flecha
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Función anónima]{.title}
@@ -306,7 +306,7 @@ setTimeout(function () {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Función flecha]{.title}
@@ -342,7 +342,7 @@ A la hora de llamar a la función podemos decidir qué hacer en el *callback* qu
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Loguea el resultado]{.title}
@@ -354,7 +354,7 @@ sumar(4, 6, (resultado) => {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Lo dibuja en un elemento]{.title}
@@ -493,8 +493,8 @@ A continuación se crean dos ejemplos:
 - Ejemplo sencillo con una condición que resuelve o rechaza la promesa.
 - Ejemplo que resolverá o rechazará la promesa al de dos segundos, debido al temporizador, para simular una petición asíncrona (una petición a una web, por ejemplo).
 
-:::::::::::::: {.columns }
-::: {.column width="49%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Crear Promise]{.title}
@@ -514,7 +514,7 @@ const p=new Promise((resolve,reject)=>{
 :::
 
 :::
-::: {.column width="49%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Crear Promise]{.title}
@@ -685,7 +685,7 @@ Si por el contrario usamos [Promise]{.verbatim} quedaría de una de las dos sigu
 
 
 :::::::::::::: {.columns }
-::: {.column width="49%"}
+::: {.column width="55%"}
 
 ::: {.mycode size=footnotesize}
 [Login de usuario]{.title}
@@ -710,7 +710,7 @@ obtenerUsuario(123)
 :::
 
 :::
-::: {.column width="49%" }
+::: {.column width="45%" }
 
 ::: {.mycode size=footnotesize}
 [Login de usuario]{.title}
@@ -804,7 +804,7 @@ El objetivo de [async]{.verbatim} y [await]{.verbatim} es escribir código asín
 Usando la palabra reservada [async]{.verbatim} declaramos que una función sea asíncrona y **siempre devuelve una promesa**. Podemos crear en funciones estándar o flecha. 
 
 :::::::::::::: {.columns }
-::: {.column width="49%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Función async]{.title}
@@ -816,7 +816,7 @@ async function saludo() {
 :::
 
 :::
-::: {.column width="49%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Función async flecha]{.title}
@@ -838,7 +838,7 @@ La palabra reservada [await]{.verbatim} permite esperar el resultado de una prom
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="52%"}
 
 ::: {.mycode size=footnotesize}
 [Función async]{.title}
@@ -854,7 +854,7 @@ function esperar() {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="48%" }
 
 ::: {.mycode size=footnotesize}
 [Función async flecha]{.title}
@@ -890,7 +890,7 @@ Crea 3 botones que realicen lo siguiente:
 A continuación una comparación de cómo sería un ejemplo con promesas y otro con async/await.
 
 :::::::::::::: {.columns }
-::: {.column width="49%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Con promesas]{.title}
@@ -903,7 +903,7 @@ esperar()
 :::
 
 :::
-::: {.column width="49%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Función async flecha]{.title}

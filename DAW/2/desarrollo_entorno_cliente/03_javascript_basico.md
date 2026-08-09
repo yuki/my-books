@@ -47,7 +47,7 @@ La forma más habitual a la hora de escribir código JavaScript es en un fichero
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Código index.html]{.title}
@@ -67,7 +67,7 @@ La forma más habitual a la hora de escribir código JavaScript es en un fichero
 :::
 
 :::
-::: {.column width="49%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=scriptsize}
 [Código js/app.js]{.title}
@@ -105,7 +105,7 @@ Cuando una página contiene varios archivos JavaScript, **el orden en el que se 
 Supongamos los siguientes dos ficheros:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=scriptsize}
 [Código js/funciones.js]{.title}
@@ -117,7 +117,7 @@ function saludar(nombre) {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=scriptsize}
 [Código js/app.js]{.title}
@@ -143,7 +143,7 @@ Tradicionalmente existían dos posibilidades.
 - Antes de cerrar **[<body>]{verbatim}**: Durante muchos años la recomendación fue colocar los scripts justo antes del cierre del elemento [<body>]{verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=scriptsize}
 [Código en el head]{.title}
@@ -157,7 +157,7 @@ Tradicionalmente existían dos posibilidades.
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=scriptsize}
 [Antes de cerrar body]{.title}
@@ -294,7 +294,7 @@ Al igual que sucede en otros lenguajes podemos hacer comentarios de una única l
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Comentarios de una línea]{.title}
@@ -307,7 +307,7 @@ let edad = 20; // edad
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Comentando varias líneas]{.title}
@@ -367,7 +367,7 @@ function sumar(a, b) {
 Las variables permiten almacenar información en memoria para poder utilizarla posteriormente. Gracias a ellas un programa puede recordar valores, realizar cálculos, modificar información o intercambiar datos entre distintas partes del código.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="35%"}
 
 ::: mycode
 [Crear y usar una variable]{.title}
@@ -379,9 +379,7 @@ console.log(nombre);
 :::
 
 :::
-::: {.column width="47%" }
-
-
+::: {.column width="65%" }
 En este caso:
 
 - [let]{.verbatim}: indica que vamos a declarar una variable.
@@ -417,10 +415,10 @@ Es importante distinguir dos conceptos.
 
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="33%"}
 
 ::: mycode
-[Declarar variable]{.title}
+[Declarar]{.title}
 
 ```javascript
 let edad;
@@ -428,10 +426,10 @@ let edad;
 :::
 
 :::
-::: {.column width="30%" }
+::: {.column width="33%" }
 
 ::: mycode
-[Inicializar variable]{.title}
+[Inicializar]{.title}
 
 ```javascript
 edad = 20;
@@ -439,7 +437,7 @@ edad = 20;
 :::
 
 :::
-::: {.column width="30%" }
+::: {.column width="33%" }
 
 ::: mycode
 [Ambas]{.title}
@@ -464,7 +462,7 @@ A la hora de declarar variables podemos usar tres palabras reservadas:
 
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="33%"}
 
 ::: {.mycode size=footnotesize}
 [Variable con let]{.title}
@@ -478,7 +476,7 @@ console.log(contador);
 :::
 
 :::
-::: {.column width="35%" }
+::: {.column width="36%" }
 
 ::: {.mycode size=footnotesize}
 [Constantes]{.title}
@@ -493,7 +491,7 @@ letras.push("c");
 :::
 
 :::
-::: {.column width="30%" }
+::: {.column width="33%" }
 
 ::: {.mycode size=footnotesize}
 [Con var]{.title}
@@ -579,7 +577,7 @@ Prueba todos los tipos de datos descritos hasta ahora, haciendo hincapié en [[s
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode}
 [Ejemplo tipos de datos]{.title}
@@ -598,7 +596,7 @@ console.log(-42 / 0);
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode}
 [Ejemplo tipos de datos]{.title}
@@ -658,7 +656,7 @@ Muchas veces es necesario convertir un tipo de datos a otro, puede que de manera
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode}
 [Conversión de datos]{.title}
@@ -675,7 +673,7 @@ parseFloat("12.75")
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode}
 [Conversión de datos]{.title}
@@ -784,7 +782,7 @@ Escribe un ejemplo para cada una de las asignaciones anteriores.
 Permiten aumentar o disminuir una variable en una unidad. Pueden  colocarse antes o después de la variable, y depende de dónde se pongan varía su comportamiento.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Incremento]{.title}
@@ -798,7 +796,7 @@ console.log(++x);
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Decremento]{.title}
@@ -978,10 +976,10 @@ Además de la consola, JavaScript puede modificar el contenido de una página we
 
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="35%"}
 
 ::: {.mycode size=footnotesize}
-[Código index.html]{.title}
+[index.html]{.title}
 ```html
 <p id="mensaje"></p>
 ```

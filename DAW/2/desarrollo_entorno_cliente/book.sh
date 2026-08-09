@@ -22,4 +22,15 @@ cat 11_javascript_fetch.md
 echo [Almacenamiento de datos en el navegador]{.part}
 cat 12_javascript_almacenamiento.md
 
-# TODO: Meter temas de "use strict". DONDE? supongo que por el punto 3
+# TODO: Meter lo siguiente:
+# bucle foreach
+# hablar de Date y algún objeto estático más?
+# explicar hoisting mejor https://www.aprendejavascript.dev/clase/funciones/function-expression
+# closures https://www.aprendejavascript.dev/clase/funciones/closures
+# explicar más spread ...
+# array some, every, find, findIndex, filter, map, reduce
+# explicar los callbacks en el punto de las funciones en 04 ?
+# módulos
+# explicar el "..." de los objetos y pasar argumentos a funciones
+# set , map, weakset y weakmap
+# algo más?

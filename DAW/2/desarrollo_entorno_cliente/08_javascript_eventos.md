@@ -98,7 +98,7 @@ Con este ejemplo hemos unido crear un evento con la creación de elementos visto
 En este caso, hemos creado la función (al estilo clásico) dentro del evento, pero podemos usar una función flecha o llamar a una función ya existente:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="55%"}
 
 ::: {.mycode size=footnotesize}
 [Función flecha]{.title}
@@ -113,7 +113,7 @@ boton.addEventListener(
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="45%" }
 
 ::: {.mycode size=footnotesize}
 [Llamar a función existente]{.title}
@@ -183,7 +183,7 @@ Al hacer click sobre el botón se ejecutarán ambas funciones.
 A la hora de crear eventos con HTML y JavaScript también se puede hacer de las siguientes maneras:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Función inline en HTML]{.title}
@@ -194,7 +194,7 @@ A la hora de crear eventos con HTML y JavaScript también se puede hacer de las 
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Añadir evento al elemento]{.title}
@@ -322,7 +322,7 @@ Aparte de los parámetros vistos, el tipo de evento y la función, [addEventList
 Cuando ocurre un evento, el navegador genera automáticamente un objeto que contiene toda la información relacionada con él. Este objeto recibe el nombre de **[[Event]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/API/Event)**. JavaScript se lo puede pasar automáticamente como argumento a la función que gestiona el evento. El nombre de la variable que se le pasa a la función suele ser "[event]{.verbatim}" o "[e]{.verbatim}" para abreviar.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Mostrar datos del evento]{.title}
@@ -337,7 +337,7 @@ boton.addEventListener(
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Mostrar datos del evento]{.title}
@@ -460,7 +460,7 @@ Crea una web que genere una alerta al introducir el [código Konami](https://en.
 Los elementos de [entrada](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input) ([<input>]{.verbatim}) de los formulario generan eventos específicos al editarlos o también cuando obtienen el foco.
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="35%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
