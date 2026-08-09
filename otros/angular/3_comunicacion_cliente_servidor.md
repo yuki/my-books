@@ -258,7 +258,7 @@ Estamos ante dos situaciones distintas:
 Desde el componente **Events**, donde obtenemos todos, vamos a realizar un pequeño cambio para usar[router.navigate]{.verbatim} y ***[state](https://angular.dev/api/router/NavigationExtras#state)*** para pasar el objeto.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}
@@ -277,7 +277,7 @@ export class Events {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Plantilla]{.title}

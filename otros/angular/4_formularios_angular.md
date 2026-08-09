@@ -31,7 +31,7 @@ Proporcionan acceso directo y explícito al modelo de objetos del formulario sub
 Usando un componente **Formulario** recién creado, se han añadido unos ***imports***, creado una variable y se ha modificado la visata:
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Componente de formulario]{.title}
@@ -55,7 +55,7 @@ export class Formulario {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Vista de formulario]{.title}

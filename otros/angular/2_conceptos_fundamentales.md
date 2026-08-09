@@ -59,7 +59,7 @@ De esta manera podemos mostrar de manera sencilla las propiedades de un componen
 
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -71,7 +71,7 @@ export class App {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.html]{.title}
@@ -89,7 +89,7 @@ export class App {
 Para poder modificar propiedades y atributos del DOM (*Document Object Model*) del *template* HTML, debemos especificarlo entre corchetes [[]]{.verbatim}. En el siguiente ejemplo el botón va a aparecer como deshabilitado debido a que así se ha especificado desde la clase.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -102,7 +102,7 @@ export class App {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar home.page.html]{.title}
@@ -127,7 +127,7 @@ Para manejar interacción desde la vista, a través d un *event binding*, podemo
 Siguiendo con el ejemplo anterior, se va a crear otro botón que al pulsarlo modifique la propiedad de la clase que hacía que estuviese deshabilitado.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -139,7 +139,7 @@ incrementar() {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar home.page.html]{.title}
@@ -165,7 +165,7 @@ En las vistas también podremos realizar un control de los datos que se visualiz
 Para poder controlar qué se visualiza en la vista, al igual que sucede en el *backend*, se puede realizar un control condicional con [@if]{.verbatim},[@else]{.verbatim} o [@else if]{.verbatim}. También existe el bloque [[@switch]{.verbatim}](https://angular.dev/guide/templates/control-flow#conditionally-display-content-with-the-switch-block) para condicionales de muchas opciones.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}
@@ -185,7 +185,7 @@ Para poder controlar qué se visualiza en la vista, al igual que sucede en el *b
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Control en la vista]{.title}
@@ -227,7 +227,7 @@ Para realizar repeticiones en la vista, como en el caso de una lista, podemos ha
 - [$odd]{.verbatim}: [True]{.verbatim} si el índice actual es par.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -239,7 +239,7 @@ frutas = ['Manzana', 'Pera',
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.html]{.title}
@@ -265,7 +265,7 @@ Las *pipes* (o "tuberías") son un operador especial que se puede usar en las vi
 
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -278,7 +278,7 @@ import { DatePipe,
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Uso de pipes en la vista]{.title}
@@ -359,7 +359,7 @@ Imaginemos que tenemos una aplicación que contiene varios listados, que por asp
 Generamos los datos en el componente padre y llamamos al componente hijo pasándole el listado como parámetro:
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -371,7 +371,7 @@ export class App {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.html]{.title}
@@ -389,7 +389,7 @@ Y ahora en el componente "hijo", debemos leer el parámetro mediante [input()]{.
 Puede ser interesante inicializar el valor, de ahí que dentro del [input()]{.verbatim} hayamos puesto [[3,2,1]]{.verbatim}, por si no recibe el parámetro desde el padre.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar prueba.ts]{.title}
@@ -401,7 +401,7 @@ export class Prueba {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar prueba.html]{.title}
@@ -438,7 +438,7 @@ Los parámetros [model()]{.verbatim} son *inputs* especiales que permiten propag
 Confirmamos en el componente padre que tenemos un valor que le pasamos al hijo. Desde el componente padre también podemos modificar ese valor con un botón:
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.ts]{.title}
@@ -455,7 +455,7 @@ export class HomePage {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar app.html]{.title}
@@ -477,7 +477,7 @@ export class HomePage {
 Ahora desde el componente hijo vamos a recibir el valor mediante [model()]{.verbatim}:
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar prueba.ts]{.title}
@@ -493,7 +493,7 @@ export class Prueba {
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Modificar incrementar.page.html]{.title}
@@ -518,7 +518,7 @@ Es posible que necesitemos crear componentes que sólo van a ser contenedores de
 Desde el componente padre llamamos al componente hijo añadiendo contenido, y en el hijo simplemente ponemos [ng-content]{.verbatim} para visualizarlo.
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Llamada al componente hijo]{.title}
@@ -530,7 +530,7 @@ Desde el componente padre llamamos al componente hijo añadiendo contenido, y en
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [En el componente hijo]{.title}
@@ -556,10 +556,10 @@ Cada componente Angular pasa por una serie de fases o *hooks* desde que se crea 
 El ciclo de vida varía ligeramente al crearse el componente o durante sus actualizaciones posteriores. La explicación para todos los *hooks* se pueden encontrar en la [documentación oficial](https://angular.dev/guide/components/lifecycle).
 
 :::::::::::::: {.columns }
-::: {.column width="45%" }
-![](img/angular/angular-lifecycle.png){width=100%}
+::: {.column width="50%" }
+![](img/angular/angular-lifecycle.png){width=90%}
 :::
-::: {.column width="45%" }
+::: {.column width="50%" }
 ![](img/angular/angular-lifecycle2.png){width=100%}
 :::
 ::::::::::::::
@@ -619,7 +619,7 @@ export const appConfig: ApplicationConfig = {
 En el componente principal [app]{.verbatim} deberíamos tener la configuración y en su template lo siguiente:
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode}
 [Componente principal]{.title}
@@ -635,7 +635,7 @@ import { RouterOutlet }
 :::
 
 :::
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode}
 [Plantilla del componente]{.title}
@@ -693,7 +693,7 @@ Para poder navegar entre las rutas creadas se va a usar [RouterLink]{.verbatim},
 
 
 :::::::::::::: {.columns }
-::: {.column width="44%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Vista principal]{.title}
@@ -712,8 +712,8 @@ Para poder navegar entre las rutas creadas se va a usar [RouterLink]{.verbatim},
 :::
 
 :::
-::: {.column width="44%" }
-![](img/angular/angular-rutas.png){width="100%" framed=true}
+::: {.column width="50%" }
+![](img/angular/angular-rutas.png){width="90%" framed=true}
 :::
 ::::::::::::::
 

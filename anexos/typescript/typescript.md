@@ -194,7 +194,7 @@ Los *enum* numéricos los podemos inicializar o pueden inicializarse solos empez
 
 :::::::::::::: {.columns }
 
-::: {.column width="30%" }
+::: {.column width="33%" }
 
 ::: {.mycode size=footnotesize}
 [Enum inicializado]{.title}
@@ -211,9 +211,9 @@ enum Direction {
 :::
 
 
-::: {.column width="30%" }
+::: {.column width="33%" }
 ::: {.mycode size=footnotesize}
-[Enum sin inicializar]{.title}
+[Sin inicializar]{.title}
 
 ``` typescript
 enum Direction {
@@ -227,7 +227,7 @@ enum Direction {
 
 :::
 
-::: {.column width="30%"}
+::: {.column width="33%"}
 
 ::: {.mycode size=footnotesize}
 [Enum de texto]{.title}
@@ -264,7 +264,7 @@ También tenemos las palabras reservadas [break]{.verbatim} para salir de la fun
 
 :::::::::::::: {.columns }
 
-::: {.column width="40%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Condicional if]{.title}
@@ -279,7 +279,7 @@ if (num > 18) {
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Condicional if-else]{.title}
@@ -300,7 +300,7 @@ if (num > 18) {
 
 :::::::::::::: {.columns }
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
 [Condicional else if]{.title}
@@ -317,7 +317,7 @@ if (num < 18) {
 
 :::
 
-::: {.column width="40%" }
+::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
 [Estructura switch-case]{.title}
@@ -348,7 +348,7 @@ Dentro de los bucles, y utilizando una condicional, podemos usar [continue]{.ver
 
 :::::::::::::: {.columns }
 
-::: {.column width="40%" }
+::: {.column width="42%" }
 
 ::: {.mycode size=footnotesize}
 [Bucle for]{.title}
@@ -382,7 +382,7 @@ for (let i = 0; i < frutas.length; i++) {
 
 :::::::::::::: {.columns }
 
-::: {.column width="45%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}
@@ -399,7 +399,7 @@ for (const f of frutas) {
 
 :::
 
-::: {.column width="45%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}
@@ -429,7 +429,7 @@ También podemos hacer uso de bucles [while]{.verbatim} y [do-while]{.verbatim}.
 
 :::::::::::::: {.columns }
 
-::: {.column width="45%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}
@@ -444,7 +444,7 @@ while (condición) {
 
 :::
 
-::: {.column width="45%" }
+::: {.column width="50%" }
 
 
 ::: {.mycode size=footnotesize}

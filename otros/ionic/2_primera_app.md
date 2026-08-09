@@ -121,10 +121,10 @@ Los pasos son muy parecidos a los realizados para Android, y se pueden ver en la
 Aunque sólo hemos generado una aplicación de pruebas, podemos ver el resultado en distintas plataformas. Con el mismo código, las vistas generadas son ligeramente diferentes, simulando una aplicación nativa.
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="35%"}
 ![](img/ionic/test_web.png){width="100%" framed=true}
 :::
-::: {.column width="30%" }
+::: {.column width="35%" }
 ![](img/ionic/test_android.png){width="100%"}
 :::
 ::: {.column width="30%" }
