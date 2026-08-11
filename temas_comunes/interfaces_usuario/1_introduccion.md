@@ -393,7 +393,7 @@ En este apartado se van a añadir algunos ejemplos de interfaces que son reales,
 
 -   Demonstración de 1982 de posibles usos de tecnología táctil en pantallas. Realmente la pantalla no es táctil, tiene sensores alrededor de ella. [[Vídeo](https://www.youtube.com/watch?v=JAcZpQCLb4E)]{.youtube}.
 
--   En [[Jurassic Park](https://www.imdb.com/title/tt0107290/)]{.movie} aparece un interfaz para navegar un sistema de ficheros en 3D. [It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c).
+-   En [[Jurassic Park](https://www.imdb.com/title/tt0107290/)]{.movie} aparece un interfaz para navegar un sistema de ficheros en 3D. [[It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c)]{.youtube}.
 
 -   La película [[Minority Report](https://www.imdb.com/title/tt0181689/)]{.movie} del 2002 muestra un interfaz que se utiliza con las manos. [[Vídeo](https://www.youtube.com/watch?v=33Raqx9sFbo)]{.youtube}.
 

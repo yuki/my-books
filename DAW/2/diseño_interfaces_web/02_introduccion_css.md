@@ -139,7 +139,7 @@ En proyectos reales es muy habitual dividir el código CSS en varios archivos pa
  Siguiendo con el ejemplo anterior, supongamos que contienen el siguiente código:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [estilos.css]{.title}
@@ -151,7 +151,7 @@ h1 {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [titulos.css]{.title}
@@ -166,7 +166,7 @@ h1 {
 ::::::::::::::
 
 
-El color final del título será **rojo**, ya que la segunda hoja de estilos sobrescribe la primera. Este comportamiento forma parte del mecanismo conocido como **cascada** (*cascade*), que estudiaremos con detalle más adelante.
+El color final del título será **rojo**, ya que la segunda hoja de estilos sobrescribe la primera. Este comportamiento forma parte del mecanismo conocido como **[cascada](#cascada)** (*cascade*), que estudiaremos con detalle más adelante.
 
 ::: errorbox
 El orden de carga de los ficheros es importante.
@@ -179,6 +179,143 @@ No existe un número fijo de archivos CSS que deba tener un proyecto. En aplicac
 
 Carga dos ficheros CSS y comprueba la importancia del orden tal como aparece en el ejercicio anterior.
 :::
+
+
+## CSS interno {#css-interno}
+
+Se puede escribir estilos CSS dentro de una página HTML directamente usando las etiquetas [<style>]{.verbatim} y tiene que estar dentro de la cabecera [<head>]{.verbatim}.
+
+::: mycode
+[HTML+CSS inline]{.title}
+
+```html
+<html>
+  <head>
+    <style>
+      body {
+        background-color: linen;
+      }  
+      h1 {
+        color: maroon;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+```
+:::
+
+::: errorbox
+No se recomienda usar CSS interno dentro de un HTML.
+:::
+
+Existen sistemas para generar HTML unificado (para generar HTML auto-contenidos) para generar webs estáticas, pero durante el desarrollo **no se debe usar CSS dentro del HTML**.
+
+
+## Estilos CSS *inline* {#estilos-css-inline}
+
+Se puede utilizar estilos CSS dentro del código HTML, lo que se denominan estilos *inline*. Esta técnica era muy utilizada al inicio de la web, pero **no es recomendable usarla** ya que va en contra de la reutilización de los estilos CSS.
+
+También va en contra de la separación entre maquetación y estilos, lo que puede dificultar la reutilización de componentes en distintos apartados de una misma aplicación. En el siguiente ejemplo se ve un ejemplo de estilo *inline* y cómo sería con HTML y CSS separado:
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="33%"}
+
+::: mycode
+[HTML+CSS inline]{.title}
+
+```html
+<p style="
+ color: red;
+ font-style: italic;
+">
+    Texto
+</p>
+```
+:::
+
+:::
+::: {.column width="33%" }
+
+::: mycode
+[HTML]{.title}
+```html
+<p class="special">
+    Texto
+</p>
+```
+:::
+
+:::
+::: {.column width="33%" }
+
+::: mycode
+[css]{.title}
+```css
+.scpecial {
+  color: red;
+  font-style: italic;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+En el primer ejemplo, si quisiésemos otro [p]{.verbatim} con el mismo estilo, habría que volver a escribir dicho estilo, mientras que con la separación sólo sería necesario poner la clase. Si en el primer ejemplo queremos añadir un nuevo estilo, habría que modificarlo en varios sitios, mientras que con la separación sólo sería necesario hacerlo en la hoja CSS.
+
+::: errorbox
+No se recomienda usar estilos *inline*.
+:::
+
+
+## Ejemplos de la importancia de CSS {#ejemplos-importancia-css}
+
+Las hojas de estilo CSS nos permiten hacer que una página web se vea completamente diferente cambiando dicha hoja de estilo. Imaginemos una empresa que tiene un producto de tienda online para varios clientes. 
+
+- Los estilos CSS están *inline*, modificar los estilos para cada cliente supondría:
+  - Copiar todo el código fuente.
+  - Modificar los estilos *inline*.
+  - Si queremos añadir una nueva feature, habría que modificarlo en cada cliente.
+  - Volver a modificar los estilos *inline*.
+- Los estilos CSS están separados de HTML:
+  - Se hace una copia del CSS para cada cliente y se modifica con estilos propios.
+  - Si queremos añadir una nueva feature, se actualiza sólo el HTML en cada cliente.
+
+
+A continuación un ejemplo del mismo código HTML con distintas hojas de estilo CSS. Ejemplos obtenidos de [W3Schools](https://www.w3schools.com/css/css_intro.asp).
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="50%"}
+
+![Sin estilo](img/diw/ejemplo-1.png){width=100% framed=true}
+
+:::
+::: {.column width="50%" }
+
+![Ejemplo 1](img/diw/ejemplo-2.png){width=100% framed=true}
+
+
+:::
+::::::::::::::
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="50%"}
+
+![Ejemplo 2](img/diw/ejemplo-3.png){width=100% framed=true}
+
+:::
+::: {.column width="50%" }
+
+![Ejemplo 3](img/diw/ejemplo-4.png){width=100% framed=true}
+
+
+:::
+::::::::::::::
+
 
 
 # Sintaxis de CSS {#sintaxis-css}
@@ -196,7 +333,7 @@ Una hoja de estilos está formada por un conjunto de **reglas CSS**. Cada regla 
 La estructura general es la siguiente:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Definiciones]{.title}
@@ -208,7 +345,7 @@ selector {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Ejemplo real]{.title}
@@ -299,7 +436,7 @@ Los comentarios permiten añadir información al código sin que el navegador la
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [Comentario]{.title}
@@ -312,7 +449,7 @@ body {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Comentario multilínea]{.title}
@@ -339,8 +476,8 @@ Tanto los nombre de propiedades como las palabras clave deben escribirse en min�
 
 CSS ignora los espacios en blanco innecesarios. Las siguientes reglas son equivalentes.
 
-:::::::::::::: {.columns }
-::: {.column width="30%"}
+:::::::::::::: {.columns columnsep="0.5cm"}
+::: {.column width="31%"}
 
 ::: mycode
 [Ignora espacios]{.title}
@@ -352,7 +489,7 @@ color:red;
 :::
 
 :::
-::: {.column width="30%" }
+::: {.column width="31%" }
 
 ::: mycode
 [Ignora espacios]{.title}
@@ -364,7 +501,7 @@ h1 {
 :::
 
 :::
-::: {.column width="30%" }
+::: {.column width="38%" }
 
 ::: mycode
 [Ignora espacios]{.title}
@@ -419,7 +556,7 @@ Este comportamiento hace que pequeños errores no impidan visualizar la página.
 CSS no obliga a escribir las propiedades siguiendo un orden determinado. Los siguientes producen el mismo resultado:
 
 :::::::::::::: {.columns }
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Ignora espacios]{.title}
@@ -433,7 +570,7 @@ h1 {
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [Ignora espacios]{.title}
@@ -477,7 +614,7 @@ Los selectores son una de las partes fundamentales de CSS, ya que permiten aplic
 El selector de tipo permite seleccionar todos los **elementos HTML de un determinado tipo**.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -489,7 +626,7 @@ El selector de tipo permite seleccionar todos los **elementos HTML de un determi
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -540,7 +677,7 @@ Los selectores de clase permiten aplicar estilos a determinados elementos sin af
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -561,7 +698,7 @@ Los selectores de clase permiten aplicar estilos a determinados elementos sin af
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -597,7 +734,7 @@ HTML también dispone del atributo [id]{.verbatim} que sólo debe ser **utilizad
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -610,7 +747,7 @@ HTML también dispone del atributo [id]{.verbatim} que sólo debe ser **utilizad
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -640,7 +777,7 @@ CSS permite seleccionar elementos que poseen determinados atributos HTML. Por ej
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -655,7 +792,7 @@ CSS permite seleccionar elementos que poseen determinados atributos HTML. Por ej
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -680,7 +817,7 @@ Los selectores de atributo son especialmente útiles cuando necesitamos aplicar 
 Otro ejemplo para enlaces con atributo [target]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -698,7 +835,7 @@ Otro ejemplo para enlaces con atributo [target]{.verbatim}.
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -726,9 +863,12 @@ Crea un HTML con elementos que tengan atributos y crea CSS propios.
 
 Podemos aplicar las mismas reglas a varios selectores separándolos mediante comas. La agrupación evita repetir código.
 
+:::::::::::::: {.columns }
+::: {.column width="50%"}
 
 ::: mycode
-[css]{.title}
+[Agrupar selectores]{.title}
+
 ```css
 h1,
 h2,
@@ -738,13 +878,29 @@ h3 {
 ```
 :::
 
+:::
+::: {.column width="50%" }
+
+::: mycode
+[Agrupar selectores]{.title}
+```css
+h1, h2, h3 {
+    font-family: sans-serif;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+
 
 ## Selectores descendientes {#selectores-descendientes}
 
 CSS permite seleccionar elementos que se encuentran dentro de otros elementos. Podemos seleccionar únicamente los párrafos que están dentro de [<article>]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -768,7 +924,7 @@ CSS permite seleccionar elementos que se encuentran dentro de otros elementos. P
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -804,7 +960,7 @@ El selector descendiente no se limita a los hijos directos, si no a toda la desc
 En ocasiones no queremos seleccionar cualquier descendiente, sino únicamente los **hijos directos**. Para ello utilizamos el símbolo [>]{.verbatim}.
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -820,7 +976,7 @@ En ocasiones no queremos seleccionar cualquier descendiente, sino únicamente lo
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -850,7 +1006,7 @@ CSS permite seleccionar elementos que aparecen inmediatamente después de otro. 
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -863,7 +1019,7 @@ CSS permite seleccionar elementos que aparecen inmediatamente después de otro. 
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -883,11 +1039,11 @@ Con la regla anterior sólo se selecciona el primer párrafo, pero el segundo no
 
 ## Selector de hermanos posteriores {#selector-hermano-posterior}
 
-También podemos seleccionar todos los hermanos que aparecen después de un determinado elemento utilizando [~]{.verbatim}.
+Para seleccionar todos los hermanos que aparecen después de un elemento se usa [~]{.verbatim}.
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -902,7 +1058,7 @@ También podemos seleccionar todos los hermanos que aparecen después de un dete
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -952,7 +1108,7 @@ Los **pseudoelementos** permiten seleccionar determinadas partes de un elemento 
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -965,7 +1121,7 @@ Los **pseudoelementos** permiten seleccionar determinadas partes de un elemento 
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -1016,7 +1172,7 @@ Los selectores pueden combinarse para crear reglas mucho más específicas. Por 
 
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -1029,7 +1185,7 @@ Los selectores pueden combinarse para crear reglas mucho más específicas. Por 
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
@@ -1053,7 +1209,7 @@ Esta regla selecciona los párrafos que se encuentran dentro de un elemento que:
 También podemos combinar clases:
 
 :::::::::::::: {.columns }
-::: {.column width="47%"}
+::: {.column width="50%"}
 
 ::: mycode
 [HTML]{.title}
@@ -1070,7 +1226,7 @@ También podemos combinar clases:
 :::
 
 :::
-::: {.column width="47%" }
+::: {.column width="50%" }
 
 ::: mycode
 [css]{.title}
