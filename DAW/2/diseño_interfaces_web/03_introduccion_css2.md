@@ -1220,7 +1220,7 @@ Algunas propiedades CSS utilizan unidades de tiempo. Estas unidades se utilizar√
 :::::::::::::: {.columns }
 ::: {.column width="50%"}
 
-::: mycode
+::: {.mycode size="footnotesize"}
 [Transiciones]{.title}
 
 ```css
@@ -1233,7 +1233,7 @@ Algunas propiedades CSS utilizan unidades de tiempo. Estas unidades se utilizar√
 :::
 ::: {.column width="50%" }
 
-::: mycode
+::: {.mycode size="footnotesize"}
 [Transiciones]{.title}
 ```css
 .boton {
