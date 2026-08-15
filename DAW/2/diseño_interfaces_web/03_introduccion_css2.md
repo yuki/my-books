@@ -1340,7 +1340,7 @@ En CSS moderno, por la aparición de móviles y *tablets* hizo que el diseño *r
 CSS permite realizar cálculos utilizando diferentes unidades mediante la función [calc()]{.verbatim}.
 
 ::: mycode
-[0 sin usar unidad]{.title}
+[Calcular anchura automáticamente]{.title}
 ```css
 .caja {
     width: calc(100% - 40px);
@@ -1349,6 +1349,8 @@ CSS permite realizar cálculos utilizando diferentes unidades mediante la funci�
 :::
 
 Con esta regla estamos indicando que el ancho va a ser "ancho disponible menos 40px", y de esta manera no tenemos que forzar la anchura, ya que es relativa y calculada.
+
+La función [calc()]{.verbatim} admite las cuatro operaciones básicas: sumar ([+]{.verbatim}), restar ([-]{.verbatim}), multiplicar ([*]{.verbatim}) y dividir ([/]{.verbatim}).
 
 
 ### [min()]{.verbatim} y [max()]{.verbatim} {#min-y-max}
