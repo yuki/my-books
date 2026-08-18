@@ -12,7 +12,7 @@ echo [*Box Model* y dimensiones]{.part}
 cat 05_box_model.md
 echo [Variables, funciones y organización]{.part}
 cat 06_variables_funciones.md
-echo [Diseño y bloque contenedor]{.part}
+echo [Posiciones y visibilidad]{.part}
 cat 07_diseño.md
 echo [Anexos]{.part}
 cat ../../../anexos/html/html_by_alphabet.md

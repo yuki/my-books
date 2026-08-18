@@ -110,7 +110,7 @@ Es importante comprender que los valores de especificidad no se suman como una p
 Crea un HTML con tres [p]{.verbatim} y añade estilos por especificidad.
 :::
 
-## Combinación de selectores {#combinación-selectores}
+## Combinación de selectores {#combinar-selectores}
 
 La especificidad también se acumula cuando combinamos selectores. Si seguimos la regla explicada previamente, analicemos los siguientes ejemplos:
 
@@ -824,7 +824,7 @@ Las unidades de longitud relativas especifican una longitud en relación con otr
 | [ch]{.verbatim} | Relativo al ancho del "0" (cero) de la fuente actual |
 | [vw]{.verbatim} | Relativo al 1% del ancho de la ventana de visualización |
 | [vh]{.verbatim} | Relativo al 1% de la altura de la ventana de visualización |
-| `%` | Relativo al elemento padre |
+| [%]{.verbatim} | Relativo al elemento padre |
 
 Table: {tablename=yukitblr colspec=X[1,l]X[4,l]}
 

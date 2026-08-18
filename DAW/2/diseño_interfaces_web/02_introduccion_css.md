@@ -364,7 +364,7 @@ Esta regla indica que todos los elementos [<h1>]{.verbatim} deben mostrarse en c
 
 ### El selector {#selector}
 
-El selector indica **qué elementos HTML** se verán afectados por la regla. En la siguiente sólo aparecen unos pocos ejemplos, ya que más adelante estudiaremos los distintos tipos de selectores con detalle.
+El selector indica **qué elementos HTML** se verán afectados por la regla. En la siguiente sólo aparecen unos pocos ejemplos, pero en el [anexo](#etiquetas-html) aparecen todas las etiquetas HTML que se pueden usar como selectores.
 
 | Selector | Función |
 |-----------|---------|
@@ -381,18 +381,18 @@ Las propiedades indican qué aspecto queremos modificar. Existen cientos de prop
 
 | Propiedad | Función |
 |-----------|---------|
-| color | Color del texto |
-| background-color | Color de fondo |
-| font-size | Tamaño del texto |
-| font-family | Tipografía |
-| width | Anchura |
-| height | Altura |
-| margin | Margen exterior |
-| padding | Espacio interior |
-| border | Borde |
-| text-align | Alineación del texto |
+| [color]{.verbatim} | Color del texto |
+| [background-color]{.verbatim} | Color de fondo |
+| [font-size]{.verbatim} | Tamaño del texto |
+| [font-family]{.verbatim} | Tipografía |
+| [width]{.verbatim} | Anchura |
+| [height]{.verbatim} | Altura |
+| [margin]{.verbatim} | Margen exterior |
+| [padding]{.verbatim} | Espacio interior |
+| [border]{.verbatim} | Borde |
+| [text-align]{.verbatim} | Alineación del texto |
 
-Cada propiedad únicamente acepta determinados valores, por lo que es necesario conocer qué acepta cada una.
+Cada propiedad únicamente acepta determinados valores, aprenderemos los más importantes.
 
 
 ### Los valores {#valores}
@@ -401,12 +401,12 @@ Cada propiedad necesita un valor. Dependiendo de la propiedad, ese valor puede s
 
 | Valor | Ejemplo |
 |-----------|---------|
-| Un color      | color:red |
-| Un número     | font-size: 20px |
-| Una longitud  | font-size: 2rem |
-| Un porcentaje | `width: 80%`{=html} `width: \\80%`{=latex}  |
-| Una palabra clave | display: flex |
-| Una función   |  `width: calc(100% - 50px)`{=html} `width: calc(100\\% - 50px)`{=latex}  |
+| Un color      | [color:red;]{.verbatim} |
+| Un número     | [font-size: 20px;]{.verbatim} |
+| Una longitud  | [font-size: 2rem;]{.verbatim} |
+| Un porcentaje | [width: 80%;]{.verbatim}  |
+| Una palabra clave | [display: flex;]{.verbatim} |
+| Una función   |  [width: calc(100% - 50px);]{.verbatim} |
 
 
 

@@ -1,5 +1,5 @@
 
-# Etiquetas HTML ordenadas alfabéticamente
+# Etiquetas HTML ordenadas alfabéticamente {#etiquetas-html}
 
 Guía de referencia para todas las etiquetas en orden alfabético. Obtenidas de [W3C](https://www.w3schools.com/TAGs/):
 

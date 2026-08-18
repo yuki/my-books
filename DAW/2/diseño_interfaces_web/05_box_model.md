@@ -9,7 +9,7 @@ Comprender el modelo de cajas permitirá responder preguntas como:
 
 - ¿Por qué dos elementos están separados?
 - ¿Por qué una caja ocupa más espacio del esperado?
-- ¿Cuál es la diferencia entre [[margin]{.verbatim}](#márgenes) y [[padding]{.verbatim}](#padding)?
+- ¿Cuál es la diferencia entre [[padding]{.verbatim}](#padding) y [[margin]{.verbatim}](#márgenes)?
 - ¿Por qué un borde modifica el tamaño visible de un elemento?
 
 
@@ -135,8 +135,8 @@ El modelo de caja afecta a todos los elementos, aunque no todos se comportan igu
 
 Los elementos de bloque tienen las siguientes características:
 
-- Ocupan todo el ancho disponible,
-- Comienzan en una línea nueva,
+- Ocupan todo el ancho disponible.
+- Comienzan en una línea nueva.
 - Admiten anchura y altura.
 
 En la siguiente tabla están todos los elementos de tipo bloque (fuente: [w3schools](https://www.w3schools.com/htmL/html_blocks.asp)):
@@ -151,12 +151,12 @@ En la siguiente tabla están todos los elementos de tipo bloque (fuente: [w3scho
 
 Table: {tablename=tblr}
 
-### Elementos en línea
+### Elementos en línea {#elementos-en-línea}
 
 Los elementos en línea tienen las siguientes características:
 
-- Ocupan únicamente el espacio de su contenido,
-- No comienzan una línea nueva,
+- Ocupan únicamente el espacio de su contenido.
+- No comienzan una línea nueva.
 - Su comportamiento respecto a anchura y altura es diferente.
 
 
@@ -175,7 +175,7 @@ Table: {tablename=tblr colspec=XXXXXX}
 Más adelante estudiaremos la propiedad [[display]{.verbatim}](#display), que permite modificar este comportamiento.
 
 
-## Dimensiones {#dimensiones}
+# Dimensiones {#dimensiones}
 
 Las dimensiones permiten controlar el tamaño de los elementos HTML. CSS proporciona propiedades para definir el ancho, la altura, así como límites mínimos y máximos que hacen posible crear interfaces adaptables a diferentes dispositivos.
 
@@ -189,35 +189,81 @@ Las siguientes propiedades forman parte del **modelo de caja** y son fundamental
 - [max-height]{.verbatim}: altura máxima del elemento.
 - [box-sizing]{.verbatim}: qué tipo de "modelo de caja" usar para el cálculo de dimensiones.
 
-### El ancho por defecto {#ancho-default}
 
-Muchos elementos de **tipo bloque** ocupan automáticamente todo el ancho disponible.
+## Dimensiones por zona {#dimensiones-por-zonas}
 
+A continuación vamos a ver distintas propiedades para modificar las dimensiones de las cajas del *box model* de HTML. Las propiedades se pueden diferenciar entre:
+
+- **Propiedad general**: el nombre no indica a qué zona afecta, y por tanto modificará todas las áreas.
+- **Propiedad específica**: indica qué zona va a modificar, y sólo afectará a esa zona.
+
+
+### Propiedad general: todas las zonas {#propiedad-general-todas}
+
+Son las propiedades que afectan a todas las áreas del *box model*: arriba, derecha, abajo e izquierda. Por lo tanto, si tenemos el siguiente ejemplo:
 
 ::: mycode
-[Padding con anchura y borde]{.title}
-```html
-<div>Contenido</div>
-```
-:::
-
-Por defecto el bloque [div]{.verbatim} se comporta utilizando todo el espacio horizontal disponible, dentro de su contenedor. Se comporta como si utilizara la siguiente regla CSS:
-
-::: mycode
-[Padding con anchura y borde]{.title}
+[Padding]{.title}
 ```css
-div { width: auto; }
+.caja {
+    padding: 30px;
+}
 ```
 :::
 
+Indica que nuestra caja tiene [30px]{.verbatim} de [padding]{.verbatim} en cada área: **arriba, derecha, abajo e izquierda**. Podemos utilizar las propiedades generales para especificar que sólo queremos afectar a ciertas áreas, y eso depende de cuántos parámetros pasemos:
 
-### La propiedad [width]{.verbatim} {#anchura-width}
+:::::::::::::: {.columns columnsep=0.25cm}
+::: {.column width="40%"}
+
+::: {.mycode size="footnotesize"}
+[¿a qué área afecta?]{.title}
+```css
+.a { padding: 2px; }
+.b { padding: 2px 4px; }
+.c { padding: 2px 4px 6px; }
+.d { padding: 1px 2px 3px 4px;}
+```
+:::
+
+:::
+::: {.column width="60%" }
+
+- **1 valor**: indicamos todas las áreas.
+- **2 valores**: primer valor es [top]{.verbatim} y [bottom]{.verbatim}, el segundo para [right]{.verbatim} y [left]{.verbatim}.
+- **3 valores**: [top]{.verbatim}, [right]{.verbatim} y [left]{.verbatim}, último valor es [bottom]{.verbatim}.
+- **4 valores**: [top]{.verbatim}, [right]{.verbatim}, [bottom]{.verbatim} y [down]{.verbatim}
+
+:::
+::::::::::::::
+
+
+Esto afecta a propiedades como [padding]{.verbatim}, [border-width]{.verbatim} y [margin]{.verbatim}.
+
+::: infobox
+Es importante conocer este orden ya que se repite en varias propiedades generales que veremos a continuación.
+:::
+
+
+### Propiedad específica: sólo afecta a una zona {#propiedad-específica}
+
+Para muchas propiedades que veremos a continuación existen propiedades específicas que sólo afectan al área correspondiente. Por ejemplo:
+
+- [padding-top]{.verbatim}: sólo añade padding a la parte superior.
+- [border-right]{.verbatim}: para configurar sólo el borde del lado derecho.
+- [margin-bottom]{.verbatim}: sólo añade margen en la parte inferior.
+
+
+De esta manera, con el nombre de la propiedad ya se especifica claramente a qué zona afecta.
+
+
+## La propiedad [width]{.verbatim} {#anchura-width}
 
 La propiedad [width]{.verbatim} establece el **ancho del área de contenido** de un elemento.
 
 
 ::: mycode
-[Padding con anchura y borde]{.title}
+[Anchura]{.title}
 ```css
 .caja {
     width: 300px;
@@ -227,7 +273,7 @@ La propiedad [width]{.verbatim} establece el **ancho del área de contenido** de
 
 El contenido tendrá un ancho de [300px]{.verbatim}. Es importante recordar que, por defecto, el [padding]{.verbatim} y el [border]{.verbatim} **no están incluidos** dentro de ese ancho. Este comportamiento se estudiará más adelante con [box-sizing]{.verbatim}.
 
-#### Ancho relativo {#ancho-relativo}
+### Ancho relativo {#ancho-relativo}
 
 Los porcentajes permiten crear elementos adaptables.
 
@@ -242,7 +288,7 @@ El ancho dependerá del tamaño del elemento contenedor. Si el contenedor mide [
 
 
 
-### Propiedad [min-width]{.verbatim} {#min-width}
+## Propiedad [min-width]{.verbatim} {#min-width}
 
 La propiedad [min-width]{.verbatim} establece el **ancho mínimo** que puede tener un elemento.
 
@@ -259,7 +305,7 @@ La propiedad [min-width]{.verbatim} establece el **ancho mínimo** que puede ten
 El elemento intentará ocupar el [50%]{.verbatim} pero nunca será inferior a [250px]{.verbatim}. Esta propiedad resulta muy útil en diseños responsive.
 
 
-### Propiedad [max-width]{.verbatim} {#max-width}
+## Propiedad [max-width]{.verbatim} {#max-width}
 
 [max-width]{.verbatim} establece el **ancho máximo** permitido.
 
@@ -276,7 +322,7 @@ El elemento intentará ocupar el [50%]{.verbatim} pero nunca será inferior a [2
 Este patrón es extremadamente habitual. Por defecto, en pantallas pequeñas ocupará el [90%]{.verbatim}, mientras que en pantallas grandes nunca superará los [1200px]{.verbatim}. De esta forma evitamos que el contenido resulte excesivamente ancho.
 
 
-### La propiedad [height]{.verbatim} {#altura-height}
+## La propiedad [height]{.verbatim} {#altura-height}
 
 [height]{.verbatim} define la **altura del área de contenido**.
 
@@ -292,7 +338,7 @@ El contenido dispondrá de una altura de [200px]{.verbatim}. Si el contenido ocu
 
 Un porcentaje en [height]{.verbatim} solo funciona correctamente cuando el elemento padre tiene una altura definida. Si el elemento padre no tiene altura definida, el porcentaje puede no producir el resultado esperado.
 
-### Propiedad [min-height]{.verbatim} {#min-height}
+## Propiedad [min-height]{.verbatim} {#min-height}
 
 La propiedad [min-height]{.verbatim} establece una altura mínima.
 
@@ -310,7 +356,7 @@ Es recomendable usar [min-height]{.verbatim} antes que una altura fija cuando el
 :::
 
 
-### Propiedad [max-height]{.verbatim} {#max-height}
+## Propiedad [max-height]{.verbatim} {#max-height}
 
 [max-height]{.verbatim} limita la altura máxima.
 
@@ -324,7 +370,7 @@ Es recomendable usar [min-height]{.verbatim} antes que una altura fija cuando el
 Si el contenido supera ese tamaño, podrá producirse un desbordamiento dependiendo de la propiedad [overflow]{.verbatim}. Esta combinación es muy frecuente en paneles laterales y listas con desplazamiento.
 
 
-## Overflow / desbordamiento {#overflow}
+# Overflow / desbordamiento {#overflow}
 
 En ocasiones, el contenido de un elemento ocupa más espacio del disponible. Esto puede ocurrir porque el texto es demasiado largo, una imagen es muy grande o hemos establecido unas dimensiones fijas demasiado pequeñas.
 
@@ -369,7 +415,7 @@ Una vez decidido qué configuración debemos hacer, la añadimos al CSS:
 ![[overflow]{.verbatim} como: [auto]{.verbatim}, [hidden]{.verbatim}, [scroll]{.verbatim} y [visible]{.verbatim}](img/diw/overflow.png){width=70%}
 
 
-### Control independiente de cada eje {#control-independiente-eje}
+## Control independiente de cada eje {#control-independiente-eje}
 
 A la hora de controlar el desbordamiento, podemos controlarlo de manera separada para el eje horizontal y el vertical. Para ello están las propiedades
 
@@ -419,9 +465,9 @@ Por lo tanto, podemos hacer el siguiente ejemplo:
 ```
 :::
 
-El contenido quedará separado 20px del borde por todos sus lados. Al igual que hemos visto anteriormente, *padding* también tiene una propiedad para cada lado de la caja con [padding-top]{.verbatim}, [padding-right]{.verbatim}, [padding-bottom]{.verbatim} y [padding-left]{.verbatim}.
+El contenido quedará separado 20px del borde por todos sus lados. Tal como hemos visto anteriormente, *padding* tiene una propiedad para cada lado de la caja con [padding-top]{.verbatim}, [padding-right]{.verbatim}, [padding-bottom]{.verbatim} y [padding-left]{.verbatim}.
 
-En el caso de añadir color de fondo **sí cubre el padding** y llegará hasta el borde si lo añadimos.
+En el caso de añadir color de fondo **sí cubre el padding** y llegará hasta el borde.
 
 
 ## Uso de *padding* en botones {#padding-botones}
@@ -458,7 +504,7 @@ La forma más sencilla de crear un borde consiste en utilizar la propiedad abrev
   - [ridge]{.verbatim}:  Efecto tridimensional elevado.
   - [inset]{.verbatim}: Aspecto interior.
   - [outset]{.verbatim}: Aspecto exterior.
-- Color del borde.
+- **Color del borde**.
 
 En el siguiente ejemplo se puede ver el código en una única propiedad o separado cada parámetro en su propiedad:
 
@@ -492,6 +538,7 @@ p {
 :::
 ::::::::::::::
 
+La propiedad [border-width]{.verbatim} es una propiedad "general" que acepta de uno a cuatro parámetros para las distintas zonas, tal como se ha explicado anteriormente.
 
 ::: exercisebox
 [[04e](https://github.com/yuki/ejercicios/blob/main/daw/diw/04e.html)]{.solution}
@@ -509,42 +556,10 @@ Funcionan igual que [border]{.verbatim}, por lo que podemos asignar a cada lado 
 Y si queremos asignar cada característica concreta por separado, tenemos propiedades separadas como:
 
 - [border-top-width]{.verbatim}
-- [border-top-style]{.verbatim}
-- [border-top-color]{.verbatim}
+- [border-right-style]{.verbatim}
+- [border-bottom-color]{.verbatim}
 
-Y así para cada lado de la caja.
-
-
-## [border-width]{.verbatim} con valores múltiples {#border-width-valores}
-
-Para la propiedad [border-width]{.verbatim} podemos utilizar varios valores, de uno a cuatro:
-
-
-:::::::::::::: {.columns }
-::: {.column width="50%"}
-
-::: {.mycode size="footnotesize"}
-[Propiedad [border]{.verbatim}]{.title}
-```css
-.a { border-width: 2px; }
-.b { border-width: 2px 4px; }
-.c { border-width: 2px 4px 6px; }
-.d { border-width: 1px 2px 3px 4px; }
-```
-:::
-
-:::
-::: {.column width="50%" }
-
-- **1 valor**: indicamos todos los lados.
-- **2 valores**: la primera unidad indica arriba y abajo, la segunda derecha e izquierda.
-- **3 valores**: arriba, derecha e izquierda, abajo.
-- **4 valores**: arriba, derecha, abajo, izquierda.
-
-:::
-::::::::::::::
-
-Dependiendo de qué equina queramos modificar, podemos usar el número adecuado de parámetros.
+Y así para cada lado de la caja y propiedad.
 
 
 ## Bordes redondeados con [border-radius]{.verbatim} {#border-radius}
@@ -623,7 +638,7 @@ bordes en tablas?
 
 # Márgenes {#márgenes}
 
-Los márgenes son el espacio **exterior** que existe alrededor de un elemento, después del borde. Permiten separar unos elementos de otros y son una de las partes fundamentales del **modelo de caja (*[box model](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model)*)**. Es importante no confundirlos con el [padding]{.verbatim} que veremos después, pero adelantamos ahora:
+Los márgenes son el espacio **exterior** que existe alrededor de un elemento, después del borde. Permiten separar unos elementos de otros y son una de las partes fundamentales del **modelo de caja (*[box model](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model)*)**. Recordamos una vez más:
 
 - **Padding**: espacio interior entre el contenido y el borde.
 - **Margin**: espacio exterior entre elementos.
@@ -639,16 +654,7 @@ La forma más sencilla de establecer márgenes es mediante la propiedad [margin]
 ```
 :::
 
-Cada lado también tiena una propiedad separada: [margin-top]{.verbatim}, [margin-right]{.verbatim}, [margin-bottom]{.verbatim} y [margin-left]{.verbatim}.
-
-
-Tal como hemos visto antes con el borde, a la propiedad [margin]{.verbatim} podemos añadir entre 1 y 4 parámetros:
-
-- **1 valor**: indicamos todos los lados.
-- **2 valores**: la primera unidad indica arriba y abajo, la segunda derecha e izquierda.
-- **3 valores**: arriba, derecha e izquierda, abajo.
-- **4 valores**: arriba, derecha, abajo, izquierda.
-
+Cada zona también tiene una propiedad específica: [margin-top]{.verbatim}, [margin-right]{.verbatim}, [margin-bottom]{.verbatim} y [margin-left]{.verbatim}.
 
 Podemos indicar los distintos tipos de unidades que ya hemos visto previamente:
 
