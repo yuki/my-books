@@ -14,5 +14,7 @@ echo [Variables, funciones y organización]{.part}
 cat 06_variables_funciones.md
 echo [Posiciones y visibilidad]{.part}
 cat 07_diseño.md
+echo [Maquetación moderno]{.part}
+cat 08_diseño_moderno.md
 echo [Anexos]{.part}
 cat ../../../anexos/html/html_by_alphabet.md

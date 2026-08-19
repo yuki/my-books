@@ -923,6 +923,7 @@ Table: {tablename=yukitblr colspec=X[1,l]X[4,l]}
 
 Por lo tanto, para arreglar el ejemplo anterior podemos poner:
 
+::: mycode
 [Forzar imagen con [object-fit]{.verbatim}]{.title}
 ```css
 .foto {
@@ -945,20 +946,76 @@ En la práctica, los valores más utilizados son **[cover]{.verbatim}** y **[con
 
 - Crea una galería de imágenes y usa [object-fit]{.verbatim}.
 - ¿Qué valor crees que es mejor?
-- 
 :::
-
-
 
 
 # La propiedad [object-position]{.verbatim} {#object-position}
 
 En el apartado anterior vimos que **[object-fit: cover]{.verbatim}** permite rellenar completamente un contenedor recortando parte de la imagen. Sin embargo, surge una nueva pregunta: **¿qué parte de la imagen debe conservarse?**
 
-La propiedad **[object-position]{.verbatim}** responde precisamente a esa cuestión. Permite elegir qué zona de una imagen o un vídeo permanecerá visible cuando el contenido sea recortado dentro de su contenedor.
+La propiedad **[[object-position]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-position)** responde precisamente a esa cuestión. Permite elegir qué zona de una imagen o un vídeo permanecerá visible cuando el contenido sea recortado dentro de su contenedor.
 
 Es una propiedad muy utilizada en avatares, fotografías de productos, retratos y cabeceras con imágenes panorámicas.
 
+Para imágenes más pequeñas que el contenedor, permite elegir dónde colocar la imagen dentro del contenedor.
+
+[object-position]{.verbatim} puede aceptar dos valores:
+
+- **Valor horizontal**
+- **Valor vertical**
+
+Los valores pueden ser: [top]{.verbatim}, [center]{.verbatim}, [bottom]{.verbatim}, [left]{.verbatim}, [right]{.verbatim}, un porcentaje o una medida.
+
+El valor por defecto es el centro de la imagen.
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="60%"}
+
+::: {.mycode size=footnotesize}
+[HTML]{.title}
+```html
+<img src="paisaje.jpg" class="a">
+
+<img src="icono.jpg" class="b">
+```
+:::
+
+:::
+::: {.column width="40%" }
+
+::: {.mycode size=footnotesize}
+[CSS]{.title}
+```css
+.a {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top left;
+}
+.b {
+    width: 400px;
+    height: 400px;
+    object-fit: none;
+    object-position: 25% 50%;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+En los ejemplos anteriores suponemos que:
+
+1. La image no entra en el espacio otorgado:
+   - La imagen se va a recortar, pero la imagen se alinea la parte de arriba izquierda con el contenedor, por lo tanto se recortará por abajo y la derecha.
+2. La imagen es más pequeña que el contenedor:
+   - La imagen se coloca sobre horizontalmente hacia la izquierda (25%) y verticalmente centrada.
 
 
+
+::: exercisebox
+[[06h](https://github.com/yuki/ejercicios/blob/main/daw/diw/06h.html)]{.solution}
+
+Usando el ejercicio anterior de base, prueba a hacer los contenedores más grandes/pequeños con imágenes más grandes/pequeñas y usa [object-position]{.verbatim} con distintos valores.
+:::
 
