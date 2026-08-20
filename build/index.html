@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Ruben Gomez Olivencia">
 
   <title>Libros</title>
 
@@ -17,21 +19,18 @@
     [data-bs-theme=dark] {
       --bs-heading-color: var(--bs-gray-100);
     }
+
+    html, body {
+      overflow: visible !important;
+    }
   </style>
   <link href="template/css/template.css" rel="stylesheet">
 </head>
-  <body style="overflow: auto;">
-    <nav class="navbar navbar-dark px-2" id="header">
-      <button
-        id="mobile-theme-button"
-        class="btn btn-outline-light d-md-none"
-        type="button"
-      >
-        <i class="fa-solid fa-ellipsis"></i>
-      </button>
-    </nav>
+  <body>
 
-      <main class="mx-auto" style="width: 1024px;">
+      <nav class="navbar navbar-dark px-2  justify-content-center" id="header"><h1 class="text-white p-0">Libros</h1></nav>
+
+      <main class="container-lg mx-auto px-2">
         <div id="book">
           <h1 class="pt-2 pb-3">Sistemas Microinformáticos y Redes</h1>
           <ul>
@@ -45,28 +44,14 @@
           <h1 class="pt-2 pb-3">Desarrollo de Aplicaciones Multiplataforma</h1>
           <ul>
             <li><a href="sistemas_informaticos.html">1º Sistemas Informáticos</a></li>
-            <li>2º Sistemas de Gestión Empresarial
-              <ul>
-                <li><a href="eks.html">Euskera</a></li>
-                <li><a href="sge.html">Castellano</a></li>
-              </ul>
-            </li>
-            <li>2º Desarrollo de Interfaces
-              <ul>
-                <li><a href="interfazeen_garapena.html">Euskera</a></li>
-                <li><a href="desarrollo_interfaces.html">Castellano</a></li>
-              </ul>
-            </li>
+            <li>2º Sistemas de Gestión Empresarial (<a href="sge.html">Castellano</a> / <a href="eks.html">Euskera</a>)</li>
+            <li>2º Desarrollo de Interfaces (<a href="desarrollo_interfaces.html">Castellano</a> / <a href="interfazeen_garapena.html">Euskera</a>)</li>
           </ul>
 
           <h1 class="pt-2 pb-3">Desarrollo de Aplicaciones Web</h1>
           <ul>
-            <li>2º Desarrollo Web en Entorno Cliente
-              <ul>
-                <li><a href="desarrollo_entorno_cliente.html">Castellano</a></li>
-                <li><a href="diseño_interfaces_web.html">Castellano</a></li>
-              </ul>
-            </li>
+            <li>2º Desarrollo Web en Entorno Cliente (<a href="desarrollo_entorno_cliente.html">Castellano</a>)</li>
+            <li>2º Diseño de Interfaces Web (<a href="diseño_interfaces_web.html">Castellano</a>)</li>
           </ul>
 
           <h1 class="pt-2 pb-3">Administración de Sistemas informáticos en red</h1>
@@ -100,7 +85,7 @@
             <li>Gestión de copias de seguridad (backups) (<a href="gestion_backups.html">Castellano</a> / <a href="gestion_backups_euskeraz.html">Euskera</a>)</li>
             <li><a href="glosario.html">Glosario</a></li>
             <li><a href="instalar_ubuntu_lts.html">Instalar Ubuntu LTS</a></li>
-            <li>RAID software en Linux(<a href="raid_software.html">Castellano</a> / <a href="raid_software_euskeraz.html">Euskera</a>)</li>
+            <li>RAID software en Linux (<a href="raid_software.html">Castellano</a> / <a href="raid_software_euskeraz.html">Euskera</a>)</li>
             <li><a href="sistemas_monitorizacion.html">Sistemas de monitorización</a></li>
             <ul>
               <li><a href="monitorizacion_munin.html">Monitorización básica con Munin</a></li>
@@ -111,10 +96,10 @@
 
         </div>
 
-        <div class="gitbox col-7"><p class="title">GitHub</p>
+        <div class="gitbox col-md-7"><p class="title">GitHub</p>
           <div class="d-flex flex-row"><p class="align-self-center icon"></p>
             <div class="align-self-center content">
-              <p><strong>Todos estos libros están en el repositorio <a href="https://github.com/yuki/my-books">https://github.com/yuki/my-books</a></strong></p>
+              <p><strong>Todos estos libros están en mi <a href="https://github.com/yuki/my-books">repositorio de GitHub</a></strong></p>
             </div>
           </div>
         </div>
