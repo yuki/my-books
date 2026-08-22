@@ -8,7 +8,7 @@ Durante muchos años esta fue una de las tareas más complejas de CSS. Los desar
 A partir de CSS3 aparecieron dos tecnologías que cambiaron por completo la forma de diseñar interfaces:
 
 - **[Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts)**, pensado para distribuir elementos en **una única dimensión**.
-- **[CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout)**, diseñado para crear **rejillas bidimensionales** con filas y columnas simultáneamente.
+- **[CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout)**, diseñado para crear **cuadrículas bidimensionales** con filas y columnas simultáneamente.
 
 
 
@@ -466,4 +466,302 @@ La propiedad [align-content]{.verbatim} actúa sobre la fila/columna completa.
 
 Comprueba los valores explicados de [align-items]{.verbatim} y haz ejemplos propios.
 :::
+
+
+# CSS Grid {#grid}
+
+Hasta ahora hemos utilizado **Flexbox** para distribuir elementos en una única dirección. Sin embargo, muchas interfaces necesitan controlar **filas y columnas al mismo tiempo**: galerías de imágenes, paneles de administración, calendarios o la distribución completa de una página web.
+
+**[CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout)**, conocido simplemente como **Grid**, es un sistema de maquetación bidimensional diseñado específicamente para crear este tipo de cuadrículas. Mientras Flexbox organiza elementos en una fila o en una columna, Grid permite definir una estructura completa formada por **filas y columnas simultáneamente**. Actualmente Grid es la herramienta recomendada para construir el layout principal de una aplicación web.
+
+Podemos definir que existen dos tipos de cuadrículas/*grid*:
+
+- **Grid explícito**: se define manualmente el número y el tamaño de las filas y/o columnas. El desarrollador tiene un diseño fijo definido explícitamente. Normalmente se usa para la definición general de la web, o sistema de columnas de lectura...
+- **Grid implícito**: está formado por las filas y/o columnas que el navegador crea automáticamente cuando hacen falta. Normalmente en galería de fotos, o en diseños de portada de páginas web con un número de elementos fijos pero de tamaños distintos... Ocurre cuando hay más elementos de los que se ha especificado en la cuadrícula inicial.
+
+## Contenedor Grid {#contenedor-grid}
+
+Para activar Grid basta con convertir un elemento en un contenedor de cuadrícula, y a partir de ese momento, todos sus hijos directos pasan a ser **elementos de la cuadrícula**.
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="50%"}
+
+::: {.mycode}
+[HTML]{.title}
+```html
+<div class="contenedor">
+    <div class="caja">A</div>
+    <div class="caja">B</div>
+    <div class="caja">C</div>
+</div>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+}
+.caja {
+    width:50px;
+    height: 50px;
+    border: 1px solid black;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+
+Aunque todavía no hemos definido filas ni columnas, el elemento ya es un contenedor Grid. Las propiedades que veremos en este apartado siempre se aplican sobre el contenedor. Una cuadrícula/*grid* está formada por dos tipos de pistas (*tracks*):
+
+- **Columnas**: [grid-template-columns]{.verbatim}
+- **Filas**: [grid-template-rows]{.verbatim}
+
+Hay una característica especial llamada [[grid-template-areas]{.verbatim}](#grid-areas) que veremos más adelante.
+
+
+### [grid-template-columns]{.verbatim} {#grid-template-columns}
+
+Es la propiedad más importante de Grid. y sirve para generar columnas:
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+}
+```
+:::
+
+
+Cada valor define el ancho de una columna, por lo que en el ejemplo anterior se crean tres columnas de 150px cada una.
+
+
+#### La unidad [fr]{.verbatim}
+
+La unidad **[fr]{.verbatim}** (*fraction*) representa una fracción del espacio disponible.
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+```
+:::
+
+Las tres columnas dividen el espacio en distintas proporciones, en este caso la columna central ocupa el doble que los laterales. El funcionamiento es muy similar a [[flex-grow]{.verbatim}](#flex-grow). Esta unidad se puede utilizar también con filas.
+
+
+### [grid-template-rows]{.verbatim} {#grid-template-rows}
+
+Las filas se definen de forma equivalente.
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-rows: 80px 200px 60px;
+}
+```
+:::
+
+En este caso se ha creado un *grid* que consta de tres filas con distintos tamaños cada una.
+
+
+## [gap]{.verbatim} en Grid {#gap-grid}
+
+Al igual que Flexbox, Grid utiliza [gap]{.verbatim} para separar elementos, que sustituye al uso de márgenes y genera una separación uniforme entre filas y columnas.
+
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+}
+```
+:::
+
+También existen [row-gap]{.verbatim} y [column-gap]{.verbatim}.
+
+
+## La función [repeat()]{.verbatim} {#función-repeat}
+
+Cuando existen muchas columnas iguales, escribirlas manualmente resulta repetitivo, por lo que podemos usar la función [repeat()]{.verbatim}. Por ejemplo, en lugar de escribir [1fr 1fr 1fr 1fr]{.verbatim} para generar cuatro columnas, podemos usar lo siguiente:
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+```
+:::
+
+El resultado es exactamente el mismo y el código es más legible. [repeat()]{.verbatim} es una de las funciones más utilizadas en CSS Grid.
+
+
+
+## *Grids* adaptables {#grids-adaptables}
+
+Podemos crear *grids* responsive utilizando [[minmax()]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/minmax) y [[auto-fit]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/repeat\#auto-fit).
+
+::: {.mycode}
+[CSS]{.title}
+```css
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+```
+:::
+
+
+A continuación la explicación de la función:
+
+- [repeat]{.verbatim}: la función trata de repetir el sistema de columnas.
+  - [[auto-fit]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/repeat\#auto-fit): Trata de rellenar el espacio con columnas, pero si está vacía, la columna colapsa/desaparece.
+  - [[minmax]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/minmax): es una función que recibe dos parámetros: mínimo y máximo, que genera un rango igual o superior al mínimo, e inferior o igual al máximo.
+
+Por lo tanto, se trata de crear un sistema de columnas que al menos cada una mida 220px, y si existe más espacio se crearán nuevas.
+
+Este patrón es uno de los más utilizados en desarrollo web moderno.
+
+::: exercisebox
+[[07f](https://github.com/yuki/ejercicios/blob/main/daw/diw/07f.html)]{.solution}
+
+Crea un contenedor padre que sea una cuadrícula con [grid]{.verbatim} y usa las propiedades vistas previamente y usa el sistema de repetición.
+:::
+
+## Otros parámetros {#otros-parámetros}
+
+Existen otros parámetros para poder controlar y hacer que las *grids* se ajusten a nuestras necesidades. A continuación algunos del listado que aparece en la [documentación](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout).
+
+- [grid-auto-flow]{.verbatim}: controla cómo funciona el algoritmo de colocación automática, especificando exactamente cómo se distribuyen en la cuadrícula los elementos colocados automáticamente (filas o columnas).
+- [grid-auto-columns]{.verbatim}: especifica el tamaño de las columnas del *grid*.
+- [grid-auto-rows]{.verbatim}: especifica el tamaño de las filas del *grid*.
+- [grid-column-start]{.verbatim}: especifica la posición inicial de un elemento dentro de la columna de la cuadrícula.
+- [grid-column-end]{.verbatim}: especifica la posición final de un elemento dentro de la columna de la cuadrícula.
+- [grid-row-start]{.verbatim}: especifica la posición inicial de un elemento dentro de la fila de la cuadrícula.
+- [grid-row-end]{.verbatim}: especifica la posición final de un elemento dentro de la fila de la cuadrícula.
+
+
+
+
+## Grid Areas {#grid-areas}
+
+Hasta ahora hemos construido rejillas definiendo el número de filas y columnas, dejando que los elementos se coloquen automáticamente. Sin embargo, cuando diseñamos la estructura completa de una página web, suele ser más cómodo **dar un nombre a cada zona del layout** en lugar de trabajar con números de fila y columna.
+
+
+
+**Grid Areas** permite asignar nombres como "*header*", "*menu*", "*main*" o "*footer* a las distintas regiones de una rejilla, consiguiendo un código mucho más legible y fácil de mantener. Mediante la propiedad [grid-template-areas]{.verbatim} podemos hacer esta separación que puede resultar más visual.
+
+Imaginemos típica página web con distintos apartados:
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="50%"}
+
+::: {.mycode}
+[HTML]{.title}
+```html
+<div id="page">
+  <div id="logo">logo</div>
+  <header>Header</header>
+  <nav>Navigation</nav>
+  <main>Main area</main>
+  <div id="ads">ads</div>
+  <footer>Footer</footer>
+</div>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[CSS]{.title}
+```css
+#page {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "logo head head"
+    "nav  main ads"
+    ".    foot .";
+  grid-template-rows: 50px 1fr 30px;
+  grid-template-columns: 150px 1fr 150px;
+}
+#page > header {
+  grid-area: head;
+}
+#page > nav {
+  grid-area: nav;
+}
+/* resto áreas */
+```
+:::
+
+:::
+::::::::::::::
+
+En [grid-template-areas]{.verbatim} se puede apreciar cómo está separado cada elemento de manera "visual", generando tres filas y tres columnas, y cada "celda" tiene un nombre. Cuando un nombre se repite en la misma fila, se expande horizontalmente, y lo mismo ocurre con las columnas verticalmente. Las áreas marcadas con punto ([.]{.verbatim}) son celdas vacías. El resultado sería el siguiente:
+
+![Ejemplo básico de [grid-template-areas]{.verbatim}](img/diw/grid-template-areas.png){width=80% framed=true}
+
+::: errorbox
+A la hora de poner nombres en las "celdas" las áreas deben formar rectángulos, no puede haber formas "extrañas":
+:::
+
+
+::: exercisebox
+[[07g](https://github.com/yuki/ejercicios/blob/main/daw/diw/07g.html)]{.solution}
+
+Crea plantillas de webs modernas con [grid-template-areas]{.verbatim}
+:::
+
+
+# Grid y Flexbox juntos {#grid-flexbox-juntos}
+
+Grid y Flexbox no son tecnologías competidoras, sino **complementarias**. Lo habitual es hacer uso ellas de manera conjunta, ya que cada una aporta ciertas características que hace que sea más simple de usar que la otra. Además, ambas forman parte del estándar de CSS, son compatibles con todos los navegadores modernos y pueden utilizarse conjuntamente dentro de un mismo proyecto.
+
+En la siguiente tabla se puede ver un resumen completo de distintas características de ambas tecnologías:
+
+|                | Flexbox | Grid |
+|----------------|----------|------|
+| Dimensiones | 1 | 2 |
+| Filas | Sí | Sí |
+| Columnas | Sí | Sí |
+| Control simultáneo de filas y columnas | No | Sí |
+| Reparto automático del espacio | Excelente | Excelente |
+| Layout completo | Limitado | Ideal |
+| Componentes pequeños | Ideal | Posible |
+| Galerías | Aceptable | Excelente |
+
+Table: {tablename=yukitblrcol colspec=X[2]X[1]X[1]}
+
+
+
+Por ejemplo, un uso combinado de ambas tecnologías podría ser:
+
+- **Plantilla general**: creada con Grid, con distintos apartados:
+  - **Header**: Uso de Flexbox para colocar logo, secciones, caja de búsqueda...
+  - **Sidebar**
+  - **Main**: Depende del contenido, se puede usar Flexbox o Grid.
+  - **Footer**: Flexbox para añadir secciones.
 

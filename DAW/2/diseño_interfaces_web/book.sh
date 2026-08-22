@@ -16,5 +16,9 @@ echo [Posiciones y visibilidad]{.part}
 cat 07_diseño.md
 echo [Maquetación moderno]{.part}
 cat 08_diseño_moderno.md
+echo [Diseño *responsive*]{.part}
+cat 09_diseño_responsive.md
+echo [Componentes de una interfaz]{.part}
+cat 10_componentes_interfaz.md
 echo [Anexos]{.part}
 cat ../../../anexos/html/html_by_alphabet.md

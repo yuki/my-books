@@ -753,16 +753,13 @@ En este caso:
 
 Las unidades permiten indicar al navegador cuánto debe medir un elemento, cuánto espacio debe ocupar o qué distancia debe existir entre diferentes elementos.
 
-
-## Tipos de unidades {#tipos-de-unidades}
-
 Las unidades CSS pueden clasificarse principalmente en:
 
 - **Unidades absolutas**: representan una medida que no depende directamente del tamaño de otro elemento.
 - **Unidades relativas**: dependen de alguna característica del documento, del elemento padre, del tamaño de la fuente o del tamaño de la ventana del navegador. Las unidades relativas son especialmente importantes para crear interfaces adaptables a diferentes tamaños de pantalla.
 
 
-### Unidades absolutas {#unidades-absolutas}
+## Unidades absolutas {#unidades-absolutas}
 
 Las principales unidades absolutas son:
 
@@ -780,7 +777,7 @@ Table: {tablename=yukitblr colspec=X[1,l]X[4,l]}
 
 En el desarrollo web habitual, [px]{.verbatim} es con diferencia la unidad absoluta más utilizada.
 
-#### El píxel CSS {#pixel-css}
+### El píxel CSS {#pixel-css}
 
 La unidad [px]{.verbatim} representa un **píxel CSS**. Es importante no confundir necesariamente un píxel CSS con un píxel físico de la pantalla, ya que los dispositivos modernos pueden tener una densidad de píxeles muy elevada.
 
@@ -792,7 +789,7 @@ Por tanto, [px]{.verbatim} debe entenderse como una unidad de CSS y no simplemen
 - Pequeños espacios.
 - Tamaños que necesitan un control concreto.
 
-#### Unidades físicas {#unidades-físicas}
+### Unidades físicas {#unidades-físicas}
 
 CSS también proporciona unidades físicas como [cm]{.verbatim}, [mm]{.verbatim}, [in]{.verbatim} o [pt]{.verbatim}. Estas unidades pueden resultar especialmente interesantes cuando se trabaja con impresión.
 
@@ -812,7 +809,7 @@ CSS también proporciona unidades físicas como [cm]{.verbatim}, [mm]{.verbatim}
 Usar unidades físicas en pantallas no tiene sentido.
 :::
 
-### Unidades relativas {#unidades-relativas}
+## Unidades relativas {#unidades-relativas}
 
 Las unidades de longitud relativas especifican una longitud en relación con otra propiedad de longitud. Las unidades de longitud relativas se adaptan mejor a diferentes medios de renderizado.
 
@@ -832,7 +829,7 @@ Las medidas [vw]{.verbatim}, [vh]{.verbatim}, [vmin]{.verbatim} y [vmax]{.verbat
 
 
 
-#### Unidad relativa [em]{.verbatim} {#unidad-relativa-em}
+### Unidad relativa [em]{.verbatim} {#unidad-relativa-em}
 
 La unidad [em]{.verbatim} es una unidad relativa relacionada con el tamaño de la fuente. Los navegadores tienen un tamaño predefinido de 16px, que el usuario puede cambiar (por ejemplo, por problemas de visión).
 
@@ -876,7 +873,7 @@ h1 {
 :::
 
 
-##### El problema de la acumulación de [em]{.verbatim} {#problema-acumulación-em}
+#### El problema de la acumulación de [em]{.verbatim} {#problema-acumulación-em}
 
 Una característica importante de [em]{.verbatim} es que puede acumularse cuando existen elementos anidados. Analiza el siguiente ejemplo:
 
@@ -941,7 +938,7 @@ Realiza el ejemplo anterior y analiza el resultado.
 :::
 
 
-#### Unidad relativa [rem]{.verbatim} {#unidad-relativa-rem}
+### Unidad relativa [rem]{.verbatim} {#unidad-relativa-rem}
 
 La unidad [rem]{.verbatim} también es relativa al tamaño de la fuente, pero toma como referencia el elemento raíz del documento. La unidad [rem]{.verbatim} viene de **root em**, y la raíz del documento HTML es normalmente [<html>]{.verbatim}.
 
@@ -1008,7 +1005,7 @@ small { font-size: 0.875rem; }
 La relación entre los tamaños se mantiene respecto a una única referencia, lo que facilita modificar posteriormente la escala general.
 
 
-#### Unidad relativa [ch]{.verbatim} {#unidad-relativa-ch}
+### Unidad relativa [ch]{.verbatim} {#unidad-relativa-ch}
 
 La unidad [ch]{.verbatim} está relacionada con el ancho del carácter [0]{.verbatim} de la fuente utilizada. Por ejemplo:
 
@@ -1024,7 +1021,7 @@ p {
 Esto permite limitar aproximadamente la anchura de una línea de texto.  Es especialmente útil para mejorar la legibilidad de textos largos. De esta forma evitamos que los párrafos ocupen líneas excesivamente largas y nos aseguramos el tamaño que va a tener.
 
 
-#### Unidad relativa [ex]{.verbatim} {#unidad-relativa-ex}
+### Unidad relativa [ex]{.verbatim} {#unidad-relativa-ex}
 
 La unidad [ex]{.verbatim} está relacionada con la altura de la letra [x]{.verbatim} de la fuente actual. Por ejemplo:
 
@@ -1044,7 +1041,7 @@ Para los desarrollos habituales podemos conocer su existencia sin necesidad de u
 
 
 
-#### Porcentajes {#porcentajes}
+### Porcentajes {#porcentajes}
 
 El símbolo `%` representa una unidad relativa y su valor depende del contexto en el que se utilice. En muchas propiedades, el porcentaje se calcula utilizando como referencia el elemento contenedor.
 
@@ -1109,9 +1106,9 @@ El uso del porcentaje depende de la propiedad concreta y del contexto.
 
 
 
-#### Unidades relacionadas con el *viewport* {#unidades-relacionadas-viewport}
+### Unidades relacionadas con el *viewport* {#unidades-relacionadas-viewport}
 
-CSS también proporciona unidades relativas al tamaño de la ventana del navegador. El ***viewport*** es, de forma simplificada, el área visible de la página. Las unidades tradicionales relacionadas con él son:
+CSS también proporciona unidades relativas al tamaño de la ventana del navegador. El ***[viewport](#viewport)*** es, de forma simplificada, el área visible de la página. Las unidades tradicionales relacionadas con él son:
 
 - [vw]{.verbatim}: significa ***viewport width*** y representa el 1% del **ancho** del *viewport*, por lo que [100vh]{.verbatim} es el 100% de la anchura del *viewport*.
 - [vh]{.verbatim}: significa ***viewport height*** y representa el 1% de la **altura** del *viewport*, por lo que [100vh]{.verbatim} es el 100% de la altura del *viewport*.
@@ -1120,9 +1117,6 @@ CSS también proporciona unidades relativas al tamaño de la ventana del navegad
 [CSS]{.title}
 ```css
 .elemento {
-    /* normalmente se usa más
-    width: 100%;
-     */
     width: 100vw;
     height: 100vh;
 }
@@ -1151,7 +1145,7 @@ Existen otras unidades explicadas en la [documentación](https://developer.mozil
 
 Table: {tablename=yukitblr colspec=X[1,l]X[4,l]}
 
-
+Más adelante veremos en profundidad qué es y cómo funciona el [*Viewport*](#viewport).
 
 ## Unidades para ángulos {#unidades-ángulos}
 
