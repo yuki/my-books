@@ -618,7 +618,7 @@ El resultado es exactamente el mismo y el código es más legible. [repeat()]{.v
 
 ## *Grids* adaptables {#grids-adaptables}
 
-Podemos crear *grids* responsive utilizando [[minmax()]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/minmax) y [[auto-fit]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/repeat\#auto-fit).
+Podemos crear *grids responsive* utilizando [[minmax()]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/minmax) y [[auto-fit]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/repeat\#auto-fit).
 
 ::: {.mycode}
 [CSS]{.title}
