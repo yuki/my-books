@@ -507,7 +507,7 @@ Los **formularios** [<form>]{.verbatim} son el principal mecanismo mediante el c
 Un buen formulario no solo debe ser estéticamente agradable: también debe ser **claro, accesible, fácil de completar y adaptable a dispositivos móviles**. Los elementos más habituales que encontraremos dentro de un formulario son:
 
 - Etiquetas ([label]{.verbatim}): cada campo debe tener una etiqueta descriptiva. El atributo [for]{.verbatim} conecta la etiqueta con el [id]{.verbatim} del campo [<input>]{.verbatim}correspondiente. Esta relación mejora la accesibilidad y permite que al pulsar sobre el texto también se active el campo de entrada.
-- Campos de texto ([input]{.verbatim}): son los controles más utilizados. Existen distintos tipos para determinados tipos de datos, y es importante elegir el correcto, ya que mejora la validación y la experiencia de usuario en dispositivos móviles.
+- Campos de texto ([input]{.verbatim}): Existen distintos tipos para determinados tipos de datos, y es importante elegir el correcto, ya que mejora la validación y la experiencia de usuario en dispositivos móviles.
   - [text]{.verbatim}: Texto general
   - [email]{.verbatim}: Correo electrónico
   - [password]{.verbatim}: Contraseñas
@@ -616,7 +616,7 @@ Una tabla se construye mediante los siguientes elementos:
 
 
 :::::::::::::: {.columns}
-::: {.column width="50%"}
+::: {.column width="43%"}
 
 ::: {.mycode size=footnotesize}
 [HTML]{.title}
@@ -655,7 +655,7 @@ Una tabla se construye mediante los siguientes elementos:
 :::
 
 :::
-::: {.column width="50%" }
+::: {.column width="57%" }
 
 ::: {.mycode size=footnotesize}
 [CSS]{.title}
@@ -943,14 +943,22 @@ Un ejemplo típico sería mostrar el mensaje de que los datos de un formulario s
 
 A la hora de crear avisos o alertas habría que tener en cuenta qué tipo de aplicación estamos construyendo, y los posibles avisos que queremos informar al usuario final. En una aplicación estándar, podríamos crear:
 
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
 - **Aviso informativo**: indica información útil para el usuario.
 - **Aviso de confirmación/éxito**: para indicar que la operación se ha realizado correctamente (guardar datos, crear usuario, ...).
 - **Alerta de advertencia**: cuando se necesita la atención del usuario, aunque no es un error.
 - **Alerta de error**: para indicar que no se ha podido realizar la acción, o ha terminado con error.
 
+:::
+::: {.column width="50%" }
 
-![Ejemplo de avisos](img/diw/alertas.png){width=50%}
+![Ejemplo de avisos](img/diw/alertas.png){width=100%}
 
+:::
+::::::::::::::
 
 ## Posibles mejoras {#posibles-mejoras-alertas}
 
@@ -973,5 +981,301 @@ Crea distintos diálogo de aviso y alerta:
 - Añade un título.
 - Añade un icono alineado con el texto (usa Flexbox).
 :::
+
+
+# Breadcrumbs {#breadcrumbs}
+
+Los ***breadcrumbs*** o **migas de pan** son un componente de navegación que muestra al usuario el camino jerárquico que ha seguido dentro de un sitio web o aplicación. Por ejemplo: [Inicio > Cursos > Desarrollo Web > JavaScript]{.verbatim}.
+
+Permiten conocer rápidamente **dónde se encuentra el usuario** y facilitan volver a niveles superiores sin tener que utilizar el menú principal, ya que cada nivel, excepto el último, es un enlace.
+
+Son especialmente útiles en sitios web con una estructura jerárquica profunda, como tiendas online, plataformas educativas, documentación técnica o gestores de contenidos.
+
+
+Dado que los *breadcrumbs* son un componente de navegación podemos utilizar el elemento [<nav>]{.verbatim}, aunque también se podría usar una lista.
+
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
+[HTML]{.title}
+```HTML
+<nav class="breadcrumbs"
+    aria-label="Breadcrumb">
+  <ol>
+    <li>
+      <a href="/">Inicio</a>
+    </li>
+    <li>
+      <a href="/cursos">Cursos</a>
+    </li>
+    <li>
+      <a href="/cursos/web">
+        Desarrollo Web
+      </a>
+    </li>
+    <li>
+      JavaScript
+    </li>
+  </ol>
+</nav>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[CSS]{.title}
+```css
+.breadcrumbs ol {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.breadcrumbs li + li::before {
+    content: ">";
+    margin: 0 0.5rem;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+
+En el ejemplo se ha creado una lista, y para añadir la separación [>]{.verbatim} entre los niveles se ha hecho uso de una regla CSS con el selector de [hermanos adyacentes](#resumen-selectores).
+
+
+::: exercisebox
+[[09h](https://github.com/yuki/ejercicios/blob/main/daw/diw/09h.html)]{.solution}
+
+Crea un *breadcrumb* y modifica los estilos. Analiza la posibilidad de añadir el separador con CSS o con JavaScript.
+:::
+
+
+
+# Paginación {#paginación}
+
+La **paginación** es un componente de navegación que permite dividir una gran cantidad de contenido en varias páginas. En lugar de mostrar todos los resultados al mismo tiempo, se presentan pequeños grupos de elementos y se permite al usuario desplazarse entre ellos.
+
+Es habitual encontrar paginación en:
+
+- Listados de productos.
+- Resultados de búsquedas.
+- Listados de alumnos.
+- Noticias.
+- Artículos.
+- Registros de una base de datos.
+- Paneles de administración.
+
+
+La paginación no es únicamente un elemento visual. Los enlaces deben permitir realmente acceder a las diferentes páginas de contenido. La paginación representa una navegación, por lo que podemos utilizar [<nav>]{.verbatim} tal como hemos visto previamente, o una lista.
+
+
+:::::::::::::: {.columns}
+::: {.column width="55%"}
+
+::: {.mycode size=footnotesize}
+[HTML]{.title}
+```HTML
+<nav aria-label="Paginación">
+    <a href="?page=1">Anterior</a>
+    <a href="?page=1">1</a>
+    <a href="?page=2" class="active">2</a>
+    <a href="?page=3">3</a>
+    <a href="?page=4">4</a>
+    <a href="?page=2">Siguiente</a>
+</nav>
+```
+:::
+
+:::
+::: {.column width="45%" }
+
+::: {.mycode size=footnotesize}
+[CSS]{.title}
+```css
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    color: #374151;
+    text-decoration: none;
+    font-weight: bold;
+}
+```
+:::
+
+:::
+::::::::::::::
+
+En el ejemplo se ha añadido sólo el CSS para los enlaces, que al igual que sucede en muchas páginas, genera un pequeño borde para cada número.
+
+![Ejemplo de paginación](img/diw/paginacion.png){width=50%}
+
+
+
+## Diseño habitual {#paginación-diseño-habitual}
+
+Dado que la paginación es un sistema de navegación, a simple vista nos debe mostrar claramente distintos aspectos, entre los que podemos destacar:
+
+- Página en la que nos encontramos.
+- Efecto [:hover]{.verbatim} sobre los enlaces.
+- Deshabilitar "anterior" o "siguiente" si estamos en la primera o última página respectivamente.
+- Cuando existen muchas páginas no tiene sentido mostrar todos los números.
+
+
+
+::: exercisebox
+[[09i](https://github.com/yuki/ejercicios/blob/main/daw/diw/09i.html)]{.solution}
+
+Crea un sistema de *paginación* de uso habitual con las características de diseño especificadas.
+:::
+
+
+
+# Acordeones {#acordeones}
+
+Un **acordeón** es un componente de interfaz que permite mostrar y ocultar bloques de contenido. Cada bloque suele estar formado por un título o encabezado que el usuario puede pulsar para desplegar la información asociada.
+
+Son especialmente útiles cuando tenemos mucha información que no queremos mostrar completamente al mismo tiempo. Algunos ejemplos habituales son:
+
+- Preguntas frecuentes.
+- Secciones de ayuda.
+- Opciones de configuración.
+- Descripciones adicionales.
+- Información agrupada por categorías.
+
+Un acordeón puede tener inicialmente todos sus contenidos cerrados.
+
+
+## Estructura básica {#acordeón-estructura}
+
+Tal como pasa con otros elementos, originalmente este sistema se construía de manera "artesanal" usando HTML, CSS y JavaScript, pero desde 2020 existe dos etiquetas nuevas [[<details>]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) y [<sumamry>]{.verbatim} que nos facilita la creación ya que no es necesario el uso de JavaScript.
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
+[Método "artesanal"]{.title}
+```HTML
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-header">
+      Cabecera
+    </button>
+    <div class="accordion-content">
+        <p>Contenido.</p>
+    </div>
+  </div>
+  <!-- Más secciones -->
+</div>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[Método nuevo]{.title}
+```html
+<details>
+  <summary>Cabecera</summary>
+  <p>
+    Contenido.
+  </p>
+</details>
+```
+:::
+
+:::
+::::::::::::::
+
+
+El siguiente paso es tener el código CSS para añadir estilos personalizables, ocultar la sección por defecto, y el código JavaScript para ocultar/desocultar la sección en el método antiguo.
+
+:::::::::::::: {.columns columnsep=0.25cm}
+::: {.column width="44%"}
+
+::: {.mycode size=footnotesize}
+[CSS]{.title}
+```css
+.accordion {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: 40%;
+}
+.accordion summary, 
+.accordion .accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color: #f3f4f6;
+    padding: 1rem 0rem 1rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    font: inherit;
+}
+```
+:::
+
+:::
+::: {.column width="56%" }
+
+::: {.mycode size=footnotesize}
+[JavaScript]{.title}
+```javascript
+const headers = 
+document.querySelectorAll(".accordion-header");
+
+headers.forEach(header => {
+    header.addEventListener("click", () => {
+        const item = header.parentElement;
+        item.classList.toggle("is-open");
+    });
+});
+```
+:::
+
+:::
+::::::::::::::
+
+![Ejemplo de acordeón](img/diw/acordeon.png){width=50%}
+
+
+
+## Diseño y ayudas {#acordeón-diseño-ayudas}
+
+Para facilitar la usabilidad de los acordeones es habitual hacer uso de los siguientes diseños y/o ayudas:
+
+- Diferenciar cabecera de contenido: normalmente la cabecera suele ser de un color y el contenido de otro.
+- Añadir una flecha o icono para indicar si la sección está abierta o cerrada. Al cambiar el estado, el icono debe cambiar.
+- Si existen varias secciones de acordeón juntas, hay que separar las distintas secciones.
+- En algunos casos al abrir un contenedor queremos cerrar el resto. Esto dependerá de la información y/o aplicación que estamos realizando.
+
+
+::: exercisebox
+[[09j](https://github.com/yuki/ejercicios/blob/main/daw/diw/09j.html)]{.solution}
+
+Crea un sistema de acordeón con el método nuevo y el método "manual"/"antiguo". Dale el diseño CSS que más te guste y si es necesario el código JavaScript.
+:::
+
+
+
 
 
