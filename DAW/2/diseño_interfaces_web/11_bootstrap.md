@@ -110,7 +110,7 @@ La clase utilizada dependerá del framework concreto. La idea fundamental es que
 
 Una de las razones por las que los frameworks CSS se hicieron especialmente populares es que facilitan la creación de interfaces **responsive**. Recordemos que una interfaz responsive debe adaptarse a diferentes tamaños de pantalla.
 
-Un framework proporciona normalmente clases y reglas que ya contemplan diferentes tamaños de pantalla. Por ejemplo, Bootstrap utiliza diferentes **[breakpoints](#breakpoints)** para adaptar su sistema de layout, lo que permite construir layouts responsive sin tener que definir manualmente todas las media queries necesarias.
+Un framework proporciona normalmente clases y reglas que ya contemplan diferentes tamaños de pantalla. Por ejemplo, Bootstrap utiliza diferentes **[breakpoints](#breakpoints-puntos-ruptura)** para adaptar su sistema de layout, lo que permite construir layouts responsive sin tener que definir manualmente todas las media queries necesarias.
 
 
 ## Ventajas e inconvenientes de utilizar un framework CSS {#framework-ventajas-inconvenientes}
@@ -572,4 +572,20 @@ Usa Bootstrap Icons:
 
 
 
+<!-- 
+# Personalización de Bootstrap {#personalización-bootstrap}
+
+Bootstrap proporciona una gran cantidad de estilos y componentes preparados para utilizar directamente en una página web. Sin embargo, en un proyecto real no siempre queremos utilizar exactamente el aspecto que Bootstrap proporciona por defecto, ya que haría que nuestra web sea genérica y sin personalización.
+
+Normalmente, vamos a querer utilizar unos colores corporativos concretos, modificar el tamaño de los botones, cambiar los bordes, adaptar los espacios o crear un diseño visual completamente propio. Por este motivo, Bootstrap permite diferentes formas de **personalización**, que se puede resumir en dos niveles:
+
+1. Añadir nuestro propio CSS después de Bootstrap.
+2. Personalizar Bootstrap mediante sus variables y herramientas de compilación.
+
+La primera opción ya la hemos visto previamente, y por tanto, no es necesario volver a explicar. Para la segunda opción hay distintos apartados en la [documentación](https://getbootstrap.com/docs/5.3/customize/overview/), por lo que es interesante leer las distintas opciones.
+
+
+El método más sencillo es redefinir las [variables CSS de Bootstrap](https://getbootstrap.com/docs/5.3/customize/css-variables/) con los valores que mejor noss convengan
+
+-->
 
