@@ -28,6 +28,7 @@ LIBROS=(
     "DAM/2/sistemas_gestion_empresarial/ sge"
     "DAW/2/desarrollo_entorno_cliente/ desarrollo_entorno_cliente"
     "DAW/2/diseño_interfaces_web/ diseño_interfaces_web"
+    "DAW/2/web_interfazeak_diseinatzea web_interfazeak_diseinatzea"
     "SMR/1/TMM/ tmm"
     "anexos/gestion_backups/ gestion_backups"
     "anexos/gestion_backups/euskera/ gestion_backups_euskeraz"

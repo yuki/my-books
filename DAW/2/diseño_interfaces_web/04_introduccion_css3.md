@@ -8,7 +8,7 @@ CSS ofrece diferentes formas de especificar colores y numerosas propiedades para
 Ya hemos visto previamente cómo modificar el color del texto en ejemplos anteriores, y también sabemos que es una propiedad que normalmente se hereda.
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css 
 p { color: blue; }
 ```

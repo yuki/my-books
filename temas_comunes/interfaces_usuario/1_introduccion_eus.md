@@ -5,22 +5,65 @@
 
 Adibideak:
 
--   **Erabiltzaile-interfazeak**: programa bat erabiltzerakoan.
+- **Erabiltzaile-interfazeak**: programa bat erabiltzerakoan.
+- **Giza interfaze gailua**: ingelesezko sigletan **HID** (*human interface device*), hardware interfaze bati egiten dio erreferentzia, gizakiok ordenagailuarekin elkarreragiteko erabiltzen duguna.
+- **Interfaze fisikoa**: osagai bat beste batera konektatzen denean (USB ataka edo SATA ataka).
 
--   **Giza interfaze gailua**: ingelesezko sigletan **HID** (*human interface device*), hardware interfaze bati egiten dio erreferentzia, gizakiok ordenagailuarekin elkarreragiteko erabiltzen duguna.
 
--   **Interfaze fisikoa**: osagai bat beste batera konektatzen denean (USB ataka edo SATA ataka).
+# Erabiltzaile-interfazeak {#interfaces-usuario}
 
-# Erabiltzaile-interfazeen bilakaera {#erabiltzaile-interfazeen-bilakaera}
+Erabiltzaile-interfazea (*User Interface* edo **UI**) pertsona batek aplikazio edo sistema informatiko batekin komunikatzeko aukera ematen duten elementu bisual eta interaktiboen multzoa da. Horiei esker, botoi bat sakatu, menu bateko aukera bat hautatu edo orri batetik bestera nabigatu dezakegu.
 
-**Erabiltzaile-interfazea**, EI (ingelesez *User Interface*, **UI**), erabiltzaile baten eta makina baten arteko komunikazioa ahalbidetzen duen bitartekoa da. Normalean ulertzeko eta erabiltzeko errazak izaten dira, nahiz eta informatikan hobea den "erabilgarriak, atseginak eta intuitiboak" direla esatea.
+Normalean, ulertzeko eta erabiltzeko errazak izaten dira, nahiz eta informatikaren arloan egokiagoa izan "erabilgarriak, atseginak eta intuitiboak" direla esatea.
+
+Gaur egun, interfazeek eboluzionatzen jarraitzen dute, eta jada ez dira botoiak dituzten pantailetara mugatzen. Ukipen-interfazeak, ahots bidezko laguntzaileak, errealitate areagotua, errealitate birtuala eta keinuak interpretatzeko gai diren sistemak ere badaude.
+
+
+## Interfazea komunikazio-bide gisa {#interfaz-medio-comunicación}
+
+Interfazea erabiltzailearen eta ordenagailuaren (edo aplikazioaren) arteko **itzultzaile** gisa irudikatzea erabilgarria izan daiteke. Erabiltzaileak egin nahi duena adierazten du ekintza errazen bidez; programak ekintza horiek berak ulertu eta exekuta ditzakeen jarraibide bihurtzen ditu, eta ondoren informazioa itzultzen dio erabiltzaileari. Beraz, **komunikazioa noranzko bikoa da**.
+
+
+## Interfaze on baten ezaugarriak {#características-buen-interfaz}
+
+Interfaze on batek erabiltzaileari bere helburuak ahalik eta ahalegin txikienarekin lortzeko aukera eman behar dio. Ezaugarri nagusien artean, honako hauek nabarmentzen dira:
+
+- **Sinpletasuna**: Interfaze sinple batek beharrezkoak diren elementuak baino ez ditu. Egin beharreko ekintzarako beharrezkoak ez diren botoi, kolore edo informazio gehiegirekin pantaila gainkargatzeak nahasmena sortu ohi du.
+- **Argitasuna**: Elementuek argi adierazi behar dute zein den beren funtzioa. Erabiltzaileak ez luke elementu bakoitzak zer egiten duen asmatu behar. Adibidez:
+  - "Gorde" argiagoa da "Onartu" baino.
+  - Zakarrontzi baten ikonoak ezabatzeko ekintza irudikatu ohi du.
+  - Lupa baten ikonoak bilaketa bat irudikatu ohi du.
+- **Koherentzia**: Antzeko elementuek antzera jokatu behar dute. Koherentziari esker, erabiltzaileak azkar ikasten du aplikazioak nola funtzionatzen duen.
+- **Abiadura**: Interfazeak berehala erantzun behar die erabiltzailearen ekintzei. Eragiketa batek hainbat segundo behar baditu amaitzeko, aplikazioak nolabaiteko erantzuna erakutsi behar du:
+  - Kargatze-adierazle bat.
+  - Aurrerapen-barra bat.
+  - Informazio-mezu bat.
+- **Irisgarritasuna**: Pertsona guztiek aplikazioa erabili ahal izan beharko lukete, beren gaitasunak edozein izanda ere.
+- **Moldagarritasuna**: Interfazeak pantailaren edozein tamainatara behar bezala egokitu behar du.
+
+
+## Lehen inpresioaren garrantzia {#importancia-primera-impresión}
+
+Erabiltzaile-esperientziari buruzko hainbat ikerketak erakusten dute pertsona batek web-orri bati buruzko hasierako iritzia segundo gutxitan osatu ohi duela. Denbora-tarte labur horretan, erabiltzaileak honako hauek erabakitzen ditu:
+
+- Orriak profesionala dirudien.
+- Informazioa erraz aurkitzen duen.
+- Gunean konfiantza duen.
+- Nabigatzen jarraitzen duen edo orria uzten duen.
+
+Horregatik, ikusizko diseinuak eragin zuzena du aplikazio baten kalitatearen pertzepzioan. Baina garrantzitsua da gogoratzea interfaze polit batek ez duela zertan interfaze ona izan.
+
+::: errorbox
+Interfaze polit batek ez du zertan interfaze ona izan
+:::
+
+
+# Erabiltzaile-interfazeen bilakaera {#evolución-de-interfaces-de-usuario}
 
 Gaur egun 3 mota bereiz ditzakegu:
 
--   **Komando-lerroko interfazea** (*Command-Line Interface*, **CLI**): Interfaze alfanumerikoak (komando-interpretea) testua edo karaktere bereziekin sortutako interfaze sinpleak soilik erakusten dituztenak.
-
+- **Komando-lerroko interfazea** (*Command-Line Interface*, **CLI**): Interfaze alfanumerikoak (komando-interpretea) testua edo karaktere bereziekin sortutako interfaze sinpleak soilik erakusten dituztenak.
 -   **Erabiltzaile-interfaze grafikoa** (*Graphic User Interface*, **GUI**): Ordenagailuarekin modu azkar eta intuitiboan komunikatzeko aukera ematen dute, kontrol- eta neurketa-elementuak grafikoki irudikatuz.
-
 -   **Erabiltzaile-interfaze naturala** (*Natural User Interface*, **NUI**): Ukigarriak izan daitezke, pantaila ukigarri batean "kontrol panela" grafikoki irudikatuz eta hatzarekin elkarreragiteko aukera emanez; ahots-ezagutza bidez funtziona dezakete (adibidez Siri); edo gorputz-mugimenduen bidez (antzinako [Kinect](https://es.wikipedia.org/wiki/Kinect) edo egungo [Vision Pro](https://www.apple.com/apple-vision-pro/) bezalako Apple-ren gailuak).
 
 [Wikipedia](https://en.wikipedia.org/wiki/History_of_the_graphical_user_interface)n interfaze grafikoen historia dago, eta hemen laburpen bat egingo da.
@@ -37,15 +80,22 @@ Interfaze hau ia konputazioaren hasieratik existitzen da, antzinatasunean soilik
 
 Gaur egun, komando-lerroa "terminal emulatzaile" izeneko programekin erabiltzen da, eta horiek komando-interprete bat (shell izenekoa) exekutatzen dute. Interprete hauek, sistema eragilearen arabera, aukera desberdinak izan ditzakete, adibidez:
 
--   **Windows**-en **cmd** zaharra edo berriagoa eta hobetua den **PowerShell** erabil daitezke. Beste batzuk ere erabil daitezke, baina ez daude lehenetsita instalatuta (adibidez **bash**).
+- **Windows**-en **cmd** zaharra edo berriagoa eta hobetua den **PowerShell** erabil daitezke. Beste batzuk ere erabil daitezke, baina ez daude lehenetsita instalatuta (adibidez **bash**).
+- **GNU/Linux** sistemetan gehien erabiltzen den interpretea eta banaketa gehienetan instalatuta dagoena **bash** da. Azken urteetan **zsh**-k merkatu asko irabazi du [Oh-my-zsh](https://ohmyz.sh/) *framework*ari esker.
+- MacOS sistemetan interprete lehenetsia **zsh** da.
 
--   **GNU/Linux** sistemetan gehien erabiltzen den interpretea eta banaketa gehienetan instalatuta dagoena **bash** da. Azken urteetan **zsh**-k merkatu asko irabazi du [Oh-my-zsh](https://ohmyz.sh/) *framework*ari esker.
-
--   MacOS sistemetan interprete lehenetsia **zsh** da.
-
-![BASH interfazea. Iturria: [Wikipedia](https://en.wikipedia.org/wiki/File:Linux_command-line._Bash._GNOME_Terminal._screenshot.png)](img/di/tema_1/bash.png){width="45%"}
+![BASH interfazea. Iturria: [Wikipedia](https://en.wikipedia.org/wiki/File:Linux_command-line._Bash._GNOME_Terminal._screenshot.png)](img/di/tema_1/bash.png){width="75%"}
 
 CLI, shell eta terminal emulatzaile kontzeptuak **ez dira gauza bera**. CLI paradigma bati egiten dio erreferentzia, eta shell edo terminal emulatzaileak programa informatiko espezifikoak dira, normalean elkarrekin CLIa inplementatzen dutenak. **Hala ere, hirurak sinonimo gisa erabiltzen dira askotan**.
+
+| Abantailak                           | Desabantailak |
+|--------------------------------------|------------------------------|
+| ● Oso azkarra erabiltzaile adituentzat. | ● Komandoak buruz ikasi behar dira.  |
+| ● Automatizatzeko gaitasun handia.  | ● Ez da oso intuitiboa hasiberrientzat. |
+
+Table: {tablename=yukitblr colspec=X[1,l]X[1,l]}
+
+
 
 ## Erabiltzaile-interfaze grafikoa {#interfaz-gráfica-de-usuario}
 
@@ -58,10 +108,10 @@ Bere funtzio nagusia ingurune bisual erraza eskaintzea da, ordenagailu baten sis
 Interfaze grafikoak ez dira mahaigaineko inguruneekin jaio, baizik eta aurreko urratsetan ere badaude leihoak edo inguruneak simulatzen dituzten liburutegiak, testu-karaktereak eta koloreak erabiliz.
 
 :::::::::::::: {.columns }
-::: {.column width="48%"}
+::: {.column width="50%"}
 ![FreeDos Edit. Iturria: [Wikipedia](https://en.wikipedia.org/wiki/File:Fdedit.png)](img/di/tema_1/Fdedit.png){width="100%" framed=true}
 :::
-::: {.column width="48%" }
+::: {.column width="50%" }
 ![Midnight Commander. Iturria: [Wikipedia](https://en.wikipedia.org/wiki/File:Midnight_Commander_(2005)_en.png)](img/di/tema_1/mc.png){width="100%" framed=true}
 :::
 ::::::::::::::
@@ -86,7 +136,7 @@ GUIa hasieran [Xerox PARC](https://es.wikipedia.org/wiki/PARC)en (*Palo Alto Res
 
 
 
-![LisaOS 1.0 interfaze grafikoa. Iturria: [GUI Gallery](https://guidebookgallery.org/screenshots/lisaos10)](img/di/tema_1/lisaos10.png){width="80%" framed=true}
+![LisaOS 1.0 interfaze grafikoa. Iturria: [GUI Gallery](https://guidebookgallery.org/screenshots/lisaos10)](img/di/tema_1/lisaos10.png){width="100%" framed=true}
 
 
 1984an Applek Macintosh kaleratu zuen, Lisa sistemaren eboluzioa zuen sistema eragilearekin, "System" izenekoa, eta bertan gaur egun arte ia aldatu ez diren atal batzuk ikus daitezke.
@@ -123,13 +173,13 @@ GNU/Linux munduan Gnome eta KDE bezalako mahaigaineko ingurune libreak iragarri 
 Sistema eragile bakoitzak eta mahaigaineko sistema bakoitzak bere eboluzio propioak egiten zituen, eta arrakasta izanez gero, besteetan "kopiatzen" ziren, kolore, ikono edo leiho-efektuetan "modak" sortuz ere.
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="34%"}
 ![](img/di/tema_1/kde1.jpg){width="100%" framed=true}
 :::
-::: {.column width="30%"}
+::: {.column width="34%"}
 ![](img/di/tema_1/kde2.png){width="100%" framed=true}
 :::
-::: {.column width="30%"}
+::: {.column width="32%"}
 ![](img/di/tema_1/kde35.png){width="100%" framed=true}
 :::
 ::::::::::::::
@@ -186,17 +236,11 @@ Lehen mugikorrek ez zuten pantailarik, gero pantaila txiki monokromoak izaten ha
 
 
 :::::::::::::: {.columns }
-::: {.column width="20%"}
+::: {.column width="50%"}
+![](img/di/tema_1/t10.jpg){width="50%" }
 :::
-::: {.column width="20%"}
-![](img/di/tema_1/t10.jpg){width="100%" }
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="20%" }
-![](img/di/tema_1/nokia.png){width="100%"}
-:::
-::: {.column width="20%"}
+::: {.column width="50%" }
+![](img/di/tema_1/nokia.png){width="50%"}
 :::
 ::::::::::::::
 
@@ -217,17 +261,11 @@ Dena aldatu zen 2007an iPhone-a eta lehen *smartphone*-ak iritsi zirenean, panta
 
 
 :::::::::::::: {.columns }
-::: {.column width="10%"}
+::: {.column width="50%"}
+![](img/di/tema_1/iphone.jpg){width="70%"}
 :::
-::: {.column width="35%"}
-![](img/di/tema_1/iphone.jpg){width="100%"}
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="27%" }
-![](img/di/tema_1/htc.jpg){width="100%"}
-:::
-::: {.column width="10%"}
+::: {.column width="50%" }
+![](img/di/tema_1/htc.jpg){width="60%"}
 :::
 ::::::::::::::
 
@@ -240,25 +278,21 @@ Applek botoi bakarra aukeratu zuen, eta Android sistema eragileek (adibidez HTC 
 
 Aldaketa hauekin, sistema eragileek eta interfazeek aldaketa erradikal bat jasan zuten, erabiltzailearen erraztasuna bilatuz eta interfazearekin elkarreragiteko "keinuak" agertuz:
 
--   **Tap**: pantaila ukitzea (saguarekin "klik" egitearen antzekoa)
--   **Double tap**: ukitu bikoitza, aplikazioaren arabera zoom bat egin dezake.
--   **Scroll**: hatzarekin gora edo behera arrastatuz interfazean mugitzea.
--   **Flick**: keinu azkarra gora edo behera eginez scroll egiten da; ezkerrera edo eskuinera eginez, mugimendua pantaila gehiagorik badago horren araberakoa izango da.
--   **Pinch in**: zooma gerturatzea.
--   **Pinch out**: zooma urruntzea.
+- **Tap**: pantaila ukitzea (saguarekin "klik" egitearen antzekoa)
+- **Double tap**: ukitu bikoitza, aplikazioaren arabera zoom bat egin dezake.
+- **Scroll**: hatzarekin gora edo behera arrastatuz interfazean mugitzea.
+- **Flick**: keinu azkarra gora edo behera eginez scroll egiten da; ezkerrera edo eskuinera eginez, mugimendua pantaila gehiagorik badago horren araberakoa izango da.
+- **Pinch in**: zooma gerturatzea.
+- **Pinch out**: zooma urruntzea.
 
 Honekin guztiarekin, orain arte interfazeetan planteatu ez zen "arazo" berri bat sortzen da: **gailuaren biraketa**. Biraketa horrek aplikazioa egokitu behar du terminalaren posizio berrira, bertikaletik horizontala edo alderantziz pasatuz.
 
 :::::::::::::: {.columns }
-::: {.column width="20%"}
-:::
-::: {.column width="30%"}
+::: {.column width="40%"}
 ![](img/di/tema_1/music.jpg){width="100%"}
 :::
-::: {.column width="50%" }
+::: {.column width="60%" }
 ![](img/di/tema_1/iphone_coverflow.png){width="100%"}
-:::
-::: {.column width="20%"}
 :::
 ::::::::::::::
 
@@ -313,17 +347,11 @@ Ingurunean mugitzeko, sistema batzuek *[trackers](https://www.vive.com/us/access
 Hurrengo urratsa **errealitate areagotua** da, non elementu birtualak bizitza errealean integratzen saiatzen diren. Ez da berria, urteak daramatza joko eta aplikazioetan existitzen.
 
 :::::::::::::: {.columns }
-::: {.column width="10%"}
+::: {.column width="50%"}
+![](img/di/tema_1/pokemon.jpg){width="70%"}
 :::
-::: {.column width="25%"}
-![](img/di/tema_1/pokemon.jpg){width="100%"}
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="25%" }
-![](img/di/tema_1/ikea.jpg){width="100%"}
-:::
-::: {.column width="10%"}
+::: {.column width="50%" }
+![](img/di/tema_1/ikea.jpg){width="70%"}
 :::
 ::::::::::::::
 
@@ -340,25 +368,34 @@ Apple Vision Pro kasuan, errealitate areagotuko esperientzia bat agintzen dute, 
 ![Apple Vision Pro](img/di/tema_1/apple_vision.jpg){width="70%"}
 
 
+## Ahots bidezko interfazeak {#interfaces-voz}
+
+Ahotsaren ezagutza digitala exekutatzeko aukera eman zuen lehen tresna 1962an aurkeztu zen. Aurretik hainbat aplikazio eta laguntzaile birtual [egon](https://es.wikipedia.org/wiki/Asistente_virtual\#Historia) baziren ere, erabilera publiko orokorrera ez zen iritsi Siriren agerpena [2010ean](https://es.wikipedia.org/wiki/Siri) gertatu arte.
+
+Gaur egun, ahots bidezko interfazeak telefono mugikorrekin eta hizkuntza naturala ezagutzeko eta eskatzen zaizkien ekintzak exekutatzeko gai diren laguntzaile birtualekin lotuta daude. Laguntzaile ezagunenak [Siri](https://es.wikipedia.org/wiki/Siri), [Alexa](https://es.wikipedia.org/wiki/Amazon_Alexa) eta [Google Assistant](https://es.wikipedia.org/wiki/Asistente_de_Google) dira.
+
+
 # Bitxikeriak, prototipoak eta zientzia fikzioa {#curiosidades-prototipos-y-ciencia-ficción}
 
 Atal honetan benetakoak diren baina bitxikeriak diren interfaze batzuk, oraindik ezer lortu ez duten prototipoen adibideak eta zientzia fikziozko filmen ikuspegia gehituko dira.
 
--   1982ko ukipen-teknologiaren erabilera posibleen demostrazioa. Egia esan, pantaila ez da ukigarria, baizik eta inguruan sentsoreak ditu. [Bideoa](https://www.youtube.com/watch?v=JAcZpQCLb4E).
+-   1982ko ukipen-teknologiaren erabilera posibleen demostrazioa. Egia esan, pantaila ez da ukigarria, baizik eta inguruan sentsoreak ditu. [[Bideoa](https://www.youtube.com/watch?v=JAcZpQCLb4E)]{.youtube}.
 
--   [Jurassic Park](https://www.imdb.com/title/tt0107290/) filmean 3Dn fitxategi-sistema arakatzeko interfaze bat agertzen da. [It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c).
+-   [[Jurassic Park](https://www.imdb.com/title/tt0107290/)]{.movie} filmean 3Dn fitxategi-sistema arakatzeko interfaze bat agertzen da. [[It's UNIX!](https://www.youtube.com/watch?v=JOeY07qKU9c)]{.youtube}.
 
--   [Minority Report](https://www.imdb.com/title/tt0181689/) (2002) filmean eskuarekin erabiltzen den interfaze bat agertzen da. [Bideoa](https://www.youtube.com/watch?v=33Raqx9sFbo).
+-   [[Minority Report](https://www.imdb.com/title/tt0181689/)]{.movie} (2002) filmean eskuarekin erabiltzen den interfaze bat agertzen da. [[Bideoa](https://www.youtube.com/watch?v=33Raqx9sFbo)]{.youtube}.
 
--   2003an Microsoftek bere hurrengo Windows izango zenaren [bideoa](https://www.youtube.com/watch?v=b9ifQvQCO7Y) erakusten du, Longhorn izenekoa. Interfaze hau ez zen inoiz azken bertsiora iritsi, baina [demostrazio bertsioak](https://www.youtube.com/watch?v=pjExyeyLBG0) egon ziren. Azken bertsioa Vista izan zen, baina ez zen hasierako kontzeptuen antzekoa izan.
+-   2003an Microsoftek bere hurrengo Windows izango zenaren [bideoa](https://www.youtube.com/watch?v=b9ifQvQCO7Y) erakusten du, Longhorn izenekoa. Interfaze hau ez zen inoiz azken bertsiora iritsi, baina [[demostrazio bertsioak](https://www.youtube.com/watch?v=pjExyeyLBG0)]{.youtube} egon ziren. Azken bertsioa Vista izan zen, baina ez zen hasierako kontzeptuen antzekoa izan.
 
--   2006an, OpenGL hardware bidezko azelerazioarekin, GNU/Linux banaketetan benetako 3D diseinuko leiho-kudeatzaileak sortu ziren. Alternatiba asko egon ziren, proiektu ezberdinen "fork" asko sortu baitziren, baina ezagunenak Compiz eta Beryl izan ziren. [Bideoa](https://www.youtube.com/watch?v=4QokOwvPxrE).
+-   2006an, OpenGL hardware bidezko azelerazioarekin, GNU/Linux banaketetan benetako 3D diseinuko leiho-kudeatzaileak sortu ziren. Alternatiba asko egon ziren, proiektu ezberdinen "fork" asko sortu baitziren, baina ezagunenak Compiz eta Beryl izan ziren. [[Bideoa](https://www.youtube.com/watch?v=4QokOwvPxrE)]{.youtube}.
 
--   2006an TED hitzaldi batean [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han)ek multitouch pantailaren demostrazioa egiten du, eta bertan gaur egun *smartphone*-ekin egunero erabiltzen ditugun keinu asko erakusten ditu. [TED hitzaldia](https://www.youtube.com/watch?v=ac0E6deG4AU) eta [demostrazio bideoa](https://www.youtube.com/watch?v=wHfKrk8QMM0).
+-   2006an TED hitzaldi batean [Jefferson Han](https://en.wikipedia.org/wiki/Jefferson_Han)ek multitouch pantailaren demostrazioa egiten du, eta bertan gaur egun *smartphone*-ekin egunero erabiltzen ditugun keinu asko erakusten ditu. [[TED hitzaldia](https://www.youtube.com/watch?v=ac0E6deG4AU)]{.youtube} eta [[demostrazio bideoa](https://www.youtube.com/watch?v=wHfKrk8QMM0)]{.youtube}.
 
--   2009an Microsoftek tablet tolesgarri baten kontzeptua aurkezten du, [Courier](https://en.wikipedia.org/wiki/Microsoft_Courier) izenekoa. [Bideo 1](https://www.youtube.com/watch?v=_hzcs43CD_Y), [Bideo 2](https://www.youtube.com/watch?v=pFQWc79TYcU). iPad-a oraindik ez zen aurkeztu.
+-   2009an Microsoftek tablet tolesgarri baten kontzeptua aurkezten du, [Courier](https://en.wikipedia.org/wiki/Microsoft_Courier) izenekoa. [[Bideo 1](https://www.youtube.com/watch?v=_hzcs43CD_Y)]{.youtube}, [[Bideo 2](https://www.youtube.com/watch?v=pFQWc79TYcU)]{.youtube}. iPad-a oraindik ez zen aurkeztu.
 
     -   Microsoftek bere webgunean tablet tolesgarrientzako interfaze kontzeptuekin hainbat orri ditu. [1. esteka](https://learn.microsoft.com/en-us/dual-screen/android/test-kit/foldable-concepts), [2. esteka](https://devblogs.microsoft.com/surface-duo/design-foldable-large-screens/).
 
--   [Iron Man](https://www.youtube.com/watch?v=P5k-4-OEuTk) filmek interfaze ikusgarri asko erakutsi dituzte, holografiko eta errealitate areagotuko mailan. [Bideoa](https://www.youtube.com/watch?v=P5k-4-OEuTk).
+-   [[Iron Man](https://www.imdb.com/es-es/title/tt0371746/)]{.movie} filmek interfaze ikusgarri asko erakutsi dituzte, holografiko eta errealitate areagotuko mailan. [Bideoa](https://www.youtube.com/watch?v=P5k-4-OEuTk).
+
+-   [[Her](https://www.imdb.com/es-es/title/tt1798709/)]{.movie} filmean gizaki baten eta haren laguntzaile birtualaren arteko harremana erakusten da.
 

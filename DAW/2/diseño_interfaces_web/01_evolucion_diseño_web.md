@@ -23,9 +23,9 @@ Las primeras páginas web estaban escritas en HTML y tenían una estructura extr
 
 Durante estos primeros años aparecieron navegadores como:
 
-- WorldWideWeb
-- Mosaic
-- Netscape Navigator
+- [WorldWideWeb](https://es.wikipedia.org/wiki/WorldWideWeb)
+- [Mosaic](https://es.wikipedia.org/wiki/Mosaic)
+- [Netscape Navigator](https://es.wikipedia.org/wiki/Netscape_Navigator)
 
 ## La guerra de los navegadores (1995-2000) {#guerra-navegadores}
 
@@ -228,7 +228,4 @@ Aunque las herramientas cambian con rapidez, los principios fundamentales de un 
 ::: infobox
 Una página web desarrollada hace más de veinte años sigue pudiendo visualizarse en un navegador moderno. Esta compatibilidad hacia atrás ha sido una de las claves del enorme éxito de la Web.
 :::
-
-
-
 

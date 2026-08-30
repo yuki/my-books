@@ -5,8 +5,8 @@ Una **interfaz** (en plural: interfaces) se utiliza en informática para nombrar
 
 Ejemplos:
 
-- **Interfaces de usuario**: cuando un usuario final hacer uso de un programa
-- **Dispositivo de interfaz humana**: de las siglas en inglés **HID** (*human interface dece*), cuando hacemos referencia al interfaz *hardware* que utilizamos los humanos para inractuar con el ordenador
+- **Interfaces de usuario**: cuando un usuario final hace uso de un programa.
+- **Dispositivo de interfaz humana**: de las siglas en inglés **HID** (*human interface device*), cuando hacemos referencia al interfaz *hardware* que utilizamos los humanos para interactuar con el ordenador
 - **Interfaz física**: un componente que se conecta a otro (puerto USB o puerto SATA).
 
 
@@ -62,11 +62,9 @@ Una interfaz bonita no tiene por qué ser una buena interfaz
 
 Hoy en día podemos diferenciar entre 3 tipos:
 
--   **Interfaz de línea de comandos** (Command-Line Interface, **CLI**): Interfaces alfanuméricas (intérpretes de comandos) que solo presentan texto o interfaces simples generadas con texto y caracteres especiales.
-
--   **Interfaz gráfica de usuario** (Graphic User Interface, **GUI**): Permiten comunicarse con la computadora de forma rápida e intuitiva representando gráficamente los elementos de control y medida.
-
--   **Interfaz natural de usuario** (Natural User Interface, **NUI**): Pueden ser táctiles, representando gráficamente un "panel de control" en una pantalla sensible al tacto que permite interactuar con el dedo de forma similar a si se accionara un control físico; pueden funcionar mediante reconocimiento del habla, como por ejemplo Siri; o mediante movimientos corporales (como es el caso del antiguo [Kinect](https://es.wikipedia.org/wiki/Kinect) o las actuales [Vision Pro](https://www.apple.com/apple-vision-pro/) de Apple).
+- **Interfaz de línea de comandos** (Command-Line Interface, **CLI**): Interfaces alfanuméricas (intérpretes de comandos) que solo presentan texto o interfaces simples generadas con texto y caracteres especiales.
+- **Interfaz gráfica de usuario** (Graphic User Interface, **GUI**): Permiten comunicarse con la computadora de forma rápida e intuitiva representando gráficamente los elementos de control y medida.
+- **Interfaz natural de usuario** (Natural User Interface, **NUI**): Pueden ser táctiles, representando gráficamente un "panel de control" en una pantalla sensible al tacto que permite interactuar con el dedo de forma similar a si se accionara un control físico; pueden funcionar mediante reconocimiento del habla, como por ejemplo Siri; o mediante movimientos corporales (como es el caso del antiguo [Kinect](https://es.wikipedia.org/wiki/Kinect) o las actuales [Vision Pro](https://www.apple.com/apple-vision-pro/) de Apple).
 
 En la [Wikipedia](https://en.wikipedia.org/wiki/History_of_the_graphical_user_interface) está la historia de las interfaces gráficas de las que aquí se va a hacer un resumen.
 
@@ -91,12 +89,10 @@ Hoy en día la línea de comandos se utiliza a través de programas denominados 
 
 Los conceptos de CLI, shell y emulador de terminal **no son lo mismo** ya que CLI se refiere al paradigma, mientras que un shell o un emulador de terminal son programas informáticos específicos, que usualmente en conjunto implementan la CLI. **Sin embargo, los tres suelen utilizarse como sinónimos**.
 
-+-------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Ventajas                                                                | Inconvenientes                                                    |
-+=========================================================================+===================================================================+
-| ● Muy rápida para usuarios expertos. `<br>`{=html} `\linebreak`{=latex} | ● Requiere memorizar comandos. `<br>`{=html} `\linebreak`{=latex} |
-| ● Gran capacidad de automatización.                                     | ● Poco intuitiva para principiantes.                              |
-+-------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Ventajas                             | Inconvenientes |
+|--------------------------------------|------------------------------|
+| ● Muy rápida para usuarios expertos. | ● Requiere memorizar comandos.  |
+| ● Gran capacidad de automatización.  | ● Poco intuitiva para principiantes. |
 
 Table: {tablename=yukitblr colspec=X[1,l]X[1,l]}
 
@@ -285,17 +281,12 @@ Apple se decanta por un único botón mientras que los sistemas operativos Andro
 
 Con estos cambios, los sistemas operativos y las interfaces sufren un cambio radical, donde buscan la facilidad del usuario y aparecen los "[gestos](https://en.wikipedia.org/wiki/Pointing_device_gesture#Touchpad_and_touchscreen_gestures)" como nueva manera de interactuar con el interfaz:
 
--   **Tap**: tocar la pantalla (similar al "click" con el ratón)
-
--   **Double tap**: doble toque, que dependiendo de la aplicación puede hacer un zoom específico.
-
--   **Scroll**: presionando con el dedo y subiendo para arriba o para abajo se hace scroll sobre el interfaz.
-
--   **Flick**: si se hace un gesto rápido hacía arriba o hacia abajo se hace scroll, mientras que si es a izquierda o derecha el movimiento dependerá de si hay más pantalla.
-
--   **Pinch in**: hacer zoom acercando lo que se quiere ver.
-
--   **Pinch out**: hacer zoom alejando el objeto.
+- **Tap**: tocar la pantalla (similar al "click" con el ratón)
+- **Double tap**: doble toque, que dependiendo de la aplicación puede hacer un zoom específico.
+- **Scroll**: presionando con el dedo y subiendo para arriba o para abajo se hace scroll sobre el interfaz.
+- **Flick**: si se hace un gesto rápido hacía arriba o hacia abajo se hace scroll, mientras que si es a izquierda o derecha el movimiento dependerá de si hay más pantalla.
+- **Pinch in**: hacer zoom acercando lo que se quiere ver.
+- **Pinch out**: hacer zoom alejando el objeto.
 
 Con todo ello, surge un nuevo "problema" que hasta este momento no se había planteado en los interfaces, que es **la rotación del dispositivo**. Esta rotación debe hacer que la aplicación que se está ejecutando se adapte a la nueva posición del terminal, pasando de vertical a horizontal o viceversa.
 

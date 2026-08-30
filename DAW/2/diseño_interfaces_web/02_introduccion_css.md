@@ -3,7 +3,6 @@
 
 En los primeros años de la World Wide Web, las páginas web eran muy diferentes a las actuales. Su objetivo principal era compartir información y documentos entre investigadores, por lo que el aspecto visual tenía una importancia secundaria.
 
-
 ## El problema de HTML {#problema-html}
 
 HTML nació como un lenguaje para describir la estructura de un documento, no su apariencia, por lo que se podía definir el contenido mediante títulos, párrafos, listas y enlaces, pero apenas ofrecía opciones para controlar la presentación del documento. Esto provocaba que la mayoría de las páginas tuvieran un aspecto muy similar: fondo gris, texto negro, enlaces azules y una distribución muy sencilla.
@@ -136,7 +135,7 @@ En proyectos reales es muy habitual dividir el código CSS en varios archivos pa
 ```
 :::
 
- Siguiendo con el ejemplo anterior, supongamos que contienen el siguiente código:
+Siguiendo con el ejemplo anterior, supongamos que contienen el siguiente código:
 
 :::::::::::::: {.columns }
 ::: {.column width="50%"}
@@ -253,7 +252,7 @@ También va en contra de la separación entre maquetación y estilos, lo que pue
 ::: {.column width="33%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 .scpecial {
   color: red;
@@ -315,7 +314,6 @@ A continuación un ejemplo del mismo código HTML con distintas hojas de estilo 
 
 :::
 ::::::::::::::
-
 
 
 # Sintaxis de CSS {#sintaxis-css}
@@ -531,7 +529,7 @@ Cada declaración finaliza mediante un punto y coma **;**. Cuando una regla cont
 Una característica muy importante de CSS es que los navegadores intentan seguir interpretando la hoja de estilos aunque encuentren errores.
 
 ::: mycode
-[Ignora espacios]{.title}
+[Error]{.title}
 ```css
 h1 {
     color: blue;
@@ -559,7 +557,7 @@ CSS no obliga a escribir las propiedades siguiendo un orden determinado. Los sig
 ::: {.column width="50%" }
 
 ::: mycode
-[Ignora espacios]{.title}
+[Orden]{.title}
 ```css
 h1 {
     color: blue;
@@ -573,7 +571,7 @@ h1 {
 ::: {.column width="50%" }
 
 ::: mycode
-[Ignora espacios]{.title}
+[Orden]{.title}
 ```css
 h1 {
     font-size: 30px;
@@ -629,7 +627,7 @@ El selector de tipo permite seleccionar todos los **elementos HTML de un determi
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 p {
     color: blue;
@@ -652,7 +650,7 @@ El selector universal se representa mediante un asterisco ([*]{.verbatim}) y sel
 
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 * {
     margin: 0;
@@ -701,7 +699,7 @@ Los selectores de clase permiten aplicar estilos a determinados elementos sin af
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 .importante {
   color: red;
@@ -750,7 +748,7 @@ HTML también dispone del atributo [id]{.verbatim} que sólo debe ser **utilizad
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 #titulo-principal {
     color: blue;
@@ -795,7 +793,7 @@ CSS permite seleccionar elementos que poseen determinados atributos HTML. Por ej
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 input[type] {
     border: 1px solid black;
@@ -838,7 +836,7 @@ Otro ejemplo para enlaces con atributo [target]{.verbatim}.
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 a[target] {
     font-weight: bold;
@@ -927,7 +925,7 @@ CSS permite seleccionar elementos que se encuentran dentro de otros elementos. P
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 article p {
     color: blue;
@@ -979,7 +977,7 @@ En ocasiones no queremos seleccionar cualquier descendiente, sino únicamente lo
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 article > p {
     color: blue;
@@ -1022,7 +1020,7 @@ CSS permite seleccionar elementos que aparecen inmediatamente después de otro. 
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 h2 + p {
     color: blue;
@@ -1061,7 +1059,7 @@ Para seleccionar todos los hermanos que aparecen después de un elemento se usa 
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 h2 ~ p {
     color: blue;
@@ -1124,7 +1122,7 @@ Los **pseudoelementos** permiten seleccionar determinadas partes de un elemento 
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 p::first-letter {
     font-size: 50px;
@@ -1188,7 +1186,7 @@ Los selectores pueden combinarse para crear reglas mucho más específicas. Por 
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 article.destacado p {
     color: blue;
@@ -1229,7 +1227,7 @@ También podemos combinar clases:
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 .boton.importante {
     background-color: red;

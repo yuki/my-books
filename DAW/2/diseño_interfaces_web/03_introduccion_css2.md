@@ -70,7 +70,7 @@ p {
 ::: {.column width="33%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 .mensaje {
     color: green;
@@ -82,7 +82,7 @@ p {
 ::: {.column width="33%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 #mensaje {
     color: red;
@@ -132,7 +132,7 @@ article p {
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 article .mensaje {
     color: green;
@@ -172,7 +172,7 @@ Si un selector contiene varias clases, todas ellas cuentan para la especificidad
 ::: {.column width="50%" }
 
 ::: mycode
-[css]{.title}
+[CSS]{.title}
 ```css
 .mensaje {
     color: blue;
@@ -454,7 +454,7 @@ Por tanto, debemos distinguir entre
 Para saber qué propiedad es heredable, dentro de la documentación de [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) o [W3C](https://www.w3schools.com/cssref/pr_text_color.php) podemos ver la definición de ***Inherited***, que si es **True** se hereda.
 
 
-## Forzar herencia con [inherit]{.verbatm} {#forzar-herencia}
+## Forzar herencia con [inherit]{.verbatim} {#forzar-herencia}
 
 CSS proporciona la palabra clave [inherit]{.verbatm} para indicar explícitamente que una propiedad debe utilizar el valor heredado del elemento padre.
 
@@ -1219,7 +1219,7 @@ Algunas propiedades CSS utilizan unidades de tiempo. Estas unidades se utilizar�
 
 ```css
 .boton {
-    transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 ```
 :::
@@ -1231,7 +1231,7 @@ Algunas propiedades CSS utilizan unidades de tiempo. Estas unidades se utilizar�
 [Transiciones]{.title}
 ```css
 .boton {
-    transition: background-color 300ms;
+  transition: background-color 300ms;
 }
 ```
 :::
