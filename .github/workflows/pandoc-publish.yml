@@ -45,6 +45,7 @@ on:
           - TMM
           - Ubuntu_RAID1
           - Virtualbox_networking
+          - Web_Garapena_Bezero_Ingurunean
           - Web_Interfazeak_Diseinatzea
           - WSL
           - WSL_euskeraz
@@ -100,6 +101,7 @@ jobs:
           DAM/2/sistemas_gestion_empresarial/sge.pdf
           DAW/2/desarrollo_entorno_cliente/desarrollo_entorno_cliente.pdf
           DAW/2/diseño_interfaces_web/diseño_interfaces_web.pdf
+          DAW/2/web_garapena_bezero_ingurunean/web_garapena_bezero_ingurunean.pdf
           DAW/2/web_interfazeak_diseinatzea.pdf
           SMR/1/TMM/tmm.pdf
           anexos/gestion_backups/gestion_backups.pdf

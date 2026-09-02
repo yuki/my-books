@@ -47,10 +47,10 @@ La forma más habitual a la hora de escribir código JavaScript es en un fichero
 
 
 :::::::::::::: {.columns }
-::: {.column width="50%"}
+::: {.column width="50%"  columnsep=0.5cm}
 
 ::: {.mycode size=footnotesize}
-[Código index.html]{.title}
+[Código [index.html]{.verbatim}]{.title}
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -343,7 +343,7 @@ Los comentarios deben mantenerse actualizados a medida que se actualiza el códi
 
 Al igual que sucede en otros lenguajes de programación, en proyectos profesionales es habitual utilizar un formato especial de programación. En el caso de Java se suele usar [Javadoc](https://en.wikipedia.org/wiki/Javadoc) y para JavaScript, con sintaxis similar, se puede usar **[JSDoc](https://en.wikipedia.org/wiki/JSDoc)**.
 
-Permite documentar funciones, clases y otros elementos del programa de forma estructurada. Su sintaxis comienza con `/**`.
+Permite documentar funciones, clases y otros elementos del programa de forma estructurada. Su sintaxis comienza con [/**]{.verbatim}.
 
 ::: mycode
 [Comentarios con  JSDoc]{.title}
@@ -642,7 +642,7 @@ Más adelante profundizaremos en la sección de [Objetos](#objetos).
 JavaScript incorpora el operador [[typeof]{.verbatim}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof), que permite conocer el tipo de un dato.
 
 ::: {.mycode}
-[Operador typeof]{.title}
+[Operador [typeof]{.verbatim}]{.title}
 ```javascript
 let nombre = "Bob";
 typeof nombre;
@@ -846,7 +846,7 @@ Permiten combinar varias condiciones. Los usaremos más adelante en las sentenci
 
 | Operador | Significado |
 |----------|-------------|
-| [&&]{.verbatim} | Y lógico (AND) |
+| `&&` | Y lógico (AND) |
 | `||` | O lógico (OR) |
 | [!]{.verbatim} | Negación (NOT) |
 

@@ -10,10 +10,10 @@ cat ../diseño_interfaces_web/03_introduccion_css2_eus.md
 cat ../diseño_interfaces_web/04_introduccion_css3_eus.md
 echo [*Box Model* eta dimentsioak]{.part}
 cat ../diseño_interfaces_web/05_box_model_eus.md
-# echo [Variables, funciones y organización]{.part}
-# cat 06_variables_funciones.md
-# echo [Posiciones y visibilidad]{.part}
-# cat 07_diseño.md
+echo [Variables, funciones y organización]{.part}
+cat ../diseño_interfaces_web/06_variables_funciones_eus.md
+echo [Posiciones y visibilidad]{.part}
+cat ../diseño_interfaces_web/07_diseño_eus.md
 # echo [Maquetación moderno]{.part}
 # cat 08_diseño_moderno.md
 # echo [Diseño *responsive*]{.part}
