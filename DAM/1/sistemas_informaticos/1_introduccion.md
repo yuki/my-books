@@ -23,12 +23,12 @@ Es por eso que no podemos ceñirnos a la evolución de la informática como algo
 1801
 : Mediante el uso de tarjetas perforadas se controla el mecanismo de una máquina de tejer para realizar dibujos y diseños. [[Vídeo](https://www.youtube.com/watch?v=MQzpLLhN0fY)]{.movie}.
 
+:::::::::::::: {.columns }
+::: {.column width="80%"}
+
 1837
 : Charles Babbage describe la máquina analítica. Es el diseño de un computador moderno de propósito general.
 
-
-:::::::::::::: {.columns }
-::: {.column width="70%"}
 1843 
 : [Ada Augusta Lovelace](https://es.wikipedia.org/wiki/Ada_Lovelace) sugirió la idea de que las tarjetas perforadas se adaptaran de manera que causaran que el motor de Babbage repitiera ciertas operaciones. Debido a esta sugerencia algunos consideran a Lady Lovelace la **primera programadora**.
 :::
@@ -106,16 +106,8 @@ A partir de la década de los 60 se aceleran los avances, y cada año se crean n
 1981
 : Se termina de definir el protocolo **TCP/IP**. Lo utilizamos actualmente para navegar por Internet.
 
-
-:::::::::::::: {.columns }
-::: {.column width="75%"}
 1983
 : [Richard Stallman](https://es.wikipedia.org/wiki/Richard_Stallman) anuncia públicamente el proyecto [GNU](https://es.wikipedia.org/wiki/GNU), con el objetivo de crear el primer sistema operativo libre de tipo Unix.
-:::
-::: {.column width="15%" }
-![](img/si/gnu.svg){width=100%}
-:::
-::::::::::::::
 
 1986
 : El lenguaje **SQL** es estandarizado por ANSI.
@@ -123,14 +115,15 @@ A partir de la década de los 60 se aceleran los avances, y cada año se crean n
 1990
 : [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee) idea el hipertexto para crear el World Wide Web (www) una nueva manera de interactuar con Internet.
 
-
-:::::::::::::: {.columns }
-::: {.column width="80%"}
 1991
 : Linus Torvalds comienza a desarrollar Linux, el **kernel** (o núcleo) de un sistema operativo compatible con Unix.
+
+:::::::::::::: {.columns }
+::: {.column width="50%"}
+![Logo GNU](img/si/gnu.svg){height=4cm}
 :::
-::: {.column width="10%" }
-![](img/si/tux.svg){width=100%}
+::: {.column width="50%" }
+![Logo Linux](img/si/tux.svg){height=4cm}
 :::
 ::::::::::::::
 
@@ -155,9 +148,22 @@ Se podrían añadir más momentos importantes hasta el día de hoy, pero como ya
 
 Podemos diferenciar distintos componentes dentro de un sistema informático:
 
--   **Hardware**: Es todo lo que forma parte del ordenador, que **puede ser tocado físicamente**. Es decir: teclado, ratón, monitor, placa base, procesador, memoria, disco duro, cables, etc. Es la "maquinaria" necesaria utilizada para el tratamiento automático de la información.
+- **Hardware**: Es todo lo que forma parte del ordenador, que **puede ser tocado físicamente**. Es decir: teclado, ratón, monitor, placa base, procesador, memoria, disco duro, cables, etc. Es la "maquinaria" necesaria utilizada para el tratamiento automático de la información.
+- **Software**: Es el elemento lógico, es todo aquello que no se puede tocar. Es el **conjunto de programas e instrucciones** que permiten manejar el hardware, controlando y coordinando su funcionamiento para que realice las tareas deseadas.
+- **Datos**: información que el sistema almacena y procesa.
+- **Usuarios**: personas o sistemas que utilizan el equipo para realizar determinadas tareas.
 
--   **Software**: Es el elemento lógico, es todo aquello que es "intangible". Es el **conjunto de programas y datos** que permiten manejar el hardware, controlando y coordinando su funcionamiento para que realice las tareas deseadas.
 
+## Objetivos de un sistema microinformático {#objetivos-sistema-microinformático}
 
+El objetivo fundamental de un sistema microinformático es recibir información, procesarla, almacenarla y proporcionar un resultado.
+
+Por ejemplo, cuando escribimos un documento:
+
+1. El teclado permite introducir los caracteres.
+2. El sistema operativo recibe esa información.
+3. El procesador ejecuta las instrucciones necesarias.
+4. La memoria RAM mantiene temporalmente los datos y programas que se están utilizando.
+6. La tarjeta gráfica genera la imagen que vemos en el monitor.
+7. Al guardar el documento, los datos se almacenan en una unidad SSD o HDD.
 

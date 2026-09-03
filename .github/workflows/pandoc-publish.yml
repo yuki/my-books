@@ -32,6 +32,7 @@ on:
           - Introduccion_Programacion
           - Ionic
           - Laravel
+          - MMEQ
           - Monitorizacion_Munin
           - PFsense
           - Programazioan_sartu
@@ -103,6 +104,7 @@ jobs:
           DAW/2/diseño_interfaces_web/diseño_interfaces_web.pdf
           DAW/2/web_garapena_bezero_ingurunean/web_garapena_bezero_ingurunean.pdf
           DAW/2/web_interfazeak_diseinatzea.pdf
+          SMR/1/MMEQ/mmeq.pdf
           SMR/1/TMM/tmm.pdf
           anexos/gestion_backups/gestion_backups.pdf
           anexos/gestion_backups/euskera/gestion_backups_euskeraz.pdf

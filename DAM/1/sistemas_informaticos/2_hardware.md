@@ -41,7 +41,7 @@ El matemático y físico [John von Neumann](https://es.wikipedia.org/wiki/John_v
 Hoy en día, los ordenadores han evolucionado, pero la arquitectura sigue siendo la misma, aunque más compleja.
 
 ::: exercisebox
-**Podemos ver una simulación de la Arquitectura Von Neumann [aquí](https://lab.xitrus.es/VonNeumann/)**
+**Podemos ver una simulación de la Arquitectura Von Neumann [aquí](https://yuki.github.io/VonNeumann-simulator/)**
 :::
 
 ## Componentes básicos {#componentes_basicos}
@@ -316,11 +316,11 @@ El sistema de refrigeración cuenta con dos partes:
     -   **Refrigeración líquida**: Se utilizan componentes especiales para realizar el contacto con la CPU (y la GPU), y se debe hacer un circuito cerrado por el que pasará el líquido refrigerante, y una bomba que moverá el líquido.
 
         :::::::::::::: {.columns }
-        ::: {.column width="30%"}
+        ::: {.column width="40%"}
         ![](img/si/cooler_1.png){width="100%"}
         :::
-        ::: {.column width="50%" }
-        ![](img/si/cooler_2.jpg){width="100%"}
+        ::: {.column width="60%" }
+        ![](img/si/cooler_2.jpg){width="90%"}
         :::
         ::::::::::::::
 
@@ -365,10 +365,10 @@ A continuación se pueden diferenciar cómo ha variado el formato físico.
 
 
 :::::::::::::: {.columns }
-::: {.column width="45%"}
+::: {.column width="65%"}
 ![Fuente: [Wikipedia](https://en.wikipedia.org/wiki/File:Desktop_DDR_Memory_Comparison.svg)](img/si/ddr.png){width="100%"}
 :::
-::: {.column width="30%" }
+::: {.column width="35%" }
 ![Fuente: [Wikipedia](https://es.wikipedia.org/wiki/DDR_SDRAM)](img/si/ddr_sodimm.png){width="100%"}
 :::
 ::::::::::::::
@@ -543,13 +543,13 @@ A la hora de elegir una fuente de alimentación debemos tener en cuenta:
 
 
 :::::::::::::: {.columns }
-::: {.column width="30%"}
+::: {.column width="35%"}
 ![](img/si/fuente_alimentacion_1.jpg){width="100%"}
 :::
-::: {.column width="28%" }
+::: {.column width="35%" }
 ![](img/si/fuente_alimentacion_2.jpg){width="100%"}
 :::
-::: {.column width="24%" }
+::: {.column width="30%" }
 ![](img/si/fuente_alimentacion_3.jpg){width="100%"}
 :::
 ::::::::::::::

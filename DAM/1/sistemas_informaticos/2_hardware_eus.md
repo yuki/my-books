@@ -42,7 +42,7 @@ Matematikari eta fisikari [John von Neumann](https://es.wikipedia.org/wiki/John_
 Gaur egun, ordenagailuak eboluzionatu egin dira, baina arkitektura bera mantentzen da, nahiz eta konplexuagoa izan.
 
 ::: exercisebox
-**Von Neumann Arkitekturaren simulazio bat [hemen](https://lab.xitrus.es/VonNeumann/) ikus dezakegu**
+**Von Neumann Arkitekturaren simulazio bat [hemen](https://yuki.github.io/VonNeumann-simulator/) ikus dezakegu**
 :::
 
 ## Oinarrizko osagaiak {#oinarrizko_osagaiak}

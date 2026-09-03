@@ -30,6 +30,7 @@ LIBROS=(
     "DAW/2/diseño_interfaces_web/ diseño_interfaces_web"
     "DAW/2/web_garapena_bezero_ingurunean/ web_garapena_bezero_ingurunean"
     "DAW/2/web_interfazeak_diseinatzea web_interfazeak_diseinatzea"
+    "SMR/1/MMEQ/ mmeq"
     "SMR/1/TMM/ tmm"
     "anexos/gestion_backups/ gestion_backups"
     "anexos/gestion_backups/euskera/ gestion_backups_euskeraz"
