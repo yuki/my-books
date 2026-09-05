@@ -5,12 +5,14 @@ cat ../../../temas_comunes/unidades_informacion/unidades_informacion.md
 echo [Hardware]{.part}
 cat ../../../DAM/1/sistemas_informaticos/1_introduccion.md
 cat ../../../DAM/1/sistemas_informaticos/2_hardware.md
-# cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid.md
-# echo [RAID-1 software Linuxen]{.part}
-# cat ../../../anexos/raid_software/euskera/raid_software_anexo.md
-# echo [Segurtasun kopien kudeaketa]{.part}
-# cat ../../../anexos/gestion_backups/euskera/gestion_backups.md
-# cat ../../../anexos/gestion_backups/euskera/rsync.md
+cat ../../../temas_comunes/particionado_sistemas_ficheros_raid/particionado_sistemas_ficheros_raid.md
+echo [RAID-1 software en Linux]{.part}
+cat ../../../anexos/raid_software/raid_software_anexo.md
+echo [Gestión de copias de seguridad]{.part}
+cat ../../../anexos/gestion_backups/gestion_backups.md
+cat ../../../anexos/gestion_backups/rsync.md
+echo [Glosarío de términos]{.part}
+cat ../../../anexos/glosario/glosario.md
 echo [Ejercicios]{.part}
 cat ../../../anexos/tabla_sistemas_numeracion/tabla_sistemas_numeracion.md
 cat ../../../temas_comunes/sistemas_de_numeracion/ejercicios/01-conversiones.md
