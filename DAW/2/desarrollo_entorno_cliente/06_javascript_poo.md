@@ -261,7 +261,7 @@ Cuando una clase hija define su propio constructor, debe llamar al constructor d
 ::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
-[Setter y getter]{.title}
+[Clase]{.title}
 ```javascript
 class Persona {
 
@@ -281,7 +281,7 @@ class Persona {
 ::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
-[Crear objetos]{.title}
+[Clase heredada]{.title}
 ```javascript
 class Alumno extends Persona {
 
@@ -321,7 +321,7 @@ Teniendo en cuenta la clase "**Persona**" del ejemplo anterior, a continuación 
 ::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
-[Setter y getter]{.title}
+[Polimorfismo]{.title}
 ```javascript
 class Alumno extends Persona {
 
@@ -337,7 +337,7 @@ class Alumno extends Persona {
 ::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
-[Crear objetos]{.title}
+[Polimorfismo]{.title}
 ```javascript
 class Profesor extends Persona {
 
@@ -381,5 +381,5 @@ const resultado = Calculadora.sumar(5, 8);
 ```
 :::
 
-En principio no vamos a hacer uso de este sistema, pero es importante conocerlo ya que JavaScript cuenta con distintas clases que podemos utilizar que funcionan así, como [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math), 
+En principio no vamos a hacer uso de este sistema, pero es importante conocerlo ya que JavaScript cuenta con distintas clases que podemos utilizar que funcionan así, como [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math).
 

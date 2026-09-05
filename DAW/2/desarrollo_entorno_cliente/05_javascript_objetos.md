@@ -348,7 +348,8 @@ alumno.saludar();
 const alumno = {
   nombre: "Frank",
   saludar: => () {
-    console.log(`Hola ${saludo}`);
+    console.log(`Hola ${this.nombre}`);
+    //undefined
   }
 };
 alumno.saludar();
@@ -367,7 +368,7 @@ Es mejor evitar las *arrow functions* como método.
 ::: exercisebox
 [[12c](https://github.com/yuki/ejercicios/blob/main/daw/dec/12c.html)]{.solution}
 
-Crea un método dentro de un objeto y haz uso de él.
+Crea un método dentro de un objeto y haz uso de él. Prueba en otro método un *arrow function* con [this]{.verbatim}. ¿Qué pasa?
 :::
 
 ## Copia de objetos {#copia-objetos}
@@ -487,7 +488,7 @@ Cuidado que sólo son **copias superficiales**. **Los objetos anidados siguen si
 Cuando es necesario copiar completamente un objeto, incluidos todos los objetos anidados, hablamos de una **copia profunda** (*deep copy*). En estos casos tenemos que hacer uso de [structuredClone()]{.verbatim}.
 
 ::: {.mycode size=footnotesize}
-[Copia superficial]{.title}
+[Copia profunda]{.title}
 
 ```javascript
 const alumno1 = {
@@ -739,7 +740,7 @@ console.log(colores.join(", "));
 :::
 ::::::::::::::
 
-En nla siguiente tabla un resumen de los métodos vistos:
+En la siguiente tabla un resumen de los métodos vistos:
 
 | Método | Descripción |
 |---------|-------------|

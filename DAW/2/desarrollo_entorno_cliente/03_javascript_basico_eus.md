@@ -396,8 +396,8 @@ Aldagai baten izenari **identifikatzaile** deitzen zaio, eta hainbat arau bete b
 
 - Letrak.
 - Digituak (hasieran izan ezik).
-- Beheko marra ([_]{.verbatim}).
-- Dolar ikurra ([\$]{.verbatim}).
+- Beheko marra (`_`).
+- Dolar ikurra (`$`).
 
 Logikoa denez, ezin dira [hitz erreserbatuak](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words) erabili aldagaien identifikatzaile gisa. Garrantzitsua da jakitea, halaber, JavaScript *case sensitive* dela; beraz, [nombre]{.verbatim} eta [Nombre]{.verbatim} ez dira gauza bera.
 

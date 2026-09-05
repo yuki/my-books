@@ -4,13 +4,13 @@ echo [JavaScript-era sarrera]{.part}
 cat  ../desarrollo_entorno_cliente/02_javascript_historia_eus.md
 echo [JavaScript oinarriak]{.part}
 cat  ../desarrollo_entorno_cliente/03_javascript_basico_eus.md
-# cat 04_javascript_basico2.md
-# echo [Objetos]{.part}
-# cat 05_javascript_objetos.md
-# echo [Programación Orientada a Objetos]{.part}
-# cat 06_javascript_poo.md
-# echo [JavaScript: uso del *Document Object Model*]{.part}
-# cat 07_javascript_dom.md
+cat ../desarrollo_entorno_cliente/04_javascript_basico2_eus.md
+echo [Objetuak]{.part}
+cat ../desarrollo_entorno_cliente/05_javascript_objetos_eus.md
+echo [Objektuetara bideratutako programazioa]{.part}
+cat ../desarrollo_entorno_cliente/06_javascript_poo_eus.md
+# echo [JavaScript: *Document Object Model*-en erabilpena]{.part}
+# cat ../desarrollo_entorno_cliente/07_javascript_dom_eus.md
 # echo [Eventos]{.part}
 # cat 08_javascript_eventos.md
 # echo [Formularios y validación]{.part}
