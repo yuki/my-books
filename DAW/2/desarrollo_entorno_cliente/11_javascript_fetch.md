@@ -72,7 +72,7 @@ La respuesta devuelta por [fetch()]{.verbatim} es un objeto de tipo [Response]{.
 - Cuerpo de la respuesta.
 
 ::: mycode
-[Hacer petición fetch]{.title}
+[Objeto Response]{.title}
 ```javascript
 fetch("https://jsonplaceholder.typicode.com/users")
     .then((respuesta) => {
@@ -310,7 +310,7 @@ Para crear un nuevo usuario debemos usar el método **POST**. Los datos los pode
 
 
 ::: {.mycode size=footnotesize}
-[Insertar datos en tabla]{.title}
+[Crear un registro con POST]{.title}
 ```javascript
 const usuario = {
     name: "Alice",
@@ -425,7 +425,16 @@ En los últimos ejemplos no se ha utilizado [try...catch]{.verbatim} ni se ha co
 ::: exercisebox
 [[19b](https://github.com/yuki/ejercicios/blob/main/daw/dec/19b.html)]{.solution}
 
-TODO: añadir todo el texto para el ejercicio.
+Crea una página que realice las siguientes peticiones **[fetch]{.verbatim}** cuando sea necesario:
+
+- Obtenga los usuarios y los inserte en una tabla.
+  - Cada fila tendrá una columna llamada "Acciones", que tendrá dos botones:
+    - "**Editar**": para editar los datos del usuario (abrirá un modal con un formulario).
+    - "**Borrar**": para borrar el usuario concreto. Eliminará la fila.
+  - Botón "Añadir Usuario": abre un modal con un formulario para crear usuario
+    - Tendrá los campos validados.
+    - Los mensajes del navegador serán modificados.
+    - Se añadirá al final de la tabla.
 :::
 
 

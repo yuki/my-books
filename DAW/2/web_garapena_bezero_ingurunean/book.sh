@@ -9,15 +9,15 @@ echo [Objetuak]{.part}
 cat ../desarrollo_entorno_cliente/05_javascript_objetos_eus.md
 echo [Objektuetara bideratutako programazioa]{.part}
 cat ../desarrollo_entorno_cliente/06_javascript_poo_eus.md
-# echo [JavaScript: *Document Object Model*-en erabilpena]{.part}
-# cat ../desarrollo_entorno_cliente/07_javascript_dom_eus.md
-# echo [Eventos]{.part}
-# cat 08_javascript_eventos.md
-# echo [Formularios y validación]{.part}
-# cat 09_javascript_formularios.md
-# echo [Programación asíncrona]{.part}
-# cat 10_javascript_programacion_asincrona.md
-# echo [Comunicación con servidores]{.part}
-# cat 11_javascript_fetch.md
-# echo [Almacenamiento de datos en el navegador]{.part}
-# cat 12_javascript_almacenamiento.md
+echo [JavaScript: *Document Object Model*-en erabilpena]{.part}
+cat ../desarrollo_entorno_cliente/07_javascript_dom_eus.md
+echo [Gertaerak \(*events*\)]{.part}
+cat ../desarrollo_entorno_cliente/08_javascript_eventos_eus.md
+echo [Formularioak eta balidazioa]{.part}
+cat ../desarrollo_entorno_cliente/09_javascript_formularios_eus.md
+echo [Programazio asinkronoa]{.part}
+cat ../desarrollo_entorno_cliente/10_javascript_programacion_asincrona_eus.md
+echo [Comunicación con servidores]{.part}
+cat ../desarrollo_entorno_cliente/11_javascript_fetch_eus.md
+echo [Almacenamiento de datos en el navegador]{.part}
+cat ../desarrollo_entorno_cliente/12_javascript_almacenamiento.md

@@ -625,6 +625,10 @@ Las clases CSS permiten modificar el aspecto visual de un elemento. JavaScript p
 
 Para toda acción con las clases se debe utilizar la propiedad [classList]{.verbatim} que contiene distintas funciones que veremos a continuación.
 
+::: infobox
+La propiedad [classList]{.verbatim}, sin funciones, devuelve un array de las clases.
+:::
+
 Para los siguientes ejemplos se va a utilizar el siguiente código:
 
 
@@ -750,6 +754,7 @@ mensaje.className = "destacado italica";
 
 | Método | Función |
 |---------|---------|
+| [classList]{.verbatim } | Devuelve array de clases. |
 | [classList.add()]{.verbatim } | Añade una clase. |
 | [classList.remove()]{.verbatim } | Elimina una clase. |
 | [classList.toggle()]{.verbatim } | Añade o elimina una clase. |
@@ -788,7 +793,7 @@ Para crear un elemento se utiliza la función [createElement()]{.verbatim}. Supo
 
 
 ::: mycode
-[Añadir clase]{.title}
+[Añadir elemento]{.title}
 ```javascript
 // crear elemento
 const parrafo = document.createElement("p");

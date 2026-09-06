@@ -323,7 +323,7 @@ Write something here…
 Los formularios cuentan normalmente con al menos un [botón](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button) de envío, aunque también se puede añadir uno para resetear los campos.
 
 ::: mycode
-[Campos de rango]{.title}
+[Botoiak]{.title}
 ```html
 <!-- método antiguo -->
 <input type="submit" value="Enviar">

@@ -140,7 +140,7 @@ Usa el ejemplo anterior y crea 3 botones que lancen eventos [click]{.verbatim} c
 Un mismo elemento puede responder a distintos eventos.
 
 ::: mycode
-[Llamar a función existente]{.title}
+[Elemento con varios eventos]{.title}
 ```javascript
 boton.addEventListener(
     "mouseenter",
@@ -161,7 +161,7 @@ boton.addEventListener(
 Hay situaciones que queremos tener dos o más funciones para el mismo evento, por lo tanto, podemos registrar varias funciones para el mismo evento.
 
 ::: mycode
-[Llamar a función existente]{.title}
+[Varias funciones para mismo evento]{.title}
 ```javascript
 boton.addEventListener(
     "click",
@@ -186,7 +186,7 @@ A la hora de crear eventos con HTML y JavaScript también se puede hacer de las 
 ::: {.column width="50%"}
 
 ::: {.mycode size=footnotesize}
-[Función inline en HTML]{.title}
+[Función *inline* en HTML]{.title}
 ```HTML
 <!-- añadir función en HTML-->
 <button onclick="saludar()">

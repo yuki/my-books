@@ -841,7 +841,7 @@ La palabra reservada [await]{.verbatim} permite esperar el resultado de una prom
 ::: {.column width="52%"}
 
 ::: {.mycode size=footnotesize}
-[Función async]{.title}
+[Función que devuelve promesa]{.title}
 ```javascript
 function esperar() {
     return new Promise((resolve) => {
@@ -857,7 +857,7 @@ function esperar() {
 ::: {.column width="48%" }
 
 ::: {.mycode size=footnotesize}
-[Función async flecha]{.title}
+[Función asíncrona que espera]{.title}
 ```javascript
 async function ejemplo() {
     console.log("Inicio");
@@ -881,7 +881,7 @@ En el ejemplo anterior parece que se está ejecutando síncronamente, pero se ha
 
 Crea 3 botones que realicen lo siguiente:
 
-1. Loguee "Botóin 1 pulsado"
+1. Loguee "Botón 1 pulsado"
 2. Llama a la función [task]{.verbatim} del ejercicio [18a](https://github.com/yuki/ejercicios/blob/main/daw/dec/18a.html). Intenta pulsar el botón 1. ¿Qué pasa?
 3. Llama a una función [async]{.verbatim} como el ejemplo anterior y espera con [await]{.verbatim}. Intenta pulsar el botón 1. ¿Qué pasa?
 :::
@@ -906,7 +906,7 @@ esperar()
 ::: {.column width="50%" }
 
 ::: {.mycode size=footnotesize}
-[Función async flecha]{.title}
+[Ejemplo async/await]{.title}
 ```javascript
 const resultado = await esperar();
 
@@ -923,7 +923,7 @@ console.log(resultado);
 Cuando una promesa produce un error, normalmente utilizaremos [try...catch]{.verbatim}.
 
 ::: mycode
-[Función async flecha]{.title}
+[Tratamiento de errores]{.title}
 ```javascript
 async function ejemplo() {
     try {
