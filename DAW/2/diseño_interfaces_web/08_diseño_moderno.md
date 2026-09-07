@@ -409,7 +409,7 @@ En las explicaciones se ha tomado como referencia el uso de filas.
 
 
 ::: {.mycode}
-[Ejemplo de [justify-content]{.verbatim}]{.title}
+[Ejemplo de [align-items]{.verbatim}]{.title}
 ```css
 .contenedor {
     display: flex;
@@ -442,7 +442,7 @@ La propiedad [align-content]{.verbatim} suele confundirse con [align-items]{.ver
 Si sólo hay una fila, [align-content]{.verbatim} no produce ningún efecto.
 
 ::: {.mycode}
-[Ejemplo de [justify-content]{.verbatim}]{.title}
+[Ejemplo de [align-content]{.verbatim}]{.title}
 ```css
 .contenedor {
     display: flex;

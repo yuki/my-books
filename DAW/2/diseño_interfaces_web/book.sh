@@ -14,7 +14,7 @@ echo [Variables, funciones y organización]{.part}
 cat 06_variables_funciones.md
 echo [Posiciones y visibilidad]{.part}
 cat 07_diseño.md
-echo [Maquetación moderno]{.part}
+echo [Maquetación moderna]{.part}
 cat 08_diseño_moderno.md
 echo [Diseño *responsive*]{.part}
 cat 09_diseño_responsive.md

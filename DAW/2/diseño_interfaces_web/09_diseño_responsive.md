@@ -571,7 +571,7 @@ Cuando llegaron los teléfonos móviles, fue necesario añadir Media Queries par
 Los estilos principales pertenecen al escritorio.
 
 ::: {.mycode}
-[Estructura *mobile first*]{.title}
+[Estructura *desktop first*]{.title}
 ```css
 /* Estilos base (escritorio) */
 body { font-size: 18px; }
