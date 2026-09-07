@@ -17,7 +17,7 @@ echo [Formularioak eta balidazioa]{.part}
 cat ../desarrollo_entorno_cliente/09_javascript_formularios_eus.md
 echo [Programazio asinkronoa]{.part}
 cat ../desarrollo_entorno_cliente/10_javascript_programacion_asincrona_eus.md
-echo [Comunicación con servidores]{.part}
+echo [Komunikazioa zerbitzariekin]{.part}
 cat ../desarrollo_entorno_cliente/11_javascript_fetch_eus.md
-echo [Almacenamiento de datos en el navegador]{.part}
-cat ../desarrollo_entorno_cliente/12_javascript_almacenamiento.md
+echo [Datuak nabigatzailean biltegiratzea]{.part}
+cat ../desarrollo_entorno_cliente/12_javascript_almacenamiento_eus.md

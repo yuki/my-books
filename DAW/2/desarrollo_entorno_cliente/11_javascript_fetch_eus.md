@@ -537,3 +537,4 @@ ruben@vega:~$ curl -s  http://localhost/api/posts | jq
 :::
 
 Tresna hauek APIak garatzeko eta arazteko oso erabilgarriak diren arren, komeni da gogoratzea ez dutela [fetch()]{.verbatim} ordezkatzen. Haien helburua web-zerbitzu batek behar bezala funtzionatzen duela egiaztatzea da, gure JavaScript aplikazioan integratu aurretik. Tresna hauekin APIa egiaztatu ondoren, hurrengo urratsa gure kodetik API horretara **Fetch API** erabiliz sartzea da.
+
