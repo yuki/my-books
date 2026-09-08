@@ -6,6 +6,8 @@ echo [GitHub como servidor remoto]{.part}
 cat 3_github.md
 echo [Ramas, merges y conflictos]{.part}
 cat 4_ramas_conflictos_merges.md
+echo [Anexos]{.part}
+cat 99_resumen.md
 
 # \part{Git y SSH}
 # explicar cómo funcion SSH con GitHub
