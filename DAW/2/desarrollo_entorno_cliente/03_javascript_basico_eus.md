@@ -139,8 +139,8 @@ Zein izango litzateke fitxategiak kargatzeko ordena zuzena? Probatu aukera posib
 
 Tradizionalki, bi aukera zeuden.
 
-- **[<head>]{verbatim}** elementuaren barruan: Metodo honek arazoak sor ditzake. Nabigatzaileak fitxategia deskargatzen duen bitartean, HTML orria eraikitzeari uzten dio. Ondorioz, erabiltzaileak karga motelagoa dela hauteman dezake, eta exekuzioren bat egiten bada, HTMLa oraindik eraiki gabe dagoenez, akatsak gerta daitezke.
-- **[<body>]{verbatim}** elementua itxi aurretik: Urte askotan gomendioa scriptak [<body>]{verbatim} elementuaren itxieraren aurretik jartzea izan zen.
+- **[<head>]{.verbatim}** elementuaren barruan: Metodo honek arazoak sor ditzake. Nabigatzaileak fitxategia deskargatzen duen bitartean, HTML orria eraikitzeari uzten dio. Ondorioz, erabiltzaileak karga motelagoa dela hauteman dezake, eta exekuzioren bat egiten bada, HTMLa oraindik eraiki gabe dagoenez, akatsak gerta daitezke.
+- **[<body>]{.verbatim}** elementua itxi aurretik: Urte askotan gomendioa scriptak [<body>].verbatim} elementuaren itxieraren aurretik jartzea izan zen.
 
 :::::::::::::: {.columns }
 ::: {.column width="50%"}
@@ -149,7 +149,7 @@ Tradizionalki, bi aukera zeuden.
 [head-en kodea]{.title}
 ```html
 <head>
-    <script src="03.js"></script>
+    <script src="js/03.js"></script>
 </head>
 <body>
     <h1 id="titulo">Título</h1>
@@ -165,7 +165,7 @@ Tradizionalki, bi aukera zeuden.
 <body>
     <h1 id="titulo">Título</h1>
 ...
-    <script src="03.js"></script>
+    <script src="js/03.js"></script>
 </body>
 ```
 :::

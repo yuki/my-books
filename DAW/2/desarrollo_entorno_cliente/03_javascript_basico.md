@@ -139,8 +139,8 @@ saludar("Bob");
 
 Tradicionalmente existían dos posibilidades.
 
-- Dentro del **[<head>]{verbatim}**: Este método puede provocar problemas. Mientras el navegador descarga deja de construir la página HTML. Como consecuencia, el usuario puede percibir una carga más lenta, y si realiza alguna ejecución, como el HTML no está construido, puede haber errores.
-- Antes de cerrar **[<body>]{verbatim}**: Durante muchos años la recomendación fue colocar los scripts justo antes del cierre del elemento [<body>]{verbatim}.
+- Dentro del **[<head>]{.verbatim}**: Este método puede provocar problemas. Mientras el navegador descarga deja de construir la página HTML. Como consecuencia, el usuario puede percibir una carga más lenta, y si realiza alguna ejecución, como el HTML no está construido, puede haber errores.
+- Antes de cerrar **[<body>]{.verbatim}**: Durante muchos años la recomendación fue colocar los scripts justo antes del cierre del elemento [<body>]{.verbatim}.
 
 :::::::::::::: {.columns }
 ::: {.column width="50%"}
@@ -149,7 +149,7 @@ Tradicionalmente existían dos posibilidades.
 [Código en el head]{.title}
 ```html
 <head>
-    <script src="03.js"></script>
+    <script src="js/03.js"></script>
 </head>
 <body>
     <h1 id="titulo">Título</h1>
@@ -165,7 +165,7 @@ Tradicionalmente existían dos posibilidades.
 <body>
     <h1 id="titulo">Título</h1>
 ...
-    <script src="03.js"></script>
+    <script src="js/03.js"></script>
 </body>
 ```
 :::
