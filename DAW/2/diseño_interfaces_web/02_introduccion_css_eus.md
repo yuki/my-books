@@ -116,7 +116,7 @@ HTML orri batek estilo-orri bat erabili ahal izateko, nabigatzaileari CSS fitxat
 ```
 :::
 
-Adibide honetan, nabigatzaileak [css]{.configdir} karpetaren barruan dagoen [estilos.css]{.configfile} fitxategia kargatzen du, ****orria erakutsi aurretik****. [rel="stylesheet"]{.verbatim} atributuak estekatutako fitxategia estilo-orri bat dela adierazten du; [href]{.verbatim} atributuak, berriz, CSS fitxategiaren bidea zehazten du.
+Adibide honetan, nabigatzaileak [css]{.configdir} karpetaren barruan dagoen [estilos.css]{.configfile} fitxategia kargatzen du, **orria erakutsi aurretik**. [rel="stylesheet"]{.verbatim} atributuak estekatutako fitxategia estilo-orri bat dela adierazten du; [href]{.verbatim} atributuak, berriz, CSS fitxategiaren bidea zehazten du.
 
 
 ## Hainbat estilo-orri txertatzea {#añadir-varias-hojas}
@@ -211,7 +211,7 @@ CSS estiloak zuzenean HTML orri baten barruan idatz daitezke [<style>]{.verbatim
 Ez da gomendatzen CSS barnekoa HTML baten barruan erabiltzea.
 :::
 
-HTML bateratuak sortzeko sistemak daude (HTML auto-edukiak sortzeko), webgune estatikoak sortzeko, baina garapenean zehar ****ez da CSS HTMLaren barruan erabili behar****.
+HTML bateratuak sortzeko sistemak daude (HTML auto-edukiak sortzeko), webgune estatikoak sortzeko, baina garapenean zehar **ez da CSS HTMLaren barruan erabili behar**.
 
 
 ## CSS estiloak *inline* {#estilos-css-inline}
