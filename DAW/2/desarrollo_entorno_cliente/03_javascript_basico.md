@@ -366,9 +366,6 @@ function sumar(a, b) {
 
 Las variables permiten almacenar información en memoria para poder utilizarla posteriormente. Gracias a ellas un programa puede recordar valores, realizar cálculos, modificar información o intercambiar datos entre distintas partes del código.
 
-:::::::::::::: {.columns }
-::: {.column width="35%"}
-
 ::: mycode
 [Crear y usar una variable]{.title}
 
@@ -378,8 +375,7 @@ console.log(nombre);
 ```
 :::
 
-:::
-::: {.column width="65%" }
+
 En este caso:
 
 - [let]{.verbatim}: indica que vamos a declarar una variable.
@@ -387,8 +383,6 @@ En este caso:
 - ["Alice"]{.verbatim}: es el valor almacenado.
 - [console.log(nombre);]{.verbatim}: uso de la variable
 
-:::
-::::::::::::::
 
 
 El nombre de una variable recibe el nombre de **identificador** y debe cumplir una serie de reglas. Puede contener:
@@ -694,6 +688,10 @@ Boolean(NaN)
 ::::::::::::::
 
 
+::: questionbox
+¿Qué crees que devuelve cada una de las operaciones anteriores?
+:::
+
 ::: exercisebox
 [[05](https://github.com/yuki/ejercicios/blob/main/daw/dec/05.html)]{.solution}
 
@@ -867,12 +865,35 @@ console.log(`Hola ${nombre} ${apellido}`);
 ```
 :::
 
-## Operador de asignación si izquierda nula [??]{.verbatim} {#operador-asignacion-izquierda-nula}
+## Operador de coalescencia nula [??]{.verbatim} {#operador-coalescencia-nula}
+
+El operador *nullish coalescing* ([??]{.verbatim}) (de coalescencia nula) es un operador lógico que devuelve el operando de lado derecho cuando el operando de lado izquierdo es [null]{.verbatim} o [undefined]{.verbatim}, y en caso contrario retorna el operando de lado izquierdo.
+
+
+::: {.mycode}
+[Operador]{.title}
+
+```javascript
+const foo = null ?? "default string";
+console.log(foo);
+// Expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// Expected output: 0
+```
+:::
+
+
+## Operador de asignación si izquierda nula [??=]{.verbatim} {#operador-asignacion-izquierda-nula}
 
 Existe el operador *[nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)* que coge el dato de la derecha únicamente cuando el de la izquierda vale [null]{.verbatim} o [undefined]{.verbatim}.
 
-::: mycode
-[Nullish coalescing assignment]{.title}
+:::::::::::::: {.columns }
+::: {.column width="35%"}
+
+::: {.mycode size=scriptsize}
+[Operador]{.title}
 
 ```javascript
 const a = { duration: 50 };
@@ -885,6 +906,27 @@ console.log(a.duration);
 // Salida esperada: 50
 ```
 :::
+
+:::
+::: {.column width="65%" }
+
+::: {.mycode size=scriptsize}
+[Código equivalente]{.title}
+
+```javascript
+if (a.speed===undefined || a.speed === null) {
+    a.speed = 25;
+}
+
+if (a.duration===undefined || a.duration === null) {
+    a.duration = 10;
+}
+```
+:::
+
+:::
+::::::::::::::
+
 
 Este operador evita muchos errores relacionados con valores inexistentes.
 

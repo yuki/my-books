@@ -367,9 +367,6 @@ function sumar(a, b) {
 
 Aldagaiek informazioa memorian gordetzeko aukera ematen dute, gero erabili ahal izateko. Horiei esker, programa batek balioak gogora ditzake, kalkuluak egin, informazioa aldatu edo kodearen atal desberdinen artean datuak trukatu.
 
-:::::::::::::: {.columns }
-::: {.column width="35%"}
-
 ::: mycode
 [Aldagai bat sortu eta erabili]{.title}
 
@@ -379,8 +376,7 @@ console.log(nombre);
 ```
 :::
 
-:::
-::: {.column width="65%" }
+
 Kasu honetan:
 
 - [let]{.verbatim}: aldagai bat deklaratuko dugula adierazten du.
@@ -388,8 +384,6 @@ Kasu honetan:
 - ["Alice"]{.verbatim}: gordetako balioa da.
 - [console.log(nombre);]{.verbatim}: aldagaiaren erabilera
 
-:::
-::::::::::::::
 
 
 Aldagai baten izenari **identifikatzaile** deitzen zaio, eta hainbat arau bete behar ditu. Honako hauek izan ditzake:
@@ -694,6 +688,10 @@ Boolean(NaN)
 ::::::::::::::
 
 
+::: questionbox
+Zer uste duzu itzultzen duela goiko eragiketa bakoitzak?
+:::
+
 ::: exercisebox
 [[05](https://github.com/yuki/ejercicios/blob/main/daw/dec/05.html)]{.solution}
 
@@ -867,12 +865,34 @@ console.log(`Hola ${nombre} ${apellido}`);
 ```
 :::
 
-## Ezkerreko balioa nulua bada esleitzeko eragilea [??]{.verbatim} {#operador-asignacion-izquierda-nula}
+## Zero koaleszentzia operadorea [??]{.verbatim} {#operador-coalescencia-nula}
+
+*nullish coalescing* operadorea ([??]{.verbatim}) eragile logikoa da, ezkerreko eragilea [null]{.verbatim} edo [undefined]{.verbatim} denean eskuineko eragilea itzultzen duena, eta bestela ezkerreko eragilea itzultzen duena.
+
+
+::: {.mycode}
+[Operador]{.title}
+
+```javascript
+const foo = null ?? "default string";
+console.log(foo);
+// Expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// Expected output: 0
+```
+:::
+
+
+## Ezkerreko balioa nulua bada esleitzeko eragilea [??=]{.verbatim} {#operador-asignacion-izquierda-nula}
 
 *[nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)* eragilea dago. Eskuineko datua soilik hartzen du ezkerrekoak [null]{.verbatim} edo [undefined]{.verbatim} balio duenean.
 
-::: mycode
-[Nullish coalescing assignment]{.title}
+:::::::::::::: {.columns }
+::: {.column width="35%"}
+::: {.mycode size=scriptsize}
+[Operador]{.title}
 
 ```javascript
 const a = { duration: 50 };
@@ -885,6 +905,27 @@ console.log(a.duration);
 // Salida esperada: 50
 ```
 :::
+
+:::
+::: {.column width="65%" }
+
+::: {.mycode size=scriptsize}
+[Código equivalente]{.title}
+
+```javascript
+if (a.speed===undefined || a.speed === null) {
+    a.speed = 25;
+}
+
+if (a.duration===undefined || a.duration === null) {
+    a.duration = 10;
+}
+```
+:::
+
+:::
+::::::::::::::
+
 
 Eragile horrek existitzen ez diren balioekin lotutako akats asko saihesten ditu.
 
