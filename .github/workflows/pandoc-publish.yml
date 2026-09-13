@@ -32,6 +32,7 @@ on:
           - Introduccion_Programacion
           - Ionic
           - Laravel
+          - Mise
           - MMEQ
           - Monitorizacion_Munin
           - PFsense
@@ -110,6 +111,7 @@ jobs:
           anexos/gestion_backups/euskera/gestion_backups_euskeraz.pdf
           anexos/glosario/glosario.pdf
           anexos/instalar_ubuntu_lts/instalar_ubuntu_lts.pdf
+          anexos/mise/mise.pdf
           anexos/monitorizacion_munin/monitorizacion_munin.pdf
           anexos/raid_software/raid_software.pdf
           anexos/raid_software/euskera/raid_software_euskeraz.pdf

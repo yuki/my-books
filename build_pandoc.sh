@@ -36,6 +36,7 @@ LIBROS=(
     "anexos/gestion_backups/euskera/ gestion_backups_euskeraz"
     "anexos/glosario/ glosario"
     "anexos/instalar_ubuntu_lts/ instalar_ubuntu_lts"
+    "anexos/mise/ mise"
     "anexos/monitorizacion_munin/ monitorizacion_munin"
     "anexos/raid_software/ raid_software"
     "anexos/raid_software/euskera/ raid_software_euskeraz"
