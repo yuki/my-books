@@ -55,4 +55,51 @@ En Vue, en cambio, normalmente trabajaremos con un estado de la aplicación y de
 
 ![Fuente: [Documentación Vuejs](https://v2.vuejs.org/v2/guide/reactivity.html)](img/vuejs/reactivity.png){width=80%}
 
+Esto permite que el programador se preocupe principalmente de qué debe mostrar la interfaz en función de los datos, en lugar de tener que indicar manualmente cada modificación del DOM. Esta forma de trabajar se conoce habitualmente como **renderizado declarativo**.
+
+
+# Herramientas del ecosistema Vue {#herramientas-ecosistema-vue}
+
+Para desarrollar aplicaciones Vue 3 utilizaremos varias herramientas.
+
+- **[Node.js](https://nodejs.org/)**: Proporciona el entorno necesario para ejecutar herramientas de desarrollo basadas en JavaScript fuera del navegador. En un proyecto Vue (y en otros *frameworks* de desarrollo) se utiliza principalmente para ejecutar las herramientas de desarrollo y gestionar las dependencias.
+- **[npm](https://www.npmjs.com/package/npm)**: Es el gestor de paquetes incluido habitualmente con Node.js. Permite instalar las diferentes dependencias utilizadas por nuestro proyecto. Existen alternativas como [pnmp](https://pnpm.io/), [yarm](https://yarnpkg.com/) y [bun](https://bun.sh/).
+- **[Vite](https://vite.dev/)**: Es la herramienta utilizada habitualmente para crear y desarrollar proyectos Vue modernos. Proporciona:
+  - Servidor de desarrollo.
+  - Recarga rápida durante el desarrollo.
+  - Compilación para producción.
+  - Gestión de módulos.
+  - Integración con Vue.
+- **[Vue Router](https://router.vuejs.org/)**: Permite implementar la navegación entre diferentes vistas de una aplicación Vue. El navegador puede cambiar entre distintas vistas sin necesidad de cargar una página HTML completamente nueva en cada navegación.
+- **[Pinia](https://pinia.vuejs.org/)**: Es la solución oficial de gestión de estado para el ecosistema Vue. Permite compartir datos entre diferentes componentes cuando mantenerlos únicamente dentro de un componente ya no resulta adecuado.
+- **[Vue DevTools](https://devtools.vuejs.org/)**: Proporciona herramientas para inspeccionar y depurar aplicaciones Vue. Permite observar componentes, datos reactivos y diferentes aspectos del funcionamiento de la aplicación.
+
+
+# Vue y JavaScript {#vue-javascript}
+
+Vue no elimina la necesidad de conocer JavaScript. Al contrario, para trabajar correctamente con Vue es necesario dominar JavaScript. Durante el desarrollo de una aplicación Vue utilizaremos conceptos que ya deberían resultar familiares como funciones felcha, arrays, promesas, programación asíncrona, [fetch]{.verbatim}, eventos... Por este motivo, antes de comenzar a trabajar con Vue es importante tener una base sólida de JavaScript moderno.
+
+
+## Vue frente a JavaScript sin framework {#vue-frente-a-javascript-puro}
+
+JavaScript permite crear interfaces web directamente utilizando las API del navegador. Por ejemplo, podemos seleccionar elementos del DOM, modificar su contenido, añadir eventos y crear nuevos elementos. 
+
+Cuando una aplicación es pequeña, este enfoque puede ser suficiente. Sin embargo, a medida que aumenta la complejidad aparecen problemas relacionados con:
+
+- Organización del código.
+- Actualización manual del DOM.
+- Reutilización de componentes.
+- Gestión del estado.
+- Comunicación entre diferentes partes de la aplicación.
+- Mantenimiento del código.
+
+Para una aplicación compleja con muchos componentes, datos dinámicos y diferentes vistas, un framework como Vue puede facilitar considerablemente el desarrollo y mantenimiento.
+
+## Vue y TypeScript {#vue-typescript}
+
+**[TypeScript](https://es.wikipedia.org/wiki/TypeScript)** (TS) es un lenguaje de código abierto desarrollado por Microsoft que se basa en **JavaScript** (realmente es un superconjunto de este), añadiendo **tipado estático** y características propias de lenguajes orientados a objetos como clases, interfaces o módulos.
+
+El código que generamos se **transpila a JavaScript** (el código fuente se convierte a código JavaScript), por lo que puede ejecutarse en cualquier navegador o entorno que soporte JS.
+
+Vue está creado con TypeScript y por tanto también podemos desarrollar aplicaciones Vue con TypeScript, de esta manera ganamos la detección de errores en tiempo de desarrollo.
 
