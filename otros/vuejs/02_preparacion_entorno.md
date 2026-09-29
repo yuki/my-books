@@ -160,6 +160,8 @@ Este comando nos hará distintas preguntas para así poder añadir distintas car
 - ***End-to-end testing***: permite testear una aplicación de varias páginas que usa peticiones de red.
 - **Linter**: para analizar el código fuente a medida que escribimos.
 - ***Prettier***: para formatear nuestro código.
+- Características experimentales: podemos añadir nuevas características que no son estables.
+- Añadir código de ejemplo.
 
 De momento vamos a seleccionar **NO** menos a las dos últimas.
 
@@ -212,7 +214,8 @@ Una vez creado el proyecto e instalado las dependencias encontraremos diferentes
 - [src]{.configdir}: este directorio contiene el código fuente de nuestra aplicación, lo que lo hace el directorio más importante del proyecto. En él encontraremos los componentes Vue, los archivos JavaScript, las hojas de estilo y otros recursos utilizados por nuestra aplicación.
   - [App.vue]{.configfile}: suele actuar como componente principal de la aplicación. Más adelante veremos que [App.vue]{.configfile} no tiene por qué contener toda la aplicación. Su función será normalmente coordinar otros componentes.
   - [assets]{.configdir}: se utiliza habitualmente para recursos que forman parte del código de la aplicación como imágenes, hojas de estilo generales u otros recursos estáticos. A diferencia de [public]{configdir}, estos recursos pueden ser procesados por las herramientas de construcción.
-  - [components]{.configdir}: se utiliza normalmente para almacenar componentes Vue reutilizables. No es obligatorio utilizar exactamente esta estructura, pero es una organización habitual.
+  - [components]{.configdir}: se utiliza normalmente para almacenar componentes Vue reutilizables. No es obligatorio utilizar exactamente esta estructura, pero es una organización habitual. Podemos organizar también en subcarpetas si son componentes para formularios, productos, tablas, ...
+  - [views]{.configdir}: una aplicación web puede tener distintas "vistas" (login, vista de productos, configuración, ...) que pueden contener distintos componentes.
   - [main.js]{.configfile}: es el punto de entrada habitual de una aplicación Vue. Es el archivo desde el que se crea la aplicación y se monta en el documento HTML. Primero importa el CSS, después [createApp]{.verbatim} desde Vue, y por último el componente raíz [App.vue]{.verbatim}. El último paso es crear la aplicación y la monta sobre el elemento HTML cuyo identificador es [app]{.verbatim}.
 
     ::: mycode
@@ -330,4 +333,9 @@ Crea un proyecto Vue con las opciones indicadas arriba y realiza las siguientes 
 5. Modifica el fichero de [App.vue]{.configfile} y comprueba el cambio.
 6. Modifica el componente [HelloWorld.vue]{.configfile} y comprueba el cambio.
 :::
+
+::: exercisebox
+Crea un proyecto Vue con las opciones indicadas arriba, pero sin código de ejemplo. Será el que usemos más adelante.
+:::
+
 
