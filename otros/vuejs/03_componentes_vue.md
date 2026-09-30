@@ -410,7 +410,7 @@ const edad = 20
 
 Dentro de [{{ }}]{.verbatim} podemos utilizar expresiones JavaScript que produzcan un valor:
 
-::: {.mycode size=footnotesize}
+::: mycode
 [Ejemplos]{.title}
 
 ``` vue
@@ -424,7 +424,7 @@ Dentro de [{{ }}]{.verbatim} podemos utilizar expresiones JavaScript que produzc
 
 Sin embargo, no debemos utilizar la interpolación para ejecutar bloques completos de JavaScript. Por ejemplo, no tendría sentido escribir:
 
-::: {.mycode size=footnotesize}
+::: mycode
 [Este ejemplo no debería hacerse]{.title}
 
 ``` vue
@@ -435,4 +435,389 @@ Sin embargo, no debemos utilizar la interpolación para ejecutar bloques complet
 
 [if]{.verbatim} es una sentencia y no una expresión que produzca directamente un valor. Para este tipo de situaciones Vue proporciona directivas como [v-if]{.verbatim}.
 
+
+## Enlace de atributos con [v-bind]{.verbatim} {#enlace-atributos-v-bind}
+
+La interpolación permite introducir datos dentro del contenido de un elemento, pero no permite utilizar directamente [{{ }}]{.verbatim} para establecer atributos HTML. Para enlazar un atributo HTML con un valor JavaScript utilizamos la directiva [v-bind]{.verbatim}. Por ejemplo, para establecer dinámicamente los atributos [src]{.verbatim} y [alt]{.verbatim} hacemos lo siguiente:
+
+
+::: mycode
+[Uso de [v-bind]{.verbatim}]{.title}
+
+``` vue
+<script setup>
+const imagen = '/imagenes/vue.png'
+const descripcion = 'Logotipo de Vue.js'
+</script>
+<template>
+  <img v-bind:src="imagen" v-bind:alt="descripcion">
+</template>
+```
+:::
+
+
+Dado que [v-bind]{.verbatim} se utiliza con mucha frecuencia, Vue proporciona una sintaxis abreviada utilizando únicamente [:]{.verbatim}. Las siguientes dos etiquetas son equivalentes:
+
+::: mycode
+[Equivalencia]{.title}
+
+``` vue
+<img v-bind:src="imagen">
+<img :src="imagen">
+```
+:::
+
+La segunda forma es la más habitual en aplicaciones Vue. También podemos utilizarla con otros atributos:
+
+::: mycode
+[Otros ejemplos]{.title}
+
+``` vue
+<a :href="url">Visitar página</a>
+
+<input :value="nombre">
+
+<button :disabled="deshabilitado">
+  Guardar
+</button>
+```
+:::
+
+
+### Atributos dinámicos {#atributos-dinámicos}
+
+Una de las ventajas de [v-bind]{.verbatim} es que el atributo puede depender de los datos de la aplicación.
+
+::: mycode
+[Atributo dinámico]{.title}
+
+``` vue
+<script setup>
+const formularioBloqueado = true
+</script>
+<template>
+  <button :disabled="formularioBloqueado">
+    Enviar
+  </button>
+</template>
+```
+:::
+
+
+Cuando [formularioBloqueado]{.verbatim} cambie, Vue actualizará automáticamente el atributo correspondiente.
+
+
+### Enlace de clases CSS {#clases-CSS}
+
+Las clases CSS también pueden cambiar dinámicamente en Vue. Podemos hacer que en nuestro código JavaScript se pueda modificar la clase que está asignada a un elemento HTML:
+
+
+::: mycode
+[Atributo dinámico]{.title}
+
+``` vue
+<script setup>
+  const claseMensaje = 'importante'
+</script>
+<template>
+  <p :class="claseMensaje">
+    Mensaje importante
+  </p>
+</template>
+<style>
+.importante {
+  font-weight: bold;
+}
+</style>
+```
+:::
+
+
+Vue añadirá la clase indicada al elemento. También podemos utilizar un objeto para controlar varias clases:
+
+::: mycode
+[Atributo dinámico]{.title}
+
+``` vue
+<template>
+  <p :class="{ activo: estaActivo, error: hayError }">
+    Estado del usuario
+  </p>
+</template>
+```
+:::
+
+En este caso:
+
+- [activo]{.verbatim} se aplica cuando [estaActivo]{.verbatim} es [true]{.verbatim}.
+- [error]{.verbatim} se aplica cuando [hayError]{.verbatim} es [true]{.verbatim}.
+
+
+Esta técnica resulta especialmente útil cuando la apariencia de un componente depende de su estado.
+
+
+## Renderizado condicional con [v-if]{.verbatim} {#renderizado-condicional-v-if}
+
+Una aplicación frecuentemente necesita mostrar unos elementos u otros dependiendo de determinadas condiciones. Vue proporciona la directiva [v-if]{.verbatim} para realizar un **renderizado condicional**.
+
+
+::: mycode
+[Renderizado condicional]{.title}
+
+``` vue
+<script setup>
+const estaConectado = true
+</script>
+
+<template>
+  <p v-if="estaConectado">
+    Usuario conectado
+  </p>
+</template>
+```
+:::
+
+
+Cuando [estaConectado]{.verbatim} sea [true]{.verbatim}, Vue mostrará el elemento. En cambio, si es [false]{.verbatim} el elemento no se renderizará. Por tanto, [v-if]{.verbatim} no se limita a ocultar visualmente el elemento. Vue decide si el elemento debe formar parte del DOM renderizado.
+
+### Condiciones más complejas
+
+La condición puede utilizar expresiones, e incluso expresiones que dependan de varios valores: 
+
+
+:::::::::::::: {.columns }
+::: {.column width="40%"}
+
+::: {.mycode size=footnotesize}
+[Condicional con expresión]{.title}
+
+``` vue
+<template>
+  <p v-if="edad >= 18">
+    Puedes acceder.
+  </p>
+</template>
+```
+:::
+
+:::
+::: {.column width="60%" }
+
+::: {.mycode size=footnotesize}
+[Expresión con varios valores]{.title}
+
+``` vue
+<template>
+  <p v-if="estaConectado && tienePermisos">
+    Panel de administración
+  </p>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+### Condicionales con [v-else]{.verbatim} y [v-else-if]{.verbatim}
+
+Vue permite definir alternativas mediante [v-else]{.verbatim} y [v-else-if]{.verbatim} y funcionan igual en otros lenguajes de programación.
+
+En el siguiente ejemplo sólo uno de los dos elementos será renderizado.
+
+::: mycode
+[Condicional y alternativa]{.title}
+
+``` vue
+<template>
+  <p v-if="estaConectado">
+    Bienvenido.
+  </p>
+  <p v-else>
+    Debes iniciar sesión.
+  </p>
+</template>
+```
+:::
+
+
+Cuando tenemos varias posibilidades podemos utilizar `v-else-if`.
+
+::: mycode
+[Condicional con varias opciones]{.title}
+
+``` vue
+<template>
+  <p v-if="nota >= 9">
+    Sobresaliente
+  </p>
+  <p v-else-if="nota >= 7">
+    Notable
+  </p>
+  <p v-else-if="nota >= 5">
+    Aprobado
+  </p>
+  <p v-else>
+    Suspenso
+  </p>
+</template>
+```
+:::
+
+Vue comprobará las condiciones en orden y renderizará la primera que sea verdadera.
+
+
+## Renderizado con [v-show]{.verbatim} {#renderizado-con-v-show}
+
+Otra directiva relacionada con la visibilidad es [v-show]{.verbatim}. A diferencia de [v-if]{.verbatim}, [v-show]{.verbatim} **no elimina el elemento del DOM**.
+
+::: mycode
+[Elemento oculto]{.title}
+
+``` vue
+<p v-show="mostrarMensaje">
+  Este mensaje puede ocultarse.
+</p>
+```
+:::
+
+Cuando la condición es falsa, Vue modifica el CSS del elemento para ocultarlo mediante [display: none]{.verbatim}.
+
+
+
+### Diferencias entre [v-if]{.verbatim} y [v-show]{.verbatim} {#diferencias-entre-vif-vshow}
+
+
+En la siguiente tabla se puede ver una comparativa para saber cuándo usar [v-if]{.verbatim} o [v-show]{.verbatim}.
+
+
+| [v-if]{.verbatim} | [v-show]{.verbatim} |
+|-------------------|---------------------|
+| El elemento puede aparecer o desaparecer con poca frecuencia. | El elemento se muestra y oculta frecuentemente. |
+| El contenido es relativamente costoso de crear. | Queremos mantener el elemento creado. |
+| Queremos que el elemento no exista en el DOM cuando no se utiliza. | El coste de cambiar su visibilidad es menor que crear y destruir continuamente el elemento. | 
+
+
+Por ejemplo, un panel que el usuario abre y cierra continuamente podría utilizar [v-show]{.verbatim}.
+
+
+## Renderizado de listas con [v-for]{.verbatim} {#renderizado-listas-v-for}
+
+Una de las operaciones más habituales en una aplicación web es mostrar una lista de elementos. Vue proporciona la directiva [[v-for]{.verbatim}](https://vuejs.org/guide/essentials/list.html) para ello, similar a cómo funciona un bucle [for]{.verbatim}.
+
+
+::: mycode
+[Renderizar una lista]{.title}
+
+``` vue
+<script setup>
+const nombres = ['Alice', 'Bob', 'Carol', 'David']
+</script>
+<template>
+  <ul>
+    <li v-for="nombre in nombres">
+      {{ nombre }}
+    </li>
+  </ul>
+</template>
+```
+:::
+
+Vue generará un elemento [<li>]{.verbatim} para cada elemento del array, por lo que generará una lista HTML. También podemos utilizar [of]{.verbatim}:
+
+::: mycode
+[Alternativa]{.title}
+
+``` vue
+<li v-for="nombre of nombres">
+  {{ nombre }}
+</li>
+```
+:::
+
+
+
+### Obtener el índice {#obtener-índice}
+
+Podemos obtener también la posición del elemento dentro del array de elementos. El índice comienza en [0]{.verbatim}, como ocurre normalmente con los arrays de JavaScript.
+
+
+:::::::::::::: {.columns }
+::: {.column width="50%"}
+
+::: mycode
+[Obtener el índice]{.title}
+
+``` vue
+<li v-for="(nombre, indice) in nombres">
+  {{ indice }} - {{ nombre }}
+</li>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[El resultado será]{.title}
+
+``` text
+0 - Alice
+1 - Bob
+2 - Carol
+3 - David
+```
+:::
+
+:::
+::::::::::::::
+
+
+
+## [key]{.verbatim} en las listas
+
+Cuando utilizamos [v-for]{.verbatim}, normalmente debemos proporcionar una propiedad [key]{.verbatim} **que identifique de forma única cada elemento**.
+
+
+::: mycode
+[Añadir [key]{.verbatim}]{.title}
+
+``` vue
+<script setup>
+const usuarios = [
+  { id: 1, nombre: 'Ane' },
+  { id: 2, nombre: 'Mikel' },
+  { id: 3, nombre: 'Jon' }
+]
+</script>
+<template>
+  <ul>
+    <li v-for="usuario in usuarios" :key="usuario.id">
+      {{ usuario.nombre }}
+    </li>
+  </ul>
+</template>
+```
+:::
+
+La propiedad [key]{.verbatim} ayuda a Vue a identificar cada elemento de la lista cuando esta cambia. Esto permite que Vue pueda actualizar el DOM de una forma más eficiente y predecible.
+
+::: errorbox
+No deberíamos utilizar como [key]{.verbatim} un valor que pueda cambiar durante la vida del elemento.
+:::
+
+Tampoco se debe usar el índice como [key]{.verbatim} cuando la lista puede cambiar de orden, insertar elementos o eliminar elementos. Aunque técnicamente puede funcionar, puede provocar comportamientos inesperados cuando la lista cambia. Por ello, siempre que sea posible, utilizaremos un identificador único y estable.
+
+
+
+::: exercisebox
+Crea un componente que visualice una alerta con un color de fondo y bordes redondeados con un color un poco más intenso. Puede ser de los siguientes tipos:
+
+- **Info**: muestra mensajes de aviso en color azul.
+- **Sucess**: para mostrar mensajes de confirmación en color verde.
+- **Warning**: para mensajes de aviso con fondo naranja.
+- **Error**: para mensajes de error en color rojo.
+
+Para inspiraros en los [*alerts* de Bootstrap](https://getbootstrap.com/docs/5.3/components/alerts/).
+:::
 
