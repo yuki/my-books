@@ -667,6 +667,18 @@ Cuando tenemos varias posibilidades podemos utilizar `v-else-if`.
 Vue comprobará las condiciones en orden y renderizará la primera que sea verdadera.
 
 
+::: exercisebox
+Crea un componente que tenga una variable "edad" que visualice distintas partes en la plantilla dependiendo de si la edad:
+
+- Es menor a 10
+- Menor que 18
+- Menor que 35
+- Mayor de 65
+:::
+
+
+
+
 ## Renderizado con [v-show]{.verbatim} {#renderizado-con-v-show}
 
 Otra directiva relacionada con la visibilidad es [v-show]{.verbatim}. A diferencia de [v-if]{.verbatim}, [v-show]{.verbatim} **no elimina el elemento del DOM**.
