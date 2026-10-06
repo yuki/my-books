@@ -1,7 +1,7 @@
 
 # Concepto de componente {#concepto-componente}
 
-Uno de los conceptos fundamentales de Vue es el **componente**, que se puede definir como una parte independiente y reutilizable de la interfaz de una aplicación. En lugar de construir toda la aplicación dentro de un único archivo, **podemos dividirla en pequeñas piezas que tengan una responsabilidad concreta**.
+Uno de los conceptos fundamentales de Vue es el **componente**, que se puede definir como una **parte independiente y reutilizable de la interfaz de una aplicación**. En lugar de construir toda la aplicación dentro de un único archivo, **podemos dividirla en pequeñas piezas que tengan una responsabilidad concreta**.
 
 Una aplicación Vue puede contener decenas, cientos o incluso miles de componentes dependiendo de su tamaño: cabecera, menú, lista de productos, producto, carrito, formulario de creación, pie de página, ...
 
@@ -755,7 +755,7 @@ Podemos obtener también la posición del elemento dentro del array de elementos
 
 
 :::::::::::::: {.columns }
-::: {.column width="50%"}
+::: {.column width="70%"}
 
 ::: mycode
 [Obtener el índice]{.title}
@@ -768,7 +768,7 @@ Podemos obtener también la posición del elemento dentro del array de elementos
 :::
 
 :::
-::: {.column width="50%" }
+::: {.column width="30%" }
 
 ::: {.mycode size=footnotesize}
 [El resultado será]{.title}
