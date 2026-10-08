@@ -170,11 +170,11 @@ Para utilizar un componente dentro de otro componente debemos importarlo y utili
 
 
 
-:::::::::::::: {.columns }
+:::::::::::::: {.columns columnsep=0.5cm}
 ::: {.column width="36%"}
 
 ::: {.mycode size=footnotesize}
-[Componente CabeceraH1.vue]{.title}
+[CabeceraH1.vue]{.title}
 
 ``` vue
 <template>
@@ -195,7 +195,6 @@ Para utilizar un componente dentro de otro componente debemos importarlo y utili
 <script setup>
 import CabeceraH1 from './components/CabeceraH1.vue'
 </script>
-
 <template>
   <CabeceraH1 />
 </template>
@@ -339,6 +338,8 @@ Analiza una página web que visites de manera habitual (un periódico, foro de n
 
 
 ::: exercisebox
+[[03](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/03)]{.solution}
+
 Crea un componente para productos y úsalo 3 veces. Debe contener:
 
 - Nombre del producto.
@@ -533,7 +534,24 @@ Las clases CSS también pueden cambiar dinámicamente en Vue. Podemos hacer que 
 :::
 
 
-Vue añadirá la clase indicada al elemento. También podemos utilizar un objeto para controlar varias clases:
+Vue añadirá la clase indicada al elemento. 
+
+
+::: exercisebox
+[[04](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/04 )]{.solution}
+
+Crea un componente que visualice una alerta con un color de fondo y bordes redondeados con un color un poco más intenso. Puede ser de los siguientes tipos:
+
+- **Info**: muestra mensajes de aviso en color azul.
+- **Sucess**: para mostrar mensajes de confirmación en color verde.
+- **Warning**: para mensajes de aviso con fondo naranja.
+- **Error**: para mensajes de error en color rojo.
+
+Para inspiraros en los [*alerts* de Bootstrap](https://getbootstrap.com/docs/5.3/components/alerts/).
+:::
+
+
+También podemos utilizar un objeto para controlar varias clases:
 
 ::: mycode
 [Atributo dinámico]{.title}
@@ -668,6 +686,8 @@ Vue comprobará las condiciones en orden y renderizará la primera que sea verda
 
 
 ::: exercisebox
+[[05](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/05)]{.solution}
+
 Crea un componente que tenga una variable "edad" que visualice distintas partes en la plantilla dependiendo de si la edad:
 
 - Es menor a 10
@@ -675,8 +695,6 @@ Crea un componente que tenga una variable "edad" que visualice distintas partes 
 - Menor que 35
 - Mayor de 65
 :::
-
-
 
 
 ## Renderizado con [v-show]{.verbatim} {#renderizado-con-v-show}
@@ -823,13 +841,8 @@ Tampoco se debe usar el índice como [key]{.verbatim} cuando la lista puede camb
 
 
 ::: exercisebox
-Crea un componente que visualice una alerta con un color de fondo y bordes redondeados con un color un poco más intenso. Puede ser de los siguientes tipos:
+[[06](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/06 )]{.solution}
 
-- **Info**: muestra mensajes de aviso en color azul.
-- **Sucess**: para mostrar mensajes de confirmación en color verde.
-- **Warning**: para mensajes de aviso con fondo naranja.
-- **Error**: para mensajes de error en color rojo.
-
-Para inspiraros en los [*alerts* de Bootstrap](https://getbootstrap.com/docs/5.3/components/alerts/).
+Crea un componente que visualice una lista de objetos con datos de usuario en una tabla. Cada objeto de usuario debe tener al menos un "id" único y otros 4 campos personalizados. Si la lista está vacía que muestre un mensaje en lugar de la tabla.
 :::
 

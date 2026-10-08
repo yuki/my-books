@@ -163,7 +163,7 @@ Este comando nos hará distintas preguntas para así poder añadir distintas car
 - Características experimentales: podemos añadir nuevas características que no son estables.
 - Añadir código de ejemplo.
 
-De momento vamos a seleccionar **NO** menos a las dos últimas.
+De momento vamos a seleccionar **NO** menos a ***Linter*** y ***Prettier***.
 
 
 ## Instalar dependencias {#instalar-dependencias}
@@ -324,6 +324,8 @@ Podemos usar cualquier otro editor, pero la integración con VSCode viene por de
 
 
 ::: exercisebox
+[[01](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/01)]{.solution}
+
 Crea un proyecto Vue con las opciones indicadas arriba y realiza las siguientes tareas:
 
 1. Instala las dependencias.
@@ -335,6 +337,8 @@ Crea un proyecto Vue con las opciones indicadas arriba y realiza las siguientes 
 :::
 
 ::: exercisebox
+[[02](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/02)]{.solution}
+
 Crea un proyecto Vue con las opciones indicadas arriba, pero sin código de ejemplo. Será el que usemos más adelante.
 :::
 
