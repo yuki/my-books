@@ -16,7 +16,7 @@ Vue proporciona diferentes mecanismos para resolver todas las situaciones posibl
 - **Eventos personalizados** para enviar información de hijo a padre.
 - **[v-model]{.verbatim}** para crear una comunicación bidireccional entre componentes.
 - **Slots** para proporcionar contenido a un componente.
-- **Estado compartido** para situaciones en las que varios componentes necesitan acceder a los mismos datos.
+- **Estado compartido** para situaciones en las que varios componentes necesitan acceder a los mismos datos. Se verá más adelante
 
 
 # Comunicación padre a hijo: *Props* {#vue-props}
@@ -635,6 +635,222 @@ const vistaActual = ref('inicio')
 Los componentes dinámicos resultan útiles para interfaces con pestañas, asistentes, paneles o diferentes vistas dentro de una misma zona.
 
 
+# Slots {#slots}
+
+Los ***slots*** permiten que el componente padre introduzca contenido dentro del componente hijo.
+
+Supongamos un componente [Tarjeta.vue]{.verbatim} y cómo le llama el padre:
 
 
+:::::::::::::: {.columns }
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
+[Componente padre]{.title}
+
+``` vue
+<template>
+  <Tarjeta>
+    <h2>Producto</h2>
+    <p>Descripción.</p>
+  </Tarjeta>
+</template>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[Componente Tarjeta.vue]{.title}
+
+``` vue
+<template>
+  <article class="tarjeta">
+    <slot></slot>
+  </article>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+El contenido situado entre [<Tarjeta>]{.verbatim} y [</Tarjeta>]{.verbatim} en el componente padre ocupará el lugar del [<slot>]{.verbatim} en el componente hijo.
+
+Los *slots* permiten crear componentes visuales reutilizables sin obligar al componente a conocer exactamente qué contenido tendrá.
+
+
+## Slots con contenido predeterminado {#slots-contenido-predeterminado}
+
+Un slot puede tener contenido predeterminado. Imaginemos un componente que dibuja un botón, y que por defecto tiene un nombre:
+
+
+:::::::::::::: {.columns }
+::: {.column width="33%"}
+
+::: {.mycode size=footnotesize}
+[Componente]{.title}
+
+``` vue
+<template>
+  <button>
+    <slot>Botón</slot>
+  </button>
+</template>
+```
+:::
+
+:::
+::: {.column width="33%" }
+
+::: {.mycode size=footnotesize}
+[Valor *default*]{.title}
+
+``` vue
+<template>
+  <MiBoton />
+</template>
+```
+:::
+
+:::
+::: {.column width="33%" }
+
+::: {.mycode size=footnotesize}
+[Nuevo texto]{.title}
+
+``` vue
+<template>
+  <MiBoton>
+    Guardar
+  </MiBoton>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+Si llamamos al componente sin datos, aparecerá el valor por defecto, mientras que si le ponemos un texto como en el ejemplo anterior, aparecerá "Guardar".
+
+Los valores predeterminados son útiles para crear componentes que funcionen correctamente incluso cuando no se proporciona contenido personalizado.
+
+
+## Slots con nombre {#slots-con-nombre}
+
+Un componente puede tener más de un slot, por lo que tenemos que poder distinguirlos. Para ello tenemos que utilizar **slots con nombre**.
+
+
+:::::::::::::: {.columns }
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
+[Componente]{.title}
+
+``` vue
+<Tarjeta>
+  <template #cabecera>
+    <h2>Producto</h2>
+  </template>
+
+  <p>Descripción del producto.</p>
+
+  <template #pie>
+    <button>Comprar</button>
+  </template>
+</Tarjeta>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[Componente Tarjeta]{.title}
+
+``` vue
+<template>
+  <article class="tarjeta">
+    <header>
+      <slot name="cabecera"></slot>
+    </header>
+
+    <main>
+      <slot></slot>
+    </main>
+
+    <footer>
+      <slot name="pie"></slot>
+    </footer>
+  </article>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+En este ejemplo se puede ver cómo el  padre puede proporcionar cada contenido utilizando [#]{.verbatim}. El slot sin nombre se denomina **slot por defecto**.
+
+::: infobox
+Los slots con nombre permiten crear componentes con una estructura más compleja.
+:::
+
+
+## Slots con ámbito {#slots-ámbito}
+
+Los slots con ámbito permiten que el componente hijo proporcione datos al contenido que ha introducido el padre.
+
+En este ejemplo el hijo proporciona el objeto [usuario]{.verbatim}:
+
+
+::: {.mycode size=footnotesize}
+[Componente]{.title}
+
+``` vue
+<template>
+  <slot :usuario="usuario"></slot>
+</template>
+```
+:::
+
+
+Y el componente padre puede recibir ese dato y decidir cómo representarlo:
+
+::: {.mycode size=footnotesize}
+[Componente]{.title}
+
+``` vue
+<MiComponente>
+  <template #default="{ usuario }">
+    <p>{{ usuario.nombre }}</p>
+  </template>
+</MiComponente>
+```
+:::
+
+
+Este mecanismo puede resultar inicialmente más complejo, pero es muy útil para crear componentes reutilizables que controlan una estructura pero permiten al padre decidir cómo mostrar determinados datos. Un ejemplo habitual sería un componente de lista:
+
+
+::: {.mycode size=footnotesize}
+[Componente]{.title}
+
+``` vue
+<template>
+  <ul>
+    <li v-for="usuario in usuarios" :key="usuario.id">
+      <slot :usuario="usuario">
+        {{ usuario.nombre }}
+      </slot>
+    </li>
+  </ul>
+</template>
+```
+:::
+
+El componente controla la lista, mientras que el componente padre decide cómo representar cada usuario.
 
