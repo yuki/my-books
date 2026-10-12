@@ -86,7 +86,7 @@ En versiones anteriores de Vue dentro de [<template>]{.verbatim} sólo permitía
 
 ## [<script setup>]{.verbatim}
 
-Dentro de este bloque se escribe la lógica del componente usando JavaScript. La palabra [setup]{.verbatim} hace referencia a la **[Composition API](https://vuejs.org/api/composition-api-setup.html)** de Vue, que aparece en Vue 3.0 en 2020.
+Dentro de este bloque se escribe la lógica del componente usando JavaScript. La palabra [setup]{.verbatim} hace referencia a la **[Composition API](#introducción-composition-api)** de Vue, que aparece en Vue 3.0 en 2020.
 
 
 ::: mycode

@@ -16,7 +16,7 @@ Vue proporciona diferentes mecanismos para resolver todas las situaciones posibl
 - **Eventos personalizados** para enviar información de hijo a padre.
 - **[v-model]{.verbatim}** para crear una comunicación bidireccional entre componentes.
 - **Slots** para proporcionar contenido a un componente.
-- **Estado compartido** para situaciones en las que varios componentes necesitan acceder a los mismos datos. Se verá más adelante
+- **Estado compartido** para situaciones en las que varios componentes necesitan acceder a los mismos datos. Se verá más adelante.
 
 
 # Comunicación padre a hijo: *Props* {#vue-props}
