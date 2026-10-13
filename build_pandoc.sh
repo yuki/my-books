@@ -18,6 +18,7 @@ LIBROS=(
     "otros/ionic/ ionic"
     "otros/laravel/ laravel"
     "otros/PFsense/ pfsense"
+    "otros/vuejs/ vuejs"
     "ASIR/1/planificacion_administracion_redes/ redes"
     "ASIR/2/administracion_sistemas_operativos/ aso"
     "ASIR/2/SGBD/ sgbd"

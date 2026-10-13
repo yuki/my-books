@@ -47,6 +47,7 @@ on:
           - TMM
           - Ubuntu_RAID1
           - Virtualbox_networking
+          - Vuejs
           - Web_Garapena_Bezero_Ingurunean
           - Web_Interfazeak_Diseinatzea
           - WSL
@@ -92,6 +93,7 @@ jobs:
           otros/angular/angular.pdf
           otros/ionic/ionic.pdf
           otros/laravel/laravel.pdf
+          otros/vuejs/vuejs.pdf
           otros/PFsense/pfsense.pdf
           ASIR/1/planificacion_administracion_redes/redes.pdf
           ASIR/2/administracion_sistemas_operativos/aso.pdf
