@@ -292,6 +292,20 @@ Si reiniciamos nuestro equipo tendremos que volver a levantar el servidor.
 :::
 
 
+::: exercisebox
+[[01](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/01)]{.solution}
+
+Crea un proyecto Vue con código de ejemplo y realiza las siguientes tareas:
+
+1. Instala las dependencias.
+2. Levanta el servidor.
+3. Cambia el título de la plantilla HTML.
+4. Busca el fichero [App.vue]{.configfile} y analiza las distintas partes de las que consta.
+5. Modifica el fichero de [App.vue]{.configfile} y comprueba el cambio.
+6. Modifica el componente [HelloWorld.vue]{.configfile} y comprueba el cambio.
+:::
+
+
 ## Vue DevTools {#vue-devtools}
 
 Además de las herramientas generales del navegador, Vue dispone de una herramienta específica denominada **Vue DevTools**, que permite inspeccionar aplicaciones Vue y proporciona información específica sobre sus componentes y estado reactivo. Entre otras posibilidades, permite:
@@ -322,24 +336,10 @@ Este directorio no es obligatorio, y se podría llegar a borrar, pero nos añade
 Podemos usar cualquier otro editor, pero la integración con VSCode viene por defecto.
 :::
 
-
-::: exercisebox
-[[01](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/01)]{.solution}
-
-Crea un proyecto Vue con las opciones indicadas arriba y realiza las siguientes tareas:
-
-1. Instala las dependencias.
-2. Levanta el servidor
-3. Cambia el título del HTML
-4. Busca el fichero [App.vue]{.configfile} y analiza las distintas partes de las que consta.
-5. Modifica el fichero de [App.vue]{.configfile} y comprueba el cambio.
-6. Modifica el componente [HelloWorld.vue]{.configfile} y comprueba el cambio.
-:::
-
 ::: exercisebox
 [[02](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/02)]{.solution}
 
-Crea un proyecto Vue con las opciones indicadas arriba, pero sin código de ejemplo. Será el que usemos más adelante.
+Crea un proyecto Vue activando *Linter* y *Prettier* y **sin código de ejemplo**. Será la base que vamos a usar a partir de ahora.
 :::
 
 

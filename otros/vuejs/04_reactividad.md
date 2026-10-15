@@ -318,7 +318,9 @@ La diferencia principal es que en [watch()]{.verbatim} debemos indicar explícit
 
 
 ::: exercisebox
-Crea un componente en el que haya un objeto con datos personales y que sea reactivo. Utiliza los distintos componentes reactivos vistos, y que se cambie algún dato mediante botones para comprobar cómo se modifica la visualización al cambiar.
+[[07](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/07 )]{.solution}
+
+Crea un componente por cada uno de los sistemas reactivos explicado. Los valores se deben cambiar mediante botones para comprobar cómo funciona el sistema reactivo y para que se modifique la vista.
 :::
 
 

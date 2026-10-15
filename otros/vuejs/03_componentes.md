@@ -263,12 +263,10 @@ Ahora podemos utilizarlo en el componente raíz [App.vue]{.verbatim}.
 ``` vue
 <script setup>
 import CabeceraH1 from './components/CabeceraH1.vue';
-
 </script>
 
 <template>
   <h1>Mi aplicación</h1>
-
   <Saludo />
 </template>
 ```
@@ -282,40 +280,65 @@ import CabeceraH1 from './components/CabeceraH1.vue';
 Vamos a crear un componente que utilice las tres partes principales de un *Single File Component*.
 
 
-::: mycode
-[Crear nuevo componente]{.title}
+:::::::::::::: {.columns columnsep=0.2cm}
+::: {.column width="33%"}
+
+::: {.mycode size=footnotesize}
+[Script]{.title}
 
 ``` vue
 <script setup>
 const titulo = 'Clicka'
 
-function mostrarMensaje() {
-  console.log('Has pulsado el botón')
+function saluda() {
+  console.log('Hola!')
 }
 </script>
+```
+:::
 
-<template>
-  <article class="tarjeta">
-    <h2>{{ titulo }}</h2>
+:::
+::: {.column width="33%" }
 
-    <button @click="mostrarMensaje">
-      Mostrar mensaje
-    </button>
-  </article>
-</template>
+::: {.mycode size=footnotesize}
+[Estilo]{.title}
 
+``` vue
 <style scoped>
 .tarjeta {
   padding: 1rem;
   border: 1px solid #ccc;
 }
-
 button {
   padding: 0.5rem 1rem;
 }
 </style>
 ```
 :::
+
+
+:::
+::: {.column width="33%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+
+``` vue
+<template>
+<article class="tarjeta">
+  <h2>{{ titulo }}</h2>
+
+  <button @click="saluda">
+    Mostrar mensaje
+  </button>
+</article>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
 
 
 Este ejemplo reúne varios conceptos:
@@ -333,14 +356,14 @@ Más adelante profundizaremos en cada apartado, pero de momento sirve como ejemp
 
 
 ::: exercisebox
-Analiza una página web que visites de manera habitual (un periódico, foro de noticias, ...) y divide mentalmente su interfaz en componentes.
+Analiza una página web que suelas visitar y divide su interfaz en componentes.
 :::
 
 
 ::: exercisebox
 [[03](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/03)]{.solution}
 
-Crea un componente para productos y úsalo 3 veces. Debe contener:
+Crea un componente, con estilo propio, para productos y úsalo 3 veces. Debe contener:
 
 - Nombre del producto.
 - Descripción.
@@ -475,9 +498,7 @@ La segunda forma es la más habitual en aplicaciones Vue. También podemos utili
 
 ``` vue
 <a :href="url">Visitar página</a>
-
 <input :value="nombre">
-
 <button :disabled="deshabilitado">
   Guardar
 </button>
