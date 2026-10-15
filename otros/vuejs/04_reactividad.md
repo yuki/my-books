@@ -318,7 +318,7 @@ La diferencia principal es que en [watch()]{.verbatim} debemos indicar explícit
 
 
 ::: exercisebox
-[[07](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/07 )]{.solution}
+[[07](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/07)]{.solution}
 
 Crea un componente por cada uno de los sistemas reactivos explicado. Los valores se deben cambiar mediante botones para comprobar cómo funciona el sistema reactivo y para que se modifique la vista.
 :::
@@ -326,7 +326,7 @@ Crea un componente por cada uno de los sistemas reactivos explicado. Los valores
 
 # Eventos {#eventos-vue}
 
-Los eventos permiten que una aplicación Vue responda a las acciones realizadas por el usuario. Cuando un usuario pulsa un botón, escribe en un campo, selecciona una opción, envía un formulario o pulsa una tecla, el navegador genera un **evento**. Vue proporciona mecanismos para asociar estos eventos con funciones de nuestro componente.
+Los eventos permiten que una aplicación Vue responda a las acciones realizadas por el usuario. Vue proporciona mecanismos para asociar estos eventos con funciones de nuestro componente.
 
 
 ## Manejo de eventos {#manejo-eventos}
@@ -373,7 +373,7 @@ function saludar() {
 Cuando el usuario pulsa el botón, Vue ejecuta la función [saludar()]{.verbatim}. De esta forma, el evento y la lógica del componente quedan relacionados directamente en la plantilla.
 
 ::: infobox
-La función que responde a un evento suele denominarse **manejador de eventos** (*event handler*).
+La función que responde a un evento se llama ***event handler*** (manejador de eventos).
 :::
 
 
@@ -510,7 +510,7 @@ Esto resulta especialmente útil cuando trabajamos con listas. Por ejemplo:
 
 
 
-## El objeto [Event]{.verbatim} {objeto-event}
+## El objeto [Event]{.verbatim} {#objeto-event}
 
 Los eventos del navegador proporcionan información adicional mediante el objeto [Event]{.verbatim}.
 
@@ -565,7 +565,7 @@ Por ejemplo, si el usuario escribe dentro del campo de texto obtendremos ese val
 
 
 
-### Pasar argumentos y recibir el evento
+### Pasar argumentos y recibir el evento {#pasar-argumentos}
 
 Cuando necesitamos pasar nuestros propios argumentos y también queremos acceder al objeto [Event]{.verbatim}, podemos utilizar [$event]{.verbatim}.
 
@@ -592,12 +592,16 @@ function mostrarUsuario(id, evento) {
 [$event]{.verbatim} representa el evento generado por el navegador. Este mecanismo resulta especialmente útil cuando necesitamos combinar información propia de nuestra aplicación con información proporcionada por el navegador.
 
 ::: exercisebox
+[[08](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/08)]{.solution}
+
 Crea una pequeña lista de objetos con datos de usuarios. Con esta lista:
 
-- Muestra todos los usuarios en una tabla, pero que sólo salga el nombre y apellidos.
+- Muestra todos los usuarios en una tabla.
 - La última columna de la tabla que tenga 3 botones para:
-  - **Visualizar usuario**: Crea un modal con todos los datos del usuario
-  - **Borrar usuario**: recibe el id y simula enviar un POST para borrar el usuario.
+  - **Saludar usuario**: Haga un [alert]{.verbatim} recibiendo el usuario como parámetro.
+  - **Ver evento**: muestra qué ha generado el evento.
+  - Función que reciba el ID y el evento.
+- Crea también un [<input>]{.verbatim} con evento [@input]{.verbatim} y muestre lo que se va escribiendo.
 :::
 
 
@@ -758,6 +762,12 @@ Para situaciones sencillas, se puede tener en cuenta si se ha pulsado una tecla 
   <button @click.meta="accionMeta">Meta + clic</button>
 </template>
 ```
+:::
+
+::: exercisebox
+[[09](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/09)]{.solution}
+
+Crea un [<input>]{.verbatim} y si se introduce el [código Konami](https://en.wikipedia.org/wiki/Konami_Code) salte un [alert]{.verbatim}.
 :::
 
 
@@ -1014,6 +1024,8 @@ La plantilla puede mostrar los mensajes de error correspondientes, lo que permit
 
 
 ::: exercisebox
+[[10](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/10)]{.solution}
+
 Crea un formulario y utiliza los distintos modificadores vistos y un sistema de validación que muestre (u oculte) los avisos.
 :::
 

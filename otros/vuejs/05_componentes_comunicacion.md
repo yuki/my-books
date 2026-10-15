@@ -61,8 +61,7 @@ import Usuario from './components/Usuario.vue'
 ::::::::::::::
 
 
-El componente [Usuario]{.verbatim} recibe [nombre]{.verbatim} como una prop desde el componente padre.
-
+El componente [Usuario]{.verbatim} recibe [nombre]{.verbatim} como una *prop* desde el componente padre.
 
 
 ## *Props* dinámicas {#props-dinámicas}
@@ -90,15 +89,6 @@ const nombreUsuario = ref('Alice')
 
 
 En este caso, el valor de la prop depende de [nombreUsuario]{.verbatim}. Si el valor reactivo cambia, el componente hijo recibirá el nuevo valor. En el segundo componente se ha enviado una expresión.
-
-
-::: exercisebox
-Crea un componente que sea un contador: 
-
-- Tiene un botón para incrementar un número.
-- Llama a un componente hijo y le pasa el número.
-- El componente hijo muestra ese valor.
-:::
 
 
 ## Pasar objetos mediante props {#pasar-objetos-mediante-props}
@@ -199,6 +189,16 @@ const props = defineProps({
 
 
 Cualquiera de las dos opciones es posible.
+
+::: exercisebox
+[[11](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/11)]{.solution}
+
+Crea un componente que sea un contador: 
+
+- Tiene un botón para incrementar un número.
+- Llama a un componente hijo y le pasa el número.
+- El componente hijo muestra ese valor.
+:::
 
 
 ## Validación y valores por defecto de las props {#validación-valores-default-props}
@@ -405,21 +405,22 @@ Imagina un componente que dibuja botones "editar" y "borrar" que emite esos even
 
 
 ::: exercisebox
+[[12](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/12)]{.solution}
+
 Crea un componente padre que:
 
-- Cree una variable dinámica [contador]{.verbatim} que le pase a un componente hijo
-- Reciba los eventos [incrementar]{.verbatim} y [decrementar]{.verbatim} que llame a funciones para realizar dicha operación sobre [contador]{.verbatim} y haga [console.log]{.verbatim}.
+- Tiene una variable dinámica [contador]{.verbatim}.
+- Recibe los eventos [incrementar]{.verbatim} y [decrementar]{.verbatim} que llame a funciones para realizar dicha operación sobre [contador]{.verbatim} y lo muestre en pantalla.
 
-Un componente hijo que:
+Un componente hijo que tenga:
 
-- Reciba como obligatorio una variable de tipo [Number]{.verbatim} y visualice la variable.
 - Dos botones: uno que emita el evento [incrementar]{.verbatim} y otro [decrementar]{.verbatim}.
 :::
 
 
 ## Enviar datos mediante eventos {#enviar-datos-eventos}
 
-Un evento también puede transportar información. Por ejemplo, podemos generar desde un componente padre una lista de usuarios (cada uno es un componente hijo), y al seleccionar uno se recibe en el padre el identificador.
+Un evento también puede transportar información. Podemos generar desde un componente padre una lista de usuarios (cada uno es un componente hijo), y al seleccionar uno se recibe en el padre el identificador.
 
 
 :::::::::::::: {.columns }
@@ -476,6 +477,16 @@ function seleccionarUsuario(id) {
 Cada componente puede informar al padre de qué usuario ha seleccionado el usuario de la aplicación.
 
 
+::: exercisebox
+[[13](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/13)]{.solution}
+
+Crea un componente padre cogiendo la lista de usuarios del ejercicio [08](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/08):
+
+- Dibuja la tabla pero cada fila es un componente hijo que recibe como parámetro el usuario.
+- El componente dibuja un [<tr>]{.verbatim} con los datos de usuario. Tiene un botón para emitir un evento con el usuario seleccionado.
+:::
+
+
 
 # [v-model]{.verbatim} entre componentes {#v-model-entre-componentes}
 
@@ -523,6 +534,12 @@ function update() {
   <button @click="update">Increment</button>
 </template>
 ```
+:::
+
+::: exercisebox
+[[14](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/14)]{.solution}
+
+Crea un componente padre que tenga una variable [contador]{.verbatim}, la visualice y se la pase a un componente hijo como [v-model]{.verbatim}. El hijo tiene un botón que modifica la variable.
 :::
 
 
@@ -853,4 +870,9 @@ Este mecanismo puede resultar inicialmente más complejo, pero es muy útil para
 :::
 
 El componente controla la lista, mientras que el componente padre decide cómo representar cada usuario.
+
+
+<!-- 
+FIXME: añadir provide/inject https://vuejs.org/guide/components/provide-inject.html 
+ -->
 
