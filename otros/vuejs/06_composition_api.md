@@ -145,10 +145,12 @@ Entre las más importantes están:
 - [onUpdated()]{.verbatim}: después de una actualización del DOM provocada por cambios reactivos.
 - [onUnmounted()]{.verbatim}: después de desmontar el componente.
 
+::: infobox
 Estos hooks son especialmente útiles cuando necesitamos interactuar con elementos del DOM, iniciar operaciones o liberar recursos.
+:::
 
 
-![*Lifecycle* del componente. Fuente: [Vue.js](https://vuejs.org/guide/essentials/lifecycle.html)](img/vuejs/lifecycle.png){width=80%}
+![*Lifecycle* del componente. Fuente: [Vue.js](https://vuejs.org/guide/essentials/lifecycle.html)](img/vuejs/lifecycle.png){width=90%}
 
 
 
@@ -469,6 +471,14 @@ El componente ya no contiene la implementación de la lógica del contador, sól
 
 Aunque Vue no obliga a utilizar directorios para separar los componentes y/o los *composables*, resulta conveniente realizar cierta separación, por lo que se ha creado la carpeta [composables]{.configdir}.
 
+
+::: exercisebox
+[[15](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/15)]{.solution}
+
+Crea un *composable* con una función [obtenerUsuarios()]{.verbatim} que llama a una [API](https://jsonplaceholder.typicode.com/) para obtener usuarios.
+
+El composable se utiliza en un componente **al ser montado** ([onMounted()]{.verbatim}) y dibuje los datos obtenidos en una tabla.
+:::
 
 
 ## Buenas prácticas con la Composition API {#buenas-prácticas-composition-api}

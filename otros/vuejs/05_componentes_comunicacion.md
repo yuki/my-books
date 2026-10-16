@@ -696,6 +696,8 @@ Supongamos un componente [Tarjeta.vue]{.verbatim} y cómo le llama el padre:
 
 El contenido situado entre [<Tarjeta>]{.verbatim} y [</Tarjeta>]{.verbatim} en el componente padre ocupará el lugar del [<slot>]{.verbatim} en el componente hijo.
 
+![Slot. Fuente: [Vue.js](https://vuejs.org/guide/components/slots.html)](img/vuejs/slots.png){width=70%}
+
 Los *slots* permiten crear componentes visuales reutilizables sin obligar al componente a conocer exactamente qué contenido tendrá.
 
 
@@ -812,6 +814,9 @@ Un componente puede tener más de un slot, por lo que tenemos que poder distingu
 
 En este ejemplo se puede ver cómo el  padre puede proporcionar cada contenido utilizando [#]{.verbatim}. El slot sin nombre se denomina **slot por defecto**.
 
+![Slot con nombre. Fuente: [Vue.js](https://vuejs.org/guide/components/slots.html)](img/vuejs/named-slots.png){width=70%}
+
+
 ::: infobox
 Los slots con nombre permiten crear componentes con una estructura más compleja.
 :::
@@ -870,6 +875,8 @@ Este mecanismo puede resultar inicialmente más complejo, pero es muy útil para
 :::
 
 El componente controla la lista, mientras que el componente padre decide cómo representar cada usuario.
+
+![Slot con ámbito. Fuente: [Vue.js](https://vuejs.org/guide/components/slots.html)](img/vuejs/scoped-slots.png){width=60%}
 
 
 <!-- 

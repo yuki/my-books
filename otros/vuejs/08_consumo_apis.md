@@ -421,6 +421,8 @@ Una petición puede encontrarse en distintas situaciones:
 | Vacío | La petición ha terminado, pero no hay resultados |
 | Error | La operación no ha podido completarse correctamente |
 
+Table: {tablename=yukitblr colspec=X[1,l]X[3,l]}
+
 Es importante distinguir entre un resultado vacío y un error.
 
 ::: infobox
@@ -428,5 +430,510 @@ Una API puede devolver un array vacío indicando que no hay productos disponible
 :::
 
 
+# Gestión de errores {#gestión-errores}
+
+Las peticiones HTTP pueden fallar por diferentes motivos:
+
+- El servidor devuelve un estado HTTP de error.
+- El usuario pierde la conexión a Internet.
+- El servidor no está disponible.
+- La petición es bloqueada por una política de seguridad del navegador.
+- La respuesta no contiene JSON válido cuando esperamos JSON.
+- Los datos recibidos no tienen el formato esperado.
+- La petición se cancela.
+
+Por tanto, debemos evitar asumir que todas las peticiones terminarán correctamente.
+
+## Diferentes tipos de errores
+
+Hay que diferenciar entre los posibles distintos errores que pueden suceder:
+
+- **Errores HTTP**: El servidor responde, pero indica que la operación no se ha completado correctamente. Por ejemplo, [404]{.verbatim} puede indicar que el recurso no existe y [50]{.verbatim} que se ha producido un error interno del servidor.
+- **Errores de red**: La petición no llega a completarse debido a un problema de conectividad, resolución del dominio, conexión o restricciones del navegador.
+- **Errores de interpretación**: El servidor devuelve una respuesta, pero no podemos interpretar el cuerpo como esperábamos. Por ejemplo, [response.json()]{.verbatim} puede fallar si el cuerpo no contiene JSON válido.
+- **Errores de aplicación**: La respuesta es válida desde el punto de vista HTTP y sintáctico, pero los datos no cumplen las condiciones que necesita la aplicación.
+
+## Utilizar [try...catch]{.verbatim} {#usar-try-catch}
+
+Para gestionar los errores  debemos usar la estructura [try...catch]{.verbatim}. En una interfaz real, normalmente no basta con escribir el error en la consola, ya que el usuario no verá el mensaje y por tanto debemos informarle mediante un mensaje adecuado:
+
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="60%"}
+
+::: {.mycode size=footnotesize}
+[Parte script]{.title}
+
+``` vue
+<script setup>
+try {
+  const resp = await fetch('/api/productos')
+
+  if (!resp.ok) {
+    throw new Error(`Error HTTP: ${resp.status}`)
+  }
+
+  const productos = await resp.json()
+
+  console.log(productos)
+} catch (error) {
+  console.error('Error cargando products:', error)
+}
+</script>
+```
+:::
+
+:::
+::: {.column width="40%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+
+``` vue
+<template>
+<p v-if="error" role="alert">
+  Error al cargar los datos.
+</p>
+<!-- ... -->
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+El atributo [role="alert"]{.verbatim} ayuda a que determinadas tecnologías de asistencia anuncien el mensaje cuando aparece.
+
+## No mostrar siempre el mensaje técnico {#no-mostrar-mensaje-técnico}
+
+El mensaje original de un error puede contener detalles poco útiles para el usuario o información que no conviene mostrar directamente. Podemos registrar el error para facilitar la depuración y mostrar un mensaje más comprensible:
+
+En una aplicación real, también podemos distinguir entre errores de validación, errores de autenticación, recursos inexistentes y fallos temporales del servidor.
+
+
+# Cancelación de peticiones {#cancelación-peticiones}
+
+A veces una petición deja de ser necesaria antes de que termine. Por ejemplo:
+
+- El usuario abandona una vista.
+- El usuario cambia rápidamente de filtro.
+- Se inicia una búsqueda nueva mientras la anterior sigue en curso.
+- El componente se desmonta y ya no necesita los resultados.
+
+JavaScript proporciona [AbortController]{.verbatim}, que permite cancelar una petición [fetch()]{.verbatim} mediante una señal, normalmente con un error de tipo [AbortError]{.verbatim}. 
+
+Debemos distinguir una cancelación intencionada de un error de red real, por lo que en el siguiente ejemplo la petición se cancela cuando el componente se desmonta.
+
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="60%"}
+
+::: {.mycode size=footnotesize}
+[Parte script]{.title}
+
+``` vue
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const productos = ref([])
+const error = ref('')
+
+const controlador = new AbortController()
+
+onMounted(async () => {
+  try {
+    const respuesta =
+      await fetch('/api/productos', {
+            signal: controlador.signal
+    })
+
+    if (!respuesta.ok) {
+      throw new Error('No cargan los productos')
+    }
+
+    productos.value = await respuesta.json()
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      error.value = err.message
+    }
+  }
+})
+
+onUnmounted(() => {
+  controlador.abort()
+})
+</script>
+```
+:::
+
+:::
+::: {.column width="40%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+
+``` vue
+<template>
+<p v-if="error">{{ error }}</p>
+
+<ul>
+  <li
+   v-for="producto in productos"
+   :key="producto.id"
+  >
+   {{ producto.nombre }}
+  </li>
+</ul>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+
+La señal se crea fuera de la función que realiza la petición, por lo que puede utilizarse tanto para iniciar la solicitud como para cancelarla posteriormente.
+
+## ¿Qué ocurre si necesitamos repetir la petición? {#repetir-la-petición}
+
+Si queremos realizar nuevas peticiones con posibilidad de cancelación, normalmente crearemos un [AbortController]{.verbatim} nuevo para cada operación. Un controlador que ya ha sido abortado no puede reutilizarse para iniciar una petición nueva.
+
+Por ejemplo:
+
+::: {.mycode size=footnotesize}
+[Repetir petición]{.title}
+
+``` javascript
+let controladorActual
+
+async function cargarDatos() {
+  controladorActual?.abort()
+
+  controladorActual = new AbortController()
+
+  try {
+    const respuesta = await fetch('/api/datos', {
+      signal: controladorActual.signal
+    })
+
+    if (!respuesta.ok) {
+      throw new Error('Error al cargar los datos')
+    }
+
+    return await respuesta.json()
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      return
+    }
+
+    throw error
+  }
+}
+```
+:::
+
+Esta técnica resulta útil para búsquedas en las que el usuario puede cambiar rápidamente el texto introducido. No obstante, en una aplicación real debemos coordinar la cancelación con los estados de carga y error, evitando que una operación antigua modifique la interfaz después de que se haya iniciado una nueva.
+
+
+# Componentes dependientes de datos externos {#componentes-dependientes-datos-externos}
+
+En una aplicación Vue, un componente puede necesitar información externa para representar su contenido. Por ejemplo, un componente [ListaProductos.vue]{.configfile} puede recibir los productos mediante una prop:
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+::: {.mycode size=footnotesize}
+[Parte script]{.title}
+
+``` vue
+<script setup>
+defineProps({
+  productos: {
+    type: Array,
+    required: true
+  }
+})
+</script>
+```
+:::
+
+:::
+::: {.column width="50%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+
+``` vue
+<template>
+  <ul>
+    <li
+      v-for="producto in productos"
+      :key="producto.id"
+    >
+      {{ producto.nombre }}
+    </li>
+  </ul>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+Este componente no necesita saber de dónde proceden los productos, pueden venir de una API, de un archivo local o de otro componente. Su responsabilidad consiste en representar los datos recibidos.
+
+## Separar la carga de los datos de su representación {#separar-carga-datos-representación}
+
+Normalmente deberíamos crear un componente padre encargado de consultar la API, ya que el componente hijo quizá pueda ser reutilizado por ser agnóstico al tipo de listado que debe dibujar.
+
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="65%"}
+
+::: {.mycode size=footnotesize}
+[Componente padre]{.title}
+
+``` vue
+<script setup>
+import { ref, onMounted } from 'vue'
+import ListaProductos 
+    from '../components/ListaProductos.vue'
+
+const productos = ref([])
+const cargando = ref(false)
+const error = ref('')
+
+async function cargarProductos() {
+  cargando.value = true
+  error.value = ''
+
+  try {
+    const respuesta = await fetch('/api/productos')
+
+    if (!respuesta.ok) {
+      throw new Error('Error al cargar productos')
+    }
+
+    productos.value = await respuesta.json()
+  } catch (err) {
+    error.value = err.message
+  } finally {
+    cargando.value = false
+  }
+}
+
+onMounted(cargarProductos)
+</script>
+
+```
+:::
+
+:::
+::: {.column width="35%" }
+
+::: {.mycode size=footnotesize}
+[Componente padre]{.title}
+
+``` vue
+<template>
+  <h1>Catálogo</h1>
+
+  <p v-if="cargando">
+    Cargando...
+  </p>
+  <p v-else-if="error">
+    {{ error }}
+  </p>
+
+  <ListaProductos
+    v-else
+    :productos="productos"
+  />
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+
+Esta separación tiene varias ventajas:
+
+- [ListaProductos]{.verbatim} puede reutilizarse en diferentes partes de la aplicación.
+- La lógica de carga no se mezcla necesariamente con la representación de la lista.
+- Podemos probar cada componente de forma independiente.
+- El componente visual no necesita conocer los detalles de la API.
+
+Esta organización no es una regla obligatoria para todas las aplicaciones, pero resulta útil cuando la interfaz empieza a crecer.
+
+
+# Creación de un servicio para una API {#creación-servicio-api}
+
+Cuando una aplicación tiene varios componentes que realizan peticiones al mismo servidor, repetir la misma lógica puede generar código difícil de mantener. Por ejemplo, cada componente podría tener su propio [fetch()]{.verbatim}, sus propias comprobaciones de errores y sus propias cabeceras. Una alternativa consiste en centralizar la comunicación con la API en un módulo JavaScript. A este tipo de módulo se le suele llamar *servicio* o *capa de acceso a datos*.
+
+::: warnbox
+Para evitar repetir código de peticiones a una API, lo ideal es crear un **servicio** para ello.
+:::
+
+Entre las ventajas al crear un servicio, podemos destacar: 
+
+- Evitamos duplicar peticiones.
+- Centralizamos las URL y las cabeceras.
+- Podemos modificar la comunicación con el servidor sin cambiar todos los componentes.
+- Facilitamos las pruebas y el mantenimiento.
+- Podemos compartir funciones entre diferentes vistas.
+
+En proyectos pequeños, puede ser suficiente con unas pocas funciones. En proyectos grandes, esta capa puede crecer para incluir autenticación, transformación de datos, gestión de errores y otros aspectos comunes.
+
+Para guardar los servicios creados, podemos crear un directorio [src/services]{.configdir} para así tenerlos ordenados.
+
+
+## Crear el servicio
+
+Para crear el servicio debemos crear un fichero [productosService.js]{.configfile} que contendrá las funciones encargadas de comunicarse con la API.
+
+
+::: {.mycode size=footnotesize}
+[Servicio para productos]{.title}
+
+``` javascript
+const API_URL = '/api/productos'
+
+async function comprobarRespuesta(respuesta) {
+  if (!respuesta.ok) {
+    throw new Error(`Error HTTP: ${respuesta.status}`)
+  }
+
+  return respuesta
+}
+
+export async function obtenerProductos() {
+  const respuesta = await fetch(API_URL)
+
+  await comprobarRespuesta(respuesta)
+
+  return respuesta.json()
+}
+
+export async function obtenerProducto(id) {
+  const respuesta = await fetch(`${API_URL}/${id}`)
+
+  await comprobarRespuesta(respuesta)
+
+  return respuesta.json()
+}
+
+export async function crearProducto(producto) {
+  const respuesta = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(producto)
+  })
+
+  await comprobarRespuesta(respuesta)
+
+  return respuesta.json()
+}
+
+export async function eliminarProducto(id) {
+  const respuesta = await fetch(`${API_URL}/${id}`, {
+    method: 'DELETE'
+  })
+
+  await comprobarRespuesta(respuesta)
+}
+```
+:::
+
+En este módulo centralizamos las operaciones relacionadas con los productos, y de esta manera, los componentes pueden importar las funciones que necesitan sin tener que repetir los detalles de cada petición.
+
+::: warnbox
+El ejemplo de [crearProducto()]{.verbatim} presupone que la API devuelve un cuerpo JSON después de crear el recurso. Si la API responde con [204 No Content]{.verbatim} u otra respuesta sin cuerpo, debemos adaptar la función para no intentar interpretar un JSON inexistente.
+:::
+
+## Utilizar el servicio desde un componente {#utilizar-servicio-desde-componente}
+
+A la hora de querer usar un servicio creado desde un componente, lo primero que tendremos que hacer es pensar qué necesitamos importar y especificar la función y el fichero.
+
+:::::::::::::: {.columns}
+::: {.column width="55%"}
+
+::: {.mycode size=footnotesize}
+[Parte script]{.title}
+
+``` vue
+<script setup>
+import { ref, onMounted } from 'vue'
+import { obtenerProductos } 
+    from '../services/productosService.js'
+
+const productos = ref([])
+const cargando = ref(false)
+const error = ref('')
+
+async function cargarProductos() {
+  cargando.value = true
+  error.value = ''
+
+  try {
+    productos.value = 
+        await obtenerProductos()
+  } catch (err) {
+    console.error(err)
+    error.value = 'Error con productos.'
+  } finally {
+    cargando.value = false
+  }
+}
+
+onMounted(cargarProductos)
+</script>
+```
+:::
+
+:::
+::: {.column width="45%" }
+
+::: {.mycode size=footnotesize}
+[Plantilla]{.title}
+
+``` vue
+<template>
+<section>
+  <h1>Productos</h1>
+  <p v-if="cargando">
+      Cargando productos...
+  </p>
+
+  <p v-else-if="error" 
+    role="alert"
+  >
+      {{ error }}
+  </p>
+  
+  <ul v-else>
+    <li
+      v-for="prod in productos"
+      :key="prod.id"
+    >
+      {{ prod.nombre }}
+    </li>
+  </ul>
+</section>
+</template>
+```
+:::
+
+:::
+::::::::::::::
+
+
+
+El componente ya no conoce la URL exacta ni cómo se construye la petición. Únicamente utiliza la función [obtenerProductos()]{.verbatim}.
 
 

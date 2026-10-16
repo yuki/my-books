@@ -16,5 +16,7 @@ echo [SPA y Vue Router]{.part}
 cat 07_vue_router.md
 echo [Consumo de APIs y operaciones asíncronas]{.part}
 cat 08_consumo_apis.md
+echo [Estado global con Pinia]{.part}
+cat 09_pinia.md
 echo [Anexo: Mise-en-place developer tools]{.part}
 cat ../../anexos/mise/01-mise.md
