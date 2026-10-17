@@ -445,8 +445,8 @@ Otros ejemplos:
 Los *event handlers* de eventos pueden recibir parámetros. A continuación dos ejemplos con distintos números de parámetros:
 
 
-:::::::::::::: {.columns }
-::: {.column width="45%"}
+:::::::::::::: {.columns columnsep=0.5cm}
+::: {.column width="44%"}
 
 ::: {.mycode size=footnotesize}
 [Eventos con parámetro]{.title}
@@ -466,7 +466,7 @@ function saludar(nombre) {
 :::
 
 :::
-::: {.column width="55%" }
+::: {.column width="56%" }
 
 ::: {.mycode size=footnotesize}
 [Evento con parámetros]{.title}

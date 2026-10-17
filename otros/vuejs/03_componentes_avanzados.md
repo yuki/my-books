@@ -61,13 +61,13 @@ Vue proporciona el elemento especial [<component>]{.verbatim} para representar d
 
 ``` vue
 <script setup>
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 import Perfil from './components/Perfil.vue'
 import Configuracion from './components/Configuracion.vue'
 import Notificaciones from './components/Notificaciones.vue'
 
-const vistaActual = ref(Perfil)
+const vistaActual = shallowRef(Perfil)
 </script>
 
 <template>
@@ -90,9 +90,20 @@ const vistaActual = ref(Perfil)
 ```
 :::
 
-En este ejemplo, [vistaActual]{.verbatim} contiene una referencia al componente que queremos mostrar. Cuando el usuario pulsa uno de los botones, cambia el valor de [vistaActual]{.verbatim} y Vue representa el componente correspondiente.
+En este ejemplo, [vistaActual]{.verbatim} contiene una referencia al componente que queremos mostrar. Cuando el usuario pulsa uno de los botones, cambia el valor de [vistaActual]{.verbatim} y Vue representa el componente correspondiente. Se usa [shallowRef]{.verbatim} porque de esta manera únicamente hace reactivo el valor de referencia, sin convertir profundamente el objeto almacenado.
+
+::: errorbox
+Hay que usar [shallowRef]{.verbatim} en lugar de [ref]{.verbatim}, de lo contrario obtendremos *warnings* en la consola.
+:::
 
 La expresión [<component :is="vistaActual" />]{.verbatim} indica que el componente que se debe representar depende del valor de la variable reactiva.
+
+::: exercisebox
+[[16](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/16)]{.solution}
+
+Crea un componente que tenga tres botones. Dependiendo del pulsado se visualizará un componente hijo u otro.
+:::
+
 
 ## Utilizar nombres de componentes
 
@@ -306,6 +317,12 @@ Al utilizar [<Teleport>]{.verbatim}, podemos representar la ventana en una zona 
 :::
 
 
+::: exercisebox
+[[17](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/17)]{.solution}
+
+Crea un componente que haga un modal y "teletranspórtalo" a un [<div id="modals">]{.verbatim} que esté en el [index.html]{.configfile}.
+:::
+
 
 # [<Transition>]{.verbatim} {#transition}
 
@@ -356,19 +373,32 @@ const visible = ref(false)
 
 Cuando el elemento aparece, su opacidad pasa de [0]{.verbatim} a su valor normal. Cuando desaparece, la opacidad pasa a [0]{.verbatim} antes de que Vue retire el elemento del DOM.
 
+::: exercisebox
+[[17](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/17)]{.solution}
+
+Partiendo del [ejercicio 15](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/15) añade un botón por fila que simule borrar un usuario y haga una transición eliminando la fila.
+:::
+
 
 ## Clases de transición {#clases-transición}
 
-Vue aplica diferentes clases durante las fases de entrada y salida. Las principales son:
+Vue aplica diferentes clases de CSS durante las fases de entrada y salida tal como se puede ver en la siguiente imagen: 
+
+![Clases por defecto en transiciones. Fuente: [Vue.js](https://vuejs.org/guide/built-ins/transition.html#css-based-transitions)](img/vuejs/transition.png){width=100%}
+
+
+En la siguiente tabla aparece cada clase y el momento en el que se usan:
 
 | Clase | Momento |
 |---|---|
-| `v-enter-from` | Estado inicial de la entrada |
-| `v-enter-active` | Durante la transición de entrada |
-| `v-enter-to` | Estado final de la entrada |
-| `v-leave-from` | Estado inicial de la salida |
-| `v-leave-active` | Durante la transición de salida |
-| `v-leave-to` | Estado final de la salida |
+| [v-enter-from]{.verbatim} | Estado inicial de la entrada |
+| [v-enter-active]{.verbatim} | Durante la transición de entrada |
+| [v-enter-to]{.verbatim} | Estado final de la entrada |
+| [v-leave-from]{.verbatim} | Estado inicial de la salida |
+| [v-leave-active]{.verbatim} | Durante la transición de salida |
+| [v-leave-to]{.verbatim} | Estado final de la salida |
+
+
 
 Estas clases utilizan el prefijo [v-]{.verbatim} por defecto pero podemos personalizarlo mediante el atributo [name]{.verbatim} como aparece en el siguiente ejemplo:
 
@@ -396,6 +426,7 @@ Estas clases utilizan el prefijo [v-]{.verbatim} por defecto pero podemos person
 :::
 
 En el ejemplo anterior, gracias al parámetro [name]{.verbatim}, las clases utilizarán el prefijo [desvanecer-]{.verbatim} tal como se ve en el apartado de estilos. Gracias a esto, podemos tener diferentes tipos de transiciones en una misma aplicación.
+
 
 
 ## Transiciones con desplazamiento {#transiciones-desplazamiento}
