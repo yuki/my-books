@@ -60,14 +60,16 @@ for LIBRO in "${LIBROS[@]}"; do
     cd $RUTA
     rm -f $NAME.html
     rm -f $NAME.pdf
-    wget "https://yuki.github.io/my-books/$NAME.html"
-    wget "https://yuki.github.io/my-books/$NAME.pdf"
-
+    
     if [ "$TODO" = "all" ] || [ "${TODO}" = "$NAME" ] ; then
         echo "BUILDING $NAME.html"
         ./book.sh | pandoc -o $NAME.html -d defaults.yaml --verbose
         echo "BUILDING $NAME.pdf"
         ./book.sh | pandoc -o $NAME.pdf -d defaults.yaml  --template=template/yuki.tex --verbose
+    else
+        echo "DOWNLOADING $NAME.html and $NAME.pdf"
+        wget "https://yuki.github.io/my-books/$NAME.html" -o /dev/null
+        wget "https://yuki.github.io/my-books/$NAME.pdf" -o /dev/null
     fi
     cp $NAME.html $ORIG/build
     cp $NAME.pdf $ORIG/build
