@@ -65,17 +65,21 @@ jobs:
     continue-on-error: true
     steps:
     - name: Set up Git repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
     - name: build the PDF and HTML
-      uses: dante-ev/latex-action@edge
-      with:
-        entrypoint: ./build_pandoc.sh
+      run: |
+        docker run --rm \
+          -v "${GITHUB_WORKSPACE}:/workspace" \
+          -w /workspace \
+          -e "COMPILEBOOK=${COMPILEBOOK}" \
+          --entrypoint ./build_pandoc.sh \
+          danteev/texlive:edge
       env:
         COMPILEBOOK: ${{inputs.compileBook}}
     - name: Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         tag_name: latest
         files: |
@@ -123,9 +127,9 @@ jobs:
           temas_comunes/wsl/wsl.pdf
           temas_comunes/wsl/euskera/wsl_euskeraz.pdf
     - name: Upload artifacts
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v5
       with:
         path: './build'
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5

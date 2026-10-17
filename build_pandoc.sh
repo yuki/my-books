@@ -50,8 +50,6 @@ LIBROS=(
 
 TODO="$(echo $COMPILEBOOK | tr '[:upper:]' '[:lower:]')"
 
-apt update && apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-panflute
-
 cp -r pandoc-templates/template build
 cp -r img build 
 
@@ -60,6 +58,8 @@ for LIBRO in "${LIBROS[@]}"; do
     NAME=`echo $LIBRO | cut -d" " -f2`
     
     cd $RUTA
+    rm -f $NAME.html
+    rm -f $NAME.pdf
     wget "https://yuki.github.io/my-books/$NAME.html"
     wget "https://yuki.github.io/my-books/$NAME.pdf"
 
