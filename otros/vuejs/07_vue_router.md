@@ -72,7 +72,7 @@ En los siguientes apartados veremos cómo se utiliza cada uno de estos elementos
 
 Una práctica habitual consiste en crear una carpeta [router]{.configdir} y guardar en ella la configuración de las rutas. La estructura inicial del proyecto podría quedar de la siguiente manera:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Estructura del proyecto]{.title}
 
 ``` text
@@ -100,7 +100,7 @@ Esta organización es una convención, no una obligación de Vue, pero en un pro
 El fichero donde se guardan las rutas es [src/router/index.js]{.configfile}, y una configuración básica sería la siguiente (puede ser diferente al generado por el asistente):
 
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Fichero de rutas]{.title}
 
 ``` javascript
@@ -190,6 +190,10 @@ Ahora debemos indicar dónde queremos mostrar el componente correspondiente a la
 
 ::: infobox
 Podemos entender [RouterView]{.verbatim} como el espacio de la interfaz reservado para la vista que corresponde a la URL actual.
+:::
+
+::: exercisebox
+Crea un proyecto Vue con el asistente marcando la opción "**Router (SPA development)**" y código de ejemplo. Analiza la aplicación y busca dónde aparece todo lo visto hasta ahora.
 :::
 
 
@@ -299,6 +303,18 @@ nav a.router-link-exact-active {
 De esta forma, el usuario puede identificar en qué sección se encuentra.
 
 
+::: exercisebox
+[[19](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/19) y [20](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/20)]{.solution}
+
+[19](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/19):
+:   Crea un proyecto Vue con "**Router (SPA development)**" y **SIN** código de ejemplo. Se usará como base para el resto de ejercicios.
+
+[20](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/20):
+:   Crea un navbar que tenga enlaces a distintas vistas, que serán rutas distintas de nuestra App. Se debe distinguir en el navbar el enlace seleccionado.
+:::
+
+
+
 # Navegación mediante código {#navegación-mediante-código}
 
 Además de navegar pulsando enlaces, podemos cambiar de ruta desde la lógica JavaScript de un componente. Por ejemplo, después de guardar un formulario podemos redirigir al usuario a la página de productos. Para ello utilizamos [useRouter()]{.verbatim}.
@@ -390,12 +406,11 @@ Para obtener el identificador tenemos que utilizar [useRoute()]{.verbatim} en el
 
 ```vue
 <script setup>
-import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const idProducto = computed(() => route.params.id)
+const idProducto = route.params.id
 </script>
 
 <template>
@@ -420,6 +435,14 @@ if (!Number.isInteger(id) || id <= 0) {
 :::
 
 
+::: exercisebox
+[[21](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/21)]{.solution}
+
+- Partiendo del ejercicio anterior, usa la [API](https://jsonplaceholder.typicode.com/) y que el *navbar* muestre para visualizar **usuarios** y **posts**.
+- Crea un *[composable](#composables)* (como el del ejercicio [15](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/15)) para llamar a la API y obtener todos los usuarios y un usuario concreto.
+- En el componente de usuarios que visualice una tabla con todos los usuarios. Cada usuario tenga un enlace a [/users/:id]{.verbatim}
+- Crea la ruta para [/users/:id]{.verbatim} que apunte a un nuevo componente que obtenga el [:id]{.verbatim}, llame a la API y visualice todos los datos de usuario.
+:::
 
 # Parámetros de consulta {#parámetros-consulta}
 
@@ -441,13 +464,11 @@ Podemos utilizar [useRoute()]{.verbatim} para consultar [route.query]{.verbatim}
 
 ``` vue
 <script setup>
-import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-
-const categoria = computed(() => route.query.categoria)
-const orden = computed(() => route.query.orden)
+const categoria = route.query.categoria
+const orden = route.query.orden
 </script>
 
 <template>
