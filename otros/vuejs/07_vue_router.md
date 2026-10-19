@@ -517,6 +517,15 @@ Los parámetros de consulta ofrecen varias ventajas:
 Si el usuario selecciona una categoría y ordena los productos por precio, reflejar estas opciones en la URL puede hacer que la aplicación resulte más predecible.
 
 
+::: exercisebox
+[[22](https://github.com/yuki/ejercicios/tree/main/daw/dec/vue/22)]{.solution}
+
+- Partiendo del ejercicio anterior, añade un pequeño formulario para buscar por nombre.
+- Al darle a botón de buscar que añada un parámetro de consulta a la URL.
+- Al cargar el componente compruebe si existe un parámetro y filtre los resultados del array de usuarios.
+  - **NOTA**: la API utilizada no soporta hacer búsquedas, pero la idea sería crear una nueva consulta a la API con el parámetro.
+:::
+
 
 # Rutas anidadas {#rutas-anidadas}
 
