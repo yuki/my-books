@@ -543,7 +543,7 @@ Todas estas vistas estarían bajo la URL [/administracion]{.verbatim} y pueden c
 Dentro del fichero de rutas podemos crear nuevas rutas, donde **las rutas hijas utilizan rutas relativas**. Por ejemplo, la ruta hija [usuarios]{.verbatim} corresponde a [/administracion/usuarios]{.verbatim}.
 
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Crear URL con parámetros]{.title}
 
 ``` javascript
@@ -577,7 +577,7 @@ La ruta hija con [path: '']{.verbatim} representa la vista predeterminada cuando
 
 El componente padre debe incluir un [RouterView]{.verbatim} adicional donde se mostrarán sus vistas hijas. Por ejemplo, en [AdministracionView.vue]{.verbatim}:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [AdministracionView.vue]{.title}
 
 ``` vue
@@ -601,7 +601,7 @@ El componente padre debe incluir un [RouterView]{.verbatim} adicional donde se m
 
 El [RouterView]{.verbatim} de [App.vue]{.verbatim} mostrará [AdministracionView]{.verbatim}, y el  [RouterView]{.verbatim} de [AdministracionView.vue]{.verbatim} mostrará la vista hija correspondiente. La estructura resultante puede entenderse así:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Estructura de las rutas]{.title}
 
 ``` text
@@ -623,7 +623,7 @@ Las rutas anidadas son especialmente útiles cuando diferentes páginas comparte
 
 Hasta ahora hemos navegado utilizando directamente la URL, pero Vue Router permite asignar un nombre a cada ruta. Por ejemplo:
 
-::: mycode
+::: {.mycode size=footnotesize}
 [Rutas con nombre]{.title}
 
 ``` javascript

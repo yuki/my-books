@@ -18,5 +18,9 @@ echo [Consumo de APIs y operaciones asíncronas]{.part}
 cat 08_consumo_apis.md
 echo [Estado global con Pinia]{.part}
 cat 09_pinia.md
+echo [Formularios y validación]{.part}
+cat 10_formularios.md
+echo [Aplicaciones Vue en producción]{.part}
+cat 12_produccion.md
 echo [Anexo: Mise-en-place developer tools]{.part}
 cat ../../anexos/mise/01-mise.md
